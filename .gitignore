@@ -3,3 +3,8 @@
 *.iml
 
 jztd*.w3x
+
+/resources/
+jztd_slk*
+tools/w3x2lni
+out/

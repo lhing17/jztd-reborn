@@ -1,0 +1,6 @@
+事件
+    TriggerRegisterEnterRectSimple
+        函数: GetPlayableMapRect
+    TriggerRegisterEnterRegionSimple
+        函数: GetTriggeringRegion
+    YDWESyStemAnyUnitDamagedRegistTrigger

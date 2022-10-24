@@ -1,0 +1,9 @@
+事件
+    TriggerRegisterTimerEventSingle
+        常量: 0.01
+条件
+动作
+    FogEnableOff
+    FogMaskEnableOff
+    CustomScriptCode
+        常量: 'call InitAllSystems()'

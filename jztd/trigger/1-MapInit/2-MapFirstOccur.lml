@@ -1,0 +1,38 @@
+事件
+条件
+    OperatorCompareBoolean
+        函数: UnitHasItemOfTypeBJ
+            函数: GetTriggerUnit
+            常量: texp
+        预设: OperatorEqualENE
+        常量: true
+动作
+    MultiboardSetItemWidthBJ
+        函数: GetLastCreatedMultiboard
+        常量: 1
+        常量: 1
+        常量: 3
+    YDWEGeneralBounsSystemUnitSetBonus
+        函数: GetTriggerUnit
+        预设: bonusTypeA
+        预设: unitstatechangetypeA
+        常量: 300
+    PolledWait
+        常量: 2
+    YDWENewItemsFormula
+        常量: ches
+        常量: 0
+        常量: ches
+        常量: 0
+        常量: ches
+        常量: 0
+        常量: ches
+        常量: 0
+        常量: ches
+        常量: 0
+        常量: ches
+        常量: 0
+        常量: bzbe
+    YDWETimerDestroyTextTag
+        常量: 2
+        函数: GetLastCreatedTextTag
