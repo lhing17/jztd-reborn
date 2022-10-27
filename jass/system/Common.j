@@ -290,3 +290,26 @@ function SynItem takes unit u, integer itemid_before, integer itemid_after retur
         endif
     endif
 endfunction
+
+// 获取随机品质的武魂石，概率和波数以及人品有关
+function getRandomSoulStone takes integer i returns integer
+    local integer id = 0
+    local real rand = GetRandomReal(0, 100)
+    // I02B为劣质品质，I02C为平凡品质，I02D为精致品质，I02E为完美品质
+    // 10波之前，完美品质概率为0
+    // 10-30波，完美品质概率为10%+波数*0.2%
+    // 30-50波，完美品质概率为10%+波数*0.3%
+
+
+    if rand < RMinBJ(15, 10 + luck[i] * .025) then
+        set id = 'I02E'
+    elseif rand < RMinBJ(45, 30 + luck[i] * .075) then
+        set id = 'I02D'
+    elseif rand < RMinBJ(90, 60 + luck[i] * .175) then
+        set id = 'I02C'
+    else
+        set id = 'I02B'
+    endif
+    return id
+endfunction
+

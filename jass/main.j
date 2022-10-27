@@ -628,7 +628,7 @@ function Trig_ChooseNanDuActions takes nothing returns nothing
     set udg_diff[4] = DialogAddButton(udg_select_diff, "|cFF0041FF炉火纯青", 68)
     set udg_diff[5] = DialogAddButton(udg_select_diff, "|cFF1FBF00华山论剑", 69)
     set udg_diff[6] = DialogAddButton(udg_select_diff, "|cFFFF0000决战江湖", 70)
-    set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
+    // set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
     call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8), udg_select_diff, true)
     set ydl_timer = CreateTimer()
     call SavePlayerHandle(YDLOC, GetHandleId(ydl_timer), $32A9E4C8, LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8))
