@@ -5,7 +5,7 @@ function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, inte
     if buffnum == num then
         set p = GetOwningPlayer(uc)
         set loc = GetUnitLoc(ut)
-        call CreateNUnitsAtLoc(1, $65303030, p, loc, bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'e000', p, loc, bj_UNIT_FACING)
         set u = bj_lastCreatedUnit
         call ShowUnitHide(u)
         call UnitAddAbility(u, id)
@@ -13,7 +13,7 @@ function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, inte
             call IncUnitAbilityLevel(u, id)
         endif
         call IssueTargetOrderById(u, orderid, ut)
-        call UnitApplyTimedLife(u, $42487765, 2.)
+        call UnitApplyTimedLife(u, 'BHwe', 2.)
         call CreateTextTagLocBJ(s, loc, 60., 12., 65., 55., 42., 0)
         call YDWETimerDestroyTextTag(3., bj_lastCreatedTextTag)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 100., 90)
@@ -24,22 +24,22 @@ function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, inte
     set u = null
 endfunction
 function WanBuff takes unit u, unit ut, integer buffnum returns nothing
-    call WanBuff_1(buffnum, 1, u, $41303737, 852111, ut, "内伤")
-    call WanBuff_1(buffnum, 2, u, $41303739, 852668, ut, "走火入魔")
-    call WanBuff_1(buffnum, 3, u, $41303735, 852527, ut, "流血")
-    call WanBuff_1(buffnum, 4, u, $41303649, 852189, ut, "混乱")
-    call WanBuff_1(buffnum, 5, u, $4130415A, 852075, ut, "昏迷")
-    call WanBuff_1(buffnum, 6, u, $41303736, 852075, ut, "重伤")
-    call WanBuff_1(buffnum, 7, u, $41303738, 852527, ut, "血流不止")
-    call WanBuff_1(buffnum, 8, u, $41304159, 852190, ut, "麻痹")
-    call WanBuff_1(buffnum, 9, u, $4130334F, 852149, ut, "破防")
-    call WanBuff_1(buffnum, 10, u, $4130354E, 852190, ut, "神经错乱")
-    call WanBuff_1(buffnum, 11, u, $4130354C, 852095, ut, "封穴")
-    call WanBuff_1(buffnum, 12, u, $4130354C, 852095, ut, "穴位全封")
-    call WanBuff_1(buffnum, 13, u, $41303734, 852527, ut, "中毒")
-    call WanBuff_1(buffnum, 14, u, $41303734, 852527, ut, "深度中毒")
-    call WanBuff_1(buffnum, 15, u, $41303937, 852190, ut, "致盲")
-    call WanBuff_1(buffnum, 16, u, $41303937, 852190, ut, "伤害加深")
+    call WanBuff_1(buffnum, 1, u, 'A077', 852111, ut, "内伤")
+    call WanBuff_1(buffnum, 2, u, 'A079', 852668, ut, "走火入魔")
+    call WanBuff_1(buffnum, 3, u, 'A075', 852527, ut, "流血")
+    call WanBuff_1(buffnum, 4, u, 'A06I', 852189, ut, "混乱")
+    call WanBuff_1(buffnum, 5, u, 'A0AZ', 852075, ut, "昏迷")
+    call WanBuff_1(buffnum, 6, u, 'A076', 852075, ut, "重伤")
+    call WanBuff_1(buffnum, 7, u, 'A078', 852527, ut, "血流不止")
+    call WanBuff_1(buffnum, 8, u, 'A0AY', 852190, ut, "麻痹")
+    call WanBuff_1(buffnum, 9, u, 'A03O', 852149, ut, "破防")
+    call WanBuff_1(buffnum, 10, u, 'A05N', 852190, ut, "神经错乱")
+    call WanBuff_1(buffnum, 11, u, 'A05L', 852095, ut, "封穴")
+    call WanBuff_1(buffnum, 12, u, 'A05L', 852095, ut, "穴位全封")
+    call WanBuff_1(buffnum, 13, u, 'A074', 852527, ut, "中毒")
+    call WanBuff_1(buffnum, 14, u, 'A074', 852527, ut, "深度中毒")
+    call WanBuff_1(buffnum, 15, u, 'A097', 852190, ut, "致盲")
+    call WanBuff_1(buffnum, 16, u, 'A097', 852190, ut, "伤害加深")
 endfunction
 
 
@@ -48,26 +48,26 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
     local real coeff = 1
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
     set coeff = coeff + kungfuCoeff[i]
-    if GetUnitAbilityLevel(u, $4130334E) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03N') >= 1 then
         set coeff = coeff + .4
     endif
-    if GetUnitAbilityLevel(u, $41303350) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03P') >= 1 then
         set coeff = coeff + .5
     endif
-    if GetUnitAbilityLevel(u, $41303351) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03Q') >= 1 then
         set coeff = coeff + .4
     endif
-    if GetUnitAbilityLevel(u, $41303352) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff = coeff + .5
     endif
     set damage = damage * coeff
-    if UnitHasBuffBJ(ut, $42303035) then
+    if UnitHasBuffBJ(ut, 'B005') then
         set damage = damage * 2
     endif
     if damage == 0 then
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
     else
-        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, $4130334E) >= 1 then
+        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, 'A03N') >= 1 then
             set damage = damage * 3
             call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
             call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
@@ -146,28 +146,28 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
     local location loc = GetUnitLoc(attackee)
     local real dmg = damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     local real coeff = 1
-    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, $4930304C)) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
-        if spell_id == $41303031 then
+    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+        if spell_id == 'A001' then
             if GetUnitAbilityLevel(attacker, spell_id) == 5 then
                 set coeff = coeff + 1
             endif
-            if GetUnitAbilityLevel(attacker, $4130334E) >= 1 then
+            if GetUnitAbilityLevel(attacker, 'A03N') >= 1 then
                 set coeff = coeff + 1
             endif
             if udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
                 set dmg = dmg * 8
             endif
         endif
-        if spell_id == $41303435 then
-            set dmg = dmg * GetUnitAbilityLevel(attacker, $41303435)
+        if spell_id == 'A045' then
+            set dmg = dmg * GetUnitAbilityLevel(attacker, 'A045')
             if GetRandomInt(0, 100) <= 50 then
                 call WanBuff(attacker, attackee, 16)
             endif
         endif
-        if spell_id == $41303438 then
+        if spell_id == 'A048' then
             set dmg = dmg * mana_cost * mana_cost
         endif
-        if spell_id == $41303437 then
+        if spell_id == 'A047' then
             if GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) >= 50 then
                 call SetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) - 50)
                 call CreateTextTagUnitBJ("-50", attacker, 0., 11., 80.4, 49.8, 19.6, 30.)
@@ -181,7 +181,7 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
                 return
             endif
         endif
-        if spell_id == $4130304B and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
+        if spell_id == 'A00K' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
             set range = range + 450
         endif
         call SaveUnitHandle(YDHT, RANGE_DAMAGE_HASH, 0, attacker)
@@ -199,7 +199,7 @@ endfunction
 function PassiveSingleDamage takes unit attacker, unit attackee, integer spell_id, real base_damage, string effects, integer possibility, integer mana_cost returns nothing
     local location loc = GetUnitLoc(attackee)
     local real damage = base_damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
-    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, $4930304C)) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         call dealDamage(attacker, attackee, damage)
         call DestroyEffect(AddSpecialEffectLoc(effects, loc))
         call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - mana_cost)
@@ -211,28 +211,28 @@ function PassiveUseAbility takes unit attacker, unit attackee, integer spell_id,
     local location loc = GetUnitLoc(attacker)
     local location loc2 = GetUnitLoc(attackee)
     local integer manacost = mana_cost
-    if spell_id == $41303243 or spell_id == $41303244 or spell_id == $41303245 and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] >= 1 then
+    if spell_id == 'A02C' or spell_id == 'A02D' or spell_id == 'A02E' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] >= 1 then
         set manacost = manacost - 20
     endif
-    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, $4930304C)) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= manacost then
-        if spell_id == $41303251 then
-            call CreateNUnitsAtLoc(1, $65303045, GetOwningPlayer(attacker), loc2, bj_UNIT_FACING)
+    if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= manacost then
+        if spell_id == 'A02Q' then
+            call CreateNUnitsAtLoc(1, 'e00E', GetOwningPlayer(attacker), loc2, bj_UNIT_FACING)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
             call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, attacker)
             call IssueImmediateOrderById(bj_lastCreatedUnit, order_id)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.5)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.5)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
-        elseif spell_id == $41303337 then
-            call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+        elseif spell_id == 'A037' then
+            call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
             call ShowUnitHide(bj_lastCreatedUnit)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
             call IssueTargetOrderById(bj_lastCreatedUnit, order_id, attacker)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 3.)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
         else
-            call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
             call ShowUnitHide(bj_lastCreatedUnit)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
@@ -240,10 +240,10 @@ function PassiveUseAbility takes unit attacker, unit attackee, integer spell_id,
             call IssueTargetOrderById(bj_lastCreatedUnit, order_id, attackee)
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, order_id, loc2)
             call IssueImmediateOrderById(bj_lastCreatedUnit, order_id)
-            if spell_id == $41303439 then
+            if spell_id == 'A049' then
                 call DestroyEffect(AddSpecialEffect("war3mapImported\\icenova.mdx", GetUnitX(attackee), GetUnitY(attackee)))
             endif
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 20.)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 20.)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
         endif
     endif

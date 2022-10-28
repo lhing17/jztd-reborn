@@ -17,7 +17,7 @@ function EverySecond_Conditions takes nothing returns boolean
         loop
             exitwhen i > 5
             if wisdom_ball_flag[i] == 1 then
-                call CreateUnit(Player(i - 1), $6F303052, x[i], y[i], 270)
+                call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
                 call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D您已开启智慧球")
             endif
             set i = i + 1
@@ -70,11 +70,11 @@ function EverySecond_Conditions takes nothing returns boolean
     set i = 0
     loop
         exitwhen i > tower_num
-        if GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303049) >= 1 then
+        if GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A00I') >= 1 then
             call IssueImmediateOrder(s__Tower_u[tower[i]], "frenzy")
         endif
-        if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303441) >= 1 then
-            set level = GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303441)
+        if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A') >= 1 then
+            set level = GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A')
             call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + GetRandomInt(level * 10, level * 100))
         endif
         set i = i + 1

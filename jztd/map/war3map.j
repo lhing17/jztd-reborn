@@ -43,25 +43,25 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase___yd_PlayerColor
-trigger array YDWEBase___AbilityCastingOverEventQueue
-integer array YDWEBase___AbilityCastingOverEventType
-integer YDWEBase___AbilityCastingOverEventNumber= 0
+string array YDWEBase__yd_PlayerColor
+trigger array YDWEBase__AbilityCastingOverEventQueue
+integer array YDWEBase__AbilityCastingOverEventType
+integer YDWEBase__AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
-integer array YDWEGeneralBounsSystem___ABILITY_COUNT
-integer array YDWEGeneralBounsSystem___ABILITY_NUM
-integer array YDWEGeneralBounsSystem___BonusAbilitys
-integer array YDWEGeneralBounsSystem___PowersOf2
-integer YDWEGeneralBounsSystem___PRELOAD_DUMMY_UNIT= 'hpea'
-integer array YDWEGeneralBounsSystem___YDWEBONUS_MyChar
-boolean YDWEGeneralBounsSystem___PRELOAD_ABILITYS= true
-constant integer YDWEGeneralBounsSystem___BONUS_TYPES= 4
-integer array YDWEGeneralBounsSystem___MaxBonus
-integer array YDWEGeneralBounsSystem___MinBonus
-unit array YDWEGeneralBounsSystem___Units
-integer YDWEGeneralBounsSystem___UnitCount= 0
+integer array YDWEGeneralBounsSystem__ABILITY_COUNT
+integer array YDWEGeneralBounsSystem__ABILITY_NUM
+integer array YDWEGeneralBounsSystem__BonusAbilitys
+integer array YDWEGeneralBounsSystem__PowersOf2
+integer YDWEGeneralBounsSystem__PRELOAD_DUMMY_UNIT= 'hpea'
+integer array YDWEGeneralBounsSystem__YDWEBONUS_MyChar
+boolean YDWEGeneralBounsSystem__PRELOAD_ABILITYS= true
+constant integer YDWEGeneralBounsSystem__BONUS_TYPES= 4
+integer array YDWEGeneralBounsSystem__MaxBonus
+integer array YDWEGeneralBounsSystem__MinBonus
+unit array YDWEGeneralBounsSystem__Units
+integer YDWEGeneralBounsSystem__UnitCount= 0
 //endglobals from YDWEGeneralBounsSystem
 //globals from YDWEMultiboardSetItemWidthBJNull:
 constant boolean LIBRARY_YDWEMultiboardSetItemWidthBJNull=true
@@ -72,14 +72,14 @@ constant boolean LIBRARY_YDWEPolledWaitNull=true
 //globals from YDWETriggerEvent:
 constant boolean LIBRARY_YDWETriggerEvent=true
 trigger yd_DamageEventTrigger= null
-trigger array YDWETriggerEvent___DamageEventQueue
-integer YDWETriggerEvent___DamageEventNumber= 0
+trigger array YDWETriggerEvent__DamageEventQueue
+integer YDWETriggerEvent__DamageEventNumber= 0
 	
 item bj_lastMovedItemInItemSlot= null
 	
-trigger YDWETriggerEvent___MoveItemEventTrigger= null
-trigger array YDWETriggerEvent___MoveItemEventQueue
-integer YDWETriggerEvent___MoveItemEventNumber= 0
+trigger YDWETriggerEvent__MoveItemEventTrigger= null
+trigger array YDWETriggerEvent__MoveItemEventQueue
+integer YDWETriggerEvent__MoveItemEventNumber= 0
 //endglobals from YDWETriggerEvent
 //globals from YDWETriggerRegisterEnterRectSimpleNull:
 constant boolean LIBRARY_YDWETriggerRegisterEnterRectSimpleNull=true
@@ -91,32 +91,32 @@ constant boolean LIBRARY_YDWEUnitHasItemOfTypeBJNull=true
 //globals from YDWEStringFormula:
 constant boolean LIBRARY_YDWEStringFormula=true
 item bj_lastCombinedItem=null
-trigger array YDWEStringFormula___ItemCombineEventQueue
-integer YDWEStringFormula___ItemCombineEventNumber= 0
-constant integer YDWEStringFormula___MAX_INSTANCES= 8100
-constant integer YDWEStringFormula___SEGMENT_LENGTH= 4
-integer YDWEStringFormula___FormulaData= 0
+trigger array YDWEStringFormula__ItemCombineEventQueue
+integer YDWEStringFormula__ItemCombineEventNumber= 0
+constant integer YDWEStringFormula__MAX_INSTANCES= 8100
+constant integer YDWEStringFormula__SEGMENT_LENGTH= 4
+integer YDWEStringFormula__FormulaData= 0
 //endglobals from YDWEStringFormula
 //globals from YDWETimerSystem:
 constant boolean LIBRARY_YDWETimerSystem=true
-integer YDWETimerSystem___CurrentTime
-integer YDWETimerSystem___CurrentIndex
-integer YDWETimerSystem___TaskListHead
-integer YDWETimerSystem___TaskListIdleHead
-integer YDWETimerSystem___TaskListIdleMax
-integer array YDWETimerSystem___TaskListIdle
-integer array YDWETimerSystem___TaskListNext
-integer array YDWETimerSystem___TaskListTime
-trigger array YDWETimerSystem___TaskListProc
-trigger YDWETimerSystem___fnRemoveUnit
-trigger YDWETimerSystem___fnDestroyTimer
-trigger YDWETimerSystem___fnRemoveItem
-trigger YDWETimerSystem___fnDestroyEffect
-trigger YDWETimerSystem___fnDestroyLightning
-trigger YDWETimerSystem___fnRunTrigger
-timer YDWETimerSystem___Timer
-integer YDWETimerSystem___TimerHandle
-integer YDWETimerSystem___TimerSystem_RunIndex= 0
+integer YDWETimerSystem__CurrentTime
+integer YDWETimerSystem__CurrentIndex
+integer YDWETimerSystem__TaskListHead
+integer YDWETimerSystem__TaskListIdleHead
+integer YDWETimerSystem__TaskListIdleMax
+integer array YDWETimerSystem__TaskListIdle
+integer array YDWETimerSystem__TaskListNext
+integer array YDWETimerSystem__TaskListTime
+trigger array YDWETimerSystem__TaskListProc
+trigger YDWETimerSystem__fnRemoveUnit
+trigger YDWETimerSystem__fnDestroyTimer
+trigger YDWETimerSystem__fnRemoveItem
+trigger YDWETimerSystem__fnDestroyEffect
+trigger YDWETimerSystem__fnDestroyLightning
+trigger YDWETimerSystem__fnRunTrigger
+timer YDWETimerSystem__Timer
+integer YDWETimerSystem__TimerHandle
+integer YDWETimerSystem__TimerSystem_RunIndex= 0
 //endglobals from YDWETimerSystem
     // Generated
 trigger gg_trg_EventFirstOccur= null
@@ -345,43 +345,43 @@ integer si__Tower_F=0
 integer si__Tower_I=0
 integer array si__Tower_V
 unit array s__Tower_u
-constant integer si__YDWEStringFormula___Inventory=4
-integer si__YDWEStringFormula___Inventory_F=0
-integer si__YDWEStringFormula___Inventory_I=0
-integer array si__YDWEStringFormula___Inventory_V
-constant integer si__YDWEStringFormula___StringTable=5
-constant integer si__YDWEStringFormula___ItemIdMatrix=6
-integer s__YDWEStringFormula___ItemIdMatrix_Data
-integer s__YDWEStringFormula___ItemIdMatrix_Total= 1
-integer array s__YDWEStringFormula___ItemIdMatrix_itemId
-string array s__YDWEStringFormula___ItemIdMatrix_keyStr
-integer array s__YDWEStringFormula___ItemIdMatrix_keyLen
-constant integer si__YDWEStringFormula___FormulaMatrix=7
-integer s__YDWEStringFormula___FormulaMatrix_Data
-integer s__YDWEStringFormula___FormulaMatrix_Total= 1
-string array s__YDWEStringFormula___FormulaMatrix_formula
-integer array s__YDWEStringFormula___FormulaMatrix_segmLen
-string array s__YDWEStringFormula___FormulaMatrix_model
-string array s__YDWEStringFormula___FormulaMatrix_message
-integer array s__YDWEStringFormula___FormulaMatrix_chance
-boolean array s__YDWEStringFormula___FormulaMatrix_delete
-constant integer si__YDWEStringFormula___Sorting=8
-integer si__YDWEStringFormula___Sorting_F=0
-integer si__YDWEStringFormula___Sorting_I=0
-integer array si__YDWEStringFormula___Sorting_V
-integer array s___YDWEStringFormula___Sorting_stack
-constant integer s___YDWEStringFormula___Sorting_stack_size=8
-integer array s__YDWEStringFormula___Sorting_stack
-integer array s___YDWEStringFormula___Sorting_count
-constant integer s___YDWEStringFormula___Sorting_count_size=8
-integer array s__YDWEStringFormula___Sorting_count
-integer array s__YDWEStringFormula___Sorting_total
-string array s__YDWEStringFormula___Sorting_char
-integer array si__YDWEStringFormula___Inventory_type
-trigger array st__YDWEStringFormula___Inventory_onDestroy
+constant integer si__YDWEStringFormula__Inventory=4
+integer si__YDWEStringFormula__Inventory_F=0
+integer si__YDWEStringFormula__Inventory_I=0
+integer array si__YDWEStringFormula__Inventory_V
+constant integer si__YDWEStringFormula__StringTable=5
+constant integer si__YDWEStringFormula__ItemIdMatrix=6
+integer s__YDWEStringFormula__ItemIdMatrix_Data
+integer s__YDWEStringFormula__ItemIdMatrix_Total= 1
+integer array s__YDWEStringFormula__ItemIdMatrix_itemId
+string array s__YDWEStringFormula__ItemIdMatrix_keyStr
+integer array s__YDWEStringFormula__ItemIdMatrix_keyLen
+constant integer si__YDWEStringFormula__FormulaMatrix=7
+integer s__YDWEStringFormula__FormulaMatrix_Data
+integer s__YDWEStringFormula__FormulaMatrix_Total= 1
+string array s__YDWEStringFormula__FormulaMatrix_formula
+integer array s__YDWEStringFormula__FormulaMatrix_segmLen
+string array s__YDWEStringFormula__FormulaMatrix_model
+string array s__YDWEStringFormula__FormulaMatrix_message
+integer array s__YDWEStringFormula__FormulaMatrix_chance
+boolean array s__YDWEStringFormula__FormulaMatrix_delete
+constant integer si__YDWEStringFormula__Sorting=8
+integer si__YDWEStringFormula__Sorting_F=0
+integer si__YDWEStringFormula__Sorting_I=0
+integer array si__YDWEStringFormula__Sorting_V
+integer array s___YDWEStringFormula__Sorting_stack
+constant integer s___YDWEStringFormula__Sorting_stack_size=8
+integer array s__YDWEStringFormula__Sorting_stack
+integer array s___YDWEStringFormula__Sorting_count
+constant integer s___YDWEStringFormula__Sorting_count_size=8
+integer array s__YDWEStringFormula__Sorting_count
+integer array s__YDWEStringFormula__Sorting_total
+string array s__YDWEStringFormula__Sorting_char
+integer array si__YDWEStringFormula__Inventory_type
+trigger array st__YDWEStringFormula__Inventory_onDestroy
 trigger st__Frame_onDestroy
 trigger st__Tower_setAbility
-trigger st__YDWEStringFormula___Sorting_onDestroy
+trigger st__YDWEStringFormula__Sorting_onDestroy
 trigger array st___prototype4
 unit f__arg_unit1
 real f__arg_real1
@@ -580,85 +580,85 @@ function sc__Frame_deallocate takes integer this returns nothing
     set si__Frame_F=this
 endfunction
 
-//Generated method caller for YDWEStringFormula___Sorting.onDestroy
-function sc__YDWEStringFormula___Sorting_onDestroy takes integer this returns nothing
+//Generated method caller for YDWEStringFormula__Sorting.onDestroy
+function sc__YDWEStringFormula__Sorting_onDestroy takes integer this returns nothing
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
 endfunction
 
-//Generated allocator of YDWEStringFormula___Sorting
-function s__YDWEStringFormula___Sorting__allocate takes nothing returns integer
- local integer this=si__YDWEStringFormula___Sorting_F
+//Generated allocator of YDWEStringFormula__Sorting
+function s__YDWEStringFormula__Sorting__allocate takes nothing returns integer
+ local integer this=si__YDWEStringFormula__Sorting_F
     if (this!=0) then
-        set si__YDWEStringFormula___Sorting_F=si__YDWEStringFormula___Sorting_V[this]
+        set si__YDWEStringFormula__Sorting_F=si__YDWEStringFormula__Sorting_V[this]
     else
-        set si__YDWEStringFormula___Sorting_I=si__YDWEStringFormula___Sorting_I+1
-        set this=si__YDWEStringFormula___Sorting_I
+        set si__YDWEStringFormula__Sorting_I=si__YDWEStringFormula__Sorting_I+1
+        set this=si__YDWEStringFormula__Sorting_I
     endif
     if (this>1022) then
         return 0
     endif
-    set s__YDWEStringFormula___Sorting_stack[this]=(this-1)*8
-    set s__YDWEStringFormula___Sorting_count[this]=(this-1)*8
-   set s__YDWEStringFormula___Sorting_total[this]= 7
-    set si__YDWEStringFormula___Sorting_V[this]=-1
+    set s__YDWEStringFormula__Sorting_stack[this]=(this-1)*8
+    set s__YDWEStringFormula__Sorting_count[this]=(this-1)*8
+   set s__YDWEStringFormula__Sorting_total[this]= 7
+    set si__YDWEStringFormula__Sorting_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWEStringFormula___Sorting
-function sc__YDWEStringFormula___Sorting_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Sorting
+function sc__YDWEStringFormula__Sorting_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Sorting_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Sorting_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Sorting_onDestroy)
-    set si__YDWEStringFormula___Sorting_V[this]=si__YDWEStringFormula___Sorting_F
-    set si__YDWEStringFormula___Sorting_F=this
+    call TriggerEvaluate(st__YDWEStringFormula__Sorting_onDestroy)
+    set si__YDWEStringFormula__Sorting_V[this]=si__YDWEStringFormula__Sorting_F
+    set si__YDWEStringFormula__Sorting_F=this
 endfunction
 
-//Generated method caller for YDWEStringFormula___Inventory.onDestroy
-function sc__YDWEStringFormula___Inventory_onDestroy takes integer this returns nothing
+//Generated method caller for YDWEStringFormula__Inventory.onDestroy
+function sc__YDWEStringFormula__Inventory_onDestroy takes integer this returns nothing
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Inventory_onDestroy[4])
+    call TriggerEvaluate(st__YDWEStringFormula__Inventory_onDestroy[4])
 endfunction
 
-//Generated allocator of YDWEStringFormula___Inventory
-function s__YDWEStringFormula___Inventory__allocate takes nothing returns integer
- local integer this=si__YDWEStringFormula___Inventory_F
+//Generated allocator of YDWEStringFormula__Inventory
+function s__YDWEStringFormula__Inventory__allocate takes nothing returns integer
+ local integer this=si__YDWEStringFormula__Inventory_F
     if (this!=0) then
-        set si__YDWEStringFormula___Inventory_F=si__YDWEStringFormula___Inventory_V[this]
+        set si__YDWEStringFormula__Inventory_F=si__YDWEStringFormula__Inventory_V[this]
     else
-        set si__YDWEStringFormula___Inventory_I=si__YDWEStringFormula___Inventory_I+1
-        set this=si__YDWEStringFormula___Inventory_I
+        set si__YDWEStringFormula__Inventory_I=si__YDWEStringFormula__Inventory_I+1
+        set this=si__YDWEStringFormula__Inventory_I
     endif
     if (this>8190) then
         return 0
     endif
 
-    set si__YDWEStringFormula___Inventory_type[this]=4
-    set si__YDWEStringFormula___Inventory_V[this]=-1
+    set si__YDWEStringFormula__Inventory_type[this]=4
+    set si__YDWEStringFormula__Inventory_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWEStringFormula___Inventory
-function sc__YDWEStringFormula___Inventory_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Inventory
+function sc__YDWEStringFormula__Inventory_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Inventory_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Inventory_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Inventory_onDestroy[si__YDWEStringFormula___Inventory_type[this]])
-    set si__YDWEStringFormula___Inventory_V[this]=si__YDWEStringFormula___Inventory_F
-    set si__YDWEStringFormula___Inventory_F=this
+    call TriggerEvaluate(st__YDWEStringFormula__Inventory_onDestroy[si__YDWEStringFormula__Inventory_type[this]])
+    set si__YDWEStringFormula__Inventory_V[this]=si__YDWEStringFormula__Inventory_F
+    set si__YDWEStringFormula__Inventory_F=this
 endfunction
 
 //Generated method caller for Tower.setAbility
@@ -674,14 +674,14 @@ function sc__Tower_setAbility takes integer this returns nothing
                     call SetUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i), LoadInteger(YDHT, tower_id * 3, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i, LoadInteger(YDHT, tower_id * 2, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i, LoadInteger(YDHT, tower_id * 3, i))
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303052 then
-                        call UnitRemoveAbility(s__Tower_u[this], $41303051)
-                        call UnitAddAbility(s__Tower_u[this], $41303051)
-                        call SetPlayerAbilityAvailableBJ(false, $41303051, GetOwningPlayer(s__Tower_u[this]))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $4130304F, LoadInteger(YDHT, tower_id * 3, i))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $41303050, LoadInteger(YDHT, tower_id * 3, i))
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A00R' then
+                        call UnitRemoveAbility(s__Tower_u[this], 'A00Q')
+                        call UnitAddAbility(s__Tower_u[this], 'A00Q')
+                        call SetPlayerAbilityAvailableBJ(false, 'A00Q', GetOwningPlayer(s__Tower_u[this]))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00O', LoadInteger(YDHT, tower_id * 3, i))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00P', LoadInteger(YDHT, tower_id * 3, i))
                     endif
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303039 then
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A009' then
                         call PauseUnit(s__Tower_u[this], true)
                         call PauseUnit(s__Tower_u[this], false)
                     endif
@@ -719,14 +719,14 @@ function s__Tower_deallocate takes integer this returns nothing
     set si__Tower_F=this
 endfunction
 
-//Generated allocator of YDWEStringFormula___StringTable
-function s__YDWEStringFormula___StringTable__allocate takes nothing returns integer
- local integer this=s__YDWEStringFormula___Inventory__allocate()
+//Generated allocator of YDWEStringFormula__StringTable
+function s__YDWEStringFormula__StringTable__allocate takes nothing returns integer
+ local integer this=s__YDWEStringFormula__Inventory__allocate()
  local integer kthis
     if(this==0) then
         return 0
     endif
-    set si__YDWEStringFormula___Inventory_type[this]=5
+    set si__YDWEStringFormula__Inventory_type[this]=5
     set kthis=this
 
  return this
@@ -1161,7 +1161,7 @@ endfunction
             call IncUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i))
             call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i, LoadInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i) + 1)
             call DisplayTextToPlayer(GetOwningPlayer(s__Tower_u[this]), 0, 0, GetUnitName(s__Tower_u[this]) + "的" + GetAbilityName(LoadInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i)) + "已升级")
-            if LoadInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i) == $41303039 then
+            if LoadInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i) == 'A009' then
                 call PauseUnit(s__Tower_u[this], true)
                 call PauseUnit(s__Tower_u[this], false)
             endif
@@ -1183,14 +1183,14 @@ endfunction
                     call SetUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i), LoadInteger(YDHT, tower_id * 3, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i, LoadInteger(YDHT, tower_id * 2, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i, LoadInteger(YDHT, tower_id * 3, i))
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303052 then
-                        call UnitRemoveAbility(s__Tower_u[this], $41303051)
-                        call UnitAddAbility(s__Tower_u[this], $41303051)
-                        call SetPlayerAbilityAvailableBJ(false, $41303051, GetOwningPlayer(s__Tower_u[this]))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $4130304F, LoadInteger(YDHT, tower_id * 3, i))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $41303050, LoadInteger(YDHT, tower_id * 3, i))
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A00R' then
+                        call UnitRemoveAbility(s__Tower_u[this], 'A00Q')
+                        call UnitAddAbility(s__Tower_u[this], 'A00Q')
+                        call SetPlayerAbilityAvailableBJ(false, 'A00Q', GetOwningPlayer(s__Tower_u[this]))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00O', LoadInteger(YDHT, tower_id * 3, i))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00P', LoadInteger(YDHT, tower_id * 3, i))
                     endif
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303039 then
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A009' then
                         call PauseUnit(s__Tower_u[this], true)
                         call PauseUnit(s__Tower_u[this], false)
                     endif
@@ -1200,13 +1200,13 @@ endfunction
         endfunction
         function s__Tower_setItemNum takes integer this,integer item_num returns nothing
             if item_num > 0 then
-                call UnitAddAbility(s__Tower_u[this], $41303131)
-                call SetUnitAbilityLevel(s__Tower_u[this], $41303131, item_num)
-                call UnitMakeAbilityPermanent(s__Tower_u[this], true, $41303131)
+                call UnitAddAbility(s__Tower_u[this], 'A011')
+                call SetUnitAbilityLevel(s__Tower_u[this], 'A011', item_num)
+                call UnitMakeAbilityPermanent(s__Tower_u[this], true, 'A011')
             endif
         endfunction
         function s__Tower_getItemNum takes integer this returns integer
-            return GetUnitAbilityLevel(s__Tower_u[this], $41303131)
+            return GetUnitAbilityLevel(s__Tower_u[this], 'A011')
         endfunction
         function s__Tower_getUnit takes integer this returns unit
             return s__Tower_u[this]
@@ -1235,213 +1235,213 @@ endfunction
         endloop
     endfunction
     function SaveTowerAbility takes nothing returns nothing
-        call SaveTowerAbility_1($6F303030 , $41303036 , 1)
-        call SaveTowerAbility_1($6F303042 , $41303031 , 1)
-        call SaveTowerAbility_1($6F303031 , $41303031 , 2)
-        call SaveTowerAbility_1($6F303043 , $41303031 , 3)
-        call SaveTowerAbility_1($6F303044 , $41303031 , 4)
-        call SaveTowerAbility_1($6E303030 , $41303032 , 1)
-        call SaveTowerAbility_1($6E303131 , $41303032 , 2)
-        call SaveTowerAbility_1($6E303137 , $41303032 , 3)
-        call SaveTowerAbility_1($6E303031 , $41303037 , 1)
-        call SaveTowerAbility_1($6E303132 , $41303037 , 2)
-        call SaveTowerAbility_1($6E303059 , $41303031 , 3)
-        call SaveTowerAbility_1($6E303059 , $41303154 , 1)
-        call SaveTowerAbility_1($6E303134 , $41303031 , 3)
-        call SaveTowerAbility_1($6E303134 , $41303154 , 2)
-        call SaveTowerAbility_1($6E30305A , $41303031 , 3)
-        call SaveTowerAbility_1($6E30305A , $41303046 , 1)
-        call SaveTowerAbility_1($6E303135 , $41303031 , 3)
-        call SaveTowerAbility_1($6E303135 , $41303046 , 2)
-        call SaveTowerAbility_1($6E303130 , $41303039 , 1)
-        call SaveTowerAbility_1($6E303133 , $41303039 , 2)
-        call SaveTowerAbility_1($6E303032 , $41303041 , 1)
-        call SaveTowerAbility_1($6E303032 , $41303046 , 2)
-        call SaveTowerAbility_1($6E303136 , $41303041 , 2)
-        call SaveTowerAbility_1($6E303136 , $41303046 , 2)
-        call SaveTowerAbility_1($6F303032 , $41303031 , 5)
-        call SaveTowerAbility_1($6F303032 , $41303154 , 2)
-        call SaveTowerAbility_1($6F303032 , $41303042 , 1)
-        call SaveTowerAbility_1($4F303033 , $41303044 , 1)
-        call SaveTowerAbility_1($4F303033 , $41303031 , 5)
-        call SaveTowerAbility_1($68303031 , $41303048 , 1)
-        call SaveTowerAbility_1($68303042 , $41303048 , 2)
-        call SaveTowerAbility_1($68303046 , $41303048 , 3)
-        call SaveTowerAbility_1($68303047 , $41303049 , 1)
-        call SaveTowerAbility_1($68303043 , $41303049 , 2)
-        call SaveTowerAbility_1($68303048 , $41303049 , 3)
-        call SaveTowerAbility_1($6E303037 , $4130304A , 1)
-        call SaveTowerAbility_1($6E303138 , $4130304A , 2)
-        call SaveTowerAbility_1($6E303138 , $4130304B , 1)
-        call SaveTowerAbility_1($6E303139 , $4130304B , 2)
-        call SaveTowerAbility_1($6E303139 , $4130304C , 2)
-        call SaveTowerAbility_1($6E303038 , $41303052 , 1)
-        call SaveTowerAbility_1($6E303141 , $41303052 , 1)
-        call SaveTowerAbility_1($6E303141 , $4130304C , 1)
-        call SaveTowerAbility_1($6E303142 , $41303052 , 2)
-        call SaveTowerAbility_1($6E303142 , $4130304C , 2)
-        call SaveTowerAbility_1($6E303143 , $4130304E , 1)
-        call SaveTowerAbility_1($6E303144 , $4130304E , 2)
-        call SaveTowerAbility_1($6E303145 , $4130304E , 3)
-        call SaveTowerAbility_1($6E303145 , $41303054 , 1)
-        call SaveTowerAbility_1($6E303146 , $41303056 , 1)
-        call SaveTowerAbility_1($6E303147 , $41303056 , 2)
-        call SaveTowerAbility_1($6E303148 , $41303056 , 3)
-        call SaveTowerAbility_1($6E303148 , $41303052 , 2)
-        call SaveTowerAbility_1($6E30314B , $41303054 , 1)
-        call SaveTowerAbility_1($6E303149 , $41303054 , 2)
-        call SaveTowerAbility_1($6E30314A , $41303054 , 3)
-        call SaveTowerAbility_1($6E30314A , $41303057 , 1)
-        call SaveTowerAbility_1($6E30314C , $41303058 , 1)
-        call SaveTowerAbility_1($6E30314D , $41303058 , 2)
-        call SaveTowerAbility_1($6E30314E , $41303058 , 3)
-        call SaveTowerAbility_1($6E30314E , $41303057 , 2)
-        call SaveTowerAbility_1($6E30314E , $41303052 , 1)
-        call SaveTowerAbility_1($6E30314F , $41303058 , 3)
-        call SaveTowerAbility_1($6E30314F , $41303057 , 3)
-        call SaveTowerAbility_1($6E30314F , $41303130 , 1)
-        call SaveTowerAbility_1($48303034 , $41303052 , 3)
-        call SaveTowerAbility_1($48303034 , $4130304C , 3)
-        call SaveTowerAbility_1($48303034 , $41303049 , 2)
-        call SaveTowerAbility_1($65303030 , $41303151 , 1)
-        call SaveTowerAbility_1($65303030 , $41303152 , 1)
-        call SaveTowerAbility_1($65303041 , $41303151 , 2)
-        call SaveTowerAbility_1($65303041 , $41303152 , 2)
-        call SaveTowerAbility_1($65303042 , $41303151 , 3)
-        call SaveTowerAbility_1($65303042 , $41303152 , 2)
-        call SaveTowerAbility_1($65303031 , $41303151 , 1)
-        call SaveTowerAbility_1($65303031 , $4130334C , 1)
-        call SaveTowerAbility_1($65303044 , $41303151 , 2)
-        call SaveTowerAbility_1($65303044 , $4130334C , 2)
-        call SaveTowerAbility_1($65303043 , $41303151 , 2)
-        call SaveTowerAbility_1($65303043 , $4130334C , 3)
-        call SaveTowerAbility_1($6E303033 , $41303151 , 2)
-        call SaveTowerAbility_1($6E303033 , $41303156 , 1)
-        call SaveTowerAbility_1($6E303151 , $41303151 , 2)
-        call SaveTowerAbility_1($6E303151 , $41303156 , 2)
-        call SaveTowerAbility_1($6E303152 , $41303151 , 2)
-        call SaveTowerAbility_1($6E303152 , $41303156 , 3)
-        call SaveTowerAbility_1($6E303153 , $41303151 , 2)
-        call SaveTowerAbility_1($6E303153 , $41303232 , 1)
-        call SaveTowerAbility_1($6E303154 , $41303151 , 2)
-        call SaveTowerAbility_1($6E303154 , $41303232 , 2)
-        call SaveTowerAbility_1($6E303155 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303155 , $41303234 , 1)
-        call SaveTowerAbility_1($6E303156 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303156 , $41303234 , 2)
-        call SaveTowerAbility_1($6E303157 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303157 , $41303234 , 3)
-        call SaveTowerAbility_1($6E303158 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303158 , $41303236 , 1)
-        call SaveTowerAbility_1($6E303159 , $41303151 , 4)
-        call SaveTowerAbility_1($6E303159 , $41303236 , 2)
-        call SaveTowerAbility_1($6E30315A , $41303151 , 2)
-        call SaveTowerAbility_1($6E30315A , $41303237 , 1)
-        call SaveTowerAbility_1($6E303230 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303230 , $41303237 , 2)
-        call SaveTowerAbility_1($6E303231 , $41303151 , 4)
-        call SaveTowerAbility_1($6E303231 , $41303237 , 2)
-        call SaveTowerAbility_1($6E303232 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303232 , $41303243 , 1)
-        call SaveTowerAbility_1($6E303233 , $41303151 , 4)
-        call SaveTowerAbility_1($6E303233 , $41303243 , 2)
-        call SaveTowerAbility_1($6E303234 , $41303151 , 3)
-        call SaveTowerAbility_1($6E303234 , $41303244 , 1)
-        call SaveTowerAbility_1($6E303235 , $41303151 , 4)
-        call SaveTowerAbility_1($6E303235 , $41303244 , 2)
-        call SaveTowerAbility_1($6E303236 , $41303151 , 5)
-        call SaveTowerAbility_1($6E303236 , $41303245 , 2)
-        call SaveTowerAbility_1($6E303237 , $41303151 , 5)
-        call SaveTowerAbility_1($6E303237 , $41303239 , 1)
-        call SaveTowerAbility_1($6E303237 , $41303248 , 2)
-        call SaveTowerAbility_1($48303030 , $41303151 , 6)
-        call SaveTowerAbility_1($48303030 , $41303246 , 1)
-        call SaveTowerAbility_1($48303030 , $41303245 , 3)
-        call SaveTowerAbility_1($6E303041 , $4130324B , 1)
-        call SaveTowerAbility_1($6E303238 , $4130324B , 2)
-        call SaveTowerAbility_1($6E303239 , $4130324B , 3)
-        call SaveTowerAbility_1($6E303241 , $4130324B , 4)
-        call SaveTowerAbility_1($6E303242 , $4130324B , 5)
-        call SaveTowerAbility_1($6E303243 , $41303254 , 1)
-        call SaveTowerAbility_1($6E303244 , $41303254 , 1)
-        call SaveTowerAbility_1($6E303245 , $41303254 , 2)
-        call SaveTowerAbility_1($6E303043 , $41303249 , 1)
-        call SaveTowerAbility_1($6E303246 , $41303249 , 2)
-        call SaveTowerAbility_1($6E303247 , $4130324D , 2)
-        call SaveTowerAbility_1($6E303042 , $4130324B , 2)
-        call SaveTowerAbility_1($6E303042 , $4130324E , 1)
-        call SaveTowerAbility_1($6E303248 , $4130324B , 3)
-        call SaveTowerAbility_1($6E303248 , $41303251 , 1)
-        call SaveTowerAbility_1($6E303249 , $4130324B , 4)
-        call SaveTowerAbility_1($6E303249 , $41303252 , 1)
-        call SaveTowerAbility_1($6E30324A , $4130324B , 5)
-        call SaveTowerAbility_1($6E30324A , $4130324E , 2)
-        call SaveTowerAbility_1($6E30324B , $41303254 , 1)
-        call SaveTowerAbility_1($6E30324B , $41303259 , 1)
-        call SaveTowerAbility_1($6E30324C , $41303254 , 1)
-        call SaveTowerAbility_1($6E30324C , $41303337 , 1)
-        call SaveTowerAbility_1($6E30324D , $41303254 , 1)
-        call SaveTowerAbility_1($6E30324D , $41303331 , 1)
-        call SaveTowerAbility_1($6E303045 , $41303254 , 1)
-        call SaveTowerAbility_1($6E303045 , $41303256 , 1)
-        call SaveTowerAbility_1($6E30324E , $41303254 , 2)
-        call SaveTowerAbility_1($6E30324E , $41303251 , 3)
-        call SaveTowerAbility_1($6E30324F , $41303254 , 2)
-        call SaveTowerAbility_1($6E30324F , $41303259 , 2)
-        call SaveTowerAbility_1($6E303250 , $41303252 , 4)
-        call SaveTowerAbility_1($6E303251 , $41303254 , 2)
-        call SaveTowerAbility_1($6E303251 , $41303256 , 2)
-        call SaveTowerAbility_1($6E303252 , $41303254 , 2)
-        call SaveTowerAbility_1($6E303252 , $41303337 , 2)
-        call SaveTowerAbility_1($6E303253 , $41303254 , 2)
-        call SaveTowerAbility_1($6E303253 , $41303331 , 2)
-        call SaveTowerAbility_1($6E303253 , $41303334 , 1)
-        call SaveTowerAbility_1($4E303047 , $41303254 , 3)
-        call SaveTowerAbility_1($4E303047 , $41303331 , 3)
-        call SaveTowerAbility_1($4E303047 , $41303334 , 2)
-        call SaveTowerAbility_1($4E303047 , $41303332 , 1)
-        call SaveTowerAbility_1($6830304F , $41303530 , 1)
-        call SaveTowerAbility_1($68303050 , $41303530 , 2)
-        call SaveTowerAbility_1($68303051 , $41303530 , 3)
-        call SaveTowerAbility_1($68303052 , $41303457 , 1)
-        call SaveTowerAbility_1($68303053 , $41303457 , 2)
-        call SaveTowerAbility_1($68303054 , $41303457 , 3)
-        call SaveTowerAbility_1($68303055 , $41303450 , 1)
-        call SaveTowerAbility_1($68303056 , $41303450 , 2)
-        call SaveTowerAbility_1($68303056 , $4130344F , 1)
-        call SaveTowerAbility_1($68303057 , $41303450 , 2)
-        call SaveTowerAbility_1($68303057 , $4130344F , 2)
-        call SaveTowerAbility_1($68303058 , $41303450 , 3)
-        call SaveTowerAbility_1($68303058 , $4130344F , 2)
-        call SaveTowerAbility_1($68303059 , $4130344E , 1)
-        call SaveTowerAbility_1($6830305A , $41303458 , 1)
-        call SaveTowerAbility_1($68303130 , $41303455 , 1)
-        call SaveTowerAbility_1($68303131 , $41303455 , 2)
-        call SaveTowerAbility_1($68303131 , $41303453 , 1)
-        call SaveTowerAbility_1($68303132 , $41303456 , 1)
-        call SaveTowerAbility_1($68303133 , $41303456 , 2)
-        call SaveTowerAbility_1($68303134 , $41303456 , 3)
-        call SaveTowerAbility_1($68303135 , $41303451 , 1)
-        call SaveTowerAbility_1($68303135 , $41303454 , 1)
-        call SaveTowerAbility_1($48303137 , $4130344E , 4)
-        call SaveTowerAbility_1($48303137 , $41303459 , 1)
-        call SaveTowerAbility_1($48303137 , $41303534 , 1)
-        call SaveTowerAbility_1($6F303053 , $41303435 , 1)
-        call SaveTowerAbility_1($6F303054 , $41303435 , 2)
-        call SaveTowerAbility_1($6F303055 , $41303435 , 3)
-        call SaveTowerAbility_1($6F303056 , $41303435 , 4)
-        call SaveTowerAbility_1($6F303057 , $41303435 , 5)
-        call SaveTowerAbility_1($4F303058 , $41303435 , 6)
-        call SaveTowerAbility_1($4F303059 , $41303438 , 1)
-        call SaveTowerAbility_1($4F303059 , $41303439 , 1)
-        call SaveTowerAbility_1($4F303059 , $41303441 , 1)
-        call SaveTowerAbility_1($6F30305A , $41303442 , 1)
-        call SaveTowerAbility_1($6F303130 , $41303437 , 1)
+        call SaveTowerAbility_1('o000' , 'A006' , 1)
+        call SaveTowerAbility_1('o00B' , 'A001' , 1)
+        call SaveTowerAbility_1('o001' , 'A001' , 2)
+        call SaveTowerAbility_1('o00C' , 'A001' , 3)
+        call SaveTowerAbility_1('o00D' , 'A001' , 4)
+        call SaveTowerAbility_1('n000' , 'A002' , 1)
+        call SaveTowerAbility_1('n011' , 'A002' , 2)
+        call SaveTowerAbility_1('n017' , 'A002' , 3)
+        call SaveTowerAbility_1('n001' , 'A007' , 1)
+        call SaveTowerAbility_1('n012' , 'A007' , 2)
+        call SaveTowerAbility_1('n00Y' , 'A001' , 3)
+        call SaveTowerAbility_1('n00Y' , 'A01T' , 1)
+        call SaveTowerAbility_1('n014' , 'A001' , 3)
+        call SaveTowerAbility_1('n014' , 'A01T' , 2)
+        call SaveTowerAbility_1('n00Z' , 'A001' , 3)
+        call SaveTowerAbility_1('n00Z' , 'A00F' , 1)
+        call SaveTowerAbility_1('n015' , 'A001' , 3)
+        call SaveTowerAbility_1('n015' , 'A00F' , 2)
+        call SaveTowerAbility_1('n010' , 'A009' , 1)
+        call SaveTowerAbility_1('n013' , 'A009' , 2)
+        call SaveTowerAbility_1('n002' , 'A00A' , 1)
+        call SaveTowerAbility_1('n002' , 'A00F' , 2)
+        call SaveTowerAbility_1('n016' , 'A00A' , 2)
+        call SaveTowerAbility_1('n016' , 'A00F' , 2)
+        call SaveTowerAbility_1('o002' , 'A001' , 5)
+        call SaveTowerAbility_1('o002' , 'A01T' , 2)
+        call SaveTowerAbility_1('o002' , 'A00B' , 1)
+        call SaveTowerAbility_1('O003' , 'A00D' , 1)
+        call SaveTowerAbility_1('O003' , 'A001' , 5)
+        call SaveTowerAbility_1('h001' , 'A00H' , 1)
+        call SaveTowerAbility_1('h00B' , 'A00H' , 2)
+        call SaveTowerAbility_1('h00F' , 'A00H' , 3)
+        call SaveTowerAbility_1('h00G' , 'A00I' , 1)
+        call SaveTowerAbility_1('h00C' , 'A00I' , 2)
+        call SaveTowerAbility_1('h00H' , 'A00I' , 3)
+        call SaveTowerAbility_1('n007' , 'A00J' , 1)
+        call SaveTowerAbility_1('n018' , 'A00J' , 2)
+        call SaveTowerAbility_1('n018' , 'A00K' , 1)
+        call SaveTowerAbility_1('n019' , 'A00K' , 2)
+        call SaveTowerAbility_1('n019' , 'A00L' , 2)
+        call SaveTowerAbility_1('n008' , 'A00R' , 1)
+        call SaveTowerAbility_1('n01A' , 'A00R' , 1)
+        call SaveTowerAbility_1('n01A' , 'A00L' , 1)
+        call SaveTowerAbility_1('n01B' , 'A00R' , 2)
+        call SaveTowerAbility_1('n01B' , 'A00L' , 2)
+        call SaveTowerAbility_1('n01C' , 'A00N' , 1)
+        call SaveTowerAbility_1('n01D' , 'A00N' , 2)
+        call SaveTowerAbility_1('n01E' , 'A00N' , 3)
+        call SaveTowerAbility_1('n01E' , 'A00T' , 1)
+        call SaveTowerAbility_1('n01F' , 'A00V' , 1)
+        call SaveTowerAbility_1('n01G' , 'A00V' , 2)
+        call SaveTowerAbility_1('n01H' , 'A00V' , 3)
+        call SaveTowerAbility_1('n01H' , 'A00R' , 2)
+        call SaveTowerAbility_1('n01K' , 'A00T' , 1)
+        call SaveTowerAbility_1('n01I' , 'A00T' , 2)
+        call SaveTowerAbility_1('n01J' , 'A00T' , 3)
+        call SaveTowerAbility_1('n01J' , 'A00W' , 1)
+        call SaveTowerAbility_1('n01L' , 'A00X' , 1)
+        call SaveTowerAbility_1('n01M' , 'A00X' , 2)
+        call SaveTowerAbility_1('n01N' , 'A00X' , 3)
+        call SaveTowerAbility_1('n01N' , 'A00W' , 2)
+        call SaveTowerAbility_1('n01N' , 'A00R' , 1)
+        call SaveTowerAbility_1('n01O' , 'A00X' , 3)
+        call SaveTowerAbility_1('n01O' , 'A00W' , 3)
+        call SaveTowerAbility_1('n01O' , 'A010' , 1)
+        call SaveTowerAbility_1('H004' , 'A00R' , 3)
+        call SaveTowerAbility_1('H004' , 'A00L' , 3)
+        call SaveTowerAbility_1('H004' , 'A00I' , 2)
+        call SaveTowerAbility_1('e000' , 'A01Q' , 1)
+        call SaveTowerAbility_1('e000' , 'A01R' , 1)
+        call SaveTowerAbility_1('e00A' , 'A01Q' , 2)
+        call SaveTowerAbility_1('e00A' , 'A01R' , 2)
+        call SaveTowerAbility_1('e00B' , 'A01Q' , 3)
+        call SaveTowerAbility_1('e00B' , 'A01R' , 2)
+        call SaveTowerAbility_1('e001' , 'A01Q' , 1)
+        call SaveTowerAbility_1('e001' , 'A03L' , 1)
+        call SaveTowerAbility_1('e00D' , 'A01Q' , 2)
+        call SaveTowerAbility_1('e00D' , 'A03L' , 2)
+        call SaveTowerAbility_1('e00C' , 'A01Q' , 2)
+        call SaveTowerAbility_1('e00C' , 'A03L' , 3)
+        call SaveTowerAbility_1('n003' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n003' , 'A01V' , 1)
+        call SaveTowerAbility_1('n01Q' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n01Q' , 'A01V' , 2)
+        call SaveTowerAbility_1('n01R' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n01R' , 'A01V' , 3)
+        call SaveTowerAbility_1('n01S' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n01S' , 'A022' , 1)
+        call SaveTowerAbility_1('n01T' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n01T' , 'A022' , 2)
+        call SaveTowerAbility_1('n01U' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n01U' , 'A024' , 1)
+        call SaveTowerAbility_1('n01V' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n01V' , 'A024' , 2)
+        call SaveTowerAbility_1('n01W' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n01W' , 'A024' , 3)
+        call SaveTowerAbility_1('n01X' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n01X' , 'A026' , 1)
+        call SaveTowerAbility_1('n01Y' , 'A01Q' , 4)
+        call SaveTowerAbility_1('n01Y' , 'A026' , 2)
+        call SaveTowerAbility_1('n01Z' , 'A01Q' , 2)
+        call SaveTowerAbility_1('n01Z' , 'A027' , 1)
+        call SaveTowerAbility_1('n020' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n020' , 'A027' , 2)
+        call SaveTowerAbility_1('n021' , 'A01Q' , 4)
+        call SaveTowerAbility_1('n021' , 'A027' , 2)
+        call SaveTowerAbility_1('n022' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n022' , 'A02C' , 1)
+        call SaveTowerAbility_1('n023' , 'A01Q' , 4)
+        call SaveTowerAbility_1('n023' , 'A02C' , 2)
+        call SaveTowerAbility_1('n024' , 'A01Q' , 3)
+        call SaveTowerAbility_1('n024' , 'A02D' , 1)
+        call SaveTowerAbility_1('n025' , 'A01Q' , 4)
+        call SaveTowerAbility_1('n025' , 'A02D' , 2)
+        call SaveTowerAbility_1('n026' , 'A01Q' , 5)
+        call SaveTowerAbility_1('n026' , 'A02E' , 2)
+        call SaveTowerAbility_1('n027' , 'A01Q' , 5)
+        call SaveTowerAbility_1('n027' , 'A029' , 1)
+        call SaveTowerAbility_1('n027' , 'A02H' , 2)
+        call SaveTowerAbility_1('H000' , 'A01Q' , 6)
+        call SaveTowerAbility_1('H000' , 'A02F' , 1)
+        call SaveTowerAbility_1('H000' , 'A02E' , 3)
+        call SaveTowerAbility_1('n00A' , 'A02K' , 1)
+        call SaveTowerAbility_1('n028' , 'A02K' , 2)
+        call SaveTowerAbility_1('n029' , 'A02K' , 3)
+        call SaveTowerAbility_1('n02A' , 'A02K' , 4)
+        call SaveTowerAbility_1('n02B' , 'A02K' , 5)
+        call SaveTowerAbility_1('n02C' , 'A02T' , 1)
+        call SaveTowerAbility_1('n02D' , 'A02T' , 1)
+        call SaveTowerAbility_1('n02E' , 'A02T' , 2)
+        call SaveTowerAbility_1('n00C' , 'A02I' , 1)
+        call SaveTowerAbility_1('n02F' , 'A02I' , 2)
+        call SaveTowerAbility_1('n02G' , 'A02M' , 2)
+        call SaveTowerAbility_1('n00B' , 'A02K' , 2)
+        call SaveTowerAbility_1('n00B' , 'A02N' , 1)
+        call SaveTowerAbility_1('n02H' , 'A02K' , 3)
+        call SaveTowerAbility_1('n02H' , 'A02Q' , 1)
+        call SaveTowerAbility_1('n02I' , 'A02K' , 4)
+        call SaveTowerAbility_1('n02I' , 'A02R' , 1)
+        call SaveTowerAbility_1('n02J' , 'A02K' , 5)
+        call SaveTowerAbility_1('n02J' , 'A02N' , 2)
+        call SaveTowerAbility_1('n02K' , 'A02T' , 1)
+        call SaveTowerAbility_1('n02K' , 'A02Y' , 1)
+        call SaveTowerAbility_1('n02L' , 'A02T' , 1)
+        call SaveTowerAbility_1('n02L' , 'A037' , 1)
+        call SaveTowerAbility_1('n02M' , 'A02T' , 1)
+        call SaveTowerAbility_1('n02M' , 'A031' , 1)
+        call SaveTowerAbility_1('n00E' , 'A02T' , 1)
+        call SaveTowerAbility_1('n00E' , 'A02V' , 1)
+        call SaveTowerAbility_1('n02N' , 'A02T' , 2)
+        call SaveTowerAbility_1('n02N' , 'A02Q' , 3)
+        call SaveTowerAbility_1('n02O' , 'A02T' , 2)
+        call SaveTowerAbility_1('n02O' , 'A02Y' , 2)
+        call SaveTowerAbility_1('n02P' , 'A02R' , 4)
+        call SaveTowerAbility_1('n02Q' , 'A02T' , 2)
+        call SaveTowerAbility_1('n02Q' , 'A02V' , 2)
+        call SaveTowerAbility_1('n02R' , 'A02T' , 2)
+        call SaveTowerAbility_1('n02R' , 'A037' , 2)
+        call SaveTowerAbility_1('n02S' , 'A02T' , 2)
+        call SaveTowerAbility_1('n02S' , 'A031' , 2)
+        call SaveTowerAbility_1('n02S' , 'A034' , 1)
+        call SaveTowerAbility_1('N00G' , 'A02T' , 3)
+        call SaveTowerAbility_1('N00G' , 'A031' , 3)
+        call SaveTowerAbility_1('N00G' , 'A034' , 2)
+        call SaveTowerAbility_1('N00G' , 'A032' , 1)
+        call SaveTowerAbility_1('h00O' , 'A050' , 1)
+        call SaveTowerAbility_1('h00P' , 'A050' , 2)
+        call SaveTowerAbility_1('h00Q' , 'A050' , 3)
+        call SaveTowerAbility_1('h00R' , 'A04W' , 1)
+        call SaveTowerAbility_1('h00S' , 'A04W' , 2)
+        call SaveTowerAbility_1('h00T' , 'A04W' , 3)
+        call SaveTowerAbility_1('h00U' , 'A04P' , 1)
+        call SaveTowerAbility_1('h00V' , 'A04P' , 2)
+        call SaveTowerAbility_1('h00V' , 'A04O' , 1)
+        call SaveTowerAbility_1('h00W' , 'A04P' , 2)
+        call SaveTowerAbility_1('h00W' , 'A04O' , 2)
+        call SaveTowerAbility_1('h00X' , 'A04P' , 3)
+        call SaveTowerAbility_1('h00X' , 'A04O' , 2)
+        call SaveTowerAbility_1('h00Y' , 'A04N' , 1)
+        call SaveTowerAbility_1('h00Z' , 'A04X' , 1)
+        call SaveTowerAbility_1('h010' , 'A04U' , 1)
+        call SaveTowerAbility_1('h011' , 'A04U' , 2)
+        call SaveTowerAbility_1('h011' , 'A04S' , 1)
+        call SaveTowerAbility_1('h012' , 'A04V' , 1)
+        call SaveTowerAbility_1('h013' , 'A04V' , 2)
+        call SaveTowerAbility_1('h014' , 'A04V' , 3)
+        call SaveTowerAbility_1('h015' , 'A04Q' , 1)
+        call SaveTowerAbility_1('h015' , 'A04T' , 1)
+        call SaveTowerAbility_1('H017' , 'A04N' , 4)
+        call SaveTowerAbility_1('H017' , 'A04Y' , 1)
+        call SaveTowerAbility_1('H017' , 'A054' , 1)
+        call SaveTowerAbility_1('o00S' , 'A045' , 1)
+        call SaveTowerAbility_1('o00T' , 'A045' , 2)
+        call SaveTowerAbility_1('o00U' , 'A045' , 3)
+        call SaveTowerAbility_1('o00V' , 'A045' , 4)
+        call SaveTowerAbility_1('o00W' , 'A045' , 5)
+        call SaveTowerAbility_1('O00X' , 'A045' , 6)
+        call SaveTowerAbility_1('O00Y' , 'A048' , 1)
+        call SaveTowerAbility_1('O00Y' , 'A049' , 1)
+        call SaveTowerAbility_1('O00Y' , 'A04A' , 1)
+        call SaveTowerAbility_1('o00Z' , 'A04B' , 1)
+        call SaveTowerAbility_1('o010' , 'A047' , 1)
     endfunction
 
 //library TowerLibrary ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -2046,11 +2046,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
-        if YDWEBase___AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
+        if YDWEBase__AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
+			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -2060,9 +2060,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
-	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
-	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
+	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
+	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
+	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -2099,7 +2099,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -2146,22 +2146,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -2170,7 +2170,7 @@ endfunction
 //library YDWEGeneralBounsSystem:
 
 //以下函数仅仅是让技能ID出现在代码里，不然SLK优化器会删除这些技能
-function YDWEGeneralBounsSystem___DisplayAllAbilityId takes nothing returns nothing
+function YDWEGeneralBounsSystem__DisplayAllAbilityId takes nothing returns nothing
     local integer aid=0
     set aid='YDl0'
     set aid='YDl1'
@@ -2242,22 +2242,22 @@ function YDWEGeneralBounsSystem___DisplayAllAbilityId takes nothing returns noth
     set aid='YDbm'
     set aid='YDbn'
 endfunction
-    function YDWEGeneralBounsSystem___UnitClearBonus takes unit u,integer bonusType returns nothing
-        local integer i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1
+    function YDWEGeneralBounsSystem__UnitClearBonus takes unit u,integer bonusType returns nothing
+        local integer i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1
         loop
-            exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
-            call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+            exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
+            call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
             set i=i - 1
         endloop
         call SaveInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType) )), ( 0)) // INLINED!!
     endfunction
-    function YDWEGeneralBounsSystem___SetUnitMaxState takes unit u,integer bonusType,real value returns boolean
+    function YDWEGeneralBounsSystem__SetUnitMaxState takes unit u,integer bonusType,real value returns boolean
         local integer v=R2I(value)
         local integer s=0
         local integer o=0
         local unitstate state
-        local integer i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 2
-        local integer a=YDWEGeneralBounsSystem___ABILITY_NUM[bonusType]
+        local integer i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 2
+        local integer a=YDWEGeneralBounsSystem__ABILITY_NUM[bonusType]
         if value > 65535 or value <= 0 then
             return false
         endif
@@ -2279,60 +2279,60 @@ endfunction
             return false
         endif
         loop
-            exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
-            if v >= YDWEGeneralBounsSystem___PowersOf2[i] then
-                call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
-                call SetUnitAbilityLevel(u, YDWEGeneralBounsSystem___BonusAbilitys[i], o)
-                call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
-                set v=v - YDWEGeneralBounsSystem___PowersOf2[i]
+            exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
+            if v >= YDWEGeneralBounsSystem__PowersOf2[i] then
+                call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+                call SetUnitAbilityLevel(u, YDWEGeneralBounsSystem__BonusAbilitys[i], o)
+                call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+                set v=v - YDWEGeneralBounsSystem__PowersOf2[i]
             endif
             set i=i - 1
         endloop
         return true
     endfunction
-function YDWEGeneralBounsSystem___UnitSetBonus takes unit u,integer bonusType,integer ammount returns boolean
+function YDWEGeneralBounsSystem__UnitSetBonus takes unit u,integer bonusType,integer ammount returns boolean
     local integer i
     //设置属性为0不进行Loop
     if ammount == 0 then
-        call YDWEGeneralBounsSystem___UnitClearBonus(u , bonusType)
+        call YDWEGeneralBounsSystem__UnitClearBonus(u , bonusType)
         return false
     endif
-    if ammount < YDWEGeneralBounsSystem___MinBonus[bonusType] or ammount > YDWEGeneralBounsSystem___MaxBonus[bonusType] then
+    if ammount < YDWEGeneralBounsSystem__MinBonus[bonusType] or ammount > YDWEGeneralBounsSystem__MaxBonus[bonusType] then
         return false
-    elseif bonusType < 0 or bonusType >= YDWEGeneralBounsSystem___BONUS_TYPES then
+    elseif bonusType < 0 or bonusType >= YDWEGeneralBounsSystem__BONUS_TYPES then
         return false
     endif
     call SaveInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType) )), ( ammount)) // INLINED!!
     if ammount < 0 then
-        set ammount=YDWEGeneralBounsSystem___MaxBonus[bonusType] + ammount + 1
-        call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
-        call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
+        set ammount=YDWEGeneralBounsSystem__MaxBonus[bonusType] + ammount + 1
+        call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
+        call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
       else
-        call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 1])
+        call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 1])
     endif
-    set i=YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType + 1] - 2
+    set i=YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType + 1] - 2
     loop
-        exitwhen i < YDWEGeneralBounsSystem___ABILITY_COUNT[bonusType]
-        if ammount >= YDWEGeneralBounsSystem___PowersOf2[i] then
-            call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
-            call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem___BonusAbilitys[i])
-            set ammount=ammount - YDWEGeneralBounsSystem___PowersOf2[i]
+        exitwhen i < YDWEGeneralBounsSystem__ABILITY_COUNT[bonusType]
+        if ammount >= YDWEGeneralBounsSystem__PowersOf2[i] then
+            call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
+            call UnitMakeAbilityPermanent(u, true, YDWEGeneralBounsSystem__BonusAbilitys[i])
+            set ammount=ammount - YDWEGeneralBounsSystem__PowersOf2[i]
         else
-            call UnitRemoveAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+            call UnitRemoveAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
         endif
         set i=i - 1
     endloop
     if not (LoadBoolean(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusMark")))) then // INLINED!!
         call SaveBoolean(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusMark" )), ( true)) // INLINED!!
-        set YDWEGeneralBounsSystem___UnitCount=YDWEGeneralBounsSystem___UnitCount + 1
-        set YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]=u
+        set YDWEGeneralBounsSystem__UnitCount=YDWEGeneralBounsSystem__UnitCount + 1
+        set YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]=u
     endif
     return true
 endfunction
-function YDWEGeneralBounsSystem___UnitGetBonus takes unit u,integer bonusType returns integer
+function YDWEGeneralBounsSystem__UnitGetBonus takes unit u,integer bonusType returns integer
     return (LoadInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType))))) // INLINED!!
 endfunction
-function YDWEGeneralBounsSystem___AddUnitMaxState takes unit u,integer bonusType,real value returns boolean
+function YDWEGeneralBounsSystem__AddUnitMaxState takes unit u,integer bonusType,real value returns boolean
     local unitstate state
     if bonusType == 0 then
         set state=UNIT_STATE_MAX_LIFE
@@ -2341,42 +2341,42 @@ function YDWEGeneralBounsSystem___AddUnitMaxState takes unit u,integer bonusType
       else
         return false
     endif
-    return YDWEGeneralBounsSystem___SetUnitMaxState(u , bonusType , value + GetUnitState(u, state))
+    return YDWEGeneralBounsSystem__SetUnitMaxState(u , bonusType , value + GetUnitState(u, state))
 endfunction
-function YDWEGeneralBounsSystem___UnitAddBonus takes unit u,integer bonusType,integer ammount returns boolean
-    return YDWEGeneralBounsSystem___UnitSetBonus(u , bonusType , (LoadInteger(YDHT, StringHash((I2S((GetHandleId(((u ))))) )), StringHash(( "bonusType" + I2S(( bonusType)))))) + ammount) // INLINED!!
+function YDWEGeneralBounsSystem__UnitAddBonus takes unit u,integer bonusType,integer ammount returns boolean
+    return YDWEGeneralBounsSystem__UnitSetBonus(u , bonusType , (LoadInteger(YDHT, StringHash((I2S((GetHandleId(((u ))))) )), StringHash(( "bonusType" + I2S(( bonusType)))))) + ammount) // INLINED!!
 endfunction
-function YDWEGeneralBounsSystem___FlushUnits takes nothing returns nothing
-    local integer i= YDWEGeneralBounsSystem___UnitCount
+function YDWEGeneralBounsSystem__FlushUnits takes nothing returns nothing
+    local integer i= YDWEGeneralBounsSystem__UnitCount
     local string h
     loop
         exitwhen i < 1
-        if GetUnitTypeId(YDWEGeneralBounsSystem___Units[i]) == 0 then
-            set h=I2S((GetHandleId((YDWEGeneralBounsSystem___Units[i])))) // INLINED!!
+        if GetUnitTypeId(YDWEGeneralBounsSystem__Units[i]) == 0 then
+            set h=I2S((GetHandleId((YDWEGeneralBounsSystem__Units[i])))) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType0" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType1" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType2" )), ( 0)) // INLINED!!
             call SaveInteger(YDHT, StringHash((h )), StringHash(( "bonusType3" )), ( 0)) // INLINED!!
             call SaveBoolean(YDHT, StringHash((h )), StringHash(( "bonusMark" )), ( false)) // INLINED!!
-            set YDWEGeneralBounsSystem___Units[i]=YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]
-            set YDWEGeneralBounsSystem___Units[YDWEGeneralBounsSystem___UnitCount]=null
-            set YDWEGeneralBounsSystem___UnitCount=YDWEGeneralBounsSystem___UnitCount - 1
+            set YDWEGeneralBounsSystem__Units[i]=YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]
+            set YDWEGeneralBounsSystem__Units[YDWEGeneralBounsSystem__UnitCount]=null
+            set YDWEGeneralBounsSystem__UnitCount=YDWEGeneralBounsSystem__UnitCount - 1
         endif
         set i=i - 1
     endloop
 endfunction
 function YDWEUnitSetBonus takes unit u,integer bonusType,integer ammount returns nothing
     if bonusType == 0 or bonusType == 1 then
-        call YDWEGeneralBounsSystem___SetUnitMaxState(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem__SetUnitMaxState(u , bonusType , ammount)
       else
-        call YDWEGeneralBounsSystem___UnitSetBonus(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem__UnitSetBonus(u , bonusType , ammount)
     endif
 endfunction
 function YDWEUnitAddBonus takes unit u,integer bonusType,integer ammount returns nothing
     if bonusType == 0 or bonusType == 1 then
-        call YDWEGeneralBounsSystem___AddUnitMaxState(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem__AddUnitMaxState(u , bonusType , ammount)
       else
-        call YDWEGeneralBounsSystem___UnitAddBonus(u , bonusType , ammount)
+        call YDWEGeneralBounsSystem__UnitAddBonus(u , bonusType , ammount)
     endif
 endfunction
 function YDWEGeneralBounsSystemUnitSetBonus takes unit u,integer bonusType,integer mod,integer ammount returns nothing
@@ -2392,100 +2392,100 @@ function YDWEGeneralBounsSystemUnitGetBonus takes unit u,integer bonusType retur
     return (LoadInteger(YDHT, StringHash((I2S((GetHandleId((u)))) )), StringHash(( "bonusType" + I2S(bonusType))))) // INLINED!!
 endfunction
 //private keyword BonusAbilitys
-function YDWEGeneralBounsSystem___InitializeAbilitys takes nothing returns nothing
+function YDWEGeneralBounsSystem__InitializeAbilitys takes nothing returns nothing
     local integer i=0
     local integer m=0
-    set YDWEGeneralBounsSystem___ABILITY_COUNT[0]=0 //life max
-set YDWEGeneralBounsSystem___ABILITY_COUNT[1]=15 //mana max
-set YDWEGeneralBounsSystem___ABILITY_COUNT[2]=30 //armor
-set YDWEGeneralBounsSystem___ABILITY_COUNT[3]=43 //attack
-set YDWEGeneralBounsSystem___ABILITY_COUNT[4]=67
-    set YDWEGeneralBounsSystem___ABILITY_NUM[0]=15
-    set YDWEGeneralBounsSystem___ABILITY_NUM[1]=15
-    set YDWEGeneralBounsSystem___ABILITY_NUM[2]=13
-    set YDWEGeneralBounsSystem___ABILITY_NUM[3]=24
+    set YDWEGeneralBounsSystem__ABILITY_COUNT[0]=0 //life max
+set YDWEGeneralBounsSystem__ABILITY_COUNT[1]=15 //mana max
+set YDWEGeneralBounsSystem__ABILITY_COUNT[2]=30 //armor
+set YDWEGeneralBounsSystem__ABILITY_COUNT[3]=43 //attack
+set YDWEGeneralBounsSystem__ABILITY_COUNT[4]=67
+    set YDWEGeneralBounsSystem__ABILITY_NUM[0]=15
+    set YDWEGeneralBounsSystem__ABILITY_NUM[1]=15
+    set YDWEGeneralBounsSystem__ABILITY_NUM[2]=13
+    set YDWEGeneralBounsSystem__ABILITY_NUM[3]=24
     // Bonus Mod - armor abilitys
     loop
         exitwhen i > 9
-        set YDWEGeneralBounsSystem___YDWEBONUS_MyChar[i]='0' + m
+        set YDWEGeneralBounsSystem__YDWEBONUS_MyChar[i]='0' + m
         set m=m + 1
         set i=i + 1
     endloop
     set m=0
     loop
         exitwhen i > 26
-        set YDWEGeneralBounsSystem___YDWEBONUS_MyChar[i]='a' + m
+        set YDWEGeneralBounsSystem__YDWEBONUS_MyChar[i]='a' + m
         set m=m + 1
         set i=i + 1
     endloop
     set i=0
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[0] - 1 )
-        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDl0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[0] - 1 )
+        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDl0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Damage abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[1] - 1 )
-        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDm0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[1] - 1 )
+        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDm0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Life MaxState abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[2] - 1 )
-        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDc0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[2] - 1 )
+        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDc0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
     // Bonus Mod - Mana MaxState abilitys
     set m=0
     loop
-        exitwhen m > ( YDWEGeneralBounsSystem___ABILITY_NUM[3] - 1 )
-        set YDWEGeneralBounsSystem___BonusAbilitys[i]='YDb0' - '0' + YDWEGeneralBounsSystem___YDWEBONUS_MyChar[m] // +1
+        exitwhen m > ( YDWEGeneralBounsSystem__ABILITY_NUM[3] - 1 )
+        set YDWEGeneralBounsSystem__BonusAbilitys[i]='YDb0' - '0' + YDWEGeneralBounsSystem__YDWEBONUS_MyChar[m] // +1
         set i=i + 1
         set m=m + 1
     endloop
 endfunction
-function YDWEGeneralBounsSystem___Initialize takes nothing returns nothing
+function YDWEGeneralBounsSystem__Initialize takes nothing returns nothing
     local integer i= 1
     local unit u
     local integer n=0
     local integer add=0
-    call YDWEGeneralBounsSystem___InitializeAbilitys()
+    call YDWEGeneralBounsSystem__InitializeAbilitys()
     loop
         set i=1
-        set YDWEGeneralBounsSystem___PowersOf2[add]=1
+        set YDWEGeneralBounsSystem__PowersOf2[add]=1
             loop
-                set YDWEGeneralBounsSystem___PowersOf2[add + 1]=YDWEGeneralBounsSystem___PowersOf2[add] * 2
+                set YDWEGeneralBounsSystem__PowersOf2[add + 1]=YDWEGeneralBounsSystem__PowersOf2[add] * 2
                 set add=add + 1
                 set i=i + 1
-                exitwhen i == YDWEGeneralBounsSystem___ABILITY_NUM[n]
+                exitwhen i == YDWEGeneralBounsSystem__ABILITY_NUM[n]
             endloop
-        set YDWEGeneralBounsSystem___MaxBonus[n]=YDWEGeneralBounsSystem___PowersOf2[add] - 1
-        set YDWEGeneralBounsSystem___MinBonus[n]=- YDWEGeneralBounsSystem___PowersOf2[add]
+        set YDWEGeneralBounsSystem__MaxBonus[n]=YDWEGeneralBounsSystem__PowersOf2[add] - 1
+        set YDWEGeneralBounsSystem__MinBonus[n]=- YDWEGeneralBounsSystem__PowersOf2[add]
         set add=add + 1
         set n=n + 1
         exitwhen n >= 4
     endloop
     //预读技能
-    if YDWEGeneralBounsSystem___PRELOAD_ABILITYS then
-        set u=CreateUnit(Player(15), YDWEGeneralBounsSystem___PRELOAD_DUMMY_UNIT, 0, 0, 0)
+    if YDWEGeneralBounsSystem__PRELOAD_ABILITYS then
+        set u=CreateUnit(Player(15), YDWEGeneralBounsSystem__PRELOAD_DUMMY_UNIT, 0, 0, 0)
         set i=0
         loop
-            exitwhen i == YDWEGeneralBounsSystem___ABILITY_COUNT[5]
-            call UnitAddAbility(u, YDWEGeneralBounsSystem___BonusAbilitys[i])
+            exitwhen i == YDWEGeneralBounsSystem__ABILITY_COUNT[5]
+            call UnitAddAbility(u, YDWEGeneralBounsSystem__BonusAbilitys[i])
             set i=i + 1
         endloop
         call RemoveUnit(u)
         set u=null
     endif
     //回收数据
-    call TimerStart(CreateTimer(), 10, true, function YDWEGeneralBounsSystem___FlushUnits)
+    call TimerStart(CreateTimer(), 10, true, function YDWEGeneralBounsSystem__FlushUnits)
 endfunction
 function YDWELifeChange takes unit u,integer mod,integer ch,integer id returns nothing
     local integer a
@@ -2639,9 +2639,9 @@ function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
     
     loop
-        exitwhen i >= YDWETriggerEvent___DamageEventNumber
-        if YDWETriggerEvent___DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___DamageEventQueue[i]) then
-            call TriggerExecute(YDWETriggerEvent___DamageEventQueue[i])
+        exitwhen i >= YDWETriggerEvent__DamageEventNumber
+        if YDWETriggerEvent__DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__DamageEventQueue[i]) then
+            call TriggerExecute(YDWETriggerEvent__DamageEventQueue[i])
         endif
         set i=i + 1
     endloop
@@ -2670,14 +2670,14 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent___DamageEventNumber == 0 then
+    if YDWETriggerEvent__DamageEventNumber == 0 then
         set yd_DamageEventTrigger=CreateTrigger()
         call TriggerAddAction(yd_DamageEventTrigger, function YDWEAnyUnitDamagedTriggerAction)
         call YDWEAnyUnitDamagedEnumUnit()
     endif
     
-    set YDWETriggerEvent___DamageEventQueue[YDWETriggerEvent___DamageEventNumber]=trg
-    set YDWETriggerEvent___DamageEventNumber=YDWETriggerEvent___DamageEventNumber + 1
+    set YDWETriggerEvent__DamageEventQueue[YDWETriggerEvent__DamageEventNumber]=trg
+    set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
 endfunction
 //===========================================================================  
 //�ƶ���Ʒ�¼� 
@@ -2688,9 +2688,9 @@ function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     if GetIssuedOrderId() >= 852002 and GetIssuedOrderId() <= 852007 then
 		set bj_lastMovedItemInItemSlot=GetOrderTargetItem()
     	loop
-        	exitwhen i >= YDWETriggerEvent___MoveItemEventNumber
-        	if YDWETriggerEvent___MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___MoveItemEventQueue[i]) then
-        	    call TriggerExecute(YDWETriggerEvent___MoveItemEventQueue[i])
+        	exitwhen i >= YDWETriggerEvent__MoveItemEventNumber
+        	if YDWETriggerEvent__MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__MoveItemEventQueue[i]) then
+        	    call TriggerExecute(YDWETriggerEvent__MoveItemEventQueue[i])
         	endif
         	set i=i + 1
     	endloop
@@ -2701,14 +2701,14 @@ function YDWESyStemItemUnmovableRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent___MoveItemEventNumber == 0 then
-        set YDWETriggerEvent___MoveItemEventTrigger=CreateTrigger()
-        call TriggerAddAction(YDWETriggerEvent___MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
-        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent___MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
+    if YDWETriggerEvent__MoveItemEventNumber == 0 then
+        set YDWETriggerEvent__MoveItemEventTrigger=CreateTrigger()
+        call TriggerAddAction(YDWETriggerEvent__MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
+        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent__MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
     endif
     
-    set YDWETriggerEvent___MoveItemEventQueue[YDWETriggerEvent___MoveItemEventNumber]=trg
-    set YDWETriggerEvent___MoveItemEventNumber=YDWETriggerEvent___MoveItemEventNumber + 1
+    set YDWETriggerEvent__MoveItemEventQueue[YDWETriggerEvent__MoveItemEventNumber]=trg
+    set YDWETriggerEvent__MoveItemEventNumber=YDWETriggerEvent__MoveItemEventNumber + 1
 endfunction
 function GetLastMovedItemInItemSlot takes nothing returns item
     return bj_lastMovedItemInItemSlot
@@ -2750,9 +2750,9 @@ endfunction
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEStringFormula___ItemCombineEventNumber
-        if YDWEStringFormula___ItemCombineEventQueue[i] != null and TriggerEvaluate(YDWEStringFormula___ItemCombineEventQueue[i]) and IsTriggerEnabled(YDWEStringFormula___ItemCombineEventQueue[i]) then
-            call TriggerExecute(YDWEStringFormula___ItemCombineEventQueue[i])
+        exitwhen i >= YDWEStringFormula__ItemCombineEventNumber
+        if YDWEStringFormula__ItemCombineEventQueue[i] != null and TriggerEvaluate(YDWEStringFormula__ItemCombineEventQueue[i]) and IsTriggerEnabled(YDWEStringFormula__ItemCombineEventQueue[i]) then
+            call TriggerExecute(YDWEStringFormula__ItemCombineEventQueue[i])
         endif
         set i=i + 1
     endloop
@@ -2762,30 +2762,30 @@ endfunction
 //��Ʒ�ϳ��¼� 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
-	set YDWEStringFormula___ItemCombineEventQueue[YDWEStringFormula___ItemCombineEventNumber]=trg
-	set YDWEStringFormula___ItemCombineEventNumber=YDWEStringFormula___ItemCombineEventNumber + 1
+	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
+	set YDWEStringFormula__ItemCombineEventNumber=YDWEStringFormula__ItemCombineEventNumber + 1
 endfunction
-        function s__YDWEStringFormula___Inventory_reset takes integer this returns nothing
+        function s__YDWEStringFormula__Inventory_reset takes integer this returns nothing
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___Inventory_onDestroy takes integer this returns nothing
+        function s__YDWEStringFormula__Inventory_onDestroy takes integer this returns nothing
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
         endfunction
     
-        function s__YDWEStringFormula___StringTable__getindex takes integer this,string key returns integer
+        function s__YDWEStringFormula__StringTable__getindex takes integer this,string key returns integer
             return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key)))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable__setindex takes integer this,string key,integer value returns nothing
+        function s__YDWEStringFormula__StringTable__setindex takes integer this,string key,integer value returns nothing
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key )), ( value)) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable_flush takes integer this,string key returns nothing
+        function s__YDWEStringFormula__StringTable_flush takes integer this,string key returns nothing
             call RemoveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable_exists takes integer this,string key returns boolean
+        function s__YDWEStringFormula__StringTable_exists takes integer this,string key returns boolean
             return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key)))) // INLINED!!
         endfunction 
 //***************************************************************
@@ -2794,7 +2794,7 @@ endfunction
 //*
 //***************************************************************
     
-    function YDWEStringFormula___Convert takes integer value,integer length returns string
+    function YDWEStringFormula__Convert takes integer value,integer length returns string
         local string Char= I2S(value)
         local integer slen= StringLength(Char)
             
@@ -2813,47 +2813,47 @@ endfunction
     
         
         
-        function s__YDWEStringFormula___ItemIdMatrix_get takes integer id returns integer
-            return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
+        function s__YDWEStringFormula__ItemIdMatrix_get takes integer id returns integer
+            return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_exists takes integer id returns boolean
-            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
+        function s__YDWEStringFormula__ItemIdMatrix_exists takes integer id returns boolean
+            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
         endfunction
                  
-        function s__YDWEStringFormula___ItemIdMatrix_sub takes integer this,integer segment returns integer
-            local integer start= s__YDWEStringFormula___ItemIdMatrix_keyLen[this] * segment + 1
-            return S2I(SubString(s__YDWEStringFormula___ItemIdMatrix_keyStr[this], start, ( start + s__YDWEStringFormula___ItemIdMatrix_keyLen[this] )))
+        function s__YDWEStringFormula__ItemIdMatrix_sub takes integer this,integer segment returns integer
+            local integer start= s__YDWEStringFormula__ItemIdMatrix_keyLen[this] * segment + 1
+            return S2I(SubString(s__YDWEStringFormula__ItemIdMatrix_keyStr[this], start, ( start + s__YDWEStringFormula__ItemIdMatrix_keyLen[this] )))
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_assigns takes integer id returns integer
+        function s__YDWEStringFormula__ItemIdMatrix_assigns takes integer id returns integer
             local integer this= 0
             if id == null or id == 0 then
                 return 0
             endif
             
-            set this=(LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((id))))))) // INLINED!!
+            set this=(LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((id))))))) // INLINED!!
                 
             if (this) > 0 then
                 return this
             endif
             
-            set this=(s__YDWEStringFormula___ItemIdMatrix_Total)
-            set s__YDWEStringFormula___ItemIdMatrix_itemId[this]=id
-            set s__YDWEStringFormula___ItemIdMatrix_keyStr[this]=I2S(YDWEStringFormula___SEGMENT_LENGTH)
-            set s__YDWEStringFormula___ItemIdMatrix_keyLen[this]=YDWEStringFormula___SEGMENT_LENGTH
-            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)) )), ( ( (this)))) // INLINED!!
-            set s__YDWEStringFormula___ItemIdMatrix_Total=s__YDWEStringFormula___ItemIdMatrix_Total + 1
+            set this=(s__YDWEStringFormula__ItemIdMatrix_Total)
+            set s__YDWEStringFormula__ItemIdMatrix_itemId[this]=id
+            set s__YDWEStringFormula__ItemIdMatrix_keyStr[this]=I2S(YDWEStringFormula__SEGMENT_LENGTH)
+            set s__YDWEStringFormula__ItemIdMatrix_keyLen[this]=YDWEStringFormula__SEGMENT_LENGTH
+            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)) )), ( ( (this)))) // INLINED!!
+            set s__YDWEStringFormula__ItemIdMatrix_Total=s__YDWEStringFormula__ItemIdMatrix_Total + 1
             return this
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_memory takes integer this,string key returns nothing
-            set s__YDWEStringFormula___ItemIdMatrix_keyStr[this]=s__YDWEStringFormula___ItemIdMatrix_keyStr[this] + key
+        function s__YDWEStringFormula__ItemIdMatrix_memory takes integer this,string key returns nothing
+            set s__YDWEStringFormula__ItemIdMatrix_keyStr[this]=s__YDWEStringFormula__ItemIdMatrix_keyStr[this] + key
             //debug call BJDebugMsg("|cff00ff00KEY: |r" + .keyStr)
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_onInit takes nothing returns nothing
-            set s__YDWEStringFormula___ItemIdMatrix_Data=s__YDWEStringFormula___StringTable__allocate()
+        function s__YDWEStringFormula__ItemIdMatrix_onInit takes nothing returns nothing
+            set s__YDWEStringFormula__ItemIdMatrix_Data=s__YDWEStringFormula__StringTable__allocate()
         endfunction
         
 ////////////////// __End of ItemId Matrix__ ////////////////
@@ -2868,40 +2868,40 @@ endfunction
         
         
         
-        function s__YDWEStringFormula___FormulaMatrix_exists takes string s returns boolean
-            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( (s))))) // INLINED!!
+        function s__YDWEStringFormula__FormulaMatrix_exists takes string s returns boolean
+            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (s))))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_sub takes integer this,integer segment returns integer
-            local integer start= s__YDWEStringFormula___FormulaMatrix_segmLen[this] * segment + 1
-            return S2I(SubString(s__YDWEStringFormula___FormulaMatrix_formula[this], start, ( start + s__YDWEStringFormula___FormulaMatrix_segmLen[this] )))
+        function s__YDWEStringFormula__FormulaMatrix_sub takes integer this,integer segment returns integer
+            local integer start= s__YDWEStringFormula__FormulaMatrix_segmLen[this] * segment + 1
+            return S2I(SubString(s__YDWEStringFormula__FormulaMatrix_formula[this], start, ( start + s__YDWEStringFormula__FormulaMatrix_segmLen[this] )))
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_memory takes integer lingth,string formStr,integer eventually returns integer
+        function s__YDWEStringFormula__FormulaMatrix_memory takes integer lingth,string formStr,integer eventually returns integer
             local integer this= 0
             
-            if (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( ((formStr)))))) then // INLINED!!
+            if (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( ((formStr)))))) then // INLINED!!
                 //debug call BJDebugMsg("|cffff0000Registration cannot be repeated !!|r")
                 return 0
             endif
             
-            set this=(s__YDWEStringFormula___FormulaMatrix_Total)
-            set s__YDWEStringFormula___FormulaMatrix_formula[this]=formStr + YDWEStringFormula___Convert(eventually , YDWEStringFormula___SEGMENT_LENGTH)
-            set s__YDWEStringFormula___FormulaMatrix_segmLen[this]=lingth
+            set this=(s__YDWEStringFormula__FormulaMatrix_Total)
+            set s__YDWEStringFormula__FormulaMatrix_formula[this]=formStr + YDWEStringFormula__Convert(eventually , YDWEStringFormula__SEGMENT_LENGTH)
+            set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
-            set s__YDWEStringFormula___FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula___FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
-set s__YDWEStringFormula___FormulaMatrix_chance[this]=100
-            set s__YDWEStringFormula___FormulaMatrix_delete[this]=false
-            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
-            set s__YDWEStringFormula___FormulaMatrix_Total=s__YDWEStringFormula___FormulaMatrix_Total + 1
+            set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
+set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
+            set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
+            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
+            set s__YDWEStringFormula__FormulaMatrix_Total=s__YDWEStringFormula__FormulaMatrix_Total + 1
             
             //debug call BJDebugMsg("|cff00ff00Formula Register: |r" + I2S(integer(this)) + ". " + this.formula)
             return this
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_onInit takes nothing returns nothing
-            set s__YDWEStringFormula___FormulaMatrix_Data=s__YDWEStringFormula___StringTable__allocate()
+        function s__YDWEStringFormula__FormulaMatrix_onInit takes nothing returns nothing
+            set s__YDWEStringFormula__FormulaMatrix_Data=s__YDWEStringFormula__StringTable__allocate()
         endfunction
         
     
@@ -2910,99 +2910,99 @@ set s__YDWEStringFormula___FormulaMatrix_chance[this]=100
 ////////////////////////////////////////////////////////////
 //////////////////// __Formula Sorting__ ///////////////////
         
-        function s__YDWEStringFormula___Sorting_onDestroy takes integer this returns nothing
+        function s__YDWEStringFormula__Sorting_onDestroy takes integer this returns nothing
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
         endfunction
 
-//Generated destructor of YDWEStringFormula___Sorting
-function s__YDWEStringFormula___Sorting_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Sorting
+function s__YDWEStringFormula__Sorting_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Sorting_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Sorting_V[this]!=-1) then
         return
     endif
-    call s__YDWEStringFormula___Sorting_onDestroy(this)
-    set si__YDWEStringFormula___Sorting_V[this]=si__YDWEStringFormula___Sorting_F
-    set si__YDWEStringFormula___Sorting_F=this
+    call s__YDWEStringFormula__Sorting_onDestroy(this)
+    set si__YDWEStringFormula__Sorting_V[this]=si__YDWEStringFormula__Sorting_F
+    set si__YDWEStringFormula__Sorting_F=this
 endfunction
         
-        function s__YDWEStringFormula___Sorting_create takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer type7,integer n7 returns integer
-            local integer this= s__YDWEStringFormula___Sorting__allocate()
+        function s__YDWEStringFormula__Sorting_create takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer type7,integer n7 returns integer
+            local integer this= s__YDWEStringFormula__Sorting__allocate()
             
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+1]=s__YDWEStringFormula___ItemIdMatrix_assigns(type1)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+2]=s__YDWEStringFormula___ItemIdMatrix_assigns(type2)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+3]=s__YDWEStringFormula___ItemIdMatrix_assigns(type3)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+4]=s__YDWEStringFormula___ItemIdMatrix_assigns(type4)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+5]=s__YDWEStringFormula___ItemIdMatrix_assigns(type5)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+6]=s__YDWEStringFormula___ItemIdMatrix_assigns(type6)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+7]=s__YDWEStringFormula___ItemIdMatrix_assigns(type7)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+1]=s__YDWEStringFormula__ItemIdMatrix_assigns(type1)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+2]=s__YDWEStringFormula__ItemIdMatrix_assigns(type2)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+3]=s__YDWEStringFormula__ItemIdMatrix_assigns(type3)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+4]=s__YDWEStringFormula__ItemIdMatrix_assigns(type4)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+5]=s__YDWEStringFormula__ItemIdMatrix_assigns(type5)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+6]=s__YDWEStringFormula__ItemIdMatrix_assigns(type6)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+7]=s__YDWEStringFormula__ItemIdMatrix_assigns(type7)
             
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+1]=n1
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+2]=n2
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+3]=n3
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+4]=n4
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+5]=n5
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+6]=n6
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+7]=n7
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+1]=n1
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+2]=n2
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+3]=n3
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+4]=n4
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+5]=n5
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+6]=n6
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+7]=n7
             
             return this
         endfunction
         
-        function s__YDWEStringFormula___Sorting_convert takes integer this returns string
+        function s__YDWEStringFormula__Sorting_convert takes integer this returns string
             local integer i= 1
             local integer j
             local integer k
               
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
             loop
-                exitwhen i > s__YDWEStringFormula___Sorting_total[this]
-                if s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i] == 0 or s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i] == 0 then
-                    set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+s__YDWEStringFormula___Sorting_total[this]]
-                    set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+s__YDWEStringFormula___Sorting_total[this]]
-                    set s__YDWEStringFormula___Sorting_total[this]=s__YDWEStringFormula___Sorting_total[this] - 1
+                exitwhen i > s__YDWEStringFormula__Sorting_total[this]
+                if s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i] == 0 or s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i] == 0 then
+                    set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+s__YDWEStringFormula__Sorting_total[this]]
+                    set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+s__YDWEStringFormula__Sorting_total[this]]
+                    set s__YDWEStringFormula__Sorting_total[this]=s__YDWEStringFormula__Sorting_total[this] - 1
                     set i=i - 1
                 else
                     set j=i + 1
                     loop
-                        exitwhen j > s__YDWEStringFormula___Sorting_total[this]
-                        if s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j] == 0 or s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j] == 0 then
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+s__YDWEStringFormula___Sorting_total[this]]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+s__YDWEStringFormula___Sorting_total[this]]
-                            set s__YDWEStringFormula___Sorting_total[this]=s__YDWEStringFormula___Sorting_total[this] - 1
+                        exitwhen j > s__YDWEStringFormula__Sorting_total[this]
+                        if s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j] == 0 or s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j] == 0 then
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+s__YDWEStringFormula__Sorting_total[this]]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+s__YDWEStringFormula__Sorting_total[this]]
+                            set s__YDWEStringFormula__Sorting_total[this]=s__YDWEStringFormula__Sorting_total[this] - 1
                             set j=j - 1
-                        elseif (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]) > (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]) then
-                            set k=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=k
-                            set k=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]=k
-                        elseif (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]) == (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]) then
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i] + s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=0
+                        elseif (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]) > (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]) then
+                            set k=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=k
+                            set k=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]=k
+                        elseif (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]) == (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]) then
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i] + s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=0
                             set j=j - 1
                         endif
                         set j=j + 1
                     endloop
                 
-                    set j=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]
+                    set j=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]
                     loop
                         exitwhen j == 0
-                        set s__YDWEStringFormula___Sorting_char[this]=s__YDWEStringFormula___Sorting_char[this] + YDWEStringFormula___Convert(s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i] , YDWEStringFormula___SEGMENT_LENGTH)
+                        set s__YDWEStringFormula__Sorting_char[this]=s__YDWEStringFormula__Sorting_char[this] + YDWEStringFormula__Convert(s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i] , YDWEStringFormula__SEGMENT_LENGTH)
                         set j=j - 1
                     endloop
                 endif
                 set i=i + 1
             endloop
             
-            return s__YDWEStringFormula___Sorting_char[this]
+            return s__YDWEStringFormula__Sorting_char[this]
         endfunction
         
 ////////////////// __End of Formula Sorting__ //////////////
@@ -3012,15 +3012,15 @@ endfunction
 ////////////////////////////////////////////////////////////
 /////////////////////// __Craft Item__ /////////////////////
     
-    function YDWEStringFormula___Adaptation takes nothing returns boolean
+    function YDWEStringFormula__Adaptation takes nothing returns boolean
         return true
     endfunction
         
-    function YDWEStringFormula___verify takes nothing returns boolean
-        return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
+    function YDWEStringFormula__verify takes nothing returns boolean
+        return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
     endfunction
         
-    function YDWEStringFormula___GetCharges takes item it returns integer
+    function YDWEStringFormula__GetCharges takes item it returns integer
         local integer charges= GetItemCharges(it)
         if charges == 0 then
             set charges=1
@@ -3028,10 +3028,10 @@ endfunction
         return charges
     endfunction
         
-    function YDWEStringFormula___CraftItem takes nothing returns nothing
+    function YDWEStringFormula__CraftItem takes nothing returns nothing
         local integer forx= 0
-        local integer itmx= (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
-        local integer size= StringLength(s__YDWEStringFormula___ItemIdMatrix_keyStr[itmx]) / s__YDWEStringFormula___ItemIdMatrix_keyLen[itmx]
+        local integer itmx= (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
+        local integer size= StringLength(s__YDWEStringFormula__ItemIdMatrix_keyStr[itmx]) / s__YDWEStringFormula__ItemIdMatrix_keyLen[itmx]
         local integer inst= 0
         local integer numb= 0
         local integer sum= 0
@@ -3058,7 +3058,7 @@ endfunction
             if it != null then
                 set items[sum]=it
                 set typeid[sum]=GetItemTypeId(it)
-                set amount[sum]=YDWEStringFormula___GetCharges(it)
+                set amount[sum]=YDWEStringFormula__GetCharges(it)
                 if it == article then
                     set b=true
                 endif
@@ -3078,8 +3078,8 @@ endfunction
         //* Check Formulas
         loop
             exitwhen inst == size
-            set forx=(s__YDWEStringFormula___ItemIdMatrix_sub(itmx,inst))
-            set numb=StringLength(s__YDWEStringFormula___FormulaMatrix_formula[forx]) / s__YDWEStringFormula___FormulaMatrix_segmLen[forx] - 1
+            set forx=(s__YDWEStringFormula__ItemIdMatrix_sub(itmx,inst))
+            set numb=StringLength(s__YDWEStringFormula__FormulaMatrix_formula[forx]) / s__YDWEStringFormula__FormulaMatrix_segmLen[forx] - 1
             
             set i=0
             loop
@@ -3090,7 +3090,7 @@ endfunction
                 
             set i=0
             loop
-                set tmpid=s__YDWEStringFormula___ItemIdMatrix_itemId[(s__YDWEStringFormula___FormulaMatrix_sub(forx,i))]
+                set tmpid=s__YDWEStringFormula__ItemIdMatrix_itemId[(s__YDWEStringFormula__FormulaMatrix_sub(forx,i))]
                 exitwhen i == numb
                 
                 set j=0
@@ -3109,13 +3109,13 @@ endfunction
                 set i=i + 1
             endloop
             if i == numb then
-                if GetRandomInt(0, 99) < s__YDWEStringFormula___FormulaMatrix_chance[forx] then
-                    if s__YDWEStringFormula___FormulaMatrix_model[forx] != null then
-                        call DestroyEffect(AddSpecialEffectTarget(s__YDWEStringFormula___FormulaMatrix_model[forx], caster, "origin"))
+                if GetRandomInt(0, 99) < s__YDWEStringFormula__FormulaMatrix_chance[forx] then
+                    if s__YDWEStringFormula__FormulaMatrix_model[forx] != null then
+                        call DestroyEffect(AddSpecialEffectTarget(s__YDWEStringFormula__FormulaMatrix_model[forx], caster, "origin"))
                     endif
                     
-                    if s__YDWEStringFormula___FormulaMatrix_message[forx] != null then
-                        call DisplayTimedTextToPlayer(GetTriggerPlayer(), 0, 0, 30, s__YDWEStringFormula___FormulaMatrix_message[forx])
+                    if s__YDWEStringFormula__FormulaMatrix_message[forx] != null then
+                        call DisplayTimedTextToPlayer(GetTriggerPlayer(), 0, 0, 30, s__YDWEStringFormula__FormulaMatrix_message[forx])
                     endif
                 
                     set i=0
@@ -3148,7 +3148,7 @@ endfunction
                     call UnitAddItem(caster, it)
                     set bj_lastCombinedItem=it
                     call YDWESyStemItemCombineTriggerAction()
-                elseif s__YDWEStringFormula___FormulaMatrix_delete[forx] then
+                elseif s__YDWEStringFormula__FormulaMatrix_delete[forx] then
                     set i=0
                     loop
                         exitwhen i == sum
@@ -3182,8 +3182,8 @@ endfunction
         set caster=null
         set it=null
     endfunction
-    function YDWEStringFormula___Init takes nothing returns nothing
-        local filterfunc f= Filter(function YDWEStringFormula___Adaptation)
+    function YDWEStringFormula__Init takes nothing returns nothing
+        local filterfunc f= Filter(function YDWEStringFormula__Adaptation)
         local trigger t= CreateTrigger()
         local integer i= 0
         
@@ -3193,8 +3193,8 @@ endfunction
             set i=i + 1
         endloop
         
-        call TriggerAddCondition(t, Condition(function YDWEStringFormula___verify))
-        call TriggerAddAction(t, function YDWEStringFormula___CraftItem)
+        call TriggerAddCondition(t, Condition(function YDWEStringFormula__verify))
+        call TriggerAddAction(t, function YDWEStringFormula__CraftItem)
         call DestroyFilter(f)
         
         set f=null
@@ -3206,64 +3206,64 @@ endfunction
     
     // call YDWENewItemsFormula('rat6', 6, 'rat9', 5, 'ratc', 4, 'rde1', 3, 'rde2', 2, 'rde3', 1, 'mcou')
     function YDWENewItemsFormula takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer eventually returns nothing
-        local integer sort= s__YDWEStringFormula___Sorting_create(type1 , n1 , type2 , n2 , type3 , n3 , type4 , n4 , type5 , n5 , type6 , n6 , 0 , 0)
-        local integer itmx= s__YDWEStringFormula___ItemIdMatrix_assigns(eventually)
-        local string f= I2S(YDWEStringFormula___SEGMENT_LENGTH) + s__YDWEStringFormula___Sorting_convert(sort)
+        local integer sort= s__YDWEStringFormula__Sorting_create(type1 , n1 , type2 , n2 , type3 , n3 , type4 , n4 , type5 , n5 , type6 , n6 , 0 , 0)
+        local integer itmx= s__YDWEStringFormula__ItemIdMatrix_assigns(eventually)
+        local string f= I2S(YDWEStringFormula__SEGMENT_LENGTH) + s__YDWEStringFormula__Sorting_convert(sort)
         local string s= ""
         local integer i= 0
         
-        set YDWEStringFormula___FormulaData=s__YDWEStringFormula___FormulaMatrix_memory(YDWEStringFormula___SEGMENT_LENGTH , f , itmx)
-        if (YDWEStringFormula___FormulaData) > 0 then
-            set s=YDWEStringFormula___Convert((YDWEStringFormula___FormulaData) , YDWEStringFormula___SEGMENT_LENGTH)
+        set YDWEStringFormula__FormulaData=s__YDWEStringFormula__FormulaMatrix_memory(YDWEStringFormula__SEGMENT_LENGTH , f , itmx)
+        if (YDWEStringFormula__FormulaData) > 0 then
+            set s=YDWEStringFormula__Convert((YDWEStringFormula__FormulaData) , YDWEStringFormula__SEGMENT_LENGTH)
             
             set i=0
             loop
-                exitwhen i > s__YDWEStringFormula___Sorting_total[sort]
-                call s__YDWEStringFormula___ItemIdMatrix_memory(s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[sort]+i],s)
+                exitwhen i > s__YDWEStringFormula__Sorting_total[sort]
+                call s__YDWEStringFormula__ItemIdMatrix_memory(s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[sort]+i],s)
                 set i=i + 1
             endloop
             
-            call s__YDWEStringFormula___ItemIdMatrix_memory(itmx,s)
+            call s__YDWEStringFormula__ItemIdMatrix_memory(itmx,s)
         endif
         
-        call s__YDWEStringFormula___Sorting_deallocate(sort)
+        call s__YDWEStringFormula__Sorting_deallocate(sort)
         set f=""
         set s=""
     endfunction
 
 //library YDWEStringFormula ends
 //library YDWETimerSystem:
-function YDWETimerSystem___NewTaskIndex takes nothing returns integer
- local integer h= YDWETimerSystem___TaskListIdleHead
-	if YDWETimerSystem___TaskListIdleHead < 0 then
-		if YDWETimerSystem___TaskListIdleMax >= 8000 then
+function YDWETimerSystem__NewTaskIndex takes nothing returns integer
+ local integer h= YDWETimerSystem__TaskListIdleHead
+	if YDWETimerSystem__TaskListIdleHead < 0 then
+		if YDWETimerSystem__TaskListIdleMax >= 8000 then
 			return 8100
 		else
-			set YDWETimerSystem___TaskListIdleMax=YDWETimerSystem___TaskListIdleMax + 1
-			return YDWETimerSystem___TaskListIdleMax
+			set YDWETimerSystem__TaskListIdleMax=YDWETimerSystem__TaskListIdleMax + 1
+			return YDWETimerSystem__TaskListIdleMax
 		endif
 	endif
-	set YDWETimerSystem___TaskListIdleHead=YDWETimerSystem___TaskListIdle[h]
+	set YDWETimerSystem__TaskListIdleHead=YDWETimerSystem__TaskListIdle[h]
 	return h
 endfunction
-function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
-	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
-	set YDWETimerSystem___TaskListIdleHead=index
+function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
+	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
+	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
 //�ú������д���
-function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
- local integer index= YDWETimerSystem___NewTaskIndex()
- local integer h= YDWETimerSystem___TaskListHead
- local integer t= R2I(100. * time) + YDWETimerSystem___CurrentTime
+function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
+ local integer index= YDWETimerSystem__NewTaskIndex()
+ local integer h= YDWETimerSystem__TaskListHead
+ local integer t= R2I(100. * time) + YDWETimerSystem__CurrentTime
  local integer p
-	set YDWETimerSystem___TaskListProc[index]=proc
-	set YDWETimerSystem___TaskListTime[index]=t
+	set YDWETimerSystem__TaskListProc[index]=proc
+	set YDWETimerSystem__TaskListTime[index]=t
 	loop
-		set p=YDWETimerSystem___TaskListNext[h]
-		if p < 0 or YDWETimerSystem___TaskListTime[p] >= t then
+		set p=YDWETimerSystem__TaskListNext[h]
+		if p < 0 or YDWETimerSystem__TaskListTime[p] >= t then
 		//	call BJDebugMsg("NewTask:"+I2S(index))
-			set YDWETimerSystem___TaskListNext[h]=index
-			set YDWETimerSystem___TaskListNext[index]=p
+			set YDWETimerSystem__TaskListNext[h]=index
+			set YDWETimerSystem__TaskListNext[index]=p
 			return index
 		endif
 		set h=p
@@ -3271,59 +3271,59 @@ function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
 	return index
 endfunction
 function YDWETimerSystemNewTask takes real time,trigger proc returns integer
-	return YDWETimerSystem___NewTask(time , proc)
+	return YDWETimerSystem__NewTask(time , proc)
 endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
-	return YDWETimerSystem___CurrentIndex
+	return YDWETimerSystem__CurrentIndex
 endfunction
 //ɾ����λ
-function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
-    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
+    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
-    call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
+    call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
 //�ݻټ�ʱ��
-function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
-    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
+    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
-    call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
+    call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
 //ɾ����Ʒ
-function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
-    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
+    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
-    call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
+    call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
 //ɾ����Ч
-function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
-    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
+    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
-    call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
+    call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
 //ɾ��������Ч
-function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
-    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
+    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
- local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
-    call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
+ local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
+    call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
 //���д�����
-function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
-    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
+    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
-    call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
+    call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
 //ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
@@ -3337,50 +3337,50 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagFadepoint(tt, time)
 endfunction
 //���ļ�ʱ��������
-function YDWETimerSystem___Main takes nothing returns nothing
- local integer h= YDWETimerSystem___TaskListHead
+function YDWETimerSystem__Main takes nothing returns nothing
+ local integer h= YDWETimerSystem__TaskListHead
  local integer p
 	loop
-		set YDWETimerSystem___CurrentIndex=YDWETimerSystem___TaskListNext[h]
-		exitwhen YDWETimerSystem___CurrentIndex < 0 or YDWETimerSystem___CurrentTime < YDWETimerSystem___TaskListTime[YDWETimerSystem___CurrentIndex]
+		set YDWETimerSystem__CurrentIndex=YDWETimerSystem__TaskListNext[h]
+		exitwhen YDWETimerSystem__CurrentIndex < 0 or YDWETimerSystem__CurrentTime < YDWETimerSystem__TaskListTime[YDWETimerSystem__CurrentIndex]
 		//call BJDebugMsg("Task:"+I2S(CurrentIndex))
-		call TriggerEvaluate(YDWETimerSystem___TaskListProc[YDWETimerSystem___CurrentIndex])
-		call YDWETimerSystem___DeleteTaskIndex(YDWETimerSystem___CurrentIndex)
-		set YDWETimerSystem___TaskListNext[h]=YDWETimerSystem___TaskListNext[YDWETimerSystem___CurrentIndex]
+		call TriggerEvaluate(YDWETimerSystem__TaskListProc[YDWETimerSystem__CurrentIndex])
+		call YDWETimerSystem__DeleteTaskIndex(YDWETimerSystem__CurrentIndex)
+		set YDWETimerSystem__TaskListNext[h]=YDWETimerSystem__TaskListNext[YDWETimerSystem__CurrentIndex]
 	endloop
-	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
+	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
 //��ʼ������
-function YDWETimerSystem___Init takes nothing returns nothing
-    set YDWETimerSystem___Timer=CreateTimer()
-	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
-	set YDWETimerSystem___CurrentTime=0
-	set YDWETimerSystem___TaskListHead=0
-	set YDWETimerSystem___TaskListNext[0]=- 1
-	set YDWETimerSystem___TaskListIdleHead=1
-	set YDWETimerSystem___TaskListIdleMax=1
-	set YDWETimerSystem___TaskListIdle[1]=- 1
+function YDWETimerSystem__Init takes nothing returns nothing
+    set YDWETimerSystem__Timer=CreateTimer()
+	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
+	set YDWETimerSystem__CurrentTime=0
+	set YDWETimerSystem__TaskListHead=0
+	set YDWETimerSystem__TaskListNext[0]=- 1
+	set YDWETimerSystem__TaskListIdleHead=1
+	set YDWETimerSystem__TaskListIdleMax=1
+	set YDWETimerSystem__TaskListIdle[1]=- 1
 	
-	set YDWETimerSystem___fnRemoveUnit=CreateTrigger()
-	set YDWETimerSystem___fnDestroyTimer=CreateTrigger()
-	set YDWETimerSystem___fnRemoveItem=CreateTrigger()
-	set YDWETimerSystem___fnDestroyEffect=CreateTrigger()
-	set YDWETimerSystem___fnDestroyLightning=CreateTrigger()
-	set YDWETimerSystem___fnRunTrigger=CreateTrigger()
-	call TriggerAddCondition(YDWETimerSystem___fnRemoveUnit, Condition(function YDWETimerSystem___RemoveUnit_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyTimer, Condition(function YDWETimerSystem___DestroyTimer_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnRemoveItem, Condition(function YDWETimerSystem___RemoveItem_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyEffect, Condition(function YDWETimerSystem___DestroyEffect_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyLightning, Condition(function YDWETimerSystem___DestroyLightning_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnRunTrigger, Condition(function YDWETimerSystem___RunTrigger_CallBack))
+	set YDWETimerSystem__fnRemoveUnit=CreateTrigger()
+	set YDWETimerSystem__fnDestroyTimer=CreateTrigger()
+	set YDWETimerSystem__fnRemoveItem=CreateTrigger()
+	set YDWETimerSystem__fnDestroyEffect=CreateTrigger()
+	set YDWETimerSystem__fnDestroyLightning=CreateTrigger()
+	set YDWETimerSystem__fnRunTrigger=CreateTrigger()
+	call TriggerAddCondition(YDWETimerSystem__fnRemoveUnit, Condition(function YDWETimerSystem__RemoveUnit_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyTimer, Condition(function YDWETimerSystem__DestroyTimer_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnRemoveItem, Condition(function YDWETimerSystem__RemoveItem_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyEffect, Condition(function YDWETimerSystem__DestroyEffect_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyLightning, Condition(function YDWETimerSystem__DestroyLightning_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnRunTrigger, Condition(function YDWETimerSystem__RunTrigger_CallBack))
 	
-    call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
+    call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
 //ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
-    return YDWETimerSystem___TimerSystem_RunIndex
+    return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
-function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns nothing
+function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
 	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
@@ -3389,7 +3389,7 @@ function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns noth
     endif
     set trg=null
 endfunction
-function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
+function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
     local integer times= LoadInteger(YDHT, tid, $D0003)
@@ -3416,9 +3416,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
         set t=CreateTimer()
 		set tid=GetHandleId(t)
     endif
-    set YDWETimerSystem___TimerSystem_RunIndex=YDWETimerSystem___TimerSystem_RunIndex + 1
+    set YDWETimerSystem__TimerSystem_RunIndex=YDWETimerSystem__TimerSystem_RunIndex + 1
 	call SaveTriggerHandle(YDHT, tid, $D0001, trg)
-	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem___TimerSystem_RunIndex)
+	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem__TimerSystem_RunIndex)
 	set index=LoadInteger(YDHT, GetHandleId(trg), 'YDTS' + data)
     set index=index + 1
 	call SaveInteger(YDHT, GetHandleId(trg), 'YDTS' + data, index)
@@ -3426,9 +3426,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
 	
     if b == false then
 		call SaveInteger(YDHT, tid, $D0003, times)
-        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes)
+        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes)
       else
-        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunction)
+        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunction)
     endif
     set t=null
 endfunction
@@ -3456,7 +3456,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Oct 24 23:18:34 2022
+//   Date: Fri Oct 28 17:00:45 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -3865,7 +3865,7 @@ function WanBuff_1 takes integer buffnum,integer num,unit uc,integer id,integer 
     if buffnum == num then
         set p=GetOwningPlayer(uc)
         set loc=GetUnitLoc(ut)
-        call CreateNUnitsAtLoc(1, $65303030, p, loc, bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'e000', p, loc, bj_UNIT_FACING)
         set u=bj_lastCreatedUnit
         call ShowUnitHide(u)
         call UnitAddAbility(u, id)
@@ -3873,7 +3873,7 @@ function WanBuff_1 takes integer buffnum,integer num,unit uc,integer id,integer 
             call IncUnitAbilityLevel(u, id)
         endif
         call IssueTargetOrderById(u, orderid, ut)
-        call UnitApplyTimedLife(u, $42487765, 2.)
+        call UnitApplyTimedLife(u, 'BHwe', 2.)
         call CreateTextTagLocBJ(s, loc, 60., 12., 65., 55., 42., 0)
         call YDWETimerDestroyTextTag(3. , bj_lastCreatedTextTag)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 100., 90)
@@ -3884,48 +3884,48 @@ function WanBuff_1 takes integer buffnum,integer num,unit uc,integer id,integer 
     set u=null
 endfunction
 function WanBuff takes unit u,unit ut,integer buffnum returns nothing
-    call WanBuff_1(buffnum , 1 , u , $41303737 , 852111 , ut , "内伤")
-    call WanBuff_1(buffnum , 2 , u , $41303739 , 852668 , ut , "走火入魔")
-    call WanBuff_1(buffnum , 3 , u , $41303735 , 852527 , ut , "流血")
-    call WanBuff_1(buffnum , 4 , u , $41303649 , 852189 , ut , "混乱")
-    call WanBuff_1(buffnum , 5 , u , $4130415A , 852075 , ut , "昏迷")
-    call WanBuff_1(buffnum , 6 , u , $41303736 , 852075 , ut , "重伤")
-    call WanBuff_1(buffnum , 7 , u , $41303738 , 852527 , ut , "血流不止")
-    call WanBuff_1(buffnum , 8 , u , $41304159 , 852190 , ut , "麻痹")
-    call WanBuff_1(buffnum , 9 , u , $4130334F , 852149 , ut , "破防")
-    call WanBuff_1(buffnum , 10 , u , $4130354E , 852190 , ut , "神经错乱")
-    call WanBuff_1(buffnum , 11 , u , $4130354C , 852095 , ut , "封穴")
-    call WanBuff_1(buffnum , 12 , u , $4130354C , 852095 , ut , "穴位全封")
-    call WanBuff_1(buffnum , 13 , u , $41303734 , 852527 , ut , "中毒")
-    call WanBuff_1(buffnum , 14 , u , $41303734 , 852527 , ut , "深度中毒")
-    call WanBuff_1(buffnum , 15 , u , $41303937 , 852190 , ut , "致盲")
-    call WanBuff_1(buffnum , 16 , u , $41303937 , 852190 , ut , "伤害加深")
+    call WanBuff_1(buffnum , 1 , u , 'A077' , 852111 , ut , "内伤")
+    call WanBuff_1(buffnum , 2 , u , 'A079' , 852668 , ut , "走火入魔")
+    call WanBuff_1(buffnum , 3 , u , 'A075' , 852527 , ut , "流血")
+    call WanBuff_1(buffnum , 4 , u , 'A06I' , 852189 , ut , "混乱")
+    call WanBuff_1(buffnum , 5 , u , 'A0AZ' , 852075 , ut , "昏迷")
+    call WanBuff_1(buffnum , 6 , u , 'A076' , 852075 , ut , "重伤")
+    call WanBuff_1(buffnum , 7 , u , 'A078' , 852527 , ut , "血流不止")
+    call WanBuff_1(buffnum , 8 , u , 'A0AY' , 852190 , ut , "麻痹")
+    call WanBuff_1(buffnum , 9 , u , 'A03O' , 852149 , ut , "破防")
+    call WanBuff_1(buffnum , 10 , u , 'A05N' , 852190 , ut , "神经错乱")
+    call WanBuff_1(buffnum , 11 , u , 'A05L' , 852095 , ut , "封穴")
+    call WanBuff_1(buffnum , 12 , u , 'A05L' , 852095 , ut , "穴位全封")
+    call WanBuff_1(buffnum , 13 , u , 'A074' , 852527 , ut , "中毒")
+    call WanBuff_1(buffnum , 14 , u , 'A074' , 852527 , ut , "深度中毒")
+    call WanBuff_1(buffnum , 15 , u , 'A097' , 852190 , ut , "致盲")
+    call WanBuff_1(buffnum , 16 , u , 'A097' , 852190 , ut , "伤害加深")
 endfunction
 function dealDamage takes unit u,unit ut,real damage returns nothing
     local location loc= GetUnitLoc(ut)
     local real coeff= 1
     local integer i= 1 + GetPlayerId(GetOwningPlayer(u))
     set coeff=coeff + kungfuCoeff[i]
-    if GetUnitAbilityLevel(u, $4130334E) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03N') >= 1 then
         set coeff=coeff + .4
     endif
-    if GetUnitAbilityLevel(u, $41303350) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03P') >= 1 then
         set coeff=coeff + .5
     endif
-    if GetUnitAbilityLevel(u, $41303351) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03Q') >= 1 then
         set coeff=coeff + .4
     endif
-    if GetUnitAbilityLevel(u, $41303352) >= 1 then
+    if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff=coeff + .5
     endif
     set damage=damage * coeff
-    if UnitHasBuffBJ(ut, $42303035) then
+    if UnitHasBuffBJ(ut, 'B005') then
         set damage=damage * 2
     endif
     if damage == 0 then
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
     else
-        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, $4130334E) >= 1 then
+        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, 'A03N') >= 1 then
             set damage=damage * 3
             call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
             call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
@@ -4003,28 +4003,28 @@ function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,r
     local location loc= GetUnitLoc(attackee)
     local real dmg= damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     local real coeff= 1
-    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , $4930304C) ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
-        if spell_id == $41303031 then
+    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+        if spell_id == 'A001' then
             if GetUnitAbilityLevel(attacker, spell_id) == 5 then
                 set coeff=coeff + 1
             endif
-            if GetUnitAbilityLevel(attacker, $4130334E) >= 1 then
+            if GetUnitAbilityLevel(attacker, 'A03N') >= 1 then
                 set coeff=coeff + 1
             endif
             if udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
                 set dmg=dmg * 8
             endif
         endif
-        if spell_id == $41303435 then
-            set dmg=dmg * GetUnitAbilityLevel(attacker, $41303435)
+        if spell_id == 'A045' then
+            set dmg=dmg * GetUnitAbilityLevel(attacker, 'A045')
             if GetRandomInt(0, 100) <= 50 then
                 call WanBuff(attacker , attackee , 16)
             endif
         endif
-        if spell_id == $41303438 then
+        if spell_id == 'A048' then
             set dmg=dmg * mana_cost * mana_cost
         endif
-        if spell_id == $41303437 then
+        if spell_id == 'A047' then
             if GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) >= 50 then
                 call SetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) - 50)
                 call CreateTextTagUnitBJ("-50", attacker, 0., 11., 80.4, 49.8, 19.6, 30.)
@@ -4038,7 +4038,7 @@ function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,r
                 return
             endif
         endif
-        if spell_id == $4130304B and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
+        if spell_id == 'A00K' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
             set range=range + 450
         endif
         call SaveUnitHandle(YDHT, RANGE_DAMAGE_HASH, 0, attacker)
@@ -4056,7 +4056,7 @@ endfunction
 function PassiveSingleDamage takes unit attacker,unit attackee,integer spell_id,real base_damage,string effects,integer possibility,integer mana_cost returns nothing
     local location loc= GetUnitLoc(attackee)
     local real damage= base_damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
-    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , $4930304C) ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         call dealDamage(attacker , attackee , damage)
         call DestroyEffect(AddSpecialEffectLoc(effects, loc))
         call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - mana_cost)
@@ -4068,28 +4068,28 @@ function PassiveUseAbility takes unit attacker,unit attackee,integer spell_id,in
     local location loc= GetUnitLoc(attacker)
     local location loc2= GetUnitLoc(attackee)
     local integer manacost= mana_cost
-    if spell_id == $41303243 or spell_id == $41303244 or spell_id == $41303245 and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] >= 1 then
+    if spell_id == 'A02C' or spell_id == 'A02D' or spell_id == 'A02E' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] >= 1 then
         set manacost=manacost - 20
     endif
-    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , $4930304C) ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= manacost then
-        if spell_id == $41303251 then
-            call CreateNUnitsAtLoc(1, $65303045, GetOwningPlayer(attacker), loc2, bj_UNIT_FACING)
+    if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= manacost then
+        if spell_id == 'A02Q' then
+            call CreateNUnitsAtLoc(1, 'e00E', GetOwningPlayer(attacker), loc2, bj_UNIT_FACING)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
             call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, attacker)
             call IssueImmediateOrderById(bj_lastCreatedUnit, order_id)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.5)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.5)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
-        elseif spell_id == $41303337 then
-            call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+        elseif spell_id == 'A037' then
+            call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
             call ShowUnitHide(bj_lastCreatedUnit)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
             call IssueTargetOrderById(bj_lastCreatedUnit, order_id, attacker)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 3.)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
         else
-            call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
             call ShowUnitHide(bj_lastCreatedUnit)
             call UnitAddAbility(bj_lastCreatedUnit, shadow_id)
             call SetUnitAbilityLevel(bj_lastCreatedUnit, shadow_id, GetUnitAbilityLevel(attacker, spell_id))
@@ -4097,10 +4097,10 @@ function PassiveUseAbility takes unit attacker,unit attackee,integer spell_id,in
             call IssueTargetOrderById(bj_lastCreatedUnit, order_id, attackee)
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, order_id, loc2)
             call IssueImmediateOrderById(bj_lastCreatedUnit, order_id)
-            if spell_id == $41303439 then
+            if spell_id == 'A049' then
                 call DestroyEffect(AddSpecialEffect("war3mapImported\\icenova.mdx", GetUnitX(attackee), GetUnitY(attackee)))
             endif
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 20.)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 20.)
             call SetUnitState(attacker, UNIT_STATE_MANA, GetUnitState(attacker, UNIT_STATE_MANA) - manacost)
         endif
     endif
@@ -4146,6 +4146,45 @@ function SynItem takes unit u,integer itemid_before,integer itemid_after returns
         endif
     endif
 endfunction
+// 获取随机品质的武魂石，概率和波数以及人品有关
+function getRandomSoulStone takes integer i returns integer
+    local integer id= 0
+    local real rand= GetRandomReal(0, 100)
+    // I02B为劣质品质，I02C为平凡品质，I02D为精致品质，I02E为完美品质
+    // 10波之前，完美品质概率为0
+    // 10-30波，完美品质概率为5%+波数*0.2%
+    // 30波以后，完美品质概率为10%+波数*0.3%
+    if wave <= 10 then
+        if rand < RMinBJ(15, 10 + luck[i] * 0.025) then
+            set id='I02D'
+        elseif rand < RMinBJ(50, 40 + luck[i] * 0.05) then
+            set id='I02C'
+        else
+            set id='I02B'
+        endif
+    elseif wave <= 30 then
+        if rand < RMinBJ(15, 5 + luck[i] * 0.02) then
+            set id='I02E'
+        elseif rand < RMinBJ(30, 20 + luck[i] * 0.05) then
+            set id='I02D'
+        elseif rand < RMinBJ(65, 50 + luck[i] * 0.075) then
+            set id='I02C'
+        else
+            set id='I02B'
+        endif
+    else
+        if rand < RMinBJ(20, 10 + luck[i] * 0.03) then
+            set id='I02E'
+        elseif rand < RMinBJ(35, 20 + luck[i] * 0.06) then
+            set id='I02D'
+        elseif rand < RMinBJ(70, 50 + luck[i] * 0.09) then
+            set id='I02C'
+        else
+            set id='I02B'
+        endif
+    endif
+    return id
+endfunction
 function EMeiXinFa takes nothing returns nothing
     local unit u= GetEnumUnit()
     local location loc= GetUnitLoc(u)
@@ -4157,21 +4196,21 @@ function EMeiXinFa takes nothing returns nothing
             call IssuePointOrder(u, "attack", LoadReal(YDHT, GetHandleId(u), 61440), LoadReal(YDHT, GetHandleId(u), 61441))
         endif
     endif
-    if UnitHasBuffBJ(u, $42303034) then
+    if UnitHasBuffBJ(u, 'B004') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .02 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .02)
         else
             call SetWidgetLife(u, 1.)
         endif
     endif
-    if UnitHasBuffBJ(u, $42457368) then
+    if UnitHasBuffBJ(u, 'BEsh') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .001 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .001)
         else
             call SetWidgetLife(u, 1.)
         endif
     endif
-    if UnitHasBuffBJ(u, $42303133) then
+    if UnitHasBuffBJ(u, 'B013') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .01 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .01)
         else
@@ -4317,22 +4356,22 @@ function checkPurchase takes nothing returns nothing
         exitwhen i > 5
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_GOLD) or udg_isTest[i] then
             set middle_gold_flag[i]=1
-            call SetPlayerTechResearched(Player(i - 1), $52303037, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R007', 1)
         endif
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_WISDOM_BALL) or udg_isTest[i] then
             set wisdom_ball_flag[i]=1
-            call SetPlayerTechResearched(Player(i - 1), $52303038, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R008', 1)
         endif
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_LUMBER) or udg_isTest[i] then
             set middle_lumber_flag[i]=1
-            call SetPlayerTechResearched(Player(i - 1), $52303039, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R009', 1)
         endif
         if DzAPI_Map_GetMapLevel(Player(i - 1)) >= 3 or udg_isTest[i] then
             set five_star_flag[i]=1
-            call SetPlayerTechResearched(Player(i - 1), $52303035, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R005', 1)
         endif
         if RequestExtraBooleanData(44, Player(i - 1), null, null, false, 0, 0, 0) or udg_isTest[i] then
-            call SetPlayerTechResearched(Player(i - 1), $52303036, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R006', 1)
         endif
         set i=i + 1
     endloop
@@ -4418,72 +4457,72 @@ function ServerSavePointsEveryTenWave takes nothing returns nothing
     endloop
 endfunction
 function initMobsAndBosses takes nothing returns nothing
-    set mob[1]=$68303035
-    set mob[2]=$75303030
-    set mob[3]=$68303036
-    set mob[4]=$65303032
-    set mob[5]=$6F303034
-    set mob[6]=$75303031
-    set mob[7]=$6E303048
-    set mob[8]=$68303037
-    set mob[9]=$7A303030
-    set mob[10]=$7A303031
-    set mob[11]=$75303032
-    set mob[12]=$6F303035
-    set mob[13]=$6E303254
-    set mob[14]=$65303033
-    set mob[15]=$6E30304A
-    set mob[16]=$75303033
-    set mob[17]=$65303034
-    set mob[18]=$65303035
-    set mob[19]=$75303034
-    set mob[20]=$6E30304B
-    set mob[21]=$65303036
-    set mob[22]=$75303035
-    set mob[23]=$68303038
-    set mob[24]=$68303039
-    set mob[25]=$6E30304C
-    set mob[26]=$6E30304D
-    set mob[27]=$6E30304E
-    set mob[28]=$6E30304F
-    set mob[29]=$6E303050
-    set mob[30]=$6E303051
-    set mob[31]=$75303036
-    set mob[32]=$6F303038
-    set mob[33]=$68303041
-    set mob[34]=$65303037
-    set mob[35]=$6E303053
-    set mob[36]=$75303037
-    set mob[37]=$6F303039
-    set mob[38]=$6E303054
-    set mob[39]=$6E303055
-    set mob[40]=$6E303056
-    set mob[41]=$6E303057
-    set mob[42]=$75303039
-    set mob[43]=$65303038
-    set mob[44]=$75303041
-    set mob[45]=$6E303058
-    set mob[46]=$6E303255
-    set mob[47]=$6E303256
-    set mob[48]=$6E303257
-    set mob[49]=$6E303258
-    set mob[50]=$6E303259
-    set mob[51]=$6E30325A
-    set mob[52]=$6E303330
-    set mob[53]=$6E303331
-    set mob[54]=$6E303332
-    set mob[55]=$6E303333
-    set boss[1]=$4E303049
-    set boss[2]=$4F303037
-    set boss[3]=$4E303052
-    set boss[4]=$55303038
-    set boss[5]=$55303050
-    set boss[6]=$55303042
-    set survive_mob[1]=$6830304D
-    set survive_mob[2]=$6830304C
-    set survive_mob[3]=$6830304B
-    set survive_mob[4]=$6830304E
-    set survive_boss[1]=$4E303334
+    set mob[1]='h005'
+    set mob[2]='u000'
+    set mob[3]='h006'
+    set mob[4]='e002'
+    set mob[5]='o004'
+    set mob[6]='u001'
+    set mob[7]='n00H'
+    set mob[8]='h007'
+    set mob[9]='z000'
+    set mob[10]='z001'
+    set mob[11]='u002'
+    set mob[12]='o005'
+    set mob[13]='n02T'
+    set mob[14]='e003'
+    set mob[15]='n00J'
+    set mob[16]='u003'
+    set mob[17]='e004'
+    set mob[18]='e005'
+    set mob[19]='u004'
+    set mob[20]='n00K'
+    set mob[21]='e006'
+    set mob[22]='u005'
+    set mob[23]='h008'
+    set mob[24]='h009'
+    set mob[25]='n00L'
+    set mob[26]='n00M'
+    set mob[27]='n00N'
+    set mob[28]='n00O'
+    set mob[29]='n00P'
+    set mob[30]='n00Q'
+    set mob[31]='u006'
+    set mob[32]='o008'
+    set mob[33]='h00A'
+    set mob[34]='e007'
+    set mob[35]='n00S'
+    set mob[36]='u007'
+    set mob[37]='o009'
+    set mob[38]='n00T'
+    set mob[39]='n00U'
+    set mob[40]='n00V'
+    set mob[41]='n00W'
+    set mob[42]='u009'
+    set mob[43]='e008'
+    set mob[44]='u00A'
+    set mob[45]='n00X'
+    set mob[46]='n02U'
+    set mob[47]='n02V'
+    set mob[48]='n02W'
+    set mob[49]='n02X'
+    set mob[50]='n02Y'
+    set mob[51]='n02Z'
+    set mob[52]='n030'
+    set mob[53]='n031'
+    set mob[54]='n032'
+    set mob[55]='n033'
+    set boss[1]='N00I'
+    set boss[2]='O007'
+    set boss[3]='N00R'
+    set boss[4]='U008'
+    set boss[5]='U00P'
+    set boss[6]='U00B'
+    set survive_mob[1]='h00M'
+    set survive_mob[2]='h00L'
+    set survive_mob[3]='h00K'
+    set survive_mob[4]='h00N'
+    set survive_boss[1]='N034'
 endfunction
 function doSpawnFinalBoss takes nothing returns nothing
     local location array loc
@@ -4500,7 +4539,7 @@ function doSpawnFinalBoss takes nothing returns nothing
     loop
         exitwhen i > 3
         if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING and gameMode == 0 then
-            call CreateNUnitsAtLoc(1, $55303042, Player(5), loc[i], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, 'U00B', Player(5), loc[i], bj_UNIT_FACING)
             call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[i])
             call RemoveLocation(target[i])
@@ -4557,7 +4596,7 @@ function spawn takes nothing returns nothing
                 elseif gameMode == 1 then
                     call CreateNUnitsAtLoc(1, survive_boss[1], Player(5), loc[i], bj_UNIT_FACING)
                     set life=30 * R2I(7.6591 * wave * wave * wave - 108.55 * wave * wave + 798.28 * wave - 518.31)
-                    call LifeChange(bj_lastCreatedUnit , 2 , life , $41303434)
+                    call LifeChange(bj_lastCreatedUnit , 2 , life , 'A044')
                     call h__SetUnitMoveSpeed(bj_lastCreatedUnit , RMinBJ(300 + 5 * wave, 522))
                     call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit , 2 , 2 , 10 + wave)
                 endif
@@ -4619,7 +4658,7 @@ function doSpawn takes nothing returns nothing
             elseif gameMode == 1 then
                 call CreateNUnitsAtLoc(1, survive_mob[ModuloInteger(wave - 1, 4) + 1], Player(5), loc[i], bj_UNIT_FACING)
                 set life=R2I(7.6591 * wave * wave * wave - 108.55 * wave * wave + 798.28 * wave - 518.31)
-                call LifeChange(bj_lastCreatedUnit , 2 , life , $41303434)
+                call LifeChange(bj_lastCreatedUnit , 2 , life , 'A044')
                 call h__SetUnitMoveSpeed(bj_lastCreatedUnit , RMinBJ(300 + 5 * wave, 522))
                 call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit , 2 , 2 , 10 + wave)
             endif
@@ -4674,7 +4713,7 @@ function EverySecond_Conditions takes nothing returns boolean
         loop
             exitwhen i > 5
             if wisdom_ball_flag[i] == 1 then
-                call CreateUnit(Player(i - 1), $6F303052, x[i], y[i], 270)
+                call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
                 call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D您已开启智慧球")
             endif
             set i=i + 1
@@ -4727,11 +4766,11 @@ function EverySecond_Conditions takes nothing returns boolean
     set i=0
     loop
         exitwhen i > tower_num
-        if GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303049) >= 1 then
+        if GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A00I') >= 1 then
             call IssueImmediateOrder(s__Tower_u[tower[i]], "frenzy")
         endif
-        if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303441) >= 1 then
-            set level=GetUnitAbilityLevel(s__Tower_u[tower[i]], $41303441)
+        if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A') >= 1 then
+            set level=GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A')
             call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + GetRandomInt(level * 10, level * 100))
         endif
         set i=i + 1
@@ -4754,21 +4793,21 @@ function IssueUnitOrder_Conditions takes nothing returns boolean
     local location loc2= GetUnitLoc(ut)
     local location temp_loc= null
     local group g= null
-    if id == 852066 and GetUnitAbilityLevel(u, $41303036) >= 1 and udg_jiuyang[i] >= 1 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 852066 and GetUnitAbilityLevel(u, 'A006') >= 1 and udg_jiuyang[i] >= 1 then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303330)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303330, GetUnitAbilityLevel(u, $41303036))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A030')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A030', GetUnitAbilityLevel(u, 'A006'))
         call IssueTargetOrderById(bj_lastCreatedUnit, 852101, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
-    if id == 852149 and GetUnitAbilityLevel(u, $4130304A) >= 1 and udg_jiuyang[i] >= 1 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 852149 and GetUnitAbilityLevel(u, 'A00J') >= 1 and udg_jiuyang[i] >= 1 then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303338)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303338, GetUnitAbilityLevel(u, $4130304A))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A038')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A038', GetUnitAbilityLevel(u, 'A00J'))
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
@@ -4844,7 +4883,7 @@ function KeyInput takes nothing returns nothing
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D已开启生存模式")
     endif
     if s == "wisdomball" and udg_isTest[i] then
-        call CreateUnit(p, $6F303052, - 2380, 820, 270)
+        call CreateUnit(p, 'o00R', - 2380, 820, 270)
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D创建了智慧球")
     endif
     if StringHash(s) == $6308B0FD then
@@ -4870,74 +4909,74 @@ function SaveMaxLevel_1 takes integer spell_id,integer max_level returns nothing
     call SaveInteger(YDHT, spell_id * 3, 0, max_level)
 endfunction
 function SaveMaxLevel takes nothing returns nothing
-    call SaveInteger(YDHT, $41303058 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303237 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303056 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303052 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304E * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304B * 3, 0, 3)
-    call SaveInteger(YDHT, $41303057 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303239 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303246 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303156 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303244 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303243 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303245 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303334 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303256 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324B * 3, 0, 5)
-    call SaveInteger(YDHT, $41303251 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303254 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303259 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303042 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303041 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303031 * 3, 0, 5)
-    call SaveInteger(YDHT, $41303337 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303054 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304A * 3, 0, 3)
-    call SaveInteger(YDHT, $41303048 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304C * 3, 0, 3)
-    call SaveInteger(YDHT, $41303049 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303130 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303151 * 3, 0, 6)
-    call SaveInteger(YDHT, $41303152 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303236 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303234 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303248 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130334C * 3, 0, 3)
-    call SaveInteger(YDHT, $41303232 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303331 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303332 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324D * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324E * 3, 0, 4)
-    call SaveInteger(YDHT, $41303249 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303252 * 3, 0, 4)
-    call SaveInteger(YDHT, $41303046 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303032 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303154 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303039 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303037 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303044 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303036 * 3, 0, 1)
-    call SaveInteger(YDHT, $41303530 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130344F * 3, 0, 3)
-    call SaveInteger(YDHT, $41303450 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303457 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130344E * 3, 0, 10)
-    call SaveInteger(YDHT, $41303458 * 3, 0, 7)
-    call SaveInteger(YDHT, $41303455 * 3, 0, 4)
-    call SaveInteger(YDHT, $41303453 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303456 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303451 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303454 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303459 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303534 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303438 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303439 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303442 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303437 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303441 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303435 * 3, 0, 6)
+    call SaveInteger(YDHT, 'A00X' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A027' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00R' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00N' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00K' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00W' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A029' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02F' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02D' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02C' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02E' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A034' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02K' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A02Q' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02Y' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00B' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00A' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A001' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A037' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00J' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00H' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00L' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00I' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A010' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01Q' * 3, 0, 6)
+    call SaveInteger(YDHT, 'A01R' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A026' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A024' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02H' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A03L' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A022' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A031' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A032' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02M' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02N' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A02I' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02R' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A00F' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A002' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A009' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A007' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00D' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A006' * 3, 0, 1)
+    call SaveInteger(YDHT, 'A050' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04O' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04P' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04W' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04N' * 3, 0, 10)
+    call SaveInteger(YDHT, 'A04X' * 3, 0, 7)
+    call SaveInteger(YDHT, 'A04U' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A04S' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04Q' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04Y' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A054' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A048' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A049' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04B' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A047' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04A' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A045' * 3, 0, 6)
 endfunction
 function pointChange takes integer i,integer jf returns nothing
     set udg_pointMax[i]=udg_pointMax[i] + jf
@@ -4975,7 +5014,7 @@ function Challenge takes integer player_i,integer challenge_num,integer item_id 
 endfunction
 function GoldLumberExChange takes integer player_i,integer item_id,unit u returns nothing
     local player p= Player(player_i - 1)
-    if item_id == $49303143 then
+    if item_id == 'I01C' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) >= 4000 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
@@ -4984,7 +5023,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933黄金不足|r")
         endif
     endif
-    if item_id == $49303144 then
+    if item_id == 'I01D' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) >= 1 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) - 1)
@@ -4993,7 +5032,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933珍稀币不足|r")
         endif
     endif
-    if item_id == $49303238 then
+    if item_id == 'I028' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) >= 40000 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 10)
@@ -5002,7 +5041,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933黄金不足|r")
         endif
     endif
-    if item_id == $49303237 then
+    if item_id == 'I027' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) >= 10 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) - 10)
@@ -5011,10 +5050,10 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933珍稀币不足|r")
         endif
     endif
-    if item_id == $49303159 then
+    if item_id == 'I01Y' then
         call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 2)
     endif
-    if item_id == $4930315A then
+    if item_id == 'I01Z' then
         if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) or udg_isTest[player_i] then
             if remake_present[player_i] != 1 then
                 set remake_present[player_i]=1
@@ -5029,7 +5068,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未购买重制版WAR3|r")
         endif
     endif
-    if item_id == $49303230 then
+    if item_id == 'I020' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2lumber[player_i] != 1 then
                 set point2lumber[player_i]=1
@@ -5043,7 +5082,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $49303231 then
+    if item_id == 'I021' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2gold[player_i] != 1 then
                 set point2gold[player_i]=1
@@ -5057,7 +5096,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $4930324D then
+    if item_id == 'I02M' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00可用人口+5，扣除5积分")
@@ -5066,7 +5105,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $49303239 then
+    if item_id == 'I029' then
         if middle_gold_flag[player_i] == 1 then
             if middle_gold[player_i] != 1 then
                 if wave >= 15 then
@@ -5083,7 +5122,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未解锁中型金币包|r")
         endif
     endif
-    if item_id == $49303241 then
+    if item_id == 'I02A' then
         if middle_lumber_flag[player_i] == 1 then
             if middle_lumber[player_i] != 1 then
                 if wave >= 15 then
@@ -5106,7 +5145,7 @@ function CheckHolyWeapon takes integer player_i,integer item_id returns nothing
     local player p= Player(player_i - 1)
     local string s= ""
     local integer i= 1
-    if item_id == $49303157 then
+    if item_id == 'I01W' then
         loop
             exitwhen i > open_shenqi
             set s=s + GetObjectName(random_shenqi[i]) + "\n"
@@ -5116,17 +5155,17 @@ function CheckHolyWeapon takes integer player_i,integer item_id returns nothing
     endif
 endfunction
 function SynHolyWeapon takes integer player_i,integer item_id returns nothing
-    call YDWENewItemsFormula($49303044 , 1 , $49303136 , 1 , $4930314C , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303132)
-    call YDWENewItemsFormula($49303044 , 1 , $49303136 , 1 , $4930314B , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303043)
-    call YDWENewItemsFormula($49303037 , 1 , $49303136 , 1 , $4930314D , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $4930304E)
-    call YDWENewItemsFormula($49303037 , 1 , $49303136 , 1 , $4930314E , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303052)
-    call YDWENewItemsFormula($4930304B , 1 , $49303136 , 1 , $49303152 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $4930304C)
-    call YDWENewItemsFormula($4930304B , 1 , $49303136 , 1 , $49303151 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $4930304D)
-    call YDWENewItemsFormula($49303131 , 1 , $49303136 , 1 , $4930314F , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303055)
-    call YDWENewItemsFormula($49303131 , 1 , $49303136 , 1 , $49303150 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303133)
-    call YDWENewItemsFormula($49303054 , 1 , $49303136 , 1 , $49303155 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303056)
-    call YDWENewItemsFormula($49303054 , 1 , $49303136 , 1 , $49303153 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303046)
-    call YDWENewItemsFormula($49303054 , 1 , $49303136 , 1 , $49303154 , 1 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $49303057)
+    call YDWENewItemsFormula('I00D' , 1 , 'I016' , 1 , 'I01L' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I012')
+    call YDWENewItemsFormula('I00D' , 1 , 'I016' , 1 , 'I01K' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00C')
+    call YDWENewItemsFormula('I007' , 1 , 'I016' , 1 , 'I01M' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00N')
+    call YDWENewItemsFormula('I007' , 1 , 'I016' , 1 , 'I01N' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00R')
+    call YDWENewItemsFormula('I00K' , 1 , 'I016' , 1 , 'I01R' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00L')
+    call YDWENewItemsFormula('I00K' , 1 , 'I016' , 1 , 'I01Q' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00M')
+    call YDWENewItemsFormula('I011' , 1 , 'I016' , 1 , 'I01O' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00U')
+    call YDWENewItemsFormula('I011' , 1 , 'I016' , 1 , 'I01P' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I013')
+    call YDWENewItemsFormula('I00T' , 1 , 'I016' , 1 , 'I01U' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00V')
+    call YDWENewItemsFormula('I00T' , 1 , 'I016' , 1 , 'I01S' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00F')
+    call YDWENewItemsFormula('I00T' , 1 , 'I016' , 1 , 'I01T' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00W')
 endfunction
 function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id returns nothing
     local player p= Player(player_i - 1)
@@ -5135,9 +5174,9 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
             if udg_jiuyang[player_i] == 0 then
                 set udg_jiuyang[player_i]=1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阳神功|r")
-                call SaveInteger(YDHT, $41303244 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303243 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303245 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02D' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02C' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -5146,16 +5185,16 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
             if udg_jiuyin[player_i] == 0 then
                 set udg_jiuyin[player_i]=1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阴真经|r")
-                call SaveInteger(YDHT, $41303046 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303039 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303052 * 3, 0, 4)
-                call SaveInteger(YDHT, $4130304E * 3, 0, 4)
-                call SaveInteger(YDHT, $41303236 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303234 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303334 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303337 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303457 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303451 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00F' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A009' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00R' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00N' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A026' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A024' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A034' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A037' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A04W' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -5180,11 +5219,11 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
             if udg_huagong[player_i] == 0 then
                 set udg_huagong[player_i]=1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习化功大法|r")
-                call SaveInteger(YDHT, $41303041 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303058 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303237 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303252 * 3, 0, 5)
-                call SaveInteger(YDHT, $41303454 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00A' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00X' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A027' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02R' * 3, 0, 5)
+                call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -5235,33 +5274,33 @@ function InitMenPai takes nothing returns nothing
     set menpai_name[3]="〓峨眉派〓"
     set menpai_name[4]="〓丐帮〓"
     set menpai_name[5]="〓全真教〓"
-    set menpai_item_id[1]=$49303030
-    set menpai_item_id[2]=$49303031
-    set menpai_item_id[3]=$49303032
-    set menpai_item_id[4]=$49303033
-    set menpai_item_id[5]=$4930324B
-    set menpai_builder_id[1]=$75303043
-    set menpai_builder_id[2]=$75303044
-    set menpai_builder_id[3]=$75303045
-    set menpai_builder_id[4]=$75303046
-    set menpai_builder_id[5]=$75303057
-    set jianghu_item_id[1]=$49303135
-    set jianghu_item_id[2]=$49303137
-    set jianghu_item_id[3]=$49303138
-    set jianghu_item_id[4]=$49303139
-    set jianghu_item_id[5]=$49303141
-    set challenge_item_id[1]=$49303146
-    set challenge_item_id[2]=$49303147
-    set challenge_item_id[3]=$49303148
-    set challenge_item_id[4]=$49303236
-    set challenge_item_id[5]=$49303145
-    set challenge_item_id[6]=$49303149
-    set challenge_id[1]=$48303045
-    set challenge_id[2]=$48303049
-    set challenge_id[3]=$4830304A
-    set challenge_id[4]=$55303055
-    set challenge_id[5]=$48303044
-    set challenge_id[6]=$48303032
+    set menpai_item_id[1]='I000'
+    set menpai_item_id[2]='I001'
+    set menpai_item_id[3]='I002'
+    set menpai_item_id[4]='I003'
+    set menpai_item_id[5]='I02K'
+    set menpai_builder_id[1]='u00C'
+    set menpai_builder_id[2]='u00D'
+    set menpai_builder_id[3]='u00E'
+    set menpai_builder_id[4]='u00F'
+    set menpai_builder_id[5]='u00W'
+    set jianghu_item_id[1]='I015'
+    set jianghu_item_id[2]='I017'
+    set jianghu_item_id[3]='I018'
+    set jianghu_item_id[4]='I019'
+    set jianghu_item_id[5]='I01A'
+    set challenge_item_id[1]='I01F'
+    set challenge_item_id[2]='I01G'
+    set challenge_item_id[3]='I01H'
+    set challenge_item_id[4]='I026'
+    set challenge_item_id[5]='I01E'
+    set challenge_item_id[6]='I01I'
+    set challenge_id[1]='H00E'
+    set challenge_id[2]='H00I'
+    set challenge_id[3]='H00J'
+    set challenge_id[4]='U00U'
+    set challenge_id[5]='H00D'
+    set challenge_id[6]='H002'
 endfunction
 function InitSavePlayerName takes nothing returns nothing
     loop
@@ -5299,16 +5338,16 @@ function PickupItem_Conditions takes nothing returns boolean
     call JoinMenPai(i , 3 , GetItemTypeId(it))
     call JoinMenPai(i , 4 , GetItemTypeId(it))
     call JoinMenPai(i , 5 , GetItemTypeId(it))
-    if GetItemTypeId(it) == $4930324A then
+    if GetItemTypeId(it) == 'I02J' then
         set rand=GetRandomReal(0, 100)
         if rand < RMinBJ(15, 10 + luck[i] * .025) then
-            set award=$49303245
+            set award='I02E'
         elseif rand < RMinBJ(45, 30 + luck[i] * .075) then
-            set award=$49303244
+            set award='I02D'
         elseif rand < RMinBJ(90, 60 + luck[i] * .175) then
-            set award=$49303243
+            set award='I02C'
         else
-            set award=$49303242
+            set award='I02B'
         endif
         call UnitAddItemById(u, award)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))
@@ -5375,13 +5414,13 @@ function QinLong takes nothing returns nothing
     local unit attacker= GetAttacker()
     local unit ut= GetEnumUnit()
     local location loc= GetUnitLoc(attacker)
-    call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $41303444)
-    call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303444, GetUnitAbilityLevel(attacker, $41303442))
+    call UnitAddAbility(bj_lastCreatedUnit, 'A04D')
+    call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A04D', GetUnitAbilityLevel(attacker, 'A04B'))
     call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, attacker)
     call IssueTargetOrderById(bj_lastCreatedUnit, 852480, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
     call RemoveLocation(loc)
     set loc=null
     set attacker=null
@@ -5391,13 +5430,13 @@ function HaoTian takes nothing returns nothing
     local unit attacker= GetAttacker()
     local unit ut= GetEnumUnit()
     local location loc= GetUnitLoc(attacker)
-    call CreateNUnitsAtLoc(1, $65303039, GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', GetOwningPlayer(attacker), loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $41303532)
-    call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303532, GetUnitAbilityLevel(attacker, $41303450))
+    call UnitAddAbility(bj_lastCreatedUnit, 'A052')
+    call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A052', GetUnitAbilityLevel(attacker, 'A04P'))
     call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, attacker)
     call IssueTargetOrderById(bj_lastCreatedUnit, 852230, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
     call RemoveLocation(loc)
     set loc=null
     set attacker=null
@@ -5438,14 +5477,14 @@ function UnitAttack_Conditions takes nothing returns boolean
     if udg_xixing[i] >= 1 and GetRandomReal(0, 100) <= 15 then
         call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) + GetUnitState(u, UNIT_STATE_MAX_MANA) * .05)
     endif
-    if YDWEUnitHasItemOfTypeBJNull(u , $49303052) and GetRandomReal(0, 100) <= 20 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if YDWEUnitHasItemOfTypeBJNull(u , 'I00R') and GetRandomReal(0, 100) <= 20 then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303336)
+        call UnitAddAbility(bj_lastCreatedUnit, 'A036')
         call IssueTargetOrderById(bj_lastCreatedUnit, 852101, u)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 3.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
     endif
-    if YDWEUnitHasItemOfTypeBJNull(u , $49303055) and GetRandomReal(0, 100) <= 5 then
+    if YDWEUnitHasItemOfTypeBJNull(u , 'I00U') and GetRandomReal(0, 100) <= 5 then
         set j=0
         loop
             exitwhen j >= 11
@@ -5453,7 +5492,7 @@ function UnitAttack_Conditions takes nothing returns boolean
             set j=j + 1
         endloop
     endif
-    if YDWEUnitHasItemOfTypeBJNull(u , $4930304D) and GetRandomReal(0, 100) <= .5 then
+    if YDWEUnitHasItemOfTypeBJNull(u , 'I00M') and GetRandomReal(0, 100) <= .5 then
         if IsUnitType(ut, UNIT_TYPE_HERO) == false then
             call SetWidgetLife(ut, 1.)
             call UnitDamageTarget(u, ut, $F4240, true, false, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_MAGIC, WEAPON_TYPE_WHOKNOWS)
@@ -5461,65 +5500,65 @@ function UnitAttack_Conditions takes nothing returns boolean
             call SetWidgetLife(ut, GetWidgetLife(ut) * .9)
         endif
     endif
-    if YDWEUnitHasItemOfTypeBJNull(u , $4930314A) and GetRandomReal(0, 100) <= 10 and GetUnitTypeId(u) != $75303043 and GetUnitTypeId(u) != $75303044 and GetUnitTypeId(u) != $75303045 and GetUnitTypeId(u) != $75303046 then
+    if YDWEUnitHasItemOfTypeBJNull(u , 'I01J') and GetRandomReal(0, 100) <= 10 and GetUnitTypeId(u) != 'u00C' and GetUnitTypeId(u) != 'u00D' and GetUnitTypeId(u) != 'u00E' and GetUnitTypeId(u) != 'u00F' then
         if IsUnitType(ut, UNIT_TYPE_HERO) == false then
             call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_GOLD)
         elseif GetRandomReal(0, 100) <= 14 then
             call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
         endif
     endif
-    call PassiveRangeDamage(u , ut , $41303031 , 500 , 50 , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
-    call PassiveRangeDamage(u , ut , $41303435 , 800 , 100 , "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl" , 25 , 25 + GetUnitAbilityLevel(u, $41303435) * 5)
-    call PassiveRangeDamage(u , ut , $41303438 , 700 , 10 , "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl" , 18 , GetRandomInt(10, 100))
-    call PassiveRangeDamage(u , ut , $41303437 , 1000 , 25000 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 28 , 30)
-    call PassiveRangeDamage(u , ut , $4130324B , 400 , 30 , "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl" , 27 , 15)
-    call PassiveRangeDamage(u , ut , $4130304B , 50 , 1500 , "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl" , 26 , 25)
-    call PassiveRangeDamage(u , ut , $4130344E , 800 , 2000 , "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl" , 26 , 40)
-    call PassiveSingleDamage(u , ut , $41303156 , 500 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 19 , 40)
-    call PassiveSingleDamage(u , ut , $41303454 , 2000 , "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , 100 , 6)
-    call PassiveUseAbility(u , ut , $4130304E , $41303053 , 852119 , 18 , 50)
-    call PassiveUseAbility(u , ut , $41303056 , $41303055 , 852106 , 25 , 25)
-    call PassiveUseAbility(u , ut , $41303058 , $41303059 , 852652 , 17 , 60)
-    call PassiveUseAbility(u , ut , $41303237 , $41303238 , 852597 , 15 , 70)
-    call PassiveUseAbility(u , ut , $41303243 , $41303241 , 852662 , 21 , 50)
-    call PassiveUseAbility(u , ut , $41303244 , $41303242 , 852560 , 18 , 60)
-    call PassiveUseAbility(u , ut , $41303245 , $41303241 , 852662 , 21 , 50)
-    call PassiveUseAbility(u , ut , $41303245 , $41303242 , 852560 , 18 , 60)
-    call PassiveUseAbility(u , ut , $41303246 , $41303247 , 852591 , 10 , 90)
-    call PassiveUseAbility(u , ut , $41303251 , $41303250 , 852128 , 20 , 50)
-    call PassiveUseAbility(u , ut , $41303254 , $41303255 , 852587 , 25 , 30)
-    call PassiveUseAbility(u , ut , $41303256 , $41303257 , 852126 , 23 , 50)
-    call PassiveUseAbility(u , ut , $41303259 , $41303258 , 852502 , 14 , 40)
-    call PassiveUseAbility(u , ut , $41303334 , $41303335 , 852126 , 13 , 120)
-    call PassiveUseAbility(u , ut , $41303337 , $41303336 , 852101 , 15 + GetUnitAbilityLevel(u, $41303337) * 5 , 30)
-    call PassiveUseAbility(u , ut , $4130344F , $41303531 , 852238 , 15 , 45)
-    call PassiveUseAbility(u , ut , $41303453 , $41303536 , 852226 , 14 , 45)
-    if GetUnitAbilityLevel(u, $41303450) > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 16 then
+    call PassiveRangeDamage(u , ut , 'A001' , 500 , 50 , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
+    call PassiveRangeDamage(u , ut , 'A045' , 800 , 100 , "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl" , 25 , 25 + GetUnitAbilityLevel(u, 'A045') * 5)
+    call PassiveRangeDamage(u , ut , 'A048' , 700 , 10 , "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl" , 18 , GetRandomInt(10, 100))
+    call PassiveRangeDamage(u , ut , 'A047' , 1000 , 25000 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 28 , 30)
+    call PassiveRangeDamage(u , ut , 'A02K' , 400 , 30 , "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl" , 27 , 15)
+    call PassiveRangeDamage(u , ut , 'A00K' , 50 , 1500 , "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl" , 26 , 25)
+    call PassiveRangeDamage(u , ut , 'A04N' , 800 , 2000 , "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl" , 26 , 40)
+    call PassiveSingleDamage(u , ut , 'A01V' , 500 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 19 , 40)
+    call PassiveSingleDamage(u , ut , 'A04T' , 2000 , "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , 100 , 6)
+    call PassiveUseAbility(u , ut , 'A00N' , 'A00S' , 852119 , 18 , 50)
+    call PassiveUseAbility(u , ut , 'A00V' , 'A00U' , 852106 , 25 , 25)
+    call PassiveUseAbility(u , ut , 'A00X' , 'A00Y' , 852652 , 17 , 60)
+    call PassiveUseAbility(u , ut , 'A027' , 'A028' , 852597 , 15 , 70)
+    call PassiveUseAbility(u , ut , 'A02C' , 'A02A' , 852662 , 21 , 50)
+    call PassiveUseAbility(u , ut , 'A02D' , 'A02B' , 852560 , 18 , 60)
+    call PassiveUseAbility(u , ut , 'A02E' , 'A02A' , 852662 , 21 , 50)
+    call PassiveUseAbility(u , ut , 'A02E' , 'A02B' , 852560 , 18 , 60)
+    call PassiveUseAbility(u , ut , 'A02F' , 'A02G' , 852591 , 10 , 90)
+    call PassiveUseAbility(u , ut , 'A02Q' , 'A02P' , 852128 , 20 , 50)
+    call PassiveUseAbility(u , ut , 'A02T' , 'A02U' , 852587 , 25 , 30)
+    call PassiveUseAbility(u , ut , 'A02V' , 'A02W' , 852126 , 23 , 50)
+    call PassiveUseAbility(u , ut , 'A02Y' , 'A02X' , 852502 , 14 , 40)
+    call PassiveUseAbility(u , ut , 'A034' , 'A035' , 852126 , 13 , 120)
+    call PassiveUseAbility(u , ut , 'A037' , 'A036' , 852101 , 15 + GetUnitAbilityLevel(u, 'A037') * 5 , 30)
+    call PassiveUseAbility(u , ut , 'A04O' , 'A051' , 852238 , 15 , 45)
+    call PassiveUseAbility(u , ut , 'A04S' , 'A056' , 852226 , 14 , 45)
+    if GetUnitAbilityLevel(u, 'A04P') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 16 then
         set g=CreateGroup()
         call GroupEnumUnitsInRange(g, GetUnitX(u), GetUnitY(u), 1000, Condition(function IsEnemyAndAliveForAttack))
         call ForGroup(g, function HaoTian)
         call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) - 50)
         call DestroyGroup(g)
     endif
-    if GetUnitAbilityLevel(u, $41303451) > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 17 then
+    if GetUnitAbilityLevel(u, 'A04Q') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 17 then
         set k=1
         loop
-            exitwhen k > GetUnitAbilityLevel(u, $41303451)
-            set dummy=CreateUnit(p, $68303136, GetUnitX(u) + GetRandomReal(200, 400) * CosBJ(GetRandomReal(0, 360)), GetUnitY(u) + GetRandomReal(200, 400) * SinBJ(GetRandomReal(0, 360)), 270)
+            exitwhen k > GetUnitAbilityLevel(u, 'A04Q')
+            set dummy=CreateUnit(p, 'h016', GetUnitX(u) + GetRandomReal(200, 400) * CosBJ(GetRandomReal(0, 360)), GetUnitY(u) + GetRandomReal(200, 400) * SinBJ(GetRandomReal(0, 360)), 270)
             call SetUnitVertexColorBJ(dummy, GetRandomReal(20., 80.), GetRandomReal(20., 80.), GetRandomReal(20., 80.), GetRandomReal(20., 60.))
-            call SetUnitAbilityLevel(dummy, $41303454, GetUnitAbilityLevel(u, $41303454))
-            call UnitApplyTimedLife(dummy, $42487765, 5.)
+            call SetUnitAbilityLevel(dummy, 'A04T', GetUnitAbilityLevel(u, 'A04T'))
+            call UnitApplyTimedLife(dummy, 'BHwe', 5.)
             set k=k + 1
         endloop
     endif
-    call PassiveUseAbility(u , ut , $41303439 , $41303443 , 852226 , 19 , 60)
-    if GetUnitAbilityLevel(u, $41303351) > 0 and GetRandomInt(1, 100) <= 15 then
+    call PassiveUseAbility(u , ut , 'A049' , 'A04C' , 852226 , 19 , 60)
+    if GetUnitAbilityLevel(u, 'A03Q') > 0 and GetRandomInt(1, 100) <= 15 then
         call WanBuff(u , ut , 13)
     endif
-    if GetUnitAbilityLevel(u, $41303352) > 0 and GetRandomInt(1, 100) <= 15 then
+    if GetUnitAbilityLevel(u, 'A03R') > 0 and GetRandomInt(1, 100) <= 15 then
         call WanBuff(u , ut , 9)
     endif
-    if GetUnitAbilityLevel(u, $41303442) > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
+    if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
         set g=CreateGroup()
         call GroupEnumUnitsInRange(g, GetUnitX(u), GetUnitY(u), 1000, Condition(function IsEnemyAndAliveForAttack))
         call ForGroup(g, function QinLong)
@@ -5543,10 +5582,10 @@ function UnitAttack takes nothing returns nothing
     set t=null
 endfunction
 function initNeutralStructures takes nothing returns nothing
-    call SaveInteger(NHT, $6F303053, 0, $49303246)
-    call SaveInteger(NHT, $6F30305A, 0, $49303247)
-    call SaveInteger(NHT, $6F303130, 0, $49303248)
-    call SaveInteger(NHT, $4F303059, 0, $49303249)
+    call SaveInteger(NHT, 'o00S', 0, 'I02F')
+    call SaveInteger(NHT, 'o00Z', 0, 'I02G')
+    call SaveInteger(NHT, 'o010', 0, 'I02H')
+    call SaveInteger(NHT, 'O00Y', 0, 'I02I')
 endfunction
 function getStructItem takes integer unitId returns integer
     return LoadInteger(NHT, unitId, 0)
@@ -5580,20 +5619,20 @@ function dealRealDamage takes real damage,real smallDamage,integer abilityId,uni
         set realDamage=baseDamage * level * level
     endif
     if damage == smallDamage and level > 0 then
-        if abilityId == $4130304E and level == 4 then
+        if abilityId == 'A00N' and level == 4 then
             set realDamage=realDamage * 2.5
         endif
-        if abilityId == $4130324D then
+        if abilityId == 'A02M' then
             if level == 2 then
                 set realDamage=3000
             elseif level == 3 then
                 set realDamage=20000
             endif
         endif
-        if abilityId == $41303456 and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(u))] == 1 then
+        if abilityId == 'A04V' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(u))] == 1 then
             call WanBuff(uc , ut , 3)
         endif
-        if abilityId == $4130344F and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(u))] == 1 then
+        if abilityId == 'A04O' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(u))] == 1 then
             set realDamage=realDamage * 8
         endif
         call dealDamage(uc , ut , realDamage)
@@ -5623,52 +5662,52 @@ function UnitDamage_Conditions takes nothing returns boolean
     local location loc2= GetUnitLoc(ut)
     local real damage= GetEventDamage()
     local trigger t= null
-    if UnitHasBuffBJ(ut, $42736C6F) == false and udg_jiuyang[i] >= 1 and GetUnitTypeId(u) == $65303045 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc2, bj_UNIT_FACING)
+    if UnitHasBuffBJ(ut, 'Bslo') == false and udg_jiuyang[i] >= 1 and GetUnitTypeId(u) == 'e00E' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303339)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303339, GetUnitAbilityLevel(u, $41303250))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A039')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A039', GetUnitAbilityLevel(u, 'A02P'))
         call IssueTargetOrderById(bj_lastCreatedUnit, 852075, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 3.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
     endif
-    call dealRealDamage(damage , 1.11 , $41303032 , u , ut , 80)
-    call dealRealDamage(damage , 1.12 , $41303037 , u , ut , 1000)
-    call dealRealDamage(damage , 1.13 , $41303154 , u , ut , 6000)
-    call dealRealDamage(damage , 1.14 , $41303046 , u , ut , 800)
-    call dealRealDamage(damage , 1.15 , $41303039 , u , ut , 300)
-    call dealRealDamage(damage , 1.2 , $4130304C , u , ut , 100)
-    call dealRealDamage(damage , 1.21 , $4130304E , u , ut , 500)
-    call dealRealDamage(damage , 1.22 , $41303058 , u , ut , 250)
-    call dealRealDamage(damage , 1.3 , $41303232 , u , ut , 100)
-    call dealRealDamage(damage , 1.31 , $41303152 , u , ut , 20)
-    call dealRealDamage(damage , 1.32 , $41303152 , u , ut , 200)
-    call dealRealDamage(damage , 1.34 , $41303243 , u , ut , 200)
-    call dealRealDamage(damage , 1.34 , $41303245 , u , ut , 200)
-    call dealRealDamage(damage , 1.35 , $41303244 , u , ut , 250)
-    call dealRealDamage(damage , 1.35 , $41303245 , u , ut , 250)
-    call dealRealDamage(damage , 1.36 , $41303244 , u , ut , 1000)
-    call dealRealDamage(damage , 1.36 , $41303245 , u , ut , 1000)
-    call dealRealDamage(damage , 1.37 , $41303246 , u , ut , 5000)
-    call dealRealDamage(damage , 1.4 , $41303254 , u , ut , 1000)
-    call dealRealDamage(damage , 1.41 , $41303249 , u , ut , 500)
-    call dealRealDamage(damage , 1.43 , $41303252 , u , ut , 10000)
-    call dealRealDamage(damage , 1.44 , $4130324D , u , ut , 400)
-    call dealRealDamage(damage , 1.45 , $4130324E , u , ut , 2000)
-    call dealRealDamage(damage , 1.5 , $4130344F , u , ut , 200)
-    call dealRealDamage(damage , 1.51 , $41303450 , u , ut , 1000)
-    call dealRealDamage(damage , 1.52 , $41303457 , u , ut , 400)
-    call dealRealDamage(damage , 1.53 , $41303456 , u , ut , 6000)
-    call dealRealDamage(damage , 1.54 , $41303453 , u , ut , 2000)
-    call dealRealDamage(damage , 1.55 , $41303459 , u , ut , 6000)
-    call dealRealDamage(damage , 1.56 , $41303455 , u , ut , 4000)
-    call dealRealDamage(damage , 2. , $41303439 , u , ut , 2000)
-    if GetUnitTypeId(u) == $65303045 then
+    call dealRealDamage(damage , 1.11 , 'A002' , u , ut , 80)
+    call dealRealDamage(damage , 1.12 , 'A007' , u , ut , 1000)
+    call dealRealDamage(damage , 1.13 , 'A01T' , u , ut , 6000)
+    call dealRealDamage(damage , 1.14 , 'A00F' , u , ut , 800)
+    call dealRealDamage(damage , 1.15 , 'A009' , u , ut , 300)
+    call dealRealDamage(damage , 1.2 , 'A00L' , u , ut , 100)
+    call dealRealDamage(damage , 1.21 , 'A00N' , u , ut , 500)
+    call dealRealDamage(damage , 1.22 , 'A00X' , u , ut , 250)
+    call dealRealDamage(damage , 1.3 , 'A022' , u , ut , 100)
+    call dealRealDamage(damage , 1.31 , 'A01R' , u , ut , 20)
+    call dealRealDamage(damage , 1.32 , 'A01R' , u , ut , 200)
+    call dealRealDamage(damage , 1.34 , 'A02C' , u , ut , 200)
+    call dealRealDamage(damage , 1.34 , 'A02E' , u , ut , 200)
+    call dealRealDamage(damage , 1.35 , 'A02D' , u , ut , 250)
+    call dealRealDamage(damage , 1.35 , 'A02E' , u , ut , 250)
+    call dealRealDamage(damage , 1.36 , 'A02D' , u , ut , 1000)
+    call dealRealDamage(damage , 1.36 , 'A02E' , u , ut , 1000)
+    call dealRealDamage(damage , 1.37 , 'A02F' , u , ut , 5000)
+    call dealRealDamage(damage , 1.4 , 'A02T' , u , ut , 1000)
+    call dealRealDamage(damage , 1.41 , 'A02I' , u , ut , 500)
+    call dealRealDamage(damage , 1.43 , 'A02R' , u , ut , 10000)
+    call dealRealDamage(damage , 1.44 , 'A02M' , u , ut , 400)
+    call dealRealDamage(damage , 1.45 , 'A02N' , u , ut , 2000)
+    call dealRealDamage(damage , 1.5 , 'A04O' , u , ut , 200)
+    call dealRealDamage(damage , 1.51 , 'A04P' , u , ut , 1000)
+    call dealRealDamage(damage , 1.52 , 'A04W' , u , ut , 400)
+    call dealRealDamage(damage , 1.53 , 'A04V' , u , ut , 6000)
+    call dealRealDamage(damage , 1.54 , 'A04S' , u , ut , 2000)
+    call dealRealDamage(damage , 1.55 , 'A04Y' , u , ut , 6000)
+    call dealRealDamage(damage , 1.56 , 'A04U' , u , ut , 4000)
+    call dealRealDamage(damage , 2. , 'A049' , u , ut , 2000)
+    if GetUnitTypeId(u) == 'e00E' then
         set uc=LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
-        call dealDamage(uc , ut , 2000 * GetUnitAbilityLevel(uc, $41303251) * GetUnitAbilityLevel(uc, $41303251))
+        call dealDamage(uc , ut , 2000 * GetUnitAbilityLevel(uc, 'A02Q') * GetUnitAbilityLevel(uc, 'A02Q'))
     endif
-    if GetUnitTypeId(u) == $65303049 then
+    if GetUnitTypeId(u) == 'e00I' then
         set uc=LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
-        call dealDamage(uc , ut , 50 * GetUnitAbilityLevel(uc, $4130334C) * GetUnitAbilityLevel(uc, $4130334C))
+        call dealDamage(uc , ut , 50 * GetUnitAbilityLevel(uc, 'A03L') * GetUnitAbilityLevel(uc, 'A03L'))
     endif
     call calculateTotalDamage(u , damage)
     call RemoveLocation(loc)
@@ -5689,38 +5728,38 @@ function UnitDamage takes nothing returns nothing
     set t=null
 endfunction
 function GetTuPu takes integer id returns integer
-    if id == $49303056 then
-        return $49303155
+    if id == 'I00V' then
+        return 'I01U'
     endif
-    if id == $49303133 then
-        return $49303150
+    if id == 'I013' then
+        return 'I01P'
     endif
-    if id == $49303046 then
-        return $49303153
+    if id == 'I00F' then
+        return 'I01S'
     endif
-    if id == $4930304D then
-        return $49303151
+    if id == 'I00M' then
+        return 'I01Q'
     endif
-    if id == $49303132 then
-        return $4930314C
+    if id == 'I012' then
+        return 'I01L'
     endif
-    if id == $4930304C then
-        return $49303152
+    if id == 'I00L' then
+        return 'I01R'
     endif
-    if id == $49303055 then
-        return $4930314F
+    if id == 'I00U' then
+        return 'I01O'
     endif
-    if id == $4930304E then
-        return $4930314D
+    if id == 'I00N' then
+        return 'I01M'
     endif
-    if id == $49303043 then
-        return $4930314B
+    if id == 'I00C' then
+        return 'I01K'
     endif
-    if id == $49303052 then
-        return $4930314E
+    if id == 'I00R' then
+        return 'I01N'
     endif
-    if id == $49303057 then
-        return $49303154
+    if id == 'I00W' then
+        return 'I01T'
     endif
     return 0
 endfunction
@@ -5793,24 +5832,24 @@ function UnitDeath_Conditions takes nothing returns boolean
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)
         call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币" + I2S(wave / 9) + "个")
     endif
-    if GetUnitTypeId(ut) == $48303045 then
-        call SetPlayerTechResearched(p, $52303034, 1)
+    if GetUnitTypeId(ut) == 'H00E' then
+        call SetPlayerTechResearched(p, 'R004', 1)
         call DisplayTextToPlayer(p, 0, 0, "恭喜击杀达摩祖师,学会匹夫有责")
     endif
-    if GetUnitTypeId(ut) == $48303049 then
+    if GetUnitTypeId(ut) == 'H00I' then
         set loc=GetUnitLoc(ut)
         call CreateItemLoc(GetTuPu(random_shenqi[GetRandomInt(1, open_shenqi)]), loc)
         call RemoveLocation(loc)
     endif
-    if GetUnitTypeId(ut) == $55303055 then
+    if GetUnitTypeId(ut) == 'U00U' then
         call CreateItem(juenei[GetRandomInt(1, 4)], GetUnitX(ut), GetUnitY(ut))
     endif
-    if GetUnitTypeId(ut) == $4830304A then
+    if GetUnitTypeId(ut) == 'H00J' then
         set loc=GetUnitLoc(ut)
-        call CreateItemLoc($4930314A, loc)
+        call CreateItemLoc('I01J', loc)
         call RemoveLocation(loc)
     endif
-    if GetUnitTypeId(ut) == $55303051 or GetUnitTypeId(ut) == $55303052 or GetUnitTypeId(ut) == $55303053 or GetUnitTypeId(ut) == $55303054 then
+    if GetUnitTypeId(ut) == 'U00Q' or GetUnitTypeId(ut) == 'U00R' or GetUnitTypeId(ut) == 'U00S' or GetUnitTypeId(ut) == 'U00T' then
         set t=CreateTimer()
         call SaveReal(YDHT, GetHandleId(t), 0, GetUnitX(ut))
         call SaveReal(YDHT, GetHandleId(t), 1, GetUnitY(ut))
@@ -5831,32 +5870,32 @@ function UnitDeath takes nothing returns nothing
     set luck[2]=20
     set luck[3]=20
     set luck[4]=20
-    set normal_drops[1]=$49303034
-    set normal_drops[2]=$49303045
-    set normal_drops[3]=$49303050
-    set normal_drops[4]=$49303047
-    set normal_drops[5]=$49303058
-    set rare_drops[1]=$49303042
-    set rare_drops[2]=$49303048
-    set rare_drops[3]=$4930304F
-    set rare_drops[4]=$49303035
-    set rare_drops[5]=$49303059
-    set valuable_drops[1]=$49303041
-    set valuable_drops[2]=$49303049
-    set valuable_drops[3]=$49303036
-    set valuable_drops[4]=$49303038
-    set valuable_drops[5]=$4930305A
-    set valuable_drops[6]=$49303136
-    set ancient_drops[1]=$49303039
-    set ancient_drops[2]=$4930304A
-    set ancient_drops[3]=$49303051
-    set ancient_drops[4]=$49303053
-    set ancient_drops[5]=$49303130
-    set epic_drops[1]=$49303044
-    set epic_drops[2]=$4930304B
-    set epic_drops[3]=$49303037
-    set epic_drops[4]=$49303054
-    set epic_drops[5]=$49303131
+    set normal_drops[1]='I004'
+    set normal_drops[2]='I00E'
+    set normal_drops[3]='I00P'
+    set normal_drops[4]='I00G'
+    set normal_drops[5]='I00X'
+    set rare_drops[1]='I00B'
+    set rare_drops[2]='I00H'
+    set rare_drops[3]='I00O'
+    set rare_drops[4]='I005'
+    set rare_drops[5]='I00Y'
+    set valuable_drops[1]='I00A'
+    set valuable_drops[2]='I00I'
+    set valuable_drops[3]='I006'
+    set valuable_drops[4]='I008'
+    set valuable_drops[5]='I00Z'
+    set valuable_drops[6]='I016'
+    set ancient_drops[1]='I009'
+    set ancient_drops[2]='I00J'
+    set ancient_drops[3]='I00Q'
+    set ancient_drops[4]='I00S'
+    set ancient_drops[5]='I010'
+    set epic_drops[1]='I00D'
+    set epic_drops[2]='I00K'
+    set epic_drops[3]='I007'
+    set epic_drops[4]='I00T'
+    set epic_drops[5]='I011'
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DEATH)
     call TriggerAddCondition(t, Condition(function UnitDeath_Conditions))
     set t=null
@@ -5869,11 +5908,11 @@ function XuanTieJianFa takes nothing returns nothing
     local unit ut= GetEnumUnit()
     local location loc= GetUnitLoc(ut)
     local player p= GetOwningPlayer(u)
-    call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $41303348)
+    call UnitAddAbility(bj_lastCreatedUnit, 'A03H')
     call IssueTargetOrderById(bj_lastCreatedUnit, 852101, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     call RemoveLocation(loc)
     set u=null
     set ut=null
@@ -5888,13 +5927,13 @@ function LianHuaZhang takes nothing returns nothing
     local unit ut= GetEnumUnit()
     local location loc= GetUnitLoc(u)
     local player p= GetOwningPlayer(u)
-    call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $4130324C)
-    call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324C, GetUnitAbilityLevel(u, $4130324D))
+    call UnitAddAbility(bj_lastCreatedUnit, 'A02L')
+    call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02L', GetUnitAbilityLevel(u, 'A02M'))
     call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
     call IssueTargetOrderById(bj_lastCreatedUnit, 852487, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     call RemoveLocation(loc)
     set u=null
     set ut=null
@@ -5955,49 +5994,49 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt= 0
     local group g= null
     local integer k= 0
-    if id == $4130335A then
+    if id == 'A03Z' then
         set goldHit[i]=1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了金币暴击，下一波到来时金币奖励随机翻倍")
     endif
-    if id == $41303359 then
+    if id == 'A03Y' then
         set lumberHit[i]=1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了珍稀币暴击，下一个BOSS到来时珍稀币奖励随机翻倍")
-        call addFake(u , 600 , $41303359 , $4130344A)
+        call addFake(u , 600 , 'A03Y' , 'A04J')
     endif
-    if id == $41303432 then
+    if id == 'A042' then
         set rand=GetRandomReal(.1, .2)
         set kungfuCoeff[i]=kungfuCoeff[i] + rand
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加武学伤害，所有武学伤害增加" + R2S(rand * 100) + "%")
-        call addFake(u , 600 , $41303432 , $4130344D)
+        call addFake(u , 600 , 'A042' , 'A04M')
     endif
-    if id == $41303431 then
+    if id == 'A041' then
         set randInt=GetRandomInt(3, 7)
         call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + randInt)
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加可用人口，增加了" + I2S(randInt) + "个可用人口")
-        call addFake(u , 600 , $41303431 , $4130344B)
+        call addFake(u , 600 , 'A041' , 'A04K')
     endif
-    if id == $41303430 then
+    if id == 'A040' then
         set randInt=GetRandomInt(5, 10)
         set luck[i]=luck[i] + randInt
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了人品爆发，增加了" + I2S(randInt) + "点人品")
     endif
-    if id == $41303433 then
+    if id == 'A043' then
         if open_shenqi < SHEN_QI_NUM then
             set open_shenqi=open_shenqi + 1
             call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了开放随机神器，本局游戏额外开放神器" + GetObjectName(random_shenqi[open_shenqi]))
-            call addFake(u , 1200 , $41303433 , $4130344C)
+            call addFake(u , 1200 , 'A043' , 'A04L')
         else
             call DisplayTextToPlayer(p, 0, 0, "|CFFFF0000全部神器都已开放")
         endif
     endif
-    if id == $41303542 then
+    if id == 'A05B' then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了内力回复，所有塔的内力回满")
         set g=CreateGroup()
         call GroupEnumUnitsOfPlayer(g, p, null)
         call ForGroup(g, function setFullMana)
         call DestroyGroup(g)
     endif
-    if id == $41303030 then
+    if id == 'A000' then
         call AdjustPlayerStateBJ(GetUnitPointValue(u), p, PLAYER_STATE_RESOURCE_GOLD)
         call CreateTextTagUnitBJ("+" + I2S(GetUnitPointValue(u)), u, 0, 11, 255, 215, 0, 30)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
@@ -6006,162 +6045,162 @@ function UseAbility_Conditions takes nothing returns boolean
         call KillUnit(u)
         call RemoveUnit(u)
     endif
-    if id == $4130325A then
+    if id == 'A02Z' then
         set j=0
-        if GetUnitAbilityLevel(u, $41303039) >= 1 then
+        if GetUnitAbilityLevel(u, 'A009') >= 1 then
             set range=1800
         endif
-        if GetUnitAbilityLevel(u, $41303239) >= 1 then
-            set range=450 + 450 * GetUnitAbilityLevel(u, $41303239)
+        if GetUnitAbilityLevel(u, 'A029') >= 1 then
+            set range=450 + 450 * GetUnitAbilityLevel(u, 'A029')
         endif
-        if GetUnitAbilityLevel(u, $41303057) >= 1 then
-            set range=400 + 200 * GetUnitAbilityLevel(u, $41303057)
+        if GetUnitAbilityLevel(u, 'A00W') >= 1 then
+            set range=400 + 200 * GetUnitAbilityLevel(u, 'A00W')
         endif
-        if GetUnitAbilityLevel(u, $41303054) >= 1 then
-            set range=400 + 200 * GetUnitAbilityLevel(u, $41303054)
+        if GetUnitAbilityLevel(u, 'A00T') >= 1 then
+            set range=400 + 200 * GetUnitAbilityLevel(u, 'A00T')
         endif
-        if GetUnitAbilityLevel(u, $41303041) >= 1 then
-            set range=600 + 200 * GetUnitAbilityLevel(u, $41303041)
+        if GetUnitAbilityLevel(u, 'A00A') >= 1 then
+            set range=600 + 200 * GetUnitAbilityLevel(u, 'A00A')
         endif
         loop
             exitwhen j >= 24
             set temp_loc=PolarProjectionBJ(loc, range, 15 * j)
-            call CreateNUnitsAtLocFacingLocBJ(1, $65303046, p, temp_loc, loc)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 4.)
+            call CreateNUnitsAtLocFacingLocBJ(1, 'e00F', p, temp_loc, loc)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 4.)
             call RemoveLocation(temp_loc)
             set j=j + 1
         endloop
     endif
-    if id == $41303032 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc2, bj_UNIT_FACING)
+    if id == 'A002' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303033)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303033, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A003')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A003', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852593, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303154 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A01T' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303034)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303034, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A004')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A004', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852230, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
-    if id == $41303037 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A007' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303038)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303038, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A008')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A008', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852480, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303044 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00D' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303043)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303043, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00C')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00C', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852556)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 30.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 30.)
     endif
-    if id == $41303046 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00F' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303045)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303045, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00E')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00E', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852183)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $4130304C then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00L' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130304D)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130304D, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00M')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00M', GetUnitAbilityLevel(u, id))
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 852488, loc2)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
     endif
-    if id == $41303130 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A010' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130305A)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130305A, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00Z')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00Z', GetUnitAbilityLevel(u, id))
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 852221, loc2)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303152 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A01R' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303153)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303153, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A01S')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A01S', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852527, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $4130334C then
-        call CreateNUnitsAtLoc(1, $65303049, p, loc, bj_UNIT_FACING)
+    if id == 'A03L' then
+        call CreateNUnitsAtLoc(1, 'e00I', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303155)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303155, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A01U')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A01U', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852526)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303232 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A022' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303233)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303233, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A023')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A023', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852171, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303234 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A024' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303235)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303235, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A025')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A025', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852164)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303249 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02I' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130324A)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324A, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02J')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02J', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852096)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
     endif
-    if id == $4130324D then
+    if id == 'A02M' then
         set g=CreateGroup()
         call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsLianHuaZhang))
         call ForGroupBJ(g, function LianHuaZhang)
         call DestroyGroup(g)
     endif
-    if id == $4130324E then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02N' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130324F)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324F, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02O')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02O', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303252 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02R' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303253)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303253, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02S')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02S', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303331 then
+    if id == 'A031' then
         if IsUnitType(ut, UNIT_TYPE_HERO) == false then
             set r=GetUnitState(ut, UNIT_STATE_MAX_LIFE) * .05 * GetUnitAbilityLevel(u, id)
             if udg_jiuyang[i] >= 1 then
@@ -6179,102 +6218,102 @@ function UseAbility_Conditions takes nothing returns boolean
             call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) + 50)
         endif
     endif
-    if id == $41303332 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A032' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303333)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303333, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A033')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A033', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852556)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 30.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 30.)
     endif
-    if id == $41303457 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04W' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303533)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303533, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A053')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A053', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852127)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303456 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04V' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303535)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303535, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A055')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A055', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852580, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303459 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04Y' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303537)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303537, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A057')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A057', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852119, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303455 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04U' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303538)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303538, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A058')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A058', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852218, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303458 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc2, bj_UNIT_FACING)
+    if id == 'A04X' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303541)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5 + GetUnitAbilityLevel(u, id) * 5)
+        call UnitAddAbility(bj_lastCreatedUnit, 'A05A')
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5 + GetUnitAbilityLevel(u, id) * 5)
         call TerrainDeformationCraterBJ(15.8, false, loc2, 400., 400.)
         set k=1
         loop
             exitwhen k > 16
-            call CreateNUnitsAtLocFacingLocBJ(1, $6530304A, p, PolarProjectionBJ(loc2, 350., 22.5 * k), loc2)
-            call UnitApplyTimedLifeBJ(5 + GetUnitAbilityLevel(u, id) * 5, $42544C46, bj_lastCreatedUnit)
+            call CreateNUnitsAtLocFacingLocBJ(1, 'e00J', p, PolarProjectionBJ(loc2, 350., 22.5 * k), loc2)
+            call UnitApplyTimedLifeBJ(5 + GetUnitAbilityLevel(u, id) * 5, 'BTLF', bj_lastCreatedUnit)
             call DestroyEffect(AddSpecialEffectLocBJ(PolarProjectionBJ(loc2, 350., 22.5 * k), "Objects\\Spawnmodels\\Naga\\NagaDeath\\NagaDeath.mdl"))
             set k=k + 1
         endloop
     endif
-    if id == $41303347 then
+    if id == 'A03G' then
         set g=CreateGroup()
         call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsXuanTieJian))
         call ForGroupBJ(g, function XuanTieJianFa)
         call DestroyGroup(g)
     endif
-    if id == $41303035 then
-        call CreateNUnitsAtLoc(1, $7530304F, p, Location(- 252, 15), bj_UNIT_FACING)
+    if id == 'A005' then
+        call CreateNUnitsAtLoc(1, 'u00O', p, Location(- 252, 15), bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
         call UnitAddItemById(bj_lastCreatedUnit, GetItemTypeId(GetSpellTargetItem()))
         call UnitDropItemTarget(bj_lastCreatedUnit, UnitItemInSlotBJ(bj_lastCreatedUnit, 1), gg_unit_o00A_0019)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
         call RemoveItem(GetSpellTargetItem())
         call PlaySoundOnUnitBJ(Ih, 100, u)
         call AddSpecialEffectTargetUnitBJ("overhead", u, "Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl")
         call DestroyEffect(bj_lastCreatedEffect)
     endif
-    if id == $4130334D then
-        call SynItem(u , $49303045 , $49303042)
-        call SynItem(u , $49303042 , $49303041)
-        call SynItem(u , $49303041 , $49303039)
-        call SynItem(u , $49303039 , $49303044)
-        call SynItem(u , $49303050 , $4930304F)
-        call SynItem(u , $4930304F , $49303036)
-        call SynItem(u , $49303036 , $49303051)
-        call SynItem(u , $49303051 , $49303037)
-        call SynItem(u , $49303047 , $49303048)
-        call SynItem(u , $49303048 , $49303049)
-        call SynItem(u , $49303049 , $4930304A)
-        call SynItem(u , $4930304A , $4930304B)
-        call SynItem(u , $49303034 , $49303035)
-        call SynItem(u , $49303035 , $49303038)
-        call SynItem(u , $49303038 , $49303053)
-        call SynItem(u , $49303053 , $49303054)
-        call SynItem(u , $49303058 , $49303059)
-        call SynItem(u , $49303059 , $4930305A)
-        call SynItem(u , $4930305A , $49303130)
-        call SynItem(u , $49303130 , $49303131)
+    if id == 'A03M' then
+        call SynItem(u , 'I00E' , 'I00B')
+        call SynItem(u , 'I00B' , 'I00A')
+        call SynItem(u , 'I00A' , 'I009')
+        call SynItem(u , 'I009' , 'I00D')
+        call SynItem(u , 'I00P' , 'I00O')
+        call SynItem(u , 'I00O' , 'I006')
+        call SynItem(u , 'I006' , 'I00Q')
+        call SynItem(u , 'I00Q' , 'I007')
+        call SynItem(u , 'I00G' , 'I00H')
+        call SynItem(u , 'I00H' , 'I00I')
+        call SynItem(u , 'I00I' , 'I00J')
+        call SynItem(u , 'I00J' , 'I00K')
+        call SynItem(u , 'I004' , 'I005')
+        call SynItem(u , 'I005' , 'I008')
+        call SynItem(u , 'I008' , 'I00S')
+        call SynItem(u , 'I00S' , 'I00T')
+        call SynItem(u , 'I00X' , 'I00Y')
+        call SynItem(u , 'I00Y' , 'I00Z')
+        call SynItem(u , 'I00Z' , 'I010')
+        call SynItem(u , 'I010' , 'I011')
     endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
@@ -6320,8 +6359,8 @@ function LearnKungfu takes unit u,item it returns nothing
         return
     endif
     call UnitAddAbility(u, abilityId)
-    if abilityId == $41303350 then
-        call UnitAddAbility(u, $41303353)
+    if abilityId == 'A03P' then
+        call UnitAddAbility(u, 'A03S')
     endif
     call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFF99CC00恭喜" + GetUnitName(u) + "学会" + GetObjectName(abilityId))
 endfunction
@@ -6332,41 +6371,41 @@ function UseItem_Conditions takes nothing returns boolean
     local integer j= 1 + GetPlayerId(GetOwningPlayer(u))
     local integer tw= getTowerInstance(u)
     local integer id= 0
-    if GetItemTypeId(it) == $49303142 then
-        if GetUnitAbilityLevel(s__Tower_u[tw], $41303131) >= 6 then
-            call UnitAddItemById(u, $49303142)
+    if GetItemTypeId(it) == 'I01B' then
+        if GetUnitAbilityLevel(s__Tower_u[tw], 'A011') >= 6 then
+            call UnitAddItemById(u, 'I01B')
             call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "物品栏已满")
         else
-            call s__Tower_setItemNum(tw , GetUnitAbilityLevel(s__Tower_u[tw], $41303131) + 1)
+            call s__Tower_setItemNum(tw , GetUnitAbilityLevel(s__Tower_u[tw], 'A011') + 1)
             call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "增加一个物品栏")
         endif
     endif
-    if GetItemTypeId(it) == $49303242 then
+    if GetItemTypeId(it) == 'I02B' then
         call UnitAddItemById(u, low_towers[GetRandomInt(1, low_size)])
     endif
-    if GetItemTypeId(it) == $49303243 then
+    if GetItemTypeId(it) == 'I02C' then
         call UnitAddItemById(u, normal_towers[GetRandomInt(1, normal_size)])
     endif
-    if GetItemTypeId(it) == $49303244 then
+    if GetItemTypeId(it) == 'I02D' then
         call UnitAddItemById(u, fine_towers[GetRandomInt(1, fine_size)])
     endif
-    if GetItemTypeId(it) == $49303245 then
+    if GetItemTypeId(it) == 'I02E' then
         call UnitAddItemById(u, perfect_towers[GetRandomInt(1, perfect_size)])
     endif
-    if GetItemTypeId(it) == $4930324C then
+    if GetItemTypeId(it) == 'I02L' then
         if GetRandomInt(1, 100) <= 10 then
-            set id=$49303245
+            set id='I02E'
         elseif GetRandomInt(1, 90) <= 20 then
-            set id=$49303244
+            set id='I02D'
         elseif GetRandomInt(1, 70) <= 30 then
-            set id=$49303243
+            set id='I02C'
         else
-            set id=$49303242
+            set id='I02B'
         endif
         call UnitAddItemById(u, id)
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff9933恭喜鉴定成功，获得|r" + GetObjectName(id))
     endif
-    if GetItemTypeId(it) == $49303134 then
+    if GetItemTypeId(it) == 'I014' then
         call SaveUnitHandle(YDHT, GetHandleId(wugong_practice[j]), j, u)
         set i=0
         loop
@@ -6380,7 +6419,7 @@ function UseItem_Conditions takes nothing returns boolean
         set practice_wugong[11 + 20 * j]=DialogAddButtonBJ(wugong_practice[j], "取消")
         call DialogDisplay(GetOwningPlayer(u), wugong_practice[j], true)
     endif
-    if GetItemTypeId(it) == $49303232 or GetItemTypeId(it) == $49303233 or GetItemTypeId(it) == $49303234 or GetItemTypeId(it) == $49303235 then
+    if GetItemTypeId(it) == 'I022' or GetItemTypeId(it) == 'I023' or GetItemTypeId(it) == 'I024' or GetItemTypeId(it) == 'I025' then
         call LearnKungfu(u , it)
     endif
     set u=null
@@ -6405,7 +6444,7 @@ function Dialog_Actions takes nothing returns nothing
     endloop
     if bt == practice_wugong[11 + 20 * j] then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "已取消")
-        call UnitAddItemById(u, $49303134)
+        call UnitAddItemById(u, 'I014')
     endif
     call DialogClear(wugong_practice[j])
     set u=null
@@ -6414,10 +6453,10 @@ endfunction
 function UseItem takes nothing returns nothing
     local trigger t= CreateTrigger()
     local integer i= 0
-    set low_towers[1]=$49303246
-    set normal_towers[1]=$49303247
-    set fine_towers[1]=$49303248
-    set perfect_towers[1]=$49303249
+    set low_towers[1]='I02F'
+    set normal_towers[1]='I02G'
+    set fine_towers[1]='I02H'
+    set perfect_towers[1]='I02I'
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_USE_ITEM)
     call TriggerAddCondition(t, Condition(function UseItem_Conditions))
     set t=CreateTrigger()
@@ -6823,21 +6862,21 @@ function TestA76_naji takes nothing returns nothing
             loop
                 exitwhen FirstOfGroup(g_naji) == null
                 if IsUnitType(FirstOfGroup(g_naji), UNIT_TYPE_DEAD) == false and FirstOfGroup(g_naji) != GetSpellTargetUnit() and b_naji == IsUnitEnemy(FirstOfGroup(g_naji), GetTriggerPlayer()) then
-                    set u_naji=CreateUnit(GetTriggerPlayer(), $6E76756C, GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit()) , GetUnitX(FirstOfGroup(g_naji)) , GetUnitY(FirstOfGroup(g_naji))))
-                    call UnitAddAbility(u_naji, $416C6F63)
-                    call UnitAddAbility(u_naji, $4162756E)
-                    call UnitAddAbility(u_naji, $4149626D)
-                    call UnitAddAbility(u_naji, $4149326D)
-                    call UnitAddAbility(u_naji, $41496D62)
-                    call UnitAddAbility(u_naji, $41496D7A)
-                    call UnitAddAbility(u_naji, $41496D76)
-                    call UnitRemoveAbility(u_naji, $4177616E)
-                    if UnitAddAbility(u_naji, $41726176) then
-                        call UnitRemoveAbility(u_naji, $41726176)
+                    set u_naji=CreateUnit(GetTriggerPlayer(), 'nvul', GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit()) , GetUnitX(FirstOfGroup(g_naji)) , GetUnitY(FirstOfGroup(g_naji))))
+                    call UnitAddAbility(u_naji, 'Aloc')
+                    call UnitAddAbility(u_naji, 'Abun')
+                    call UnitAddAbility(u_naji, 'AIbm')
+                    call UnitAddAbility(u_naji, 'AI2m')
+                    call UnitAddAbility(u_naji, 'AImb')
+                    call UnitAddAbility(u_naji, 'AImz')
+                    call UnitAddAbility(u_naji, 'AImv')
+                    call UnitRemoveAbility(u_naji, 'Awan')
+                    if UnitAddAbility(u_naji, 'Arav') then
+                        call UnitRemoveAbility(u_naji, 'Arav')
                     endif
                     call SetUnitState(u_naji, UNIT_STATE_MANA, GetUnitState(u_naji, UNIT_STATE_MAX_MANA))
                     call ShowUnit(u_naji, false)
-                    call UnitApplyTimedLife(u_naji, $42544C46, 10)
+                    call UnitApplyTimedLife(u_naji, 'BTLF', 10)
                     call SetUnitUseFood(u_naji, false)
                     call SetUnitPathing(u_naji, false)
                     call h__SetUnitMoveSpeed(u_naji , 522)
@@ -6857,21 +6896,21 @@ function TestA76_naji takes nothing returns nothing
             set r_naji=0
             loop
                 exitwhen r_naji >= 2
-                set u_naji=CreateUnit(GetTriggerPlayer(), $6E76756C, GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit()) , GetLocationX(p_naji) , GetLocationY(p_naji)) - 30 + 60 * r_naji)
-                call UnitAddAbility(u_naji, $416C6F63)
-                call UnitAddAbility(u_naji, $4162756E)
-                call UnitAddAbility(u_naji, $4149626D)
-                call UnitAddAbility(u_naji, $4149326D)
-                call UnitAddAbility(u_naji, $41496D62)
-                call UnitAddAbility(u_naji, $41496D7A)
-                call UnitAddAbility(u_naji, $41496D76)
-                call UnitRemoveAbility(u_naji, $4177616E)
-                if UnitAddAbility(u_naji, $41726176) then
-                    call UnitRemoveAbility(u_naji, $41726176)
+                set u_naji=CreateUnit(GetTriggerPlayer(), 'nvul', GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit()) , GetLocationX(p_naji) , GetLocationY(p_naji)) - 30 + 60 * r_naji)
+                call UnitAddAbility(u_naji, 'Aloc')
+                call UnitAddAbility(u_naji, 'Abun')
+                call UnitAddAbility(u_naji, 'AIbm')
+                call UnitAddAbility(u_naji, 'AI2m')
+                call UnitAddAbility(u_naji, 'AImb')
+                call UnitAddAbility(u_naji, 'AImz')
+                call UnitAddAbility(u_naji, 'AImv')
+                call UnitRemoveAbility(u_naji, 'Awan')
+                if UnitAddAbility(u_naji, 'Arav') then
+                    call UnitRemoveAbility(u_naji, 'Arav')
                 endif
                 call SetUnitState(u_naji, UNIT_STATE_MANA, GetUnitState(u_naji, UNIT_STATE_MAX_MANA))
                 call ShowUnit(u_naji, false)
-                call UnitApplyTimedLife(u_naji, $42544C46, 10)
+                call UnitApplyTimedLife(u_naji, 'BTLF', 10)
                 call SetUnitUseFood(u_naji, false)
                 call SetUnitPathing(u_naji, false)
                 call h__SetUnitMoveSpeed(u_naji , 522)
@@ -7576,8 +7615,8 @@ function TestA42_naji takes nothing returns nothing
             set u_naji=FirstOfGroup(g_naji)
             exitwhen u_naji == null
             call GroupRemoveUnit(g_naji, u_naji)
-            if UnitAddAbility(u_naji, $41726176) then
-                call UnitRemoveAbility(u_naji, $41726176)
+            if UnitAddAbility(u_naji, 'Arav') then
+                call UnitRemoveAbility(u_naji, 'Arav')
             endif
             call SetUnitFlyHeight(u_naji, r_naji, 0)
         endloop
@@ -7845,7 +7884,7 @@ function TestA29_naji takes nothing returns nothing
     endif
 endfunction
 function TestA28_naji takes nothing returns nothing
-    if GetUnitAbilityLevel(GetTriggerUnit(), $416C6F63) == 0 then
+    if GetUnitAbilityLevel(GetTriggerUnit(), 'Aloc') == 0 then
         call TriggerRegisterUnitEvent(Ttest_naji[0], GetTriggerUnit(), EVENT_UNIT_DAMAGED)
     endif
 endfunction
@@ -8569,7 +8608,7 @@ function TestA4_naji takes nothing returns nothing
                         set u_naji=FirstOfGroup(g_naji)
                         exitwhen u_naji == null
                         call GroupRemoveUnit(g_naji, u_naji)
-                        if GetUnitAbilityLevel(u_naji, $416C6F63) == 0 then
+                        if GetUnitAbilityLevel(u_naji, 'Aloc') == 0 then
                             call TriggerRegisterUnitEvent(Ttest_naji[0], u_naji, EVENT_UNIT_DAMAGED)
                         endif
                     endloop
@@ -8990,55 +9029,56 @@ endfunction
 function CreateBuildingsForPlayer0 takes nothing returns nothing
     local player p= Player(0)
     local unit u
-    set u=CreateUnit(p, $6F30304E, - 1280., 1152., 270.)
+    set u=CreateUnit(p, 'o00N', - 1280., 1152., 270.)
 endfunction
 function CreateUnitsForPlayer0 takes nothing returns nothing
     local player p= Player(0)
-    set gg_unit_e00H_0022=CreateUnit(p, $65303048, - 257.1, - 103.8, 99.12)
+    set gg_unit_e00H_0022=CreateUnit(p, 'e00H', - 257.1, - 103.8, 99.12)
 endfunction
 function CreateBuildingsForPlayer1 takes nothing returns nothing
     local player p= Player(1)
     local unit u
-    set u=CreateUnit(p, $6F30304E, 1216., 1152., 270.)
+    set u=CreateUnit(p, 'o00N', 1216., 1152., 270.)
 endfunction
 function CreateUnitsForPlayer1 takes nothing returns nothing
     local player p= Player(1)
-    set gg_unit_e00H_0023=CreateUnit(p, $65303048, - 130., - 21.6, 234.84)
+    set gg_unit_e00H_0023=CreateUnit(p, 'e00H', - 130., - 21.6, 234.84)
 endfunction
 function CreateBuildingsForPlayer2 takes nothing returns nothing
     local player p= Player(2)
     local unit u
-    set u=CreateUnit(p, $6F30304E, 1216., - 1152., 270.)
+    set u=CreateUnit(p, 'o00N', 1216., - 1152., 270.)
 endfunction
 function CreateUnitsForPlayer2 takes nothing returns nothing
     local player p= Player(2)
-    set gg_unit_e00H_0024=CreateUnit(p, $65303048, - 234.3, 79.3, 122.183)
+    set gg_unit_e00H_0024=CreateUnit(p, 'e00H', - 234.3, 79.3, 122.183)
 endfunction
 function CreateBuildingsForPlayer3 takes nothing returns nothing
     local player p= Player(3)
     local unit u
-    set u=CreateUnit(p, $6F30304E, - 1152., - 1152., 270.)
+    set u=CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
 endfunction
 function CreateUnitsForPlayer3 takes nothing returns nothing
     local player p= Player(3)
-    set gg_unit_e00H_0025=CreateUnit(p, $65303048, - 351.1, - 46.2, 28.994)
+    set gg_unit_e00H_0025=CreateUnit(p, 'e00H', - 351.1, - 46.2, 28.994)
 endfunction
 function CreateNeutralPassiveBuildings takes nothing returns nothing
     local player p= Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
-    set u=CreateUnit(p, $6F303045, - 640., 256., 270.)
-    set u=CreateUnit(p, $6F303051, 128., 0., 270.)
-    set u=CreateUnit(p, $6F30304C, - 576., - 320., 270.)
-    set u=CreateUnit(p, $6F303046, - 320., 256., 270.)
-    set u=CreateUnit(p, $6F303048, 256., 256., 270.)
-    set u=CreateUnit(p, $6F30304D, - 320., - 320., 270.)
-    set u=CreateUnit(p, $6F303047, 576., 256., 270.)
-    set u=CreateUnit(p, $6F303049, 0., 256., 270.)
-    set u=CreateUnit(p, $6F30304B, - 64., - 320., 270.)
-    set gg_unit_o00A_0019=CreateUnit(p, $6F303041, - 256., 0., 270.)
-    set u=CreateUnit(p, $6F303050, 512., - 320., 270.)
-    set u=CreateUnit(p, $6F30304A, 192., - 320., 270.)
-    set u=CreateUnit(p, $6F303131, 512., 0., 270.)
+    set u=CreateUnit(p, 'o00E', - 640., 256., 270.)
+    set u=CreateUnit(p, 'o00Q', 128., 0., 270.)
+    set u=CreateUnit(p, 'o00L', - 576., - 320., 270.)
+    set u=CreateUnit(p, 'o00F', - 320., 256., 270.)
+    set u=CreateUnit(p, 'o00H', 256., 256., 270.)
+    set u=CreateUnit(p, 'o00M', - 320., - 320., 270.)
+    set u=CreateUnit(p, 'o00G', 576., 256., 270.)
+    set u=CreateUnit(p, 'o00I', 0., 256., 270.)
+    set u=CreateUnit(p, 'o00K', - 64., - 320., 270.)
+    set gg_unit_o00A_0019=CreateUnit(p, 'o00A', - 256., 0., 270.)
+    set u=CreateUnit(p, 'o00P', 512., - 320., 270.)
+    set u=CreateUnit(p, 'o00J', 192., - 320., 270.)
+    call AddSpecialEffectTarget("jueshineigong.mdx", u, "overhead")
+    set u=CreateUnit(p, 'o011', 512., 0., 270.)
 endfunction
 function CreatePlayerBuildings takes nothing returns nothing
     call CreateBuildingsForPlayer0()
@@ -9060,7 +9100,7 @@ endfunction
 function CreateRegions takes nothing returns nothing
     local weathereffect we
     set gg_rct_circle=Rect(- 4512., - 4384., 4448., 4192.)
-    set we=AddWeatherEffect(gg_rct_circle, $52416C72)
+    set we=AddWeatherEffect(gg_rct_circle, 'RAlr')
     call EnableWeatherEffect(we, true)
     set gg_rct______________001=Rect(- 3904., 3712., - 3744., 3904.)
     set gg_rct______________002=Rect(- 64., 3744., 64., 3904.)
@@ -9188,7 +9228,7 @@ function InitServerValues takes nothing returns nothing
     endloop
 endfunction
 function IsBuilder takes integer id returns boolean
-    return id == $75303043 or id == $75303044 or id == $75303045 or id == $75303046 or id == $75303057
+    return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
 endfunction
 function GetItemNum takes unit u returns integer
     local integer i= 1
@@ -9283,18 +9323,18 @@ function Trig_MapInitActions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call ShowUnitShow(gg_unit_o00A_0019)
-        call SetPlayerTechMaxAllowedSwap($48303034, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30314F, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30314E, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($4F303033, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E303032, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E303130, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($48303030, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30315A, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($4E303047, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($48303137, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($68303135, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6830305A, 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H004', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01O', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01N', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('O003', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n002', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n010', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H000', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01Z', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('N00G', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H017', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
         set bj_forLoopAIndex=bj_forLoopAIndex + 1
     endloop
 endfunction
@@ -9304,11 +9344,11 @@ function InitTrig_MapInit takes nothing returns nothing
 endfunction
 function Trig_OneSecondActions takes nothing returns nothing
     local integer i= 0
-    call AddWeatherEffectSaveLast(GetEntireMapRect(), $4C526D61)
+    call AddWeatherEffectSaveLast(GetEntireMapRect(), 'LRma')
     call SetCameraTargetController(gg_unit_o00A_0019, 0, 0, false)
     call InitServerValues()
     call ServerSavePointsWhenEnterGame()
-    call YDWENewItemsFormula($63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $63686573 , 0 , $627A6265)
+    call YDWENewItemsFormula('ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'bzbe')
     set udg_ShengYuGuaiShu=udg_ShengYuGuaiShu + 25
     loop
         exitwhen i >= 4
@@ -9334,7 +9374,7 @@ function Trig_ChooseNanDuFunc013T takes nothing returns nothing
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始可用人口为|cFF00CC0075|r")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty=1
-        call SetPlayerTechResearchedSwap($52303030, 1, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 1, Player(5))
         set bj_forLoopAIndex=1
         set bj_forLoopAIndexEnd=4
         loop
@@ -9361,7 +9401,7 @@ function Trig_ChooseNanDuActions takes nothing returns nothing
     set udg_diff[4]=DialogAddButton(udg_select_diff, "|cFF0041FF炉火纯青", 68)
     set udg_diff[5]=DialogAddButton(udg_select_diff, "|cFF1FBF00华山论剑", 69)
     set udg_diff[6]=DialogAddButton(udg_select_diff, "|cFFFF0000决战江湖", 70)
-    set udg_diff[7]=DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
+    // set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
     call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8), udg_select_diff, true)
     set ydl_timer=CreateTimer()
     call SavePlayerHandle(YDLOC, GetHandleId(ydl_timer), $32A9E4C8, LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8))
@@ -9383,7 +9423,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00CC0075|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty=1
-        call SetPlayerTechResearchedSwap($52303030, 1, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 1, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[2] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试")
@@ -9392,7 +9432,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFCC006670|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFCC00662|r")
         set udg_difficulty=2
-        call SetPlayerTechResearchedSwap($52303030, 3, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 3, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[3] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600登堂入室")
@@ -9401,7 +9441,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF660065|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF66003|r")
         set udg_difficulty=3
-        call SetPlayerTechResearchedSwap($52303030, 5, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 5, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[4] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF炉火纯青")
@@ -9410,7 +9450,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF0041FF760|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF0041FF4|r")
         set udg_difficulty=4
-        call SetPlayerTechResearchedSwap($52303030, 7, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 7, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[5] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00华山论剑")
@@ -9419,7 +9459,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF1FBF0055|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF1FBF005|r")
         set udg_difficulty=5
-        call SetPlayerTechResearchedSwap($52303030, 9, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 9, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[6] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000决战江湖")
@@ -9428,7 +9468,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF00006|r")
         set udg_difficulty=6
-        call SetPlayerTechResearchedSwap($52303030, 11, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 11, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[7] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了度|cFF00FF00生存模式")
@@ -9439,7 +9479,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "生存模式强度较高，建议先积累一些积分再尝试|r")
         set udg_difficulty=7
         set gameMode=1
-        call SetPlayerTechResearchedSwap($52303030, 13, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 13, Player(5))
     endif
     loop
         exitwhen i > 4
@@ -9478,7 +9518,7 @@ function InitTrig_PlayerLeave takes nothing returns nothing
     call TriggerAddAction(gg_trg_PlayerLeave, function Trig_PlayerLeaveActions)
 endfunction
 function Trig_KillFinalBossConditions takes nothing returns boolean
-    return GetUnitTypeId(GetTriggerUnit()) == $55303042
+    return GetUnitTypeId(GetTriggerUnit()) == 'U00B'
 endfunction
 function Trig_KillFinalBossActions takes nothing returns nothing
     set udg_kill_final_num=udg_kill_final_num + 1
@@ -9551,7 +9591,7 @@ function InitTrig____________________002 takes nothing returns nothing
     call TriggerAddAction(gg_trg____________________002, function Trig____________________002Actions)
 endfunction
 function Trig_FirstOccurActions takes nothing returns nothing
-    if YDWEUnitHasItemOfTypeBJNull(GetTriggerUnit() , $49303055) then
+    if YDWEUnitHasItemOfTypeBJNull(GetTriggerUnit() , 'I00U') then
         call YDWEPolledWaitNull(5)
     endif
 endfunction
@@ -9579,11 +9619,11 @@ function CreateF9 takes nothing returns nothing
     call CreateQuestBJ(0, "|cFFFF00CC神器系统", "在游戏中共有11种神器，每局随机开放3种，可以在NPC干将处查询本局开放神器和神器合成公式", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 endfunction
 function InitMenPaiWuPin takes nothing returns nothing
-    call AddItemToStockBJ($49303030, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303031, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303032, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303033, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($4930324B, gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I000', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I001', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I002', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I003', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I02K', gg_unit_o00A_0019, 1, 1)
 endfunction
 function RandomShenQi takes nothing returns nothing
     local integer i= 0
@@ -9606,10 +9646,10 @@ function RandomShenQi takes nothing returns nothing
     endloop
 endfunction
 function initKungfus takes nothing returns nothing
-    call SaveInteger(YDHT, $49303232, 65244, $41303350)
-    call SaveInteger(YDHT, $49303233, 65244, $41303352)
-    call SaveInteger(YDHT, $49303234, 65244, $41303351)
-    call SaveInteger(YDHT, $49303235, 65244, $4130334E)
+    call SaveInteger(YDHT, 'I022', 65244, 'A03P')
+    call SaveInteger(YDHT, 'I023', 65244, 'A03R')
+    call SaveInteger(YDHT, 'I024', 65244, 'A03Q')
+    call SaveInteger(YDHT, 'I025', 65244, 'A03N')
 endfunction
 function InitPriv takes nothing returns nothing
     local integer i= 1
@@ -9634,21 +9674,21 @@ function MapInit_Conditions takes nothing returns boolean
 endfunction
 function MapInit takes nothing returns nothing
     local trigger t= CreateTrigger()
-    set shenqi[1]=$49303056
-    set shenqi[2]=$49303133
-    set shenqi[3]=$49303046
-    set shenqi[4]=$4930304D
-    set shenqi[5]=$49303132
-    set shenqi[6]=$4930304C
-    set shenqi[7]=$49303055
-    set shenqi[8]=$4930304E
-    set shenqi[9]=$49303043
-    set shenqi[10]=$49303052
-    set shenqi[11]=$49303057
-    set juenei[1]=$49303232
-    set juenei[2]=$49303233
-    set juenei[3]=$49303234
-    set juenei[4]=$49303235
+    set shenqi[1]='I00V'
+    set shenqi[2]='I013'
+    set shenqi[3]='I00F'
+    set shenqi[4]='I00M'
+    set shenqi[5]='I012'
+    set shenqi[6]='I00L'
+    set shenqi[7]='I00U'
+    set shenqi[8]='I00N'
+    set shenqi[9]='I00C'
+    set shenqi[10]='I00R'
+    set shenqi[11]='I00W'
+    set juenei[1]='I022'
+    set juenei[2]='I023'
+    set juenei[3]='I024'
+    set juenei[4]='I025'
     call InitMenPaiWuPin()
     call RandomShenQi()
     call CreateF9()
@@ -9660,11 +9700,11 @@ endfunction
 function EnterMap_Conditions takes nothing returns boolean
     local unit u= GetEnteringUnit()
     local player p= GetOwningPlayer(u)
-    if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != $6E303150 and GetUnitAbilityLevel(u, $416C6F63) <= 0 then
+    if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != 'n01P' and GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         set tower[tower_num + 1]=s__Tower_create(u , GetItemNum(u))
         set tower_num=tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
-            call UnitAddItemById(u, $4930324C)
+            call UnitAddItemById(u, 'I02L')
         endif
     endif
     set u=null
@@ -9898,13 +9938,13 @@ function main takes nothing returns nothing
     call SetMapMusic("Music", true, 0)
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs2313125")
+call ExecuteFunc("jasshelper__initstructs1475427765")
 call ExecuteFunc("FrameLibrary__init")
-call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
+call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
-call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
-call ExecuteFunc("YDWEStringFormula___Init")
-call ExecuteFunc("YDWETimerSystem___Init")
+call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
+call ExecuteFunc("YDWEStringFormula__Init")
+call ExecuteFunc("YDWETimerSystem__Init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -9937,10 +9977,10 @@ endfunction
 //===========================================================================
 //===========================================================================   
 //===========================================================================
-//修改生命
-//===========================================================================
-//===========================================================================
 //ϵͳ-TimerSystem
+//===========================================================================
+//===========================================================================
+//修改生命
 //===========================================================================
 
 
@@ -9955,19 +9995,19 @@ local integer this=f__arg_this
             set s__Frame_id[this]=0
    return true
 endfunction
-function sa__YDWEStringFormula___Sorting_onDestroy takes nothing returns boolean
+function sa__YDWEStringFormula__Sorting_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
    return true
 endfunction
-function sa__YDWEStringFormula___Inventory_onDestroy takes nothing returns boolean
+function sa__YDWEStringFormula__Inventory_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
    return true
@@ -9985,14 +10025,14 @@ local integer this=f__arg_this
                     call SetUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i), LoadInteger(YDHT, tower_id * 3, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i, LoadInteger(YDHT, tower_id * 2, i))
                     call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i, LoadInteger(YDHT, tower_id * 3, i))
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303052 then
-                        call UnitRemoveAbility(s__Tower_u[this], $41303051)
-                        call UnitAddAbility(s__Tower_u[this], $41303051)
-                        call SetPlayerAbilityAvailableBJ(false, $41303051, GetOwningPlayer(s__Tower_u[this]))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $4130304F, LoadInteger(YDHT, tower_id * 3, i))
-                        call SetUnitAbilityLevel(s__Tower_u[this], $41303050, LoadInteger(YDHT, tower_id * 3, i))
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A00R' then
+                        call UnitRemoveAbility(s__Tower_u[this], 'A00Q')
+                        call UnitAddAbility(s__Tower_u[this], 'A00Q')
+                        call SetPlayerAbilityAvailableBJ(false, 'A00Q', GetOwningPlayer(s__Tower_u[this]))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00O', LoadInteger(YDHT, tower_id * 3, i))
+                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00P', LoadInteger(YDHT, tower_id * 3, i))
                     endif
-                    if LoadInteger(YDHT, tower_id * 2, i) == $41303039 then
+                    if LoadInteger(YDHT, tower_id * 2, i) == 'A009' then
                         call PauseUnit(s__Tower_u[this], true)
                         call PauseUnit(s__Tower_u[this], false)
                     endif
@@ -10006,14 +10046,14 @@ function sa___prototype4_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs2313125 takes nothing returns nothing
+function jasshelper__initstructs1475427765 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
-    set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()
-    call TriggerAddCondition(st__YDWEStringFormula___Sorting_onDestroy,Condition( function sa__YDWEStringFormula___Sorting_onDestroy))
-    set st__YDWEStringFormula___Inventory_onDestroy[4]=CreateTrigger()
-    set st__YDWEStringFormula___Inventory_onDestroy[5]=st__YDWEStringFormula___Inventory_onDestroy[4]
-    call TriggerAddCondition(st__YDWEStringFormula___Inventory_onDestroy[4],Condition( function sa__YDWEStringFormula___Inventory_onDestroy))
+    set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()
+    call TriggerAddCondition(st__YDWEStringFormula__Sorting_onDestroy,Condition( function sa__YDWEStringFormula__Sorting_onDestroy))
+    set st__YDWEStringFormula__Inventory_onDestroy[4]=CreateTrigger()
+    set st__YDWEStringFormula__Inventory_onDestroy[5]=st__YDWEStringFormula__Inventory_onDestroy[4]
+    call TriggerAddCondition(st__YDWEStringFormula__Inventory_onDestroy[4],Condition( function sa__YDWEStringFormula__Inventory_onDestroy))
     set st__Tower_setAbility=CreateTrigger()
     call TriggerAddCondition(st__Tower_setAbility,Condition( function sa__Tower_setAbility))
     set st___prototype4[1]=CreateTrigger()
@@ -10031,7 +10071,7 @@ call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 
-    call ExecuteFunc("s__YDWEStringFormula___ItemIdMatrix_onInit")
-    call ExecuteFunc("s__YDWEStringFormula___FormulaMatrix_onInit")
+    call ExecuteFunc("s__YDWEStringFormula__ItemIdMatrix_onInit")
+    call ExecuteFunc("s__YDWEStringFormula__FormulaMatrix_onInit")
 endfunction
 

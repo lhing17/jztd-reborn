@@ -233,56 +233,56 @@ endfunction
 function CreateBuildingsForPlayer0 takes nothing returns nothing
     local player p = Player(0)
     local unit u
-    set u = CreateUnit(p, $6F30304E, - 1280., 1152., 270.)
+    set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
 endfunction
 function CreateUnitsForPlayer0 takes nothing returns nothing
     local player p = Player(0)
-    set gg_unit_e00H_0022 = CreateUnit(p, $65303048, - 257.1, - 103.8, 99.12)
+    set gg_unit_e00H_0022 = CreateUnit(p, 'e00H', - 257.1, - 103.8, 99.12)
 endfunction
 function CreateBuildingsForPlayer1 takes nothing returns nothing
     local player p = Player(1)
     local unit u
-    set u = CreateUnit(p, $6F30304E, 1216., 1152., 270.)
+    set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
 endfunction
 function CreateUnitsForPlayer1 takes nothing returns nothing
     local player p = Player(1)
-    set gg_unit_e00H_0023 = CreateUnit(p, $65303048, - 130., - 21.6, 234.84)
+    set gg_unit_e00H_0023 = CreateUnit(p, 'e00H', - 130., - 21.6, 234.84)
 endfunction
 function CreateBuildingsForPlayer2 takes nothing returns nothing
     local player p = Player(2)
     local unit u
-    set u = CreateUnit(p, $6F30304E, 1216., - 1152., 270.)
+    set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
 endfunction
 function CreateUnitsForPlayer2 takes nothing returns nothing
     local player p = Player(2)
-    set gg_unit_e00H_0024 = CreateUnit(p, $65303048, - 234.3, 79.3, 122.183)
+    set gg_unit_e00H_0024 = CreateUnit(p, 'e00H', - 234.3, 79.3, 122.183)
 endfunction
 function CreateBuildingsForPlayer3 takes nothing returns nothing
     local player p = Player(3)
     local unit u
-    set u = CreateUnit(p, $6F30304E, - 1152., - 1152., 270.)
+    set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
 endfunction
 function CreateUnitsForPlayer3 takes nothing returns nothing
     local player p = Player(3)
-    set gg_unit_e00H_0025 = CreateUnit(p, $65303048, - 351.1, - 46.2, 28.994)
+    set gg_unit_e00H_0025 = CreateUnit(p, 'e00H', - 351.1, - 46.2, 28.994)
 endfunction
 function CreateNeutralPassiveBuildings takes nothing returns nothing
     local player p = Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
-    set u = CreateUnit(p, $6F303045, - 640., 256., 270.)
-    set u = CreateUnit(p, $6F303051, 128., 0., 270.)
-    set u = CreateUnit(p, $6F30304C, - 576., - 320., 270.)
-    set u = CreateUnit(p, $6F303046, - 320., 256., 270.)
-    set u = CreateUnit(p, $6F303048, 256., 256., 270.)
-    set u = CreateUnit(p, $6F30304D, - 320., - 320., 270.)
-    set u = CreateUnit(p, $6F303047, 576., 256., 270.)
-    set u = CreateUnit(p, $6F303049, 0., 256., 270.)
-    set u = CreateUnit(p, $6F30304B, - 64., - 320., 270.)
-    set gg_unit_o00A_0019 = CreateUnit(p, $6F303041, - 256., 0., 270.)
-    set u = CreateUnit(p, $6F303050, 512., - 320., 270.)
-    set u = CreateUnit(p, $6F30304A, 192., - 320., 270.)
+    set u = CreateUnit(p, 'o00E', - 640., 256., 270.)
+    set u = CreateUnit(p, 'o00Q', 128., 0., 270.)
+    set u = CreateUnit(p, 'o00L', - 576., - 320., 270.)
+    set u = CreateUnit(p, 'o00F', - 320., 256., 270.)
+    set u = CreateUnit(p, 'o00H', 256., 256., 270.)
+    set u = CreateUnit(p, 'o00M', - 320., - 320., 270.)
+    set u = CreateUnit(p, 'o00G', 576., 256., 270.)
+    set u = CreateUnit(p, 'o00I', 0., 256., 270.)
+    set u = CreateUnit(p, 'o00K', - 64., - 320., 270.)
+    set gg_unit_o00A_0019 = CreateUnit(p, 'o00A', - 256., 0., 270.)
+    set u = CreateUnit(p, 'o00P', 512., - 320., 270.)
+    set u = CreateUnit(p, 'o00J', 192., - 320., 270.)
     call AddSpecialEffectTarget("jueshineigong.mdx", u, "overhead")
-    set u = CreateUnit(p, $6F303131, 512., 0., 270.)
+    set u = CreateUnit(p, 'o011', 512., 0., 270.)
 endfunction
 function CreatePlayerBuildings takes nothing returns nothing
     call CreateBuildingsForPlayer0()
@@ -304,7 +304,7 @@ endfunction
 function CreateRegions takes nothing returns nothing
     local weathereffect we
     set gg_rct_circle = Rect(- 4512., - 4384., 4448., 4192.)
-    set we = AddWeatherEffect(gg_rct_circle, $52416C72)
+    set we = AddWeatherEffect(gg_rct_circle, 'RAlr')
     call EnableWeatherEffect(we, true)
     set gg_rct______________001 = Rect(- 3904., 3712., - 3744., 3904.)
     set gg_rct______________002 = Rect(- 64., 3744., 64., 3904.)
@@ -446,7 +446,7 @@ endfunction
 
 
 function IsBuilder takes integer id returns boolean
-    return id == $75303043 or id == $75303044 or id == $75303045 or id == $75303046 or id == $75303057
+    return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
 endfunction
 function GetItemNum takes unit u returns integer
     local integer i = 1
@@ -551,18 +551,18 @@ function Trig_MapInitActions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call ShowUnitShow(gg_unit_o00A_0019)
-        call SetPlayerTechMaxAllowedSwap($48303034, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30314F, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30314E, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($4F303033, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E303032, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E303130, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($48303030, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6E30315A, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($4E303047, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($48303137, 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($68303135, 2, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap($6830305A, 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H004', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01O', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01N', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('O003', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n002', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n010', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H000', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01Z', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('N00G', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H017', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
@@ -572,11 +572,11 @@ function InitTrig_MapInit takes nothing returns nothing
 endfunction
 function Trig_OneSecondActions takes nothing returns nothing
     local integer i = 0
-    call AddWeatherEffectSaveLast(GetEntireMapRect(), $4C526D61)
+    call AddWeatherEffectSaveLast(GetEntireMapRect(), 'LRma')
     call SetCameraTargetController(gg_unit_o00A_0019, 0, 0, false)
     call InitServerValues()
     call ServerSavePointsWhenEnterGame()
-    call YDWENewItemsFormula($63686573, 0, $63686573, 0, $63686573, 0, $63686573, 0, $63686573, 0, $63686573, 0, $627A6265)
+    call YDWENewItemsFormula('ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'bzbe')
     set udg_ShengYuGuaiShu = udg_ShengYuGuaiShu + 25
     loop
         exitwhen i >= 4
@@ -602,7 +602,7 @@ function Trig_ChooseNanDuFunc013T takes nothing returns nothing
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始可用人口为|cFF00CC0075|r")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
-        call SetPlayerTechResearchedSwap($52303030, 1, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 1, Player(5))
         set bj_forLoopAIndex = 1
         set bj_forLoopAIndexEnd = 4
         loop
@@ -651,7 +651,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00CC0075|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
-        call SetPlayerTechResearchedSwap($52303030, 1, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 1, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[2] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试")
@@ -660,7 +660,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFCC006670|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFCC00662|r")
         set udg_difficulty = 2
-        call SetPlayerTechResearchedSwap($52303030, 3, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 3, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[3] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600登堂入室")
@@ -669,7 +669,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF660065|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF66003|r")
         set udg_difficulty = 3
-        call SetPlayerTechResearchedSwap($52303030, 5, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 5, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[4] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF炉火纯青")
@@ -678,7 +678,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF0041FF760|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF0041FF4|r")
         set udg_difficulty = 4
-        call SetPlayerTechResearchedSwap($52303030, 7, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 7, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[5] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00华山论剑")
@@ -687,7 +687,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF1FBF0055|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF1FBF005|r")
         set udg_difficulty = 5
-        call SetPlayerTechResearchedSwap($52303030, 9, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 9, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[6] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000决战江湖")
@@ -696,7 +696,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF00006|r")
         set udg_difficulty = 6
-        call SetPlayerTechResearchedSwap($52303030, 11, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 11, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[7] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了度|cFF00FF00生存模式")
@@ -707,7 +707,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "生存模式强度较高，建议先积累一些积分再尝试|r")
         set udg_difficulty = 7
         set gameMode = 1
-        call SetPlayerTechResearchedSwap($52303030, 13, Player(5))
+        call SetPlayerTechResearchedSwap('R000', 13, Player(5))
     endif
     loop
         exitwhen i > 4
@@ -746,7 +746,7 @@ function InitTrig_PlayerLeave takes nothing returns nothing
     call TriggerAddAction(gg_trg_PlayerLeave, function Trig_PlayerLeaveActions)
 endfunction
 function Trig_KillFinalBossConditions takes nothing returns boolean
-    return GetUnitTypeId(GetTriggerUnit()) == $55303042
+    return GetUnitTypeId(GetTriggerUnit()) == 'U00B'
 endfunction
 function Trig_KillFinalBossActions takes nothing returns nothing
     set udg_kill_final_num = udg_kill_final_num + 1
@@ -819,7 +819,7 @@ function InitTrig____________________002 takes nothing returns nothing
     call TriggerAddAction(gg_trg____________________002, function Trig____________________002Actions)
 endfunction
 function Trig_FirstOccurActions takes nothing returns nothing
-    if YDWEUnitHasItemOfTypeBJNull(GetTriggerUnit(), $49303055) then
+    if YDWEUnitHasItemOfTypeBJNull(GetTriggerUnit(), 'I00U') then
         call YDWEPolledWaitNull(5)
     endif
 endfunction
@@ -848,11 +848,11 @@ function CreateF9 takes nothing returns nothing
     call CreateQuestBJ(0, "|cFFFF00CC神器系统", "在游戏中共有11种神器，每局随机开放3种，可以在NPC干将处查询本局开放神器和神器合成公式", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 endfunction
 function InitMenPaiWuPin takes nothing returns nothing
-    call AddItemToStockBJ($49303030, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303031, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303032, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($49303033, gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ($4930324B, gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I000', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I001', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I002', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I003', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I02K', gg_unit_o00A_0019, 1, 1)
 endfunction
 function RandomShenQi takes nothing returns nothing
     local integer i = 0
@@ -875,10 +875,10 @@ function RandomShenQi takes nothing returns nothing
     endloop
 endfunction
 function initKungfus takes nothing returns nothing
-    call SaveInteger(YDHT, $49303232, 65244, $41303350)
-    call SaveInteger(YDHT, $49303233, 65244, $41303352)
-    call SaveInteger(YDHT, $49303234, 65244, $41303351)
-    call SaveInteger(YDHT, $49303235, 65244, $4130334E)
+    call SaveInteger(YDHT, 'I022', 65244, 'A03P')
+    call SaveInteger(YDHT, 'I023', 65244, 'A03R')
+    call SaveInteger(YDHT, 'I024', 65244, 'A03Q')
+    call SaveInteger(YDHT, 'I025', 65244, 'A03N')
 endfunction
 
 function InitPriv takes nothing returns nothing
@@ -906,21 +906,21 @@ endfunction
 
 function MapInit takes nothing returns nothing
     local trigger t = CreateTrigger()
-    set shenqi[1] = $49303056
-    set shenqi[2] = $49303133
-    set shenqi[3] = $49303046
-    set shenqi[4] = $4930304D
-    set shenqi[5] = $49303132
-    set shenqi[6] = $4930304C
-    set shenqi[7] = $49303055
-    set shenqi[8] = $4930304E
-    set shenqi[9] = $49303043
-    set shenqi[10] = $49303052
-    set shenqi[11] = $49303057
-    set juenei[1] = $49303232
-    set juenei[2] = $49303233
-    set juenei[3] = $49303234
-    set juenei[4] = $49303235
+    set shenqi[1] = 'I00V'
+    set shenqi[2] = 'I013'
+    set shenqi[3] = 'I00F'
+    set shenqi[4] = 'I00M'
+    set shenqi[5] = 'I012'
+    set shenqi[6] = 'I00L'
+    set shenqi[7] = 'I00U'
+    set shenqi[8] = 'I00N'
+    set shenqi[9] = 'I00C'
+    set shenqi[10] = 'I00R'
+    set shenqi[11] = 'I00W'
+    set juenei[1] = 'I022'
+    set juenei[2] = 'I023'
+    set juenei[3] = 'I024'
+    set juenei[4] = 'I025'
     call InitMenPaiWuPin()
     call RandomShenQi()
     call CreateF9()
@@ -933,11 +933,11 @@ endfunction
 function EnterMap_Conditions takes nothing returns boolean
     local unit u = GetEnteringUnit()
     local player p = GetOwningPlayer(u)
-    if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != $6E303150 and GetUnitAbilityLevel(u, $416C6F63) <= 0 then
+    if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != 'n01P' and GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         set tower[tower_num + 1] = s__Tower_create(u, GetItemNum(u))
         set tower_num = tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
-            call UnitAddItemById(u, $4930324C)
+            call UnitAddItemById(u, 'I02L')
         endif
     endif
     set u = null

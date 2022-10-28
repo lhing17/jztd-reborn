@@ -67,72 +67,72 @@ function ServerSavePointsEveryTenWave takes nothing returns nothing
 endfunction
 
 function initMobsAndBosses takes nothing returns nothing
-    set mob[1] = $68303035
-    set mob[2] = $75303030
-    set mob[3] = $68303036
-    set mob[4] = $65303032
-    set mob[5] = $6F303034
-    set mob[6] = $75303031
-    set mob[7] = $6E303048
-    set mob[8] = $68303037
-    set mob[9] = $7A303030
-    set mob[10] = $7A303031
-    set mob[11] = $75303032
-    set mob[12] = $6F303035
-    set mob[13] = $6E303254
-    set mob[14] = $65303033
-    set mob[15] = $6E30304A
-    set mob[16] = $75303033
-    set mob[17] = $65303034
-    set mob[18] = $65303035
-    set mob[19] = $75303034
-    set mob[20] = $6E30304B
-    set mob[21] = $65303036
-    set mob[22] = $75303035
-    set mob[23] = $68303038
-    set mob[24] = $68303039
-    set mob[25] = $6E30304C
-    set mob[26] = $6E30304D
-    set mob[27] = $6E30304E
-    set mob[28] = $6E30304F
-    set mob[29] = $6E303050
-    set mob[30] = $6E303051
-    set mob[31] = $75303036
-    set mob[32] = $6F303038
-    set mob[33] = $68303041
-    set mob[34] = $65303037
-    set mob[35] = $6E303053
-    set mob[36] = $75303037
-    set mob[37] = $6F303039
-    set mob[38] = $6E303054
-    set mob[39] = $6E303055
-    set mob[40] = $6E303056
-    set mob[41] = $6E303057
-    set mob[42] = $75303039
-    set mob[43] = $65303038
-    set mob[44] = $75303041
-    set mob[45] = $6E303058
-    set mob[46] = $6E303255
-    set mob[47] = $6E303256
-    set mob[48] = $6E303257
-    set mob[49] = $6E303258
-    set mob[50] = $6E303259
-    set mob[51] = $6E30325A
-    set mob[52] = $6E303330
-    set mob[53] = $6E303331
-    set mob[54] = $6E303332
-    set mob[55] = $6E303333
-    set boss[1] = $4E303049
-    set boss[2] = $4F303037
-    set boss[3] = $4E303052
-    set boss[4] = $55303038
-    set boss[5] = $55303050
-    set boss[6] = $55303042
-    set survive_mob[1] = $6830304D
-    set survive_mob[2] = $6830304C
-    set survive_mob[3] = $6830304B
-    set survive_mob[4] = $6830304E
-    set survive_boss[1] = $4E303334
+    set mob[1] = 'h005'
+    set mob[2] = 'u000'
+    set mob[3] = 'h006'
+    set mob[4] = 'e002'
+    set mob[5] = 'o004'
+    set mob[6] = 'u001'
+    set mob[7] = 'n00H'
+    set mob[8] = 'h007'
+    set mob[9] = 'z000'
+    set mob[10] = 'z001'
+    set mob[11] = 'u002'
+    set mob[12] = 'o005'
+    set mob[13] = 'n02T'
+    set mob[14] = 'e003'
+    set mob[15] = 'n00J'
+    set mob[16] = 'u003'
+    set mob[17] = 'e004'
+    set mob[18] = 'e005'
+    set mob[19] = 'u004'
+    set mob[20] = 'n00K'
+    set mob[21] = 'e006'
+    set mob[22] = 'u005'
+    set mob[23] = 'h008'
+    set mob[24] = 'h009'
+    set mob[25] = 'n00L'
+    set mob[26] = 'n00M'
+    set mob[27] = 'n00N'
+    set mob[28] = 'n00O'
+    set mob[29] = 'n00P'
+    set mob[30] = 'n00Q'
+    set mob[31] = 'u006'
+    set mob[32] = 'o008'
+    set mob[33] = 'h00A'
+    set mob[34] = 'e007'
+    set mob[35] = 'n00S'
+    set mob[36] = 'u007'
+    set mob[37] = 'o009'
+    set mob[38] = 'n00T'
+    set mob[39] = 'n00U'
+    set mob[40] = 'n00V'
+    set mob[41] = 'n00W'
+    set mob[42] = 'u009'
+    set mob[43] = 'e008'
+    set mob[44] = 'u00A'
+    set mob[45] = 'n00X'
+    set mob[46] = 'n02U'
+    set mob[47] = 'n02V'
+    set mob[48] = 'n02W'
+    set mob[49] = 'n02X'
+    set mob[50] = 'n02Y'
+    set mob[51] = 'n02Z'
+    set mob[52] = 'n030'
+    set mob[53] = 'n031'
+    set mob[54] = 'n032'
+    set mob[55] = 'n033'
+    set boss[1] = 'N00I'
+    set boss[2] = 'O007'
+    set boss[3] = 'N00R'
+    set boss[4] = 'U008'
+    set boss[5] = 'U00P'
+    set boss[6] = 'U00B'
+    set survive_mob[1] = 'h00M'
+    set survive_mob[2] = 'h00L'
+    set survive_mob[3] = 'h00K'
+    set survive_mob[4] = 'h00N'
+    set survive_boss[1] = 'N034'
 endfunction
 
 function doSpawnFinalBoss takes nothing returns nothing
@@ -150,7 +150,7 @@ function doSpawnFinalBoss takes nothing returns nothing
     loop
         exitwhen i > 3
         if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING and gameMode == 0 then
-            call CreateNUnitsAtLoc(1, $55303042, Player(5), loc[i], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, 'U00B', Player(5), loc[i], bj_UNIT_FACING)
             call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[i])
             call RemoveLocation(target[i])
@@ -208,7 +208,7 @@ function spawn takes nothing returns nothing
                 elseif gameMode == 1 then
                     call CreateNUnitsAtLoc(1, survive_boss[1], Player(5), loc[i], bj_UNIT_FACING)
                     set life = 30 * R2I(7.6591 * wave * wave * wave - 108.55 * wave * wave + 798.28 * wave - 518.31)
-                    call LifeChange(bj_lastCreatedUnit, 2, life, $41303434)
+                    call LifeChange(bj_lastCreatedUnit, 2, life, 'A044')
                     call h__SetUnitMoveSpeed(bj_lastCreatedUnit, RMinBJ(300 + 5 * wave, 522))
                     call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit, 2, 2, 10 + wave)
                 endif
@@ -271,7 +271,7 @@ function doSpawn takes nothing returns nothing
             elseif gameMode == 1 then
                 call CreateNUnitsAtLoc(1, survive_mob[ModuloInteger(wave - 1, 4) + 1], Player(5), loc[i], bj_UNIT_FACING)
                 set life = R2I(7.6591 * wave * wave * wave - 108.55 * wave * wave + 798.28 * wave - 518.31)
-                call LifeChange(bj_lastCreatedUnit, 2, life, $41303434)
+                call LifeChange(bj_lastCreatedUnit, 2, life, 'A044')
                 call h__SetUnitMoveSpeed(bj_lastCreatedUnit, RMinBJ(300 + 5 * wave, 522))
                 call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit, 2, 2, 10 + wave)
             endif

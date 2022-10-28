@@ -1,8 +1,8 @@
 function initNeutralStructures takes nothing returns nothing
-    call SaveInteger(NHT, $6F303053, 0, $49303246)
-    call SaveInteger(NHT, $6F30305A, 0, $49303247)
-    call SaveInteger(NHT, $6F303130, 0, $49303248)
-    call SaveInteger(NHT, $4F303059, 0, $49303249)
+    call SaveInteger(NHT, 'o00S', 0, 'I02F')
+    call SaveInteger(NHT, 'o00Z', 0, 'I02G')
+    call SaveInteger(NHT, 'o010', 0, 'I02H')
+    call SaveInteger(NHT, 'O00Y', 0, 'I02I')
 endfunction
 function getStructItem takes integer unitId returns integer
     return LoadInteger(NHT, unitId, 0)

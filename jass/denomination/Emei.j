@@ -9,21 +9,21 @@ function EMeiXinFa takes nothing returns nothing
             call IssuePointOrder(u, "attack", LoadReal(YDHT, GetHandleId(u), 61440), LoadReal(YDHT, GetHandleId(u), 61441))
         endif
     endif
-    if UnitHasBuffBJ(u, $42303034) then
+    if UnitHasBuffBJ(u, 'B004') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .02 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .02)
         else
             call SetWidgetLife(u, 1.)
         endif
     endif
-    if UnitHasBuffBJ(u, $42457368) then
+    if UnitHasBuffBJ(u, 'BEsh') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .001 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .001)
         else
             call SetWidgetLife(u, 1.)
         endif
     endif
-    if UnitHasBuffBJ(u, $42303133) then
+    if UnitHasBuffBJ(u, 'B013') then
         if GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .01 >= 1 then
             call SetWidgetLife(u, GetWidgetLife(u) - GetUnitState(u, UNIT_STATE_MAX_LIFE) * .01)
         else

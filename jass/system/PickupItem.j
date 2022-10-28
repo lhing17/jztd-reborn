@@ -5,74 +5,74 @@ function SaveMaxLevel_1 takes integer spell_id, integer max_level returns nothin
     call SaveInteger(YDHT, spell_id * 3, 0, max_level)
 endfunction
 function SaveMaxLevel takes nothing returns nothing
-    call SaveInteger(YDHT, $41303058 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303237 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303056 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303052 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304E * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304B * 3, 0, 3)
-    call SaveInteger(YDHT, $41303057 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303239 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303246 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303156 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303244 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303243 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303245 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303334 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303256 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324B * 3, 0, 5)
-    call SaveInteger(YDHT, $41303251 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303254 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303259 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303042 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303041 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303031 * 3, 0, 5)
-    call SaveInteger(YDHT, $41303337 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303054 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304A * 3, 0, 3)
-    call SaveInteger(YDHT, $41303048 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130304C * 3, 0, 3)
-    call SaveInteger(YDHT, $41303049 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303130 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303151 * 3, 0, 6)
-    call SaveInteger(YDHT, $41303152 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303236 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303234 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303248 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130334C * 3, 0, 3)
-    call SaveInteger(YDHT, $41303232 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303331 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303332 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324D * 3, 0, 3)
-    call SaveInteger(YDHT, $4130324E * 3, 0, 4)
-    call SaveInteger(YDHT, $41303249 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303252 * 3, 0, 4)
-    call SaveInteger(YDHT, $41303046 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303032 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303154 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303039 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303037 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303044 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303036 * 3, 0, 1)
-    call SaveInteger(YDHT, $41303530 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130344F * 3, 0, 3)
-    call SaveInteger(YDHT, $41303450 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303457 * 3, 0, 3)
-    call SaveInteger(YDHT, $4130344E * 3, 0, 10)
-    call SaveInteger(YDHT, $41303458 * 3, 0, 7)
-    call SaveInteger(YDHT, $41303455 * 3, 0, 4)
-    call SaveInteger(YDHT, $41303453 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303456 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303451 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303454 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303459 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303534 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303438 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303439 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303442 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303437 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303441 * 3, 0, 3)
-    call SaveInteger(YDHT, $41303435 * 3, 0, 6)
+    call SaveInteger(YDHT, 'A00X' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A027' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00R' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00N' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00K' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00W' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A029' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02F' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02D' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02C' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02E' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A034' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02K' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A02Q' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02Y' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00B' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00A' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A001' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A037' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00J' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00H' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00L' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00I' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A010' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01Q' * 3, 0, 6)
+    call SaveInteger(YDHT, 'A01R' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A026' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A024' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02H' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A03L' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A022' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A031' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A032' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02M' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02N' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A02I' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A02R' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A00F' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A002' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A01T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A009' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A007' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A00D' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A006' * 3, 0, 1)
+    call SaveInteger(YDHT, 'A050' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04O' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04P' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04W' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04N' * 3, 0, 10)
+    call SaveInteger(YDHT, 'A04X' * 3, 0, 7)
+    call SaveInteger(YDHT, 'A04U' * 3, 0, 4)
+    call SaveInteger(YDHT, 'A04S' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04V' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04Q' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04T' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04Y' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A054' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A048' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A049' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04B' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A047' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A04A' * 3, 0, 3)
+    call SaveInteger(YDHT, 'A045' * 3, 0, 6)
 endfunction
 
 
@@ -114,7 +114,7 @@ endfunction
 
 function GoldLumberExChange takes integer player_i, integer item_id, unit u returns nothing
     local player p = Player(player_i - 1)
-    if item_id == $49303143 then
+    if item_id == 'I01C' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) >= 4000 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
@@ -123,7 +123,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933黄金不足|r")
         endif
     endif
-    if item_id == $49303144 then
+    if item_id == 'I01D' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) >= 1 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) - 1)
@@ -132,7 +132,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933珍稀币不足|r")
         endif
     endif
-    if item_id == $49303238 then
+    if item_id == 'I028' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) >= 40000 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 10)
@@ -141,7 +141,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933黄金不足|r")
         endif
     endif
-    if item_id == $49303237 then
+    if item_id == 'I027' then
         if GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) >= 10 then
             call PlaySoundOnUnitBJ(Ih, 100, u)
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) - 10)
@@ -150,10 +150,10 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933珍稀币不足|r")
         endif
     endif
-    if item_id == $49303159 then
+    if item_id == 'I01Y' then
         call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 2)
     endif
-    if item_id == $4930315A then
+    if item_id == 'I01Z' then
         if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) or udg_isTest[player_i] then
             if remake_present[player_i] != 1 then
                 set remake_present[player_i] = 1
@@ -168,7 +168,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未购买重制版WAR3|r")
         endif
     endif
-    if item_id == $49303230 then
+    if item_id == 'I020' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2lumber[player_i] != 1 then
                 set point2lumber[player_i] = 1
@@ -182,7 +182,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $49303231 then
+    if item_id == 'I021' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2gold[player_i] != 1 then
                 set point2gold[player_i] = 1
@@ -196,7 +196,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $4930324D then
+    if item_id == 'I02M' then
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00可用人口+5，扣除5积分")
@@ -205,7 +205,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 5, "|CFFFE890D不好意思你的积分不够了哦，或者已经或者已经达到本局使用上限50！")
         endif
     endif
-    if item_id == $49303239 then
+    if item_id == 'I029' then
         if middle_gold_flag[player_i] == 1 then
             if middle_gold[player_i] != 1 then
                 if wave >= 15 then
@@ -222,7 +222,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未解锁中型金币包|r")
         endif
     endif
-    if item_id == $49303241 then
+    if item_id == 'I02A' then
         if middle_lumber_flag[player_i] == 1 then
             if middle_lumber[player_i] != 1 then
                 if wave >= 15 then
@@ -247,7 +247,7 @@ function CheckHolyWeapon takes integer player_i, integer item_id returns nothing
     local player p = Player(player_i - 1)
     local string s = ""
     local integer i = 1
-    if item_id == $49303157 then
+    if item_id == 'I01W' then
         loop
             exitwhen i > open_shenqi
             set s = s + GetObjectName(random_shenqi[i]) + "\n"
@@ -257,17 +257,17 @@ function CheckHolyWeapon takes integer player_i, integer item_id returns nothing
     endif
 endfunction
 function SynHolyWeapon takes integer player_i, integer item_id returns nothing
-    call YDWENewItemsFormula($49303044, 1, $49303136, 1, $4930314C, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303132)
-    call YDWENewItemsFormula($49303044, 1, $49303136, 1, $4930314B, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303043)
-    call YDWENewItemsFormula($49303037, 1, $49303136, 1, $4930314D, 1, $63686573, 0, $63686573, 0, $63686573, 0, $4930304E)
-    call YDWENewItemsFormula($49303037, 1, $49303136, 1, $4930314E, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303052)
-    call YDWENewItemsFormula($4930304B, 1, $49303136, 1, $49303152, 1, $63686573, 0, $63686573, 0, $63686573, 0, $4930304C)
-    call YDWENewItemsFormula($4930304B, 1, $49303136, 1, $49303151, 1, $63686573, 0, $63686573, 0, $63686573, 0, $4930304D)
-    call YDWENewItemsFormula($49303131, 1, $49303136, 1, $4930314F, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303055)
-    call YDWENewItemsFormula($49303131, 1, $49303136, 1, $49303150, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303133)
-    call YDWENewItemsFormula($49303054, 1, $49303136, 1, $49303155, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303056)
-    call YDWENewItemsFormula($49303054, 1, $49303136, 1, $49303153, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303046)
-    call YDWENewItemsFormula($49303054, 1, $49303136, 1, $49303154, 1, $63686573, 0, $63686573, 0, $63686573, 0, $49303057)
+    call YDWENewItemsFormula('I00D', 1, 'I016', 1, 'I01L', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I012')
+    call YDWENewItemsFormula('I00D', 1, 'I016', 1, 'I01K', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00C')
+    call YDWENewItemsFormula('I007', 1, 'I016', 1, 'I01M', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00N')
+    call YDWENewItemsFormula('I007', 1, 'I016', 1, 'I01N', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00R')
+    call YDWENewItemsFormula('I00K', 1, 'I016', 1, 'I01R', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00L')
+    call YDWENewItemsFormula('I00K', 1, 'I016', 1, 'I01Q', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00M')
+    call YDWENewItemsFormula('I011', 1, 'I016', 1, 'I01O', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00U')
+    call YDWENewItemsFormula('I011', 1, 'I016', 1, 'I01P', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I013')
+    call YDWENewItemsFormula('I00T', 1, 'I016', 1, 'I01U', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00V')
+    call YDWENewItemsFormula('I00T', 1, 'I016', 1, 'I01S', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00F')
+    call YDWENewItemsFormula('I00T', 1, 'I016', 1, 'I01T', 1, 'ches', 0, 'ches', 0, 'ches', 0, 'I00W')
 endfunction
 
 function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_id returns nothing
@@ -277,9 +277,9 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
             if udg_jiuyang[player_i] == 0 then
                 set udg_jiuyang[player_i] = 1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阳神功|r")
-                call SaveInteger(YDHT, $41303244 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303243 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303245 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02D' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02C' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -288,16 +288,16 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
             if udg_jiuyin[player_i] == 0 then
                 set udg_jiuyin[player_i] = 1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阴真经|r")
-                call SaveInteger(YDHT, $41303046 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303039 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303052 * 3, 0, 4)
-                call SaveInteger(YDHT, $4130304E * 3, 0, 4)
-                call SaveInteger(YDHT, $41303236 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303234 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303334 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303337 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303457 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303451 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00F' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A009' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00R' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00N' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A026' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A024' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A034' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A037' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A04W' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -322,11 +322,11 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
             if udg_huagong[player_i] == 0 then
                 set udg_huagong[player_i] = 1
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习化功大法|r")
-                call SaveInteger(YDHT, $41303041 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303058 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303237 * 3, 0, 4)
-                call SaveInteger(YDHT, $41303252 * 3, 0, 5)
-                call SaveInteger(YDHT, $41303454 * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00A' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A00X' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A027' * 3, 0, 4)
+                call SaveInteger(YDHT, 'A02R' * 3, 0, 5)
+                call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -379,33 +379,33 @@ function InitMenPai takes nothing returns nothing
     set menpai_name[3] = "〓峨眉派〓"
     set menpai_name[4] = "〓丐帮〓"
     set menpai_name[5] = "〓全真教〓"
-    set menpai_item_id[1] = $49303030
-    set menpai_item_id[2] = $49303031
-    set menpai_item_id[3] = $49303032
-    set menpai_item_id[4] = $49303033
-    set menpai_item_id[5] = $4930324B
-    set menpai_builder_id[1] = $75303043
-    set menpai_builder_id[2] = $75303044
-    set menpai_builder_id[3] = $75303045
-    set menpai_builder_id[4] = $75303046
-    set menpai_builder_id[5] = $75303057
-    set jianghu_item_id[1] = $49303135
-    set jianghu_item_id[2] = $49303137
-    set jianghu_item_id[3] = $49303138
-    set jianghu_item_id[4] = $49303139
-    set jianghu_item_id[5] = $49303141
-    set challenge_item_id[1] = $49303146
-    set challenge_item_id[2] = $49303147
-    set challenge_item_id[3] = $49303148
-    set challenge_item_id[4] = $49303236
-    set challenge_item_id[5] = $49303145
-    set challenge_item_id[6] = $49303149
-    set challenge_id[1] = $48303045
-    set challenge_id[2] = $48303049
-    set challenge_id[3] = $4830304A
-    set challenge_id[4] = $55303055
-    set challenge_id[5] = $48303044
-    set challenge_id[6] = $48303032
+    set menpai_item_id[1] = 'I000'
+    set menpai_item_id[2] = 'I001'
+    set menpai_item_id[3] = 'I002'
+    set menpai_item_id[4] = 'I003'
+    set menpai_item_id[5] = 'I02K'
+    set menpai_builder_id[1] = 'u00C'
+    set menpai_builder_id[2] = 'u00D'
+    set menpai_builder_id[3] = 'u00E'
+    set menpai_builder_id[4] = 'u00F'
+    set menpai_builder_id[5] = 'u00W'
+    set jianghu_item_id[1] = 'I015'
+    set jianghu_item_id[2] = 'I017'
+    set jianghu_item_id[3] = 'I018'
+    set jianghu_item_id[4] = 'I019'
+    set jianghu_item_id[5] = 'I01A'
+    set challenge_item_id[1] = 'I01F'
+    set challenge_item_id[2] = 'I01G'
+    set challenge_item_id[3] = 'I01H'
+    set challenge_item_id[4] = 'I026'
+    set challenge_item_id[5] = 'I01E'
+    set challenge_item_id[6] = 'I01I'
+    set challenge_id[1] = 'H00E'
+    set challenge_id[2] = 'H00I'
+    set challenge_id[3] = 'H00J'
+    set challenge_id[4] = 'U00U'
+    set challenge_id[5] = 'H00D'
+    set challenge_id[6] = 'H002'
 endfunction
 
 function InitSavePlayerName takes nothing returns nothing
@@ -445,16 +445,16 @@ function PickupItem_Conditions takes nothing returns boolean
     call JoinMenPai(i, 3, GetItemTypeId(it))
     call JoinMenPai(i, 4, GetItemTypeId(it))
     call JoinMenPai(i, 5, GetItemTypeId(it))
-    if GetItemTypeId(it) == $4930324A then
+    if GetItemTypeId(it) == 'I02J' then
         set rand = GetRandomReal(0, 100)
         if rand < RMinBJ(15, 10 + luck[i] * .025) then
-            set award = $49303245
+            set award = 'I02E'
         elseif rand < RMinBJ(45, 30 + luck[i] * .075) then
-            set award = $49303244
+            set award = 'I02D'
         elseif rand < RMinBJ(90, 60 + luck[i] * .175) then
-            set award = $49303243
+            set award = 'I02C'
         else
-            set award = $49303242
+            set award = 'I02B'
         endif
         call UnitAddItemById(u, award)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))

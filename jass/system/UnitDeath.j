@@ -1,36 +1,36 @@
 function GetTuPu takes integer id returns integer
-    if id == $49303056 then
-        return $49303155
+    if id == 'I00V' then
+        return 'I01U'
     endif
-    if id == $49303133 then
-        return $49303150
+    if id == 'I013' then
+        return 'I01P'
     endif
-    if id == $49303046 then
-        return $49303153
+    if id == 'I00F' then
+        return 'I01S'
     endif
-    if id == $4930304D then
-        return $49303151
+    if id == 'I00M' then
+        return 'I01Q'
     endif
-    if id == $49303132 then
-        return $4930314C
+    if id == 'I012' then
+        return 'I01L'
     endif
-    if id == $4930304C then
-        return $49303152
+    if id == 'I00L' then
+        return 'I01R'
     endif
-    if id == $49303055 then
-        return $4930314F
+    if id == 'I00U' then
+        return 'I01O'
     endif
-    if id == $4930304E then
-        return $4930314D
+    if id == 'I00N' then
+        return 'I01M'
     endif
-    if id == $49303043 then
-        return $4930314B
+    if id == 'I00C' then
+        return 'I01K'
     endif
-    if id == $49303052 then
-        return $4930314E
+    if id == 'I00R' then
+        return 'I01N'
     endif
-    if id == $49303057 then
-        return $49303154
+    if id == 'I00W' then
+        return 'I01T'
     endif
     return 0
 endfunction
@@ -103,24 +103,24 @@ function UnitDeath_Conditions takes nothing returns boolean
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)
         call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币" + I2S(wave / 9) + "个")
     endif
-    if GetUnitTypeId(ut) == $48303045 then
-        call SetPlayerTechResearched(p, $52303034, 1)
+    if GetUnitTypeId(ut) == 'H00E' then
+        call SetPlayerTechResearched(p, 'R004', 1)
         call DisplayTextToPlayer(p, 0, 0, "恭喜击杀达摩祖师,学会匹夫有责")
     endif
-    if GetUnitTypeId(ut) == $48303049 then
+    if GetUnitTypeId(ut) == 'H00I' then
         set loc = GetUnitLoc(ut)
         call CreateItemLoc(GetTuPu(random_shenqi[GetRandomInt(1, open_shenqi)]), loc)
         call RemoveLocation(loc)
     endif
-    if GetUnitTypeId(ut) == $55303055 then
+    if GetUnitTypeId(ut) == 'U00U' then
         call CreateItem(juenei[GetRandomInt(1, 4)], GetUnitX(ut), GetUnitY(ut))
     endif
-    if GetUnitTypeId(ut) == $4830304A then
+    if GetUnitTypeId(ut) == 'H00J' then
         set loc = GetUnitLoc(ut)
-        call CreateItemLoc($4930314A, loc)
+        call CreateItemLoc('I01J', loc)
         call RemoveLocation(loc)
     endif
-    if GetUnitTypeId(ut) == $55303051 or GetUnitTypeId(ut) == $55303052 or GetUnitTypeId(ut) == $55303053 or GetUnitTypeId(ut) == $55303054 then
+    if GetUnitTypeId(ut) == 'U00Q' or GetUnitTypeId(ut) == 'U00R' or GetUnitTypeId(ut) == 'U00S' or GetUnitTypeId(ut) == 'U00T' then
         set t = CreateTimer()
         call SaveReal(YDHT, GetHandleId(t), 0, GetUnitX(ut))
         call SaveReal(YDHT, GetHandleId(t), 1, GetUnitY(ut))
@@ -141,32 +141,32 @@ function UnitDeath takes nothing returns nothing
     set luck[2] = 20
     set luck[3] = 20
     set luck[4] = 20
-    set normal_drops[1] = $49303034
-    set normal_drops[2] = $49303045
-    set normal_drops[3] = $49303050
-    set normal_drops[4] = $49303047
-    set normal_drops[5] = $49303058
-    set rare_drops[1] = $49303042
-    set rare_drops[2] = $49303048
-    set rare_drops[3] = $4930304F
-    set rare_drops[4] = $49303035
-    set rare_drops[5] = $49303059
-    set valuable_drops[1] = $49303041
-    set valuable_drops[2] = $49303049
-    set valuable_drops[3] = $49303036
-    set valuable_drops[4] = $49303038
-    set valuable_drops[5] = $4930305A
-    set valuable_drops[6] = $49303136
-    set ancient_drops[1] = $49303039
-    set ancient_drops[2] = $4930304A
-    set ancient_drops[3] = $49303051
-    set ancient_drops[4] = $49303053
-    set ancient_drops[5] = $49303130
-    set epic_drops[1] = $49303044
-    set epic_drops[2] = $4930304B
-    set epic_drops[3] = $49303037
-    set epic_drops[4] = $49303054
-    set epic_drops[5] = $49303131
+    set normal_drops[1] = 'I004'
+    set normal_drops[2] = 'I00E'
+    set normal_drops[3] = 'I00P'
+    set normal_drops[4] = 'I00G'
+    set normal_drops[5] = 'I00X'
+    set rare_drops[1] = 'I00B'
+    set rare_drops[2] = 'I00H'
+    set rare_drops[3] = 'I00O'
+    set rare_drops[4] = 'I005'
+    set rare_drops[5] = 'I00Y'
+    set valuable_drops[1] = 'I00A'
+    set valuable_drops[2] = 'I00I'
+    set valuable_drops[3] = 'I006'
+    set valuable_drops[4] = 'I008'
+    set valuable_drops[5] = 'I00Z'
+    set valuable_drops[6] = 'I016'
+    set ancient_drops[1] = 'I009'
+    set ancient_drops[2] = 'I00J'
+    set ancient_drops[3] = 'I00Q'
+    set ancient_drops[4] = 'I00S'
+    set ancient_drops[5] = 'I010'
+    set epic_drops[1] = 'I00D'
+    set epic_drops[2] = 'I00K'
+    set epic_drops[3] = 'I007'
+    set epic_drops[4] = 'I00T'
+    set epic_drops[5] = 'I011'
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DEATH)
     call TriggerAddCondition(t, Condition(function UnitDeath_Conditions))
     set t = null

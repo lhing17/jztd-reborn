@@ -390,21 +390,21 @@ function TestA76_naji takes nothing returns nothing
             loop
                 exitwhen FirstOfGroup(g_naji) == null
                 if IsUnitType(FirstOfGroup(g_naji), UNIT_TYPE_DEAD) == false and FirstOfGroup(g_naji) != GetSpellTargetUnit() and b_naji == IsUnitEnemy(FirstOfGroup(g_naji), GetTriggerPlayer()) then
-                    set u_naji = CreateUnit(GetTriggerPlayer(), $6E76756C, GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), GetUnitX(FirstOfGroup(g_naji)), GetUnitY(FirstOfGroup(g_naji))))
-                    call UnitAddAbility(u_naji, $416C6F63)
-                    call UnitAddAbility(u_naji, $4162756E)
-                    call UnitAddAbility(u_naji, $4149626D)
-                    call UnitAddAbility(u_naji, $4149326D)
-                    call UnitAddAbility(u_naji, $41496D62)
-                    call UnitAddAbility(u_naji, $41496D7A)
-                    call UnitAddAbility(u_naji, $41496D76)
-                    call UnitRemoveAbility(u_naji, $4177616E)
-                    if UnitAddAbility(u_naji, $41726176) then
-                        call UnitRemoveAbility(u_naji, $41726176)
+                    set u_naji = CreateUnit(GetTriggerPlayer(), 'nvul', GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), GetUnitX(FirstOfGroup(g_naji)), GetUnitY(FirstOfGroup(g_naji))))
+                    call UnitAddAbility(u_naji, 'Aloc')
+                    call UnitAddAbility(u_naji, 'Abun')
+                    call UnitAddAbility(u_naji, 'AIbm')
+                    call UnitAddAbility(u_naji, 'AI2m')
+                    call UnitAddAbility(u_naji, 'AImb')
+                    call UnitAddAbility(u_naji, 'AImz')
+                    call UnitAddAbility(u_naji, 'AImv')
+                    call UnitRemoveAbility(u_naji, 'Awan')
+                    if UnitAddAbility(u_naji, 'Arav') then
+                        call UnitRemoveAbility(u_naji, 'Arav')
                     endif
                     call SetUnitState(u_naji, UNIT_STATE_MANA, GetUnitState(u_naji, UNIT_STATE_MAX_MANA))
                     call ShowUnit(u_naji, false)
-                    call UnitApplyTimedLife(u_naji, $42544C46, 10)
+                    call UnitApplyTimedLife(u_naji, 'BTLF', 10)
                     call SetUnitUseFood(u_naji, false)
                     call SetUnitPathing(u_naji, false)
                     call h__SetUnitMoveSpeed(u_naji, 522)
@@ -424,21 +424,21 @@ function TestA76_naji takes nothing returns nothing
             set r_naji = 0
             loop
                 exitwhen r_naji >= 2
-                set u_naji = CreateUnit(GetTriggerPlayer(), $6E76756C, GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), GetLocationX(p_naji), GetLocationY(p_naji)) - 30 + 60 * r_naji)
-                call UnitAddAbility(u_naji, $416C6F63)
-                call UnitAddAbility(u_naji, $4162756E)
-                call UnitAddAbility(u_naji, $4149626D)
-                call UnitAddAbility(u_naji, $4149326D)
-                call UnitAddAbility(u_naji, $41496D62)
-                call UnitAddAbility(u_naji, $41496D7A)
-                call UnitAddAbility(u_naji, $41496D76)
-                call UnitRemoveAbility(u_naji, $4177616E)
-                if UnitAddAbility(u_naji, $41726176) then
-                    call UnitRemoveAbility(u_naji, $41726176)
+                set u_naji = CreateUnit(GetTriggerPlayer(), 'nvul', GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), Angle_naji(GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit()), GetLocationX(p_naji), GetLocationY(p_naji)) - 30 + 60 * r_naji)
+                call UnitAddAbility(u_naji, 'Aloc')
+                call UnitAddAbility(u_naji, 'Abun')
+                call UnitAddAbility(u_naji, 'AIbm')
+                call UnitAddAbility(u_naji, 'AI2m')
+                call UnitAddAbility(u_naji, 'AImb')
+                call UnitAddAbility(u_naji, 'AImz')
+                call UnitAddAbility(u_naji, 'AImv')
+                call UnitRemoveAbility(u_naji, 'Awan')
+                if UnitAddAbility(u_naji, 'Arav') then
+                    call UnitRemoveAbility(u_naji, 'Arav')
                 endif
                 call SetUnitState(u_naji, UNIT_STATE_MANA, GetUnitState(u_naji, UNIT_STATE_MAX_MANA))
                 call ShowUnit(u_naji, false)
-                call UnitApplyTimedLife(u_naji, $42544C46, 10)
+                call UnitApplyTimedLife(u_naji, 'BTLF', 10)
                 call SetUnitUseFood(u_naji, false)
                 call SetUnitPathing(u_naji, false)
                 call h__SetUnitMoveSpeed(u_naji, 522)
@@ -1143,8 +1143,8 @@ function TestA42_naji takes nothing returns nothing
             set u_naji = FirstOfGroup(g_naji)
             exitwhen u_naji == null
             call GroupRemoveUnit(g_naji, u_naji)
-            if UnitAddAbility(u_naji, $41726176) then
-                call UnitRemoveAbility(u_naji, $41726176)
+            if UnitAddAbility(u_naji, 'Arav') then
+                call UnitRemoveAbility(u_naji, 'Arav')
             endif
             call SetUnitFlyHeight(u_naji, r_naji, 0)
         endloop
@@ -1412,7 +1412,7 @@ function TestA29_naji takes nothing returns nothing
     endif
 endfunction
 function TestA28_naji takes nothing returns nothing
-    if GetUnitAbilityLevel(GetTriggerUnit(), $416C6F63) == 0 then
+    if GetUnitAbilityLevel(GetTriggerUnit(), 'Aloc') == 0 then
         call TriggerRegisterUnitEvent(Ttest_naji[0], GetTriggerUnit(), EVENT_UNIT_DAMAGED)
     endif
 endfunction
@@ -2136,7 +2136,7 @@ function TestA4_naji takes nothing returns nothing
                         set u_naji = FirstOfGroup(g_naji)
                         exitwhen u_naji == null
                         call GroupRemoveUnit(g_naji, u_naji)
-                        if GetUnitAbilityLevel(u_naji, $416C6F63) == 0 then
+                        if GetUnitAbilityLevel(u_naji, 'Aloc') == 0 then
                             call TriggerRegisterUnitEvent(Ttest_naji[0], u_naji, EVENT_UNIT_DAMAGED)
                         endif
                     endloop

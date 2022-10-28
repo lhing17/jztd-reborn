@@ -8,21 +8,21 @@ function IssueUnitOrder_Conditions takes nothing returns boolean
     local location loc2 = GetUnitLoc(ut)
     local location temp_loc = null
     local group g = null
-    if id == 852066 and GetUnitAbilityLevel(u, $41303036) >= 1 and udg_jiuyang[i] >= 1 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 852066 and GetUnitAbilityLevel(u, 'A006') >= 1 and udg_jiuyang[i] >= 1 then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303330)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303330, GetUnitAbilityLevel(u, $41303036))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A030')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A030', GetUnitAbilityLevel(u, 'A006'))
         call IssueTargetOrderById(bj_lastCreatedUnit, 852101, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
-    if id == 852149 and GetUnitAbilityLevel(u, $4130304A) >= 1 and udg_jiuyang[i] >= 1 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 852149 and GetUnitAbilityLevel(u, 'A00J') >= 1 and udg_jiuyang[i] >= 1 then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303338)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303338, GetUnitAbilityLevel(u, $4130304A))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A038')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A038', GetUnitAbilityLevel(u, 'A00J'))
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)

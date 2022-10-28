@@ -6,11 +6,11 @@ function XuanTieJianFa takes nothing returns nothing
     local unit ut = GetEnumUnit()
     local location loc = GetUnitLoc(ut)
     local player p = GetOwningPlayer(u)
-    call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $41303348)
+    call UnitAddAbility(bj_lastCreatedUnit, 'A03H')
     call IssueTargetOrderById(bj_lastCreatedUnit, 852101, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     call RemoveLocation(loc)
     set u = null
     set ut = null
@@ -27,13 +27,13 @@ function LianHuaZhang takes nothing returns nothing
     local unit ut = GetEnumUnit()
     local location loc = GetUnitLoc(u)
     local player p = GetOwningPlayer(u)
-    call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
     call ShowUnitHide(bj_lastCreatedUnit)
-    call UnitAddAbility(bj_lastCreatedUnit, $4130324C)
-    call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324C, GetUnitAbilityLevel(u, $4130324D))
+    call UnitAddAbility(bj_lastCreatedUnit, 'A02L')
+    call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02L', GetUnitAbilityLevel(u, 'A02M'))
     call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
     call IssueTargetOrderById(bj_lastCreatedUnit, 852487, ut)
-    call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+    call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     call RemoveLocation(loc)
     set u = null
     set ut = null
@@ -97,49 +97,49 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt = 0
     local group g = null
     local integer k = 0
-    if id == $4130335A then
+    if id == 'A03Z' then
         set goldHit[i] = 1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了金币暴击，下一波到来时金币奖励随机翻倍")
     endif
-    if id == $41303359 then
+    if id == 'A03Y' then
         set lumberHit[i] = 1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了珍稀币暴击，下一个BOSS到来时珍稀币奖励随机翻倍")
-        call addFake(u, 600, $41303359, $4130344A)
+        call addFake(u, 600, 'A03Y', 'A04J')
     endif
-    if id == $41303432 then
+    if id == 'A042' then
         set rand = GetRandomReal(.1, .2)
         set kungfuCoeff[i] = kungfuCoeff[i] + rand
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加武学伤害，所有武学伤害增加" + R2S(rand * 100) + "%")
-        call addFake(u, 600, $41303432, $4130344D)
+        call addFake(u, 600, 'A042', 'A04M')
     endif
-    if id == $41303431 then
+    if id == 'A041' then
         set randInt = GetRandomInt(3, 7)
         call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + randInt)
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加可用人口，增加了" + I2S(randInt) + "个可用人口")
-        call addFake(u, 600, $41303431, $4130344B)
+        call addFake(u, 600, 'A041', 'A04K')
     endif
-    if id == $41303430 then
+    if id == 'A040' then
         set randInt = GetRandomInt(5, 10)
         set luck[i] = luck[i] + randInt
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了人品爆发，增加了" + I2S(randInt) + "点人品")
     endif
-    if id == $41303433 then
+    if id == 'A043' then
         if open_shenqi < SHEN_QI_NUM then
             set open_shenqi = open_shenqi + 1
             call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了开放随机神器，本局游戏额外开放神器" + GetObjectName(random_shenqi[open_shenqi]))
-            call addFake(u, 1200, $41303433, $4130344C)
+            call addFake(u, 1200, 'A043', 'A04L')
         else
             call DisplayTextToPlayer(p, 0, 0, "|CFFFF0000全部神器都已开放")
         endif
     endif
-    if id == $41303542 then
+    if id == 'A05B' then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了内力回复，所有塔的内力回满")
         set g = CreateGroup()
         call GroupEnumUnitsOfPlayer(g, p, null)
         call ForGroup(g, function setFullMana)
         call DestroyGroup(g)
     endif
-    if id == $41303030 then
+    if id == 'A000' then
         call AdjustPlayerStateBJ(GetUnitPointValue(u), p, PLAYER_STATE_RESOURCE_GOLD)
         call CreateTextTagUnitBJ("+" + I2S(GetUnitPointValue(u)), u, 0, 11, 255, 215, 0, 30)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
@@ -148,162 +148,162 @@ function UseAbility_Conditions takes nothing returns boolean
         call KillUnit(u)
         call RemoveUnit(u)
     endif
-    if id == $4130325A then
+    if id == 'A02Z' then
         set j = 0
-        if GetUnitAbilityLevel(u, $41303039) >= 1 then
+        if GetUnitAbilityLevel(u, 'A009') >= 1 then
             set range = 1800
         endif
-        if GetUnitAbilityLevel(u, $41303239) >= 1 then
-            set range = 450 + 450 * GetUnitAbilityLevel(u, $41303239)
+        if GetUnitAbilityLevel(u, 'A029') >= 1 then
+            set range = 450 + 450 * GetUnitAbilityLevel(u, 'A029')
         endif
-        if GetUnitAbilityLevel(u, $41303057) >= 1 then
-            set range = 400 + 200 * GetUnitAbilityLevel(u, $41303057)
+        if GetUnitAbilityLevel(u, 'A00W') >= 1 then
+            set range = 400 + 200 * GetUnitAbilityLevel(u, 'A00W')
         endif
-        if GetUnitAbilityLevel(u, $41303054) >= 1 then
-            set range = 400 + 200 * GetUnitAbilityLevel(u, $41303054)
+        if GetUnitAbilityLevel(u, 'A00T') >= 1 then
+            set range = 400 + 200 * GetUnitAbilityLevel(u, 'A00T')
         endif
-        if GetUnitAbilityLevel(u, $41303041) >= 1 then
-            set range = 600 + 200 * GetUnitAbilityLevel(u, $41303041)
+        if GetUnitAbilityLevel(u, 'A00A') >= 1 then
+            set range = 600 + 200 * GetUnitAbilityLevel(u, 'A00A')
         endif
         loop
             exitwhen j >= 24
             set temp_loc = PolarProjectionBJ(loc, range, 15 * j)
-            call CreateNUnitsAtLocFacingLocBJ(1, $65303046, p, temp_loc, loc)
-            call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 4.)
+            call CreateNUnitsAtLocFacingLocBJ(1, 'e00F', p, temp_loc, loc)
+            call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 4.)
             call RemoveLocation(temp_loc)
             set j = j + 1
         endloop
     endif
-    if id == $41303032 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc2, bj_UNIT_FACING)
+    if id == 'A002' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303033)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303033, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A003')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A003', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852593, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303154 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A01T' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303034)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303034, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A004')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A004', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852230, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 2.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 2.)
     endif
-    if id == $41303037 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A007' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303038)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303038, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A008')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A008', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852480, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303044 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00D' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303043)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303043, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00C')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00C', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852556)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 30.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 30.)
     endif
-    if id == $41303046 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00F' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303045)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303045, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00E')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00E', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852183)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $4130304C then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A00L' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130304D)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130304D, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00M')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00M', GetUnitAbilityLevel(u, id))
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 852488, loc2)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
     endif
-    if id == $41303130 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A010' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130305A)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130305A, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A00Z')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A00Z', GetUnitAbilityLevel(u, id))
         call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 852221, loc2)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303152 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A01R' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303153)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303153, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A01S')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A01S', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852527, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $4130334C then
-        call CreateNUnitsAtLoc(1, $65303049, p, loc, bj_UNIT_FACING)
+    if id == 'A03L' then
+        call CreateNUnitsAtLoc(1, 'e00I', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303155)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303155, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A01U')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A01U', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852526)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303232 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A022' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303233)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303233, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A023')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A023', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852171, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303234 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A024' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303235)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303235, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A025')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A025', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852164)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303249 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02I' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130324A)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324A, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02J')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02J', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852096)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
     endif
-    if id == $4130324D then
+    if id == 'A02M' then
         set g = CreateGroup()
         call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsLianHuaZhang))
         call ForGroupBJ(g, function LianHuaZhang)
         call DestroyGroup(g)
     endif
-    if id == $4130324E then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02N' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $4130324F)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $4130324F, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02O')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02O', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303252 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A02R' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303253)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303253, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A02S')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A02S', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852095, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303331 then
+    if id == 'A031' then
         if IsUnitType(ut, UNIT_TYPE_HERO) == false then
             set r = GetUnitState(ut, UNIT_STATE_MAX_LIFE) * .05 * GetUnitAbilityLevel(u, id)
             if udg_jiuyang[i] >= 1 then
@@ -321,102 +321,102 @@ function UseAbility_Conditions takes nothing returns boolean
             call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) + 50)
         endif
     endif
-    if id == $41303332 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A032' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303333)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303333, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A033')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A033', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852556)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 30.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 30.)
     endif
-    if id == $41303457 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04W' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303533)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303533, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A053')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A053', GetUnitAbilityLevel(u, id))
         call IssueImmediateOrderById(bj_lastCreatedUnit, 852127)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303456 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04V' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303535)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303535, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A055')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A055', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852580, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303459 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04Y' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303537)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303537, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A057')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A057', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852119, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303455 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc, bj_UNIT_FACING)
+    if id == 'A04U' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303538)
-        call SetUnitAbilityLevel(bj_lastCreatedUnit, $41303538, GetUnitAbilityLevel(u, id))
+        call UnitAddAbility(bj_lastCreatedUnit, 'A058')
+        call SetUnitAbilityLevel(bj_lastCreatedUnit, 'A058', GetUnitAbilityLevel(u, id))
         call SaveUnitHandle(YDHT, GetHandleId(bj_lastCreatedUnit), DUMMY_OWNER_KEY, u)
         call IssueTargetOrderById(bj_lastCreatedUnit, 852218, ut)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 10.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 10.)
     endif
-    if id == $41303458 then
-        call CreateNUnitsAtLoc(1, $65303039, p, loc2, bj_UNIT_FACING)
+    if id == 'A04X' then
+        call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
-        call UnitAddAbility(bj_lastCreatedUnit, $41303541)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5 + GetUnitAbilityLevel(u, id) * 5)
+        call UnitAddAbility(bj_lastCreatedUnit, 'A05A')
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5 + GetUnitAbilityLevel(u, id) * 5)
         call TerrainDeformationCraterBJ(15.8, false, loc2, 400., 400.)
         set k = 1
         loop
             exitwhen k > 16
-            call CreateNUnitsAtLocFacingLocBJ(1, $6530304A, p, PolarProjectionBJ(loc2, 350., 22.5 * k), loc2)
-            call UnitApplyTimedLifeBJ(5 + GetUnitAbilityLevel(u, id) * 5, $42544C46, bj_lastCreatedUnit)
+            call CreateNUnitsAtLocFacingLocBJ(1, 'e00J', p, PolarProjectionBJ(loc2, 350., 22.5 * k), loc2)
+            call UnitApplyTimedLifeBJ(5 + GetUnitAbilityLevel(u, id) * 5, 'BTLF', bj_lastCreatedUnit)
             call DestroyEffect(AddSpecialEffectLocBJ(PolarProjectionBJ(loc2, 350., 22.5 * k), "Objects\\Spawnmodels\\Naga\\NagaDeath\\NagaDeath.mdl"))
             set k = k + 1
         endloop
     endif
-    if id == $41303347 then
+    if id == 'A03G' then
         set g = CreateGroup()
         call GroupEnumUnitsInRangeOfLoc(g, loc, 800, Condition(function IsXuanTieJian))
         call ForGroupBJ(g, function XuanTieJianFa)
         call DestroyGroup(g)
     endif
-    if id == $41303035 then
-        call CreateNUnitsAtLoc(1, $7530304F, p, Location(- 252, 15), bj_UNIT_FACING)
+    if id == 'A005' then
+        call CreateNUnitsAtLoc(1, 'u00O', p, Location(- 252, 15), bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
         call UnitAddItemById(bj_lastCreatedUnit, GetItemTypeId(GetSpellTargetItem()))
         call UnitDropItemTarget(bj_lastCreatedUnit, UnitItemInSlotBJ(bj_lastCreatedUnit, 1), gg_unit_o00A_0019)
-        call UnitApplyTimedLife(bj_lastCreatedUnit, $42487765, 5.)
+        call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
         call RemoveItem(GetSpellTargetItem())
         call PlaySoundOnUnitBJ(Ih, 100, u)
         call AddSpecialEffectTargetUnitBJ("overhead", u, "Abilities\\Spells\\Items\\ResourceItems\\ResourceEffectTarget.mdl")
         call DestroyEffect(bj_lastCreatedEffect)
     endif
-    if id == $4130334D then
-        call SynItem(u, $49303045, $49303042)
-        call SynItem(u, $49303042, $49303041)
-        call SynItem(u, $49303041, $49303039)
-        call SynItem(u, $49303039, $49303044)
-        call SynItem(u, $49303050, $4930304F)
-        call SynItem(u, $4930304F, $49303036)
-        call SynItem(u, $49303036, $49303051)
-        call SynItem(u, $49303051, $49303037)
-        call SynItem(u, $49303047, $49303048)
-        call SynItem(u, $49303048, $49303049)
-        call SynItem(u, $49303049, $4930304A)
-        call SynItem(u, $4930304A, $4930304B)
-        call SynItem(u, $49303034, $49303035)
-        call SynItem(u, $49303035, $49303038)
-        call SynItem(u, $49303038, $49303053)
-        call SynItem(u, $49303053, $49303054)
-        call SynItem(u, $49303058, $49303059)
-        call SynItem(u, $49303059, $4930305A)
-        call SynItem(u, $4930305A, $49303130)
-        call SynItem(u, $49303130, $49303131)
+    if id == 'A03M' then
+        call SynItem(u, 'I00E', 'I00B')
+        call SynItem(u, 'I00B', 'I00A')
+        call SynItem(u, 'I00A', 'I009')
+        call SynItem(u, 'I009', 'I00D')
+        call SynItem(u, 'I00P', 'I00O')
+        call SynItem(u, 'I00O', 'I006')
+        call SynItem(u, 'I006', 'I00Q')
+        call SynItem(u, 'I00Q', 'I007')
+        call SynItem(u, 'I00G', 'I00H')
+        call SynItem(u, 'I00H', 'I00I')
+        call SynItem(u, 'I00I', 'I00J')
+        call SynItem(u, 'I00J', 'I00K')
+        call SynItem(u, 'I004', 'I005')
+        call SynItem(u, 'I005', 'I008')
+        call SynItem(u, 'I008', 'I00S')
+        call SynItem(u, 'I00S', 'I00T')
+        call SynItem(u, 'I00X', 'I00Y')
+        call SynItem(u, 'I00Y', 'I00Z')
+        call SynItem(u, 'I00Z', 'I010')
+        call SynItem(u, 'I010', 'I011')
     endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)

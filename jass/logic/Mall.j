@@ -5,22 +5,22 @@ function checkPurchase takes nothing returns nothing
         exitwhen i > 5
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_GOLD) or udg_isTest[i] then
             set middle_gold_flag[i] = 1
-            call SetPlayerTechResearched(Player(i - 1), $52303037, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R007', 1)
         endif
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_WISDOM_BALL) or udg_isTest[i] then
             set wisdom_ball_flag[i] = 1
-            call SetPlayerTechResearched(Player(i - 1), $52303038, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R008', 1)
         endif
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_LUMBER) or udg_isTest[i] then
             set middle_lumber_flag[i] = 1
-            call SetPlayerTechResearched(Player(i - 1), $52303039, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R009', 1)
         endif
         if DzAPI_Map_GetMapLevel(Player(i - 1)) >= 3 or udg_isTest[i] then
             set five_star_flag[i] = 1
-            call SetPlayerTechResearched(Player(i - 1), $52303035, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R005', 1)
         endif
         if RequestExtraBooleanData(44, Player(i - 1), null, null, false, 0, 0, 0) or udg_isTest[i] then
-            call SetPlayerTechResearched(Player(i - 1), $52303036, 1)
+            call SetPlayerTechResearched(Player(i - 1), 'R006', 1)
         endif
         set i = i + 1
     endloop

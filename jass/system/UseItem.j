@@ -17,8 +17,8 @@ function LearnKungfu takes unit u, item it returns nothing
         return
     endif
     call UnitAddAbility(u, abilityId)
-    if abilityId == $41303350 then
-        call UnitAddAbility(u, $41303353)
+    if abilityId == 'A03P' then
+        call UnitAddAbility(u, 'A03S')
     endif
     call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFF99CC00恭喜" + GetUnitName(u) + "学会" + GetObjectName(abilityId))
 endfunction
@@ -30,41 +30,41 @@ function UseItem_Conditions takes nothing returns boolean
     local integer j = 1 + GetPlayerId(GetOwningPlayer(u))
     local integer tw = getTowerInstance(u)
     local integer id = 0
-    if GetItemTypeId(it) == $49303142 then
-        if GetUnitAbilityLevel(s__Tower_u[tw], $41303131) >= 6 then
-            call UnitAddItemById(u, $49303142)
+    if GetItemTypeId(it) == 'I01B' then
+        if GetUnitAbilityLevel(s__Tower_u[tw], 'A011') >= 6 then
+            call UnitAddItemById(u, 'I01B')
             call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "物品栏已满")
         else
-            call s__Tower_setItemNum(tw, GetUnitAbilityLevel(s__Tower_u[tw], $41303131) + 1)
+            call s__Tower_setItemNum(tw, GetUnitAbilityLevel(s__Tower_u[tw], 'A011') + 1)
             call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "增加一个物品栏")
         endif
     endif
-    if GetItemTypeId(it) == $49303242 then
+    if GetItemTypeId(it) == 'I02B' then
         call UnitAddItemById(u, low_towers[GetRandomInt(1, low_size)])
     endif
-    if GetItemTypeId(it) == $49303243 then
+    if GetItemTypeId(it) == 'I02C' then
         call UnitAddItemById(u, normal_towers[GetRandomInt(1, normal_size)])
     endif
-    if GetItemTypeId(it) == $49303244 then
+    if GetItemTypeId(it) == 'I02D' then
         call UnitAddItemById(u, fine_towers[GetRandomInt(1, fine_size)])
     endif
-    if GetItemTypeId(it) == $49303245 then
+    if GetItemTypeId(it) == 'I02E' then
         call UnitAddItemById(u, perfect_towers[GetRandomInt(1, perfect_size)])
     endif
-    if GetItemTypeId(it) == $4930324C then
+    if GetItemTypeId(it) == 'I02L' then
         if GetRandomInt(1, 100) <= 10 then
-            set id = $49303245
+            set id = 'I02E'
         elseif GetRandomInt(1, 90) <= 20 then
-            set id = $49303244
+            set id = 'I02D'
         elseif GetRandomInt(1, 70) <= 30 then
-            set id = $49303243
+            set id = 'I02C'
         else
-            set id = $49303242
+            set id = 'I02B'
         endif
         call UnitAddItemById(u, id)
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff9933恭喜鉴定成功，获得|r" + GetObjectName(id))
     endif
-    if GetItemTypeId(it) == $49303134 then
+    if GetItemTypeId(it) == 'I014' then
         call SaveUnitHandle(YDHT, GetHandleId(wugong_practice[j]), j, u)
         set i = 0
         loop
@@ -78,7 +78,7 @@ function UseItem_Conditions takes nothing returns boolean
         set practice_wugong[11 + 20 * j] = DialogAddButtonBJ(wugong_practice[j], "取消")
         call DialogDisplay(GetOwningPlayer(u), wugong_practice[j], true)
     endif
-    if GetItemTypeId(it) == $49303232 or GetItemTypeId(it) == $49303233 or GetItemTypeId(it) == $49303234 or GetItemTypeId(it) == $49303235 then
+    if GetItemTypeId(it) == 'I022' or GetItemTypeId(it) == 'I023' or GetItemTypeId(it) == 'I024' or GetItemTypeId(it) == 'I025' then
         call LearnKungfu(u, it)
     endif
     set u = null
@@ -103,7 +103,7 @@ function Dialog_Actions takes nothing returns nothing
     endloop
     if bt == practice_wugong[11 + 20 * j] then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "已取消")
-        call UnitAddItemById(u, $49303134)
+        call UnitAddItemById(u, 'I014')
     endif
     call DialogClear(wugong_practice[j])
     set u = null
@@ -112,10 +112,10 @@ endfunction
 function UseItem takes nothing returns nothing
     local trigger t = CreateTrigger()
     local integer i = 0
-    set low_towers[1] = $49303246
-    set normal_towers[1] = $49303247
-    set fine_towers[1] = $49303248
-    set perfect_towers[1] = $49303249
+    set low_towers[1] = 'I02F'
+    set normal_towers[1] = 'I02G'
+    set fine_towers[1] = 'I02H'
+    set perfect_towers[1] = 'I02I'
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_USE_ITEM)
     call TriggerAddCondition(t, Condition(function UseItem_Conditions))
     set t = CreateTrigger()
