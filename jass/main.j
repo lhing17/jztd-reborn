@@ -281,6 +281,7 @@ function CreateNeutralPassiveBuildings takes nothing returns nothing
     set gg_unit_o00A_0019 = CreateUnit(p, $6F303041, - 256., 0., 270.)
     set u = CreateUnit(p, $6F303050, 512., - 320., 270.)
     set u = CreateUnit(p, $6F30304A, 192., - 320., 270.)
+    call AddSpecialEffectTarget("jueshineigong.mdx", u, "overhead")
     set u = CreateUnit(p, $6F303131, 512., 0., 270.)
 endfunction
 function CreatePlayerBuildings takes nothing returns nothing
