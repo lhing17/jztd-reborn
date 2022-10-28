@@ -269,20 +269,52 @@ endfunction
 function CreateNeutralPassiveBuildings takes nothing returns nothing
     local player p = Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
+    // 刀贩子
     set u = CreateUnit(p, 'o00E', - 640., 256., 270.)
+
+    // 领取福利-天坤
     set u = CreateUnit(p, 'o00Q', 128., 0., 270.)
+    call AddSpecialEffectTarget("lingqufuli.mdx", u, "overhead")
+
+    // 武器熔炼-干将
     set u = CreateUnit(p, 'o00L', - 576., - 320., 270.)
+    call AddSpecialEffectTarget("wuqironglian.mdx", u, "overhead")
+
+    // 剑贩子
     set u = CreateUnit(p, 'o00F', - 320., 256., 270.)
+
+    // 棍贩子
     set u = CreateUnit(p, 'o00H', 256., 256., 270.)
+
+    // 木材兑换-莫邪
     set u = CreateUnit(p, 'o00M', - 320., - 320., 270.)
+    call AddSpecialEffectTarget("mucaiduihuan.mdx", u, "overhead")
+
+    // 枪贩子
     set u = CreateUnit(p, 'o00G', 576., 256., 270.)
+
+    // 扇贩子
     set u = CreateUnit(p, 'o00I', 0., 256., 270.)
+
+    // 绝世内功
     set u = CreateUnit(p, 'o00K', - 64., - 320., 270.)
-    set gg_unit_o00A_0019 = CreateUnit(p, 'o00A', - 256., 0., 270.)
-    set u = CreateUnit(p, 'o00P', 512., - 320., 270.)
-    set u = CreateUnit(p, 'o00J', 192., - 320., 270.)
     call AddSpecialEffectTarget("jueshineigong.mdx", u, "overhead")
+
+    // 选择门派
+    set gg_unit_o00A_0019 = CreateUnit(p, 'o00A', - 256., 0., 270.)
+    call AddSpecialEffectTarget("xuanzemenpai.mdx", gg_unit_o00A_0019, "overhead")
+
+    // 精英挑战
+    set u = CreateUnit(p, 'o00P', 512., - 320., 270.)
+    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", u, "overhead")
+
+    // 购买丹药
+    set u = CreateUnit(p, 'o00J', 192., - 320., 270.)
+    call AddSpecialEffectTarget("goumaidanyao.mdx", u, "overhead")
+
+    // 幸运抽取
     set u = CreateUnit(p, 'o011', 512., 0., 270.)
+    call AddSpecialEffectTarget("xingyunchouqu.mdx", u, "overhead")
 endfunction
 function CreatePlayerBuildings takes nothing returns nothing
     call CreateBuildingsForPlayer0()
