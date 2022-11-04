@@ -7,6 +7,74 @@
         预设: OperatorEqualENE
         常量: true
 动作
+    DzSetUnitPosition
+        变量: gg_unit_o00A_0014
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00J_0019
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00L_0020
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00K_0021
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00Q_0022
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00P_0015
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00P_0016
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00P_0017
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00P_0018
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00M_0010
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00M_0011
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00M_0012
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00M_0013
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o011_0006
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o011_0007
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o011_0008
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o011_0009
+        常量: 0
+        常量: 0
     MultiboardSetItemWidthBJ
         函数: GetLastCreatedMultiboard
         常量: 1

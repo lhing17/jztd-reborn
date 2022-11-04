@@ -25,6 +25,7 @@
 #include "system/UseItem.j"
 
 #include "system/Najitest.j"
+#include "system/GameDetail.j"
 
 
 globals
@@ -78,7 +79,6 @@ globals
     trigger gg_trg_JiFenPaiUpdate = null
     trigger gg_trg____________________002 = null
     trigger gg_trg_FirstOccur = null
-    unit gg_unit_o00A_0019 = null
     unit gg_unit_e00H_0022 = null
     unit gg_unit_e00H_0023 = null
     unit gg_unit_e00H_0024 = null
@@ -266,72 +266,54 @@ function CreateUnitsForPlayer3 takes nothing returns nothing
     local player p = Player(3)
     set gg_unit_e00H_0025 = CreateUnit(p, 'e00H', - 351.1, - 46.2, 28.994)
 endfunction
-function CreateNeutralPassiveBuildings takes nothing returns nothing
+function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     local player p = Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
-    // 刀贩子
-    set u = CreateUnit(p, 'o00E', - 640., 256., 270.)
+
 
     // 领取福利-天坤
-    set u = CreateUnit(p, 'o00Q', 128., 0., 270.)
-    call AddSpecialEffectTarget("lingqufuli.mdx", u, "overhead")
+    call AddSpecialEffectTarget("lingqufuli.mdx", gg_unit_o00Q_0022, "overhead")
 
     // 武器熔炼-干将
-    set u = CreateUnit(p, 'o00L', - 576., - 320., 270.)
-    call AddSpecialEffectTarget("wuqironglian.mdx", u, "overhead")
-
-    // 剑贩子
-    set u = CreateUnit(p, 'o00F', - 320., 256., 270.)
-
-    // 棍贩子
-    set u = CreateUnit(p, 'o00H', 256., 256., 270.)
+    call AddSpecialEffectTarget("wuqironglian.mdx", gg_unit_o00L_0020, "overhead")
 
     // 木材兑换-莫邪
-    set u = CreateUnit(p, 'o00M', - 320., - 320., 270.)
-    call AddSpecialEffectTarget("mucaiduihuan.mdx", u, "overhead")
-
-    // 枪贩子
-    set u = CreateUnit(p, 'o00G', 576., 256., 270.)
-
-    // 扇贩子
-    set u = CreateUnit(p, 'o00I', 0., 256., 270.)
+    call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0010, "overhead")
+    call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0011, "overhead")
+    call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0012, "overhead")
+    call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0013, "overhead")
 
     // 绝世内功
-    set u = CreateUnit(p, 'o00K', - 64., - 320., 270.)
-    call AddSpecialEffectTarget("jueshineigong.mdx", u, "overhead")
+    call AddSpecialEffectTarget("jueshineigong.mdx", gg_unit_o00K_0021, "overhead")
 
     // 选择门派
-    set gg_unit_o00A_0019 = CreateUnit(p, 'o00A', - 256., 0., 270.)
-    call AddSpecialEffectTarget("xuanzemenpai.mdx", gg_unit_o00A_0019, "overhead")
+    call AddSpecialEffectTarget("xuanzemenpai.mdx", gg_unit_o00A_0014, "overhead")
 
     // 精英挑战
-    set u = CreateUnit(p, 'o00P', 512., - 320., 270.)
-    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", u, "overhead")
+    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0015, "overhead")
+    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0016, "overhead")
+    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0017, "overhead")
+    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0018, "overhead")
 
     // 购买丹药
-    set u = CreateUnit(p, 'o00J', 192., - 320., 270.)
-    call AddSpecialEffectTarget("goumaidanyao.mdx", u, "overhead")
+    call AddSpecialEffectTarget("goumaidanyao.mdx", gg_unit_o00J_0019, "overhead")
 
     // 幸运抽取
-    set u = CreateUnit(p, 'o011', 512., 0., 270.)
-    call AddSpecialEffectTarget("xingyunchouqu.mdx", u, "overhead")
+    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0006, "overhead")
+    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0007, "overhead")
+    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0008, "overhead")
+    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0009, "overhead")
 endfunction
-function CreatePlayerBuildings takes nothing returns nothing
+function CreateAllUnits_1 takes nothing returns nothing
+    call CreateNeutralPassiveBuildingsEffect()
     call CreateBuildingsForPlayer0()
     call CreateBuildingsForPlayer1()
     call CreateBuildingsForPlayer2()
     call CreateBuildingsForPlayer3()
-endfunction
-function CreatePlayerUnits takes nothing returns nothing
     call CreateUnitsForPlayer0()
     call CreateUnitsForPlayer1()
     call CreateUnitsForPlayer2()
     call CreateUnitsForPlayer3()
-endfunction
-function CreateAllUnits takes nothing returns nothing
-    call CreateNeutralPassiveBuildings()
-    call CreatePlayerBuildings()
-    call CreatePlayerUnits()
 endfunction
 function CreateRegions takes nothing returns nothing
     local weathereffect we
@@ -582,7 +564,7 @@ function Trig_MapInitActions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call ShowUnitShow(gg_unit_o00A_0019)
+        call ShowUnitShow(gg_unit_o00A_0014)
         call SetPlayerTechMaxAllowedSwap('H004', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01O', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01N', 2, ConvertedPlayer(bj_forLoopAIndex))
@@ -595,6 +577,7 @@ function Trig_MapInitActions takes nothing returns nothing
         call SetPlayerTechMaxAllowedSwap('H017', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
@@ -605,7 +588,7 @@ endfunction
 function Trig_OneSecondActions takes nothing returns nothing
     local integer i = 0
     call AddWeatherEffectSaveLast(GetEntireMapRect(), 'LRma')
-    call SetCameraTargetController(gg_unit_o00A_0019, 0, 0, false)
+    call SetCameraTargetController(gg_unit_o00A_0014, 0, 0, false)
     call InitServerValues()
     call ServerSavePointsWhenEnterGame()
     call YDWENewItemsFormula('ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'bzbe')
@@ -880,11 +863,11 @@ function CreateF9 takes nothing returns nothing
     call CreateQuestBJ(0, "|cFFFF00CC神器系统", "在游戏中共有11种神器，每局随机开放3种，可以在NPC干将处查询本局开放神器和神器合成公式", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 endfunction
 function InitMenPaiWuPin takes nothing returns nothing
-    call AddItemToStockBJ('I000', gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ('I001', gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ('I002', gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ('I003', gg_unit_o00A_0019, 1, 1)
-    call AddItemToStockBJ('I02K', gg_unit_o00A_0019, 1, 1)
+    call AddItemToStockBJ('I000', gg_unit_o00A_0014, 1, 1)
+    call AddItemToStockBJ('I001', gg_unit_o00A_0014, 1, 1)
+    call AddItemToStockBJ('I002', gg_unit_o00A_0014, 1, 1)
+    call AddItemToStockBJ('I003', gg_unit_o00A_0014, 1, 1)
+    call AddItemToStockBJ('I02K', gg_unit_o00A_0014, 1, 1)
 endfunction
 function RandomShenQi takes nothing returns nothing
     local integer i = 0
@@ -1001,7 +984,7 @@ endfunction
 
 function InitAllSystems takes nothing returns nothing
     call ConditionalTriggerExecute(gg_trg_MapInit)
-    call CreateAllUnits()
+    call CreateAllUnits_1()
     call CreateRegions()
     call MyInitGlobals()
     call InitCustomTriggers0()
@@ -1019,4 +1002,5 @@ function InitAllSystems takes nothing returns nothing
     call EverySecond()
     call SelectUnitSystem()
     call UnitBuilt()
+    call GameDetail_Trigger()
 endfunction

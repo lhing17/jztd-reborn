@@ -359,7 +359,7 @@ function JoinMenPai takes integer player_i, integer menpai_num, integer item_id 
                 call RemoveUnit(selector[player_i])
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经加入过门派了|r")
-                call AddItemToStockBJ(item_id, gg_unit_o00A_0019, 1, 1)
+                call AddItemToStockBJ(item_id, gg_unit_o00A_0014, 1, 1)
             endif
         endif
     endif

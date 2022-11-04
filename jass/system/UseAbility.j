@@ -389,7 +389,7 @@ function UseAbility_Conditions takes nothing returns boolean
         call CreateNUnitsAtLoc(1, 'u00O', p, Location(- 252, 15), bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
         call UnitAddItemById(bj_lastCreatedUnit, GetItemTypeId(GetSpellTargetItem()))
-        call UnitDropItemTarget(bj_lastCreatedUnit, UnitItemInSlotBJ(bj_lastCreatedUnit, 1), gg_unit_o00A_0019)
+        call UnitDropItemTarget(bj_lastCreatedUnit, UnitItemInSlotBJ(bj_lastCreatedUnit, 1), gg_unit_o00A_0014)
         call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 5.)
         call RemoveItem(GetSpellTargetItem())
         call PlaySoundOnUnitBJ(Ih, 100, u)

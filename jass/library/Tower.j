@@ -5,6 +5,7 @@ library TowerLibrary
             local Tower tw = Tower.allocate()
             set tw.u = u
             call tw.setAbility()
+            call tw.setItemNum(item_num)
             return tw
         endmethod
         method IncAbility takes integer i returns nothing
