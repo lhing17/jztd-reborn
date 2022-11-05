@@ -109,7 +109,7 @@ function UseAbility_Conditions takes nothing returns boolean
     if id == 'A042' then
         set rand = GetRandomReal(.1, .2)
         set kungfuCoeff[i] = kungfuCoeff[i] + rand
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加武学伤害，所有武学伤害增加" + R2S(rand * 100) + "%")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i - 1)) + "的智慧球发动了增加武学伤害，所有武学伤害增加" + R2S(rand * 100) + "%（召唤类除外）")
         call addFake(u, 600, 'A042', 'A04M')
     endif
     if id == 'A041' then
@@ -139,12 +139,17 @@ function UseAbility_Conditions takes nothing returns boolean
         call ForGroup(g, function setFullMana)
         call DestroyGroup(g)
     endif
+
+    // 出售塔
     if id == 'A000' then
         call AdjustPlayerStateBJ(GetUnitPointValue(u), p, PLAYER_STATE_RESOURCE_GOLD)
         call CreateTextTagUnitBJ("+" + I2S(GetUnitPointValue(u)), u, 0, 11, 255, 215, 0, 30)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
         call DestroyEffectBJ(AddSpecialEffectLoc("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", loc))
         call YDWETimerDestroyTextTag(.65, GetLastCreatedTextTag())
+
+        // 清空哈希表，避免Handle重用
+        call FlushChildHashtable(CONT_HT, GetHandleId(u))
         call KillUnit(u)
         call RemoveUnit(u)
     endif

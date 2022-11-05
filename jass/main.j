@@ -215,6 +215,12 @@ globals
     boolean array showHint
     hashtable NHT = InitHashtable()
 
+    // 记录塔功勋的哈希表
+    hashtable CONT_HT = InitHashtable()
+    constant integer CONT_KEY = 0
+    constant integer CONT_MANA_ADDITION = 2
+    
+
     trigger array st___prototype25
 
 endglobals
@@ -967,6 +973,8 @@ function Upgrade_Conditions takes nothing returns boolean
         call DisplayTextToPlayer(p, 0, 0, "升级为" + GetUnitName(GetTriggerUnit()))
         call s__Tower_setAbility(tw)
         call s__Tower_setItemNum(tw, GetItemNum(u))
+        // 内力上限加5 * 功勋
+        call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 0, CONT_MANA_ADDITION * LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY))
     endif
     return false
 endfunction

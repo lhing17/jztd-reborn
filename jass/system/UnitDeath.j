@@ -51,10 +51,22 @@ function UnitDeath_Conditions takes nothing returns boolean
     local integer i = 1 + GetPlayerId(p)
     local location loc = null
     local timer t = null
+
+    // 击杀单位获得功勋
+    if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING then
+        call SaveInteger(CONT_HT, GetHandleId(u), CONT_KEY, LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) + 1)
+        // 内力上限加5
+        call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 0, CONT_MANA_ADDITION)
+    endif
+        
+
+    // 击杀小怪获得金钱
     if GetOwningPlayer(ut) == Player(5) then
         call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 1.8, wave * 2.1)), p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif
+
+    // 击杀小怪随机掉落物品
     if GetOwningPlayer(ut) == Player(5) then
         if GetRandomInt(1, 5000) <= luck[i] then
             set loc = GetUnitLoc(ut)
@@ -103,21 +115,30 @@ function UnitDeath_Conditions takes nothing returns boolean
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)
         call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币" + I2S(wave / 9) + "个")
     endif
+
+    // 击杀达摩祖师,学会匹夫有责
     if GetUnitTypeId(ut) == 'H00E' then
         call SetPlayerTechResearched(p, 'R004', 1)
         call DisplayTextToPlayer(p, 0, 0, "恭喜击杀达摩祖师,学会匹夫有责")
     endif
+
+    // 击杀冯默风获得随机神器图谱
     if GetUnitTypeId(ut) == 'H00I' then
         set loc = GetUnitLoc(ut)
         call CreateItemLoc(GetTuPu(random_shenqi[GetRandomInt(1, open_shenqi)]), loc)
         call RemoveLocation(loc)
     endif
+
+    // 击杀黄裳获取随机绝内
     if GetUnitTypeId(ut) == 'U00U' then
         call CreateItem(juenei[GetRandomInt(1, 4)], GetUnitX(ut), GetUnitY(ut))
     endif
+
+    // 击杀朱聪获得妙手空空手套
     if GetUnitTypeId(ut) == 'H00J' then
         set loc = GetUnitLoc(ut)
         call CreateItemLoc('I01J', loc)
+        call DisplayTextToPlayer(p, 0, 0, "恭喜击杀朱聪，获得|cFF00FF00妙手空空手套|r")
         call RemoveLocation(loc)
     endif
     if GetUnitTypeId(ut) == 'U00Q' or GetUnitTypeId(ut) == 'U00R' or GetUnitTypeId(ut) == 'U00S' or GetUnitTypeId(ut) == 'U00T' then

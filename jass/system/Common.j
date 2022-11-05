@@ -48,15 +48,28 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
     local real coeff = 1
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
     set coeff = coeff + kungfuCoeff[i]
+
+    // 每点功勋增加0.5%伤害
+    if LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) > 0 then
+        set coeff = coeff + LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) * 0.005
+    endif
+
+    // 北冥神功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03N') >= 1 then
         set coeff = coeff + .4
     endif
+
+    // 太玄神功 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03P') >= 1 then
         set coeff = coeff + .5
     endif
+
+    // 蛤蟆功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03Q') >= 1 then
         set coeff = coeff + .4
     endif
+
+    // 洗髓经 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff = coeff + .5
     endif
