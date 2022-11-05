@@ -338,10 +338,10 @@ endfunction
 function JoinMenPai takes integer player_i, integer menpai_num, integer item_id returns nothing
     local player p = Player(player_i - 1)
     local unit array selector
-    set selector[1] = gg_unit_e00H_0022
-    set selector[2] = gg_unit_e00H_0023
-    set selector[3] = gg_unit_e00H_0024
-    set selector[4] = gg_unit_e00H_0025
+    set selector[1] = gg_unit_e00H_0023
+    set selector[2] = gg_unit_e00H_0024
+    set selector[3] = gg_unit_e00H_0025
+    set selector[4] = gg_unit_e00H_0026
     if item_id == menpai_item_id[menpai_num] then
         if menpai_num > OPEN_DOMINATION_NUM then
             call DisplayTimedTextToPlayer(p, 0, 0, 15, "|CFFFF0000该门派尚未开放")

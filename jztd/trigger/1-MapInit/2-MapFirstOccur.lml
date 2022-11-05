@@ -75,6 +75,22 @@
         变量: gg_unit_o011_0009
         常量: 0
         常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_e00H_0023
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_e00H_0024
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_e00H_0025
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_e00H_0026
+        常量: 0
+        常量: 0
     MultiboardSetItemWidthBJ
         函数: GetLastCreatedMultiboard
         常量: 1

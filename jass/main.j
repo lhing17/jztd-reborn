@@ -79,10 +79,7 @@ globals
     trigger gg_trg_JiFenPaiUpdate = null
     trigger gg_trg____________________002 = null
     trigger gg_trg_FirstOccur = null
-    unit gg_unit_e00H_0022 = null
-    unit gg_unit_e00H_0023 = null
-    unit gg_unit_e00H_0024 = null
-    unit gg_unit_e00H_0025 = null
+
 
     integer array udg_zdl
     integer array udg_point
@@ -219,7 +216,7 @@ globals
     hashtable CONT_HT = InitHashtable()
     constant integer CONT_KEY = 0
     constant integer CONT_MANA_ADDITION = 2
-    
+
 
     trigger array st___prototype25
 
@@ -241,37 +238,25 @@ function CreateBuildingsForPlayer0 takes nothing returns nothing
     local unit u
     set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
 endfunction
-function CreateUnitsForPlayer0 takes nothing returns nothing
-    local player p = Player(0)
-    set gg_unit_e00H_0022 = CreateUnit(p, 'e00H', - 257.1, - 103.8, 99.12)
-endfunction
+
 function CreateBuildingsForPlayer1 takes nothing returns nothing
     local player p = Player(1)
     local unit u
     set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
 endfunction
-function CreateUnitsForPlayer1 takes nothing returns nothing
-    local player p = Player(1)
-    set gg_unit_e00H_0023 = CreateUnit(p, 'e00H', - 130., - 21.6, 234.84)
-endfunction
+
 function CreateBuildingsForPlayer2 takes nothing returns nothing
     local player p = Player(2)
     local unit u
     set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
 endfunction
-function CreateUnitsForPlayer2 takes nothing returns nothing
-    local player p = Player(2)
-    set gg_unit_e00H_0024 = CreateUnit(p, 'e00H', - 234.3, 79.3, 122.183)
-endfunction
+
 function CreateBuildingsForPlayer3 takes nothing returns nothing
     local player p = Player(3)
     local unit u
     set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
 endfunction
-function CreateUnitsForPlayer3 takes nothing returns nothing
-    local player p = Player(3)
-    set gg_unit_e00H_0025 = CreateUnit(p, 'e00H', - 351.1, - 46.2, 28.994)
-endfunction
+
 function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     local player p = Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
@@ -829,16 +814,7 @@ function InitTrig_JiFenPaiUpdate takes nothing returns nothing
     call TriggerRegisterTimerEventPeriodic(gg_trg_JiFenPaiUpdate, .5)
     call TriggerAddAction(gg_trg_JiFenPaiUpdate, function Trig_JiFenPaiUpdateActions)
 endfunction
-function Trig____________________002Actions takes nothing returns nothing
-    call ShowUnit(gg_unit_e00H_0022, true)
-    call ShowUnit(gg_unit_e00H_0023, true)
-    call ShowUnit(gg_unit_e00H_0024, true)
-    call ShowUnit(gg_unit_e00H_0025, true)
-endfunction
-function InitTrig____________________002 takes nothing returns nothing
-    set gg_trg____________________002 = CreateTrigger()
-    call TriggerAddAction(gg_trg____________________002, function Trig____________________002Actions)
-endfunction
+
 function Trig_FirstOccurActions takes nothing returns nothing
     if YDWEUnitHasItemOfTypeBJNull(GetTriggerUnit(), 'I00U') then
         call YDWEPolledWaitNull(5)
@@ -859,7 +835,6 @@ function InitCustomTriggers0 takes nothing returns nothing
     call InitTrig_Win()
     call InitTrig____________________001()
     call InitTrig_JiFenPaiUpdate()
-    call InitTrig____________________002()
     call InitTrig_FirstOccur()
 endfunction
 
