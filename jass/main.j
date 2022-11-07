@@ -165,8 +165,10 @@ globals
     integer array luck
     integer FIRST_WAVE_TIME = 20
     integer SPAWN_FREQUENCY = 2
+    // 每波时间
     integer WAVE_TIME = 40
-    integer WAVE_INTERVAL = 5
+    // 每波之前间隔
+    integer WAVE_INTERVAL = 10
     integer BOSS_WAVE_INTERVAL = 9
     integer BORN_LOC_X = 977855
     integer BORN_LOC_Y = 977854
@@ -198,10 +200,10 @@ globals
     integer array normal_towers
     integer array fine_towers
     integer array perfect_towers
-    integer LOW_SIZE = 1
-    integer NORMAL_SIZE = 1
-    integer FINE_SIZE = 1
-    integer PERFECT_SIZE = 1
+    integer LOW_SIZE = 48
+    integer NORMAL_SIZE = 34
+    integer FINE_SIZE = 27
+    integer PERFECT_SIZE = 17
     integer passed_time = 0
     integer array shenqi
     integer array random_shenqi
@@ -216,6 +218,10 @@ globals
     hashtable CONT_HT = InitHashtable()
     constant integer CONT_KEY = 0
     constant integer CONT_MANA_ADDITION = 2
+    
+    // 判断是否处于失败状态
+    boolean isFailing = false
+    integer failingCounter = 0
 
 
     trigger array st___prototype25
@@ -602,8 +608,8 @@ endfunction
 function Trig_ChooseNanDuFunc013T takes nothing returns nothing
     if udg_difficulty == 0 then
         call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetExpiredTimer()), $32A9E4C8), udg_select_diff, false)
-        call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cff00FFFF自动选择了难度|cFF00CC00初入江湖")
-        call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cFF00CC00初入江湖|r难度下：")
+        call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cff00FFFF自动选择了难度|cFF00CC00初入江湖(N1)")
+        call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cFF00CC00初入江湖(N1)|r难度下：")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始资金为|cFF00CC00300|r")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始可用人口为|cFF00CC0075|r")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
@@ -629,12 +635,12 @@ function Trig_ChooseNanDuActions takes nothing returns nothing
     call SavePlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8, Player(0))
     call DisplayTimedTextToForce(GetPlayersAll(), 10., "等待主机" + (YDWEGetPlayerColorString(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8), GetPlayerName(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8))) + "选择难度"))
     call DialogSetMessage(udg_select_diff, "请选择难度")
-    set udg_diff[1] = DialogAddButton(udg_select_diff, "|cFF00CC00初入江湖", 65)
-    set udg_diff[2] = DialogAddButton(udg_select_diff, "|cFFCC0066牛刀小试", 66)
-    set udg_diff[3] = DialogAddButton(udg_select_diff, "|cFFFF6600登堂入室", 67)
-    set udg_diff[4] = DialogAddButton(udg_select_diff, "|cFF0041FF炉火纯青", 68)
-    set udg_diff[5] = DialogAddButton(udg_select_diff, "|cFF1FBF00华山论剑", 69)
-    set udg_diff[6] = DialogAddButton(udg_select_diff, "|cFFFF0000决战江湖", 70)
+    set udg_diff[1] = DialogAddButton(udg_select_diff, "|cFF00CC00初入江湖(N1)", 65)
+    set udg_diff[2] = DialogAddButton(udg_select_diff, "|cFFCC0066牛刀小试(N2)", 66)
+    set udg_diff[3] = DialogAddButton(udg_select_diff, "|cFFFF6600初出茅庐(N3)", 67)
+    set udg_diff[4] = DialogAddButton(udg_select_diff, "|cFF0041FF初窥门径(N4)", 68)
+    set udg_diff[5] = DialogAddButton(udg_select_diff, "|cFF1FBF00略有小成(N5)", 69)
+    set udg_diff[6] = DialogAddButton(udg_select_diff, "|cFFFF0000略有大成(N6)", 70)
     // set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
     call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8), udg_select_diff, true)
     set ydl_timer = CreateTimer()
@@ -651,8 +657,8 @@ endfunction
 function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     local integer i = 1
     if GetClickedButtonBJ() == udg_diff[1] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00CC00初入江湖")
-        call DisplayTextToForce(GetPlayersAll(), "|cFF00CC00初入江湖|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00CC00初入江湖(N1)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF00CC00初入江湖(N1)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00CC00300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00CC0075|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
@@ -660,8 +666,8 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 1, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[2] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试")
-        call DisplayTextToForce(GetPlayersAll(), "|cFFCC0066牛刀小试|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试(N2)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFFCC0066牛刀小试(N2)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFCC0066300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFCC006670|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFCC00662|r")
@@ -669,8 +675,8 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 3, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[3] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600登堂入室")
-        call DisplayTextToForce(GetPlayersAll(), "|cFFFF6600登堂入室|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600初出茅庐(N3)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFFFF6600初出茅庐(N3)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF6600300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF660065|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF66003|r")
@@ -678,8 +684,8 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 5, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[4] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF炉火纯青")
-        call DisplayTextToForce(GetPlayersAll(), "|cFF0041FF炉火纯青|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF初窥门径(N4)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF0041FF初窥门径(N4)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF0041FF300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF0041FF760|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF0041FF4|r")
@@ -687,8 +693,8 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 7, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[5] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00华山论剑")
-        call DisplayTextToForce(GetPlayersAll(), "|cFF1FBF00华山论剑|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00略有小成(N5)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF1FBF00略有小成(N5)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF1FBF00300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF1FBF0055|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF1FBF005|r")
@@ -696,8 +702,8 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 9, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[6] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000决战江湖")
-        call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000决战江湖|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000略有大成(N6)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000略有大成(N6)|r难度下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF0000300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF00006|r")
@@ -705,7 +711,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 11, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[7] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了度|cFF00FF00生存模式")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00FF00生存模式")
         call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000生存模式|r下：")
         call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF0000300|r")
         call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
@@ -797,15 +803,19 @@ function InitTrig____________________001 takes nothing returns nothing
     call TriggerAddAction(gg_trg____________________001, function Trig____________________001Actions)
 endfunction
 function Trig_JiFenPaiUpdateActions takes nothing returns nothing
-    call MultiboardSetItemValue(MultiboardGetItem(udg_multi, 0, 0), I2S(CountUnitsInGroup(attackerGroup)) + " / " + I2S(udg_ShengYuGuaiShu))
+    local integer count = CountUnitsInGroup(attackerGroup)
+    call MultiboardSetItemValue(MultiboardGetItem(udg_multi, 0, 0), I2S(count) + " / " + I2S(udg_ShengYuGuaiShu))
     call LeaderboardSetPlayerItemValueBJ(Player(4), udg_jifenpai, udg_ShengYuGuaiShu)
-    if udg_ShengYuGuaiShu <= CountUnitsInGroup(attackerGroup) then
-        call CustomDefeatBJ(Player(0), "胜败乃兵家常事，大侠请重新来过！")
-        call CustomDefeatBJ(Player(1), "胜败乃兵家常事，大侠请重新来过！")
-        call CustomDefeatBJ(Player(2), "胜败乃兵家常事，大侠请重新来过！")
-        call CustomDefeatBJ(Player(3), "胜败乃兵家常事，大侠请重新来过！")
-        call DisableTrigger(GetTriggeringTrigger())
+
+    if count >= udg_ShengYuGuaiShu then
+        set isFailing = true
+        set failingCounter = failingCounter + 1
+        if ModuloInteger(failingCounter, 3) == 0 then
+            call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000循环圈内怪物过多，请及时清理，否则下波进攻开始时游戏失败！|r")
+        endif
     else
+        set failingCounter = 0
+        set isFailing = false
     endif
 endfunction
 function InitTrig_JiFenPaiUpdate takes nothing returns nothing

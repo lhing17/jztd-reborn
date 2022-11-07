@@ -171,6 +171,7 @@ function spawn takes nothing returns nothing
     local timer t = CreateTimer()
     local integer life = 0
     local integer jmax = 7
+    local integer count = CountUnitsInGroup(attackerGroup)
     set wave = wave + 1
     set loc[0] = GetRectCenter(gg_rct_spawn1)
     set loc[1] = GetRectCenter(gg_rct_spawn2)
@@ -180,6 +181,15 @@ function spawn takes nothing returns nothing
     set target[1] = GetRectCenter(nodeRects[23])
     set target[2] = GetRectCenter(nodeRects[24])
     set target[3] = GetRectCenter(nodeRects[21])
+
+    if isFailing and udg_ShengYuGuaiShu <= count then
+        call CustomDefeatBJ(Player(0), "胜败乃兵家常事，大侠请重新来过！")
+        call CustomDefeatBJ(Player(1), "胜败乃兵家常事，大侠请重新来过！")
+        call CustomDefeatBJ(Player(2), "胜败乃兵家常事，大侠请重新来过！")
+        call CustomDefeatBJ(Player(3), "胜败乃兵家常事，大侠请重新来过！")
+        call DisableTrigger(GetTriggeringTrigger())
+    endif
+
     if gameMode == 1 then
         set jmax = 100
     endif
@@ -296,12 +306,17 @@ function initSpawn takes nothing returns nothing
     set mobTimerDialog = CreateTimerDialogBJ(mobTimer, "第1波进攻：")
     call TimerStart(mobTimer, FIRST_WAVE_TIME, false, null)
     call TimerDialogDisplay(mobTimerDialog, true)
+    
+    // 刷BOSS 每9波一个boss
     set bossTimer = CreateTimer()
     set bossTimerDialog = CreateTimerDialogBJ(bossTimer, "第1个BOSS剩余：")
     call TimerStart(bossTimer, FIRST_WAVE_TIME + (WAVE_TIME + WAVE_INTERVAL) * BOSS_WAVE_INTERVAL, false, null)
     call TimerDialogDisplay(bossTimerDialog, true)
+
     call TriggerRegisterTimerExpireEvent(t, mobTimer)
     call TriggerAddAction(t, function spawn)
+
+    // 每隔指定时间刷一次怪
     set spawnTrigger = CreateTrigger()
     call DisableTrigger(spawnTrigger)
     call TriggerRegisterTimerEventPeriodic(spawnTrigger, SPAWN_FREQUENCY)

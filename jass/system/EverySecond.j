@@ -29,7 +29,7 @@ function EverySecond_Conditions takes nothing returns boolean
         endif
     endif
     if passed_time == 10 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cfffff000欢迎来到|cffff00de决战江湖TD1.1|r")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cfffff000欢迎来到|cffff00de决战江湖TD1.2|r")
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cff00ff00来自zeikale的提示：|r|cfffff000请在NPC天下门派处选择门派开始游戏，购买重制版WAR3的玩家可以在地图中间的商店中领取福利礼包！|r")
     endif
     if passed_time == 20 then
@@ -47,15 +47,15 @@ function EverySecond_Conditions takes nothing returns boolean
     if passed_time == 100 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000塔升级到顶级后，如果有技能还没修炼到满级，可以使用武学修炼丹继续修炼。|R")
     endif
-    if passed_time == 120 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式前期强度较高，尽量在普通模式下积累一些积分后再进行尝试。|R")
-    endif
-    if passed_time == 140 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式下从第31波（第一次获得）起每10波获得5点存档积分。|R")
-    endif
-    if passed_time == 160 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式第60波后将不再给予每波金钱和珍稀币奖励。|R")
-    endif
+    // if passed_time == 120 then
+    //     call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式前期强度较高，尽量在普通模式下积累一些积分后再进行尝试。|R")
+    // endif
+    // if passed_time == 140 then
+    //     call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式下从第31波（第一次获得）起每10波获得5点存档积分。|R")
+    // endif
+    // if passed_time == 160 then
+    //     call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cfffff000生存模式第60波后将不再给予每波金钱和珍稀币奖励。|R")
+    // endif
     call ForGroupBJ(attackerGroup, function EMeiXinFa)
     if udg_ShengYuGuaiShu + 10 <= CountUnitsInGroup(attackerGroup) and GetRandomInt(1, 5) <= 2 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cffff0000圈内的进攻怪太多了，请注意防守！！|R")
