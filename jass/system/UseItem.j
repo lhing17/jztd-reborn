@@ -53,7 +53,7 @@ function europaGift takes unit u returns nothing
         set id = GetRandomInt(1, 5)
         call addLumber(Player(i - 1), id)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + I2S(id) + "个珍稀币")
-    elseif rand < 990 then
+    elseif rand < 998 then
         set id = GetRandomInt(1, 5000)
         call addGold(Player(i - 1), id)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFFFFFF00" + I2S(id) + "个金币")
