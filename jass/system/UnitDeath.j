@@ -71,23 +71,7 @@ function UnitDeath_Conditions takes nothing returns boolean
         if GetRandomInt(1, 5000) <= luck[i] then
             set loc = GetUnitLoc(ut)
             set luck[i] = luck[i] - 1
-            if GetRandomInt(1, 100) <= 100 - wave * 3 then
-                call CreateItemLoc(normal_drops[GetRandomInt(1, MAX_NORMAL_DROP)], loc)
-            else
-                if GetRandomInt(1, 100) <= 100 - wave * 3 / 2 then
-                    call CreateItemLoc(rare_drops[GetRandomInt(1, MAX_RARE_DROP)], loc)
-                else
-                    if GetRandomInt(1, 100) <= 100 - wave * 6 / 5 then
-                        call CreateItemLoc(valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)], loc)
-                    else
-                        if GetRandomInt(1, 100) <= 100 - wave * 9 / 8 then
-                            call CreateItemLoc(ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)], loc)
-                        else
-                            call CreateItemLoc(epic_drops[GetRandomInt(1, MAX_EPIC_DROP)], loc)
-                        endif
-                    endif
-                endif
-            endif
+            call CreateItemLoc(getRandomDrop(), loc)
             call RemoveLocation(loc)
         endif
     endif

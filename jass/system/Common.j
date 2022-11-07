@@ -345,3 +345,28 @@ function getRandomSoulStone takes integer i returns integer
     return id
 endfunction
 
+// 获取随机掉落
+function getRandomDrop takes nothing returns integer
+    if GetRandomInt(1, 100) <= 100 - wave * 3 then
+        return normal_drops[GetRandomInt(1, MAX_NORMAL_DROP)]
+    elseif GetRandomInt(1, 100) <= 100 - wave * 3 / 2 then
+        return rare_drops[GetRandomInt(1, MAX_RARE_DROP)]
+    elseif GetRandomInt(1, 100) <= 100 - wave * 6 / 5 then
+        return valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)]
+    elseif GetRandomInt(1, 100) <= 100 - wave * 9 / 8 then
+        return ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)]
+    else
+        return epic_drops[GetRandomInt(1, MAX_EPIC_DROP)]
+    endif
+endfunction
+
+// 加木头
+function addLumber takes player p, integer count returns nothing
+    call AdjustPlayerStateBJ(count, p, PLAYER_STATE_RESOURCE_LUMBER)
+endfunction
+
+// 加金币
+function addGold takes player p, integer count returns nothing
+    call AdjustPlayerStateBJ(count, p, PLAYER_STATE_RESOURCE_GOLD)
+endfunction
+

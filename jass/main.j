@@ -223,14 +223,22 @@ globals
     boolean isFailing = false
     integer failingCounter = 0
 
+    // 玩家是否有智慧球
+    boolean array hasWisdomBall
+
 
     trigger array st___prototype25
 
 endglobals
 
 function MyInitGlobals takes nothing returns nothing
-    local integer i = 0
-    set i = 0
+    local integer i = 1
+
+    loop
+        exitwhen i > 4
+        set hasWisdomBall[i] = false
+        set i = i + 1
+    endloop
     
     set udg_ShengYuGuaiShu = 0
     set udg_shuabingtimer = CreateTimer()
@@ -944,6 +952,9 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower_num = tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
             call UnitAddItemById(u, 'I02L')
+            if DzAPI_Map_Returns(p, 2) then
+                call UnitAddItemById(u, 'I061')
+            endif
         endif
     endif
     set u = null

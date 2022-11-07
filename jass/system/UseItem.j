@@ -23,6 +23,47 @@ function LearnKungfu takes unit u, item it returns nothing
     call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFF99CC00恭喜" + GetUnitName(u) + "学会" + GetObjectName(abilityId))
 endfunction
 
+function europaGift takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer rand = GetRandomInt(1, 1000)
+    local integer array x
+    local integer array y
+    local integer id
+    set x[1] =- 2380
+    set x[2] = 820
+    set x[3] = 2380
+    set x[4] =- 820
+    set y[1] = 820
+    set y[2] = 2380
+    set y[3] =- 820
+    set y[4] =- 2380
+    if rand == 666 and not hasWisdomBall[i] then
+        call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
+        call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(Player(i - 1)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00智慧之球")
+        set hasWisdomBall[i] = true
+    elseif rand < 300 then
+        set id = getRandomSoulStone(i)
+        call UnitAddItemById(u, id)
+        call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
+    elseif rand < 600 then
+        set id = getRandomDrop()
+        call UnitAddItemById(u, id)
+        call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
+    elseif rand < 700 then
+        set id = GetRandomInt(1, 5)
+        call addLumber(Player(i - 1), id)
+        call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + I2S(id) + "个珍稀币")
+    elseif rand < 990 then
+        set id = GetRandomInt(1, 5000)
+        call addGold(Player(i - 1), id)
+        call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFFFFFF00" + I2S(id) + "个金币")
+    else
+        set id = random_shenqi[GetRandomInt(1, open_shenqi)]
+        call UnitAddItemById(u, id)
+        call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(GetOwningPlayer(u)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00" + GetObjectName(id))
+    endif
+endfunction
+
 function UseItem_Conditions takes nothing returns boolean
     local unit u = GetTriggerUnit()
     local item it = GetManipulatedItem()
@@ -52,15 +93,7 @@ function UseItem_Conditions takes nothing returns boolean
         call UnitAddItemById(u, perfect_towers[GetRandomInt(1, PERFECT_SIZE)])
     endif
     if GetItemTypeId(it) == 'I02L' then
-        if GetRandomInt(1, 100) <= 10 then
-            set id = 'I02E'
-        elseif GetRandomInt(1, 90) <= 20 then
-            set id = 'I02D'
-        elseif GetRandomInt(1, 70) <= 30 then
-            set id = 'I02C'
-        else
-            set id = 'I02B'
-        endif
+        set id = getRandomSoulStone(j)
         call UnitAddItemById(u, id)
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff9933恭喜鉴定成功，获得|r" + GetObjectName(id))
     endif
@@ -80,6 +113,11 @@ function UseItem_Conditions takes nothing returns boolean
     endif
     if GetItemTypeId(it) == 'I022' or GetItemTypeId(it) == 'I023' or GetItemTypeId(it) == 'I024' or GetItemTypeId(it) == 'I025' then
         call LearnKungfu(u, it)
+    endif
+
+    // 开启欧皇大礼包
+    if GetItemTypeId(it) == 'I061' then
+        call europaGift(u)
     endif
     set u = null
     set it = null

@@ -19,6 +19,7 @@ function EverySecond_Conditions takes nothing returns boolean
             if wisdom_ball_flag[i] == 1 then
                 call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
                 call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D您已开启智慧球")
+                set hasWisdomBall[i] = true
             endif
             set i = i + 1
         endloop

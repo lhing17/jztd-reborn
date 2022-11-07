@@ -446,16 +446,7 @@ function PickupItem_Conditions takes nothing returns boolean
     call JoinMenPai(i, 4, GetItemTypeId(it))
     call JoinMenPai(i, 5, GetItemTypeId(it))
     if GetItemTypeId(it) == 'I02J' then
-        set rand = GetRandomReal(0, 100)
-        if rand < RMinBJ(15, 10 + luck[i] * .025) then
-            set award = 'I02E'
-        elseif rand < RMinBJ(45, 30 + luck[i] * .075) then
-            set award = 'I02D'
-        elseif rand < RMinBJ(90, 60 + luck[i] * .175) then
-            set award = 'I02C'
-        else
-            set award = 'I02B'
-        endif
+        set award = getRandomSoulStone(i)
         call UnitAddItemById(u, award)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))
     endif
