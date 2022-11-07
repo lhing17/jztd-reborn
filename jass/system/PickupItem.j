@@ -352,7 +352,7 @@ function JoinMenPai takes integer player_i, integer menpai_num, integer item_id 
                 call SetPlayerName(p, menpai_name[menpai_num] + GetPlayerName(p))
                 call CreateNUnitsAtLoc(1, menpai_builder_id[menpai_num], p, born_loc[player_i], bj_UNIT_FACING)
                 set builder[player_i] = bj_lastCreatedUnit
-                call UnitAddAbility(builder[player_i], 'AInv')
+                // call UnitAddAbility(builder[player_i], 'AInv')
                 call PanCameraToTimedLocForPlayer(p, born_loc[player_i], 0)
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933玩家" + I2S(player_i) + "选择了" + menpai_name[menpai_num])
                 call KillUnit(selector[player_i])

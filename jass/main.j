@@ -198,10 +198,10 @@ globals
     integer array normal_towers
     integer array fine_towers
     integer array perfect_towers
-    integer low_size = 1
-    integer normal_size = 1
-    integer fine_size = 1
-    integer perfect_size = 1
+    integer LOW_SIZE = 1
+    integer NORMAL_SIZE = 1
+    integer FINE_SIZE = 1
+    integer PERFECT_SIZE = 1
     integer passed_time = 0
     integer array shenqi
     integer array random_shenqi

@@ -40,16 +40,16 @@ function UseItem_Conditions takes nothing returns boolean
         endif
     endif
     if GetItemTypeId(it) == 'I02B' then
-        call UnitAddItemById(u, low_towers[GetRandomInt(1, low_size)])
+        call UnitAddItemById(u, low_towers[GetRandomInt(1, LOW_SIZE)])
     endif
     if GetItemTypeId(it) == 'I02C' then
-        call UnitAddItemById(u, normal_towers[GetRandomInt(1, normal_size)])
+        call UnitAddItemById(u, normal_towers[GetRandomInt(1, NORMAL_SIZE)])
     endif
     if GetItemTypeId(it) == 'I02D' then
-        call UnitAddItemById(u, fine_towers[GetRandomInt(1, fine_size)])
+        call UnitAddItemById(u, fine_towers[GetRandomInt(1, FINE_SIZE)])
     endif
     if GetItemTypeId(it) == 'I02E' then
-        call UnitAddItemById(u, perfect_towers[GetRandomInt(1, perfect_size)])
+        call UnitAddItemById(u, perfect_towers[GetRandomInt(1, PERFECT_SIZE)])
     endif
     if GetItemTypeId(it) == 'I02L' then
         if GetRandomInt(1, 100) <= 10 then
