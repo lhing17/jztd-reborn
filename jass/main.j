@@ -187,13 +187,8 @@ globals
     region array nodes
     rect array nodeRects
     integer NODE = 65518
-    integer array middle_gold_flag
-    integer array middle_lumber_flag
-    integer array five_star_flag
-    integer array wisdom_ball_flag
-    string PROPERTY_GOLD = "BGOLD5DAYS"
-    string PROPERTY_LUMBER = "BLUMB5DAYS"
-    string PROPERTY_WISDOM_BALL = "AWISDOM001"
+
+
     dialog array wugong_practice
     button array practice_wugong
     integer array low_towers
@@ -947,6 +942,7 @@ endfunction
 function EnterMap_Conditions takes nothing returns boolean
     local unit u = GetEnteringUnit()
     local player p = GetOwningPlayer(u)
+    local integer i = 1 + GetPlayerId(p)
     if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != 'n01P' and GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         set tower[tower_num + 1] = s__Tower_create(u, GetItemNum(u))
         set tower_num = tower_num + 1
@@ -955,6 +951,12 @@ function EnterMap_Conditions takes nothing returns boolean
             if DzAPI_Map_Returns(p, 2) then
                 call UnitAddItemById(u, 'I061')
             endif
+            if europe_flag[i] == 1 then
+                call UnitAddItemById(u, 'I061')
+                call UnitAddItemById(u, 'I061')
+                call UnitAddItemById(u, 'I061')
+            endif
+
         endif
     endif
     set u = null

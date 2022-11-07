@@ -1,4 +1,18 @@
 
+globals
+    string PROPERTY_GOLD = "BGOLD5DAYS"
+    string PROPERTY_LUMBER = "BLUMB5DAYS"
+    string PROPERTY_WISDOM_BALL = "AWISDOM001"
+    // 欧皇大礼包
+    string PROPERTY_EUROPE = "AEUROPE001"
+
+    integer array middle_gold_flag
+    integer array middle_lumber_flag
+    integer array five_star_flag
+    integer array wisdom_ball_flag
+    integer array europe_flag
+endglobals
+
 function checkPurchase takes nothing returns nothing
     local integer i = 1
     loop
@@ -19,6 +33,9 @@ function checkPurchase takes nothing returns nothing
             set five_star_flag[i] = 1
             call SetPlayerTechResearched(Player(i - 1), 'R005', 1)
         endif
+        if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_EUROPE) or udg_isTest[i] then
+            set europe_flag[i] = 1
+        endif
         if RequestExtraBooleanData(44, Player(i - 1), null, null, false, 0, 0, 0) or udg_isTest[i] then
             call SetPlayerTechResearched(Player(i - 1), 'R006', 1)
         endif
@@ -34,8 +51,9 @@ function mallInit takes nothing returns nothing
         set middle_lumber_flag[i] = 0
         set five_star_flag[i] = 0
         set wisdom_ball_flag[i] = 0
+        set europe_flag[i] = 0
         set i = i + 1
     endloop
-    call TimerStart(t, 1, false, function checkPurchase)
+    call TimerStart(t, 0.1, false, function checkPurchase)
     set t = null
 endfunction

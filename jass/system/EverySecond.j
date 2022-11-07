@@ -66,6 +66,9 @@ function EverySecond_Conditions takes nothing returns boolean
         if five_star_flag[i] == 1 then
             call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 2)
         endif
+        if europe_flag[i] == 1 then
+            call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 3)
+        endif
         set i = i + 1
     endloop
     set i = 0
