@@ -1,6 +1,6 @@
 
 globals
-    constant integer FRAME_ID = -29734415
+    constant integer FRAME_ID = - 29734415
     Frame GUI
 endglobals
 library FrameLibrary initializer init
@@ -55,6 +55,13 @@ library FrameLibrary initializer init
             call SaveInteger(HT, FRAME_ID, f.id, f)
             return f
         endmethod
+        static method newTips0 takes Frame parent, string path returns Frame
+            local Frame f = Frame.allocate()
+            call f.numadd()
+            set f.id = DzCreateFrameByTagName("BACKDROP", "Frame_Image" + I2S(num), parent.id, path, 0)
+            call SaveInteger(HT, FRAME_ID, f.id, f)
+            return f
+        endmethod
         static method newTips takes Frame parent, string path, real w, real h returns Frame
             local Frame f = Frame.allocate()
             call f.numadd()
@@ -101,7 +108,7 @@ library FrameLibrary initializer init
             return f
         endmethod
         static method newButtonEmpty0 takes Frame parent returns Frame
-             local Frame f = Frame.allocate()
+            local Frame f = Frame.allocate()
             call f.numadd()
             set f.id = DzCreateFrameByTagName("BUTTON", "Frame_ButtonEmpty" + I2S(num), parent.id, "ButtonTemplateEmpty", 0)
             call SaveInteger(HT, FRAME_ID, f.id, f)
@@ -139,6 +146,9 @@ library FrameLibrary initializer init
         endmethod
         method setPoint takes integer a, Frame tar, integer b, real x, real y returns nothing
             call DzFrameSetPoint(id, a, tar.id, b, x, y)
+        endmethod
+        method setPriority takes integer prior returns nothing
+            call DzFrameSetPriority(id, prior)
         endmethod
         method setColor255 takes integer r, integer g, integer b returns nothing
             call DzFrameSetTextColor(id, DzGetColor(255, r, g, b))
@@ -190,7 +200,7 @@ library FrameLibrary initializer init
         endmethod
         method disable takes nothing returns nothing
             call DzFrameSetEnable(id, false)
-            set isEnable =false
+            set isEnable = false
         endmethod
         method setAlpha takes integer a returns nothing
             call DzFrameSetAlpha(id, a)
@@ -202,9 +212,37 @@ library FrameLibrary initializer init
             set id = 0
         endmethod
     endstruct
+
+    
+    function onButtonPressed takes nothing returns nothing
+
+    endfunction
+    function toggleImage takes nothing returns nothing
+        
+    endfunction
+
+    struct ImageButton
+        Frame image
+        Frame button
+
+        static method create takes Frame imageWidget, real w, real h returns ImageButton
+            local ImageButton ib = ImageButton.allocate()
+            set ib.image = imageWidget
+
+            set ib.button = Frame.newTextButton(ib.image)
+            call ib.button.setAllPoints(ib.image)
+            call ib.button.regEvent(FRAME_EVENT_PRESSED, function onButtonPressed)
+            call ib.button.regEvent(FRAME_MOUSE_ENTER, function toggleImage)
+            call ib.button.regEvent(FRAME_MOUSE_LEAVE, function toggleImage)
+            return ib
+        endmethod
+
+    endstruct
+
+
     private function init takes nothing returns nothing
-        local integer f = DzFrameGetTooltip()
-        local real size = 0.75
+        // local integer f = DzFrameGetTooltip()
+        // local real size = 0.75
         set GUI = Frame.getFrame(DzGetGameUI())
 
         //call openBoardButton.setText("任务")

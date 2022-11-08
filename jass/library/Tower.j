@@ -1,4 +1,8 @@
 library TowerLibrary
+    function IsBuilder takes integer id returns boolean
+        return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
+    endfunction
+    
     struct Tower
         unit u = null
         static method create takes unit u, integer item_num returns Tower
@@ -6,6 +10,11 @@ library TowerLibrary
             set tw.u = u
             call tw.setAbility()
             call tw.setItemNum(item_num)
+
+            if not IsBuilder(GetUnitTypeId(u)) and GetUnitTypeId(u) != 'o00R' then
+                call UnitAddAbility(u, 'A100')
+                call UnitMakeAbilityPermanent(u, true, 'A100')
+            endif
             return tw
         endmethod
         method IncAbility takes integer i returns nothing

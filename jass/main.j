@@ -24,8 +24,12 @@
 #include "system/UseAbility.j"
 #include "system/UseItem.j"
 
+#include "system/GUI.j"
+
 #include "system/Najitest.j"
 #include "system/GameDetail.j"
+
+
 
 
 globals
@@ -459,9 +463,7 @@ endfunction
 
 
 
-function IsBuilder takes integer id returns boolean
-    return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
-endfunction
+
 function GetItemNum takes unit u returns integer
     local integer i = 1
     if GetUnitPointValue(u) >= 600 then
@@ -951,12 +953,13 @@ function EnterMap_Conditions takes nothing returns boolean
             if DzAPI_Map_Returns(p, 2) then
                 call UnitAddItemById(u, 'I061')
             endif
+
+            // 首充礼包
             if europe_flag[i] == 1 then
                 call UnitAddItemById(u, 'I061')
                 call UnitAddItemById(u, 'I061')
                 call UnitAddItemById(u, 'I061')
             endif
-
         endif
     endif
     set u = null
@@ -1009,4 +1012,5 @@ function InitAllSystems takes nothing returns nothing
     call SelectUnitSystem()
     call UnitBuilt()
     call GameDetail_Trigger()
+    call initUI()
 endfunction

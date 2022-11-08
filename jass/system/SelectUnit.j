@@ -1,5 +1,11 @@
+globals
+    unit array unitInSelection
+endglobals
+
 function showHealthPointAction takes nothing returns nothing
     local integer i = 1 + GetPlayerId(GetTriggerPlayer())
+    // call BJDebugMsg("当前选中单位为："+GetUnitName(GetTriggerUnit()))
+    set unitInSelection[i] = GetTriggerUnit()
     if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "单位" + GetUnitName(GetTriggerUnit()) + "|r的血量为" + R2S(GetWidgetLife(GetTriggerUnit())) + " / " + R2S(GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE)))
     endif
@@ -28,6 +34,7 @@ function SelectUnitSystem takes nothing returns nothing
     loop
         exitwhen i > 5
         set showHint[i] = true
+        set unitInSelection[i] = null
         set i = i + 1
     endloop
     set i = 0
