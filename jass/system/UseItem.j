@@ -26,6 +26,7 @@ endfunction
 function europaGift takes unit u returns nothing
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
     local integer rand = GetRandomInt(1, 1000)
+    local integer rand2 = GetRandomInt(1, 100)
     local integer array x
     local integer array y
     local integer id
@@ -61,6 +62,10 @@ function europaGift takes unit u returns nothing
         set id = random_shenqi[GetRandomInt(1, open_shenqi)]
         call UnitAddItemById(u, id)
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(GetOwningPlayer(u)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00" + GetObjectName(id))
+    endif
+    if rand2 <= 10 then
+        call UnitAddItemById(u, 'I061')
+        call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(Player(i - 1)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00再来一包")
     endif
 endfunction
 
