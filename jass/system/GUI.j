@@ -53,7 +53,7 @@ function showTooltip takes nothing returns nothing
 			call hideOriginalTooltip()
 
 			set cont = LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
-			set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n伤害+" + I2S(cont / 2) + "%"
+			set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + I2S(cont / 2) + "%"
 			call tooltipWidget[3].setText(str)
 			call tooltipWidget[1].show()
 		endif
