@@ -47,7 +47,35 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
     local location loc = GetUnitLoc(ut)
     local real coeff = 1
     local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    // 敌方闪避
+    local integer enemyDodge = (udg_difficulty - 1) * 5 + (wave - 1) / 9 * 10
+    // 我方命中
+    local integer myHit = 100 + LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY)
+    local integer rand = GetRandomInt(0, 100)
+    local integer hitRate = 0
+    local integer criticalRate = 5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY)
+    // 暴击倍数
+    local real criticalTimes = 2 + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY)
+
+    // 如果敌方单位是英雄，闪避加100
+    if IsUnitType(ut, UNIT_TYPE_HERO) then
+        set enemyDodge = enemyDodge + 100
+    endif
+
+    // R00A科技等级，每级命中+100
+    if GetPlayerTechCountSimple('R00A', GetOwningPlayer(u)) > 0 then
+        set myHit = myHit + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(u))
+    endif
+
+    set hitRate = 100 * myHit / (myHit + enemyDodge)
+
     set coeff = coeff + kungfuCoeff[i]
+
+    // 北冥神功 暴击率+20%  暴击倍数+1
+    if GetUnitAbilityLevel(u, 'A03N') > 0 then
+        set criticalRate = criticalRate + 20
+        set criticalTimes = criticalTimes + 1
+    endif
 
     // 每点功勋增加0.5%伤害
     if LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) > 0 then
@@ -77,18 +105,22 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
     if UnitHasBuffBJ(ut, 'B005') then
         set damage = damage * 2
     endif
-    if damage == 0 then
+
+
+    // 圆桌理论 闪避+暴击+普通 = 100
+    if rand <= 100 - hitRate then
+        // 闪避
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
+    elseif rand <= 100 - hitRate + criticalRate then
+        // 暴击
+        set damage = damage * 3
+        call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
     else
-        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, 'A03N') >= 1 then
-            set damage = damage * 3
-            call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-            call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
-        else
-            call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-            call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 11., 100., 100., 100., 30.)
-        endif
+        call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 11., 100., 100., 100., 30.)
     endif
+
     call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
     call YDWETimerDestroyTextTag(.65, bj_lastCreatedTextTag)
     call RemoveLocation(loc)

@@ -217,6 +217,12 @@ globals
     hashtable CONT_HT = InitHashtable()
     constant integer CONT_KEY = 0
     constant integer CONT_MANA_ADDITION = 2
+
+    // 记录塔额外属性的哈希表
+    hashtable TOWER_ATTR_HT = InitHashtable()
+    constant integer TOWER_HIT_KEY = 0
+    constant integer TOWER_CRITICAL_RATE_KEY = 1
+    constant integer TOWER_CRITICAL_ADDITION_KEY = 1
     
     // 判断是否处于失败状态
     boolean isFailing = false
