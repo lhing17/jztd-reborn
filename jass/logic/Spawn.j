@@ -162,6 +162,13 @@ function doSpawnFinalBoss takes nothing returns nothing
     endloop
 endfunction
 
+function recoverMana takes nothing returns nothing
+    local unit u = GetEnumUnit()
+    call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA) * 0.3 + GetUnitState(u, UNIT_STATE_MANA))
+    call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
+    set u = null
+endfunction
+
 function spawn takes nothing returns nothing
     local integer i = 0
     local integer j = 0
@@ -172,6 +179,7 @@ function spawn takes nothing returns nothing
     local integer life = 0
     local integer jmax = 7
     local integer count = CountUnitsInGroup(attackerGroup)
+    local group g = null
     set wave = wave + 1
     set loc[0] = GetRectCenter(gg_rct_spawn1)
     set loc[1] = GetRectCenter(gg_rct_spawn2)
@@ -201,7 +209,11 @@ function spawn takes nothing returns nothing
         set rand = 1
         if wave <= 60 then
             set luck[i + 1] = luck[i + 1] + 1
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(70 * wave) + "，人品+1")
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(70 * wave) + "，人品+1，所有塔恢复30%内力")
+            set g = CreateGroup()
+            call GroupEnumUnitsOfPlayer(g, Player(i), null)
+            call ForGroup(g, function recoverMana)
+            call DestroyGroup(g)
             if goldHit[i + 1] == 1 then
                 set rand = GetRandomInt(2, 4)
                 set goldHit[i + 1] = 0
@@ -257,6 +269,7 @@ function spawn takes nothing returns nothing
     endif
     call YDWEPolledWaitNull(WAVE_TIME)
     call DisableTrigger(spawnTrigger)
+    set g = null
 endfunction
 
 function doSpawn takes nothing returns nothing

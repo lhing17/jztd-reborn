@@ -645,7 +645,11 @@ function Trig_ChooseNanDuActions takes nothing returns nothing
     set udg_diff[3] = DialogAddButton(udg_select_diff, "|cFFFF6600初出茅庐(N3)", 67)
     set udg_diff[4] = DialogAddButton(udg_select_diff, "|cFF0041FF初窥门径(N4)", 68)
     set udg_diff[5] = DialogAddButton(udg_select_diff, "|cFF1FBF00略有小成(N5)", 69)
-    set udg_diff[6] = DialogAddButton(udg_select_diff, "|cFFFF0000略有大成(N6)", 70)
+    set udg_diff[6] = DialogAddButton(udg_select_diff, "|cFFFF0000已有小成(N6)", 70)
+    set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FFFF渐入佳境(N7)", 71)
+    set udg_diff[8] = DialogAddButton(udg_select_diff, "|cFFCCCC00驾轻就熟(N8)", 72)
+    set udg_diff[9] = DialogAddButton(udg_select_diff, "|cFF0099CC略有大成(N9)", 73)
+    set udg_diff[10] = DialogAddButton(udg_select_diff, "|cFF66CC99已有大成(N10)", 74)
     // set udg_diff[7] = DialogAddButton(udg_select_diff, "|cFF00FF00生存模式", 71)
     call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetTriggeringTrigger()) * ydl_localvar_step, $32A9E4C8), udg_select_diff, true)
     set ydl_timer = CreateTimer()
@@ -707,24 +711,49 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R000', 9, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[6] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000略有大成(N6)")
-        call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000略有大成(N6)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF0000300|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
-        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF00006|r")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000已有小成(N6)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000已有小成(N6)|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF300|r")
+        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF50|r")
+        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF6|r")
         set udg_difficulty = 6
         call SetPlayerTechResearchedSwap('R000', 11, Player(5))
     endif
     if GetClickedButtonBJ() == udg_diff[7] then
-        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00FF00生存模式")
-        call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000生存模式|r下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF0000300|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF000050|r")
-        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF00007|r")
-        call DisplayTextToForce(GetPlayersAll(), "生存模式强度较高，建议先积累一些积分再尝试|r")
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00FFFF渐入佳境(N7)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF00FFFF渐入佳境(N7)|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF300|r")
+        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF45|r")
+        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF7|r")
         set udg_difficulty = 7
-        set gameMode = 1
         call SetPlayerTechResearchedSwap('R000', 13, Player(5))
+    endif
+    if GetClickedButtonBJ() == udg_diff[8] then
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCCCC00驾轻就熟(N8)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFFCCCC00驾轻就熟(N8)|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF300|r")
+        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF40|r")
+        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF8|r")
+        set udg_difficulty = 8
+        call SetPlayerTechResearchedSwap('R000', 15, Player(5))
+    endif
+    if GetClickedButtonBJ() == udg_diff[9] then
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0099CC略有大成(N9)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF0099CC略有大成(N9)|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF300|r")
+        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF35|r")
+        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF9|r")
+        set udg_difficulty = 9
+        call SetPlayerTechResearchedSwap('R000', 17, Player(5))
+    endif
+    if GetClickedButtonBJ() == udg_diff[10] then
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF66CC99已有大成(N10)")
+        call DisplayTextToForce(GetPlayersAll(), "|cFF66CC99已有大成(N10)|r难度下：")
+        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF300|r")
+        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF30|r")
+        call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF10|r")
+        set udg_difficulty = 10
+        call SetPlayerTechResearchedSwap('R000', 19, Player(5))
     endif
     loop
         exitwhen i > 4
