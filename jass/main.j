@@ -314,10 +314,6 @@ function CreateAllUnits_1 takes nothing returns nothing
     call CreateBuildingsForPlayer1()
     call CreateBuildingsForPlayer2()
     call CreateBuildingsForPlayer3()
-    call CreateUnitsForPlayer0()
-    call CreateUnitsForPlayer1()
-    call CreateUnitsForPlayer2()
-    call CreateUnitsForPlayer3()
 endfunction
 function CreateRegions takes nothing returns nothing
     local weathereffect we
