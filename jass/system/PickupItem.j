@@ -502,7 +502,7 @@ function PickupItem_Conditions takes nothing returns boolean
             // 增益-连击 加连击率 TODO
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
         elseif attr == 9 then
-            // 增益-破甲 加破防概率 TODO
+            // 增益-破甲 加破防概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) + value)
         elseif attr == 10 then
             // 增益-冷静 冷却缩减 TODO
@@ -558,7 +558,7 @@ function DropItem_Conditions takes nothing returns boolean
             // 增益-连击 加连击率 TODO
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) - value)
         elseif attr == 9 then
-            // 增益-破甲 加破防概率 TODO
+            // 增益-破甲 加破防概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) - value)
         elseif attr == 10 then
             // 增益-冷静 冷却缩减 TODO

@@ -147,9 +147,17 @@ function UnitAttack_Conditions takes nothing returns boolean
     if GetUnitAbilityLevel(u, 'A03Q') > 0 and GetRandomInt(1, 100) <= 15 then
         call WanBuff(u, ut, 13)
     endif
+
+    // 洗髓经 15%概率破防
     if GetUnitAbilityLevel(u, 'A03R') > 0 and GetRandomInt(1, 100) <= 15 then
         call WanBuff(u, ut, 9)
     endif
+
+    // 装备加成破防概率
+    if GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) then
+        call WanBuff(u, ut, 9)
+    endif
+
     if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
         set g = CreateGroup()
         call GroupEnumUnitsInRange(g, GetUnitX(u), GetUnitY(u), 1000, Condition(function IsEnemyAndAliveForAttack))

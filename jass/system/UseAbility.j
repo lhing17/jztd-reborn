@@ -97,6 +97,10 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt = 0
     local group g = null
     local integer k = 0
+
+    // 装备加成缩减CD
+
+
     if id == 'A03Z' then
         set goldHit[i] = 1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了金币暴击，下一波到来时金币奖励随机翻倍")
@@ -432,6 +436,7 @@ function UseAbility_Conditions takes nothing returns boolean
     set loc2 = null
     set g = null
     set temp_loc = null
+    set t = null
     return false
 endfunction
 function UseAbility takes nothing returns nothing
