@@ -10,6 +10,7 @@
 #include "logic/EnemyMove.j"
 #include "logic/Mall.j"
 #include "logic/Spawn.j"
+#include "logic/Equip.j"
 
 
 #include "system/EverySecond.j"
@@ -222,7 +223,28 @@ globals
     hashtable TOWER_ATTR_HT = InitHashtable()
     constant integer TOWER_HIT_KEY = 0
     constant integer TOWER_CRITICAL_RATE_KEY = 1
-    constant integer TOWER_CRITICAL_ADDITION_KEY = 1
+    constant integer TOWER_CRITICAL_ADDITION_KEY = 2
+    constant integer TOWER_MANA_RECOVERY_KEY = 3
+    constant integer TOWER_DAMAGE_KEY = 4
+    constant integer TOWER_COMBO_KEY = 5     // 连击
+    constant integer TOWER_PIERCE_KEY = 6    // 破防
+    constant integer TOWER_COOLDOWN_KEY = 7  // 冷却缩减
+    constant integer TOWER_RESET_CD_KEY = 8  // 重置冷却
+
+    // 记录装备附加属性的哈希表
+    hashtable EQUIP_ATTR_HT = InitHashtable()
+    // 属性1类型
+    constant integer EQUIP_ATTR1_TYPE_KEY = 0
+    // 属性1值
+    constant integer EQUIP_ATTR1_VALUE_KEY = 1
+    // 属性2类型
+    constant integer EQUIP_ATTR2_TYPE_KEY = 2
+    // 属性2值
+    constant integer EQUIP_ATTR2_VALUE_KEY = 3
+    // 属性3类型
+    constant integer EQUIP_ATTR3_TYPE_KEY = 4
+    // 属性3值
+    constant integer EQUIP_ATTR3_VALUE_KEY = 5
     
     // 判断是否处于失败状态
     boolean isFailing = false
@@ -1044,4 +1066,5 @@ function InitAllSystems takes nothing returns nothing
     call UnitBuilt()
     call GameDetail_Trigger()
     call initUI()
+    call initEquip()
 endfunction

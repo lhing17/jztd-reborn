@@ -61,6 +61,7 @@ function EverySecond_Conditions takes nothing returns boolean
     if udg_ShengYuGuaiShu + 10 <= CountUnitsInGroup(attackerGroup) and GetRandomInt(1, 5) <= 2 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cffff0000圈内的进攻怪太多了，请注意防守！！|R")
     endif
+    set i = 1
     loop
         exitwhen i > 5
         if five_star_flag[i] == 1 then
@@ -77,6 +78,12 @@ function EverySecond_Conditions takes nothing returns boolean
         if GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A00I') >= 1 then
             call IssueImmediateOrder(s__Tower_u[tower[i]], "frenzy")
         endif
+        // 装备加成
+        if LoadInteger(TOWER_ATTR_HT, GetHandleId(s__Tower_u[tower[i]]), TOWER_MANA_RECOVERY_KEY) > 0 then
+            call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + LoadInteger(TOWER_ATTR_HT, GetHandleId(s__Tower_u[tower[i]]), TOWER_MANA_RECOVERY_KEY))
+        endif
+
+        // 谷衣心法
         if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A') >= 1 then
             set level = GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A')
             call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + GetRandomInt(level * 10, level * 100))

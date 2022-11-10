@@ -186,7 +186,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2gold[player_i] != 1 then
                 set point2gold[player_i] = 1
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 8000)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 5000)
                 call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00金币+8000，扣除5积分")
                 call pointChange(player_i, 5)
             else
@@ -426,6 +426,8 @@ function PickupItem_Conditions takes nothing returns boolean
     local integer i = 1 + GetPlayerId(p)
     local integer award = 0
     local real rand = 0
+    local integer attr = 0
+    local integer value = 0
     call GoldLumberExChange(i, GetItemTypeId(it), u)
     call CheckHolyWeapon(i, GetItemTypeId(it))
     call SynHolyWeapon(i, GetItemTypeId(it))
@@ -450,11 +452,129 @@ function PickupItem_Conditions takes nothing returns boolean
         call UnitAddItemById(u, award)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))
     endif
+
+    if GetItemTypeId(it) == 'I062' then
+        set award = normal_drops[GetRandomInt(1, 5)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I063' then
+        set award = rare_drops[GetRandomInt(1, 5)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I064' then
+        set award = valuable_drops[GetRandomInt(1, 5)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I066' then
+        set award = ancient_drops[GetRandomInt(1, 5)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I065' then
+        set award = epic_drops[GetRandomInt(1, 5)]
+        call UnitAddItemById(u, award)
+    endif
+
+    // 额外属性效果
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        if attr == 1 then
+            // 增益-疾速 加攻击速度 TODO
+        elseif attr == 2 then
+            // 增益-练气 加内力上限
+            call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 0, value)     
+        elseif attr == 3 then
+            // 增益-冥思 加内力回复速度
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY) + value)
+        elseif attr == 4 then
+            // 增益-吼叫 加攻击力
+            call YDWEGeneralBounsSystemUnitSetBonus(u, 3, 0, value)
+        elseif attr == 5 then
+            // 增益-瞄准 加命中
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
+        elseif attr == 6 then
+            // 增益-蓄力 加武学伤害
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value)
+        elseif attr == 7 then
+            // 增益-狂暴 加暴击率
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
+        elseif attr == 8 then
+            // 增益-连击 加连击率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
+        elseif attr == 9 then
+            // 增益-破甲 加破防概率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) + value)
+        elseif attr == 10 then
+            // 增益-冷静 冷却缩减 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) + value)
+        elseif attr == 11 then
+            // 增益-连贯 重置CD概率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) + value)
+        endif
+    endif
+
+
     set it = null
     set u = null
     set p = null
     return false
 endfunction
+
+function DropItem_Conditions takes nothing returns boolean
+    local item it = GetManipulatedItem()
+    local unit u = GetTriggerUnit()
+    local player p = GetOwningPlayer(u)
+    local integer i = 1 + GetPlayerId(p)
+    local integer award = 0
+    local real rand = 0
+    local integer attr = 0
+    local integer value = 0
+
+     // 额外属性效果
+     if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        if attr == 1 then
+            // 增益-疾速 加攻击速度 TODO
+        elseif attr == 2 then
+            // 增益-练气 加内力上限
+            call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 1, value)     
+        elseif attr == 3 then
+            // 增益-冥思 加内力上限
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY) - value)
+        elseif attr == 4 then
+            // 增益-吼叫 加攻击力
+            call YDWEGeneralBounsSystemUnitSetBonus(u, 3, 1, value)
+        elseif attr == 5 then
+            // 增益-瞄准 加命中
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) - value)
+        elseif attr == 6 then
+            // 增益-蓄力 加武学伤害
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) - value)
+        elseif attr == 7 then
+            // 增益-狂暴 加暴击率
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) - value)
+        elseif attr == 8 then
+            // 增益-连击 加连击率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) - value)
+        elseif attr == 9 then
+            // 增益-破甲 加破防概率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) - value)
+        elseif attr == 10 then
+            // 增益-冷静 冷却缩减 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) - value)
+        elseif attr == 11 then
+            // 增益-连贯 重置CD概率 TODO
+            call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) - value)
+        endif
+    endif
+
+    set it = null
+    set u = null
+    set p = null
+    return false
+endfunction
+
 function PickupItem takes nothing returns nothing
     local trigger t = CreateTrigger()
     call InitBornLoc()
@@ -466,5 +586,9 @@ function PickupItem takes nothing returns nothing
     call SetSoundDuration(Ih, 589)
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_PICKUP_ITEM)
     call TriggerAddCondition(t, Condition(function PickupItem_Conditions))
+
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DROP_ITEM)
+    call TriggerAddCondition(t, Condition(function DropItem_Conditions))
     set t = null
 endfunction

@@ -173,6 +173,7 @@ function spawn takes nothing returns nothing
     local integer i = 0
     local integer j = 0
     local integer rand = 1
+    local real randReal = 1
     local location array loc
     local location array target
     local timer t = CreateTimer()
@@ -206,20 +207,20 @@ function spawn takes nothing returns nothing
     endif
     loop
         exitwhen i >= 4
-        set rand = 1
+        set randReal = 1
         if wave <= 60 then
-            set luck[i + 1] = luck[i + 1] + 1
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(70 * wave) + "，人品+1，所有塔恢复30%内力")
+            set luck[i + 1] = luck[i + 1] + 2
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(100 * wave) + "，人品+2，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverMana)
             call DestroyGroup(g)
             if goldHit[i + 1] == 1 then
-                set rand = GetRandomInt(2, 4)
+                set randReal = GetRandomInt(2, 4)
                 set goldHit[i + 1] = 0
-                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + I2S(rand) + "倍的金币奖励|R")
+                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif
-            call AdjustPlayerStateBJ(70 * wave * rand, Player(i), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(R2I(70 * wave * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
         endif
         set j = 1
         loop
@@ -252,7 +253,7 @@ function spawn takes nothing returns nothing
                         set lumberHit[i + 1] = 0
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
-                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S((2 * j - 1) * rand) + "个")
+                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
                     call AdjustPlayerStateBJ((2 * j - 1) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
                 endif
                 set target[i] = null
