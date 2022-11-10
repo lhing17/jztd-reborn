@@ -505,10 +505,10 @@ function PickupItem_Conditions takes nothing returns boolean
             // 增益-破甲 加破防概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) + value)
         elseif attr == 10 then
-            // 增益-冷静 冷却缩减 TODO
+            // 增益-冷静 冷却缩减
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) + value)
         elseif attr == 11 then
-            // 增益-连贯 重置CD概率 TODO
+            // 增益-连贯 重置CD概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) + value)
         endif
     endif
@@ -561,10 +561,10 @@ function DropItem_Conditions takes nothing returns boolean
             // 增益-破甲 加破防概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) - value)
         elseif attr == 10 then
-            // 增益-冷静 冷却缩减 TODO
+            // 增益-冷静 冷却缩减
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) - value)
         elseif attr == 11 then
-            // 增益-连贯 重置CD概率 TODO
+            // 增益-连贯 重置CD概率
             call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) - value)
         endif
     endif

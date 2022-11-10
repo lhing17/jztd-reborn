@@ -80,6 +80,18 @@ function setFullMana takes nothing returns nothing
     call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
     set u = null
 endfunction
+
+function reduceCooldown takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer abilityId = LoadInteger(YDHT, GetHandleId(t), 1)
+    local integer percent = LoadInteger(YDHT, GetHandleId(t), 2)
+    call EXSetAbilityState(EXGetUnitAbility(u, id), 1, EXGetAbilityState(EXGetUnitAbility(u, id), 1) * (100 - percent) / 100)
+    call DestroyTimer(t)
+    set u = null
+    set t = null
+endfunction
+
 function UseAbility_Conditions takes nothing returns boolean
     local integer id = GetSpellAbilityId()
     local unit u = GetTriggerUnit()
@@ -99,6 +111,25 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer k = 0
 
     // 装备加成缩减CD
+    if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) > 0 then
+        set t = CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call SaveInteger(YDHT, GetHandleId(t), 1, id)
+        call SaveInteger(YDHT, GetHandleId(t), 2, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY))
+        call TimerStart(t, 0.02, true, function reduceCooldown)
+        set t = null
+    endif
+
+    // 装备重置CD
+    if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) > 0 and GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) then
+        set t = CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call SaveInteger(YDHT, GetHandleId(t), 1, id)
+        call SaveInteger(YDHT, GetHandleId(t), 2, 100)
+        call TimerStart(t, 0.02, true, function reduceCooldown)
+        set t = null
+    endif
+        
 
 
     if id == 'A03Z' then
