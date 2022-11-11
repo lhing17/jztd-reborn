@@ -52,6 +52,14 @@ function UnitAttack_Conditions takes nothing returns boolean
     set udl_loc[1] = GetRectCenter(gg_rct_spawn2)
     set udl_loc[2] = GetRectCenter(gg_rct_spawn3)
     set udl_loc[3] = GetRectCenter(gg_rct_spawn4)
+
+    // 如果下次塔必定封穴，执行封穴
+    if LoadBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY) then
+        call WanBuff(u, ut, 11)
+        call SaveBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY, false)
+    endif
+
+
     if udg_douzhuan[i] >= 1 and GetRandomReal(0, 100) <= 2 then
         if LoadReal(YDHT, GetHandleId(ut), BORN_LOC_X) != 0 then
             call SetUnitX(ut, LoadReal(YDHT, GetHandleId(ut), BORN_LOC_X))

@@ -51,6 +51,18 @@ function UnitDeath_Conditions takes nothing returns boolean
     local integer i = 1 + GetPlayerId(p)
     local location loc = null
     local timer t = null
+    local integer j = 1
+    local item it = null
+
+    // 击杀单位时，如果凶手有对应的装备，触发对应的效果
+    loop
+        exitwhen j > 6
+        set it = UnitItemInSlotBJ(u, j)
+        if it != null then
+            call equipKillingEffect(u, it)
+        endif
+        set j = j + 1
+    endloop
 
     // 击杀单位获得功勋
     if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING then
@@ -71,7 +83,8 @@ function UnitDeath_Conditions takes nothing returns boolean
         if GetRandomInt(1, 5000) <= luck[i] then
             set loc = GetUnitLoc(ut)
             set luck[i] = luck[i] - 1
-            call CreateItemLoc(getRandomDrop(), loc)
+            set it = CreateItemLoc(getRandomDrop(), loc)
+            call generateRandomAttr(it)
             call RemoveLocation(loc)
         endif
     endif
@@ -138,40 +151,14 @@ function UnitDeath_Conditions takes nothing returns boolean
     set p = null
     set loc = null
     set t = null
+    set it = null
     return false
 endfunction
 function UnitDeath takes nothing returns nothing
     local trigger t = CreateTrigger()
-    set luck[1] = 20
-    set luck[2] = 20
-    set luck[3] = 20
-    set luck[4] = 20
-    set normal_drops[1] = 'I004'
-    set normal_drops[2] = 'I00E'
-    set normal_drops[3] = 'I00P'
-    set normal_drops[4] = 'I00G'
-    set normal_drops[5] = 'I00X'
-    set rare_drops[1] = 'I00B'
-    set rare_drops[2] = 'I00H'
-    set rare_drops[3] = 'I00O'
-    set rare_drops[4] = 'I005'
-    set rare_drops[5] = 'I00Y'
-    set valuable_drops[1] = 'I00A'
-    set valuable_drops[2] = 'I00I'
-    set valuable_drops[3] = 'I006'
-    set valuable_drops[4] = 'I008'
-    set valuable_drops[5] = 'I00Z'
-    set valuable_drops[6] = 'I016'
-    set ancient_drops[1] = 'I009'
-    set ancient_drops[2] = 'I00J'
-    set ancient_drops[3] = 'I00Q'
-    set ancient_drops[4] = 'I00S'
-    set ancient_drops[5] = 'I010'
-    set epic_drops[1] = 'I00D'
-    set epic_drops[2] = 'I00K'
-    set epic_drops[3] = 'I007'
-    set epic_drops[4] = 'I00T'
-    set epic_drops[5] = 'I011'
+    local integer j = 1
+
+
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DEATH)
     call TriggerAddCondition(t, Condition(function UnitDeath_Conditions))
     set t = null

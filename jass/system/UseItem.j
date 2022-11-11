@@ -30,6 +30,7 @@ function europaGift takes unit u returns nothing
     local integer array x
     local integer array y
     local integer id
+    local item it = null
     set x[1] =- 2380
     set x[2] = 820
     set x[3] = 2380
@@ -48,7 +49,9 @@ function europaGift takes unit u returns nothing
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 600 then
         set id = getRandomDrop()
-        call UnitAddItemById(u, id)
+        set it = CreateItem(id, GetUnitX(u), GetUnitY(u))
+        call generateRandomAttr(it)
+        call tryUnitAddItem(u, it)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 700 then
         set id = GetRandomInt(1, 5)
@@ -60,13 +63,16 @@ function europaGift takes unit u returns nothing
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFFFFFF00" + I2S(id) + "个金币")
     else
         set id = random_shenqi[GetRandomInt(1, open_shenqi)]
-        call UnitAddItemById(u, id)
+        set it = CreateItem(id, GetUnitX(u), GetUnitY(u))
+        call generateRandomAttr(it)
+        call tryUnitAddItem(u, it)
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(GetOwningPlayer(u)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00" + GetObjectName(id))
     endif
     if rand2 <= 10 then
         call UnitAddItemById(u, 'I061')
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(Player(i - 1)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00再来一包")
     endif
+    set it = null
 endfunction
 
 function UseItem_Conditions takes nothing returns boolean

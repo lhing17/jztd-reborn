@@ -162,10 +162,24 @@ function doSpawnFinalBoss takes nothing returns nothing
     endloop
 endfunction
 
-function recoverMana takes nothing returns nothing
+
+
+function recoverManaAndEquipEffect takes nothing returns nothing
     local unit u = GetEnumUnit()
+    local item it = null
+    local integer j = 1
     call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA) * 0.3 + GetUnitState(u, UNIT_STATE_MANA))
     call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
+
+    loop
+        exitwhen j > 6
+        set it = UnitItemInSlotBJ(u, j)
+        if it != null then
+            call equipWaveStartEffect(u, it)
+        endif
+        set j = j + 1
+    endloop
+    set it = null
     set u = null
 endfunction
 
@@ -213,7 +227,7 @@ function spawn takes nothing returns nothing
             call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(100 * wave) + "，人品+2，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
-            call ForGroup(g, function recoverMana)
+            call ForGroup(g, function recoverManaAndEquipEffect)
             call DestroyGroup(g)
             if goldHit[i + 1] == 1 then
                 set randReal = GetRandomInt(2, 4)

@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -142,9 +142,9 @@ unit gg_unit_o00J_0019= null
 unit gg_unit_o00L_0020= null
 unit gg_unit_o00K_0021= null
 unit gg_unit_o00Q_0022= null
+unit gg_unit_e00H_0026= null
 unit gg_unit_e00H_0024= null
 unit gg_unit_e00H_0025= null
-unit gg_unit_e00H_0026= null
 unit gg_unit_e00H_0023= null
 constant integer FRAME_ID= - 29734415
 integer GUI
@@ -158,8 +158,15 @@ integer array middle_lumber_flag
 integer array five_star_flag
 integer array wisdom_ball_flag
 integer array europe_flag
+    // 词缀
+string array affixTitle
+string array affixDesc
+integer array affixMin
+integer array affixMax
+constant integer AFFIX_COUNT= 22
 unit array unitInSelection
 integer array tooltipWidget
+integer array itemTooltipWidget
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 constant integer TOPLEFT= 0
 constant integer TOP= 1
@@ -189,6 +196,7 @@ constant integer FRAME_POPUPMENU_ITEM_CHANGED= 11
 constant integer FRAME_MOUSE_DOUBLECLICK= 12
 constant integer FRAME_SPRITE_ANIM_UPDATE= 13
 integer array originalAbilityButton
+integer array originalItemButton
 integer udg_ShengYuGuaiShu= 0
 leaderboard udg_jifenpai= null
 timer udg_shuabingtimer= null
@@ -372,8 +380,36 @@ constant integer CONT_MANA_ADDITION= 2
 hashtable TOWER_ATTR_HT= InitHashtable()
 constant integer TOWER_HIT_KEY= 0
 constant integer TOWER_CRITICAL_RATE_KEY= 1
-constant integer TOWER_CRITICAL_ADDITION_KEY= 1
-    
+constant integer TOWER_CRITICAL_ADDITION_KEY= 2
+constant integer TOWER_MANA_RECOVERY_KEY= 3
+constant integer TOWER_DAMAGE_KEY= 4
+constant integer TOWER_COMBO_KEY= 5
+constant integer TOWER_PIERCE_KEY= 6
+constant integer TOWER_COOLDOWN_KEY= 7
+constant integer TOWER_RESET_CD_KEY= 8
+constant integer TOWER_SEAL_KEY= 9
+
+    // 记录装备附加属性的哈希表
+hashtable EQUIP_ATTR_HT= InitHashtable()
+    // 属性1类型
+constant integer EQUIP_ATTR1_TYPE_KEY= 0
+    // 属性1值
+constant integer EQUIP_ATTR1_VALUE_KEY= 1
+    // 属性2类型
+constant integer EQUIP_ATTR2_TYPE_KEY= 2
+    // 属性2值
+constant integer EQUIP_ATTR2_VALUE_KEY= 3
+    // 属性3类型
+constant integer EQUIP_ATTR3_TYPE_KEY= 4
+    // 属性3值
+constant integer EQUIP_ATTR3_VALUE_KEY= 5
+    // 记录装备需要几项附加属性
+constant integer EQUIP_ATTR_COUNT_KEY= 999
+constant integer EQUIP_LEVEL_KEY= 1000
+constant integer EQUIP_ABILITY_KEY= 1001
+
+constant integer EQUIP_PICKUP_KEY= 1002
+
     // 判断是否处于失败状态
 boolean isFailing= false
 integer failingCounter= 0
@@ -1300,7 +1336,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary___init takes nothing returns nothing
+    function FrameLibrary__init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1369,8 +1405,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1456,7 +1492,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1476,7 +1512,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -3811,7 +3847,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Thu Nov 10 13:39:18 2022
+//   Date: Fri Nov 11 16:17:40 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -4696,7 +4732,7 @@ function WanBuff_1 takes integer buffnum,integer num,unit uc,integer id,integer 
     if buffnum == num then
         set p=GetOwningPlayer(uc)
         set loc=GetUnitLoc(ut)
-        call CreateNUnitsAtLoc(1, 'e000', p, loc, bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'e100', p, loc, bj_UNIT_FACING)
         set u=bj_lastCreatedUnit
         call ShowUnitHide(u)
         call UnitAddAbility(u, id)
@@ -4739,12 +4775,27 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     // 敌方闪避
     local integer enemyDodge= ( udg_difficulty - 1 ) * 5 + ( wave - 1 ) / 9 * 10
     // 我方命中
-    local integer myHit= 100
+    local integer myHit= 100 + LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY)
+    local integer rand= GetRandomInt(0, 100)
+    local integer hitRate= 0
+    local integer criticalRate= 5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY)
+    // 暴击倍数
+    local real criticalTimes= 2 + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY)
     // 如果敌方单位是英雄，闪避加100
     if IsUnitType(ut, UNIT_TYPE_HERO) then
         set enemyDodge=enemyDodge + 100
     endif
+    // R00A科技等级，每级命中+100
+    if GetPlayerTechCountSimple('R00A', GetOwningPlayer(u)) > 0 then
+        set myHit=myHit + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(u))
+    endif
+    set hitRate=100 * myHit / ( myHit + enemyDodge )
     set coeff=coeff + kungfuCoeff[i]
+    // 北冥神功 暴击率+20%  暴击倍数+1
+    if GetUnitAbilityLevel(u, 'A03N') > 0 then
+        set criticalRate=criticalRate + 20
+        set criticalTimes=criticalTimes + 1
+    endif
     // 每点功勋增加0.5%伤害
     if LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) > 0 then
         set coeff=coeff + LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) * 0.005
@@ -4765,21 +4816,26 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff=coeff + .5
     endif
+    // 塔的伤害加成
+    if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
+        set coeff=coeff + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY)
+    endif
     set damage=damage * coeff
     if UnitHasBuffBJ(ut, 'B005') then
         set damage=damage * 2
     endif
-    if damage == 0 then
+    // 圆桌理论 闪避+暴击+普通 = 100
+    if rand <= 100 - hitRate then
+        // 闪避
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
+    elseif rand <= 100 - hitRate + criticalRate then
+        // 暴击
+        set damage=damage * 3
+        call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
     else
-        if GetRandomReal(0., 100.) <= 20 and GetUnitAbilityLevel(u, 'A03N') >= 1 then
-            set damage=damage * 3
-            call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-            call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
-        else
-            call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
-            call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 11., 100., 100., 100., 30.)
-        endif
+        call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 11., 100., 100., 100., 30.)
     endif
     call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
     call YDWETimerDestroyTextTag(.65 , bj_lastCreatedTextTag)
@@ -4982,16 +5038,122 @@ function FetchUnitItem takes unit u,integer j returns item
     endloop
     return null
 endfunction
+// 装备随机属性数量
+function getEquipRandomAttrCount takes integer id returns integer
+    return LoadInteger(YDHT, id, EQUIP_ATTR_COUNT_KEY)
+endfunction
+function generateRandomAttr takes item it returns nothing
+    local integer handleId= GetHandleId(it)
+    // 从词缀中随机选取count个
+    local integer array affixIndex
+    local integer i= 1
+    local integer temp= 0
+    local integer j= 0
+    local integer rand= 0
+    local integer count= (LoadInteger(YDHT, (GetItemTypeId(it)), EQUIP_ATTR_COUNT_KEY)) // INLINED!!
+    if count <= 0 then
+        return
+    endif
+    loop
+        exitwhen i > AFFIX_COUNT
+        set affixIndex[i]=i
+        set i=i + 1
+    endloop
+    set i=AFFIX_COUNT
+    loop
+        exitwhen i < 1
+        set j=GetRandomInt(1, i - 1)
+        set temp=affixIndex[i]
+        set affixIndex[i]=affixIndex[j]
+        set affixIndex[j]=temp
+        set i=i - 1
+    endloop
+    if count >= 1 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_TYPE_KEY, affixIndex[1])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_VALUE_KEY, GetRandomInt(affixMin[affixIndex[1]], affixMax[affixIndex[1]]))
+    endif
+    if count >= 2 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_TYPE_KEY, affixIndex[2])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_VALUE_KEY, GetRandomInt(affixMin[affixIndex[2]], affixMax[affixIndex[2]]))
+    endif
+    if count >= 3 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_TYPE_KEY, affixIndex[3])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_VALUE_KEY, GetRandomInt(affixMin[affixIndex[3]], affixMax[affixIndex[3]]))
+    endif
+endfunction
+function equipAddition takes unit u,integer attr,integer value returns nothing
+    if attr == 1 then
+        // 增益-疾速 加攻击速度 TODO
+    elseif attr == 2 then
+        // 增益-练气 加内力上限
+        call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , value)
+    elseif attr == 3 then
+        // 增益-冥思 加内力回复速度
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY) + value)
+    elseif attr == 4 then
+        // 增益-吼叫 加攻击力
+        call YDWEGeneralBounsSystemUnitSetBonus(u , 3 , 0 , value)
+    elseif attr == 5 then
+        // 增益-瞄准 加命中
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
+    elseif attr == 6 then
+        // 增益-蓄力 加武学伤害
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value)
+    elseif attr == 7 then
+        // 增益-狂暴 加暴击率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
+    elseif attr == 8 then
+        // 增益-连击 加连击率 TODO
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
+    elseif attr == 9 then
+        // 增益-破甲 加破防概率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) + value)
+    elseif attr == 10 then
+        // 增益-冷静 冷却缩减
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) + value)
+    elseif attr == 11 then
+        // 增益-连贯 重置CD概率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) + value)
+    endif
+endfunction
+function addExtraAttr takes unit u,item it returns nothing
+    local integer attr= 0
+    local integer value= 0
+    // 额外属性效果
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipAddition(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipAddition(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipAddition(u , attr , value)
+    endif
+endfunction
 function SynItem takes unit u,integer itemid_before,integer itemid_after returns nothing
+    local item it= null
+    local item it2= null
     if UnitHaveItem(u , itemid_before) then
-        call RemoveItem(FetchUnitItem(u , itemid_before))
+        set it=FetchUnitItem(u , itemid_before)
+        call UnitRemoveItem(u, it)
         if UnitHaveItem(u , itemid_before) then
             call RemoveItem(FetchUnitItem(u , itemid_before))
-            call UnitAddItemById(u, itemid_after)
+            call RemoveItem(it)
+            set it2=UnitAddItemById(u, itemid_after)
+            call generateRandomAttr(it2)
+            call addExtraAttr(u , it2)
         else
-            call UnitAddItemById(u, itemid_before)
+            call UnitAddItem(u, it)
         endif
     endif
+    set it=null
+    set it2=null
 endfunction
 // 获取随机品质的武魂石，概率和波数以及人品有关
 function getRandomSoulStone takes integer i returns integer
@@ -5053,6 +5215,64 @@ endfunction
 // 加金币
 function addGold takes player p,integer count returns nothing
     call AdjustPlayerStateBJ(count, p, PLAYER_STATE_RESOURCE_GOLD)
+endfunction
+// 判断物品是否为武器
+function isWeapon takes item it returns boolean
+    local integer id= GetItemTypeId(it)
+    local integer j= 1
+    loop
+        exitwhen j > MAX_NORMAL_DROP
+        if id == normal_drops[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_RARE_DROP
+        if id == rare_drops[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_VALUABLE_DROP
+        if id == valuable_drops[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_ANCIENT_DROP
+        if id == ancient_drops[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_EPIC_DROP
+        if id == epic_drops[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > SHEN_QI_NUM
+        if id == shenqi[j] then
+            return true
+        endif
+        set j=j + 1
+    endloop
+    return false
+endfunction
+function tryUnitAddItem takes unit u,item it returns nothing
+    if UnitAddItem(u, it) then
+        call addExtraAttr(u , it)
+    endif
 endfunction
 function EMeiXinFa takes nothing returns nothing
     local unit u= GetEnumUnit()
@@ -5263,6 +5483,185 @@ function mallInit takes nothing returns nothing
     call TimerStart(t, 0.1, false, function checkPurchase)
     set t=null
 endfunction
+// 装备系统
+function equipKillingEffectByAttr takes unit u,integer attr,integer value returns nothing
+    if attr == 12 then
+        // 击杀-瞄准 击杀敌人时，加命中
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
+    elseif attr == 13 then
+        // 击杀-蓄力 击杀敌人时，加武学伤害
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value * 0.1)
+    elseif attr == 14 then
+        // 击杀-狂暴 击杀敌人时，加暴击倍数
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY) + value)
+    elseif attr == 15 then
+        // 击杀-赏金 击杀敌人时，加金钱
+        call AdjustPlayerStateBJ(value, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
+    elseif attr == 16 then
+        // 击杀-回复 击杀敌人时，回复内力
+        call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) + value * 0.01 * GetUnitState(u, UNIT_STATE_MAX_MANA))
+        call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
+    elseif attr == 17 then
+        // 击杀-封穴
+        call SaveBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY, true)
+    endif
+endfunction
+function equipKillingEffect takes unit u,item it returns nothing
+    local integer attr= 0
+    local integer value= 0
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipKillingEffectByAttr(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipKillingEffectByAttr(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipKillingEffectByAttr(u , attr , value)
+    endif
+endfunction
+function equipWaveStartEffectByAttr takes unit u,integer attr,integer value returns nothing
+    local item it= null
+    if attr == 18 then
+        // 激励-赏金 金钱+200
+        call AdjustPlayerStateBJ(200, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
+    elseif attr == 19 then
+        // 激励-回复 塔内力回满
+        call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA))
+    elseif attr == 20 then
+        // 激励-成长 获得1000点经验（仅英雄有效）
+        if IsUnitType(u, UNIT_TYPE_HERO) then
+            call AddHeroXP(u, 1000, false)
+        endif
+    elseif attr == 21 then
+        // 激励-丰收 20%概率获得一件随机品质的武器
+        if GetRandomInt(0, 10) <= 2 then
+            set it=CreateItem(getRandomDrop(), GetUnitX(u), GetUnitY(u))
+            call generateRandomAttr(it)
+            call tryUnitAddItem(u , it)
+        endif
+    elseif attr == 22 then
+        // 激励-武魂 20%概率额外获得1个随机品质的武魂石
+        if GetRandomInt(0, 10) <= 2 then
+            call UnitAddItemById(u, getRandomSoulStone(1 + GetPlayerId(GetOwningPlayer(u))))
+        endif
+    endif
+    set it=null
+endfunction
+function equipWaveStartEffect takes unit u,item it returns nothing
+    local integer attr= 0
+    local integer value= 0
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u , attr , value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u , attr , value)
+    endif
+endfunction
+function initEquip takes nothing returns nothing
+    set affixTitle[1]="增益-疾速"
+    set affixDesc[1]="攻击速度+"
+    set affixMin[1]=5
+    set affixMax[1]=30
+    set affixTitle[2]="增益-练气"
+    set affixDesc[2]="内力上限+"
+    set affixMin[2]=20
+    set affixMax[2]=200
+    set affixTitle[3]="增益-冥思"
+    set affixDesc[3]="内力回复速度+"
+    set affixMin[3]=1
+    set affixMax[3]=10
+    set affixTitle[4]="增益-吼叫"
+    set affixDesc[4]="攻击力+"
+    set affixMin[4]=1000
+    set affixMax[4]=3000
+    set affixTitle[5]="增益-瞄准"
+    set affixDesc[5]="命中+"
+    set affixMin[5]=100
+    set affixMax[5]=500
+    set affixTitle[6]="增益-蓄力"
+    set affixDesc[6]="武学伤害+"
+    set affixMin[6]=5
+    set affixMax[6]=100
+    set affixTitle[7]="增益-狂暴"
+    set affixDesc[7]="武学暴击率+"
+    set affixMin[7]=2
+    set affixMax[7]=20
+    set affixTitle[8]="增益-连击"
+    set affixDesc[8]="连击概率+"
+    set affixMin[8]=10
+    set affixMax[8]=50
+    set affixTitle[9]="增益-破甲"
+    set affixDesc[9]="破防概率+"
+    set affixMin[9]=10
+    set affixMax[9]=50
+    set affixTitle[10]="增益-冷静"
+    set affixDesc[10]="冷却缩减+"
+    set affixMin[10]=5
+    set affixMax[10]=50
+    set affixTitle[11]="增益-连贯"
+    set affixDesc[11]="重置CD概率+"
+    set affixMin[11]=2
+    set affixMax[11]=20
+    set affixTitle[12]="击杀-瞄准"
+    set affixDesc[12]="击杀敌人时，命中+" // 1-10
+set affixMin[12]=1
+    set affixMax[12]=10
+    set affixTitle[13]="击杀-蓄力"
+    set affixDesc[13]="击杀敌人时，武学伤害+" // 0.1-1
+set affixMin[13]=1
+    set affixMax[13]=10
+    set affixTitle[14]="击杀-狂暴"
+    set affixDesc[14]="击杀敌人时，武学暴击倍数+" // 1-5
+set affixMin[14]=1
+    set affixMax[14]=5
+    set affixTitle[15]="击杀-赏金"
+    set affixDesc[15]="击杀敌人时，额外获得金钱+" // 10-50
+set affixMin[15]=10
+    set affixMax[15]=50
+    set affixTitle[16]="击杀-回复"
+    set affixDesc[16]="击杀敌人时，回复内力+" // 1-20
+set affixMin[16]=1
+    set affixMax[16]=20
+    set affixTitle[17]="击杀-封穴"
+    set affixDesc[17]="击杀敌人时，下次伤害附带封穴效果"
+    set affixMin[17]=0
+    set affixMax[17]=0
+    set affixTitle[18]="激励-赏金"
+    set affixDesc[18]="每波开始时，额外获得金钱+200"
+    set affixMin[18]=0
+    set affixMax[18]=0
+    set affixTitle[19]="激励-回复"
+    set affixDesc[19]="每波开始时，回满内力"
+    set affixMin[19]=0
+    set affixMax[19]=0
+    set affixTitle[20]="激励-成长"
+    set affixDesc[20]="每波开始时，额外获得1000点经验（仅对英雄有效）"
+    set affixMin[20]=0
+    set affixMax[20]=0
+    set affixTitle[21]="激励-丰收"
+    set affixDesc[21]="每波开始时，20%概率额外获得1件随机品质的武器"
+    set affixMin[21]=0
+    set affixMax[21]=0
+    set affixTitle[22]="激励-武魂"
+    set affixDesc[22]="每波开始时，20%概率额外获得1个随机品质的武魂石"
+    set affixMin[22]=0
+    set affixMax[22]=0
+endfunction
 function spawnBoss takes integer i,integer boss_index returns nothing
     local location array loc
     local location array target
@@ -5423,16 +5822,28 @@ function doSpawnFinalBoss takes nothing returns nothing
         set i=i + 1
     endloop
 endfunction
-function recoverMana takes nothing returns nothing
+function recoverManaAndEquipEffect takes nothing returns nothing
     local unit u= GetEnumUnit()
+    local item it= null
+    local integer j= 1
     call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA) * 0.3 + GetUnitState(u, UNIT_STATE_MANA))
     call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
+    loop
+        exitwhen j > 6
+        set it=UnitItemInSlotBJ(u, j)
+        if it != null then
+            call equipWaveStartEffect(u , it)
+        endif
+        set j=j + 1
+    endloop
+    set it=null
     set u=null
 endfunction
 function spawn takes nothing returns nothing
     local integer i= 0
     local integer j= 0
     local integer rand= 1
+    local real randReal= 1
     local location array loc
     local location array target
     local timer t= CreateTimer()
@@ -5464,20 +5875,20 @@ function spawn takes nothing returns nothing
     endif
     loop
         exitwhen i >= 4
-        set rand=1
+        set randReal=1
         if wave <= 60 then
-            set luck[i + 1]=luck[i + 1] + 1
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(70 * wave) + "，人品+1，所有塔恢复30%内力")
+            set luck[i + 1]=luck[i + 1] + 2
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(100 * wave) + "，人品+2，所有塔恢复30%内力")
             set g=CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
-            call ForGroup(g, function recoverMana)
+            call ForGroup(g, function recoverManaAndEquipEffect)
             call DestroyGroup(g)
             if goldHit[i + 1] == 1 then
-                set rand=GetRandomInt(2, 4)
+                set randReal=GetRandomInt(2, 4)
                 set goldHit[i + 1]=0
-                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + I2S(rand) + "倍的金币奖励|R")
+                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif
-            call AdjustPlayerStateBJ(70 * wave * rand, Player(i), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(R2I(70 * wave * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
         endif
         set j=1
         loop
@@ -5510,7 +5921,7 @@ function spawn takes nothing returns nothing
                         set lumberHit[i + 1]=0
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
-                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(( 2 * j - 1 ) * rand) + "个")
+                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
                     call AdjustPlayerStateBJ(( 2 * j - 1 ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
                 endif
                 set target[i]=null
@@ -5653,6 +6064,7 @@ function EverySecond_Conditions takes nothing returns boolean
     if udg_ShengYuGuaiShu + 10 <= CountUnitsInGroup(attackerGroup) and GetRandomInt(1, 5) <= 2 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00来自zeikale的提示：|r|cffff0000圈内的进攻怪太多了，请注意防守！！|R")
     endif
+    set i=1
     loop
         exitwhen i > 5
         if five_star_flag[i] == 1 then
@@ -5669,6 +6081,11 @@ function EverySecond_Conditions takes nothing returns boolean
         if GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A00I') >= 1 then
             call IssueImmediateOrder(s__Tower_u[tower[i]], "frenzy")
         endif
+        // 装备加成
+        if LoadInteger(TOWER_ATTR_HT, GetHandleId(s__Tower_u[tower[i]]), TOWER_MANA_RECOVERY_KEY) > 0 then
+            call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + LoadInteger(TOWER_ATTR_HT, GetHandleId(s__Tower_u[tower[i]]), TOWER_MANA_RECOVERY_KEY))
+        endif
+        // 谷衣心法
         if ModuloInteger(passed_time, 5) == 0 and GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A') >= 1 then
             set level=GetUnitAbilityLevel(s__Tower_u[tower[i]], 'A04A')
             call SetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA, GetUnitState(s__Tower_u[tower[i]], UNIT_STATE_MANA) + GetRandomInt(level * 10, level * 100))
@@ -5759,6 +6176,9 @@ function KeyInput takes nothing returns nothing
     endif
     if s == "testBo" and udg_isTest[i] then
         set wave=54
+    endif
+    if s == "testCrash" then
+        call CreateItem('I00T', 0, 0)
     endif
     if s == "cx" or s == "CX" then
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
@@ -5986,7 +6406,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2gold[player_i] != 1 then
                 set point2gold[player_i]=1
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 8000)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 5000)
                 call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00金币+8000，扣除5积分")
                 call pointChange(player_i , 5)
             else
@@ -6054,7 +6474,7 @@ function CheckHolyWeapon takes integer player_i,integer item_id returns nothing
         call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933本局开放神器：\n" + s + "|r")
     endif
 endfunction
-function SynHolyWeapon takes integer player_i,integer item_id returns nothing
+function SynHolyWeapon takes nothing returns nothing
     call YDWENewItemsFormula('I00D' , 1 , 'I016' , 1 , 'I01L' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I012')
     call YDWENewItemsFormula('I00D' , 1 , 'I016' , 1 , 'I01K' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00C')
     call YDWENewItemsFormula('I007' , 1 , 'I016' , 1 , 'I01M' , 1 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'I00N')
@@ -6219,9 +6639,11 @@ function PickupItem_Conditions takes nothing returns boolean
     local integer i= 1 + GetPlayerId(p)
     local integer award= 0
     local real rand= 0
+    local integer attr= 0
+    local integer value= 0
+    local item it2= null
     call GoldLumberExChange(i , GetItemTypeId(it) , u)
     call CheckHolyWeapon(i , GetItemTypeId(it))
-    call SynHolyWeapon(i , GetItemTypeId(it))
     call Challenge(i , 1 , GetItemTypeId(it))
     call Challenge(i , 2 , GetItemTypeId(it))
     call Challenge(i , 3 , GetItemTypeId(it))
@@ -6243,10 +6665,68 @@ function PickupItem_Conditions takes nothing returns boolean
         call UnitAddItemById(u, award)
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))
     endif
+    if GetItemTypeId(it) == 'I062' then
+        set award=normal_drops[GetRandomInt(1, MAX_NORMAL_DROP)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I063' then
+        set award=rare_drops[GetRandomInt(1, MAX_RARE_DROP)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I064' then
+        set award=valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)]
+        call UnitAddItemById(u, award)
+    endif
+    if GetItemTypeId(it) == 'I066' then
+        set award=ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)]
+        set it2=CreateItem(award, GetUnitX(u), GetUnitY(u))
+        call generateRandomAttr(it2)
+        call tryUnitAddItem(u , it2)
+    endif
+    if GetItemTypeId(it) == 'I065' then
+        set award=epic_drops[GetRandomInt(1, MAX_EPIC_DROP)]
+        call BJDebugMsg(I2S(award))
+        call CreateItemLoc(award, GetUnitLoc(u))
+        // call generateRandomAttr(it2)
+        // call tryUnitAddItem(u, it2)
+    endif
+    call addExtraAttr(u , it)
     set it=null
     set u=null
     set p=null
+    set it2=null
     return false
+endfunction
+function DropItem_Conditions takes nothing returns boolean
+    local item it= GetManipulatedItem()
+    local unit u= GetTriggerUnit()
+    local integer attr= 0
+    local integer value= 0
+    // 额外属性效果
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipAddition(u , attr , - value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipAddition(u , attr , - value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipAddition(u , attr , - value)
+    endif
+    set it=null
+    set u=null
+    return false
+endfunction
+function YDWESystemItemCombineAction takes nothing returns nothing
+    local item it= (bj_lastCombinedItem) // INLINED!!
+    call generateRandomAttr(it)
+    call addExtraAttr(GetTriggerUnit() , it)
+    set it=null
 endfunction
 function PickupItem takes nothing returns nothing
     local trigger t= CreateTrigger()
@@ -6254,11 +6734,18 @@ function PickupItem takes nothing returns nothing
     call InitMenPai()
     call InitSavePlayerName()
     call SaveMaxLevel()
+    call SynHolyWeapon()
     set Ih=CreateSound("Abilities\\Spells\\Items\\ResourceItems\\ReceiveGold.wav", false, true, true, 10, 10, "SpellsEAX")
     call SetSoundParamsFromLabel(Ih, "ReceiveGold")
     call SetSoundDuration(Ih, 589)
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_PICKUP_ITEM)
     call TriggerAddCondition(t, Condition(function PickupItem_Conditions))
+    set t=CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DROP_ITEM)
+    call TriggerAddCondition(t, Condition(function DropItem_Conditions))
+    set t=CreateTrigger()
+    call YDWESyStemItemCombineRegistTrigger(t)
+    call TriggerAddAction(t, function YDWESystemItemCombineAction)
     set t=null
 endfunction
 function showHealthPointAction takes nothing returns nothing
@@ -6354,6 +6841,11 @@ function UnitAttack_Conditions takes nothing returns boolean
     set udl_loc[1]=GetRectCenter(gg_rct_spawn2)
     set udl_loc[2]=GetRectCenter(gg_rct_spawn3)
     set udl_loc[3]=GetRectCenter(gg_rct_spawn4)
+    // 如果下次塔必定封穴，执行封穴
+    if LoadBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY) then
+        call WanBuff(u , ut , 11)
+        call SaveBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY, false)
+    endif
     if udg_douzhuan[i] >= 1 and GetRandomReal(0, 100) <= 2 then
         if LoadReal(YDHT, GetHandleId(ut), BORN_LOC_X) != 0 then
             call SetUnitX(ut, LoadReal(YDHT, GetHandleId(ut), BORN_LOC_X))
@@ -6449,7 +6941,12 @@ function UnitAttack_Conditions takes nothing returns boolean
     if GetUnitAbilityLevel(u, 'A03Q') > 0 and GetRandomInt(1, 100) <= 15 then
         call WanBuff(u , ut , 13)
     endif
+    // 洗髓经 15%概率破防
     if GetUnitAbilityLevel(u, 'A03R') > 0 and GetRandomInt(1, 100) <= 15 then
+        call WanBuff(u , ut , 9)
+    endif
+    // 装备加成破防概率
+    if GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) then
         call WanBuff(u , ut , 9)
     endif
     if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
@@ -6796,6 +7293,17 @@ function UnitDeath_Conditions takes nothing returns boolean
     local integer i= 1 + GetPlayerId(p)
     local location loc= null
     local timer t= null
+    local integer j= 1
+    local item it= null
+    // 击杀单位时，如果凶手有对应的装备，触发对应的效果
+    loop
+        exitwhen j > 6
+        set it=UnitItemInSlotBJ(u, j)
+        if it != null then
+            call equipKillingEffect(u , it)
+        endif
+        set j=j + 1
+    endloop
     // 击杀单位获得功勋
     if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING then
         call SaveInteger(CONT_HT, GetHandleId(u), CONT_KEY, LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) + 1)
@@ -6813,7 +7321,8 @@ function UnitDeath_Conditions takes nothing returns boolean
         if GetRandomInt(1, 5000) <= luck[i] then
             set loc=GetUnitLoc(ut)
             set luck[i]=luck[i] - 1
-            call CreateItemLoc(getRandomDrop(), loc)
+            set it=CreateItemLoc(getRandomDrop(), loc)
+            call generateRandomAttr(it)
             call RemoveLocation(loc)
         endif
     endif
@@ -6876,40 +7385,12 @@ function UnitDeath_Conditions takes nothing returns boolean
     set p=null
     set loc=null
     set t=null
+    set it=null
     return false
 endfunction
 function UnitDeath takes nothing returns nothing
     local trigger t= CreateTrigger()
-    set luck[1]=20
-    set luck[2]=20
-    set luck[3]=20
-    set luck[4]=20
-    set normal_drops[1]='I004'
-    set normal_drops[2]='I00E'
-    set normal_drops[3]='I00P'
-    set normal_drops[4]='I00G'
-    set normal_drops[5]='I00X'
-    set rare_drops[1]='I00B'
-    set rare_drops[2]='I00H'
-    set rare_drops[3]='I00O'
-    set rare_drops[4]='I005'
-    set rare_drops[5]='I00Y'
-    set valuable_drops[1]='I00A'
-    set valuable_drops[2]='I00I'
-    set valuable_drops[3]='I006'
-    set valuable_drops[4]='I008'
-    set valuable_drops[5]='I00Z'
-    set valuable_drops[6]='I016'
-    set ancient_drops[1]='I009'
-    set ancient_drops[2]='I00J'
-    set ancient_drops[3]='I00Q'
-    set ancient_drops[4]='I00S'
-    set ancient_drops[5]='I010'
-    set epic_drops[1]='I00D'
-    set epic_drops[2]='I00K'
-    set epic_drops[3]='I007'
-    set epic_drops[4]='I00T'
-    set epic_drops[5]='I011'
+    local integer j= 1
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_DEATH)
     call TriggerAddCondition(t, Condition(function UnitDeath_Conditions))
     set t=null
@@ -6991,6 +7472,16 @@ function setFullMana takes nothing returns nothing
     call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
     set u=null
 endfunction
+function reduceCooldown takes nothing returns nothing
+    local timer t= GetExpiredTimer()
+    local unit u= LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer id= LoadInteger(YDHT, GetHandleId(t), 1)
+    local integer percent= LoadInteger(YDHT, GetHandleId(t), 2)
+    call EXSetAbilityState(EXGetUnitAbility(u, id), 1, EXGetAbilityState(EXGetUnitAbility(u, id), 1) * ( 100 - percent ) / 100)
+    call DestroyTimer(t)
+    set u=null
+    set t=null
+endfunction
 function UseAbility_Conditions takes nothing returns boolean
     local integer id= GetSpellAbilityId()
     local unit u= GetTriggerUnit()
@@ -7008,6 +7499,25 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt= 0
     local group g= null
     local integer k= 0
+    // 装备加成缩减CD
+    if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) > 0 then
+        set t=CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call SaveInteger(YDHT, GetHandleId(t), 1, id)
+        call SaveInteger(YDHT, GetHandleId(t), 2, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY))
+        call TimerStart(t, 0.02, true, function reduceCooldown)
+        set t=null
+    endif
+    // 装备重置CD
+    if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) > 0 and GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) then
+        set t=CreateTimer()
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+        call SaveInteger(YDHT, GetHandleId(t), 1, id)
+        call SaveInteger(YDHT, GetHandleId(t), 2, 100)
+        call TimerStart(t, 0.02, true, function reduceCooldown)
+        set t=null
+    endif
+        
     if id == 'A03Z' then
         set goldHit[i]=1
         call DisplayTextToPlayer(p, 0, 0, "|CFF99CC00智慧球发动了金币暴击，下一波到来时金币奖励随机翻倍")
@@ -7341,6 +7851,7 @@ function UseAbility_Conditions takes nothing returns boolean
     set loc2=null
     set g=null
     set temp_loc=null
+    set t=null
     return false
 endfunction
 function UseAbility takes nothing returns nothing
@@ -7388,6 +7899,7 @@ function europaGift takes unit u returns nothing
     local integer array x
     local integer array y
     local integer id
+    local item it= null
     set x[1]=- 2380
     set x[2]=820
     set x[3]=2380
@@ -7406,7 +7918,9 @@ function europaGift takes unit u returns nothing
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 600 then
         set id=getRandomDrop()
-        call UnitAddItemById(u, id)
+        set it=CreateItem(id, GetUnitX(u), GetUnitY(u))
+        call generateRandomAttr(it)
+        call tryUnitAddItem(u , it)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 700 then
         set id=GetRandomInt(1, 5)
@@ -7418,13 +7932,16 @@ function europaGift takes unit u returns nothing
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFFFFFF00" + I2S(id) + "个金币")
     else
         set id=random_shenqi[GetRandomInt(1, open_shenqi)]
-        call UnitAddItemById(u, id)
+        set it=CreateItem(id, GetUnitX(u), GetUnitY(u))
+        call generateRandomAttr(it)
+        call tryUnitAddItem(u , it)
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(GetOwningPlayer(u)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00" + GetObjectName(id))
     endif
     if rand2 <= 10 then
         call UnitAddItemById(u, 'I061')
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(Player(i - 1)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00再来一包")
     endif
+    set it=null
 endfunction
 function UseItem_Conditions takes nothing returns boolean
     local unit u= GetTriggerUnit()
@@ -7682,6 +8199,134 @@ function hideTooltip takes nothing returns nothing
 		endif
 	endif
 endfunction
+function getWeaponRandomAttrTooltip takes item it returns string
+ local integer attr= 0
+ local integer value= 0
+ local string str= ""
+	if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+		set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
+		if value != 0 then
+			set str=str + I2S(value)
+		endif
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+			set str=str + "%"
+		endif
+	endif
+	if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+		set str=str + "\n"
+		set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+		set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
+		if value != 0 then
+			set str=str + I2S(value)
+		endif
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+			set str=str + "%"
+		endif
+	endif
+	if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+		set str=str + "\n"
+		set attr=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+		set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
+		if value != 0 then
+			set str=str + I2S(value)
+		endif
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+			set str=str + "%"
+		endif
+	endif
+	return str
+endfunction
+function setWeaponTooltip takes item it returns nothing
+ local integer id= GetItemTypeId(it)
+ local string name= ( EXExecuteScript("(require'jass.slk').item[" + I2S(id) + "].Name") )
+ local string art= ( EXExecuteScript("(require'jass.slk').item[" + I2S(id) + "].Art") )
+ local string description= ( EXExecuteScript("(require'jass.slk').item[" + I2S(id) + "].Description") )
+ local string randomAttr= getWeaponRandomAttrTooltip(it)
+ local string abilityDesc= LoadStr(YDHT, id, EQUIP_ABILITY_KEY)
+	call DzFrameSetTexture(s__Frame_id[(itemTooltipWidget[2])], (art), 0) // INLINED!!
+	call DzFrameSetText(s__Frame_id[(itemTooltipWidget[3])], (name)) // INLINED!!
+	call DzFrameSetText(s__Frame_id[(itemTooltipWidget[4])], (LoadStr(YDHT, id, EQUIP_LEVEL_KEY))) // INLINED!!
+	call DzFrameSetText(s__Frame_id[(itemTooltipWidget[6])], (description)) // INLINED!!
+	if randomAttr == "" or randomAttr == null then
+		if abilityDesc == "" or abilityDesc == null then
+			call s__Frame_hide(itemTooltipWidget[7])
+			call s__Frame_hide(itemTooltipWidget[8])
+			call s__Frame_hide(itemTooltipWidget[9])
+			call s__Frame_hide(itemTooltipWidget[10])
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[6])], (BOTTOMRIGHT ), s__Frame_id[( s__Frame_getFrame(originalAbilityButton[4]) )], ( TOPRIGHT ), (( 0.01 )*1.0), (( 0.035)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( itemTooltipWidget[6] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+		else
+			call s__Frame_hide(itemTooltipWidget[7])
+			call s__Frame_hide(itemTooltipWidget[8])
+			call s__Frame_show(itemTooltipWidget[9])
+			call s__Frame_show(itemTooltipWidget[10])
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[10])], (BOTTOMRIGHT ), s__Frame_id[( s__Frame_getFrame(originalAbilityButton[4]) )], ( TOPRIGHT ), (( 0.01 )*1.0), (( 0.035)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[9])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[10] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[6])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[9] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( itemTooltipWidget[10] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+		endif
+	else
+		if abilityDesc == "" or abilityDesc == null then
+			call s__Frame_show(itemTooltipWidget[7])
+			call s__Frame_show(itemTooltipWidget[8])
+			call s__Frame_hide(itemTooltipWidget[9])
+			call s__Frame_hide(itemTooltipWidget[10])
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[8])], (BOTTOMRIGHT ), s__Frame_id[( s__Frame_getFrame(originalAbilityButton[4]) )], ( TOPRIGHT ), (( 0.01 )*1.0), (( 0.035)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[7])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[8] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[6])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[7] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( itemTooltipWidget[8] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+		else
+			call s__Frame_show(itemTooltipWidget[7])
+			call s__Frame_show(itemTooltipWidget[8])
+			call s__Frame_show(itemTooltipWidget[9])
+			call s__Frame_show(itemTooltipWidget[10])
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[10])], (BOTTOMRIGHT ), s__Frame_id[( s__Frame_getFrame(originalAbilityButton[4]) )], ( TOPRIGHT ), (( 0.01 )*1.0), (( 0.035)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[9])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[10] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[8])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[9] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[7])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[8] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[6])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[7] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+			call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( itemTooltipWidget[10] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+		endif
+	endif
+	call DzFrameSetText(s__Frame_id[(itemTooltipWidget[8])], (randomAttr)) // INLINED!!
+	call DzFrameSetText(s__Frame_id[(itemTooltipWidget[10])], (abilityDesc)) // INLINED!!
+	call s__Frame_show(itemTooltipWidget[1])
+endfunction
+function showItemTooltip takes nothing returns nothing
+ local integer i= 1 + GetPlayerId(DzGetTriggerUIEventPlayer())
+ local integer cont= 0
+ local string str= ""
+ local integer j= 1
+ local item it= null
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		if unitInSelection[i] == null then
+			return
+		endif
+		loop
+			exitwhen j > 6
+			if DzGetTriggerUIEventFrame() == originalItemButton[j] then
+				set it=UnitItemInSlotBJ(unitInSelection[i], j)
+				if it != null and isWeapon(it) then
+					call DzFrameSetPoint(DzFrameGetTooltip(), BOTTOMRIGHT, DzFrameGetCommandBarButton(0, 3), TOPRIGHT, 0.80, 0.60) // INLINED!!
+					call setWeaponTooltip(it)
+					
+				endif
+			endif
+			set j=j + 1
+		endloop
+	endif
+	set it=null
+endfunction
+function hideItemTooltip takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call DzFrameSetPoint(DzFrameGetTooltip(), BOTTOMRIGHT, DzFrameGetCommandBarButton(0, 3), TOPRIGHT, 0.01, 0.035) // INLINED!!
+		call s__Frame_hide(itemTooltipWidget[1])
+	endif
+endfunction
 function drawUI_Conditions takes nothing returns boolean
  local integer j= 1
 	set originalAbilityButton[1]=DzFrameGetCommandBarButton(0, 0)
@@ -7696,6 +8341,12 @@ function drawUI_Conditions takes nothing returns boolean
 	set originalAbilityButton[10]=DzFrameGetCommandBarButton(2, 1)
 	set originalAbilityButton[11]=DzFrameGetCommandBarButton(2, 2)
 	set originalAbilityButton[12]=DzFrameGetCommandBarButton(2, 3)
+	set originalItemButton[1]=DzFrameGetItemBarButton(0)
+	set originalItemButton[2]=DzFrameGetItemBarButton(1)
+	set originalItemButton[3]=DzFrameGetItemBarButton(2)
+	set originalItemButton[4]=DzFrameGetItemBarButton(3)
+	set originalItemButton[5]=DzFrameGetItemBarButton(4)
+	set originalItemButton[6]=DzFrameGetItemBarButton(5)
 	call DzLoadToc("ui\\custom.toc")
 	
 	// 功勋的说明
@@ -7715,6 +8366,42 @@ function drawUI_Conditions takes nothing returns boolean
 		exitwhen j > 12
 		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
 		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
+		set j=j + 1
+	endloop
+	// 物品的说明
+	set itemTooltipWidget[1]=s__Frame_newTips0(GUI , "tipbox")
+	call s__Frame_hide(itemTooltipWidget[1])
+	set itemTooltipWidget[2]=s__Frame_newImage1(itemTooltipWidget[1] , "ReplaceableTextures\\CommandButtons\\BTNdalibao.blp" , 0.04 , 0.04)
+	set itemTooltipWidget[3]=s__Frame_newText1(itemTooltipWidget[1] , "物品名称" , "TXA14")
+	set itemTooltipWidget[4]=s__Frame_newText1(itemTooltipWidget[1] , "普通" , "TXA11")
+	set itemTooltipWidget[5]=s__Frame_newText1(itemTooltipWidget[1] , "|cffff6800【固定属性】|r" , "TXA12")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[5])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	set itemTooltipWidget[6]=s__Frame_newText1(itemTooltipWidget[1] , "固定属性内容" , "TXA11")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[6])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	set itemTooltipWidget[7]=s__Frame_newText1(itemTooltipWidget[1] , "|cffff6800【随机属性】|r" , "TXA12")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[7])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	set itemTooltipWidget[8]=s__Frame_newText1(itemTooltipWidget[1] , "随机属性内容" , "TXA11")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[8])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	set itemTooltipWidget[9]=s__Frame_newText1(itemTooltipWidget[1] , "|cffff6800【物品技能】|r" , "TXA12")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[9])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	set itemTooltipWidget[10]=s__Frame_newText1(itemTooltipWidget[1] , "|cFFFEFFA8物品技能内容|r" , "TXA11")
+	call DzFrameSetSize(s__Frame_id[(itemTooltipWidget[10])], ((0.2 )*1.0), (( 0)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[10])], (BOTTOMRIGHT ), s__Frame_id[( s__Frame_getFrame(originalAbilityButton[4]) )], ( TOPRIGHT ), (( 0.01 )*1.0), (( 0.035)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[9])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[10] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[8])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[9] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[7])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[8] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[6])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[7] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[5])], (BOTTOM ), s__Frame_id[( itemTooltipWidget[6] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[2])], (BOTTOMLEFT ), s__Frame_id[( itemTooltipWidget[5] )], ( TOPLEFT ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[3])], (TOPLEFT ), s__Frame_id[( itemTooltipWidget[2] )], ( TOPRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[4])], (TOPLEFT ), s__Frame_id[( itemTooltipWidget[3] )], ( BOTTOMLEFT ), (( 0 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (TOPLEFT ), s__Frame_id[( itemTooltipWidget[2] )], ( TOPLEFT ), (( - 0.005 )*1.0), (( 0.005)*1.0)) // INLINED!!
+	call DzFrameSetPoint(s__Frame_id[(itemTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( itemTooltipWidget[10] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+	set j=1
+	loop
+		exitwhen j > 6
+		call DzFrameSetScriptByCode(originalItemButton[j], FRAME_MOUSE_ENTER, function showItemTooltip, false)
+		call DzFrameSetScriptByCode(originalItemButton[j], FRAME_MOUSE_LEAVE, function hideItemTooltip, false)
 		set j=j + 1
 	endloop
 	
@@ -10628,7 +11315,6 @@ function Trig_OneSecondActions takes nothing returns nothing
     call SetCameraTargetController(gg_unit_o00A_0014, 0, 0, false)
     call InitServerValues()
     call ServerSavePointsWhenEnterGame()
-    call YDWENewItemsFormula('ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'ches' , 0 , 'bzbe')
     set udg_ShengYuGuaiShu=udg_ShengYuGuaiShu + 25
     loop
         exitwhen i >= 4
@@ -10975,6 +11661,7 @@ function MapInit_Conditions takes nothing returns boolean
 endfunction
 function MapInit takes nothing returns nothing
     local trigger t= CreateTrigger()
+    local integer j= 1
     set shenqi[1]='I00V'
     set shenqi[2]='I013'
     set shenqi[3]='I00F'
@@ -10990,6 +11677,88 @@ function MapInit takes nothing returns nothing
     set juenei[2]='I023'
     set juenei[3]='I024'
     set juenei[4]='I025'
+    set luck[1]=20
+    set luck[2]=20
+    set luck[3]=20
+    set luck[4]=20
+    set normal_drops[1]='I004'
+    set normal_drops[2]='I00E'
+    set normal_drops[3]='I00P'
+    set normal_drops[4]='I00G'
+    set normal_drops[5]='I00X'
+    set rare_drops[1]='I00B'
+    set rare_drops[2]='I00H'
+    set rare_drops[3]='I00O'
+    set rare_drops[4]='I005'
+    set rare_drops[5]='I00Y'
+    set valuable_drops[1]='I00A'
+    set valuable_drops[2]='I00I'
+    set valuable_drops[3]='I006'
+    set valuable_drops[4]='I008'
+    set valuable_drops[5]='I00Z'
+    set valuable_drops[6]='I016'
+    set ancient_drops[1]='I009'
+    set ancient_drops[2]='I00J'
+    set ancient_drops[3]='I00Q'
+    set ancient_drops[4]='I00S'
+    set ancient_drops[5]='I010'
+    set epic_drops[1]='I00D'
+    set epic_drops[2]='I00K'
+    set epic_drops[3]='I007'
+    set epic_drops[4]='I00T'
+    set epic_drops[5]='I011'
+    loop
+        exitwhen j > MAX_NORMAL_DROP
+        call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_RARE_DROP
+        call SaveStr(YDHT, rare_drops[j], EQUIP_LEVEL_KEY, "|cff3366ff稀有|r")
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_VALUABLE_DROP
+        call SaveStr(YDHT, valuable_drops[j], EQUIP_LEVEL_KEY, "|cffff9900珍稀|r")
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_ANCIENT_DROP
+        // 远古装备有一项随机属性
+        call SaveInteger(YDHT, ancient_drops[j], EQUIP_ATTR_COUNT_KEY, 1)
+        call SaveStr(YDHT, ancient_drops[j], EQUIP_LEVEL_KEY, "|cffff0000远古|r")
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > MAX_EPIC_DROP
+        // 史诗装备有两项随机属性
+        call SaveInteger(YDHT, epic_drops[j], EQUIP_ATTR_COUNT_KEY, 2)
+        call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|cffff00ff史诗|r")
+        set j=j + 1
+    endloop
+    set j=1
+    loop
+        exitwhen j > SHEN_QI_NUM
+        // 神器有三项随机属性
+        call SaveInteger(YDHT, shenqi[j], EQUIP_ATTR_COUNT_KEY, 3)
+        call SaveStr(YDHT, shenqi[j], EQUIP_LEVEL_KEY, "|cff800080传说|r")
+        set j=j + 1
+    endloop
+    call SaveStr(YDHT, 'I00C', EQUIP_ABILITY_KEY, "血吼：增加周围单位200%的攻击力")
+    call SaveStr(YDHT, 'I00F', EQUIP_ABILITY_KEY, "西毒杖法：攻击附带10000点毒素伤害及30%减速")
+    call SaveStr(YDHT, 'I00L', EQUIP_ABILITY_KEY, "被动技能触发几率翻倍")
+    call SaveStr(YDHT, 'I00M', EQUIP_ABILITY_KEY, "0.5%几率造成会心一击（秒杀普通单位，BOSS掉当前10%血）")
+    call SaveStr(YDHT, 'I00N', EQUIP_ABILITY_KEY, "玄铁剑法：主动使用友军集体增加70%攻速")
+    call SaveStr(YDHT, 'I00R', EQUIP_ABILITY_KEY, "几率打出狂暴")
+    call SaveStr(YDHT, 'I00U', EQUIP_ABILITY_KEY, "攻击几率刷新武功CD")
+    call SaveStr(YDHT, 'I00V', EQUIP_ABILITY_KEY, "打狗棒法：主动使用召唤10条恶犬打击敌人")
+    call SaveStr(YDHT, 'I00W', EQUIP_ABILITY_KEY, "碧海潮声曲：每次攻击使敌人护甲降低100点。")
+    call SaveStr(YDHT, 'I013', EQUIP_ABILITY_KEY, "主动使用增加周围单位100点内力")
+    // YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ABILITY, 'AHhb', "Name")
     call InitMenPaiWuPin()
     call RandomShenQi()
     call CreateF9()
@@ -11067,6 +11836,7 @@ function InitAllSystems takes nothing returns nothing
     call UnitBuilt()
     call GameDetail_Trigger()
     call initUI()
+    call initEquip()
 endfunction
 //***************************************************************************
 //*
@@ -11192,7 +11962,7 @@ function InitCustomPlayerSlots takes nothing returns nothing
     call SetPlayerController(Player(5), MAP_CONTROL_COMPUTER)
 endfunction
 function InitCustomTeams takes nothing returns nothing
-    // Force: TRIGSTR_014
+    // Force: TRIGSTR_007
     call SetPlayerTeam(Player(0), 0)
     call SetPlayerState(Player(0), PLAYER_STATE_ALLIED_VICTORY, 1)
     call SetPlayerTeam(Player(1), 0)
@@ -11245,7 +12015,7 @@ function InitCustomTeams takes nothing returns nothing
     call SetPlayerAllianceStateVisionBJ(Player(4), Player(1), true)
     call SetPlayerAllianceStateVisionBJ(Player(4), Player(2), true)
     call SetPlayerAllianceStateVisionBJ(Player(4), Player(3), true)
-    // Force: TRIGSTR_015
+    // Force: TRIGSTR_008
     call SetPlayerTeam(Player(5), 1)
     call SetPlayerState(Player(5), PLAYER_STATE_ALLIED_VICTORY, 1)
 endfunction
@@ -11275,8 +12045,8 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs74913640")
-call ExecuteFunc("FrameLibrary___init")
+call ExecuteFunc("jasshelper__initstructs170812796")
+call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
@@ -11293,11 +12063,7 @@ endfunction
 //***************************************************************************
 function config takes nothing returns nothing
     call SetMapName("决战江湖TD")
-    call SetMapDescription("决战江湖TD
-|CFF00ff00版本：v1.1.1
-|CFF00ff00=原汁原味的武侠游戏=
-|CFFffff00=丰富多样的玩法=
-|CFFff0000=紧张刺激的游戏节奏=")
+    call SetMapDescription("决战江湖TD\n|CFF00ff00版本：v1.1.1\n\n|CFF00ff00=趣味性和挑战性结合=|r\n|CFFffff00=丰富多样的玩法=|r\n|CFFff0000=紧张刺激的游戏节奏=|r")
     call SetPlayers(6)
     call SetTeams(6)
     call SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)
@@ -11315,14 +12081,14 @@ endfunction
 //===========================================================================
 //修改生命
 //===========================================================================
+//===========================================================================
+//ϵͳ-TimerSystem
+//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
-//===========================================================================
-//ϵͳ-TimerSystem
-//===========================================================================
 
 
 
@@ -11397,7 +12163,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs74913640 takes nothing returns nothing
+function jasshelper__initstructs170812796 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()

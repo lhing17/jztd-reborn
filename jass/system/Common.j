@@ -5,7 +5,7 @@ function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, inte
     if buffnum == num then
         set p = GetOwningPlayer(uc)
         set loc = GetUnitLoc(ut)
-        call CreateNUnitsAtLoc(1, 'e000', p, loc, bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'e100', p, loc, bj_UNIT_FACING)
         set u = bj_lastCreatedUnit
         call ShowUnitHide(u)
         call UnitAddAbility(u, id)
@@ -101,6 +101,12 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff = coeff + .5
     endif
+
+    // 塔的伤害加成
+    if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
+        set coeff = coeff + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY)
+    endif
+
     set damage = damage * coeff
     if UnitHasBuffBJ(ut, 'B005') then
         set damage = damage * 2
@@ -324,16 +330,139 @@ function FetchUnitItem takes unit u, integer j returns item
     endloop
     return null
 endfunction
+
+// 装备随机属性数量
+function getEquipRandomAttrCount takes integer id returns integer
+    return LoadInteger(YDHT, id, EQUIP_ATTR_COUNT_KEY)
+endfunction
+
+function generateRandomAttr takes item it returns nothing
+    local integer handleId = GetHandleId(it)
+
+    // 从词缀中随机选取count个
+    local integer array affixIndex
+    local integer i = 1
+    local integer temp = 0
+    local integer j = 0
+    local integer rand = 0
+    local integer count = getEquipRandomAttrCount(GetItemTypeId(it))
+
+    if count <= 0 then
+        return
+    endif
+
+    loop
+        exitwhen i > AFFIX_COUNT
+        set affixIndex[i] = i
+        set i = i + 1
+    endloop
+
+    set i = AFFIX_COUNT
+    loop
+        exitwhen i < 1
+        set j = GetRandomInt(1, i - 1)
+        set temp = affixIndex[i]
+        set affixIndex[i] = affixIndex[j]
+        set affixIndex[j] = temp
+        set i = i - 1
+    endloop
+
+    if count >= 1 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_TYPE_KEY, affixIndex[1])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_VALUE_KEY, GetRandomInt(affixMin[affixIndex[1]], affixMax[affixIndex[1]]))
+    endif
+
+    if count >= 2 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_TYPE_KEY, affixIndex[2])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_VALUE_KEY, GetRandomInt(affixMin[affixIndex[2]], affixMax[affixIndex[2]]))
+    endif
+
+    if count >= 3 then
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_TYPE_KEY, affixIndex[3])
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_VALUE_KEY, GetRandomInt(affixMin[affixIndex[3]], affixMax[affixIndex[3]]))
+    endif
+
+endfunction
+
+
+function equipAddition takes unit u, integer attr, integer value returns nothing
+    if attr == 1 then
+        // 增益-疾速 加攻击速度 TODO
+    elseif attr == 2 then
+        // 增益-练气 加内力上限
+        call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 0, value)     
+    elseif attr == 3 then
+        // 增益-冥思 加内力回复速度
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_MANA_RECOVERY_KEY) + value)
+    elseif attr == 4 then
+        // 增益-吼叫 加攻击力
+        call YDWEGeneralBounsSystemUnitSetBonus(u, 3, 0, value)
+    elseif attr == 5 then
+        // 增益-瞄准 加命中
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
+    elseif attr == 6 then
+        // 增益-蓄力 加武学伤害
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value)
+    elseif attr == 7 then
+        // 增益-狂暴 加暴击率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
+    elseif attr == 8 then
+        // 增益-连击 加连击率 TODO
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
+    elseif attr == 9 then
+        // 增益-破甲 加破防概率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) + value)
+    elseif attr == 10 then
+        // 增益-冷静 冷却缩减
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) + value)
+    elseif attr == 11 then
+        // 增益-连贯 重置CD概率
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_RESET_CD_KEY) + value)
+    endif
+endfunction
+
+function addExtraAttr takes unit u, item it returns nothing
+    local integer attr = 0
+    local integer value = 0
+    // 额外属性效果
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipAddition(u, attr, value) 
+    endif
+
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipAddition(u, attr, value)
+    endif
+
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipAddition(u, attr, value)
+    endif
+endfunction
+
+
 function SynItem takes unit u, integer itemid_before, integer itemid_after returns nothing
+    local item it = null
+    local item it2 = null
     if UnitHaveItem(u, itemid_before) then
-        call RemoveItem(FetchUnitItem(u, itemid_before))
+        set it = FetchUnitItem(u, itemid_before)
+        call UnitRemoveItem(u, it)
         if UnitHaveItem(u, itemid_before) then
             call RemoveItem(FetchUnitItem(u, itemid_before))
-            call UnitAddItemById(u, itemid_after)
+            call RemoveItem(it)
+            set it2 = UnitAddItemById(u, itemid_after)
+            call generateRandomAttr(it2)
+            call addExtraAttr(u, it2)
         else
-            call UnitAddItemById(u, itemid_before)
+            call UnitAddItem(u, it)
         endif
     endif
+    set it = null
+    set it2 = null
 endfunction
 
 // 获取随机品质的武魂石，概率和波数以及人品有关
@@ -401,4 +530,72 @@ endfunction
 function addGold takes player p, integer count returns nothing
     call AdjustPlayerStateBJ(count, p, PLAYER_STATE_RESOURCE_GOLD)
 endfunction
+
+// 判断物品是否为武器
+function isWeapon takes item it returns boolean
+    local integer id = GetItemTypeId(it)
+    local integer j = 1
+    loop
+        exitwhen j > MAX_NORMAL_DROP
+        if id == normal_drops[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_RARE_DROP
+        if id == rare_drops[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_VALUABLE_DROP
+        if id == valuable_drops[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_ANCIENT_DROP
+        if id == ancient_drops[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_EPIC_DROP
+        if id == epic_drops[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > SHEN_QI_NUM
+        if id == shenqi[j] then
+            return true
+        endif
+        set j = j + 1
+    endloop
+
+    return false
+endfunction
+
+
+function tryUnitAddItem takes unit u, item it returns nothing
+    if UnitAddItem(u, it) then
+        call addExtraAttr(u, it)
+    endif
+endfunction
+
 

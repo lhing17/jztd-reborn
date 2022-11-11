@@ -14,6 +14,9 @@ function KeyInput takes nothing returns nothing
     if s == "testBo" and udg_isTest[i] then
         set wave = 54
     endif
+    if s == "testCrash" then
+        call CreateItem('I00T', 0, 0)
+    endif
     if s == "cx" or s == "CX" then
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "积分：" + I2S(udg_point[i]))

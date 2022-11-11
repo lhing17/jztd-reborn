@@ -84,7 +84,7 @@ endfunction
 function reduceCooldown takes nothing returns nothing
     local timer t = GetExpiredTimer()
     local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
-    local integer abilityId = LoadInteger(YDHT, GetHandleId(t), 1)
+    local integer id = LoadInteger(YDHT, GetHandleId(t), 1)
     local integer percent = LoadInteger(YDHT, GetHandleId(t), 2)
     call EXSetAbilityState(EXGetUnitAbility(u, id), 1, EXGetAbilityState(EXGetUnitAbility(u, id), 1) * (100 - percent) / 100)
     call DestroyTimer(t)

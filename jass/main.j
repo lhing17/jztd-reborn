@@ -9,8 +9,8 @@
 
 #include "logic/EnemyMove.j"
 #include "logic/Mall.j"
-#include "logic/Spawn.j"
 #include "logic/Equip.j"
+#include "logic/Spawn.j"
 
 
 #include "system/EverySecond.j"
@@ -230,6 +230,7 @@ globals
     constant integer TOWER_PIERCE_KEY = 6    // 破防
     constant integer TOWER_COOLDOWN_KEY = 7  // 冷却缩减
     constant integer TOWER_RESET_CD_KEY = 8  // 重置冷却
+    constant integer TOWER_SEAL_KEY = 9      // 下次攻击封穴
 
     // 记录装备附加属性的哈希表
     hashtable EQUIP_ATTR_HT = InitHashtable()
@@ -245,6 +246,13 @@ globals
     constant integer EQUIP_ATTR3_TYPE_KEY = 4
     // 属性3值
     constant integer EQUIP_ATTR3_VALUE_KEY = 5
+
+    // 记录装备需要几项附加属性
+    constant integer EQUIP_ATTR_COUNT_KEY = 999
+    constant integer EQUIP_LEVEL_KEY = 1000 // 装备级别
+    constant integer EQUIP_ABILITY_KEY = 1001  // 装备技能描述
+
+    constant integer EQUIP_PICKUP_KEY = 1002 // 装备是否被拾取过
     
     // 判断是否处于失败状态
     boolean isFailing = false
@@ -617,7 +625,6 @@ function Trig_OneSecondActions takes nothing returns nothing
     call SetCameraTargetController(gg_unit_o00A_0014, 0, 0, false)
     call InitServerValues()
     call ServerSavePointsWhenEnterGame()
-    call YDWENewItemsFormula('ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'ches', 0, 'bzbe')
     set udg_ShengYuGuaiShu = udg_ShengYuGuaiShu + 25
     loop
         exitwhen i >= 4
@@ -970,6 +977,7 @@ endfunction
 
 function MapInit takes nothing returns nothing
     local trigger t = CreateTrigger()
+    local integer j = 1
     set shenqi[1] = 'I00V'
     set shenqi[2] = 'I013'
     set shenqi[3] = 'I00F'
@@ -985,6 +993,97 @@ function MapInit takes nothing returns nothing
     set juenei[2] = 'I023'
     set juenei[3] = 'I024'
     set juenei[4] = 'I025'
+    set luck[1] = 20
+    set luck[2] = 20
+    set luck[3] = 20
+    set luck[4] = 20
+    set normal_drops[1] = 'I004'
+    set normal_drops[2] = 'I00E'
+    set normal_drops[3] = 'I00P'
+    set normal_drops[4] = 'I00G'
+    set normal_drops[5] = 'I00X'
+    set rare_drops[1] = 'I00B'
+    set rare_drops[2] = 'I00H'
+    set rare_drops[3] = 'I00O'
+    set rare_drops[4] = 'I005'
+    set rare_drops[5] = 'I00Y'
+    set valuable_drops[1] = 'I00A'
+    set valuable_drops[2] = 'I00I'
+    set valuable_drops[3] = 'I006'
+    set valuable_drops[4] = 'I008'
+    set valuable_drops[5] = 'I00Z'
+    set valuable_drops[6] = 'I016'
+    set ancient_drops[1] = 'I009'
+    set ancient_drops[2] = 'I00J'
+    set ancient_drops[3] = 'I00Q'
+    set ancient_drops[4] = 'I00S'
+    set ancient_drops[5] = 'I010'
+    set epic_drops[1] = 'I00D'
+    set epic_drops[2] = 'I00K'
+    set epic_drops[3] = 'I007'
+    set epic_drops[4] = 'I00T'
+    set epic_drops[5] = 'I011'
+
+    loop
+        exitwhen j > MAX_NORMAL_DROP
+        call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_RARE_DROP
+        call SaveStr(YDHT, rare_drops[j], EQUIP_LEVEL_KEY, "|cff3366ff稀有|r")
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_VALUABLE_DROP
+        call SaveStr(YDHT, valuable_drops[j], EQUIP_LEVEL_KEY, "|cffff9900珍稀|r")
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_ANCIENT_DROP
+        // 远古装备有一项随机属性
+        call SaveInteger(YDHT, ancient_drops[j], EQUIP_ATTR_COUNT_KEY, 1)
+        call SaveStr(YDHT, ancient_drops[j], EQUIP_LEVEL_KEY, "|cffff0000远古|r")
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > MAX_EPIC_DROP
+        // 史诗装备有两项随机属性
+        call SaveInteger(YDHT, epic_drops[j], EQUIP_ATTR_COUNT_KEY, 2)
+        call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|cffff00ff史诗|r")
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j > SHEN_QI_NUM
+        // 神器有三项随机属性
+        call SaveInteger(YDHT, shenqi[j], EQUIP_ATTR_COUNT_KEY, 3)
+        call SaveStr(YDHT, shenqi[j], EQUIP_LEVEL_KEY, "|cff800080传说|r")
+        set j = j + 1
+    endloop
+
+    call SaveStr(YDHT, 'I00C', EQUIP_ABILITY_KEY, "血吼：增加周围单位200%的攻击力")
+    call SaveStr(YDHT, 'I00F', EQUIP_ABILITY_KEY, "西毒杖法：攻击附带10000点毒素伤害及30%减速")
+    call SaveStr(YDHT, 'I00L', EQUIP_ABILITY_KEY, "被动技能触发几率翻倍")
+    call SaveStr(YDHT, 'I00M', EQUIP_ABILITY_KEY, "0.5%几率造成会心一击（秒杀普通单位，BOSS掉当前10%血）")
+    call SaveStr(YDHT, 'I00N', EQUIP_ABILITY_KEY, "玄铁剑法：主动使用友军集体增加70%攻速")
+    call SaveStr(YDHT, 'I00R', EQUIP_ABILITY_KEY, "几率打出狂暴")
+    call SaveStr(YDHT, 'I00U', EQUIP_ABILITY_KEY, "攻击几率刷新武功CD")
+    call SaveStr(YDHT, 'I00V', EQUIP_ABILITY_KEY, "打狗棒法：主动使用召唤10条恶犬打击敌人")
+    call SaveStr(YDHT, 'I00W', EQUIP_ABILITY_KEY, "碧海潮声曲：每次攻击使敌人护甲降低100点。")
+    call SaveStr(YDHT, 'I013', EQUIP_ABILITY_KEY, "主动使用增加周围单位100点内力")
+
+
+    // YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ABILITY, 'AHhb', "Name")
     call InitMenPaiWuPin()
     call RandomShenQi()
     call CreateF9()

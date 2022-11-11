@@ -8,44 +8,101 @@ globals
     constant integer AFFIX_COUNT = 22
 endglobals
 
-function generateRandomAttr takes item it, integer count returns nothing
-    local integer handleId = GetHandleId(it)
 
-    // 从词缀中随机选取count个
-    local integer array affixIndex
-    local integer i = 1
-    local integer temp = 0
-    local integer j = 0
-    local integer rand = 0
-    loop
-        exitwhen i > AFFIX_COUNT
-        set affixIndex[i] = i
-        set i = i + 1
-    endloop
 
-    set i = AFFIX_COUNT
-    loop
-        exitwhen i < 1
-        set j = GetRandomInt(1, i - 1)
-        set temp = affixIndex[i]
-        set affixIndex[i] = affixIndex[j]
-        set affixIndex[j] = temp
-        set i = i - 1
-    endloop
 
-    if count >= 1 then
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_TYPE_KEY, affixIndex[1])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_VALUE_KEY, GetRandomInt(affixMin[affixIndex[1]], affixMax[affixIndex[1]]))
+function equipKillingEffectByAttr takes unit u, integer attr, integer value returns nothing
+    if attr == 12 then
+        // 击杀-瞄准 击杀敌人时，加命中
+        call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
+    elseif attr == 13 then
+        // 击杀-蓄力 击杀敌人时，加武学伤害
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value * 0.1)
+    elseif attr == 14 then
+        // 击杀-狂暴 击杀敌人时，加暴击倍数
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY) + value)
+    elseif attr == 15 then
+        // 击杀-赏金 击杀敌人时，加金钱
+        call AdjustPlayerStateBJ(value, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
+    elseif attr == 16 then
+        // 击杀-回复 击杀敌人时，回复内力
+        call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MANA) + value * 0.01 * GetUnitState(u, UNIT_STATE_MAX_MANA))
+        call DestroyEffect(AddSpecialEffectTarget("Abilities\\Spells\\Items\\AIma\\AImaTarget.mdl", u, "origin"))
+    elseif attr == 17 then
+        // 击杀-封穴
+        call SaveBoolean(TOWER_ATTR_HT, GetHandleId(u), TOWER_SEAL_KEY, true)
     endif
+endfunction
 
-    if count >= 2 then
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_TYPE_KEY, affixIndex[2])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_VALUE_KEY, GetRandomInt(affixMin[affixIndex[2]], affixMax[affixIndex[2]]))
+function equipKillingEffect takes unit u, item it returns nothing
+    local integer attr = 0
+    local integer value = 0
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipKillingEffectByAttr(u, attr, value)
     endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipKillingEffectByAttr(u, attr, value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipKillingEffectByAttr(u, attr, value)
+    endif
+endfunction
 
-    if count >= 3 then
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_TYPE_KEY, affixIndex[3])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_VALUE_KEY, GetRandomInt(affixMin[affixIndex[3]], affixMax[affixIndex[3]]))
+function equipWaveStartEffectByAttr takes unit u, integer attr, integer value returns nothing
+    local item it = null
+    if attr == 18 then
+        // 激励-赏金 金钱+200
+        call AdjustPlayerStateBJ(200, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
+    elseif attr == 19 then
+        // 激励-回复 塔内力回满
+        call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA))
+    elseif attr == 20 then
+        // 激励-成长 获得1000点经验（仅英雄有效）
+        if IsUnitType(u, UNIT_TYPE_HERO) then
+            call AddHeroXP(u, 1000, false)
+        endif
+    elseif attr == 21 then
+        // 激励-丰收 20%概率获得一件随机品质的武器
+        if GetRandomInt(0, 10) <= 2 then
+            set it = CreateItem(getRandomDrop(), GetUnitX(u), GetUnitY(u))
+            call generateRandomAttr(it)
+            call tryUnitAddItem(u, it)
+        endif
+    elseif attr == 22 then
+        // 激励-武魂 20%概率额外获得1个随机品质的武魂石
+        if GetRandomInt(0, 10) <= 2 then
+            call UnitAddItemById(u, getRandomSoulStone(1 + GetPlayerId(GetOwningPlayer(u))))
+        endif
+
+    endif
+    set it = null
+
+endfunction
+
+
+function equipWaveStartEffect takes unit u, item it returns nothing
+    local integer attr = 0
+    local integer value = 0
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u, attr, value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u, attr, value)
+    endif
+    if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY) != 0 then
+        set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_TYPE_KEY)
+        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
+        call equipWaveStartEffectByAttr(u, attr, value)
     endif
 
 endfunction
@@ -118,7 +175,7 @@ function initEquip takes nothing returns nothing
     set affixMax[13] = 10
 
     set affixTitle[14] = "击杀-狂暴"
-    set affixDesc[14] = "击杀敌人时，武学暴击+" // 1-5
+    set affixDesc[14] = "击杀敌人时，武学暴击倍数+" // 1-5
     set affixMin[14] = 1
     set affixMax[14] = 5
 
@@ -138,27 +195,27 @@ function initEquip takes nothing returns nothing
     set affixMax[17] = 0
 
     set affixTitle[18] = "激励-赏金"
-    set affixDesc[18] = "每波结束时，额外获得金钱+200"
+    set affixDesc[18] = "每波开始时，额外获得金钱+200"
     set affixMin[18] = 0
     set affixMax[18] = 0
 
     set affixTitle[19] = "激励-回复"
-    set affixDesc[19] = "每波结束时，回满内力"
+    set affixDesc[19] = "每波开始时，回满内力"
     set affixMin[19] = 0
     set affixMax[19] = 0
 
     set affixTitle[20] = "激励-成长"
-    set affixDesc[20] = "每波结束时，额外获得1000点经验（仅对英雄有效）"
+    set affixDesc[20] = "每波开始时，额外获得1000点经验（仅对英雄有效）"
     set affixMin[20] = 0
     set affixMax[20] = 0
 
     set affixTitle[21] = "激励-丰收"
-    set affixDesc[21] = "每波结束时，额外获得1件随机品质的武器"
+    set affixDesc[21] = "每波开始时，20%概率额外获得1件随机品质的武器"
     set affixMin[21] = 0
     set affixMax[21] = 0
 
     set affixTitle[22] = "激励-武魂"
-    set affixDesc[22] = "每波结束时，20%概率额外获得1个随机品质的武魂石"
+    set affixDesc[22] = "每波开始时，20%概率额外获得1个随机品质的武魂石"
     set affixMin[22] = 0
     set affixMax[22] = 0
 
