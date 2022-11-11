@@ -230,7 +230,7 @@ function spawn takes nothing returns nothing
             call ForGroup(g, function recoverManaAndEquipEffect)
             call DestroyGroup(g)
             if goldHit[i + 1] == 1 then
-                set randReal = GetRandomInt(2, 4)
+                set randReal = GetRandomReal(2, 4)
                 set goldHit[i + 1] = 0
                 call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif

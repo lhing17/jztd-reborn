@@ -50,7 +50,7 @@ function showTooltip takes nothing returns nothing
 	local string str = ""
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
-			if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
+			if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
 				return
 			endif
 			call hideOriginalTooltip()
