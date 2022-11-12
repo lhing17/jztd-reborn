@@ -954,7 +954,7 @@ function InitPriv takes nothing returns nothing
     loop
         exitwhen i > 5
         set name = GetPlayerName(Player(i - 1))
-        if name == "WorldEdit" or name == "zeikale" or name == "zeikala" or name == "非我莫属xq" or name == "苍穹而降" or name == "晓窗临风" or name == "沫Mu" then
+        if name == "WorldEdit" or name == "zeikale" or name == "zeikala" or name == "非我莫属xq" or name == "苍穹而降" or name == "晓窗临风" or name == "Talent天坤" then
             call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 15., "|CFFff9933开启测试人员权限|r")
             set udg_isTest[i] = true
         endif
