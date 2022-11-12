@@ -74,7 +74,7 @@ function UnitDeath_Conditions takes nothing returns boolean
 
     // 击杀小怪获得金钱
     if GetOwningPlayer(ut) == Player(5) then
-        call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 1.8, wave * 2.1)), p, PLAYER_STATE_RESOURCE_GOLD)
+        call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 4, wave * 7)), p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif
 
