@@ -3,6 +3,9 @@ globals
 
 	Frame array itemTooltipWidget
 
+	// 显示塔的属性
+	Frame array towerTooltipWidget
+
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 	constant integer TOPLEFT = 0
 	constant integer TOP = 1
@@ -78,7 +81,7 @@ function getWeaponRandomAttrTooltip takes item it returns string
 	local string str = ""
 	if LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY) != 0 then
 		set attr = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_TYPE_KEY)
-        set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
+		set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
 		set str = str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
 			set str = str + I2S(value)
@@ -210,6 +213,59 @@ function hideItemTooltip takes nothing returns nothing
 	endif
 endfunction
 
+function showTowerTooltip takes nothing returns nothing
+	local integer i = 1 + GetPlayerId(DzGetTriggerUIEventPlayer())
+	local real damageAddition = 0 
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
+			return
+		endif
+		// 每点功勋增加0.5%伤害
+		if LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) > 0 then
+			set damageAddition = damageAddition + LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) * 0.005
+		endif
+		// 北冥神功 伤害增加40%
+		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') >= 1 then
+			set damageAddition = damageAddition + .4
+		endif
+	
+		// 太玄神功 伤害增加50%
+		if GetUnitAbilityLevel(unitInSelection[i], 'A03P') >= 1 then
+			set damageAddition = damageAddition + .5
+		endif
+	
+		// 蛤蟆功 伤害增加40%
+		if GetUnitAbilityLevel(unitInSelection[i], 'A03Q') >= 1 then
+			set damageAddition = damageAddition + .4
+		endif
+	
+		// 洗髓经 伤害增加50%
+		if GetUnitAbilityLevel(unitInSelection[i], 'A03R') >= 1 then
+			set damageAddition = damageAddition + .5
+		endif
+
+		// 塔的伤害加成
+		if LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY) > 0 then
+			set damageAddition = damageAddition + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY)
+		endif
+		call towerTooltipWidget[3].setText("命中：" + I2S(100 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_HIT_KEY) + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(unitInSelection[i]))))
+		call towerTooltipWidget[4].setText("武学暴击率：" + I2S(5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)) + "%")
+		call towerTooltipWidget[5].setText("暴击倍数：" + R2S(2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)))
+		call towerTooltipWidget[6].setText("内力回复：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_MANA_RECOVERY_KEY)))
+		call towerTooltipWidget[7].setText("伤害加成：" + R2S(damageAddition * 100) + "%")
+		call towerTooltipWidget[8].setText("连击率：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_COMBO_KEY)) + "%")
+		call towerTooltipWidget[9].setText("破防率：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_PIERCE_KEY)) + "%")
+		call towerTooltipWidget[10].setText("冷却缩减：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_COOLDOWN_KEY)) + "%")
+		call towerTooltipWidget[1].show()
+	endif
+endfunction
+
+function hideTowerTooltip takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call towerTooltipWidget[1].hide()
+	endif
+endfunction
+
 function drawUI_Conditions takes nothing returns boolean
 
 	local integer j = 1
@@ -306,6 +362,54 @@ function drawUI_Conditions takes nothing returns boolean
 		call DzFrameSetScriptByCode(originalItemButton[j], FRAME_MOUSE_LEAVE, function hideItemTooltip, false)
 		set j = j + 1
 	endloop
+
+	// 塔属性的说明
+	// 命中 武学暴击率 暴击倍数 内力回复 伤害加成 连击率 破防率 冷却缩减
+	set towerTooltipWidget[1] = Frame.newTips0(GUI, "tipbox")
+	call towerTooltipWidget[1].hide()
+
+	set towerTooltipWidget[2] = Frame.newText1(towerTooltipWidget[1], "|cFF00FF00属性|r", "TXA14")
+	call towerTooltipWidget[2].setSize(0.08, 0)
+
+	set towerTooltipWidget[3] = Frame.newText1(towerTooltipWidget[1], "命中：100", "TXA11")
+	call towerTooltipWidget[3].setSize(0.08, 0)
+
+	set towerTooltipWidget[4] = Frame.newText1(towerTooltipWidget[1], "武学暴击率：5%", "TXA11")
+	call towerTooltipWidget[4].setSize(0.08, 0)
+
+	set towerTooltipWidget[5] = Frame.newText1(towerTooltipWidget[1], "暴击倍数：1.5", "TXA11")
+	call towerTooltipWidget[5].setSize(0.08, 0)
+
+	set towerTooltipWidget[6] = Frame.newText1(towerTooltipWidget[1], "内力回复：10", "TXA11")
+	call towerTooltipWidget[6].setSize(0.08, 0)
+
+	set towerTooltipWidget[7] = Frame.newText1(towerTooltipWidget[1], "伤害加成：10%", "TXA11")
+	call towerTooltipWidget[7].setSize(0.08, 0)
+
+	set towerTooltipWidget[8] = Frame.newText1(towerTooltipWidget[1], "连击率：10%", "TXA11")
+	call towerTooltipWidget[8].setSize(0.08, 0)
+
+	set towerTooltipWidget[9] = Frame.newText1(towerTooltipWidget[1], "破防率：10%", "TXA11")
+	call towerTooltipWidget[9].setSize(0.08, 0)
+
+	set towerTooltipWidget[10] = Frame.newText1(towerTooltipWidget[1], "冷却缩减：10%", "TXA11")
+	call towerTooltipWidget[10].setSize(0.08, 0)
+
+	call towerTooltipWidget[10].setPoint(BOTTOM, Frame.getFrame(DzFrameGetPortrait()), TOP, 0, 0.035)
+	call towerTooltipWidget[9].setPoint(BOTTOM, towerTooltipWidget[10], TOP, 0, 0.005)
+	call towerTooltipWidget[8].setPoint(BOTTOM, towerTooltipWidget[9], TOP, 0, 0.005)
+	call towerTooltipWidget[7].setPoint(BOTTOM, towerTooltipWidget[8], TOP, 0, 0.005)
+	call towerTooltipWidget[6].setPoint(BOTTOM, towerTooltipWidget[7], TOP, 0, 0.005)
+	call towerTooltipWidget[5].setPoint(BOTTOM, towerTooltipWidget[6], TOP, 0, 0.005)
+	call towerTooltipWidget[4].setPoint(BOTTOM, towerTooltipWidget[5], TOP, 0, 0.005)
+	call towerTooltipWidget[3].setPoint(BOTTOM, towerTooltipWidget[4], TOP, 0, 0.005)
+	call towerTooltipWidget[2].setPoint(BOTTOM, towerTooltipWidget[3], TOP, 0, 0.005)
+	call towerTooltipWidget[1].setPoint(TOPLEFT, towerTooltipWidget[2], TOPLEFT, - 0.005, 0.005)
+	call towerTooltipWidget[1].setPoint(BOTTOMRIGHT, towerTooltipWidget[10], BOTTOMRIGHT, 0.005, - 0.005)
+
+	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_ENTER, function showTowerTooltip, false)
+	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_LEAVE, function hideTowerTooltip, false)
+
 
 	
 	return false

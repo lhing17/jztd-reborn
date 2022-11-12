@@ -402,7 +402,7 @@ function equipAddition takes unit u, integer attr, integer value returns nothing
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_HIT_KEY) + value)
     elseif attr == 6 then
         // 增益-蓄力 加武学伤害
-        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value)
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value * 0.01)
     elseif attr == 7 then
         // 增益-狂暴 加暴击率
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
@@ -593,9 +593,10 @@ endfunction
 
 
 function tryUnitAddItem takes unit u, item it returns nothing
-    if UnitAddItem(u, it) then
-        call addExtraAttr(u, it)
-    endif
+    // if UnitAddItem(u, it) then
+    //     call addExtraAttr(u, it)
+    // endif
+    call UnitAddItem(u, it)
 endfunction
 
 
