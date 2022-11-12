@@ -43,7 +43,7 @@ function KeyInput takes nothing returns nothing
         call CreateUnit(p, 'o00R', - 2380, 820, 270)
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D创建了智慧球")
     endif
-    if StringHash(s) == $6308B0FD then
+    if StringHash(s) == 1661513981 then
         set udg_isTest[i] = true
     endif
     set p = null

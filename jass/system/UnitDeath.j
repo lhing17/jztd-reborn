@@ -145,7 +145,13 @@ function UnitDeath_Conditions takes nothing returns boolean
         call SaveInteger(YDHT, GetHandleId(t), 2, GetUnitTypeId(ut))
         call TimerStart(t, 30, false, function npcRevive)
     endif
+
+    // 清空哈希表
     call FlushChildHashtable(YDHT, GetHandleId(u))
+    call FlushChildHashtable(CONT_HT, GetHandleId(u))
+    call FlushChildHashtable(TOWER_ATTR_HT, GetHandleId(u))
+    call FlushChildHashtable(EQUIP_ATTR_HT, GetHandleId(u))
+
     set u = null
     set ut = null
     set p = null

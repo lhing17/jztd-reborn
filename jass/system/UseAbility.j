@@ -184,7 +184,10 @@ function UseAbility_Conditions takes nothing returns boolean
         call YDWETimerDestroyTextTag(.65, GetLastCreatedTextTag())
 
         // 清空哈希表，避免Handle重用
+        call FlushChildHashtable(YDHT, GetHandleId(u))
         call FlushChildHashtable(CONT_HT, GetHandleId(u))
+        call FlushChildHashtable(TOWER_ATTR_HT, GetHandleId(u))
+        call FlushChildHashtable(EQUIP_ATTR_HT, GetHandleId(u))
         call KillUnit(u)
         call RemoveUnit(u)
     endif
