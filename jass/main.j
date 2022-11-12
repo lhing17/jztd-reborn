@@ -588,11 +588,11 @@ function InitTrig_SystemWindow takes nothing returns nothing
     call TriggerRegisterTimerEventSingle(gg_trg_SystemWindow, 0.)
     call TriggerAddAction(gg_trg_SystemWindow, function Trig_SystemWindowActions)
 endfunction
-function Trig_MapInitActions takes nothing returns nothing
+
+function InitTrig_MapInit takes nothing returns nothing
     call SetTimeOfDay(8.)
     call UseTimeOfDayBJ(false)
-    call FogEnableOff()
-    call FogMaskEnableOff()
+
     call SetPlayerState(Player(5), PLAYER_STATE_GIVES_BOUNTY, 1)
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 5
@@ -614,10 +614,6 @@ function Trig_MapInitActions takes nothing returns nothing
         call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-endfunction
-function InitTrig_MapInit takes nothing returns nothing
-    set gg_trg_MapInit = CreateTrigger()
-    call TriggerAddAction(gg_trg_MapInit, function Trig_MapInitActions)
 endfunction
 function Trig_OneSecondActions takes nothing returns nothing
     local integer i = 0
