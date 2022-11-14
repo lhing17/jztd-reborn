@@ -1,23 +1,20 @@
+globals
+    real array wisdomBallX
+    real array wisdomBallY
+
+endglobals
+
 function EverySecond_Conditions takes nothing returns boolean
     local string info = DzAPI_Map_GetMapConfig("info")
     local integer i = 1
-    local integer array x
-    local integer array y
     local integer level = 1
-    set x[1] =- 2380
-    set x[2] = 820
-    set x[3] = 2380
-    set x[4] =- 820
-    set y[1] = 820
-    set y[2] = 2380
-    set y[3] =- 820
-    set y[4] =- 2380
+  
     set passed_time = passed_time + 1
     if passed_time == 5 then
         loop
             exitwhen i > 5
             if wisdom_ball_flag[i] == 1 then
-                call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
+                set wisbomBall[i] = CreateUnit(Player(i - 1), 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
                 call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D您已开启智慧球")
                 set hasWisdomBall[i] = true
             endif
@@ -70,6 +67,18 @@ function EverySecond_Conditions takes nothing returns boolean
         if europe_flag[i] == 1 then
             call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 3)
         endif
+
+        // 智慧球智能模式
+        if wisdomBallSmartMode[i] and wisbomBall[i] != null then
+            call IssueImmediateOrder(wisbomBall[i], "chainlightning")
+            call IssueImmediateOrder(wisbomBall[i], "charm")
+            call IssueImmediateOrder(wisbomBall[i], "corrosivebreath")
+            call IssueImmediateOrder(wisbomBall[i], "chemicalrage")
+            call IssueImmediateOrder(wisbomBall[i], "cloudoffog")
+            call IssueImmediateOrder(wisbomBall[i], "clusterrockets")
+            call IssueImmediateOrder(wisbomBall[i], "coldarrows")
+        endif
+
         set i = i + 1
     endloop
     set i = 0
@@ -94,6 +103,15 @@ function EverySecond_Conditions takes nothing returns boolean
 endfunction
 function EverySecond takes nothing returns nothing
     local trigger t = CreateTrigger()
+
+    set wisdomBallX[1] =- 2380
+    set wisdomBallX[2] = 820
+    set wisdomBallX[3] = 2380
+    set wisdomBallX[4] =- 820
+    set wisdomBallY[1] = 820
+    set wisdomBallY[2] = 2380
+    set wisdomBallY[3] =- 820
+    set wisdomBallY[4] =- 2380
     call TriggerRegisterTimerEventPeriodic(t, 1.)
     call TriggerAddCondition(t, Condition(function EverySecond_Conditions))
     set t = null

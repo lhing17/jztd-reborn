@@ -260,6 +260,10 @@ globals
 
     // 玩家是否有智慧球
     boolean array hasWisdomBall
+    unit array wisbomBall
+    
+    // 智慧球智能模式
+    boolean array wisdomBallSmartMode
 
 
     trigger array st___prototype25
@@ -272,6 +276,8 @@ function MyInitGlobals takes nothing returns nothing
     loop
         exitwhen i > 4
         set hasWisdomBall[i] = false
+        set wisbomBall[i] = null
+        set wisdomBallSmartMode[i] = false
         set i = i + 1
     endloop
     

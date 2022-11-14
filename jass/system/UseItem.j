@@ -31,16 +31,9 @@ function europaGift takes unit u returns nothing
     local integer array y
     local integer id
     local item it = null
-    set x[1] =- 2380
-    set x[2] = 820
-    set x[3] = 2380
-    set x[4] =- 820
-    set y[1] = 820
-    set y[2] = 2380
-    set y[3] =- 820
-    set y[4] =- 2380
+
     if rand == 666 and not hasWisdomBall[i] then
-        call CreateUnit(Player(i - 1), 'o00R', x[i], y[i], 270)
+        set wisbomBall[i] = CreateUnit(Player(i - 1), 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
         call DisplayTimedTextToForce(GetPlayersAll(), 10, "|CFF99CC00玩家" + GetPlayerName(Player(i - 1)) + "人品大爆发，欧皇大礼包开出了|CFF00FF00智慧之球")
         set hasWisdomBall[i] = true
     elseif rand < 300 then

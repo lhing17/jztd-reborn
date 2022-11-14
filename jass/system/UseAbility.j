@@ -461,6 +461,21 @@ function UseAbility_Conditions takes nothing returns boolean
         call SynItem(u, 'I00Z', 'I010')
         call SynItem(u, 'I010', 'I011')
     endif
+
+    // 开启智慧球智能模式
+    if id == 'A08Z' then
+        set wisdomBallSmartMode[i] = true
+        call UnitRemoveAbility(u, 'A08Z')
+        call UnitAddAbility(u, 'A090')
+    endif
+
+    // 关闭智慧球智能模式
+    if id == 'A090' then
+        set wisdomBallSmartMode[i] = false
+        call UnitRemoveAbility(u, 'A090')
+        call UnitAddAbility(u, 'A08Z')
+    endif
+
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
     set u = null
