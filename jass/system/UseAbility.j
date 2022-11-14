@@ -92,6 +92,28 @@ function reduceCooldown takes nothing returns nothing
     set t = null
 endfunction
 
+function doFastPick takes nothing returns nothing
+    call UnitAddItem(fastPickUnit, GetEnumItem())
+endfunction
+
+function fastPick takes unit u returns nothing
+    local rect r = Rect(GetUnitX(u) - 800, GetUnitY(u) - 800, GetUnitX(u) + 800, GetUnitY(u) + 800)
+    set fastPickUnit = u
+	call EnumItemsInRect(r, null, function doFastPick)
+	call RemoveRect(r)
+	set r = null
+endfunction
+
+function fastDrop takes unit u returns nothing
+	local integer i = 0
+	loop
+		exitwhen i >= 6
+		call UnitRemoveItemFromSlot(u, i)
+		set i = i + 1
+	endloop
+	set u = null
+endfunction
+
 function UseAbility_Conditions takes nothing returns boolean
     local integer id = GetSpellAbilityId()
     local unit u = GetTriggerUnit()
@@ -474,6 +496,16 @@ function UseAbility_Conditions takes nothing returns boolean
         set wisdomBallSmartMode[i] = false
         call UnitRemoveAbility(u, 'A090')
         call UnitAddAbility(u, 'A08Z')
+    endif
+
+    // 快速拾取
+    if id == 'A091' then
+        call fastPick(u)
+    endif
+
+    // 快速丢弃
+    if id == 'A092' then
+        call fastDrop(u)
     endif
 
     call RemoveLocation(loc)

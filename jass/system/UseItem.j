@@ -123,6 +123,16 @@ function UseItem_Conditions takes nothing returns boolean
     if GetItemTypeId(it) == 'I061' then
         call europaGift(u)
     endif
+
+    // 易筋洗髓丹，使用后等级+1
+    if GetItemTypeId(it) == 'I067' then
+        if IsUnitType(u, UNIT_TYPE_HERO) then
+            call SetHeroLevel(u, GetHeroLevel(u) + 1, true)
+        else
+            call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff0000只有英雄才能使用|r")
+            call UnitAddItemById(u, 'I067')
+        endif
+    endif
     set u = null
     set it = null
     return false

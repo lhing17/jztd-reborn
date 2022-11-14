@@ -265,6 +265,8 @@ globals
     // 智慧球智能模式
     boolean array wisdomBallSmartMode
 
+    unit fastPickUnit = null
+
 
     trigger array st___prototype25
 
