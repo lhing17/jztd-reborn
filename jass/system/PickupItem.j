@@ -151,7 +151,12 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
         endif
     endif
     if item_id == 'I01Y' then
-        call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 2)
+        if GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) < 100 then
+            call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 2)
+        else
+            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933人口上限已达上限，无法继续购买|r")
+            call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
+        endif
     endif
     if item_id == 'I01Z' then
         if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) or udg_isTest[player_i] then
@@ -211,7 +216,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
                 if wave >= 15 then
                     set middle_gold[player_i] = 1
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了中型金币包")
-                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 20000)
+                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 10000)
                 else
                     call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933限第15波以后领取|r")
                 endif
@@ -352,6 +357,12 @@ function JoinMenPai takes integer player_i, integer menpai_num, integer item_id 
                 call SetPlayerName(p, menpai_name[menpai_num] + GetPlayerName(p))
                 call CreateNUnitsAtLoc(1, menpai_builder_id[menpai_num], p, born_loc[player_i], bj_UNIT_FACING)
                 set builder[player_i] = bj_lastCreatedUnit
+                call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03U')
+                call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03V')
+                call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03W')
+                call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03X')
+                call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A04I')
+
                 // call UnitAddAbility(builder[player_i], 'AInv')
                 call PanCameraToTimedLocForPlayer(p, born_loc[player_i], 0)
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933玩家" + I2S(player_i) + "选择了" + menpai_name[menpai_num])

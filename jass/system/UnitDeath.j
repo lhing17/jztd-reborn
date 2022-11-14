@@ -74,7 +74,7 @@ function UnitDeath_Conditions takes nothing returns boolean
 
     // 击杀小怪获得金钱
     if GetOwningPlayer(ut) == Player(5) then
-        call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 4, wave * 7)), p, PLAYER_STATE_RESOURCE_GOLD)
+        call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 3, wave * 5)), p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif
 
@@ -147,10 +147,10 @@ function UnitDeath_Conditions takes nothing returns boolean
     endif
 
     // 清空哈希表
-    call FlushChildHashtable(YDHT, GetHandleId(u))
-    call FlushChildHashtable(CONT_HT, GetHandleId(u))
-    call FlushChildHashtable(TOWER_ATTR_HT, GetHandleId(u))
-    call FlushChildHashtable(EQUIP_ATTR_HT, GetHandleId(u))
+    call FlushChildHashtable(YDHT, GetHandleId(ut))
+    call FlushChildHashtable(CONT_HT, GetHandleId(ut))
+    call FlushChildHashtable(TOWER_ATTR_HT, GetHandleId(ut))
+    call FlushChildHashtable(EQUIP_ATTR_HT, GetHandleId(ut))
 
     set u = null
     set ut = null
