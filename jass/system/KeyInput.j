@@ -14,8 +14,12 @@ function KeyInput takes nothing returns nothing
     if s == "testBo" and udg_isTest[i] then
         set wave = 54
     endif
-    if s == "testCrash" then
-        call CreateItem('I00T', 0, 0)
+    if s == "addSpeed250" and udg_isTest[i] then
+        call setAttackSpeed(unitInSelection[i], 250)
+    endif
+
+    if s == "combo" and udg_isTest[i] then
+        call combo(unitInSelection[i])
     endif
     if s == "cx" or s == "CX" then
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))

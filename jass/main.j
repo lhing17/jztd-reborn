@@ -1170,4 +1170,5 @@ function InitAllSystems takes nothing returns nothing
     call GameDetail_Trigger()
     call initUI()
     call initEquip()
+    call initSetAttackSpeed()
 endfunction

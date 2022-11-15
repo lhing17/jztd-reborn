@@ -1,3 +1,87 @@
+/*
+* 任意设置攻速系统
+*/
+globals
+    integer array attackSpeedAbility
+    integer array powerOfTwo
+endglobals
+
+function clearAttackSpeed takes unit u returns nothing
+    local integer i = 10
+    loop
+        exitwhen i < 1
+        call UnitRemoveAbility(u, attackSpeedAbility[i])
+        set i = i - 1
+    endloop
+    call SaveInteger(YDHT, GetHandleId(u), StringHash("attackSpeed"), 0)
+endfunction
+
+// 设置攻速
+function setAttackSpeed takes unit u, integer rate returns boolean
+    local integer i
+    if rate == 0 then
+        call clearAttackSpeed(u)
+        return false
+    endif
+    if rate < - 512 or rate > 511 then
+        return false
+    endif
+    call SaveInteger(YDHT, GetHandleId(u), StringHash("attackSpeed"), rate)
+    if rate < 0 then
+        set rate = 512 + rate
+        call UnitAddAbility(u, attackSpeedAbility[10])
+        call UnitMakeAbilityPermanent(u, true, attackSpeedAbility[10])
+    else
+        call UnitRemoveAbility(u, attackSpeedAbility[10])
+    endif
+
+    set i = 9
+    loop
+        exitwhen i < 1
+        if rate > powerOfTwo[i] then
+            call UnitAddAbility(u, attackSpeedAbility[i])
+            call UnitMakeAbilityPermanent(u, true, attackSpeedAbility[i])
+            set rate = rate - powerOfTwo[i]
+        else
+            call UnitRemoveAbility(u, attackSpeedAbility[i])
+        endif
+        set i = i - 1
+    endloop
+    return true
+endfunction
+
+// 增加攻速
+function addAttackSpeed takes unit u, integer rate returns boolean
+    return setAttackSpeed(u, LoadInteger(YDHT, GetHandleId(u), StringHash("attackSpeed")) + rate)
+endfunction
+
+
+function initSetAttackSpeed takes nothing returns nothing
+    set attackSpeedAbility[1] = 'YDa0'
+    set attackSpeedAbility[2] = 'YDa1'
+    set attackSpeedAbility[3] = 'YDa2'
+    set attackSpeedAbility[4] = 'YDa3'
+    set attackSpeedAbility[5] = 'YDa4'
+    set attackSpeedAbility[6] = 'YDa5'
+    set attackSpeedAbility[7] = 'YDa6'
+    set attackSpeedAbility[8] = 'YDa7'
+    set attackSpeedAbility[9] = 'YDa8'
+    set attackSpeedAbility[10] = 'YDa9'
+    set powerOfTwo[0] = 1
+    set powerOfTwo[1] = 2
+    set powerOfTwo[2] = 4
+    set powerOfTwo[3] = 8
+    set powerOfTwo[4] = 16
+    set powerOfTwo[5] = 32
+    set powerOfTwo[6] = 64
+    set powerOfTwo[7] = 128
+    set powerOfTwo[8] = 256
+    set powerOfTwo[9] = 512
+
+endfunction
+
+
+
 function WanBuff_1 takes integer buffnum, integer num, unit uc, integer id, integer orderid, unit ut, string s returns nothing
     local unit u
     local player p
@@ -387,7 +471,8 @@ endfunction
 
 function equipAddition takes unit u, integer attr, integer value returns nothing
     if attr == 1 then
-        // 增益-疾速 加攻击速度 TODO
+        // 增益-疾速 加攻击速度
+        call addAttackSpeed(u, value)
     elseif attr == 2 then
         // 增益-练气 加内力上限
         call YDWEGeneralBounsSystemUnitSetBonus(u, 1, 0, value)     
@@ -407,7 +492,7 @@ function equipAddition takes unit u, integer attr, integer value returns nothing
         // 增益-狂暴 加暴击率
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
     elseif attr == 8 then
-        // 增益-连击 加连击率 TODO
+        // 增益-连击 加连击率
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
     elseif attr == 9 then
         // 增益-破甲 加破防概率
@@ -597,6 +682,25 @@ function tryUnitAddItem takes unit u, item it returns nothing
     //     call addExtraAttr(u, it)
     // endif
     call UnitAddItem(u, it)
+endfunction
+
+
+function removeCombo takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    call UnitRemoveAbility(u, 'A095')
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function combo takes unit u returns nothing
+    local timer t = CreateTimer()
+    call UnitAddAbility(u, 'A095')
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call TimerStart(t, 2, false, function removeCombo)
+    set t = null
+    
 endfunction
 
 

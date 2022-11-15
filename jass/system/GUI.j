@@ -84,9 +84,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
 		set str = str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str = str + I2S(value)
+			if attr == 13 then
+				set str = str + R2S(value * 0.1)
+			else
+				set str = str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str = str + "%"
 		endif 
 	endif
@@ -96,9 +100,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
 		set str = str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str = str + I2S(value)
+			if attr == 13 then
+				set str = str + R2S(value * 0.1)
+			else
+				set str = str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str = str + "%"
 		endif 
 	endif
@@ -108,9 +116,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value = LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
 		set str = str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str = str + I2S(value)
+			if attr == 13 then
+				set str = str + R2S(value * 0.1)
+			else
+				set str = str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str = str + "%"
 		endif 
 	endif

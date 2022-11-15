@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -25,12 +25,12 @@ constant boolean LIBRARY_TowerLibrary=true
 //endglobals from TowerLibrary
 //globals from YDTriggerSaveLoadSystem:
 constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
+hashtable YDHT
 hashtable YDLOC
 //endglobals from YDTriggerSaveLoadSystem
 //globals from YDWEBase:
 constant boolean LIBRARY_YDWEBase=true
 //ȫ�ֹ�ϣ�� 
-hashtable YDHT= null
 string bj_AllString=".................................!.#$%&'()*+,-./0123456789:;<=>.@ABCDEFGHIJKLMNOPQRSTUVWXYZ[.]^_`abcdefghijklmnopqrstuvwxyz{|}~................................................................................................................................"
 //全局系统变量
 unit bj_lastAbilityCastingUnit=null
@@ -148,6 +148,8 @@ unit gg_unit_e00H_0025= null
 unit gg_unit_e00H_0023= null
 constant integer FRAME_ID= - 29734415
 integer GUI
+integer array attackSpeedAbility
+integer array powerOfTwo
 string PROPERTY_GOLD= "BGOLD5DAYS"
 string PROPERTY_LUMBER= "BLUMB5DAYS"
 string PROPERTY_WISDOM_BALL= "AWISDOM001"
@@ -1345,7 +1347,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary___init takes nothing returns nothing
+    function FrameLibrary__init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1414,8 +1416,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1501,7 +1503,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1521,7 +1523,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -3033,7 +3035,7 @@ endfunction
 //library YDWETriggerEvent:
 	
 //===========================================================================  
-//���ⵥλ�˺��¼� 
+//���ⵥλ�˺��¼� 
 //===========================================================================
 function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -3080,7 +3082,7 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
     set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
 endfunction
 //===========================================================================  
-//�ƶ���Ʒ�¼� 
+//�ƶ���Ʒ�¼� 
 //===========================================================================  
 function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -3146,7 +3148,7 @@ function GetLastCombinedItem takes nothing returns item
     return bj_lastCombinedItem
 endfunction
 //===========================================================================
-//��Ʒ�ϳ�
+//��Ʒ�ϳ�
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
@@ -3159,7 +3161,7 @@ function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
 endfunction
 //GetLastMovedItemInItemSlot 
 //===========================================================================  
-//��Ʒ�ϳ��¼� 
+//��Ʒ�ϳ��¼� 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
 	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
@@ -3290,7 +3292,7 @@ endfunction
             set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
             set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
 set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
             set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
@@ -3650,7 +3652,7 @@ function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
 	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
 	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
-//�ú������д���
+//�ú������д���
 function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
  local integer index= YDWETimerSystem__NewTaskIndex()
  local integer h= YDWETimerSystem__TaskListHead
@@ -3676,7 +3678,7 @@ endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
 	return YDWETimerSystem__CurrentIndex
 endfunction
-//ɾ����λ
+//ɾ����λ
 function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
     call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3684,7 +3686,7 @@ endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
     call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
-//�ݻټ�ʱ��
+//�ݻټ�ʱ��
 function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
     call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3692,7 +3694,7 @@ endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
     call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
-//ɾ����Ʒ
+//ɾ����Ʒ
 function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
     call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3700,7 +3702,7 @@ endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
     call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
-//ɾ����Ч
+//ɾ����Ч
 function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
     call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3708,7 +3710,7 @@ endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
     call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
-//ɾ��������Ч
+//ɾ��������Ч
 function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
     call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3717,7 +3719,7 @@ function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
  local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
     call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
-//���д�����
+//���д�����
 function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
     call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3725,7 +3727,7 @@ endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
     call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
-//ɾ��Ư������
+//ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     local integer N=0
     local integer i=0
@@ -3736,7 +3738,7 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagLifespan(tt, time)
     call SetTextTagFadepoint(tt, time)
 endfunction
-//���ļ�ʱ��������
+//���ļ�ʱ��������
 function YDWETimerSystem__Main takes nothing returns nothing
  local integer h= YDWETimerSystem__TaskListHead
  local integer p
@@ -3750,7 +3752,7 @@ function YDWETimerSystem__Main takes nothing returns nothing
 	endloop
 	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
-//��ʼ������
+//��ʼ������
 function YDWETimerSystem__Init takes nothing returns nothing
     set YDWETimerSystem__Timer=CreateTimer()
 	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
@@ -3776,7 +3778,7 @@ function YDWETimerSystem__Init takes nothing returns nothing
 	
     call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
-//ѭ�������ö�����ʱ��
+//ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
     return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
@@ -3856,7 +3858,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Nov 14 16:56:18 2022
+//   Date: Tue Nov 15 15:43:01 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -4734,6 +4736,74 @@ endfunction
 // endfunction
     
    
+
+function clearAttackSpeed takes unit u returns nothing
+    local integer i= 10
+    loop
+        exitwhen i < 1
+        call UnitRemoveAbility(u, attackSpeedAbility[i])
+        set i=i - 1
+    endloop
+    call SaveInteger(YDHT, GetHandleId(u), StringHash("attackSpeed"), 0)
+endfunction
+// 设置攻速
+function setAttackSpeed takes unit u,integer rate returns boolean
+    local integer i
+    if rate == 0 then
+        call clearAttackSpeed(u)
+        return false
+    endif
+    if rate < - 512 or rate > 511 then
+        return false
+    endif
+    call SaveInteger(YDHT, GetHandleId(u), StringHash("attackSpeed"), rate)
+    if rate < 0 then
+        set rate=512 + rate
+        call UnitAddAbility(u, attackSpeedAbility[10])
+        call UnitMakeAbilityPermanent(u, true, attackSpeedAbility[10])
+    else
+        call UnitRemoveAbility(u, attackSpeedAbility[10])
+    endif
+    set i=9
+    loop
+        exitwhen i < 1
+        if rate > powerOfTwo[i] then
+            call UnitAddAbility(u, attackSpeedAbility[i])
+            call UnitMakeAbilityPermanent(u, true, attackSpeedAbility[i])
+            set rate=rate - powerOfTwo[i]
+        else
+            call UnitRemoveAbility(u, attackSpeedAbility[i])
+        endif
+        set i=i - 1
+    endloop
+    return true
+endfunction
+// 增加攻速
+function addAttackSpeed takes unit u,integer rate returns boolean
+    return setAttackSpeed(u , LoadInteger(YDHT, GetHandleId(u), StringHash("attackSpeed")) + rate)
+endfunction
+function initSetAttackSpeed takes nothing returns nothing
+    set attackSpeedAbility[1]='YDa0'
+    set attackSpeedAbility[2]='YDa1'
+    set attackSpeedAbility[3]='YDa2'
+    set attackSpeedAbility[4]='YDa3'
+    set attackSpeedAbility[5]='YDa4'
+    set attackSpeedAbility[6]='YDa5'
+    set attackSpeedAbility[7]='YDa6'
+    set attackSpeedAbility[8]='YDa7'
+    set attackSpeedAbility[9]='YDa8'
+    set attackSpeedAbility[10]='YDa9'
+    set powerOfTwo[0]=1
+    set powerOfTwo[1]=2
+    set powerOfTwo[2]=4
+    set powerOfTwo[3]=8
+    set powerOfTwo[4]=16
+    set powerOfTwo[5]=32
+    set powerOfTwo[6]=64
+    set powerOfTwo[7]=128
+    set powerOfTwo[8]=256
+    set powerOfTwo[9]=512
+endfunction
 function WanBuff_1 takes integer buffnum,integer num,unit uc,integer id,integer orderid,unit ut,string s returns nothing
     local unit u
     local player p
@@ -5092,7 +5162,8 @@ function generateRandomAttr takes item it returns nothing
 endfunction
 function equipAddition takes unit u,integer attr,integer value returns nothing
     if attr == 1 then
-        // 增益-疾速 加攻击速度 TODO
+        // 增益-疾速 加攻击速度
+        call addAttackSpeed(u , value)
     elseif attr == 2 then
         // 增益-练气 加内力上限
         call YDWEGeneralBounsSystemUnitSetBonus(u , 1 , 0 , value)
@@ -5112,7 +5183,7 @@ function equipAddition takes unit u,integer attr,integer value returns nothing
         // 增益-狂暴 加暴击率
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_RATE_KEY) + value)
     elseif attr == 8 then
-        // 增益-连击 加连击率 TODO
+        // 增益-连击 加连击率
         call SaveInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY, LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) + value)
     elseif attr == 9 then
         // 增益-破甲 加破防概率
@@ -5283,6 +5354,22 @@ function tryUnitAddItem takes unit u,item it returns nothing
     //     call addExtraAttr(u, it)
     // endif
     call UnitAddItem(u, it)
+endfunction
+function removeCombo takes nothing returns nothing
+    local timer t= GetExpiredTimer()
+    local unit u= LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    call UnitRemoveAbility(u, 'A095')
+    call DestroyTimer(t)
+    set t=null
+    set u=null
+endfunction
+function combo takes unit u returns nothing
+    local timer t= CreateTimer()
+    call UnitAddAbility(u, 'A095')
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call TimerStart(t, 2, false, function removeCombo)
+    set t=null
+    
 endfunction
 function EMeiXinFa takes nothing returns nothing
     local unit u= GetEnumUnit()
@@ -5503,7 +5590,7 @@ function equipKillingEffectByAttr takes unit u,integer attr,integer value return
         call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) + value * 0.001)
     elseif attr == 14 then
         // 击杀-狂暴 击杀敌人时，加暴击倍数
-        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY) + value)
+        call SaveReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY, LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_CRITICAL_ADDITION_KEY) + value * 0.01)
     elseif attr == 15 then
         // 击杀-赏金 击杀敌人时，加金钱
         call AdjustPlayerStateBJ(value, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
@@ -6196,8 +6283,11 @@ function KeyInput takes nothing returns nothing
     if s == "testBo" and udg_isTest[i] then
         set wave=54
     endif
-    if s == "testCrash" then
-        call CreateItem('I00T', 0, 0)
+    if s == "addSpeed250" and udg_isTest[i] then
+        call setAttackSpeed(unitInSelection[i] , 250)
+    endif
+    if s == "combo" and udg_isTest[i] then
+        call combo(unitInSelection[i])
     endif
     if s == "cx" or s == "CX" then
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
@@ -6779,7 +6869,9 @@ endfunction
 function showHealthPointAction takes nothing returns nothing
     local integer i= 1 + GetPlayerId(GetTriggerPlayer())
     // call BJDebugMsg("当前选中单位为："+GetUnitName(GetTriggerUnit()))
-    set unitInSelection[i]=GetTriggerUnit()
+    if GetTriggerUnit() != null then
+        set unitInSelection[i]=GetTriggerUnit()
+    endif
     if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "单位" + GetUnitName(GetTriggerUnit()) + "|r的血量为" + R2S(GetWidgetLife(GetTriggerUnit())) + " / " + R2S(GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE)))
     endif
@@ -6976,6 +7068,10 @@ function UnitAttack_Conditions takes nothing returns boolean
     // 装备加成破防概率
     if GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_PIERCE_KEY) then
         call WanBuff(u , ut , 9)
+    endif
+    // 装备连击
+    if GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) then
+        call combo(u)
     endif
     if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
         set g=CreateGroup()
@@ -8283,9 +8379,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR1_VALUE_KEY)
 		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str=str + I2S(value)
+			if attr == 13 then
+				set str=str + R2S(value * 0.1)
+			else
+				set str=str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str=str + "%"
 		endif
 	endif
@@ -8295,9 +8395,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR2_VALUE_KEY)
 		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str=str + I2S(value)
+			if attr == 13 then
+				set str=str + R2S(value * 0.1)
+			else
+				set str=str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str=str + "%"
 		endif
 	endif
@@ -8307,9 +8411,13 @@ function getWeaponRandomAttrTooltip takes item it returns string
 		set value=LoadInteger(EQUIP_ATTR_HT, GetHandleId(it), EQUIP_ATTR3_VALUE_KEY)
 		set str=str + affixTitle[attr] + "：" + affixDesc[attr]
 		if value != 0 then
-			set str=str + I2S(value)
+			if attr == 13 then
+				set str=str + R2S(value * 0.1)
+			else
+				set str=str + I2S(value)
+			endif
 		endif
-		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 then
+		if attr == 1 or attr == 6 or attr == 7 or attr == 8 or attr == 9 or attr == 10 or attr == 11 or attr == 13 or attr == 14 then
 			set str=str + "%"
 		endif
 	endif
@@ -12017,6 +12125,7 @@ function InitAllSystems takes nothing returns nothing
     call GameDetail_Trigger()
     call initUI()
     call initEquip()
+    call initSetAttackSpeed()
 endfunction
 //***************************************************************************
 //*
@@ -12225,8 +12334,8 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs432323765")
-call ExecuteFunc("FrameLibrary___init")
+call ExecuteFunc("jasshelper__initstructs514323609")
+call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
@@ -12258,16 +12367,16 @@ function config takes nothing returns nothing
     call InitCustomTeams()
     call InitAllyPriorities()
 endfunction
+//===========================================================================
+//ϵͳ-TimerSystem
+//===========================================================================
 //===========================================================================  
 //===========================================================================  
-//�Զ����¼� 
+//�Զ����¼� 
 //===========================================================================
 //===========================================================================   
 //===========================================================================
 //修改生命
-//===========================================================================
-//===========================================================================
-//ϵͳ-TimerSystem
 //===========================================================================
 
 
@@ -12343,7 +12452,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs432323765 takes nothing returns nothing
+function jasshelper__initstructs514323609 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()

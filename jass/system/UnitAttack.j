@@ -166,6 +166,11 @@ function UnitAttack_Conditions takes nothing returns boolean
         call WanBuff(u, ut, 9)
     endif
 
+    // 装备连击
+    if GetRandomInt(1, 100) <= LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COMBO_KEY) then
+        call combo(u)
+    endif
+
     if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
         set g = CreateGroup()
         call GroupEnumUnitsInRange(g, GetUnitX(u), GetUnitY(u), 1000, Condition(function IsEnemyAndAliveForAttack))
