@@ -287,6 +287,23 @@ function spawn takes nothing returns nothing
     set g = null
 endfunction
 
+function mutatedAttacker takes unit u returns nothing
+	local integer i = GetRandomInt(1, 100)
+	if udg_nandu >= 6 then
+		if i <= 33 then
+			call SetUnitVertexColor(u, 225, 0, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 1)
+		elseif i <= 66 then
+			call SetUnitVertexColor(u, 0, 225, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 2)
+		else
+			call SetUnitVertexColor(u, 0, 0, 225, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 3)
+		endif
+        call SetUnitScale(u, 1.5, 1.5, 1.5)
+	endif
+endfunction
+
 function doSpawn takes nothing returns nothing
     local location array loc
     local location array target
@@ -313,6 +330,12 @@ function doSpawn takes nothing returns nothing
                 call h__SetUnitMoveSpeed(bj_lastCreatedUnit, RMinBJ(300 + 5 * wave, 522))
                 call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit, 2, 2, 10 + wave)
             endif
+
+            // 难六以上，有概率出现变异怪
+            if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                call mutatedAttacker(bj_lastCreatedUnit)
+            endif
+
             call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
             call SaveReal(YDHT, GetHandleId(bj_lastCreatedUnit), BORN_LOC_X, GetUnitX(bj_lastCreatedUnit))
             call SaveReal(YDHT, GetHandleId(bj_lastCreatedUnit), BORN_LOC_Y, GetUnitY(bj_lastCreatedUnit))

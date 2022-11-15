@@ -146,6 +146,11 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
         set enemyDodge = enemyDodge + 100
     endif
 
+    // 蓝怪闪避+500
+	if LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 3 then
+		set enemyDodge = enemyDodge + 500
+	endif
+
     // R00A科技等级，每级命中+100
     if GetPlayerTechCountSimple('R00A', GetOwningPlayer(u)) > 0 then
         set myHit = myHit + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(u))
@@ -196,14 +201,21 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
         set damage = damage * 2
     endif
 
+    // 伤害减免 红怪减免80%伤害，绿怪减免50%伤害且不吃暴击
+    if LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 1 then
+        set damage = damage * 0.2
+    elseif LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 2 then
+        set damage = damage * 0.5
+    endif
+
 
     // 圆桌理论 闪避+暴击+普通 = 100
     if rand <= 100 - hitRate then
         // 闪避
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
-    elseif rand <= 100 - hitRate + criticalRate then
-        // 暴击
-        set damage = damage * 3
+    elseif rand <= 100 - hitRate + criticalRate and LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) != 2 then
+        // 暴击 绿怪不吃暴击
+        set damage = damage * criticalTimes
         call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
         call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
     else
