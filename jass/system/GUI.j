@@ -238,7 +238,7 @@ function showTowerTooltip takes nothing returns nothing
 		set damageAddition = kungfuCoeff[i]
 		// 每点功勋增加0.5%伤害
 		if LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) > 0 then
-			set damageAddition = damageAddition + LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) * 0.005
+			set damageAddition = damageAddition + LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) * 0.002
 		endif
 		// 北冥神功 伤害增加40%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') >= 1 then

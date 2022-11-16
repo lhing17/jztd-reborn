@@ -166,9 +166,9 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
         set criticalTimes = criticalTimes + 1
     endif
 
-    // 每点功勋增加0.5%伤害
+    // 每点功勋增加0.2%伤害
     if LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) > 0 then
-        set coeff = coeff + LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) * 0.005
+        set coeff = coeff + LoadInteger(CONT_HT, GetHandleId(u), CONT_KEY) * 0.002
     endif
 
     // 北冥神功 伤害增加40%
