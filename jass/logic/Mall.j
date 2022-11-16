@@ -37,7 +37,7 @@ function checkPurchase takes nothing returns nothing
             set europe_flag[i] = 1
         endif
         // 收藏游戏
-        if DzAPI_Map_Returns(Player(i - 1), 2) or udg_isTest[i] then
+        if DzAPI_Map_Returns(Player(i - 1), 16) or udg_isTest[i] then
             call SetPlayerTechResearched(Player(i - 1), 'R006', 1)
         endif
         set i = i + 1

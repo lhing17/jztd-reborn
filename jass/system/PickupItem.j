@@ -166,7 +166,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
         endif
     endif
     if item_id == 'I01Z' then
-        if DzAPI_Map_Returns(p, 2) or udg_isTest[player_i] then
+        if DzAPI_Map_Returns(p, 16) or udg_isTest[player_i] then
             if save_present[player_i] != 1 then
                 set save_present[player_i] = 1
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了小型资源包")
