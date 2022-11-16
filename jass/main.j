@@ -293,25 +293,25 @@ endfunction
 function CreateBuildingsForPlayer0 takes nothing returns nothing
     local player p = Player(0)
     local unit u
-    set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
+    // set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
 endfunction
 
 function CreateBuildingsForPlayer1 takes nothing returns nothing
     local player p = Player(1)
     local unit u
-    set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
+    // set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
 endfunction
 
 function CreateBuildingsForPlayer2 takes nothing returns nothing
     local player p = Player(2)
     local unit u
-    set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
+    // set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
 endfunction
 
 function CreateBuildingsForPlayer3 takes nothing returns nothing
     local player p = Player(3)
     local unit u
-    set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
+    // set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
 endfunction
 
 function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing

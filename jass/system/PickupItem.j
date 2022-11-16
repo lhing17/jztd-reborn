@@ -473,29 +473,30 @@ function PickupItem_Conditions takes nothing returns boolean
         call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933" + GetPlayerName(Player(i - 1)) + "在断指轩辕处抽取武魂石，获得了" + GetObjectName(award))
     endif
 
+    // 普通武器
     if GetItemTypeId(it) == 'I062' then
         set award = normal_drops[GetRandomInt(1, MAX_NORMAL_DROP)]
-        call UnitAddItemById(u, award)
+        call UnitAddItemById(builder[i], award)
     endif
     if GetItemTypeId(it) == 'I063' then
         set award = rare_drops[GetRandomInt(1, MAX_RARE_DROP)]
-        call UnitAddItemById(u, award)
+        call UnitAddItemById(builder[i], award)
     endif
     if GetItemTypeId(it) == 'I064' then
         set award = valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)]
-        call UnitAddItemById(u, award)
+        call UnitAddItemById(builder[i], award)
     endif
     if GetItemTypeId(it) == 'I066' then
         set award = ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)]
-        set it2 = CreateItem( award, GetUnitX(u), GetUnitY(u) )
+        set it2 = CreateItem( award, GetUnitX(builder[i]), GetUnitY(builder[i]) )
         call generateRandomAttr(it2)
-        call tryUnitAddItem(u, it2)
+        call tryUnitAddItem(builder[i], it2)
     endif
     if GetItemTypeId(it) == 'I065' then
         set award = epic_drops[GetRandomInt(1, MAX_EPIC_DROP)]
-        set it2 = CreateItem(award, GetUnitX(u), GetUnitY(u))
+        set it2 = CreateItem(award, GetUnitX(builder[i]), GetUnitY(builder[i]))
         call generateRandomAttr(it2)
-        call tryUnitAddItem(u, it2)
+        call tryUnitAddItem(builder[i], it2)
     endif
 
     call addExtraAttr(u, it)
