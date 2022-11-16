@@ -462,6 +462,8 @@ function UseAbility_Conditions takes nothing returns boolean
         call DestroyEffect(bj_lastCreatedEffect)
     endif
     if id == 'A03M' then
+
+        // 相同武器二合一
         call SynItem(u, 'I00E', 'I00B')
         call SynItem(u, 'I00B', 'I00A')
         call SynItem(u, 'I00A', 'I009')
@@ -482,6 +484,9 @@ function UseAbility_Conditions takes nothing returns boolean
         call SynItem(u, 'I00Y', 'I00Z')
         call SynItem(u, 'I00Z', 'I010')
         call SynItem(u, 'I010', 'I011')
+
+        // 相同级别不同武器三合一
+        call synItemThree(u)
     endif
 
     // 开启智慧球智能模式

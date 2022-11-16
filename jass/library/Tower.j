@@ -25,6 +25,13 @@ library TowerLibrary
                 call PauseUnit(u, true)
                 call PauseUnit(u, false)
             endif
+            if LoadInteger(YDHT, GetHandleId(u) * 2, i) == 'A00R' then
+                call UnitRemoveAbility(u, 'A00Q')
+                call UnitAddAbility(u, 'A00Q')
+                call SetPlayerAbilityAvailableBJ(false, 'A00Q', GetOwningPlayer(u))
+                call SetUnitAbilityLevel(u, 'A00O', LoadInteger(YDHT, GetHandleId(u) * 3, i))
+                call SetUnitAbilityLevel(u, 'A00P', LoadInteger(YDHT, GetHandleId(u) * 3, i))
+            endif
         endmethod
         method ResetCD takes integer i returns nothing
             call UnitRemoveAbility(u, LoadInteger(YDHT, GetHandleId(u) * 2, i))
@@ -163,8 +170,8 @@ library TowerLibrary
         call SaveTowerAbility_1('n01O', 'A00W', 3)
         call SaveTowerAbility_1('n01O', 'A010', 1)
         call SaveTowerAbility_1('H004', 'A00R', 3)
-        call SaveTowerAbility_1('H004', 'A00L', 3)
-        call SaveTowerAbility_1('H004', 'A00I', 2)
+        call SaveTowerAbility_1('H004', 'A00N', 3)
+        call SaveTowerAbility_1('H004', 'A00I', 3)
         call SaveTowerAbility_1('e000', 'A01Q', 1)
         call SaveTowerAbility_1('e000', 'A01R', 1)
         call SaveTowerAbility_1('e00A', 'A01Q', 2)

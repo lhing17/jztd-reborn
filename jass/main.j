@@ -253,6 +253,7 @@ globals
     constant integer EQUIP_ABILITY_KEY = 1001  // 装备技能描述
 
     constant integer EQUIP_PICKUP_KEY = 1002 // 装备是否被拾取过
+    constant integer EQUIP_INT_LEVEL_KEY = 1003 // 装备级别
     
     // 判断是否处于失败状态
     boolean isFailing = false
@@ -589,7 +590,7 @@ function Trig_SystemWindowActions takes nothing returns nothing
     call CreateMultiboardBJ(1, 1, "圈内单位")
     set udg_multi = GetLastCreatedMultiboard()
     call MultiboardDisplayBJ(true, GetLastCreatedMultiboard())
-    call YDWEMultiboardSetItemWidthBJNull(GetLastCreatedMultiboard(), 1, 1, 5.)
+    call YDWEMultiboardSetItemWidthBJNull(GetLastCreatedMultiboard(), 1, 1, 10.)
 endfunction
 function InitTrig_SystemWindow takes nothing returns nothing
     set gg_trg_SystemWindow = CreateTrigger()
@@ -708,6 +709,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
         call SetPlayerTechResearchedSwap('R000', 1, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF00CC00初入江湖(N1)")
     endif
     if GetClickedButtonBJ() == udg_diff[2] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试(N2)")
@@ -717,6 +719,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFCC00662|r")
         set udg_difficulty = 2
         call SetPlayerTechResearchedSwap('R000', 3, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFFCC0066牛刀小试(N2)")
     endif
     if GetClickedButtonBJ() == udg_diff[3] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600初出茅庐(N3)")
@@ -726,6 +729,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF66003|r")
         set udg_difficulty = 3
         call SetPlayerTechResearchedSwap('R000', 5, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFFFF6600初出茅庐(N3)")
     endif
     if GetClickedButtonBJ() == udg_diff[4] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF初窥门径(N4)")
@@ -735,6 +739,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF0041FF4|r")
         set udg_difficulty = 4
         call SetPlayerTechResearchedSwap('R000', 7, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF0041FF初窥门径(N4)")
     endif
     if GetClickedButtonBJ() == udg_diff[5] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00略有小成(N5)")
@@ -744,6 +749,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF1FBF005|r")
         set udg_difficulty = 5
         call SetPlayerTechResearchedSwap('R000', 9, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF1FBF00略有小成(N5)")
     endif
     if GetClickedButtonBJ() == udg_diff[6] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000已有小成(N6)")
@@ -753,6 +759,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF6|r")
         set udg_difficulty = 6
         call SetPlayerTechResearchedSwap('R000', 11, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFFFF0000已有小成(N6)")
     endif
     if GetClickedButtonBJ() == udg_diff[7] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00FFFF渐入佳境(N7)")
@@ -762,6 +769,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF7|r")
         set udg_difficulty = 7
         call SetPlayerTechResearchedSwap('R000', 13, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF00FFFF渐入佳境(N7)")
     endif
     if GetClickedButtonBJ() == udg_diff[8] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCCCC00驾轻就熟(N8)")
@@ -771,6 +779,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF8|r")
         set udg_difficulty = 8
         call SetPlayerTechResearchedSwap('R000', 15, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFFCCCC00驾轻就熟(N8)")
     endif
     if GetClickedButtonBJ() == udg_diff[9] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0099CC略有大成(N9)")
@@ -780,6 +789,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF9|r")
         set udg_difficulty = 9
         call SetPlayerTechResearchedSwap('R000', 17, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF0099CC略有大成(N9)")
     endif
     if GetClickedButtonBJ() == udg_diff[10] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF66CC99已有大成(N10)")
@@ -789,6 +799,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF10|r")
         set udg_difficulty = 10
         call SetPlayerTechResearchedSwap('R000', 19, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF66CC99已有大成(N10)")
     endif
     loop
         exitwhen i > 4
@@ -873,7 +884,7 @@ function InitTrig____________________001 takes nothing returns nothing
 endfunction
 function Trig_JiFenPaiUpdateActions takes nothing returns nothing
     local integer count = CountUnitsInGroup(attackerGroup)
-    call MultiboardSetItemValue(MultiboardGetItem(udg_multi, 0, 0), I2S(count) + " / " + I2S(udg_ShengYuGuaiShu))
+    call MultiboardSetItemValue(MultiboardGetItem(udg_multi, 0, 0), "圈内单位：" + I2S(count) + " / " + I2S(udg_ShengYuGuaiShu))
     call LeaderboardSetPlayerItemValueBJ(Player(4), udg_jifenpai, udg_ShengYuGuaiShu)
 
     if count >= udg_ShengYuGuaiShu then
@@ -1031,6 +1042,7 @@ function MapInit takes nothing returns nothing
     loop
         exitwhen j > MAX_NORMAL_DROP
         call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
+        call SaveInteger(YDHT, normal_drops[j], EQUIP_INT_LEVEL_KEY, 1)
         set j = j + 1
     endloop
 
@@ -1038,6 +1050,7 @@ function MapInit takes nothing returns nothing
     loop
         exitwhen j > MAX_RARE_DROP
         call SaveStr(YDHT, rare_drops[j], EQUIP_LEVEL_KEY, "|cff3366ff稀有|r")
+        call SaveInteger(YDHT, rare_drops[j], EQUIP_INT_LEVEL_KEY, 2)
         set j = j + 1
     endloop
 
@@ -1045,6 +1058,7 @@ function MapInit takes nothing returns nothing
     loop
         exitwhen j > MAX_VALUABLE_DROP
         call SaveStr(YDHT, valuable_drops[j], EQUIP_LEVEL_KEY, "|cffff9900珍稀|r")
+        call SaveInteger(YDHT, valuable_drops[j], EQUIP_INT_LEVEL_KEY, 3)
         set j = j + 1
     endloop
 
@@ -1054,6 +1068,7 @@ function MapInit takes nothing returns nothing
         // 远古装备有一项随机属性
         call SaveInteger(YDHT, ancient_drops[j], EQUIP_ATTR_COUNT_KEY, 1)
         call SaveStr(YDHT, ancient_drops[j], EQUIP_LEVEL_KEY, "|cffff0000远古|r")
+        call SaveInteger(YDHT, ancient_drops[j], EQUIP_INT_LEVEL_KEY, 4)
         set j = j + 1
     endloop
 
@@ -1063,6 +1078,7 @@ function MapInit takes nothing returns nothing
         // 史诗装备有两项随机属性
         call SaveInteger(YDHT, epic_drops[j], EQUIP_ATTR_COUNT_KEY, 2)
         call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|cffff00ff史诗|r")
+        call SaveInteger(YDHT, epic_drops[j], EQUIP_INT_LEVEL_KEY, 5)
         set j = j + 1
     endloop
 
@@ -1072,6 +1088,7 @@ function MapInit takes nothing returns nothing
         // 神器有三项随机属性
         call SaveInteger(YDHT, shenqi[j], EQUIP_ATTR_COUNT_KEY, 3)
         call SaveStr(YDHT, shenqi[j], EQUIP_LEVEL_KEY, "|cff800080传说|r")
+        call SaveInteger(YDHT, shenqi[j], EQUIP_INT_LEVEL_KEY, 6)
         set j = j + 1
     endloop
 

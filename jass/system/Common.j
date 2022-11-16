@@ -572,6 +572,95 @@ function SynItem takes unit u, integer itemid_before, integer itemid_after retur
     set it2 = null
 endfunction
 
+// 获取单位身上指定级别的物品
+function fetchUnitItemOfLevel takes unit u, integer level returns item
+    local item it = null
+    local integer i = 0
+    loop
+        exitwhen i == 6
+        set it = UnitItemInSlot(u, i)
+        if it != null then
+            if LoadInteger(YDHT, GetItemTypeId(it), EQUIP_INT_LEVEL_KEY) == level then
+                exitwhen true
+            endif
+        endif
+        set i = i + 1
+    endloop
+    return it
+endfunction
+
+// 三个物品合成一个
+function synItemThree takes unit u returns nothing
+    local integer j = 1
+    local item it = null
+    local item it2 = null
+    local integer normalCount = 0
+    local integer rareCount = 0
+    local integer valuableCount = 0
+    local integer ancientCount = 0
+    local integer id = 0
+    loop
+        exitwhen j > 6
+        set it = UnitItemInSlotBJ(u, j)
+        set id = GetItemTypeId(it)
+        if LoadInteger(YDHT, id, EQUIP_INT_LEVEL_KEY) == 1 then
+            set normalCount = normalCount + 1
+        elseif LoadInteger(YDHT, id, EQUIP_INT_LEVEL_KEY) == 2 then
+            set rareCount = rareCount + 1
+        elseif LoadInteger(YDHT, id, EQUIP_INT_LEVEL_KEY) == 3 then
+            set valuableCount = valuableCount + 1
+        elseif LoadInteger(YDHT, id, EQUIP_INT_LEVEL_KEY) == 4 then
+            set ancientCount = ancientCount + 1
+        endif
+        set j = j + 1
+    endloop
+    if normalCount >= 3 then
+        // 三个普通物品合成一个稀有物品
+        call RemoveItem(fetchUnitItemOfLevel(u, 1))
+        call RemoveItem(fetchUnitItemOfLevel(u, 1))
+        call RemoveItem(fetchUnitItemOfLevel(u, 1))
+        set it2 = UnitAddItemById(u, rare_drops[GetRandomInt(1, MAX_RARE_DROP)])
+        // call generateRandomAttr(it2)
+        // call addExtraAttr(u, it2)
+        set rareCount = rareCount + 1
+    endif
+
+    if rareCount >= 3 then
+        // 三个稀有物品合成一个珍稀物品
+        call RemoveItem(fetchUnitItemOfLevel(u, 2))
+        call RemoveItem(fetchUnitItemOfLevel(u, 2))
+        call RemoveItem(fetchUnitItemOfLevel(u, 2))
+        set it2 = UnitAddItemById(u, valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)])
+        // call generateRandomAttr(it2)
+        // call addExtraAttr(u, it2)
+        set valuableCount = valuableCount + 1
+    endif
+
+    if valuableCount >= 3 then
+        // 三个珍稀物品合成一个远古物品
+        call RemoveItem(fetchUnitItemOfLevel(u, 3))
+        call RemoveItem(fetchUnitItemOfLevel(u, 3))
+        call RemoveItem(fetchUnitItemOfLevel(u, 3))
+        set it2 = UnitAddItemById(u, ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)])
+        call generateRandomAttr(it2)
+        call addExtraAttr(u, it2)
+        set ancientCount = ancientCount + 1
+    endif
+
+    if ancientCount >= 3 then
+        // 三个远古物品合成一个史诗物品
+        call RemoveItem(fetchUnitItemOfLevel(u, 4))
+        call RemoveItem(fetchUnitItemOfLevel(u, 4))
+        call RemoveItem(fetchUnitItemOfLevel(u, 4))
+        set it2 = UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
+        call generateRandomAttr(it2)
+        call addExtraAttr(u, it2)
+    endif
+    
+    set it = null
+    set it2 = null
+endfunction
+
 // 获取随机品质的武魂石，概率和波数以及人品有关
 function getRandomSoulStone takes integer i returns integer
     local integer id = 0
