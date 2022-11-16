@@ -53,6 +53,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     local timer t = null
     local integer j = 1
     local item it = null
+    local integer gold = 0
 
     // 击杀单位时，如果凶手有对应的装备，触发对应的效果
     loop
@@ -74,7 +75,12 @@ function UnitDeath_Conditions takes nothing returns boolean
 
     // 击杀小怪获得金钱
     if GetOwningPlayer(ut) == Player(5) then
-        call AdjustPlayerStateBJ(R2I(GetRandomReal(wave * 3, wave * 5)), p, PLAYER_STATE_RESOURCE_GOLD)
+        if wave <= 20 then
+            set gold = R2I(GetRandomReal(wave * 3, wave * 5))
+        else
+            set gold = GetRandomInt(60, 80)
+        endif
+        call AdjustPlayerStateBJ(gold, p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif
 
