@@ -139,7 +139,7 @@ globals
     integer array jianghu_item_id
     integer array challenge_id
     integer array challenge_item_id
-    integer array remake_present
+    integer array save_present
     integer array point2gold
     integer array point2lumber
     integer array middle_gold
@@ -359,7 +359,7 @@ function CreateAllUnits_1 takes nothing returns nothing
     call CreateBuildingsForPlayer2()
     call CreateBuildingsForPlayer3()
 endfunction
-function CreateRegions takes nothing returns nothing
+function CreateRegions0 takes nothing returns nothing
     local weathereffect we
     set gg_rct_circle = Rect(- 4512., - 4384., 4448., 4192.)
     set we = AddWeatherEffect(gg_rct_circle, 'RAlr')
@@ -1106,7 +1106,9 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower_num = tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
             call UnitAddItemById(u, 'I02L')
-            if DzAPI_Map_Returns(p, 2) then
+
+            // 购买重制版出门多一个欧皇大礼包
+            if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) then
                 call UnitAddItemById(u, 'I061')
             endif
 
@@ -1150,7 +1152,7 @@ endfunction
 function InitAllSystems takes nothing returns nothing
     call ConditionalTriggerExecute(gg_trg_MapInit)
     call CreateAllUnits_1()
-    call CreateRegions()
+    call CreateRegions0()
     call MyInitGlobals()
     call InitCustomTriggers0()
     

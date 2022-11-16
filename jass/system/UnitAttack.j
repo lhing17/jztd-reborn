@@ -107,7 +107,7 @@ function UnitAttack_Conditions takes nothing returns boolean
             call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
         endif
     endif
-    call PassiveRangeDamage(u, ut, 'A001', 500, 50, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
+    call PassiveRangeDamage(u, ut, 'A001', 500, 100, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
     call PassiveRangeDamage(u, ut, 'A045', 800, 100, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)
     call PassiveRangeDamage(u, ut, 'A048', 700, 10, "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl", 18, GetRandomInt(10, 100))
     call PassiveRangeDamage(u, ut, 'A047', 1000, 25000, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 28, 30)

@@ -26,7 +26,7 @@ function SaveMaxLevel takes nothing returns nothing
     call SaveInteger(YDHT, 'A02Y' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00B' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00A' * 3, 0, 3)
-    call SaveInteger(YDHT, 'A001' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A001' * 3, 0, 8)
     call SaveInteger(YDHT, 'A037' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00T' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00J' * 3, 0, 3)
@@ -101,6 +101,13 @@ function Challenge takes integer player_i, integer challenge_num, integer item_i
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[player_i - 1])
             call RemoveLocation(target[player_i - 1])
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933挑战开始|r")
+            // 记录是谁刷的怪
+            call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), player_i)
+              // 难六以上，有概率出现变异怪
+             if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                 call mutatedAttacker(bj_lastCreatedUnit)
+             endif
+
         elseif challenge_num == 5 then
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933该挑战尚未开放|r")
             call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -159,18 +166,18 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
         endif
     endif
     if item_id == 'I01Z' then
-        if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) or udg_isTest[player_i] then
-            if remake_present[player_i] != 1 then
-                set remake_present[player_i] = 1
+        if DzAPI_Map_Returns(p, 2) or udg_isTest[player_i] then
+            if save_present[player_i] != 1 then
+                set save_present[player_i] = 1
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了小型资源包")
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 3000)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 2)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
             endif
         else
-            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未购买重制版WAR3|r")
+            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未收藏游戏|r")
         endif
     endif
     if item_id == 'I020' then

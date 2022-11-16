@@ -294,26 +294,35 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
     local real dmg = damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     local real coeff = 1
     if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+        
+        // 韦陀棍法
         if spell_id == 'A001' then
-            if GetUnitAbilityLevel(attacker, spell_id) == 5 then
+            if GetUnitAbilityLevel(attacker, spell_id) >= 5 then
                 set coeff = coeff + 1
             endif
             if GetUnitAbilityLevel(attacker, 'A03N') >= 1 then
-                set coeff = coeff + 1
+                set coeff = coeff * 3
             endif
             if udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
                 set dmg = dmg * 8
             endif
+            // call BJDebugMsg("伤害：" + R2S(coeff * dmg))
         endif
+
+        // 虾米神拳
         if spell_id == 'A045' then
             set dmg = dmg * GetUnitAbilityLevel(attacker, 'A045')
             if GetRandomInt(0, 100) <= 50 then
                 call WanBuff(attacker, attackee, 16)
             endif
         endif
+
+        // 五雷咒
         if spell_id == 'A048' then
             set dmg = dmg * mana_cost * mana_cost
         endif
+
+        // 乾坤一掷
         if spell_id == 'A047' then
             if GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) >= 50 then
                 call SetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) - 50)
@@ -328,6 +337,7 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
                 return
             endif
         endif
+        // 武当剑法
         if spell_id == 'A00K' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
             set range = range + 450
         endif

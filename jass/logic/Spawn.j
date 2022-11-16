@@ -183,6 +183,23 @@ function recoverManaAndEquipEffect takes nothing returns nothing
     set u = null
 endfunction
 
+function mutatedAttacker takes unit u returns nothing
+	local integer i = GetRandomInt(1, 100)
+	if udg_difficulty >= 6 then
+		if i <= 33 then
+			call SetUnitVertexColor(u, 225, 0, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 1)
+		elseif i <= 66 then
+			call SetUnitVertexColor(u, 0, 225, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 2)
+		else
+			call SetUnitVertexColor(u, 0, 0, 225, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 3)
+		endif
+        call SetUnitScale(u, 1.5, 1.5, 1.5)
+	endif
+endfunction
+
 function spawn takes nothing returns nothing
     local integer i = 0
     local integer j = 0
@@ -249,6 +266,15 @@ function spawn takes nothing returns nothing
                     call h__SetUnitMoveSpeed(bj_lastCreatedUnit, RMinBJ(300 + 5 * wave, 522))
                     call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit, 2, 2, 10 + wave)
                 endif
+
+                // 记录是谁刷的怪
+                call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), i + 1)
+                 // 难六以上，有概率出现变异怪
+                if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                    call mutatedAttacker(bj_lastCreatedUnit)
+                endif
+
+
                 call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
                 call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[i])
                 call RemoveLocation(target[i])
@@ -267,8 +293,12 @@ function spawn takes nothing returns nothing
                         set lumberHit[i + 1] = 0
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
-                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
-                    call AdjustPlayerStateBJ((2 * j - 1) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                    if j == 6 then
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，击败教主并清理掉循环圈内的怪物即可获得胜利！")
+                    else
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
+                        call AdjustPlayerStateBJ((2 * j - 1) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                    endif
                 endif
                 set target[i] = null
                 set loc[i] = null
@@ -287,22 +317,7 @@ function spawn takes nothing returns nothing
     set g = null
 endfunction
 
-function mutatedAttacker takes unit u returns nothing
-	local integer i = GetRandomInt(1, 100)
-	if udg_nandu >= 6 then
-		if i <= 33 then
-			call SetUnitVertexColor(u, 225, 0, 0, 255)
-			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 1)
-		elseif i <= 66 then
-			call SetUnitVertexColor(u, 0, 225, 0, 255)
-			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 2)
-		else
-			call SetUnitVertexColor(u, 0, 0, 225, 255)
-			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 3)
-		endif
-        call SetUnitScale(u, 1.5, 1.5, 1.5)
-	endif
-endfunction
+
 
 function doSpawn takes nothing returns nothing
     local location array loc
@@ -330,6 +345,9 @@ function doSpawn takes nothing returns nothing
                 call h__SetUnitMoveSpeed(bj_lastCreatedUnit, RMinBJ(300 + 5 * wave, 522))
                 call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit, 2, 2, 10 + wave)
             endif
+
+            // 记录是谁刷的怪
+            call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), i + 1)
 
             // 难六以上，有概率出现变异怪
             if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then

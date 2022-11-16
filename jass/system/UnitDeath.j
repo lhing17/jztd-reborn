@@ -81,7 +81,11 @@ function UnitDeath_Conditions takes nothing returns boolean
     // 击杀小怪随机掉落物品
     if GetOwningPlayer(ut) == Player(5) then
         if GetRandomInt(1, 5000) <= luck[i] then
-            set loc = GetUnitLoc(ut)
+            if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+                set loc = GetRandomLocInRect(udg_drop_rect[i])
+            else
+                set loc = GetUnitLoc(ut)
+            endif
             set luck[i] = luck[i] - 1
             set it = CreateItemLoc(getRandomDrop(), loc)
             call generateRandomAttr(it)
@@ -121,23 +125,38 @@ function UnitDeath_Conditions takes nothing returns boolean
 
     // 击杀冯默风获得随机神器图谱
     if GetUnitTypeId(ut) == 'H00I' then
-        set loc = GetUnitLoc(ut)
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc = GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc = GetUnitLoc(ut)
+        endif
         call CreateItemLoc(GetTuPu(random_shenqi[GetRandomInt(1, open_shenqi)]), loc)
         call RemoveLocation(loc)
     endif
 
     // 击杀黄裳获取随机绝内
     if GetUnitTypeId(ut) == 'U00U' then
-        call CreateItem(juenei[GetRandomInt(1, 4)], GetUnitX(ut), GetUnitY(ut))
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc = GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc = GetUnitLoc(ut)
+        endif
+        call CreateItemLoc(juenei[GetRandomInt(1, 4)], loc)
+        call RemoveLocation(loc)
     endif
 
     // 击杀朱聪获得妙手空空手套
     if GetUnitTypeId(ut) == 'H00J' then
-        set loc = GetUnitLoc(ut)
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc = GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc = GetUnitLoc(ut)
+        endif
         call CreateItemLoc('I01J', loc)
         call DisplayTextToPlayer(p, 0, 0, "恭喜击杀朱聪，获得|cFF00FF00妙手空空手套|r")
         call RemoveLocation(loc)
     endif
+    
     if GetUnitTypeId(ut) == 'U00Q' or GetUnitTypeId(ut) == 'U00R' or GetUnitTypeId(ut) == 'U00S' or GetUnitTypeId(ut) == 'U00T' then
         set t = CreateTimer()
         call SaveReal(YDHT, GetHandleId(t), 0, GetUnitX(ut))

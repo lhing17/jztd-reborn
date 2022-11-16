@@ -3,6 +3,22 @@
         常量: 0.01
 条件
 动作
+    SetVariable
+        数组: drop_rect
+            常量: 1
+        变量: gg_rct_drop1
+    SetVariable
+        数组: drop_rect
+            常量: 2
+        变量: gg_rct_drop2
+    SetVariable
+        数组: drop_rect
+            常量: 3
+        变量: gg_rct_drop3
+    SetVariable
+        数组: drop_rect
+            常量: 4
+        变量: gg_rct_drop4
     FogEnableOff
     FogMaskEnableOff
     CustomScriptCode

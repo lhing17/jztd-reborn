@@ -6,6 +6,9 @@ globals
 	// 显示塔的属性
 	Frame array towerTooltipWidget
 
+	// 显示波数
+	Frame array waveWidget
+
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 	constant integer TOPLEFT = 0
 	constant integer TOP = 1
@@ -422,6 +425,15 @@ function drawUI_Conditions takes nothing returns boolean
 
 	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_ENTER, function showTowerTooltip, false)
 	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_LEAVE, function hideTowerTooltip, false)
+
+	// 显示波数
+	// set waveWidget[1] = Frame.newImage1(GUI, "war3mapImported\\0.blp", 0.01, 0.03)
+	// set waveWidget[2] = Frame.newImage1(GUI, "war3mapImported\\1.blp", 0.01, 0.03)
+	// set waveWidget[3] = Frame.newImage1(GUI, "war3mapImported\\wave.blp", 0.03, 0.04)
+
+	// call waveWidget[2].setPoint(TOP, GUI, TOP, -0.015, - 0.01)
+	// call waveWidget[1].setPoint(RIGHT, waveWidget[2], LEFT, -0.005, 0)
+	// call waveWidget[3].setPoint(LEFT, waveWidget[2], RIGHT, 0.005, 0)
 
 
 	

@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed__USE_TABLE= true
-constant boolean MaxSpeed__NEW_TABLE= true
+constant boolean MaxSpeed___USE_TABLE= true
+constant boolean MaxSpeed___NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed__TEST_MODE= false
-constant real MaxSpeed__PERIOD= 0.03125
+constant boolean MaxSpeed___TEST_MODE= false
+constant real MaxSpeed___PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed__MAX_SPEED= 1400.0
+constant real MaxSpeed___MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed__MIN_SPEED= 500.0
+constant real MaxSpeed___MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -121,6 +121,8 @@ timer YDWETimerSystem__Timer
 integer YDWETimerSystem__TimerHandle
 integer YDWETimerSystem__TimerSystem_RunIndex= 0
 //endglobals from YDWETimerSystem
+    // User-defined
+rect array udg_drop_rect
     // Generated
 trigger gg_trg_EventFirstOccur= null
 trigger gg_trg_MapFirstOccur= null
@@ -146,6 +148,10 @@ unit gg_unit_e00H_0026= null
 unit gg_unit_e00H_0024= null
 unit gg_unit_e00H_0025= null
 unit gg_unit_e00H_0023= null
+rect gg_rct_drop1= null
+rect gg_rct_drop2= null
+rect gg_rct_drop3= null
+rect gg_rct_drop4= null
 constant integer FRAME_ID= - 29734415
 integer GUI
 integer array attackSpeedAbility
@@ -173,6 +179,8 @@ integer array tooltipWidget
 integer array itemTooltipWidget
 	// 显示塔的属性
 integer array towerTooltipWidget
+	// 显示波数
+integer array waveWidget
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 constant integer TOPLEFT= 0
 constant integer TOP= 1
@@ -306,7 +314,7 @@ integer array udg_huagong
 integer array jianghu_item_id
 integer array challenge_id
 integer array challenge_item_id
-integer array remake_present
+integer array save_present
 integer array point2gold
 integer array point2lumber
 integer array middle_gold
@@ -1347,7 +1355,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary__init takes nothing returns nothing
+    function FrameLibrary___init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1416,8 +1424,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1503,7 +1511,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1523,7 +1531,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -3035,7 +3043,7 @@ endfunction
 //library YDWETriggerEvent:
 	
 //===========================================================================  
-//���ⵥλ�˺��¼� 
+//���ⵥλ�˺��¼� 
 //===========================================================================
 function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -3082,7 +3090,7 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
     set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
 endfunction
 //===========================================================================  
-//�ƶ���Ʒ�¼� 
+//�ƶ���Ʒ�¼� 
 //===========================================================================  
 function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     local integer i= 0
@@ -3148,7 +3156,7 @@ function GetLastCombinedItem takes nothing returns item
     return bj_lastCombinedItem
 endfunction
 //===========================================================================
-//��Ʒ�ϳ�
+//��Ʒ�ϳ�
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
@@ -3161,7 +3169,7 @@ function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
 endfunction
 //GetLastMovedItemInItemSlot 
 //===========================================================================  
-//��Ʒ�ϳ��¼� 
+//��Ʒ�ϳ��¼� 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
 	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
@@ -3292,7 +3300,7 @@ endfunction
             set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
             set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
 set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
             set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
@@ -3652,7 +3660,7 @@ function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
 	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
 	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
-//�ú������д���
+//�ú������д���
 function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
  local integer index= YDWETimerSystem__NewTaskIndex()
  local integer h= YDWETimerSystem__TaskListHead
@@ -3678,7 +3686,7 @@ endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
 	return YDWETimerSystem__CurrentIndex
 endfunction
-//ɾ����λ
+//ɾ����λ
 function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
     call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3686,7 +3694,7 @@ endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
     call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
-//�ݻټ�ʱ��
+//�ݻټ�ʱ��
 function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
     call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3694,7 +3702,7 @@ endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
     call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
-//ɾ����Ʒ
+//ɾ����Ʒ
 function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
     call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3702,7 +3710,7 @@ endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
     call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
-//ɾ����Ч
+//ɾ����Ч
 function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
     call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3710,7 +3718,7 @@ endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
     call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
-//ɾ��������Ч
+//ɾ��������Ч
 function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
     call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3719,7 +3727,7 @@ function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
  local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
     call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
-//���д�����
+//���д�����
 function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
     call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
     call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
@@ -3727,7 +3735,7 @@ endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
     call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
-//ɾ��Ư������
+//ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     local integer N=0
     local integer i=0
@@ -3738,7 +3746,7 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagLifespan(tt, time)
     call SetTextTagFadepoint(tt, time)
 endfunction
-//���ļ�ʱ��������
+//���ļ�ʱ��������
 function YDWETimerSystem__Main takes nothing returns nothing
  local integer h= YDWETimerSystem__TaskListHead
  local integer p
@@ -3752,7 +3760,7 @@ function YDWETimerSystem__Main takes nothing returns nothing
 	endloop
 	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
-//��ʼ������
+//��ʼ������
 function YDWETimerSystem__Init takes nothing returns nothing
     set YDWETimerSystem__Timer=CreateTimer()
 	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
@@ -3778,7 +3786,7 @@ function YDWETimerSystem__Init takes nothing returns nothing
 	
     call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
-//ѭ�������ö�����ʱ��
+//ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
     return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
@@ -3858,7 +3866,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Tue Nov 15 15:43:01 2022
+//   Date: Wed Nov 16 13:07:49 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -3868,6 +3876,13 @@ endfunction
 //*
 //***************************************************************************
 function InitGlobals takes nothing returns nothing
+    local integer i= 0
+    set i=0
+    loop
+        exitwhen ( i > 4 )
+        set udg_drop_rect[i]=null
+        set i=i + 1
+    endloop
 endfunction
 //***************************************************************************
 //*
@@ -3950,6 +3965,18 @@ function CreateAllUnits takes nothing returns nothing
     call CreateNeutralPassiveBuildings()
     call CreatePlayerBuildings()
     call CreatePlayerUnits()
+endfunction
+//***************************************************************************
+//*
+//*  Regions
+//*
+//***************************************************************************
+function CreateRegions takes nothing returns nothing
+    local weathereffect we
+    set gg_rct_drop1=Rect(- 1056.0, 1536.0, - 320.0, 2272.0)
+    set gg_rct_drop2=Rect(1504.0, 512.0, 2304.0, 1344.0)
+    set gg_rct_drop3=Rect(672.0, - 2080.0, 1344.0, - 1408.0)
+    set gg_rct_drop4=Rect(- 2080.0, - 1280.0, - 1408.0, - 672.0)
 endfunction
 //***************************************************************************
 //*
@@ -4864,6 +4891,10 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     if IsUnitType(ut, UNIT_TYPE_HERO) then
         set enemyDodge=enemyDodge + 100
     endif
+    // 蓝怪闪避+500
+	if LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 3 then
+		set enemyDodge=enemyDodge + 500
+	endif
     // R00A科技等级，每级命中+100
     if GetPlayerTechCountSimple('R00A', GetOwningPlayer(u)) > 0 then
         set myHit=myHit + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(u))
@@ -4903,13 +4934,19 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     if UnitHasBuffBJ(ut, 'B005') then
         set damage=damage * 2
     endif
+    // 伤害减免 红怪减免80%伤害，绿怪减免50%伤害且不吃暴击
+    if LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 1 then
+        set damage=damage * 0.2
+    elseif LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) == 2 then
+        set damage=damage * 0.5
+    endif
     // 圆桌理论 闪避+暴击+普通 = 100
     if rand <= 100 - hitRate then
         // 闪避
         call CreateTextTagUnitBJ("MISS", ut, 0., 11., 255., 0., 0., 30.)
-    elseif rand <= 100 - hitRate + criticalRate then
-        // 暴击
-        set damage=damage * 3
+    elseif rand <= 100 - hitRate + criticalRate and LoadInteger(YDHT, GetHandleId(ut), StringHash("color")) != 2 then
+        // 暴击 绿怪不吃暴击
+        set damage=damage * criticalTimes
         call UnitDamageTarget(u, ut, damage, true, false, ATTACK_TYPE_MAGIC, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
         call CreateTextTagUnitBJ(I2S(R2I(damage)), ut, 0., 14., 100., 100., 0., 30.)
     else
@@ -4986,26 +5023,32 @@ function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,r
     local real dmg= damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     local real coeff= 1
     if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
+        
+        // 韦陀棍法
         if spell_id == 'A001' then
-            if GetUnitAbilityLevel(attacker, spell_id) == 5 then
+            if GetUnitAbilityLevel(attacker, spell_id) >= 5 then
                 set coeff=coeff + 1
             endif
             if GetUnitAbilityLevel(attacker, 'A03N') >= 1 then
-                set coeff=coeff + 1
+                set coeff=coeff * 3
             endif
             if udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
                 set dmg=dmg * 8
             endif
+            // call BJDebugMsg("伤害：" + R2S(coeff * dmg))
         endif
+        // 虾米神拳
         if spell_id == 'A045' then
             set dmg=dmg * GetUnitAbilityLevel(attacker, 'A045')
             if GetRandomInt(0, 100) <= 50 then
                 call WanBuff(attacker , attackee , 16)
             endif
         endif
+        // 五雷咒
         if spell_id == 'A048' then
             set dmg=dmg * mana_cost * mana_cost
         endif
+        // 乾坤一掷
         if spell_id == 'A047' then
             if GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) >= 50 then
                 call SetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(GetOwningPlayer(attacker), PLAYER_STATE_RESOURCE_GOLD) - 50)
@@ -5020,6 +5063,7 @@ function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,r
                 return
             endif
         endif
+        // 武当剑法
         if spell_id == 'A00K' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(attacker))] == 1 then
             set range=range + 450
         endif
@@ -5559,7 +5603,8 @@ function checkPurchase takes nothing returns nothing
         if DzAPI_Map_HasMallItem(Player(i - 1), PROPERTY_EUROPE) or udg_isTest[i] then
             set europe_flag[i]=1
         endif
-        if RequestExtraBooleanData(44, Player(i - 1), null, null, false, 0, 0, 0) or udg_isTest[i] then
+        // 收藏游戏
+        if (RequestExtraBooleanData(53, (Player(i - 1) ), null, null, false, ( 2), 0, 0)) or udg_isTest[i] then // INLINED!!
             call SetPlayerTechResearched(Player(i - 1), 'R006', 1)
         endif
         set i=i + 1
@@ -5936,6 +5981,22 @@ function recoverManaAndEquipEffect takes nothing returns nothing
     set it=null
     set u=null
 endfunction
+function mutatedAttacker takes unit u returns nothing
+ local integer i= GetRandomInt(1, 100)
+	if udg_difficulty >= 6 then
+		if i <= 33 then
+			call SetUnitVertexColor(u, 225, 0, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 1)
+		elseif i <= 66 then
+			call SetUnitVertexColor(u, 0, 225, 0, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 2)
+		else
+			call SetUnitVertexColor(u, 0, 0, 225, 255)
+			call SaveInteger(YDHT, GetHandleId(u), StringHash("color"), 3)
+		endif
+        call SetUnitScale(u, 1.5, 1.5, 1.5)
+	endif
+endfunction
 function spawn takes nothing returns nothing
     local integer i= 0
     local integer j= 0
@@ -6000,6 +6061,12 @@ function spawn takes nothing returns nothing
                     call h__SetUnitMoveSpeed(bj_lastCreatedUnit , RMinBJ(300 + 5 * wave, 522))
                     call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit , 2 , 2 , 10 + wave)
                 endif
+                // 记录是谁刷的怪
+                call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), i + 1)
+                 // 难六以上，有概率出现变异怪
+                if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                    call mutatedAttacker(bj_lastCreatedUnit)
+                endif
                 call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
                 call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[i])
                 call RemoveLocation(target[i])
@@ -6018,8 +6085,12 @@ function spawn takes nothing returns nothing
                         set lumberHit[i + 1]=0
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
-                    call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
-                    call AdjustPlayerStateBJ(( 2 * j - 1 ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                    if j == 6 then
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，击败教主并清理掉循环圈内的怪物即可获得胜利！")
+                    else
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
+                        call AdjustPlayerStateBJ(( 2 * j - 1 ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                    endif
                 endif
                 set target[i]=null
                 set loc[i]=null
@@ -6062,6 +6133,12 @@ function doSpawn takes nothing returns nothing
                 call LifeChange(bj_lastCreatedUnit , 2 , life , 'A044')
                 call h__SetUnitMoveSpeed(bj_lastCreatedUnit , RMinBJ(300 + 5 * wave, 522))
                 call YDWEGeneralBounsSystemUnitSetBonus(bj_lastCreatedUnit , 2 , 2 , 10 + wave)
+            endif
+            // 记录是谁刷的怪
+            call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), i + 1)
+            // 难六以上，有概率出现变异怪
+            if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                call mutatedAttacker(bj_lastCreatedUnit)
             endif
             call GroupAddUnit(attackerGroup, bj_lastCreatedUnit)
             call SaveReal(YDHT, GetHandleId(bj_lastCreatedUnit), BORN_LOC_X, GetUnitX(bj_lastCreatedUnit))
@@ -6359,7 +6436,7 @@ function SaveMaxLevel takes nothing returns nothing
     call SaveInteger(YDHT, 'A02Y' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00B' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00A' * 3, 0, 3)
-    call SaveInteger(YDHT, 'A001' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A001' * 3, 0, 8)
     call SaveInteger(YDHT, 'A037' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00T' * 3, 0, 3)
     call SaveInteger(YDHT, 'A00J' * 3, 0, 3)
@@ -6431,6 +6508,12 @@ function Challenge takes integer player_i,integer challenge_num,integer item_id 
             call IssuePointOrderByIdLoc(bj_lastCreatedUnit, 851986, target[player_i - 1])
             call RemoveLocation(target[player_i - 1])
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933挑战开始|r")
+            // 记录是谁刷的怪
+            call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), player_i)
+              // 难六以上，有概率出现变异怪
+             if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                 call mutatedAttacker(bj_lastCreatedUnit)
+             endif
         elseif challenge_num == 5 then
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933该挑战尚未开放|r")
             call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -6488,18 +6571,18 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
         endif
     endif
     if item_id == 'I01Z' then
-        if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) or udg_isTest[player_i] then
-            if remake_present[player_i] != 1 then
-                set remake_present[player_i]=1
+        if (RequestExtraBooleanData(53, (p ), null, null, false, ( 2), 0, 0)) or udg_isTest[player_i] then // INLINED!!
+            if save_present[player_i] != 1 then
+                set save_present[player_i]=1
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了小型资源包")
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 3000)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 2)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
             endif
         else
-            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未购买重制版WAR3|r")
+            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未收藏游戏|r")
         endif
     endif
     if item_id == 'I020' then
@@ -7013,7 +7096,7 @@ function UnitAttack_Conditions takes nothing returns boolean
             call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
         endif
     endif
-    call PassiveRangeDamage(u , ut , 'A001' , 500 , 50 , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
+    call PassiveRangeDamage(u , ut , 'A001' , 500 , 100 , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
     call PassiveRangeDamage(u , ut , 'A045' , 800 , 100 , "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl" , 25 , 25 + GetUnitAbilityLevel(u, 'A045') * 5)
     call PassiveRangeDamage(u , ut , 'A048' , 700 , 10 , "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl" , 18 , GetRandomInt(10, 100))
     call PassiveRangeDamage(u , ut , 'A047' , 1000 , 25000 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 28 , 30)
@@ -7311,7 +7394,7 @@ function UnitDamage_Conditions takes nothing returns boolean
     call dealRealDamage(damage , 1.12 , 'A007' , u , ut , 1000)
     call dealRealDamage(damage , 1.13 , 'A01T' , u , ut , 6000)
     call dealRealDamage(damage , 1.14 , 'A00F' , u , ut , 800)
-    call dealRealDamage(damage , 1.15 , 'A009' , u , ut , 300)
+    call dealRealDamage(damage , 1.15 , 'A009' , u , ut , 1200)
     call dealRealDamage(damage , 1.2 , 'A00L' , u , ut , 100)
     call dealRealDamage(damage , 1.21 , 'A00N' , u , ut , 500)
     call dealRealDamage(damage , 1.22 , 'A00X' , u , ut , 250)
@@ -7443,7 +7526,11 @@ function UnitDeath_Conditions takes nothing returns boolean
     // 击杀小怪随机掉落物品
     if GetOwningPlayer(ut) == Player(5) then
         if GetRandomInt(1, 5000) <= luck[i] then
-            set loc=GetUnitLoc(ut)
+            if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+                set loc=GetRandomLocInRect(udg_drop_rect[i])
+            else
+                set loc=GetUnitLoc(ut)
+            endif
             set luck[i]=luck[i] - 1
             set it=CreateItemLoc(getRandomDrop(), loc)
             call generateRandomAttr(it)
@@ -7481,21 +7568,36 @@ function UnitDeath_Conditions takes nothing returns boolean
     endif
     // 击杀冯默风获得随机神器图谱
     if GetUnitTypeId(ut) == 'H00I' then
-        set loc=GetUnitLoc(ut)
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc=GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc=GetUnitLoc(ut)
+        endif
         call CreateItemLoc(GetTuPu(random_shenqi[GetRandomInt(1, open_shenqi)]), loc)
         call RemoveLocation(loc)
     endif
     // 击杀黄裳获取随机绝内
     if GetUnitTypeId(ut) == 'U00U' then
-        call CreateItem(juenei[GetRandomInt(1, 4)], GetUnitX(ut), GetUnitY(ut))
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc=GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc=GetUnitLoc(ut)
+        endif
+        call CreateItemLoc(juenei[GetRandomInt(1, 4)], loc)
+        call RemoveLocation(loc)
     endif
     // 击杀朱聪获得妙手空空手套
     if GetUnitTypeId(ut) == 'H00J' then
-        set loc=GetUnitLoc(ut)
+        if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+            set loc=GetRandomLocInRect(udg_drop_rect[i])
+        else
+            set loc=GetUnitLoc(ut)
+        endif
         call CreateItemLoc('I01J', loc)
         call DisplayTextToPlayer(p, 0, 0, "恭喜击杀朱聪，获得|cFF00FF00妙手空空手套|r")
         call RemoveLocation(loc)
     endif
+    
     if GetUnitTypeId(ut) == 'U00Q' or GetUnitTypeId(ut) == 'U00R' or GetUnitTypeId(ut) == 'U00S' or GetUnitTypeId(ut) == 'U00T' then
         set t=CreateTimer()
         call SaveReal(YDHT, GetHandleId(t), 0, GetUnitX(ut))
@@ -8085,11 +8187,11 @@ function europaGift takes unit u returns nothing
         call UnitAddItem((u ), ( it)) // INLINED!!
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 700 then
-        set id=GetRandomInt(1, 5)
+        set id=GetRandomInt(1, 4)
         call addLumber(Player(i - 1) , id)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + I2S(id) + "个珍稀币")
     elseif rand < 998 then
-        set id=GetRandomInt(1, 5000)
+        set id=GetRandomInt(1, 4000)
         call addGold(Player(i - 1) , id)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFFFFFF00" + I2S(id) + "个金币")
     else
@@ -8517,6 +8619,7 @@ function showTowerTooltip takes nothing returns nothing
 		if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R' or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
 			return
 		endif
+		set damageAddition=kungfuCoeff[i]
 		// 每点功勋增加0.5%伤害
 		if LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) > 0 then
 			set damageAddition=damageAddition + LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY) * 0.005
@@ -8672,6 +8775,13 @@ function drawUI_Conditions takes nothing returns boolean
 	call DzFrameSetPoint(s__Frame_id[(towerTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( towerTooltipWidget[10] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
 	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_ENTER, function showTowerTooltip, false)
 	call DzFrameSetScriptByCode(DzFrameGetPortrait(), FRAME_MOUSE_LEAVE, function hideTowerTooltip, false)
+	// 显示波数
+	// set waveWidget[1] = Frame.newImage1(GUI, "war3mapImported\\0.blp", 0.01, 0.03)
+	// set waveWidget[2] = Frame.newImage1(GUI, "war3mapImported\\1.blp", 0.01, 0.03)
+	// set waveWidget[3] = Frame.newImage1(GUI, "war3mapImported\\wave.blp", 0.03, 0.04)
+	// call waveWidget[2].setPoint(TOP, GUI, TOP, -0.015, - 0.01)
+	// call waveWidget[1].setPoint(RIGHT, waveWidget[2], LEFT, -0.005, 0)
+	// call waveWidget[3].setPoint(LEFT, waveWidget[2], RIGHT, 0.005, 0)
 	
 	return false
 endfunction
@@ -11360,7 +11470,7 @@ function CreateAllUnits_1 takes nothing returns nothing
     call CreateBuildingsForPlayer2()
     call CreateBuildingsForPlayer3()
 endfunction
-function CreateRegions takes nothing returns nothing
+function CreateRegions0 takes nothing returns nothing
     local weathereffect we
     set gg_rct_circle=Rect(- 4512., - 4384., 4448., 4192.)
     set we=AddWeatherEffect(gg_rct_circle, 'RAlr')
@@ -12064,7 +12174,8 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower_num=tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
             call UnitAddItemById(u, 'I02L')
-            if (RequestExtraBooleanData(53, (p ), null, null, false, ( 2), 0, 0)) then // INLINED!!
+            // 购买重制版出门多一个欧皇大礼包
+            if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) then
                 call UnitAddItemById(u, 'I061')
             endif
             // 首充礼包
@@ -12105,7 +12216,7 @@ endfunction
 function InitAllSystems takes nothing returns nothing
     call ConditionalTriggerExecute(gg_trg_MapInit)
     call CreateAllUnits_1()
-    call CreateRegions()
+    call CreateRegions0()
     call MyInitGlobals()
     call InitCustomTriggers0()
     
@@ -12189,6 +12300,10 @@ endfunction
 // Trigger: InitAll
 //===========================================================================
 function Trig_InitAllActions takes nothing returns nothing
+    set udg_drop_rect[1]=gg_rct_drop1
+    set udg_drop_rect[2]=gg_rct_drop2
+    set udg_drop_rect[3]=gg_rct_drop3
+    set udg_drop_rect[4]=gg_rct_drop4
     call FogEnableOff()
     call FogMaskEnableOff()
     call InitAllSystems()
@@ -12331,11 +12446,12 @@ function main takes nothing returns nothing
     call SetAmbientDaySound("LordaeronSummerDay")
     call SetAmbientNightSound("LordaeronSummerNight")
     call SetMapMusic("Music", true, 0)
+    call CreateRegions()
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs514323609")
-call ExecuteFunc("FrameLibrary__init")
+call ExecuteFunc("jasshelper__initstructs591411734")
+call ExecuteFunc("FrameLibrary___init")
 call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
@@ -12370,14 +12486,14 @@ endfunction
 //===========================================================================
 //ϵͳ-TimerSystem
 //===========================================================================
-//===========================================================================  
-//===========================================================================  
-//�Զ����¼� 
-//===========================================================================
-//===========================================================================   
 //===========================================================================
 //修改生命
 //===========================================================================
+//===========================================================================  
+//===========================================================================  
+//�Զ����¼� 
+//===========================================================================
+//===========================================================================   
 
 
 
@@ -12452,7 +12568,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs514323609 takes nothing returns nothing
+function jasshelper__initstructs591411734 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()

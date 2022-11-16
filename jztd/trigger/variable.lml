@@ -1,0 +1,3 @@
+drop_rect: rect
+    数组: 4
+    默认: RectNull

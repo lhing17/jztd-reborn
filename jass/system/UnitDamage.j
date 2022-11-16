@@ -63,7 +63,7 @@ function UnitDamage_Conditions takes nothing returns boolean
     call dealRealDamage(damage, 1.12, 'A007', u, ut, 1000)
     call dealRealDamage(damage, 1.13, 'A01T', u, ut, 6000)
     call dealRealDamage(damage, 1.14, 'A00F', u, ut, 800)
-    call dealRealDamage(damage, 1.15, 'A009', u, ut, 300)
+    call dealRealDamage(damage, 1.15, 'A009', u, ut, 1200)
     call dealRealDamage(damage, 1.2, 'A00L', u, ut, 100)
     call dealRealDamage(damage, 1.21, 'A00N', u, ut, 500)
     call dealRealDamage(damage, 1.22, 'A00X', u, ut, 250)
