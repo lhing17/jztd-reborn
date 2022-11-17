@@ -59,7 +59,7 @@ function UnitDamage_Conditions takes nothing returns boolean
         call IssueTargetOrderById(bj_lastCreatedUnit, 852075, ut)
         call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
     endif
-    call dealRealDamage(damage, 1.11, 'A002', u, ut, 80)
+    call dealRealDamage(damage, 1.11, 'A002', u, ut, 320)
     call dealRealDamage(damage, 1.12, 'A007', u, ut, 1000)
     call dealRealDamage(damage, 1.13, 'A01T', u, ut, 6000)
     call dealRealDamage(damage, 1.14, 'A00F', u, ut, 800)
