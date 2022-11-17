@@ -245,7 +245,7 @@ function spawn takes nothing returns nothing
             if wave <= 20 then
                 set gold = 150 * wave
             else
-                set gold = 3000 + GetRandomInt(1, 500)
+                set gold = 3000 + GetRandomInt(1, wave * 150 - 3000)
             endif
             call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
             set g = CreateGroup()
@@ -257,7 +257,7 @@ function spawn takes nothing returns nothing
                 set goldHit[i + 1] = 0
                 call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif
-            call AdjustPlayerStateBJ(R2I(150 * gold * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(R2I(gold * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
         endif
         set j = 1
         loop
