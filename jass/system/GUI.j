@@ -231,6 +231,8 @@ endfunction
 function showTowerTooltip takes nothing returns nothing
 	local integer i = 1 + GetPlayerId(DzGetTriggerUIEventPlayer())
 	local real damageAddition = 0 
+	local integer criticalRate = 0
+	local real criticalTimes = 0
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
 			return
@@ -242,31 +244,41 @@ function showTowerTooltip takes nothing returns nothing
 		endif
 		// 北冥神功 伤害增加40%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') >= 1 then
-			set damageAddition = damageAddition + .4
+			set damageAddition = damageAddition + 0.1 + 0.1 * GetUnitAbilityLevel(unitInSelection[i], 'A03N')
 		endif
 	
 		// 太玄神功 伤害增加50%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03P') >= 1 then
-			set damageAddition = damageAddition + .5
+			set damageAddition = damageAddition + 0.2 + 0.1 * GetUnitAbilityLevel(unitInSelection[i], 'A03P')
 		endif
 	
 		// 蛤蟆功 伤害增加40%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03Q') >= 1 then
-			set damageAddition = damageAddition + .4
+			set damageAddition = damageAddition + 0.1 + 0.1 * GetUnitAbilityLevel(unitInSelection[i], 'A03Q')
 		endif
 	
 		// 洗髓经 伤害增加50%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03R') >= 1 then
-			set damageAddition = damageAddition + .5
+			set damageAddition = damageAddition + 0.2 + 0.1 * GetUnitAbilityLevel(unitInSelection[i], 'A03R')
 		endif
 
 		// 塔的伤害加成
 		if LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY) > 0 then
 			set damageAddition = damageAddition + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY)
 		endif
+
+		set criticalRate = 5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)
+		set criticalTimes = 2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)
+
+		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') > 0 then
+			set criticalRate = criticalRate + 5 * GetUnitAbilityLevel(unitInSelection[i], 'A03N')
+			set criticalTimes = criticalTimes + 0.3 + 0.2 * GetUnitAbilityLevel(unitInSelection[i], 'A03N')
+		endif
+	
+
 		call towerTooltipWidget[3].setText("命中：" + I2S(100 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_HIT_KEY) + 100 * GetPlayerTechCountSimple('R00A', GetOwningPlayer(unitInSelection[i]))))
-		call towerTooltipWidget[4].setText("武学暴击率：" + I2S(5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)) + "%")
-		call towerTooltipWidget[5].setText("暴击倍数：" + R2S(2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)))
+		call towerTooltipWidget[4].setText("武学暴击率：" + I2S(criticalRate) + "%")
+		call towerTooltipWidget[5].setText("暴击倍数：" + R2S(criticalTimes))
 		call towerTooltipWidget[6].setText("内力回复：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_MANA_RECOVERY_KEY)))
 		call towerTooltipWidget[7].setText("伤害加成：" + R2S(damageAddition * 100) + "%")
 		call towerTooltipWidget[8].setText("连击率：" + I2S(LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_COMBO_KEY)) + "%")
