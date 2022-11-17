@@ -1,5 +1,6 @@
 function LearnKungfu takes unit u, item it returns nothing
     local integer abilityId = 0
+    local integer i = 1
     if not IsUnitType(u, UNIT_TYPE_HERO) then
         call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFFFF0000只有掌门可以学习绝世武功")
         call UnitAddItemById(u, GetItemTypeId(it))
@@ -16,6 +17,18 @@ function LearnKungfu takes unit u, item it returns nothing
         call UnitAddItemById(u, GetItemTypeId(it))
         return
     endif
+
+
+    loop
+        exitwhen i >= 11
+        if LoadInteger(YDHT, GetHandleId(u) * 2, i) == 0 then
+            call SaveInteger(YDHT, GetHandleId(u) * 2, i, abilityId)
+            call SaveInteger(YDHT, GetHandleId(u) * 3, i, 1)
+            exitwhen true
+        endif
+        set i = i + 1
+    endloop
+
     call UnitAddAbility(u, abilityId)
     if abilityId == 'A03P' then
         call UnitAddAbility(u, 'A03S')

@@ -73,6 +73,10 @@ function SaveMaxLevel takes nothing returns nothing
     call SaveInteger(YDHT, 'A047' * 3, 0, 3)
     call SaveInteger(YDHT, 'A04A' * 3, 0, 3)
     call SaveInteger(YDHT, 'A045' * 3, 0, 6)
+    call SaveInteger(YDHT, 'A03N' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A03Q' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A03P' * 3, 0, 5)
+    call SaveInteger(YDHT, 'A03R' * 3, 0, 5)
 endfunction
 
 

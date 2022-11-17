@@ -32,6 +32,13 @@ library TowerLibrary
                 call SetUnitAbilityLevel(u, 'A00O', LoadInteger(YDHT, GetHandleId(u) * 3, i))
                 call SetUnitAbilityLevel(u, 'A00P', LoadInteger(YDHT, GetHandleId(u) * 3, i))
             endif
+            if LoadInteger(YDHT, GetHandleId(u) * 2, i) == 'A03P' then
+                call UnitRemoveAbility(u, 'A03S')
+                call UnitAddAbility(u, 'A03S')
+                call SetPlayerAbilityAvailableBJ(false, 'A03S', GetOwningPlayer(u))
+                call SetUnitAbilityLevel(u, 'A03S', LoadInteger(YDHT, GetHandleId(u) * 3, i))
+            endif
+            
         endmethod
         method ResetCD takes integer i returns nothing
             call UnitRemoveAbility(u, LoadInteger(YDHT, GetHandleId(u) * 2, i))

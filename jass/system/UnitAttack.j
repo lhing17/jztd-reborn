@@ -152,12 +152,12 @@ function UnitAttack_Conditions takes nothing returns boolean
         endloop
     endif
     call PassiveUseAbility(u, ut, 'A049', 'A04C', 852226, 19, 60)
-    if GetUnitAbilityLevel(u, 'A03Q') > 0 and GetRandomInt(1, 100) <= 15 then
+    if GetUnitAbilityLevel(u, 'A03Q') > 0 and GetRandomInt(1, 100) <= 3 * GetUnitAbilityLevel(u, 'A03Q') then
         call WanBuff(u, ut, 13)
     endif
 
     // 洗髓经 15%概率破防
-    if GetUnitAbilityLevel(u, 'A03R') > 0 and GetRandomInt(1, 100) <= 15 then
+    if GetUnitAbilityLevel(u, 'A03R') > 0 and GetRandomInt(1, 100) <= 3 * GetUnitAbilityLevel(u, 'A03R') then
         call WanBuff(u, ut, 9)
     endif
 

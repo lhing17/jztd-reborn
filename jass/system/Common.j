@@ -162,8 +162,8 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
 
     // 北冥神功 暴击率+20%  暴击倍数+1
     if GetUnitAbilityLevel(u, 'A03N') > 0 then
-        set criticalRate = criticalRate + 20
-        set criticalTimes = criticalTimes + 1
+        set criticalRate = criticalRate + 5 * GetUnitAbilityLevel(u, 'A03N')
+        set criticalTimes = criticalTimes + 0.3 + 0.2 * GetUnitAbilityLevel(u, 'A03N')
     endif
 
     // 每点功勋增加0.2%伤害
@@ -173,22 +173,22 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
 
     // 北冥神功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03N') >= 1 then
-        set coeff = coeff + .4
+        set coeff = coeff + 0.1 + 0.1 * GetUnitAbilityLevel(u, 'A03N')
     endif
 
     // 太玄神功 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03P') >= 1 then
-        set coeff = coeff + .5
+        set coeff = coeff + 0.2 + 0.1 * GetUnitAbilityLevel(u, 'A03P')
     endif
 
     // 蛤蟆功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03Q') >= 1 then
-        set coeff = coeff + .4
+        set coeff = coeff + 0.1 + 0.1 * GetUnitAbilityLevel(u, 'A03Q')
     endif
 
     // 洗髓经 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
-        set coeff = coeff + .5
+        set coeff = coeff + 0.2 + 0.1 * GetUnitAbilityLevel(u, 'A03R')
     endif
 
     // 塔的伤害加成
