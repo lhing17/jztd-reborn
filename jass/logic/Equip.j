@@ -56,9 +56,11 @@ endfunction
 
 function equipWaveStartEffectByAttr takes unit u, integer attr, integer value returns nothing
     local item it = null
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local location loc = null
     if attr == 18 then
-        // 激励-赏金 金钱+200
-        call AdjustPlayerStateBJ(200, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
+        // 激励-赏金 金钱+1000
+        call AdjustPlayerStateBJ(1000, GetOwningPlayer(u), PLAYER_STATE_RESOURCE_GOLD)
     elseif attr == 19 then
         // 激励-回复 塔内力回满
         call SetUnitState(u, UNIT_STATE_MANA, GetUnitState(u, UNIT_STATE_MAX_MANA))
@@ -70,18 +72,22 @@ function equipWaveStartEffectByAttr takes unit u, integer attr, integer value re
     elseif attr == 21 then
         // 激励-丰收 20%概率获得一件随机品质的武器
         if GetRandomInt(0, 10) <= 2 then
-            set it = CreateItem(getRandomDrop(), GetUnitX(u), GetUnitY(u))
+            set loc = GetRandomLocInRect(udg_drop_rect[i])
+            set it = CreateItemLoc(getRandomDrop(), loc)
             call generateRandomAttr(it)
-            call tryUnitAddItem(u, it)
+            call RemoveLocation(loc)
         endif
     elseif attr == 22 then
         // 激励-武魂 20%概率额外获得1个随机品质的武魂石
         if GetRandomInt(0, 10) <= 2 then
-            call UnitAddItemById(u, getRandomSoulStone(1 + GetPlayerId(GetOwningPlayer(u))))
+            set loc = GetRandomLocInRect(udg_drop_rect[i])
+            call CreateItemLoc(getRandomSoulStone(1 + GetPlayerId(GetOwningPlayer(u))), loc)
+            call RemoveLocation(loc)
         endif
 
     endif
     set it = null
+    set loc = null
 
 endfunction
 
@@ -195,7 +201,7 @@ function initEquip takes nothing returns nothing
     set affixMax[17] = 0
 
     set affixTitle[18] = "激励-赏金"
-    set affixDesc[18] = "每波开始时，额外获得金钱+200"
+    set affixDesc[18] = "每波开始时，额外获得金钱+1000"
     set affixMin[18] = 0
     set affixMax[18] = 0
 

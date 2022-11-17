@@ -438,8 +438,9 @@ function FetchUnitItem takes unit u, integer j returns item
 endfunction
 
 // 装备随机属性数量
-function getEquipRandomAttrCount takes integer id returns integer
-    return LoadInteger(YDHT, id, EQUIP_ATTR_COUNT_KEY)
+function getEquipRandomAttrCount takes integer strength returns integer
+    // 每8点强度增加1个随机属性
+    return (strength - 1) / 8 + 1
 endfunction
 
 function generateRandomAttr takes item it returns nothing
@@ -451,19 +452,31 @@ function generateRandomAttr takes item it returns nothing
     local integer temp = 0
     local integer j = 0
     local integer rand = 0
-    local integer count = getEquipRandomAttrCount(GetItemTypeId(it))
+    local integer count = 0
+    local integer strength = LoadInteger(EQUIP_ATTR_HT, handleId, EQUIP_STRENGTH_KEY)
+    local integer affixCount = 17
 
+    if strength == 0 then
+        set strength = LoadInteger(YDHT, GetItemTypeId(it), EQUIP_BASE_STRENGTH_KEY)
+    endif
+
+    if strength >= 20 then
+        set affixCount = AFFIX_COUNT
+    endif
+
+    set count = getEquipRandomAttrCount(strength)
+    
     if count <= 0 then
         return
     endif
 
     loop
-        exitwhen i > AFFIX_COUNT
+        exitwhen i > affixCount
         set affixIndex[i] = i
         set i = i + 1
     endloop
 
-    set i = AFFIX_COUNT
+    set i = affixCount
     loop
         exitwhen i < 1
         set j = GetRandomInt(1, i - 1)
@@ -475,17 +488,17 @@ function generateRandomAttr takes item it returns nothing
 
     if count >= 1 then
         call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_TYPE_KEY, affixIndex[1])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_VALUE_KEY, GetRandomInt(affixMin[affixIndex[1]], affixMax[affixIndex[1]]))
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR1_VALUE_KEY, GetRandomInt(affixMin[affixIndex[1]], IMaxBJ(affixMin[affixIndex[1]], affixMax[affixIndex[1]] * strength / 30)))
     endif
 
     if count >= 2 then
         call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_TYPE_KEY, affixIndex[2])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_VALUE_KEY, GetRandomInt(affixMin[affixIndex[2]], affixMax[affixIndex[2]]))
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR2_VALUE_KEY, GetRandomInt(affixMin[affixIndex[2]], IMaxBJ(affixMin[affixIndex[2]], affixMax[affixIndex[2]] * strength / 30)))
     endif
 
     if count >= 3 then
         call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_TYPE_KEY, affixIndex[3])
-        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_VALUE_KEY, GetRandomInt(affixMin[affixIndex[3]], affixMax[affixIndex[3]]))
+        call SaveInteger(EQUIP_ATTR_HT, handleId, EQUIP_ATTR3_VALUE_KEY, GetRandomInt(affixMin[affixIndex[3]], IMaxBJ(affixMin[affixIndex[3]], affixMax[affixIndex[3]] * strength / 30)))
     endif
 
 endfunction
@@ -620,8 +633,8 @@ function synItemThree takes unit u returns nothing
         call RemoveItem(fetchUnitItemOfLevel(u, 1))
         call RemoveItem(fetchUnitItemOfLevel(u, 1))
         set it2 = UnitAddItemById(u, rare_drops[GetRandomInt(1, MAX_RARE_DROP)])
-        // call generateRandomAttr(it2)
-        // call addExtraAttr(u, it2)
+        call generateRandomAttr(it2)
+        call addExtraAttr(u, it2)
         set rareCount = rareCount + 1
     endif
 
@@ -631,8 +644,8 @@ function synItemThree takes unit u returns nothing
         call RemoveItem(fetchUnitItemOfLevel(u, 2))
         call RemoveItem(fetchUnitItemOfLevel(u, 2))
         set it2 = UnitAddItemById(u, valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)])
-        // call generateRandomAttr(it2)
-        // call addExtraAttr(u, it2)
+        call generateRandomAttr(it2)
+        call addExtraAttr(u, it2)
         set valuableCount = valuableCount + 1
     endif
 

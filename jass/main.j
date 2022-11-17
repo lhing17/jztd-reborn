@@ -246,6 +246,8 @@ globals
     constant integer EQUIP_ATTR3_TYPE_KEY = 4
     // 属性3值
     constant integer EQUIP_ATTR3_VALUE_KEY = 5
+    // 装备强度
+    constant integer EQUIP_STRENGTH_KEY = 6
 
     // 记录装备需要几项附加属性
     constant integer EQUIP_ATTR_COUNT_KEY = 999
@@ -254,6 +256,7 @@ globals
 
     constant integer EQUIP_PICKUP_KEY = 1002 // 装备是否被拾取过
     constant integer EQUIP_INT_LEVEL_KEY = 1003 // 装备级别
+    constant integer EQUIP_BASE_STRENGTH_KEY = 1004 // 装备基础强度
     
     // 判断是否处于失败状态
     boolean isFailing = false
@@ -1043,6 +1046,7 @@ function MapInit takes nothing returns nothing
         exitwhen j > MAX_NORMAL_DROP
         call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
         call SaveInteger(YDHT, normal_drops[j], EQUIP_INT_LEVEL_KEY, 1)
+        call SaveInteger(YDHT, normal_drops[j], EQUIP_BASE_STRENGTH_KEY, 1)
         set j = j + 1
     endloop
 
@@ -1051,6 +1055,7 @@ function MapInit takes nothing returns nothing
         exitwhen j > MAX_RARE_DROP
         call SaveStr(YDHT, rare_drops[j], EQUIP_LEVEL_KEY, "|cff3366ff稀有|r")
         call SaveInteger(YDHT, rare_drops[j], EQUIP_INT_LEVEL_KEY, 2)
+        call SaveInteger(YDHT, rare_drops[j], EQUIP_BASE_STRENGTH_KEY, 3)
         set j = j + 1
     endloop
 
@@ -1059,6 +1064,7 @@ function MapInit takes nothing returns nothing
         exitwhen j > MAX_VALUABLE_DROP
         call SaveStr(YDHT, valuable_drops[j], EQUIP_LEVEL_KEY, "|cffff9900珍稀|r")
         call SaveInteger(YDHT, valuable_drops[j], EQUIP_INT_LEVEL_KEY, 3)
+        call SaveInteger(YDHT, valuable_drops[j], EQUIP_BASE_STRENGTH_KEY, 6)
         set j = j + 1
     endloop
 
@@ -1069,6 +1075,7 @@ function MapInit takes nothing returns nothing
         call SaveInteger(YDHT, ancient_drops[j], EQUIP_ATTR_COUNT_KEY, 1)
         call SaveStr(YDHT, ancient_drops[j], EQUIP_LEVEL_KEY, "|cffff0000远古|r")
         call SaveInteger(YDHT, ancient_drops[j], EQUIP_INT_LEVEL_KEY, 4)
+        call SaveInteger(YDHT, ancient_drops[j], EQUIP_BASE_STRENGTH_KEY, 10)
         set j = j + 1
     endloop
 
@@ -1079,6 +1086,7 @@ function MapInit takes nothing returns nothing
         call SaveInteger(YDHT, epic_drops[j], EQUIP_ATTR_COUNT_KEY, 2)
         call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|cffff00ff史诗|r")
         call SaveInteger(YDHT, epic_drops[j], EQUIP_INT_LEVEL_KEY, 5)
+        call SaveInteger(YDHT, epic_drops[j], EQUIP_BASE_STRENGTH_KEY, 15)
         set j = j + 1
     endloop
 
@@ -1089,6 +1097,7 @@ function MapInit takes nothing returns nothing
         call SaveInteger(YDHT, shenqi[j], EQUIP_ATTR_COUNT_KEY, 3)
         call SaveStr(YDHT, shenqi[j], EQUIP_LEVEL_KEY, "|cff800080传说|r")
         call SaveInteger(YDHT, shenqi[j], EQUIP_INT_LEVEL_KEY, 6)
+        call SaveInteger(YDHT, shenqi[j], EQUIP_BASE_STRENGTH_KEY, 20)
         set j = j + 1
     endloop
 

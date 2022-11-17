@@ -103,10 +103,10 @@ function Challenge takes integer player_i, integer challenge_num, integer item_i
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933挑战开始|r")
             // 记录是谁刷的怪
             call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), player_i)
-              // 难六以上，有概率出现变异怪
-             if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
-                 call mutatedAttacker(bj_lastCreatedUnit)
-             endif
+            // 难六以上，有概率出现变异怪
+            if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
+                call mutatedAttacker(bj_lastCreatedUnit)
+            endif
 
         elseif challenge_num == 5 then
             call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933该挑战尚未开放|r")
@@ -476,15 +476,21 @@ function PickupItem_Conditions takes nothing returns boolean
     // 普通武器
     if GetItemTypeId(it) == 'I062' then
         set award = normal_drops[GetRandomInt(1, MAX_NORMAL_DROP)]
-        call UnitAddItemById(builder[i], award)
+        set it2 = CreateItem( award, GetUnitX(builder[i]), GetUnitY(builder[i]) )
+        call generateRandomAttr(it2)
+        call tryUnitAddItem(builder[i], it2)
     endif
     if GetItemTypeId(it) == 'I063' then
         set award = rare_drops[GetRandomInt(1, MAX_RARE_DROP)]
-        call UnitAddItemById(builder[i], award)
+        set it2 = CreateItem( award, GetUnitX(builder[i]), GetUnitY(builder[i]) )
+        call generateRandomAttr(it2)
+        call tryUnitAddItem(builder[i], it2)
     endif
     if GetItemTypeId(it) == 'I064' then
         set award = valuable_drops[GetRandomInt(1, MAX_VALUABLE_DROP)]
-        call UnitAddItemById(builder[i], award)
+        set it2 = CreateItem( award, GetUnitX(builder[i]), GetUnitY(builder[i]) )
+        call generateRandomAttr(it2)
+        call tryUnitAddItem(builder[i], it2)
     endif
     if GetItemTypeId(it) == 'I066' then
         set award = ancient_drops[GetRandomInt(1, MAX_ANCIENT_DROP)]
