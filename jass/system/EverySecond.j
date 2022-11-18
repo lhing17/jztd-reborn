@@ -27,11 +27,11 @@ function EverySecond_Conditions takes nothing returns boolean
         endif
     endif
     if passed_time == 10 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cfffff000欢迎来到|cffff00de决战江湖TD1.2|r")
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cff00ff00[小贴士]|r请在NPC天下门派处选择门派开始游戏，收藏游戏的玩家可以在地图中间的商店中领取福利礼包！")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cfffff000欢迎来到|cffff00de决战江湖TD|r")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, "|cff00ff00[小贴士]|r收藏游戏的玩家可以在地图中间的商店中领取福利礼包！")
     endif
     if passed_time == 20 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r游戏前期金钱较匮乏，可以合理使用木材兑换金钱，关于游戏的各个系统，请查看F9任务面板，欢迎在地图留言区提出您的宝贵意见")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r游戏前期金钱较匮乏，可以合理使用木材兑换金钱，欢迎在地图留言区提出您的宝贵意见")
     endif
     if passed_time == 40 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r前期防御塔建立在合理的位置，可以提高输出效率。高级防御塔性价比通常高于低级防御塔，因此建议将资源优先用于升级防御塔")
