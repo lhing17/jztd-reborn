@@ -33,11 +33,21 @@ function isPetMove takes nothing returns boolean
 	return (GetIssuedOrderId() == $D0012 or GetIssuedOrderId() == $D0003) and GetUnitAbilityLevel(GetTriggerUnit(), 'A00G') > 0
 endfunction
 
+function heroAttack takes nothing returns nothing
+	local timer t = GetExpiredTimer()
+	local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+	call IssuePointOrderById(u, $D000F, GetUnitX(u), GetUnitY(u))
+	call DestroyTimer(t)
+	set t = null
+	set u = null
+endfunction
+
 function petMove takes nothing returns nothing
 	local real x = GetUnitX(GetTriggerUnit())
 	local real y = GetUnitY(GetTriggerUnit())
 	local real dx = 0
 	local real dy = 0
+	local timer t = null
 	if GetOrderTarget() != null then
 		set dx =  GetWidgetX(GetOrderTarget()) - x
 		set dy =  GetWidgetY(GetOrderTarget()) - y
@@ -47,6 +57,12 @@ function petMove takes nothing returns nothing
 	else
 		call IssuePointOrderById(GetTriggerUnit(), $D022D, GetOrderPointX(), GetOrderPointY())
 	endif
+	if IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO) then
+		set t = CreateTimer()
+		call SaveUnitHandle(YDHT, GetHandleId(t), 0, GetTriggerUnit())
+		call TimerStart(t, 1, false, function heroAttack)
+	endif
+	set t = null
 endfunction
 
 function GameDetail_Trigger takes nothing returns nothing
@@ -56,6 +72,7 @@ function GameDetail_Trigger takes nothing returns nothing
 	call TimerStart(tm, 0.05, false, function registerWheelEvent)
 
 	set t = CreateTrigger()
+	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
 	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_ISSUED_POINT_ORDER)
 	call TriggerAddCondition(t, Condition(function isPetMove))
 	call TriggerAddAction(t, function petMove)
