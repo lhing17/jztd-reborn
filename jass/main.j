@@ -168,7 +168,7 @@ globals
     integer MAX_ANCIENT_DROP = 5
     integer MAX_EPIC_DROP = 5
     integer array luck
-    integer FIRST_WAVE_TIME = 20
+    integer FIRST_WAVE_TIME = 40
     integer SPAWN_FREQUENCY = 2
     // 每波时间
     integer WAVE_TIME = 40
