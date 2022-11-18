@@ -47,6 +47,9 @@ function KeyInput takes nothing returns nothing
         set wisbomBall[i] = CreateUnit(p, 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
         call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D创建了智慧球")
     endif
+    if s == "wave54" and udg_isTest[i] then
+        set wave = 54
+    endif
     if StringHash(s) == 1661513981 then
         set udg_isTest[i] = true
     endif

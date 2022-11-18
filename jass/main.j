@@ -274,6 +274,8 @@ globals
 
     trigger array st___prototype25
 
+    boolean finalBossAttack = false
+
 endglobals
 
 function MyInitGlobals takes nothing returns nothing
@@ -852,8 +854,31 @@ function InitTrig_KillFinalBoss takes nothing returns nothing
     call TriggerAddCondition(gg_trg_KillFinalBoss, Condition(function Trig_KillFinalBossConditions))
     call TriggerAddAction(gg_trg_KillFinalBoss, function Trig_KillFinalBossActions)
 endfunction
+
+function noFinalBoss takes nothing returns boolean
+    local unit u = null
+    local group g = CreateGroup()
+    call GroupAddGroup(attackerGroup, g)
+    loop
+        set u = FirstOfGroup(g)
+        exitwhen u == null
+        if GetUnitTypeId(u) == 'U00B' then
+            call DestroyGroup(g)
+            set u = null
+            set g = null
+            return false
+        endif
+        call GroupRemoveUnit(g, u)
+    endloop
+    call DestroyGroup(g)
+    set u = null
+    set g = null
+    return true
+
+endfunction
+
 function Trig_WinConditions takes nothing returns boolean
-    return CountUnitsInGroup(attackerGroup) <= 0
+    return finalBossAttack and noFinalBoss()
 endfunction
 function Trig_WinFunc006T takes nothing returns nothing
     call CustomVictoryBJ(Player(0), true, true)

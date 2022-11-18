@@ -223,6 +223,11 @@ function spawn takes nothing returns nothing
     set target[2] = GetRectCenter(nodeRects[24])
     set target[3] = GetRectCenter(nodeRects[21])
 
+    if ModuloInteger(wave, 9) == 0 then
+        call AddPlayerTechResearched(Player(5), 'R00B', 1)
+        call DisplayTextToForce(GetPlayersAll(), "|cffff0000【系统】|r挑战怪难度提升")
+    endif
+
     if isFailing and udg_ShengYuGuaiShu <= count then
         call CustomDefeatBJ(Player(0), "胜败乃兵家常事，大侠请重新来过！")
         call CustomDefeatBJ(Player(1), "胜败乃兵家常事，大侠请重新来过！")
@@ -301,6 +306,7 @@ function spawn takes nothing returns nothing
                     endif
                     if j == 6 then
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，击败教主并清理掉循环圈内的怪物即可获得胜利！")
+                        set finalBossAttack = true
                     else
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
                         call AdjustPlayerStateBJ((2 * j - 1) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
