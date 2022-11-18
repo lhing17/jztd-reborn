@@ -48,7 +48,10 @@ function petMove takes nothing returns nothing
 	local real dx = 0
 	local real dy = 0
 	local timer t = null
-	if GetOrderTarget() != null then
+	if GetOrderTargetItem() != null then
+		return
+	endif
+	if GetOrderTargetUnit() != null or GetOrderTargetDestructable() != null then
 		set dx =  GetWidgetX(GetOrderTarget()) - x
 		set dy =  GetWidgetY(GetOrderTarget()) - y
 		if SquareRoot(dx * dx + dy * dy) > 200 then

@@ -453,6 +453,7 @@ function PickupItem_Conditions takes nothing returns boolean
     local integer attr = 0
     local integer value = 0
     local item it2 = null
+    local integer j
     call GoldLumberExChange(i, GetItemTypeId(it), u)
     call CheckHolyWeapon(i, GetItemTypeId(it))
     call Challenge(i, 1, GetItemTypeId(it))
@@ -507,6 +508,21 @@ function PickupItem_Conditions takes nothing returns boolean
         set it2 = CreateItem(award, GetUnitX(builder[i]), GetUnitY(builder[i]))
         call generateRandomAttr(it2)
         call tryUnitAddItem(builder[i], it2)
+    endif
+
+    // 物品堆叠 对于可充的物品生效
+    if GetItemType(it) == ITEM_TYPE_CHARGED then
+        set j = 1
+        loop
+            exitwhen j > 6
+                if GetItemTypeId(it) == GetItemTypeId(UnitItemInSlotBJ(u, j)) and it != UnitItemInSlotBJ(u, j) then
+                    set award = GetItemCharges(it)
+                    call SetItemCharges(UnitItemInSlotBJ(u, j), GetItemCharges(UnitItemInSlotBJ(u, j)) + award)
+                    call RemoveItem(it)
+                    exitwhen true
+                endif
+            set j = j + 1
+        endloop
     endif
 
     call addExtraAttr(u, it)
