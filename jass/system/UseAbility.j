@@ -96,22 +96,27 @@ function doFastPick takes nothing returns nothing
     call UnitAddItem(fastPickUnit, GetEnumItem())
 endfunction
 
-function fastPick takes unit u returns nothing
-    local rect r = Rect(GetUnitX(u) - 800, GetUnitY(u) - 800, GetUnitX(u) + 800, GetUnitY(u) + 800)
+function fastPick takes unit u, real x, real y returns nothing
+    local rect r = Rect(x - 600, y - 600, x + 600, y + 600)
     set fastPickUnit = u
 	call EnumItemsInRect(r, null, function doFastPick)
 	call RemoveRect(r)
 	set r = null
 endfunction
 
-function fastDrop takes unit u returns nothing
+function fastDrop takes unit u, real x, real y returns nothing
 	local integer i = 0
+    local item it = null
 	loop
 		exitwhen i >= 6
-		call UnitRemoveItemFromSlot(u, i)
+		set it = UnitRemoveItemFromSlot(u, i)
+        if it != null then
+            call SetItemPosition(it, x, y)
+        endif
 		set i = i + 1
 	endloop
 	set u = null
+    set it = null
 endfunction
 
 function UseAbility_Conditions takes nothing returns boolean
@@ -505,12 +510,12 @@ function UseAbility_Conditions takes nothing returns boolean
 
     // 快速拾取
     if id == 'A091' then
-        call fastPick(u)
+        call fastPick(u, GetSpellTargetX(), GetSpellTargetY())
     endif
 
     // 快速丢弃
     if id == 'A092' then
-        call fastDrop(u)
+        call fastDrop(u, GetSpellTargetX(), GetSpellTargetY())
     endif
 
     call RemoveLocation(loc)
