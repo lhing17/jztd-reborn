@@ -613,6 +613,7 @@ function InitTrig_MapInit takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call ShowUnitShow(gg_unit_o00A_0014)
+        // 设置塔允许建造的个数限制
         call SetPlayerTechMaxAllowedSwap('H004', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01O', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01N', 2, ConvertedPlayer(bj_forLoopAIndex))
@@ -626,6 +627,9 @@ function InitTrig_MapInit takes nothing returns nothing
         call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('n01S', 2, ConvertedPlayer(bj_forLoopAIndex))
+        
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
