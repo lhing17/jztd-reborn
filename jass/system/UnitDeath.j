@@ -44,6 +44,21 @@ function npcRevive takes nothing returns nothing
     call DestroyTimer(t)
     set t = null
 endfunction
+
+
+function rewardLumber takes unit ut, player p, integer count returns nothing
+    local player awardPlayer = null
+    if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
+        set awardPlayer = Player(LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) - 1)
+    else
+        set awardPlayer = p
+    endif
+    call AdjustPlayerStateBJ(count, awardPlayer, PLAYER_STATE_RESOURCE_LUMBER)
+    call DisplayTextToPlayer(awardPlayer, 0, 0, "|cff00ff00[系统]|r击杀BOSS,奖励珍稀币" + I2S(count) + "个")
+    set awardPlayer = null
+endfunction
+
+
 function UnitDeath_Conditions takes nothing returns boolean
     local unit u = GetKillingUnit()
     local unit ut = GetTriggerUnit()
@@ -88,9 +103,9 @@ function UnitDeath_Conditions takes nothing returns boolean
     if GetOwningPlayer(ut) == Player(5) then
         if GetRandomInt(1, 5000) <= luck[i] then
             if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
-                set loc = GetRandomLocInRect(udg_drop_rect[i])
+                set loc = GetRandomLocInRect(udg_drop_rect[LoadInteger(YDHT, GetHandleId(ut), StringHash("owner"))])
             else
-                set loc = GetUnitLoc(ut)
+                set loc = GetRandomLocInRect(udg_drop_rect[i])
             endif
             set luck[i] = luck[i] - 1
             set it = CreateItemLoc(getRandomDrop(), loc)
@@ -99,24 +114,19 @@ function UnitDeath_Conditions takes nothing returns boolean
         endif
     endif
     if GetUnitTypeId(ut) == boss[1] then
-        call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
-        call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币1个")
+        call rewardLumber(ut, p, 1)
     endif
     if GetUnitTypeId(ut) == boss[2] then
-        call AdjustPlayerStateBJ(2, p, PLAYER_STATE_RESOURCE_LUMBER)
-        call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币2个")
+        call rewardLumber(ut, p, 2)
     endif
     if GetUnitTypeId(ut) == boss[3] then
-        call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
-        call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币3个")
+        call rewardLumber(ut, p, 3)
     endif
     if GetUnitTypeId(ut) == boss[4] then
-        call AdjustPlayerStateBJ(4, p, PLAYER_STATE_RESOURCE_LUMBER)
-        call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币4个")
+        call rewardLumber(ut, p, 4)
     endif
     if GetUnitTypeId(ut) == boss[5] then
-        call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
-        call DisplayTextToPlayer(p, 0, 0, "击杀BOSS,奖励珍稀币5个")
+        call rewardLumber(ut, p, 5)
     endif
     if GetUnitTypeId(ut) == survive_boss[1] then
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)

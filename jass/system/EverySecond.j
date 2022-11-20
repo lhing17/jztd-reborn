@@ -15,7 +15,7 @@ function EverySecond_Conditions takes nothing returns boolean
             exitwhen i > 5
             if wisdom_ball_flag[i] == 1 then
                 set wisbomBall[i] = CreateUnit(Player(i - 1), 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
-                call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D您已开启智慧球")
+                call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 10, "|cff00ff00[系统]|r您已开启智慧球")
                 set hasWisdomBall[i] = true
             endif
             set i = i + 1
@@ -34,7 +34,7 @@ function EverySecond_Conditions takes nothing returns boolean
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r游戏前期金钱较匮乏，可以合理使用木材兑换金钱，欢迎在地图留言区提出您的宝贵意见")
     endif
     if passed_time == 40 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r前期防御塔建立在合理的位置，可以提高输出效率。高级防御塔性价比通常高于低级防御塔，因此建议将资源优先用于升级防御塔")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r高级防御塔性价比较高，建议将资源优先用于升级防御塔")
     endif
     if passed_time == 60 then
         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r游戏里的相关指令请按F9打开任务面板进行查询")
@@ -56,7 +56,7 @@ function EverySecond_Conditions takes nothing returns boolean
     // endif
     call ForGroupBJ(attackerGroup, function EMeiXinFa)
     if udg_ShengYuGuaiShu + 10 <= CountUnitsInGroup(attackerGroup) and GetRandomInt(1, 5) <= 2 then
-        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[小贴士]|r|cffff0000圈内的进攻怪太多了，请注意防守！！|R")
+        call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[系统]|r|cffff0000圈内的进攻怪太多了，请注意防守！！|R")
     endif
     set i = 1
     loop
