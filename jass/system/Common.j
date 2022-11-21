@@ -191,6 +191,16 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
         set coeff = coeff + 0.2 + 0.15 * GetUnitAbilityLevel(u, 'A03R')
     endif
 
+    // 地图等级大于等于6级，伤害增加5%
+    if mapLevel[i] >= 6 then
+        set coeff = coeff + 0.05
+    endif
+
+    // 地图等级大于等于20级，伤害增加10%
+    if mapLevel[i] >= 20 then
+        set coeff = coeff + 0.1
+    endif
+
     // 塔的伤害加成
     if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
         set coeff = coeff + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY)

@@ -53,6 +53,10 @@ function KeyInput takes nothing returns nothing
     if StringHash(s) == 1661513981 then
         set udg_isTest[i] = true
     endif
+    if s == "JZTD666" or s == "jztd666" then
+        set qqTeamAward[i] = true
+        call DzAPI_Map_StoreBoolean(p, "qqTeamAward" , true)
+    endif
     set p = null
 endfunction
 

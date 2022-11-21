@@ -213,6 +213,7 @@ function spawn takes nothing returns nothing
     local integer count = CountUnitsInGroup(attackerGroup)
     local group g = null
     local integer gold = 0
+    local integer luckAddition = 2
     set wave = wave + 1
     set loc[0] = GetRectCenter(gg_rct_spawn1)
     set loc[1] = GetRectCenter(gg_rct_spawn2)
@@ -246,13 +247,19 @@ function spawn takes nothing returns nothing
         exitwhen i >= 4
         set randReal = 1
         if wave <= 60 then
-            set luck[i + 1] = luck[i + 1] + 2
+            if mapLevel[i + 1] >= 8 then
+                set luckAddition = luckAddition + 1
+            endif
+            if mapLevel[i + 1] >= 12 then
+                set luckAddition = luckAddition + 1
+            endif
+            set luck[i + 1] = luck[i + 1] + luckAddition
             if wave <= 20 then
                 set gold = 150 * wave
             else
                 set gold = 3000 + GetRandomInt(1, wave * 150 - 3000)
             endif
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverManaAndEquipEffect)

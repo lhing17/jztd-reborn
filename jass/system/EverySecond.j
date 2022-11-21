@@ -8,6 +8,7 @@ function EverySecond_Conditions takes nothing returns boolean
     local string info = DzAPI_Map_GetMapConfig("info")
     local integer i = 1
     local integer level = 1
+    local integer gold = 0
   
     set passed_time = passed_time + 1
     if passed_time == 5 then
@@ -61,12 +62,26 @@ function EverySecond_Conditions takes nothing returns boolean
     set i = 1
     loop
         exitwhen i > 5
-        if five_star_flag[i] == 1 then
-            call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 2)
+        // if five_star_flag[i] == 1 then
+        //     call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 2)
+        // endif
+        if mapLevel[i] >= 2 then
+            set gold = gold + 1
         endif
+        if mapLevel[i] >= 3 then
+            set gold = gold + 2
+        endif
+        if mapLevel[i] >= 14 then
+            set gold = gold + 2
+        endif
+        if mapLevel[i] >= 16 then
+            set gold = gold + 2
+        endif
+        
         if europe_flag[i] == 1 then
-            call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 3)
+            set gold = gold + 3
         endif
+        call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + gold)
 
         // 智慧球智能模式
         if wisdomBallSmartMode[i] and wisbomBall[i] != null then

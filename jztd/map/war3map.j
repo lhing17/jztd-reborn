@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -46,10 +46,10 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase___yd_PlayerColor
-trigger array YDWEBase___AbilityCastingOverEventQueue
-integer array YDWEBase___AbilityCastingOverEventType
-integer YDWEBase___AbilityCastingOverEventNumber= 0
+string array YDWEBase__yd_PlayerColor
+trigger array YDWEBase__AbilityCastingOverEventQueue
+integer array YDWEBase__AbilityCastingOverEventType
+integer YDWEBase__AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -181,6 +181,17 @@ integer array itemTooltipWidget
 integer array towerTooltipWidget
 	// 显示波数
 integer array waveWidget
+	// 顶部菜单
+integer array topMenuWidget
+integer array topMenuButton
+integer array topMenuSelected
+
+	// 存档项
+integer array topMenuItem1Widget
+	// 弹出
+integer array popupWidget
+integer array popupCloseWidget
+integer array popupCloseButton
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 constant integer TOPLEFT= 0
 constant integer TOP= 1
@@ -440,6 +451,9 @@ boolean array wisdomBallSmartMode
 unit fastPickUnit= null
 trigger array st___prototype25
 boolean finalBossAttack= false
+    // 存档相关
+boolean array qqTeamAward
+integer array mapLevel
 
 trigger l__library_init
 
@@ -1326,6 +1340,9 @@ endfunction
         function s__Frame_setAlpha takes integer this,integer a returns nothing
             call DzFrameSetAlpha(s__Frame_id[this], a)
         endfunction
+        function s__Frame_getAlpha takes integer this returns integer
+            return DzFrameGetAlpha(s__Frame_id[this])
+        endfunction
         function s__Frame_onDestroy takes integer this returns nothing
             if s__Frame_id[this] != 0 then
                 call DzDestroyFrame(s__Frame_id[this])
@@ -1360,7 +1377,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary___init takes nothing returns nothing
+    function FrameLibrary__init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1429,8 +1446,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1516,7 +1533,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1536,7 +1553,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -2474,11 +2491,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
-        if YDWEBase___AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
+        if YDWEBase__AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
+			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -2488,9 +2505,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
-	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
-	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
+	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
+	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
+	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -2527,7 +2544,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -2574,22 +2591,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3884,7 +3901,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Nov 21 08:53:58 2022
+//   Date: Mon Nov 21 17:22:10 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -4781,6 +4798,331 @@ endfunction
 // endfunction
     
    
+function transformInt takes integer i returns integer
+    local string s= DzAPI_Map_GetMapConfig("hashKey")
+    local integer hash= 0
+    if s == null or s == "" then
+        set hash=68
+    else
+        set hash=S2I(s)
+    endif
+    return i * hash + GetRandomInt(1, 63)
+endfunction
+function untransformInt takes integer i returns integer
+    local string s= DzAPI_Map_GetMapConfig("hashKey")
+    local integer hash= 0
+    if s == null or s == "" then
+        set hash=68
+    else
+        set hash=S2I(s)
+    endif
+    return i / hash
+endfunction
+// 将整数转换为62进制字符
+function encodeChar takes integer i returns string
+    if i == 0 then
+        return "a"
+    elseif i == 1 then
+        return "b"
+    elseif i == 2 then
+        return "c"
+    elseif i == 3 then
+        return "d"
+    elseif i == 4 then
+        return "e"
+    elseif i == 5 then
+        return "f"
+    elseif i == 6 then
+        return "g"
+    elseif i == 7 then
+        return "h"
+    elseif i == 8 then
+        return "i"
+    elseif i == 9 then
+        return "j"
+    elseif i == 10 then
+        return "k"
+    elseif i == 11 then
+        return "l"
+    elseif i == 12 then
+        return "m"
+    elseif i == 13 then
+        return "n"
+    elseif i == 14 then
+        return "o"
+    elseif i == 15 then
+        return "p"
+    elseif i == 16 then
+        return "q"
+    elseif i == 17 then
+        return "r"
+    elseif i == 18 then
+        return "s"
+    elseif i == 19 then
+        return "t"
+    elseif i == 20 then
+        return "u"
+    elseif i == 21 then
+        return "v"
+    elseif i == 22 then
+        return "w"
+    elseif i == 23 then
+        return "x"
+    elseif i == 24 then
+        return "y"
+    elseif i == 25 then
+        return "z"
+    elseif i == 26 then
+        return "A"
+    elseif i == 27 then
+        return "B"
+    elseif i == 28 then
+        return "C"
+    elseif i == 29 then
+        return "D"
+    elseif i == 30 then
+        return "E"
+    elseif i == 31 then
+        return "F"
+    elseif i == 32 then
+        return "G"
+    elseif i == 33 then
+        return "H"
+    elseif i == 34 then
+        return "I"
+    elseif i == 35 then
+        return "J"
+    elseif i == 36 then
+        return "K"
+    elseif i == 37 then
+        return "L"
+    elseif i == 38 then
+        return "M"
+    elseif i == 39 then
+        return "N"
+    elseif i == 40 then
+        return "O"
+    elseif i == 41 then
+        return "P"
+    elseif i == 42 then
+        return "Q"
+    elseif i == 43 then
+        return "R"
+    elseif i == 44 then
+        return "S"
+    elseif i == 45 then
+        return "T"
+    elseif i == 46 then
+        return "U"
+    elseif i == 47 then
+        return "V"
+    elseif i == 48 then
+        return "W"
+    elseif i == 49 then
+        return "X"
+    elseif i == 50 then
+        return "Y"
+    elseif i == 51 then
+        return "Z"
+    elseif i == 52 then
+        return "0"
+    elseif i == 53 then
+        return "1"
+    elseif i == 54 then
+        return "2"
+    elseif i == 55 then
+        return "3"
+    elseif i == 56 then
+        return "4"
+    elseif i == 57 then
+        return "5"
+    elseif i == 58 then
+        return "6"
+    elseif i == 59 then
+        return "7"
+    elseif i == 60 then
+        return "8"
+    elseif i == 61 then
+        return "9"
+    endif
+    return ""
+endfunction
+// 将62进制字符转换为整数
+function decodeChar takes string s returns integer
+    if s == "a" then
+        return 0
+    elseif s == "b" then
+        return 1
+    elseif s == "c" then
+        return 2
+    elseif s == "d" then
+        return 3
+    elseif s == "e" then
+        return 4
+    elseif s == "f" then
+        return 5
+    elseif s == "g" then
+        return 6
+    elseif s == "h" then
+        return 7
+    elseif s == "i" then
+        return 8
+    elseif s == "j" then
+        return 9
+    elseif s == "k" then
+        return 10
+    elseif s == "l" then
+        return 11
+    elseif s == "m" then
+        return 12
+    elseif s == "n" then
+        return 13
+    elseif s == "o" then
+        return 14
+    elseif s == "p" then
+        return 15
+    elseif s == "q" then
+        return 16
+    elseif s == "r" then
+        return 17
+    elseif s == "s" then
+        return 18
+    elseif s == "t" then
+        return 19
+    elseif s == "u" then
+        return 20
+    elseif s == "v" then
+        return 21
+    elseif s == "w" then
+        return 22
+    elseif s == "x" then
+        return 23
+    elseif s == "y" then
+        return 24
+    elseif s == "z" then
+        return 25
+    elseif s == "A" then
+        return 26
+    elseif s == "B" then
+        return 27
+    elseif s == "C" then
+        return 28
+    elseif s == "D" then
+        return 29
+    elseif s == "E" then
+        return 30
+    elseif s == "F" then
+        return 31
+    elseif s == "G" then
+        return 32
+    elseif s == "H" then
+        return 33
+    elseif s == "I" then
+        return 34
+    elseif s == "J" then
+        return 35
+    elseif s == "K" then
+        return 36
+    elseif s == "L" then
+        return 37
+    elseif s == "M" then
+        return 38
+    elseif s == "N" then
+        return 39
+    elseif s == "O" then
+        return 40
+    elseif s == "P" then
+        return 41
+    elseif s == "Q" then
+        return 42
+    elseif s == "R" then
+        return 43
+    elseif s == "S" then
+        return 44
+    elseif s == "T" then
+        return 45
+    elseif s == "U" then
+        return 46
+    elseif s == "V" then
+        return 47
+    elseif s == "W" then
+        return 48
+    elseif s == "X" then
+        return 49
+    elseif s == "Y" then
+        return 50
+    elseif s == "Z" then
+        return 51
+    elseif s == "0" then
+        return 52
+    elseif s == "1" then
+        return 53
+    elseif s == "2" then
+        return 54
+    elseif s == "3" then
+        return 55
+    elseif s == "4" then
+        return 56
+    elseif s == "5" then
+        return 57
+    elseif s == "6" then
+        return 58
+    elseif s == "7" then
+        return 59
+    elseif s == "8" then
+        return 60
+    elseif s == "9" then
+        return 61
+    endif
+    return - 1
+endfunction
+// 将整数转换为62进制字符串
+function encodeInt takes integer i returns string
+    local string result= ""
+    local integer temp= i
+    local integer remainder
+    if i == 0 then
+        return "MAGIC"
+    endif
+    loop
+        set remainder=ModuloInteger(temp, 62)
+        set temp=temp / 62
+        set result=result + encodeChar(remainder)
+        if temp < 1 then
+            exitwhen true
+        endif
+    endloop
+    return result
+endfunction
+// 将62进制字符串转为整数
+function decodeInt takes string s returns integer
+    local integer result= 0
+    local integer i= 0
+    local integer temp
+    local integer char
+    local integer k= 1
+    if s == null or s == "" or s == "MAGIC" then
+        return 0
+    endif
+    loop
+        exitwhen i > StringLength(s) - 1
+        set char=decodeChar(SubString(s, i, i + 1))
+        set temp=char * k
+        set result=result + temp
+        set k=k * 62
+        set i=i + 1
+    endloop
+    return result
+endfunction
+function newEncryptInt takes integer i returns string
+    return encodeInt(transformInt(i))
+endfunction
+function newDecryptInt takes string s returns integer
+    if s == "" or s == null then
+        return 0
+    endif
+    return untransformInt(decodeInt(s))
+endfunction
 
 function clearAttackSpeed takes unit u returns nothing
     local integer i= 10
@@ -4943,6 +5285,14 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     // 洗髓经 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
         set coeff=coeff + 0.2 + 0.15 * GetUnitAbilityLevel(u, 'A03R')
+    endif
+    // 地图等级大于等于6级，伤害增加5%
+    if mapLevel[i] >= 6 then
+        set coeff=coeff + 0.05
+    endif
+    // 地图等级大于等于20级，伤害增加10%
+    if mapLevel[i] >= 20 then
+        set coeff=coeff + 0.1
     endif
     // 塔的伤害加成
     if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
@@ -6129,6 +6479,7 @@ function spawn takes nothing returns nothing
     local integer count= CountUnitsInGroup(attackerGroup)
     local group g= null
     local integer gold= 0
+    local integer luckAddition= 2
     set wave=wave + 1
     set loc[0]=GetRectCenter(gg_rct_spawn1)
     set loc[1]=GetRectCenter(gg_rct_spawn2)
@@ -6159,13 +6510,19 @@ function spawn takes nothing returns nothing
         exitwhen i >= 4
         set randReal=1
         if wave <= 60 then
-            set luck[i + 1]=luck[i + 1] + 2
+            if mapLevel[i + 1] >= 8 then
+                set luckAddition=luckAddition + 1
+            endif
+            if mapLevel[i + 1] >= 12 then
+                set luckAddition=luckAddition + 1
+            endif
+            set luck[i + 1]=luck[i + 1] + luckAddition
             if wave <= 20 then
                 set gold=150 * wave
             else
                 set gold=3000 + GetRandomInt(1, wave * 150 - 3000)
             endif
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，每位玩家奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
             set g=CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverManaAndEquipEffect)
@@ -6309,6 +6666,7 @@ function EverySecond_Conditions takes nothing returns boolean
     local string info= DzAPI_Map_GetMapConfig("info")
     local integer i= 1
     local integer level= 1
+    local integer gold= 0
   
     set passed_time=passed_time + 1
     if passed_time == 5 then
@@ -6362,12 +6720,26 @@ function EverySecond_Conditions takes nothing returns boolean
     set i=1
     loop
         exitwhen i > 5
-        if five_star_flag[i] == 1 then
-            call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 2)
+        // if five_star_flag[i] == 1 then
+        //     call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 2)
+        // endif
+        if mapLevel[i] >= 2 then
+            set gold=gold + 1
         endif
+        if mapLevel[i] >= 3 then
+            set gold=gold + 2
+        endif
+        if mapLevel[i] >= 14 then
+            set gold=gold + 2
+        endif
+        if mapLevel[i] >= 16 then
+            set gold=gold + 2
+        endif
+        
         if europe_flag[i] == 1 then
-            call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + 3)
+            set gold=gold + 3
         endif
+        call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) + gold)
         // 智慧球智能模式
         if wisdomBallSmartMode[i] and wisbomBall[i] != null then
             call IssueImmediateOrder(wisbomBall[i], "chainlightning")
@@ -6527,6 +6899,10 @@ function KeyInput takes nothing returns nothing
     endif
     if StringHash(s) == 1661513981 then
         set udg_isTest[i]=true
+    endif
+    if s == "JZTD666" or s == "jztd666" then
+        set qqTeamAward[i]=true
+        call DzAPI_Map_StoreBoolean(p , "qqTeamAward" , true)
     endif
     set p=null
 endfunction
@@ -7654,10 +8030,18 @@ function npcRevive takes nothing returns nothing
 endfunction
 function rewardLumber takes unit ut,player p,integer count returns nothing
     local player awardPlayer= null
+    local integer i= 0
     if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
         set awardPlayer=Player(LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) - 1)
     else
         set awardPlayer=p
+    endif
+    set i=1 + GetPlayerId(awardPlayer)
+    if mapLevel[i] >= 5 then
+        set count=count + 1
+    endif
+    if mapLevel[i] >= 18 then
+        set count=count + 1
     endif
     call AdjustPlayerStateBJ(count, awardPlayer, PLAYER_STATE_RESOURCE_LUMBER)
     call DisplayTextToPlayer(awardPlayer, 0, 0, "|cff00ff00[系统]|r击杀BOSS,奖励珍稀币" + I2S(count) + "个")
@@ -7673,6 +8057,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     local integer j= 1
     local item it= null
     local integer gold= 0
+    local real coeff= 1
     // 击杀单位时，如果凶手有对应的装备，触发对应的效果
     loop
         exitwhen j > 6
@@ -7696,6 +8081,21 @@ function UnitDeath_Conditions takes nothing returns boolean
         else
             set gold=GetRandomInt(60, 80)
         endif
+        // QQ群福利 杀怪金钱+20%
+        if qqTeamAward[i] then
+            set coeff=coeff + 0.2
+        endif
+        // 地图等级到达4、10、23级，各增加10%杀怪金钱
+        if mapLevel[i] >= 4 then
+            set coeff=coeff + 0.1
+        endif
+        if mapLevel[i] >= 10 then
+            set coeff=coeff + 0.1
+        endif
+        if mapLevel[i] >= 23 then
+            set coeff=coeff + 0.1
+        endif
+        set gold=R2I(gold * coeff)
         call AdjustPlayerStateBJ(gold, p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif
@@ -8838,6 +9238,15 @@ function showTowerTooltip takes nothing returns nothing
 		if LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY) > 0 then
 			set damageAddition=damageAddition + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY)
 		endif
+		// 地图等级大于等于6级，伤害增加5%
+		if mapLevel[i] >= 6 then
+			set damageAddition=damageAddition + 0.05
+		endif
+		
+		// 地图等级大于等于20级，伤害增加10%
+		if mapLevel[i] >= 20 then
+			set damageAddition=damageAddition + 0.1
+		endif
 		set criticalRate=5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)
 		set criticalTimes=2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') > 0 then
@@ -8859,6 +9268,16 @@ endfunction
 function hideTowerTooltip takes nothing returns nothing
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		call s__Frame_hide(towerTooltipWidget[1])
+	endif
+endfunction
+function toggleTopMenuSelected takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call DzFrameSetAlpha(s__Frame_id[(topMenuSelected[1])], (255 + 160 - (DzFrameGetAlpha(s__Frame_id[(topMenuSelected[1])])))) // INLINED!!
+	endif
+endfunction
+function toggleSavePopup takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call s__Frame_toggle(popupWidget[1])
 	endif
 endfunction
 function drawUI_Conditions takes nothing returns boolean
@@ -8980,6 +9399,26 @@ function drawUI_Conditions takes nothing returns boolean
 	// call waveWidget[2].setPoint(TOP, GUI, TOP, -0.015, - 0.01)
 	// call waveWidget[1].setPoint(RIGHT, waveWidget[2], LEFT, -0.005, 0)
 	// call waveWidget[3].setPoint(LEFT, waveWidget[2], RIGHT, 0.005, 0)
+	// 顶部菜单
+	set topMenuWidget[1]=s__Frame_newImage1(GUI , "war3mapImported\\ui\\save.blp" , 0.032 , 0.04)
+	call DzFrameSetPoint(s__Frame_id[(topMenuWidget[1])], (3 ), s__Frame_id[( s__Frame_getFrame(DzFrameGetHeroBarButton(0)) )], ( 5 ), (( 0.05 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+	set topMenuSelected[1]=s__Frame_newImage1(topMenuWidget[1] , "war3mapImported\\ui\\saveItemSelected.tga" , 0.032 , 0.04)
+	call DzFrameSetAllPoints(s__Frame_id[(topMenuSelected[1])], s__Frame_id[(topMenuWidget[1])]) // INLINED!!
+	call DzFrameSetAlpha(s__Frame_id[(topMenuSelected[1])], (160)) // INLINED!!
+	set topMenuButton[1]=s__Frame_newTextButton(topMenuWidget[1])
+	call DzFrameSetAllPoints(s__Frame_id[(topMenuButton[1])], s__Frame_id[(topMenuWidget[1])]) // INLINED!!
+	call DzFrameSetScriptByCode(s__Frame_id[(topMenuButton[1])], (FRAME_EVENT_PRESSED ), ( function toggleSavePopup), false) // INLINED!!
+	call DzFrameSetScriptByCode(s__Frame_id[(topMenuButton[1])], (FRAME_MOUSE_ENTER ), ( function toggleTopMenuSelected), false) // INLINED!!
+	call DzFrameSetScriptByCode(s__Frame_id[(topMenuButton[1])], (FRAME_MOUSE_LEAVE ), ( function toggleTopMenuSelected), false) // INLINED!!
+	
+	set popupWidget[1]=s__Frame_newImage1(GUI , "war3mapImported\\ui\\savePopup.tga" , 0.45 , 0.4)
+	call DzFrameSetPoint(s__Frame_id[(popupWidget[1])], (4 ), s__Frame_id[( GUI )], ( 4 ), (( 0 )*1.0), (( 0)*1.0)) // INLINED!!
+	call s__Frame_hide(popupWidget[1])
+	set popupCloseWidget[1]=s__Frame_newImage1(popupWidget[1] , "war3mapImported\\ui\\close0.tga" , 0.018 , 0.024)
+	call DzFrameSetPoint(s__Frame_id[(popupCloseWidget[1])], (CENTER ), s__Frame_id[( popupWidget[1] )], ( TOPRIGHT ), (( 0 )*1.0), (( 0)*1.0)) // INLINED!!
+	set popupCloseButton[1]=s__Frame_newTextButton(popupCloseWidget[1])
+	call DzFrameSetAllPoints(s__Frame_id[(popupCloseButton[1])], s__Frame_id[(popupCloseWidget[1])]) // INLINED!!
+	call DzFrameSetScriptByCode(s__Frame_id[(popupCloseButton[1])], (FRAME_EVENT_PRESSED ), ( function toggleSavePopup), false) // INLINED!!
 	
 	return false
 endfunction
@@ -11621,6 +12060,7 @@ function MyInitGlobals takes nothing returns nothing
         set hasWisdomBall[i]=false
         set wisbomBall[i]=null
         set wisdomBallSmartMode[i]=false
+        set qqTeamAward[i]=false
         set i=i + 1
     endloop
     
@@ -11812,6 +12252,8 @@ function InitServerValues takes nothing returns nothing
         set udg_point[i]=DzAPI_Map_GetStoredInteger(Player(i - 1) , "point")
         set udg_success[i]=DzAPI_Map_GetStoredInteger(Player(i - 1) , "success")
         set udg_tech[i]=DzAPI_Map_GetStoredInteger(Player(i - 1) , "tech")
+        set qqTeamAward[i]=DzAPI_Map_GetStoredBoolean(Player(i - 1) , "qqTeamAward")
+        set mapLevel[i]=DzAPI_Map_GetMapLevel(Player(i - 1))
         set udg_pointMax[i]=0
         set saveFlag[i]=false
         set i=i + 1
@@ -12712,8 +13154,8 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs224104218")
-call ExecuteFunc("FrameLibrary___init")
+call ExecuteFunc("jasshelper__initstructs254594109")
+call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
@@ -12830,7 +13272,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs224104218 takes nothing returns nothing
+function jasshelper__initstructs254594109 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()
@@ -12848,7 +13290,7 @@ function jasshelper__initstructs224104218 takes nothing returns nothing
 
 
 
-call ExecuteFunc("s__ModSpeed_Init__onInit")
+call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 

@@ -48,10 +48,19 @@ endfunction
 
 function rewardLumber takes unit ut, player p, integer count returns nothing
     local player awardPlayer = null
+    local integer i = 0
     if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
         set awardPlayer = Player(LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) - 1)
     else
         set awardPlayer = p
+    endif
+    set i = 1 + GetPlayerId(awardPlayer)
+
+    if mapLevel[i] >= 5 then
+        set count = count + 1
+    endif
+    if mapLevel[i] >= 18 then
+        set count = count + 1
     endif
     call AdjustPlayerStateBJ(count, awardPlayer, PLAYER_STATE_RESOURCE_LUMBER)
     call DisplayTextToPlayer(awardPlayer, 0, 0, "|cff00ff00[系统]|r击杀BOSS,奖励珍稀币" + I2S(count) + "个")
@@ -69,6 +78,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     local integer j = 1
     local item it = null
     local integer gold = 0
+    local real coeff = 1
 
     // 击杀单位时，如果凶手有对应的装备，触发对应的效果
     loop
@@ -95,6 +105,27 @@ function UnitDeath_Conditions takes nothing returns boolean
         else
             set gold = GetRandomInt(60, 80)
         endif
+
+        // QQ群福利 杀怪金钱+20%
+        if qqTeamAward[i] then
+            set coeff = coeff + 0.2
+        endif
+
+        // 地图等级到达4、10、23级，各增加10%杀怪金钱
+        if mapLevel[i] >= 4 then
+            set coeff = coeff + 0.1
+        endif
+
+        if mapLevel[i] >= 10 then
+            set coeff = coeff + 0.1
+        endif
+
+        if mapLevel[i] >= 23 then
+            set coeff = coeff + 0.1
+        endif
+
+        set gold = R2I(gold * coeff)
+
         call AdjustPlayerStateBJ(gold, p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
     endif

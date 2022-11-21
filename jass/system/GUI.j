@@ -280,6 +280,16 @@ function showTowerTooltip takes nothing returns nothing
 			set damageAddition = damageAddition + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY)
 		endif
 
+		// 地图等级大于等于6级，伤害增加5%
+		if mapLevel[i] >= 6 then
+			set damageAddition = damageAddition + 0.05
+		endif
+		
+		// 地图等级大于等于20级，伤害增加10%
+		if mapLevel[i] >= 20 then
+			set damageAddition = damageAddition + 0.1
+		endif
+
 		set criticalRate = 5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)
 		set criticalTimes = 2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)
 

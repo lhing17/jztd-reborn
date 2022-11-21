@@ -2,6 +2,7 @@
 #include "library/MaxSpeed.j"
 #include "library/UI.j"
 #include "library/Tower.j"
+#include "library/Encrypt.j"
 
 #include "system/Common.j"
 
@@ -276,6 +277,10 @@ globals
 
     boolean finalBossAttack = false
 
+    // 存档相关
+    boolean array qqTeamAward
+    integer array mapLevel
+
 endglobals
 
 function MyInitGlobals takes nothing returns nothing
@@ -286,6 +291,7 @@ function MyInitGlobals takes nothing returns nothing
         set hasWisdomBall[i] = false
         set wisbomBall[i] = null
         set wisdomBallSmartMode[i] = false
+        set qqTeamAward[i] = false
         set i = i + 1
     endloop
     
@@ -497,6 +503,8 @@ function InitServerValues takes nothing returns nothing
         set udg_point[i] = DzAPI_Map_GetStoredInteger(Player(i - 1), "point")
         set udg_success[i] = DzAPI_Map_GetStoredInteger(Player(i - 1), "success")
         set udg_tech[i] = DzAPI_Map_GetStoredInteger(Player(i - 1), "tech")
+        set qqTeamAward[i] = DzAPI_Map_GetStoredBoolean(Player(i - 1), "qqTeamAward")
+        set mapLevel[i] = DzAPI_Map_GetMapLevel(Player(i - 1))
         set udg_pointMax[i] = 0
         set saveFlag[i] = false
         set i = i + 1
