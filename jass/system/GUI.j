@@ -9,6 +9,19 @@ globals
 	// 显示波数
 	Frame array waveWidget
 
+	// 顶部菜单
+	Frame array topMenuWidget // 顶部菜单按钮图片
+	Frame array topMenuButton // 顶部菜单按钮
+	Frame array topMenuSelected // 顶部菜单按钮效果
+
+	// 存档项
+	Frame array topMenuItem1Widget
+
+	// 弹出
+	Frame array popupWidget
+	Frame array popupCloseWidget
+	Frame array popupCloseButton
+
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 	constant integer TOPLEFT = 0
 	constant integer TOP = 1
@@ -294,6 +307,18 @@ function hideTowerTooltip takes nothing returns nothing
 	endif
 endfunction
 
+function toggleTopMenuSelected takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuSelected[1].setAlpha(255 + 160 - topMenuSelected[1].getAlpha())
+	endif
+endfunction
+
+function toggleSavePopup takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call popupWidget[1].toggle()
+	endif
+endfunction
+
 function drawUI_Conditions takes nothing returns boolean
 
 	local integer j = 1
@@ -447,6 +472,30 @@ function drawUI_Conditions takes nothing returns boolean
 	// call waveWidget[1].setPoint(RIGHT, waveWidget[2], LEFT, -0.005, 0)
 	// call waveWidget[3].setPoint(LEFT, waveWidget[2], RIGHT, 0.005, 0)
 
+	// 顶部菜单
+	set topMenuWidget[1] = Frame.newImage1(GUI, "war3mapImported\\ui\\save.blp", 0.032, 0.04)
+	call topMenuWidget[1].setPoint(3, Frame.getFrame(DzFrameGetHeroBarButton(0)), 5, 0.05, - 0.005)
+
+	set topMenuSelected[1] = Frame.newImage1(topMenuWidget[1], "war3mapImported\\ui\\saveItemSelected.tga", 0.032, 0.04)
+	call topMenuSelected[1].setAllPoints(topMenuWidget[1])
+	call topMenuSelected[1].setAlpha(160)
+
+	set topMenuButton[1] = Frame.newTextButton(topMenuWidget[1])
+	call topMenuButton[1].setAllPoints(topMenuWidget[1])
+	call topMenuButton[1].regEvent(FRAME_EVENT_PRESSED, function toggleSavePopup)
+	call topMenuButton[1].regEvent(FRAME_MOUSE_ENTER, function toggleTopMenuSelected)
+	call topMenuButton[1].regEvent(FRAME_MOUSE_LEAVE, function toggleTopMenuSelected)
+	
+	set popupWidget[1] = Frame.newImage1(GUI, "war3mapImported\\ui\\savePopup.tga", 0.45, 0.4)
+	call popupWidget[1].setPoint(4, GUI, 4, 0, 0)
+	call popupWidget[1].hide()
+
+	set popupCloseWidget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\close0.tga", 0.018, 0.024)
+	call popupCloseWidget[1].setPoint(CENTER, popupWidget[1], TOPRIGHT, 0, 0)
+
+	set popupCloseButton[1] = Frame.newTextButton(popupCloseWidget[1])
+	call popupCloseButton[1].setAllPoints(popupCloseWidget[1])
+	call popupCloseButton[1].regEvent(FRAME_EVENT_PRESSED, function toggleSavePopup)
 
 	
 	return false

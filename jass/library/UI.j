@@ -205,6 +205,9 @@ library FrameLibrary initializer init
         method setAlpha takes integer a returns nothing
             call DzFrameSetAlpha(id, a)
         endmethod
+        method getAlpha takes nothing returns integer
+            return DzFrameGetAlpha(id)
+        endmethod
         method onDestroy takes nothing returns nothing
             if id != 0 then
                 call DzDestroyFrame(id)
