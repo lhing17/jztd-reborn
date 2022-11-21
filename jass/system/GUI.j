@@ -16,11 +16,16 @@ globals
 
 	// 存档项
 	Frame array topMenuItem1Widget
+	Frame array topMenuItem1Button
 
 	// 弹出
 	Frame array popupWidget
 	Frame array popupCloseWidget
 	Frame array popupCloseButton
+
+	// 弹出层右侧
+	Frame array popupRightWidget
+
 
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 	constant integer TOPLEFT = 0
@@ -334,13 +339,65 @@ endfunction
 
 function toggleTopMenuSelected takes nothing returns nothing
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-		call topMenuSelected[1].setAlpha(255 + 160 - topMenuSelected[1].getAlpha())
+		call topMenuSelected[1].setAlpha(80 + 160 - topMenuSelected[1].getAlpha())
 	endif
 endfunction
 
 function toggleSavePopup takes nothing returns nothing
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		call popupWidget[1].toggle()
+	endif
+endfunction
+
+function jumpToMapAward takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuItem1Widget[1].setAlpha(255)
+		call topMenuItem1Widget[2].setAlpha(0)
+		call topMenuItem1Widget[3].setAlpha(0)
+		call topMenuItem1Widget[4].setAlpha(0)
+		call topMenuItem1Widget[5].setAlpha(0)
+		call popupRightWidget[1].setTexture("war3mapImported\\ui\\mapAward.blp")
+	endif
+endfunction
+
+function jumpToLevelAward takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuItem1Widget[1].setAlpha(0)
+		call topMenuItem1Widget[2].setAlpha(255)
+		call topMenuItem1Widget[3].setAlpha(0)
+		call topMenuItem1Widget[4].setAlpha(0)
+		call topMenuItem1Widget[5].setAlpha(0)
+		call popupRightWidget[1].setTexture("war3mapImported\\ui\\levelAward.blp")
+	endif
+endfunction
+function jumpToWinAward takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuItem1Widget[1].setAlpha(0)
+		call topMenuItem1Widget[2].setAlpha(0)
+		call topMenuItem1Widget[3].setAlpha(255)
+		call topMenuItem1Widget[4].setAlpha(0)
+		call topMenuItem1Widget[5].setAlpha(0)
+		call popupRightWidget[1].setTexture("war3mapImported\\ui\\winAward.blp")
+	endif
+endfunction
+function jumpToAchievement takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuItem1Widget[1].setAlpha(0)
+		call topMenuItem1Widget[2].setAlpha(0)
+		call topMenuItem1Widget[3].setAlpha(0)
+		call topMenuItem1Widget[4].setAlpha(255)
+		call topMenuItem1Widget[5].setAlpha(0)
+		call popupRightWidget[1].setTexture("war3mapImported\\ui\\achievement.blp")
+	endif
+endfunction
+function jumpToMall takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call topMenuItem1Widget[1].setAlpha(0)
+		call topMenuItem1Widget[2].setAlpha(0)
+		call topMenuItem1Widget[3].setAlpha(0)
+		call topMenuItem1Widget[4].setAlpha(0)
+		call topMenuItem1Widget[5].setAlpha(255)
+		call popupRightWidget[1].setTexture("war3mapImported\\ui\\mall.blp")
 	endif
 endfunction
 
@@ -503,7 +560,7 @@ function drawUI_Conditions takes nothing returns boolean
 
 	set topMenuSelected[1] = Frame.newImage1(topMenuWidget[1], "war3mapImported\\ui\\saveItemSelected.tga", 0.032, 0.04)
 	call topMenuSelected[1].setAllPoints(topMenuWidget[1])
-	call topMenuSelected[1].setAlpha(160)
+	call topMenuSelected[1].setAlpha(80)
 
 	set topMenuButton[1] = Frame.newTextButton(topMenuWidget[1])
 	call topMenuButton[1].setAllPoints(topMenuWidget[1])
@@ -511,16 +568,61 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuButton[1].regEvent(FRAME_MOUSE_ENTER, function toggleTopMenuSelected)
 	call topMenuButton[1].regEvent(FRAME_MOUSE_LEAVE, function toggleTopMenuSelected)
 	
-	set popupWidget[1] = Frame.newImage1(GUI, "war3mapImported\\ui\\savePopup.tga", 0.45, 0.4)
-	call popupWidget[1].setPoint(4, GUI, 4, 0, 0)
+	set popupWidget[1] = Frame.newImage1(GUI, "war3mapImported\\ui\\savePopup.tga", 0.36, 0.32)
+	call popupWidget[1].setPoint(4, GUI, 4, 0, 0.05)
 	call popupWidget[1].hide()
 
 	set popupCloseWidget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\close0.tga", 0.018, 0.024)
-	call popupCloseWidget[1].setPoint(CENTER, popupWidget[1], TOPRIGHT, 0, 0)
+	call popupCloseWidget[1].setPoint(CENTER, popupWidget[1], TOPRIGHT, 0, - 0.03)
 
 	set popupCloseButton[1] = Frame.newTextButton(popupCloseWidget[1])
 	call popupCloseButton[1].setAllPoints(popupCloseWidget[1])
 	call popupCloseButton[1].regEvent(FRAME_EVENT_PRESSED, function toggleSavePopup)
+
+	set popupRightWidget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\mapAward.blp", 0.26, 0)
+	call popupRightWidget[1].setPoint(LEFT, popupWidget[1], RIGHT, 0.01, -0.01)
+
+	set topMenuItem1Widget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.035)
+	call topMenuItem1Widget[1].setPoint(TOPLEFT, popupWidget[1], TOPLEFT, 0, - 0.034)
+	call topMenuItem1Widget[1].setAlpha(255)
+
+	set topMenuItem1Button[1] = Frame.newTextButton(topMenuItem1Widget[1])
+	call topMenuItem1Button[1].setAllPoints(topMenuItem1Widget[1])
+	call topMenuItem1Button[1].regEvent(FRAME_EVENT_PRESSED, function jumpToMapAward)
+
+	set topMenuItem1Widget[2] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.035)
+	call topMenuItem1Widget[2].setPoint(TOPLEFT, topMenuItem1Widget[1], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[2].setAlpha(0)
+
+	set topMenuItem1Button[2] = Frame.newTextButton(topMenuItem1Widget[2])
+	call topMenuItem1Button[2].setAllPoints(topMenuItem1Widget[2])
+	call topMenuItem1Button[2].regEvent(FRAME_EVENT_PRESSED, function jumpToLevelAward)
+
+	set topMenuItem1Widget[3] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.035)
+	call topMenuItem1Widget[3].setPoint(TOPLEFT, topMenuItem1Widget[2], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[3].setAlpha(0)
+
+	set topMenuItem1Button[3] = Frame.newTextButton(topMenuItem1Widget[3])
+	call topMenuItem1Button[3].setAllPoints(topMenuItem1Widget[3])
+	call topMenuItem1Button[3].regEvent(FRAME_EVENT_PRESSED, function jumpToWinAward)
+
+	set topMenuItem1Widget[4] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.035)
+	call topMenuItem1Widget[4].setPoint(TOPLEFT, topMenuItem1Widget[3], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[4].setAlpha(0)
+
+	set topMenuItem1Button[4] = Frame.newTextButton(topMenuItem1Widget[4])
+	call topMenuItem1Button[4].setAllPoints(topMenuItem1Widget[4])
+	call topMenuItem1Button[4].regEvent(FRAME_EVENT_PRESSED, function jumpToAchievement)
+
+	set topMenuItem1Widget[5] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.035)
+	call topMenuItem1Widget[5].setPoint(TOPLEFT, topMenuItem1Widget[4], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[5].setAlpha(0)
+
+	set topMenuItem1Button[5] = Frame.newTextButton(topMenuItem1Widget[5])
+	call topMenuItem1Button[5].setAllPoints(topMenuItem1Widget[5])
+	call topMenuItem1Button[5].regEvent(FRAME_EVENT_PRESSED, function jumpToMall)
+	
+
 
 	
 	return false
