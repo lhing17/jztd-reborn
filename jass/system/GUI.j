@@ -290,6 +290,21 @@ function showTowerTooltip takes nothing returns nothing
 			set damageAddition = damageAddition + 0.1
 		endif
 
+		// 通关N1，伤害增加10%
+		if winDifficulty[i] >= 1 then
+			set damageAddition = damageAddition + 0.1
+		endif
+
+		// 通关N5，伤害增加10%
+		if winDifficulty[i] >= 5 then
+			set damageAddition = damageAddition + 0.1
+		endif
+
+		// 通关N10，伤害增加10%
+		if winDifficulty[i] >= 10 then
+			set damageAddition = damageAddition + 0.1
+		endif
+
 		set criticalRate = 5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)
 		set criticalTimes = 2 + LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_ADDITION_KEY)
 

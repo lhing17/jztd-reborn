@@ -77,7 +77,13 @@ function EverySecond_Conditions takes nothing returns boolean
         if mapLevel[i] >= 16 then
             set gold = gold + 2
         endif
-        
+
+        // 通关N2
+        if winDifficulty[i] >= 2 then
+            set gold = gold + 2
+        endif
+
+        // 欧皇大礼包
         if europe_flag[i] == 1 then
             set gold = gold + 3
         endif

@@ -124,6 +124,11 @@ function UnitDeath_Conditions takes nothing returns boolean
             set coeff = coeff + 0.1
         endif
 
+        // 通关N7，杀怪金钱+10%
+        if winDifficulty[i] >= 7 then
+            set coeff = coeff + 0.1
+        endif
+
         set gold = R2I(gold * coeff)
 
         call AdjustPlayerStateBJ(gold, p, PLAYER_STATE_RESOURCE_GOLD)

@@ -201,6 +201,21 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
         set coeff = coeff + 0.1
     endif
 
+    // 通关N1，伤害增加10%
+    if winDifficulty[i] >= 1 then
+        set coeff = coeff + 0.1
+    endif
+
+    // 通关N5，伤害增加10%
+    if winDifficulty[i] >= 5 then
+        set coeff = coeff + 0.1
+    endif
+
+    // 通关N10，伤害增加10%
+    if winDifficulty[i] >= 10 then
+        set coeff = coeff + 0.1
+    endif
+
     // 塔的伤害加成
     if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
         set coeff = coeff + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY)

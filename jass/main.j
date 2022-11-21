@@ -278,8 +278,9 @@ globals
     boolean finalBossAttack = false
 
     // 存档相关
-    boolean array qqTeamAward
-    integer array mapLevel
+    boolean array qqTeamAward // 是否有QQ群奖励
+    integer array mapLevel // 地图等级
+    integer array winDifficulty // 通关难度
 
 endglobals
 
@@ -468,6 +469,7 @@ function ServerSavePointsWhenWin takes nothing returns nothing
             call DzAPI_Map_StoreInteger(Player(i - 1), "point", udg_point[i])
             call DzAPI_Map_StoreInteger(Player(i - 1), "success", udg_success[i])
             call DzAPI_Map_StoreInteger(Player(i - 1), "tech", udg_tech[i])
+            call DzAPI_Map_StoreInteger(Player(i - 1), "difficulty", udg_difficulty)
         endif
         if udg_tech[i] > udg_success[i] * 5 and udg_success[i] >= 10 then
             set udg_tech_evaluate[i] = "A+"
@@ -505,6 +507,7 @@ function InitServerValues takes nothing returns nothing
         set udg_tech[i] = DzAPI_Map_GetStoredInteger(Player(i - 1), "tech")
         set qqTeamAward[i] = DzAPI_Map_GetStoredBoolean(Player(i - 1), "qqTeamAward")
         set mapLevel[i] = DzAPI_Map_GetMapLevel(Player(i - 1))
+        set winDifficulty[i] = DzAPI_Map_GetStoredInteger(Player(i - 1), "difficulty")
         set udg_pointMax[i] = 0
         set saveFlag[i] = false
         set i = i + 1
@@ -1168,6 +1171,16 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower_num = tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
             call UnitAddItemById(u, 'I02L')
+
+            // 通关N8，额外送一把史诗武器
+            if winDifficulty[i] >= 8 then
+                call UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
+            endif
+
+            // 通关N9，额外送3个珍稀币
+            if winDifficulty[i] >= 9 then
+                call addLumber(p, 3)
+            endif
 
             // 购买重制版出门多一个欧皇大礼包
             if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) then

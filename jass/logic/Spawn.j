@@ -214,6 +214,9 @@ function spawn takes nothing returns nothing
     local group g = null
     local integer gold = 0
     local integer luckAddition = 2
+    local real goldCoeff = 1
+    local integer lumber = 0
+    local integer lumberAddition = 0
     set wave = wave + 1
     set loc[0] = GetRectCenter(gg_rct_spawn1)
     set loc[1] = GetRectCenter(gg_rct_spawn2)
@@ -253,12 +256,24 @@ function spawn takes nothing returns nothing
             if mapLevel[i + 1] >= 12 then
                 set luckAddition = luckAddition + 1
             endif
+
+            // 通关N6，额外加2点人品
+            if winDifficulty[i + 1] >= 6 then
+                set luckAddition = luckAddition + 2
+            endif
+
             set luck[i + 1] = luck[i + 1] + luckAddition
             if wave <= 20 then
                 set gold = 150 * wave
             else
                 set gold = 3000 + GetRandomInt(1, wave * 150 - 3000)
             endif
+
+            if winDifficulty[i + 1] >= 3 then
+                set goldCoeff = goldCoeff + 0.1
+            endif
+
+            set gold = R2I(goldCoeff * gold)
             call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
@@ -312,11 +327,15 @@ function spawn takes nothing returns nothing
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
                     if j == 6 then
-                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，击败教主并清理掉循环圈内的怪物即可获得胜利！")
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，存活并击败教主即可获得胜利！")
                         set finalBossAttack = true
                     else
-                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
-                        call AdjustPlayerStateBJ((2 * j - 1) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                        set lumber = 2 * j - 1
+                        if winDifficulty[i + 1] >= 4 then
+                            set lumber = lumber + 1
+                        endif
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻，奖励珍稀币" + I2S(lumber) + "个")
+                        call AdjustPlayerStateBJ((lumber) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
                     endif
                 endif
                 set target[i] = null

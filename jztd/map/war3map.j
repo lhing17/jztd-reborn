@@ -46,10 +46,10 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase__yd_PlayerColor
-trigger array YDWEBase__AbilityCastingOverEventQueue
-integer array YDWEBase__AbilityCastingOverEventType
-integer YDWEBase__AbilityCastingOverEventNumber= 0
+string array YDWEBase___yd_PlayerColor
+trigger array YDWEBase___AbilityCastingOverEventQueue
+integer array YDWEBase___AbilityCastingOverEventType
+integer YDWEBase___AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -454,6 +454,8 @@ boolean finalBossAttack= false
     // 存档相关
 boolean array qqTeamAward
 integer array mapLevel
+integer array winDifficulty
+
 
 trigger l__library_init
 
@@ -2491,11 +2493,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
-        if YDWEBase__AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
+        if YDWEBase___AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
+			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -2505,9 +2507,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
-	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
-	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
+	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
+	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
+	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -2544,7 +2546,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -2591,22 +2593,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3901,7 +3903,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Nov 21 17:22:10 2022
+//   Date: Mon Nov 21 17:44:38 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -5294,6 +5296,18 @@ function dealDamage takes unit u,unit ut,real damage returns nothing
     if mapLevel[i] >= 20 then
         set coeff=coeff + 0.1
     endif
+    // 通关N1，伤害增加10%
+    if winDifficulty[i] >= 1 then
+        set coeff=coeff + 0.1
+    endif
+    // 通关N5，伤害增加10%
+    if winDifficulty[i] >= 5 then
+        set coeff=coeff + 0.1
+    endif
+    // 通关N10，伤害增加10%
+    if winDifficulty[i] >= 10 then
+        set coeff=coeff + 0.1
+    endif
     // 塔的伤害加成
     if LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY) > 0 then
         set coeff=coeff + LoadReal(TOWER_ATTR_HT, GetHandleId(u), TOWER_DAMAGE_KEY)
@@ -6480,6 +6494,9 @@ function spawn takes nothing returns nothing
     local group g= null
     local integer gold= 0
     local integer luckAddition= 2
+    local real goldCoeff= 1
+    local integer lumber= 0
+    local integer lumberAddition= 0
     set wave=wave + 1
     set loc[0]=GetRectCenter(gg_rct_spawn1)
     set loc[1]=GetRectCenter(gg_rct_spawn2)
@@ -6516,12 +6533,20 @@ function spawn takes nothing returns nothing
             if mapLevel[i + 1] >= 12 then
                 set luckAddition=luckAddition + 1
             endif
+            // 通关N6，额外加2点人品
+            if winDifficulty[i + 1] >= 6 then
+                set luckAddition=luckAddition + 2
+            endif
             set luck[i + 1]=luck[i + 1] + luckAddition
             if wave <= 20 then
                 set gold=150 * wave
             else
                 set gold=3000 + GetRandomInt(1, wave * 150 - 3000)
             endif
+            if winDifficulty[i + 1] >= 3 then
+                set goldCoeff=goldCoeff + 0.1
+            endif
+            set gold=R2I(goldCoeff * gold)
             call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
             set g=CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
@@ -6572,11 +6597,15 @@ function spawn takes nothing returns nothing
                         call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了珍稀币暴击，获得" + I2S(rand) + "倍的珍稀币奖励|R")
                     endif
                     if j == 6 then
-                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，击败教主并清理掉循环圈内的怪物即可获得胜利！")
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，存活并击败教主即可获得胜利！")
                         set finalBossAttack=true
                     else
-                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻,每位玩家奖励珍稀币" + I2S(2 * j - 1) + "个")
-                        call AdjustPlayerStateBJ(( 2 * j - 1 ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                        set lumber=2 * j - 1
+                        if winDifficulty[i + 1] >= 4 then
+                            set lumber=lumber + 1
+                        endif
+                        call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻，奖励珍稀币" + I2S(lumber) + "个")
+                        call AdjustPlayerStateBJ(( lumber ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
                     endif
                 endif
                 set target[i]=null
@@ -6735,7 +6764,11 @@ function EverySecond_Conditions takes nothing returns boolean
         if mapLevel[i] >= 16 then
             set gold=gold + 2
         endif
-        
+        // 通关N2
+        if winDifficulty[i] >= 2 then
+            set gold=gold + 2
+        endif
+        // 欧皇大礼包
         if europe_flag[i] == 1 then
             set gold=gold + 3
         endif
@@ -8095,6 +8128,10 @@ function UnitDeath_Conditions takes nothing returns boolean
         if mapLevel[i] >= 23 then
             set coeff=coeff + 0.1
         endif
+        // 通关N7，杀怪金钱+10%
+        if winDifficulty[i] >= 7 then
+            set coeff=coeff + 0.1
+        endif
         set gold=R2I(gold * coeff)
         call AdjustPlayerStateBJ(gold, p, PLAYER_STATE_RESOURCE_GOLD)
         call GroupRemoveUnit(attackerGroup, ut)
@@ -9245,6 +9282,18 @@ function showTowerTooltip takes nothing returns nothing
 		
 		// 地图等级大于等于20级，伤害增加10%
 		if mapLevel[i] >= 20 then
+			set damageAddition=damageAddition + 0.1
+		endif
+		// 通关N1，伤害增加10%
+		if winDifficulty[i] >= 1 then
+			set damageAddition=damageAddition + 0.1
+		endif
+		// 通关N5，伤害增加10%
+		if winDifficulty[i] >= 5 then
+			set damageAddition=damageAddition + 0.1
+		endif
+		// 通关N10，伤害增加10%
+		if winDifficulty[i] >= 10 then
 			set damageAddition=damageAddition + 0.1
 		endif
 		set criticalRate=5 + LoadInteger(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_CRITICAL_RATE_KEY)
@@ -12218,6 +12267,7 @@ function ServerSavePointsWhenWin takes nothing returns nothing
             call DzAPI_Map_StoreInteger(Player(i - 1) , "point" , udg_point[i])
             call DzAPI_Map_StoreInteger(Player(i - 1) , "success" , udg_success[i])
             call DzAPI_Map_StoreInteger(Player(i - 1) , "tech" , udg_tech[i])
+            call DzAPI_Map_StoreInteger(Player(i - 1) , "difficulty" , udg_difficulty)
         endif
         if udg_tech[i] > udg_success[i] * 5 and udg_success[i] >= 10 then
             set udg_tech_evaluate[i]="A+"
@@ -12254,6 +12304,7 @@ function InitServerValues takes nothing returns nothing
         set udg_tech[i]=DzAPI_Map_GetStoredInteger(Player(i - 1) , "tech")
         set qqTeamAward[i]=DzAPI_Map_GetStoredBoolean(Player(i - 1) , "qqTeamAward")
         set mapLevel[i]=DzAPI_Map_GetMapLevel(Player(i - 1))
+        set winDifficulty[i]=DzAPI_Map_GetStoredInteger(Player(i - 1) , "difficulty")
         set udg_pointMax[i]=0
         set saveFlag[i]=false
         set i=i + 1
@@ -12878,6 +12929,14 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower_num=tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
             call UnitAddItemById(u, 'I02L')
+            // 通关N8，额外送一把史诗武器
+            if winDifficulty[i] >= 8 then
+                call UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
+            endif
+            // 通关N9，额外送3个珍稀币
+            if winDifficulty[i] >= 9 then
+                call addLumber(p , 3)
+            endif
             // 购买重制版出门多一个欧皇大礼包
             if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) then
                 call UnitAddItemById(u, 'I061')
@@ -13154,7 +13213,7 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs254594109")
+call ExecuteFunc("jasshelper__initstructs255942890")
 call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
@@ -13272,7 +13331,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs254594109 takes nothing returns nothing
+function jasshelper__initstructs255942890 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()
@@ -13290,7 +13349,7 @@ function jasshelper__initstructs254594109 takes nothing returns nothing
 
 
 
-call ExecuteFunc("s__ModSpeed_Init___onInit")
+call ExecuteFunc("s__ModSpeed_Init__onInit")
 
 
 
