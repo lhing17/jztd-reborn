@@ -627,7 +627,6 @@ function InitTrig_MapInit takes nothing returns nothing
         call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01S', 2, ConvertedPlayer(bj_forLoopAIndex))
         
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
