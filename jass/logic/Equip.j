@@ -152,13 +152,13 @@ function initEquip takes nothing returns nothing
 
     set affixTitle[8] = "增益-连击"
     set affixDesc[8] = "连击概率+"
-    set affixMin[8] = 10
-    set affixMax[8] = 50
+    set affixMin[8] = 2
+    set affixMax[8] = 20
 
     set affixTitle[9] = "增益-破甲"
     set affixDesc[9] = "破防概率+"
-    set affixMin[9] = 10
-    set affixMax[9] = 50
+    set affixMin[9] = 2
+    set affixMax[9] = 20
 
     set affixTitle[10] = "增益-冷静"
     set affixDesc[10] = "冷却缩减+"
@@ -171,9 +171,9 @@ function initEquip takes nothing returns nothing
     set affixMax[11] = 20
 
     set affixTitle[12] = "击杀-瞄准"
-    set affixDesc[12] = "击杀敌人时，命中+" // 1-10
-    set affixMin[12] = 1
-    set affixMax[12] = 10
+    set affixDesc[12] = "击杀敌人时，命中+" // 10-50
+    set affixMin[12] = 10
+    set affixMax[12] = 50
 
     set affixTitle[13] = "击杀-蓄力"
     set affixDesc[13] = "击杀敌人时，武学伤害+" // 0.1-1
@@ -181,7 +181,7 @@ function initEquip takes nothing returns nothing
     set affixMax[13] = 10
 
     set affixTitle[14] = "击杀-狂暴"
-    set affixDesc[14] = "击杀敌人时，武学暴击倍数+" // 1-5
+    set affixDesc[14] = "击杀敌人时，武学暴击倍数+" // 1-5%
     set affixMin[14] = 1
     set affixMax[14] = 5
 
