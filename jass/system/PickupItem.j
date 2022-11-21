@@ -298,7 +298,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(7, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 2 then
             if udg_jiuyin[player_i] == 0 then
@@ -316,7 +316,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(10, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 3 then
             if udg_douzhuan[player_i] == 0 then
@@ -345,7 +345,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         endif
     endif
