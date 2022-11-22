@@ -57,6 +57,9 @@ function KeyInput takes nothing returns nothing
         set qqTeamAward[i] = true
         call DzAPI_Map_StoreBoolean(p, "qqTeamAward" , true)
     endif
+    if s == "showName" then
+        call BJDebugMsg(GetPlayerName(Player(i - 1)))
+    endif
     set p = null
 endfunction
 

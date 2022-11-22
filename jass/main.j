@@ -469,7 +469,9 @@ function ServerSavePointsWhenWin takes nothing returns nothing
             call DzAPI_Map_StoreInteger(Player(i - 1), "point", udg_point[i])
             call DzAPI_Map_StoreInteger(Player(i - 1), "success", udg_success[i])
             call DzAPI_Map_StoreInteger(Player(i - 1), "tech", udg_tech[i])
-            call DzAPI_Map_StoreInteger(Player(i - 1), "difficulty", udg_difficulty)
+            if udg_difficulty > DzAPI_Map_GetStoredInteger(Player(i - 1), "difficulty") then
+                call DzAPI_Map_StoreInteger(Player(i - 1), "difficulty", udg_difficulty)
+            endif
         endif
         if udg_tech[i] > udg_success[i] * 5 and udg_success[i] >= 10 then
             set udg_tech_evaluate[i] = "A+"
@@ -1166,6 +1168,7 @@ function EnterMap_Conditions takes nothing returns boolean
     local unit u = GetEnteringUnit()
     local player p = GetOwningPlayer(u)
     local integer i = 1 + GetPlayerId(p)
+    local item it2 = null
     if GetPlayerController(p) == MAP_CONTROL_USER and GetPlayerSlotState(p) == PLAYER_SLOT_STATE_PLAYING and GetUnitTypeId(u) != 'n01P' and GetUnitAbilityLevel(u, 'Aloc') <= 0 then
         set tower[tower_num + 1] = s__Tower_create(u, GetItemNum(u))
         set tower_num = tower_num + 1
@@ -1174,7 +1177,9 @@ function EnterMap_Conditions takes nothing returns boolean
 
             // 通关N8，额外送一把史诗武器
             if winDifficulty[i] >= 8 then
-                call UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
+                set it2 = UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
+                call generateRandomAttr(it2)
+                call addExtraAttr(u, it2)
             endif
 
             // 通关N9，额外送3个珍稀币
@@ -1197,6 +1202,7 @@ function EnterMap_Conditions takes nothing returns boolean
     endif
     set u = null
     set p = null
+    set it2 = null
     return false
 endfunction
 function Upgrade_Conditions takes nothing returns boolean

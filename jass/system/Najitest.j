@@ -2197,6 +2197,9 @@ endfunction
 function TestA_naji takes nothing returns nothing
     local integer i_naji
     local integer row_naji = 2769
+    if not udg_isTest[GetPlayerId(GetTriggerPlayer()) + 1] then
+        return
+    endif
     set Sdummy_naji[1] = "2013/11/04"
     call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, 30, "|cff00FF00===============*****===============|r")
     call DisplayTimedTextToPlayer(GetLocalPlayer(), 0, 0, 30, "|cffFF8000         开始初始化|cff00FFFFnajitest|cffFF8000测试代码|r")
@@ -2534,9 +2537,7 @@ function najitest takes nothing returns nothing
     local trigger t_naji = CreateTrigger()
     local integer i_naji = 0
     loop
-        if udg_isTest[i_naji + 1] then
-            call TriggerRegisterPlayerChatEvent(t_naji, Player(i_naji), "'feini", true)
-        endif
+        call TriggerRegisterPlayerChatEvent(t_naji, Player(i_naji), "'feini", true)
         set i_naji = i_naji + 1
         exitwhen i_naji >= 16
     endloop

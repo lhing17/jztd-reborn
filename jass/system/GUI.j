@@ -26,6 +26,11 @@ globals
 	// 弹出层右侧
 	Frame array popupRightWidget
 
+	// 商城图标
+	Frame array shopWidget
+	Frame array shopButton
+	Frame array shopTooltipWidget
+
 
 	// UI设置对齐锚点的常量 DzFrameSetPoint achor定义，从0开始
 	constant integer TOPLEFT = 0
@@ -349,6 +354,22 @@ function toggleSavePopup takes nothing returns nothing
 	endif
 endfunction
 
+function showShopIcons takes nothing returns nothing
+	call shopWidget[1].show()
+	call shopWidget[2].show()
+	call shopWidget[3].show()
+	call shopWidget[4].show()
+	call shopWidget[5].show()
+endfunction
+
+function hideShopIcons takes nothing returns nothing
+	call shopWidget[1].hide()
+	call shopWidget[2].hide()
+	call shopWidget[3].hide()
+	call shopWidget[4].hide()
+	call shopWidget[5].hide()
+endfunction
+
 function jumpToMapAward takes nothing returns nothing
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		call topMenuItem1Widget[1].setAlpha(80)
@@ -357,6 +378,7 @@ function jumpToMapAward takes nothing returns nothing
 		call topMenuItem1Widget[4].setAlpha(0)
 		call topMenuItem1Widget[5].setAlpha(0)
 		call popupRightWidget[1].setTexture("war3mapImported\\ui\\mapAward.tga")
+		call hideShopIcons()
 	endif
 endfunction
 
@@ -368,6 +390,7 @@ function jumpToLevelAward takes nothing returns nothing
 		call topMenuItem1Widget[4].setAlpha(0)
 		call topMenuItem1Widget[5].setAlpha(0)
 		call popupRightWidget[1].setTexture("war3mapImported\\ui\\levelAward.tga")
+		call hideShopIcons()
 	endif
 endfunction
 function jumpToWinAward takes nothing returns nothing
@@ -378,6 +401,7 @@ function jumpToWinAward takes nothing returns nothing
 		call topMenuItem1Widget[4].setAlpha(0)
 		call topMenuItem1Widget[5].setAlpha(0)
 		call popupRightWidget[1].setTexture("war3mapImported\\ui\\winAward.tga")
+		call hideShopIcons()
 	endif
 endfunction
 function jumpToAchievement takes nothing returns nothing
@@ -388,6 +412,7 @@ function jumpToAchievement takes nothing returns nothing
 		call topMenuItem1Widget[4].setAlpha(80)
 		call topMenuItem1Widget[5].setAlpha(0)
 		call popupRightWidget[1].setTexture("war3mapImported\\ui\\achievement.tga")
+		call hideShopIcons()
 	endif
 endfunction
 function jumpToMall takes nothing returns nothing
@@ -398,6 +423,70 @@ function jumpToMall takes nothing returns nothing
 		call topMenuItem1Widget[4].setAlpha(0)
 		call topMenuItem1Widget[5].setAlpha(80)
 		call popupRightWidget[1].setTexture("war3mapImported\\ui\\mall.tga")
+		call showShopIcons()
+	endif
+endfunction
+
+function showShopTooltip takes nothing returns nothing
+	local integer i = 1 + GetPlayerId(DzGetTriggerUIEventPlayer())
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		if DzGetTriggerUIEventFrame() == shopButton[1].id then
+			call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[1], TOP, 0, 0.01)
+			call shopTooltipWidget[2].setText("|cFF00FF00中型金币礼包|r")
+			call shopTooltipWidget[3].setText("效果：15波后地图中间NPC领取中型金币资源包")
+			if middle_gold_flag[i] == 1 then
+				call shopTooltipWidget[4].setText("解锁状态：|cff00ff00已解锁|r")
+			else
+				call shopTooltipWidget[4].setText("解锁状态：|cffff0000未解锁|r")
+			endif
+			call shopTooltipWidget[1].show()
+		endif
+		if DzGetTriggerUIEventFrame() == shopButton[2].id then
+			call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[2], TOP, 0, 0.01)
+			call shopTooltipWidget[2].setText("|cFF00FF00中型珍稀币礼包|r")
+			call shopTooltipWidget[3].setText("效果：15波后地图中间NPC领取中型珍稀币资源包")
+			if middle_lumber_flag[i] == 1 then
+				call shopTooltipWidget[4].setText("解锁状态：|cff00ff00已解锁|r")
+			else
+				call shopTooltipWidget[4].setText("解锁状态：|cffff0000未解锁|r")
+			endif
+			call shopTooltipWidget[1].show()
+		endif
+		if DzGetTriggerUIEventFrame() == shopButton[3].id then
+			call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[3], TOP, 0, 0.01)
+			call shopTooltipWidget[2].setText("|cFF00FF00首充礼包|r")
+			call shopTooltipWidget[3].setText("效果：每秒金币+3 开局送三个欧皇大礼包")
+			if europe_flag[i] == 1 then
+				call shopTooltipWidget[4].setText("解锁状态：|cff00ff00已解锁|r")
+			else
+				call shopTooltipWidget[4].setText("解锁状态：|cffff0000未解锁|r")
+			endif
+			call shopTooltipWidget[1].show()
+		endif
+		if DzGetTriggerUIEventFrame() == shopButton[4].id then
+			call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[4], TOP, 0, 0.01)
+			call shopTooltipWidget[2].setText("|cFF00FF00智慧球|r")
+			call shopTooltipWidget[3].setText("效果：开局在地图上解锁智慧球")
+			if wisdom_ball_flag[i] == 1 then
+				call shopTooltipWidget[4].setText("解锁状态：|cff00ff00已解锁|r")
+			else
+				call shopTooltipWidget[4].setText("解锁状态：|cffff0000未解锁|r")
+			endif
+			call shopTooltipWidget[1].show()
+		endif
+		if DzGetTriggerUIEventFrame() == shopButton[5].id then
+			call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[5], TOP, 0, 0.01)
+			call shopTooltipWidget[2].setText("|cFF00FF00敬请期待|r")
+			call shopTooltipWidget[3].setText("更多福利敬请期待")
+			call shopTooltipWidget[4].setText("感谢支持")
+			call shopTooltipWidget[1].show()
+		endif
+	endif
+endfunction
+
+function hideShopTooltip takes nothing returns nothing
+	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
+		call shopTooltipWidget[1].hide()
 	endif
 endfunction
 
@@ -580,7 +669,7 @@ function drawUI_Conditions takes nothing returns boolean
 	call popupCloseButton[1].regEvent(FRAME_EVENT_PRESSED, function toggleSavePopup)
 
 	set popupRightWidget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\mapAward.tga", 0.25, 0.28)
-	call popupRightWidget[1].setPoint(LEFT, popupWidget[1], LEFT, 0.105, -0.01)
+	call popupRightWidget[1].setPoint(LEFT, popupWidget[1], LEFT, 0.105, - 0.01)
 
 	set topMenuItem1Widget[1] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.034)
 	call topMenuItem1Widget[1].setPoint(TOPLEFT, popupWidget[1], TOPLEFT, 0, - 0.032)
@@ -591,7 +680,7 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuItem1Button[1].regEvent(FRAME_EVENT_PRESSED, function jumpToMapAward)
 
 	set topMenuItem1Widget[2] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.034)
-	call topMenuItem1Widget[2].setPoint(TOPLEFT, topMenuItem1Widget[1], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[2].setPoint(TOPLEFT, topMenuItem1Widget[1], BOTTOMLEFT, 0, - 0.002)
 	call topMenuItem1Widget[2].setAlpha(0)
 
 	set topMenuItem1Button[2] = Frame.newTextButton(topMenuItem1Widget[2])
@@ -599,7 +688,7 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuItem1Button[2].regEvent(FRAME_EVENT_PRESSED, function jumpToLevelAward)
 
 	set topMenuItem1Widget[3] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.034)
-	call topMenuItem1Widget[3].setPoint(TOPLEFT, topMenuItem1Widget[2], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[3].setPoint(TOPLEFT, topMenuItem1Widget[2], BOTTOMLEFT, 0, - 0.002)
 	call topMenuItem1Widget[3].setAlpha(0)
 
 	set topMenuItem1Button[3] = Frame.newTextButton(topMenuItem1Widget[3])
@@ -607,7 +696,7 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuItem1Button[3].regEvent(FRAME_EVENT_PRESSED, function jumpToWinAward)
 
 	set topMenuItem1Widget[4] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.034)
-	call topMenuItem1Widget[4].setPoint(TOPLEFT, topMenuItem1Widget[3], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[4].setPoint(TOPLEFT, topMenuItem1Widget[3], BOTTOMLEFT, 0, - 0.002)
 	call topMenuItem1Widget[4].setAlpha(0)
 
 	set topMenuItem1Button[4] = Frame.newTextButton(topMenuItem1Widget[4])
@@ -615,7 +704,7 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuItem1Button[4].regEvent(FRAME_EVENT_PRESSED, function jumpToAchievement)
 
 	set topMenuItem1Widget[5] = Frame.newImage1(popupWidget[1], "war3mapImported\\ui\\itemSelected.tga", 0.1, 0.034)
-	call topMenuItem1Widget[5].setPoint(TOPLEFT, topMenuItem1Widget[4], BOTTOMLEFT, 0, -0.002)
+	call topMenuItem1Widget[5].setPoint(TOPLEFT, topMenuItem1Widget[4], BOTTOMLEFT, 0, - 0.002)
 	call topMenuItem1Widget[5].setAlpha(0)
 
 	set topMenuItem1Button[5] = Frame.newTextButton(topMenuItem1Widget[5])
@@ -623,7 +712,66 @@ function drawUI_Conditions takes nothing returns boolean
 	call topMenuItem1Button[5].regEvent(FRAME_EVENT_PRESSED, function jumpToMall)
 	
 
+	// 商城图标
+	set shopWidget[1] = Frame.newImage1(popupRightWidget[1], "replaceabletextures\\commandbuttons\\PASBTNjinbi.blp", 0.04, 0.047)
+	call shopWidget[1].setPoint(TOPLEFT, popupRightWidget[1], TOPLEFT, 0.01, - 0.018)
 
+	set shopButton[1] = Frame.newTextButton(shopWidget[1])
+	call shopButton[1].setAllPoints(shopWidget[1])
+	call shopButton[1].regEvent	(FRAME_MOUSE_ENTER, function showShopTooltip)
+	call shopButton[1].regEvent(FRAME_MOUSE_LEAVE, function hideShopTooltip)
+
+	set shopWidget[2] = Frame.newImage1(popupRightWidget[1], "replaceabletextures\\commandbuttons\\PASBTNmucai.blp", 0.04, 0.047)
+	call shopWidget[2].setPoint(LEFT, shopWidget[1], RIGHT, 0.0088, 0)
+
+	set shopButton[2] = Frame.newTextButton(shopWidget[2])
+	call shopButton[2].setAllPoints(shopWidget[2])
+	call shopButton[2].regEvent	(FRAME_MOUSE_ENTER, function showShopTooltip)
+	call shopButton[2].regEvent(FRAME_MOUSE_LEAVE, function hideShopTooltip)
+
+	set shopWidget[3] = Frame.newImage1(popupRightWidget[1], "replaceabletextures\\commandbuttons\\PASBTNshouchong.blp", 0.04, 0.047)
+	call shopWidget[3].setPoint(LEFT, shopWidget[2], RIGHT, 0.0088, 0)
+
+	set shopButton[3] = Frame.newTextButton(shopWidget[3])
+	call shopButton[3].setAllPoints(shopWidget[3])
+	call shopButton[3].regEvent	(FRAME_MOUSE_ENTER, function showShopTooltip)
+	call shopButton[3].regEvent(FRAME_MOUSE_LEAVE, function hideShopTooltip)
+
+	set shopWidget[4] = Frame.newImage1(popupRightWidget[1], "replaceabletextures\\commandbuttons\\PASBTNzhihuiqiu.blp", 0.04, 0.047)
+	call shopWidget[4].setPoint(LEFT, shopWidget[3], RIGHT, 0.0088, 0)
+
+	set shopButton[4] = Frame.newTextButton(shopWidget[4])
+	call shopButton[4].setAllPoints(shopWidget[4])
+	call shopButton[4].regEvent	(FRAME_MOUSE_ENTER, function showShopTooltip)
+	call shopButton[4].regEvent(FRAME_MOUSE_LEAVE, function hideShopTooltip)
+
+	set shopWidget[5] = Frame.newImage1(popupRightWidget[1], "replaceabletextures\\commandbuttons\\PASBTNjingqingqidai.blp", 0.04, 0.047)
+	call shopWidget[5].setPoint(LEFT, shopWidget[4], RIGHT, 0.0088, 0)
+
+	set shopButton[5] = Frame.newTextButton(shopWidget[5])
+	call shopButton[5].setAllPoints(shopWidget[5])
+	call shopButton[5].regEvent	(FRAME_MOUSE_ENTER, function showShopTooltip)
+	call shopButton[5].regEvent(FRAME_MOUSE_LEAVE, function hideShopTooltip)
+
+	call hideShopIcons()
+
+	set shopTooltipWidget[1] = Frame.newTips0(GUI, "tipbox")
+	call shopTooltipWidget[1].hide()
+
+	set shopTooltipWidget[2] = Frame.newText1(shopTooltipWidget[1], "|cFF00FF00中型金币礼包|r", "TXA14")
+	call shopTooltipWidget[2].setSize(0.22, 0)
+
+	set shopTooltipWidget[3] = Frame.newText1(shopTooltipWidget[1], "效果：15波后地图中间NPC领取中型金币资源包", "TXA11")
+	call shopTooltipWidget[3].setSize(0.22, 0)
+
+	set shopTooltipWidget[4] = Frame.newText1(shopTooltipWidget[1], "解锁状态：|cffff0000未解锁|r", "TXA11")
+	call shopTooltipWidget[4].setSize(0.22, 0)
+
+	call shopTooltipWidget[4].setPoint(BOTTOM, shopWidget[1], TOP, 0, 0.01)
+	call shopTooltipWidget[3].setPoint(BOTTOM, shopTooltipWidget[4], TOP, 0, 0.005)
+	call shopTooltipWidget[2].setPoint(BOTTOM, shopTooltipWidget[3], TOP, 0, 0.005)
+	call shopTooltipWidget[1].setPoint(TOPLEFT, shopTooltipWidget[2], TOPLEFT, - 0.005, 0.005)
+	call shopTooltipWidget[1].setPoint(BOTTOMRIGHT, shopTooltipWidget[4], BOTTOMRIGHT, 0.005, - 0.005)
 	
 	return false
 endfunction

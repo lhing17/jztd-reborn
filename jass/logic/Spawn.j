@@ -67,15 +67,15 @@ function ServerSavePointsEveryTenWave takes nothing returns nothing
 endfunction
 
 function initMobsAndBosses takes nothing returns nothing
-    set mob[1] =  'h005'
-    set mob[2] =  'u000'
-    set mob[3] =  'h006'
-    set mob[4] =  'e002'
-    set mob[5] =  'o004'
-    set mob[6] =  'u001'
-    set mob[7] =  'n00H'
-    set mob[8] =  'h007'
-    set mob[9] =  'z000'
+    set mob[1] = 'h005'
+    set mob[2] = 'u000'
+    set mob[3] = 'h006'
+    set mob[4] = 'e002'
+    set mob[5] = 'o004'
+    set mob[6] = 'u001'
+    set mob[7] = 'n00H'
+    set mob[8] = 'h007'
+    set mob[9] = 'z000'
     set mob[10] = 'z001'
     set mob[11] = 'u002'
     set mob[12] = 'o005'
@@ -274,7 +274,7 @@ function spawn takes nothing returns nothing
             endif
 
             set gold = R2I(goldCoeff * gold)
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+2，所有塔恢复30%内力")
+            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+" + I2S(luckAddition) + "，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverManaAndEquipEffect)
@@ -302,7 +302,7 @@ function spawn takes nothing returns nothing
 
                 // 记录是谁刷的怪
                 call SaveInteger(YDHT, GetHandleId(bj_lastCreatedUnit), StringHash("owner"), i + 1)
-                 // 难六以上，有概率出现变异怪
+                // 难六以上，有概率出现变异怪
                 if udg_difficulty > 5 and GetRandomInt(1, 50) <= udg_difficulty then
                     call mutatedAttacker(bj_lastCreatedUnit)
                 endif
