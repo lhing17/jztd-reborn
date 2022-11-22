@@ -126,7 +126,7 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveUseAbility(u, ut, 'A02E', 'A02B', 852560, 18, 60)
     call PassiveUseAbility(u, ut, 'A02F', 'A02G', 852591, 10, 90)
     call PassiveUseAbility(u, ut, 'A02Q', 'A02P', 852128, 20, 50)
-    call PassiveUseAbility(u, ut, 'A02T', 'A02U', 852587, 25, 30)
+    call PassiveUseAbility(u, ut, 'A02T', 'A02U', 852587, 25, 20)
     call PassiveUseAbility(u, ut, 'A02V', 'A02W', 852126, 23, 50)
     call PassiveUseAbility(u, ut, 'A02Y', 'A02X', 852502, 14, 40)
     call PassiveUseAbility(u, ut, 'A034', 'A035', 852126, 13, 120)
