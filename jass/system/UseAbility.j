@@ -209,6 +209,7 @@ function UseAbility_Conditions takes nothing returns boolean
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
         call DestroyEffectBJ(AddSpecialEffectLoc("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", loc))
         call YDWETimerDestroyTextTag(.65, GetLastCreatedTextTag())
+        call DestroyEffect( LoadEffectHandle(YDHT, GetHandleId(u), $A0B0C0))
 
         // 清空哈希表，避免Handle重用
         call FlushChildHashtable(YDHT, GetHandleId(u))

@@ -258,6 +258,8 @@ globals
     constant integer EQUIP_PICKUP_KEY = 1002 // 装备是否被拾取过
     constant integer EQUIP_INT_LEVEL_KEY = 1003 // 装备级别
     constant integer EQUIP_BASE_STRENGTH_KEY = 1004 // 装备基础强度
+
+    constant integer TOWER_LEVEL_KEY = 2000 // 塔等级
     
     // 判断是否处于失败状态
     boolean isFailing = false
@@ -1016,7 +1018,7 @@ function InitPriv takes nothing returns nothing
     local string name
     loop
         exitwhen i > 5
-        set name = GetPlayerName(Player(i - 1))
+        set name = LoadStr(YDHT, GetHandleId(Player(i - 1)), StringHash("name"))
         if name == "WorldEdit" or name == "zeikale" or name == "zeikala" or name == "非我莫属xq" or name == "苍穹而降" or name == "晓窗临风" or name == "Talent天坤" then
             call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 15., "|CFFff9933开启测试人员权限|r")
             set udg_isTest[i] = true
@@ -1083,6 +1085,136 @@ function MapInit takes nothing returns nothing
     set epic_drops[4] = 'I00T'
     set epic_drops[5] = 'I011'
 
+    set low_towers[1] = 'I02F'
+    set low_towers[2] = 'I02N'
+    set low_towers[3] = 'I02O'
+    set low_towers[4] = 'I02P'
+    set low_towers[5] = 'I02Q'
+    set low_towers[6] = 'I02R'
+    set low_towers[7] = 'I02S'
+    set low_towers[8] = 'I02T'
+    set low_towers[9] = 'I037'
+    set low_towers[10] = 'I038'
+    set low_towers[11] = 'I039'
+    set low_towers[12] = 'I03A'
+    set low_towers[13] = 'I03B'
+    set low_towers[14] = 'I03C'
+    set low_towers[15] = 'I03D'
+    set low_towers[16] = 'I03E'
+    set low_towers[17] = 'I03G'
+    set low_towers[18] = 'I03X'
+    set low_towers[19] = 'I03Y'
+    set low_towers[20] = 'I03Z'
+    set low_towers[21] = 'I040'
+    set low_towers[22] = 'I041'
+    set low_towers[23] = 'I042'
+    set low_towers[24] = 'I043'
+    set low_towers[25] = 'I044'
+    set low_towers[26] = 'I045'
+    set low_towers[27] = 'I046'
+    set low_towers[28] = 'I047'
+    set low_towers[29] = 'I04B'
+    set low_towers[30] = 'I04N'
+    set low_towers[31] = 'I04O'
+    set low_towers[32] = 'I04P'
+    set low_towers[33] = 'I04Q'
+    set low_towers[34] = 'I04R'
+    set low_towers[35] = 'I04V'
+    set low_towers[36] = 'I04W'
+    set low_towers[37] = 'I04X'
+    set low_towers[38] = 'I04Y'
+    set low_towers[39] = 'I04Z'
+    set low_towers[40] = 'I050'
+    set low_towers[41] = 'I05D'
+    set low_towers[42] = 'I05E'
+    set low_towers[43] = 'I05F'
+    set low_towers[44] = 'I05G'
+    set low_towers[45] = 'I05H'
+    set low_towers[46] = 'I05I'
+    set low_towers[47] = 'I05J'
+    set low_towers[48] = 'I05X'
+
+    set normal_towers[1] = 'I02G'
+    set normal_towers[2] = 'I02U'
+    set normal_towers[3] = 'I02V'
+    set normal_towers[4] = 'I02W'
+    set normal_towers[5] = 'I02X'
+    set normal_towers[6] = 'I02Z'
+    set normal_towers[7] = 'I03F'
+    set normal_towers[8] = 'I03H'
+    set normal_towers[9] = 'I03J'
+    set normal_towers[10] = 'I03K'
+    set normal_towers[11] = 'I03M'
+    set normal_towers[12] = 'I03N'
+    set normal_towers[13] = 'I03P'
+    set normal_towers[14] = 'I03S'
+    set normal_towers[15] = 'I048'
+    set normal_towers[16] = 'I049'
+    set normal_towers[17] = 'I04A'
+    set normal_towers[18] = 'I04C'
+    set normal_towers[19] = 'I04D'
+    set normal_towers[20] = 'I04E'
+    set normal_towers[21] = 'I04G'
+    set normal_towers[22] = 'I04S'
+    set normal_towers[23] = 'I04T'
+    set normal_towers[24] = 'I051'
+    set normal_towers[25] = 'I052'
+    set normal_towers[26] = 'I054'
+    set normal_towers[27] = 'I05K'
+    set normal_towers[28] = 'I05L'
+    set normal_towers[29] = 'I05M'
+    set normal_towers[30] = 'I05N'
+    set normal_towers[31] = 'I05P'
+    set normal_towers[32] = 'I05R'
+    set normal_towers[33] = 'I05W'
+    set normal_towers[34] = 'I05Y'
+
+    set fine_towers[1] = 'I02H'
+    set fine_towers[2] = 'I02Y'
+    set fine_towers[3] = 'I030'
+    set fine_towers[4] = 'I031'
+    set fine_towers[5] = 'I033'
+    set fine_towers[6] = 'I035'
+    set fine_towers[7] = 'I03I'
+    set fine_towers[8] = 'I03L'
+    set fine_towers[9] = 'I03O'
+    set fine_towers[10] = 'I03Q'
+    set fine_towers[11] = 'I03T'
+    set fine_towers[12] = 'I04F'
+    set fine_towers[13] = 'I04H'
+    set fine_towers[14] = 'I04I'
+    set fine_towers[15] = 'I04J'
+    set fine_towers[16] = 'I04U'
+    set fine_towers[17] = 'I053'
+    set fine_towers[18] = 'I055'
+    set fine_towers[19] = 'I056'
+    set fine_towers[20] = 'I057'
+    set fine_towers[21] = 'I058'
+    set fine_towers[22] = 'I059'
+    set fine_towers[23] = 'I05A'
+    set fine_towers[24] = 'I05O'
+    set fine_towers[25] = 'I05Q'
+    set fine_towers[26] = 'I05S'
+    set fine_towers[27] = 'I05Z'
+
+    set perfect_towers[1] = 'I02I'
+    set perfect_towers[2] = 'I032'
+    set perfect_towers[3] = 'I034'
+    set perfect_towers[4] = 'I036'
+    set perfect_towers[5] = 'I03R'
+    set perfect_towers[6] = 'I03U'
+    set perfect_towers[7] = 'I03V'
+    set perfect_towers[8] = 'I03W'
+    set perfect_towers[9] = 'I04K'
+    set perfect_towers[10] = 'I04L'
+    set perfect_towers[11] = 'I04M'
+    set perfect_towers[12] = 'I05B'
+    set perfect_towers[13] = 'I05C'
+    set perfect_towers[14] = 'I05T'
+    set perfect_towers[15] = 'I05U'
+    set perfect_towers[16] = 'I05V'
+    set perfect_towers[17] = 'I060'
+
     loop
         exitwhen j > MAX_NORMAL_DROP
         call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
@@ -1139,6 +1271,41 @@ function MapInit takes nothing returns nothing
         call SaveStr(YDHT, shenqi[j], EQUIP_LEVEL_KEY, "|cff800080传说|r")
         call SaveInteger(YDHT, shenqi[j], EQUIP_INT_LEVEL_KEY, 6)
         call SaveInteger(YDHT, shenqi[j], EQUIP_BASE_STRENGTH_KEY, 20)
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j >= 4
+        call SaveStr(YDHT, GetHandleId(Player(j - 1)), StringHash("name"), GetPlayerName(Player(j - 1)))
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j >= LOW_SIZE
+        call SaveInteger(YDHT, low_towers[j], TOWER_LEVEL_KEY, 1)
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j >= NORMAL_SIZE
+        call SaveInteger(YDHT, normal_towers[j], TOWER_LEVEL_KEY, 2)
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j >= FINE_SIZE
+        call SaveInteger(YDHT, fine_towers[j], TOWER_LEVEL_KEY, 3)
+        set j = j + 1
+    endloop
+
+    set j = 1
+    loop
+        exitwhen j >= PERFECT_SIZE
+        call SaveInteger(YDHT, perfect_towers[j], TOWER_LEVEL_KEY, 4)
         set j = j + 1
     endloop
 

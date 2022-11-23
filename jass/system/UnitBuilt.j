@@ -141,10 +141,34 @@ function UnitBuilt_Conditions takes nothing returns boolean
     set u = null
     return false
 endfunction
+
+function UnitBuiltFinish_Conditions takes nothing returns boolean
+    local unit u = GetTriggerUnit()
+    local integer level = 0
+    if not IsUnitType(u, UNIT_TYPE_HERO) then
+        set level = LoadInteger(YDHT, getStructItem(GetUnitTypeId(u)), TOWER_LEVEL_KEY)
+        if level == 1 then
+            call SaveEffectHandle(YDHT, GetHandleId(u), $A0B0C0, AddSpecialEffect("war3mapImported\\pinzhi-lan.mdx", GetUnitX(u), GetUnitY(u)))
+        elseif level == 2 then
+            call SaveEffectHandle(YDHT, GetHandleId(u), $A0B0C0, AddSpecialEffect("war3mapImported\\pinzhi-zi.mdx", GetUnitX(u), GetUnitY(u)))
+        elseif level == 3 then
+            call SaveEffectHandle(YDHT, GetHandleId(u), $A0B0C0, AddSpecialEffect("war3mapImported\\pinzhi-cheng.mdx", GetUnitX(u), GetUnitY(u)))
+        elseif level == 4 then
+            call SaveEffectHandle(YDHT, GetHandleId(u), $A0B0C0, AddSpecialEffect("war3mapImported\\pinzhi-hong.mdx", GetUnitX(u), GetUnitY(u)))
+        endif
+    endif
+    set u = null
+    return false
+endfunction
+
 function UnitBuilt takes nothing returns nothing
     local trigger t = CreateTrigger()
     call initNeutralStructures()
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_CONSTRUCT_START)
     call TriggerAddCondition(t, Condition(function UnitBuilt_Conditions))
+
+    set t = CreateTrigger()
+    call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_CONSTRUCT_FINISH)
+    call TriggerAddCondition(t, Condition(function UnitBuiltFinish_Conditions))
     set t = null
 endfunction

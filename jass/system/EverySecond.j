@@ -96,7 +96,7 @@ function EverySecond_Conditions takes nothing returns boolean
             call IssueImmediateOrder(wisbomBall[i], "corrosivebreath")
             call IssueImmediateOrder(wisbomBall[i], "chemicalrage")
             call IssueImmediateOrder(wisbomBall[i], "cloudoffog")
-            call IssueImmediateOrder(wisbomBall[i], "clusterrockets")
+            call IssueImmediateOrder(wisbomBall[i], "cyclone")
             call IssueImmediateOrder(wisbomBall[i], "coldarrows")
         endif
 

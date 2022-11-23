@@ -56,9 +56,15 @@ function KeyInput takes nothing returns nothing
     if s == "JZTD666" or s == "jztd666" then
         set qqTeamAward[i] = true
         call DzAPI_Map_StoreBoolean(p, "qqTeamAward" , true)
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r|CFFFE890D恭喜解锁了QQ群福利")
     endif
     if s == "showName" then
         call BJDebugMsg(GetPlayerName(Player(i - 1)))
+        if GetPlayerName(Player(i - 1)) == "zeikale" then
+            call BJDebugMsg("zeikale")
+        else
+            call BJDebugMsg("not zeikale")
+        endif
     endif
     set p = null
 endfunction
