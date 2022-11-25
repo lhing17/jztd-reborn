@@ -1,3 +1,14 @@
+globals
+    constant integer ELEMENT_GOLD = 1 // 金 加赏金
+    constant integer ELEMENT_WOOD = 2 // 木 加经验
+    constant integer ELEMENT_ICE = 3  // 冰 加减速
+    constant integer ELEMENT_FIRE = 4 // 火 加暴击伤害
+    constant integer ELEMENT_EARTH = 5 // 土 加眩晕
+    constant integer ELEMENT_LIGHTENING = 6 // 雷 加不稳定伤害
+    constant integer ELEMENT_WIND = 7 // 风 加攻速
+
+endglobals
+
 library TowerLibrary
     function IsBuilder takes integer id returns boolean
         return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
@@ -98,6 +109,15 @@ library TowerLibrary
         endloop
         return 0
     endfunction
+
+
+    // 保存塔的元素属性
+    function saveTowerElementAttr takes integer towerId, integer elementId, integer value returns nothing
+        call SaveInteger(YDHT, towerId * 5, elementId, value)
+    endfunction
+
+
+
     function SaveTowerAbility_1 takes integer tower_id, integer spell_id, integer level returns nothing
         local integer i = 0
         loop

@@ -100,12 +100,12 @@ function UnitAttack_Conditions takes nothing returns boolean
             call SetWidgetLife(ut, GetWidgetLife(ut) * .9)
         endif
     endif
-    if YDWEUnitHasItemOfTypeBJNull(u, 'I01J') and GetRandomReal(0, 100) <= 10 and GetUnitTypeId(u) != 'u00C' and GetUnitTypeId(u) != 'u00D' and GetUnitTypeId(u) != 'u00E' and GetUnitTypeId(u) != 'u00F' then
-        if IsUnitType(ut, UNIT_TYPE_HERO) == false then
-            call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_GOLD)
-        elseif GetRandomReal(0, 100) <= 14 then
-            call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
-        endif
+    if YDWEUnitHasItemOfTypeBJNull(u, 'I01J') and GetRandomReal(0, 100) <= 15 and GetUnitTypeId(u) != 'u00C' and GetUnitTypeId(u) != 'u00D' and GetUnitTypeId(u) != 'u00E' and GetUnitTypeId(u) != 'u00F' then
+        // if IsUnitType(ut, UNIT_TYPE_HERO) == false then
+        call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_GOLD)
+        // elseif GetRandomReal(0, 100) <= 14 then
+        // call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
+        // endif
     endif
     call PassiveRangeDamage(u, ut, 'A001', 500, 100, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
     call PassiveRangeDamage(u, ut, 'A045', 800, 100, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)

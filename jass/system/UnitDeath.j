@@ -178,7 +178,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     // 击杀冯默风获得随机神器图谱
     if GetUnitTypeId(ut) == 'H00I' then
         if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
-            set loc = GetRandomLocInRect(udg_drop_rect[i])
+            set loc = GetRandomLocInRect(udg_drop_rect[LoadInteger(YDHT, GetHandleId(ut), StringHash("owner"))])
         else
             set loc = GetUnitLoc(ut)
         endif
@@ -189,7 +189,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     // 击杀黄裳获取随机绝内
     if GetUnitTypeId(ut) == 'U00U' then
         if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
-            set loc = GetRandomLocInRect(udg_drop_rect[i])
+            set loc = GetRandomLocInRect(udg_drop_rect[LoadInteger(YDHT, GetHandleId(ut), StringHash("owner"))])
         else
             set loc = GetUnitLoc(ut)
         endif
@@ -200,7 +200,7 @@ function UnitDeath_Conditions takes nothing returns boolean
     // 击杀朱聪获得妙手空空手套
     if GetUnitTypeId(ut) == 'H00J' then
         if LoadInteger(YDHT, GetHandleId(ut), StringHash("owner")) != 0 then
-            set loc = GetRandomLocInRect(udg_drop_rect[i])
+            set loc = GetRandomLocInRect(udg_drop_rect[LoadInteger(YDHT, GetHandleId(ut), StringHash("owner"))])
         else
             set loc = GetUnitLoc(ut)
         endif
