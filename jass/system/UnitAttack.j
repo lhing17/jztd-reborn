@@ -118,7 +118,7 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveSingleDamage(u, ut, 'A04T', 2000, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
     call PassiveUseAbility(u, ut, 'A00N', 'A00S', 852119, 18, 50)
     call PassiveUseAbility(u, ut, 'A00V', 'A00U', 852106, 25, 25)
-    call PassiveUseAbility(u, ut, 'A00X', 'A00Y', 852652, 17, 60)
+    call PassiveUseAbility(u, ut, 'A00X', 'A00Y', 852652, 17, 70)
     call PassiveUseAbility(u, ut, 'A027', 'A028', 852597, 15, 70)
     call PassiveUseAbility(u, ut, 'A02C', 'A02A', 852662, 21, 50)
     call PassiveUseAbility(u, ut, 'A02D', 'A02B', 852560, 18, 60)
