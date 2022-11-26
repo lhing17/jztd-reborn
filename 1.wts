@@ -1227,25 +1227,25 @@ STRING 206
 }
 
 STRING 207
-// 单位: h015 (|cff3366ff老顽童周伯通|r), Hotkey (热键)
+// 单位: H015 (|cff3366ff老顽童周伯通|r), Hotkey (热键)
 {
 E
 }
 
 STRING 208
-// 单位: h015 (|cff3366ff老顽童周伯通|r), Name (名字)
+// 单位: H015 (|cff3366ff老顽童周伯通|r), Name (名字)
 {
 |cff3366ff老顽童周伯通|r
 }
 
 STRING 209
-// 单位: h015 (|cff3366ff老顽童周伯通|r), Tip (提示工具 - 基础)
+// 单位: H015 (|cff3366ff老顽童周伯通|r), Tip (提示工具 - 基础)
 {
 建造老顽童周伯通(E)
 }
 
 STRING 210
-// 单位: h015 (|cff3366ff老顽童周伯通|r), Ubertip (提示工具 - 扩展)
+// 单位: H015 (|cff3366ff老顽童周伯通|r), Ubertip (提示工具 - 扩展)
 {
 |cff3366ff全真已故掌门的师弟，武功造诣极深但心智不够成熟，有一颗稚子之心，贪吃爱玩超过一切。。|r|n|cff3366ff攻击|r：|cff00ff004500|r|n|cff3366ff攻速|r：|cff00ff001.1|r|n|cff3366ff范围|r：|cff00ff00900|n|r|cff3366ff武功|r：|cff00ff00双手互搏LV1，空明拳LV1|n|r|cffff0000只能建造两个|r|cff00ff00|n|r不可继续修炼
 }
@@ -2169,25 +2169,25 @@ STRING 363
 }
 
 STRING 364
-// 单位: n01O (|cff3366ff武当一侠宋远桥|r), Hotkey (热键)
+// 单位: N01O (|cff3366ff武当一侠宋远桥|r), Hotkey (热键)
 {
 A
 }
 
 STRING 365
-// 单位: n01O (|cff3366ff武当一侠宋远桥|r), Name (名字)
+// 单位: N01O (|cff3366ff武当一侠宋远桥|r), Name (名字)
 {
 |cff3366ff武当一侠宋远桥|r
 }
 
 STRING 366
-// 单位: n01O (|cff3366ff武当一侠宋远桥|r), Tip (提示工具 - 基础)
+// 单位: N01O (|cff3366ff武当一侠宋远桥|r), Tip (提示工具 - 基础)
 {
 建造武当一侠宋远桥(A)
 }
 
 STRING 367
-// 单位: n01O (|cff3366ff武当一侠宋远桥|r), Ubertip (提示工具 - 扩展)
+// 单位: N01O (|cff3366ff武当一侠宋远桥|r), Ubertip (提示工具 - 扩展)
 {
 |cff3366ff武当派大哥，管理派内一切事务，武功震古烁今。|r|n|cff3366ff攻击|r：|cff00ff003180|r|n|cff3366ff攻速|r：|cff00ff001.1|r|n|cff3366ff范围|r：|cff00ff00900|n|r|cff3366ff武功|r：|cff00ff00虎爪绝户手LV3，真武七截阵LV1|n|r|cffff0000只能建造一个|r|cff00ff00|n|r不可继续修炼
 }
@@ -2595,25 +2595,25 @@ STRING 434
 }
 
 STRING 435
-// 单位: n027 (|cffff00ff周芷若|r), Hotkey (热键)
+// 单位: N027 (|cffff00ff周芷若|r), Hotkey (热键)
 {
 C
 }
 
 STRING 436
-// 单位: n027 (|cffff00ff周芷若|r), Name (名字)
+// 单位: N027 (|cffff00ff周芷若|r), Name (名字)
 {
 |cffff00ff周芷若|r
 }
 
 STRING 437
-// 单位: n027 (|cffff00ff周芷若|r), Tip (提示工具 - 基础)
+// 单位: N027 (|cffff00ff周芷若|r), Tip (提示工具 - 基础)
 {
 建造周芷若(|cffffcc00C|r)
 }
 
 STRING 438
-// 单位: n027 (|cffff00ff周芷若|r), Ubertip (提示工具 - 扩展)
+// 单位: N027 (|cffff00ff周芷若|r), Ubertip (提示工具 - 扩展)
 {
 |cffff00ff峨眉俗家弟子，秀若芝兰，温婉斯文，清逸如仙，冰雪出尘之姿中带有威严仪态，气震数千豪杰。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff004200|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001100|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV5，峨眉心法LV1，九阴白骨爪LV2|n|r|cffff0000只能建造一个|n|r不可继续修炼
 }
@@ -2925,25 +2925,25 @@ STRING 489
 }
 
 STRING 490
-// 单位: n02O (|cffff6800丐帮执法长老|r), Hotkey (热键)
+// 单位: N02O (|cffff6800丐帮执法长老|r), Hotkey (热键)
 {
 W
 }
 
 STRING 491
-// 单位: n02O (|cffff6800丐帮执法长老|r), Name (名字)
+// 单位: N02O (|cffff6800丐帮执法长老|r), Name (名字)
 {
 |cffff6800丐帮执法长老|r
 }
 
 STRING 492
-// 单位: n02O (|cffff6800丐帮执法长老|r), Tip (提示工具 - 基础)
+// 单位: N02O (|cffff6800丐帮执法长老|r), Tip (提示工具 - 基础)
 {
 建造丐帮执法长老(|cffffcc00W|r)
 }
 
 STRING 493
-// 单位: n02O (|cffff6800丐帮执法长老|r), Ubertip (提示工具 - 扩展)
+// 单位: N02O (|cffff6800丐帮执法长老|r), Ubertip (提示工具 - 扩展)
 {
 |cffff6800丐帮执法长老，负责执行帮中法纪，谁不服打谁板子。|r|cffffff00|n|r|cffff6800攻击|r：|cff00ff001584|r|n|cffff6800攻速|r：|cff00ff001.0|r|n|cffff6800范围|r：|cff00ff00700|n|r|cffff6800武功|r：|cff00ff00太祖棍法LV3，逍遥游LV2|n|r不可继续修炼
 }
@@ -3147,19 +3147,19 @@ STRING 526
 }
 
 STRING 527
-// 单位: o002 (|cffffff00醉世|r), Name (名字)
+// 单位: O002 (|cffffff00醉世|r), Name (名字)
 {
 |cffffff00醉世|r
 }
 
 STRING 528
-// 单位: o002 (|cffffff00醉世|r), Tip (提示工具 - 基础)
+// 单位: O002 (|cffffff00醉世|r), Tip (提示工具 - 基础)
 {
 建造酒肉和尚醉世(|cffffcc00S|r)
 }
 
 STRING 529
-// 单位: o002 (|cffffff00醉世|r), Ubertip (提示工具 - 扩展)
+// 单位: O002 (|cffffff00醉世|r), Ubertip (提示工具 - 扩展)
 {
 |cffffff00酒肉穿肠过，佛祖心中留|r|n|cffffff00攻击|r：|cff00ff002200|r|n|cffffff00攻速|r：|cff00ff001.2|r|n|cffffff00范围|r：|cff00ff001000|n|r|cffffff00武功|r：|cff00ff00韦陀棍法LV5，大力金刚指LV2，罗汉伏魔功LV1|n|r不可继续修炼
 }

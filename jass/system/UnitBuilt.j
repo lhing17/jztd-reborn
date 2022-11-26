@@ -91,10 +91,10 @@ function initNeutralStructures takes nothing returns nothing
     call SaveInteger(NHT, 'n002', 0, 'I033')
     call SaveInteger(NHT, 'n02R', 0, 'I05A')
     call SaveInteger(NHT, 'n022', 0, 'I04G')
-    call SaveInteger(NHT, 'n01O', 0, 'I03V')
+    call SaveInteger(NHT, 'N01O', 0, 'I03V')
     call SaveInteger(NHT, 'n01T', 0, 'I047')
     call SaveInteger(NHT, 'h00U', 0, 'I05J')
-    call SaveInteger(NHT, 'h015', 0, 'I05U')
+    call SaveInteger(NHT, 'H015', 0, 'I05U')
     call SaveInteger(NHT, 'n025', 0, 'I04J')
     call SaveInteger(NHT, 'h00X', 0, 'I05M')
     call SaveInteger(NHT, 'n024', 0, 'I04I')
@@ -114,15 +114,15 @@ function initNeutralStructures takes nothing returns nothing
     call SaveInteger(NHT, 'n021', 0, 'I04F')
     call SaveInteger(NHT, 'h00H', 0, 'I03C')
     call SaveInteger(NHT, 'n00C', 0, 'I04V')
-    call SaveInteger(NHT, 'n02O', 0, 'I057')
+    call SaveInteger(NHT, 'N02O', 0, 'I057')
     call SaveInteger(NHT, 'n01B', 0, 'I03I')
-    call SaveInteger(NHT, 'n027', 0, 'I04L')
+    call SaveInteger(NHT, 'N027', 0, 'I04L')
     call SaveInteger(NHT, 'o00T', 0, 'I05X')
     call SaveInteger(NHT, 'n02H', 0, 'I04Z')
     call SaveInteger(NHT, 'n02D', 0, 'I04T')
     call SaveInteger(NHT, 'n00E', 0, 'I055')
     call SaveInteger(NHT, 'n011', 0, 'I02T')
-    call SaveInteger(NHT, 'o002', 0, 'I035')
+    call SaveInteger(NHT, 'O002', 0, 'I035')
     call SaveInteger(NHT, 'n02G', 0, 'I04X')
     call SaveInteger(NHT, 'n02Q', 0, 'I059')
 endfunction
@@ -145,7 +145,7 @@ endfunction
 function UnitBuiltFinish_Conditions takes nothing returns boolean
     local unit u = GetTriggerUnit()
     local integer level = 0
-    if not IsUnitType(u, UNIT_TYPE_HERO) then
+    if not IsUnitType(u, UNIT_TYPE_HERO) or IsUnitType(u, UNIT_TYPE_STRUCTURE) then
         set level = LoadInteger(YDHT, getStructItem(GetUnitTypeId(u)), TOWER_LEVEL_KEY)
         if level == 1 then
             call SaveEffectHandle(YDHT, GetHandleId(u), $A0B0C0, AddSpecialEffect("war3mapImported\\pinzhi-lan.mdx", GetUnitX(u), GetUnitY(u)))

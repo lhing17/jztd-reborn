@@ -630,7 +630,7 @@ function InitTrig_MapInit takes nothing returns nothing
         call ShowUnitShow(gg_unit_o00A_0014)
         // 设置塔允许建造的个数限制
         call SetPlayerTechMaxAllowedSwap('H004', 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap('n01O', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('N01O', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01N', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('O003', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n002', 2, ConvertedPlayer(bj_forLoopAIndex))
@@ -639,9 +639,9 @@ function InitTrig_MapInit takes nothing returns nothing
         call SetPlayerTechMaxAllowedSwap('n01Z', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('N00G', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('H017', 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap('h015', 2, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('H015', 2, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('h00Z', 1, ConvertedPlayer(bj_forLoopAIndex))
-        call SetPlayerTechMaxAllowedSwap('n027', 1, ConvertedPlayer(bj_forLoopAIndex))
+        call SetPlayerTechMaxAllowedSwap('N027', 1, ConvertedPlayer(bj_forLoopAIndex))
         call SetPlayerTechMaxAllowedSwap('n01S', 2, ConvertedPlayer(bj_forLoopAIndex))
         
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
