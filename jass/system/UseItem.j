@@ -2,7 +2,7 @@ function LearnKungfu takes unit u, item it returns nothing
     local integer abilityId = 0
     local integer i = 1
     if not IsUnitType(u, UNIT_TYPE_HERO) then
-        call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFFFF0000只有掌门可以学习绝世武功")
+        call DisplayTextToPlayer(GetOwningPlayer(u), 0, 0, "|CFFFF0000只有英雄单位可以学习绝世武功")
         call UnitAddItemById(u, GetItemTypeId(it))
         return
     endif

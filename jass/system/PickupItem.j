@@ -181,7 +181,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
             endif
         else
-            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您未收藏游戏|r")
+            call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff0000只有先收藏地图才能领取哦~|r")
         endif
     endif
     if item_id == 'I020' then
@@ -515,12 +515,12 @@ function PickupItem_Conditions takes nothing returns boolean
         set j = 1
         loop
             exitwhen j > 6
-                if GetItemTypeId(it) == GetItemTypeId(UnitItemInSlotBJ(u, j)) and it != UnitItemInSlotBJ(u, j) then
-                    set award = GetItemCharges(it)
-                    call SetItemCharges(UnitItemInSlotBJ(u, j), GetItemCharges(UnitItemInSlotBJ(u, j)) + award)
-                    call RemoveItem(it)
-                    exitwhen true
-                endif
+            if GetItemTypeId(it) == GetItemTypeId(UnitItemInSlotBJ(u, j)) and it != UnitItemInSlotBJ(u, j) then
+                set award = GetItemCharges(it)
+                call SetItemCharges(UnitItemInSlotBJ(u, j), GetItemCharges(UnitItemInSlotBJ(u, j)) + award)
+                call RemoveItem(it)
+                exitwhen true
+            endif
             set j = j + 1
         endloop
     endif
@@ -571,6 +571,26 @@ function YDWESystemItemCombineAction takes nothing returns nothing
     set it = null
 endfunction
 
+function BuyItem_Conditions takes nothing returns boolean
+    local unit u = GetBuyingUnit()
+	local unit ut = GetSellingUnit()
+	local item it = GetSoldItem()
+	local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+
+
+    // 所有物品买到门派建造者的身上
+    if builder[i] != null and u != builder[i] then
+        call UnitAddItemById(builder[i], GetItemTypeId(it))
+        call RemoveItem(it)
+    endif
+
+
+    set u = null
+    set ut = null
+    set it = null
+    return false
+endfunction
+
 function PickupItem takes nothing returns nothing
     local trigger t = CreateTrigger()
     call InitBornLoc()
@@ -591,5 +611,9 @@ function PickupItem takes nothing returns nothing
     set t = CreateTrigger()
     call YDWESyStemItemCombineRegistTrigger(t)
     call TriggerAddAction(t, function YDWESystemItemCombineAction)
+
+    set t = CreateTrigger()
+	call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SELL_ITEM)
+	call TriggerAddCondition(t, Condition(function BuyItem_Conditions))
     set t = null
 endfunction
