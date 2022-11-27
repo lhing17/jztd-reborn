@@ -679,6 +679,7 @@ function Trig_ChooseNanDuFunc013T takes nothing returns nothing
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
         call SetPlayerTechResearchedSwap('R000', 1, Player(5))
+        call MultiboardSetTitleText(udg_multi, "|cFF00CC00初入江湖(N1)")
         set bj_forLoopAIndex = 1
         set bj_forLoopAIndexEnd = 4
         loop
