@@ -1012,6 +1012,7 @@ function initKungfus takes nothing returns nothing
     call SaveInteger(YDHT, 'I023', 65244, 'A03R')
     call SaveInteger(YDHT, 'I024', 65244, 'A03Q')
     call SaveInteger(YDHT, 'I025', 65244, 'A03N')
+    call SaveInteger(YDHT, 'I068', 65244, 'A096')
 endfunction
 
 function InitPriv takes nothing returns nothing
@@ -1055,6 +1056,7 @@ function MapInit takes nothing returns nothing
     set juenei[2] = 'I023'
     set juenei[3] = 'I024'
     set juenei[4] = 'I025'
+    set juenei[5] = 'I068'
     set luck[1] = 20
     set luck[2] = 20
     set luck[3] = 20

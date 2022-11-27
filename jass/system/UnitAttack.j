@@ -171,6 +171,11 @@ function UnitAttack_Conditions takes nothing returns boolean
         call combo(u)
     endif
 
+    // 小无相 连击
+    if GetUnitAbilityLevel(u, 'A096') > 0 and GetRandomInt(1, 100) <= 3 * GetUnitAbilityLevel(u, 'A096') then
+        call combo(u)
+    endif
+
     if GetUnitAbilityLevel(u, 'A04B') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 30 and GetRandomInt(1, 100) <= 15 then
         set g = CreateGroup()
         call GroupEnumUnitsInRange(g, GetUnitX(u), GetUnitY(u), 1000, Condition(function IsEnemyAndAliveForAttack))

@@ -128,7 +128,7 @@ function UseItem_Conditions takes nothing returns boolean
         set practice_wugong[11 + 20 * j] = DialogAddButtonBJ(wugong_practice[j], "取消")
         call DialogDisplay(GetOwningPlayer(u), wugong_practice[j], true)
     endif
-    if GetItemTypeId(it) == 'I022' or GetItemTypeId(it) == 'I023' or GetItemTypeId(it) == 'I024' or GetItemTypeId(it) == 'I025' then
+    if GetItemTypeId(it) == 'I022' or GetItemTypeId(it) == 'I023' or GetItemTypeId(it) == 'I024' or GetItemTypeId(it) == 'I025' or GetItemTypeId(it) == 'I068' then
         call LearnKungfu(u, it)
     endif
 

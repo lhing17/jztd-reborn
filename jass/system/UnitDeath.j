@@ -193,7 +193,7 @@ function UnitDeath_Conditions takes nothing returns boolean
         else
             set loc = GetUnitLoc(ut)
         endif
-        call CreateItemLoc(juenei[GetRandomInt(1, 4)], loc)
+        call CreateItemLoc(juenei[GetRandomInt(1, 5)], loc)
         call RemoveLocation(loc)
     endif
 

@@ -267,23 +267,29 @@ function showTowerTooltip takes nothing returns nothing
 		endif
 		// 北冥神功 伤害增加40%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03N') >= 1 then
-			set damageAddition = damageAddition + 0.1 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03N')
+			set damageAddition = damageAddition + 0.05 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03N')
 		endif
 	
 		// 太玄神功 伤害增加50%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03P') >= 1 then
-			set damageAddition = damageAddition + 0.2 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03P')
+			set damageAddition = damageAddition + 0.15 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03P')
 		endif
 	
 		// 蛤蟆功 伤害增加40%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03Q') >= 1 then
-			set damageAddition = damageAddition + 0.1 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03Q')
+			set damageAddition = damageAddition + 0.05 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03Q')
 		endif
 	
 		// 洗髓经 伤害增加50%
 		if GetUnitAbilityLevel(unitInSelection[i], 'A03R') >= 1 then
-			set damageAddition = damageAddition + 0.2 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03R')
+			set damageAddition = damageAddition + 0.15 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A03R')
 		endif
+
+		// 小无相功 伤害增加50%
+		if GetUnitAbilityLevel(unitInSelection[i], 'A096') >= 1 then
+			set damageAddition = damageAddition + 0.15 + 0.15 * GetUnitAbilityLevel(unitInSelection[i], 'A096')
+		endif
+
 
 		// 塔的伤害加成
 		if LoadReal(TOWER_ATTR_HT, GetHandleId(unitInSelection[i]), TOWER_DAMAGE_KEY) > 0 then

@@ -173,22 +173,27 @@ function dealDamage takes unit u, unit ut, real damage returns nothing
 
     // 北冥神功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03N') >= 1 then
-        set coeff = coeff + 0.1 + 0.15 * GetUnitAbilityLevel(u, 'A03N')
+        set coeff = coeff + 0.05 + 0.15 * GetUnitAbilityLevel(u, 'A03N')
     endif
 
     // 太玄神功 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03P') >= 1 then
-        set coeff = coeff + 0.2 + 0.15 * GetUnitAbilityLevel(u, 'A03P')
+        set coeff = coeff + 0.15 + 0.15 * GetUnitAbilityLevel(u, 'A03P')
     endif
 
     // 蛤蟆功 伤害增加40%
     if GetUnitAbilityLevel(u, 'A03Q') >= 1 then
-        set coeff = coeff + 0.1 + 0.15 * GetUnitAbilityLevel(u, 'A03Q')
+        set coeff = coeff + 0.05 + 0.15 * GetUnitAbilityLevel(u, 'A03Q')
     endif
 
     // 洗髓经 伤害增加50%
     if GetUnitAbilityLevel(u, 'A03R') >= 1 then
-        set coeff = coeff + 0.2 + 0.15 * GetUnitAbilityLevel(u, 'A03R')
+        set coeff = coeff + 0.15 + 0.15 * GetUnitAbilityLevel(u, 'A03R')
+    endif
+
+    // 小无相功 伤害增加50%
+    if GetUnitAbilityLevel(u, 'A096') >= 1 then
+        set coeff = coeff + 0.15 + 0.15 * GetUnitAbilityLevel(u, 'A096')
     endif
 
     // 地图等级大于等于6级，伤害增加5%
