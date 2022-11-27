@@ -844,11 +844,24 @@ function removeCombo takes nothing returns nothing
 endfunction
 
 function combo takes unit u returns nothing
-    local timer t = CreateTimer()
-    call UnitAddAbility(u, 'A095')
-    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
-    call TimerStart(t, 2, false, function removeCombo)
+    local timer t 
+    local location loc 
+
+    if GetUnitAbilityLevel(u, 'A095') == 0 then
+        set t = CreateTimer()
+        set loc = GetUnitLoc(u)
+        call UnitAddAbility(u, 'A095')
+        call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+
+        call CreateTextTagLocBJ("连击", loc, 60., 12., 65., 55., 42., 0)
+        call YDWETimerDestroyTextTag(3., bj_lastCreatedTextTag)
+        call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 100., 90)
+        call RemoveLocation(loc)
+
+        call TimerStart(t, 2, false, function removeCombo)
+    endif
     set t = null
+    set loc = null
     
 endfunction
 
