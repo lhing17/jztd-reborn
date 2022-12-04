@@ -46,10 +46,10 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase___yd_PlayerColor
-trigger array YDWEBase___AbilityCastingOverEventQueue
-integer array YDWEBase___AbilityCastingOverEventType
-integer YDWEBase___AbilityCastingOverEventNumber= 0
+string array YDWEBase__yd_PlayerColor
+trigger array YDWEBase__AbilityCastingOverEventQueue
+integer array YDWEBase__AbilityCastingOverEventType
+integer YDWEBase__AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -102,24 +102,24 @@ integer YDWEStringFormula__FormulaData= 0
 //endglobals from YDWEStringFormula
 //globals from YDWETimerSystem:
 constant boolean LIBRARY_YDWETimerSystem=true
-integer YDWETimerSystem___CurrentTime
-integer YDWETimerSystem___CurrentIndex
-integer YDWETimerSystem___TaskListHead
-integer YDWETimerSystem___TaskListIdleHead
-integer YDWETimerSystem___TaskListIdleMax
-integer array YDWETimerSystem___TaskListIdle
-integer array YDWETimerSystem___TaskListNext
-integer array YDWETimerSystem___TaskListTime
-trigger array YDWETimerSystem___TaskListProc
-trigger YDWETimerSystem___fnRemoveUnit
-trigger YDWETimerSystem___fnDestroyTimer
-trigger YDWETimerSystem___fnRemoveItem
-trigger YDWETimerSystem___fnDestroyEffect
-trigger YDWETimerSystem___fnDestroyLightning
-trigger YDWETimerSystem___fnRunTrigger
-timer YDWETimerSystem___Timer
-integer YDWETimerSystem___TimerHandle
-integer YDWETimerSystem___TimerSystem_RunIndex= 0
+integer YDWETimerSystem__CurrentTime
+integer YDWETimerSystem__CurrentIndex
+integer YDWETimerSystem__TaskListHead
+integer YDWETimerSystem__TaskListIdleHead
+integer YDWETimerSystem__TaskListIdleMax
+integer array YDWETimerSystem__TaskListIdle
+integer array YDWETimerSystem__TaskListNext
+integer array YDWETimerSystem__TaskListTime
+trigger array YDWETimerSystem__TaskListProc
+trigger YDWETimerSystem__fnRemoveUnit
+trigger YDWETimerSystem__fnDestroyTimer
+trigger YDWETimerSystem__fnRemoveItem
+trigger YDWETimerSystem__fnDestroyEffect
+trigger YDWETimerSystem__fnDestroyLightning
+trigger YDWETimerSystem__fnRunTrigger
+timer YDWETimerSystem__Timer
+integer YDWETimerSystem__TimerHandle
+integer YDWETimerSystem__TimerSystem_RunIndex= 0
 //endglobals from YDWETimerSystem
     // User-defined
 rect array udg_drop_rect
@@ -152,6 +152,7 @@ unit gg_unit_e00H_0026= null
 unit gg_unit_e00H_0024= null
 unit gg_unit_e00H_0025= null
 unit gg_unit_e00H_0023= null
+unit gg_unit_o013_0027= null
 constant integer FRAME_ID= - 29734415
 integer GUI
 constant integer ELEMENT_GOLD= 1
@@ -1594,7 +1595,7 @@ endfunction
 //library MaxSpeed ends
 //library TowerLibrary:
     function IsBuilder takes integer id returns boolean
-        return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W'
+        return id == 'u00C' or id == 'u00D' or id == 'u00E' or id == 'u00F' or id == 'u00W' or id == 'U00X'
     endfunction
     
         function s__Tower_create takes unit u,integer item_num returns integer
@@ -1602,10 +1603,10 @@ endfunction
             set s__Tower_u[tw]=u
             call sc__Tower_setAbility(tw)
             call sc__Tower_setItemNum(tw,item_num)
-            if not IsBuilder(GetUnitTypeId(u)) and GetUnitTypeId(u) != 'o00R' then
-                call UnitAddAbility(u, 'A100')
-                call UnitMakeAbilityPermanent(u, true, 'A100')
-            endif
+            // if not IsBuilder(GetUnitTypeId(u)) and GetUnitTypeId(u) != 'o00R' then
+            //     call UnitAddAbility(u, 'A100')
+            //     call UnitMakeAbilityPermanent(u, true, 'A100')
+            // endif
             return tw
         endfunction
         function s__Tower_IncAbility takes integer this,integer i returns nothing
@@ -1909,7 +1910,7 @@ endfunction
 
 //library TowerLibrary ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -2514,11 +2515,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
-        if YDWEBase___AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
+        if YDWEBase__AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
+			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -2528,9 +2529,9 @@ endfunction
 //YDWEÊäÄËÉΩÊçïÊçâ‰∫ã‰ª∂ 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
-	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
-	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
+	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
+	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
+	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //Á≥ªÁªüÂáΩÊï∞ÂÆåÂñÑ
@@ -2567,7 +2568,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -2614,22 +2615,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
     //=================ÊòæÁ§∫ÁâàÊú¨=====================
     call YDWEVersion_Init()
 endfunction
@@ -3701,37 +3702,37 @@ endfunction
 
 //library YDWEStringFormula ends
 //library YDWETimerSystem:
-function YDWETimerSystem___NewTaskIndex takes nothing returns integer
- local integer h= YDWETimerSystem___TaskListIdleHead
-	if YDWETimerSystem___TaskListIdleHead < 0 then
-		if YDWETimerSystem___TaskListIdleMax >= 8000 then
+function YDWETimerSystem__NewTaskIndex takes nothing returns integer
+ local integer h= YDWETimerSystem__TaskListIdleHead
+	if YDWETimerSystem__TaskListIdleHead < 0 then
+		if YDWETimerSystem__TaskListIdleMax >= 8000 then
 			return 8100
 		else
-			set YDWETimerSystem___TaskListIdleMax=YDWETimerSystem___TaskListIdleMax + 1
-			return YDWETimerSystem___TaskListIdleMax
+			set YDWETimerSystem__TaskListIdleMax=YDWETimerSystem__TaskListIdleMax + 1
+			return YDWETimerSystem__TaskListIdleMax
 		endif
 	endif
-	set YDWETimerSystem___TaskListIdleHead=YDWETimerSystem___TaskListIdle[h]
+	set YDWETimerSystem__TaskListIdleHead=YDWETimerSystem__TaskListIdle[h]
 	return h
 endfunction
-function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
-	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
-	set YDWETimerSystem___TaskListIdleHead=index
+function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
+	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
+	set YDWETimerSystem__TaskListIdleHead=index
 endfunction
 //∏√∫Ø ˝–Ú¡–¥¶¿Ì
-function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
- local integer index= YDWETimerSystem___NewTaskIndex()
- local integer h= YDWETimerSystem___TaskListHead
- local integer t= R2I(100. * time) + YDWETimerSystem___CurrentTime
+function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
+ local integer index= YDWETimerSystem__NewTaskIndex()
+ local integer h= YDWETimerSystem__TaskListHead
+ local integer t= R2I(100. * time) + YDWETimerSystem__CurrentTime
  local integer p
-	set YDWETimerSystem___TaskListProc[index]=proc
-	set YDWETimerSystem___TaskListTime[index]=t
+	set YDWETimerSystem__TaskListProc[index]=proc
+	set YDWETimerSystem__TaskListTime[index]=t
 	loop
-		set p=YDWETimerSystem___TaskListNext[h]
-		if p < 0 or YDWETimerSystem___TaskListTime[p] >= t then
+		set p=YDWETimerSystem__TaskListNext[h]
+		if p < 0 or YDWETimerSystem__TaskListTime[p] >= t then
 		//	call BJDebugMsg("NewTask:"+I2S(index))
-			set YDWETimerSystem___TaskListNext[h]=index
-			set YDWETimerSystem___TaskListNext[index]=p
+			set YDWETimerSystem__TaskListNext[h]=index
+			set YDWETimerSystem__TaskListNext[index]=p
 			return index
 		endif
 		set h=p
@@ -3739,59 +3740,59 @@ function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
 	return index
 endfunction
 function YDWETimerSystemNewTask takes real time,trigger proc returns integer
-	return YDWETimerSystem___NewTask(time , proc)
+	return YDWETimerSystem__NewTask(time , proc)
 endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
-	return YDWETimerSystem___CurrentIndex
+	return YDWETimerSystem__CurrentIndex
 endfunction
 //…æ≥˝µ•Œª
-function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
-    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
+    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
-    call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
+    call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
 endfunction
 //¥›ªŸº∆ ±∆˜
-function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
-    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
+    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
-    call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
+    call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
 endfunction
 //…æ≥˝ŒÔ∆∑
-function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
-    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
+    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
-    call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
+    call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
 endfunction
 //…æ≥˝Ãÿ–ß
-function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
-    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
+    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
-    call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
+    call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
 endfunction
 //…æ≥˝…¡µÁÃÿ–ß
-function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
-    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
+    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
- local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
-    call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
+ local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
+    call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
 endfunction
 //‘À––¥•∑¢∆˜
-function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
-    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
+function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
+    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
 endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
-    call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
+    call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
 endfunction
 //…æ≥˝∆Ø∏°Œƒ◊÷
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
@@ -3805,50 +3806,50 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagFadepoint(tt, time)
 endfunction
 //÷––ƒº∆ ±∆˜÷˜∫Ø ˝
-function YDWETimerSystem___Main takes nothing returns nothing
- local integer h= YDWETimerSystem___TaskListHead
+function YDWETimerSystem__Main takes nothing returns nothing
+ local integer h= YDWETimerSystem__TaskListHead
  local integer p
 	loop
-		set YDWETimerSystem___CurrentIndex=YDWETimerSystem___TaskListNext[h]
-		exitwhen YDWETimerSystem___CurrentIndex < 0 or YDWETimerSystem___CurrentTime < YDWETimerSystem___TaskListTime[YDWETimerSystem___CurrentIndex]
+		set YDWETimerSystem__CurrentIndex=YDWETimerSystem__TaskListNext[h]
+		exitwhen YDWETimerSystem__CurrentIndex < 0 or YDWETimerSystem__CurrentTime < YDWETimerSystem__TaskListTime[YDWETimerSystem__CurrentIndex]
 		//call BJDebugMsg("Task:"+I2S(CurrentIndex))
-		call TriggerEvaluate(YDWETimerSystem___TaskListProc[YDWETimerSystem___CurrentIndex])
-		call YDWETimerSystem___DeleteTaskIndex(YDWETimerSystem___CurrentIndex)
-		set YDWETimerSystem___TaskListNext[h]=YDWETimerSystem___TaskListNext[YDWETimerSystem___CurrentIndex]
+		call TriggerEvaluate(YDWETimerSystem__TaskListProc[YDWETimerSystem__CurrentIndex])
+		call YDWETimerSystem__DeleteTaskIndex(YDWETimerSystem__CurrentIndex)
+		set YDWETimerSystem__TaskListNext[h]=YDWETimerSystem__TaskListNext[YDWETimerSystem__CurrentIndex]
 	endloop
-	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
+	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
 endfunction
 //≥ı ºªØ∫Ø ˝
-function YDWETimerSystem___Init takes nothing returns nothing
-    set YDWETimerSystem___Timer=CreateTimer()
-	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
-	set YDWETimerSystem___CurrentTime=0
-	set YDWETimerSystem___TaskListHead=0
-	set YDWETimerSystem___TaskListNext[0]=- 1
-	set YDWETimerSystem___TaskListIdleHead=1
-	set YDWETimerSystem___TaskListIdleMax=1
-	set YDWETimerSystem___TaskListIdle[1]=- 1
+function YDWETimerSystem__Init takes nothing returns nothing
+    set YDWETimerSystem__Timer=CreateTimer()
+	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
+	set YDWETimerSystem__CurrentTime=0
+	set YDWETimerSystem__TaskListHead=0
+	set YDWETimerSystem__TaskListNext[0]=- 1
+	set YDWETimerSystem__TaskListIdleHead=1
+	set YDWETimerSystem__TaskListIdleMax=1
+	set YDWETimerSystem__TaskListIdle[1]=- 1
 	
-	set YDWETimerSystem___fnRemoveUnit=CreateTrigger()
-	set YDWETimerSystem___fnDestroyTimer=CreateTrigger()
-	set YDWETimerSystem___fnRemoveItem=CreateTrigger()
-	set YDWETimerSystem___fnDestroyEffect=CreateTrigger()
-	set YDWETimerSystem___fnDestroyLightning=CreateTrigger()
-	set YDWETimerSystem___fnRunTrigger=CreateTrigger()
-	call TriggerAddCondition(YDWETimerSystem___fnRemoveUnit, Condition(function YDWETimerSystem___RemoveUnit_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyTimer, Condition(function YDWETimerSystem___DestroyTimer_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnRemoveItem, Condition(function YDWETimerSystem___RemoveItem_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyEffect, Condition(function YDWETimerSystem___DestroyEffect_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnDestroyLightning, Condition(function YDWETimerSystem___DestroyLightning_CallBack))
-	call TriggerAddCondition(YDWETimerSystem___fnRunTrigger, Condition(function YDWETimerSystem___RunTrigger_CallBack))
+	set YDWETimerSystem__fnRemoveUnit=CreateTrigger()
+	set YDWETimerSystem__fnDestroyTimer=CreateTrigger()
+	set YDWETimerSystem__fnRemoveItem=CreateTrigger()
+	set YDWETimerSystem__fnDestroyEffect=CreateTrigger()
+	set YDWETimerSystem__fnDestroyLightning=CreateTrigger()
+	set YDWETimerSystem__fnRunTrigger=CreateTrigger()
+	call TriggerAddCondition(YDWETimerSystem__fnRemoveUnit, Condition(function YDWETimerSystem__RemoveUnit_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyTimer, Condition(function YDWETimerSystem__DestroyTimer_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnRemoveItem, Condition(function YDWETimerSystem__RemoveItem_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyEffect, Condition(function YDWETimerSystem__DestroyEffect_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnDestroyLightning, Condition(function YDWETimerSystem__DestroyLightning_CallBack))
+	call TriggerAddCondition(YDWETimerSystem__fnRunTrigger, Condition(function YDWETimerSystem__RunTrigger_CallBack))
 	
-    call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
+    call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
 endfunction
 //—≠ª∑¿‡»‘”√∂¿¡¢º∆ ±∆˜
 function YDWETimerSystemGetRunIndex takes nothing returns integer
-    return YDWETimerSystem___TimerSystem_RunIndex
+    return YDWETimerSystem__TimerSystem_RunIndex
 endfunction
-function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns nothing
+function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
 	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
@@ -3857,7 +3858,7 @@ function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns noth
     endif
     set trg=null
 endfunction
-function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
+function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
     local integer times= LoadInteger(YDHT, tid, $D0003)
@@ -3884,9 +3885,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
         set t=CreateTimer()
 		set tid=GetHandleId(t)
     endif
-    set YDWETimerSystem___TimerSystem_RunIndex=YDWETimerSystem___TimerSystem_RunIndex + 1
+    set YDWETimerSystem__TimerSystem_RunIndex=YDWETimerSystem__TimerSystem_RunIndex + 1
 	call SaveTriggerHandle(YDHT, tid, $D0001, trg)
-	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem___TimerSystem_RunIndex)
+	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem__TimerSystem_RunIndex)
 	set index=LoadInteger(YDHT, GetHandleId(trg), 'YDTS' + data)
     set index=index + 1
 	call SaveInteger(YDHT, GetHandleId(trg), 'YDTS' + data, index)
@@ -3894,9 +3895,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
 	
     if b == false then
 		call SaveInteger(YDHT, tid, $D0003, times)
-        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes)
+        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes)
       else
-        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunction)
+        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunction)
     endif
     set t=null
 endfunction
@@ -3924,7 +3925,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Wed Nov 30 16:07:36 2022
+//   Date: Sun Dec 04 19:46:23 2022
 //   Map Author: Êú™Áü•
 // 
 //===========================================================================
@@ -3948,6 +3949,18 @@ endfunction
 //*
 //***************************************************************************
 //===========================================================================
+function CreateBuildingsForPlayer0 takes nothing returns nothing
+    local player p= Player(0)
+    local unit u
+    local integer unitID
+    local trigger t
+    local real life
+    set gg_unit_o011_0006=CreateUnit(p, 'o011', - 1280.0, 2240.0, 270.000)
+    set gg_unit_o00M_0010=CreateUnit(p, 'o00M', - 1280.0, 1984.0, 270.000)
+    set gg_unit_o00P_0015=CreateUnit(p, 'o00P', - 1280.0, 1728.0, 270.000)
+    set gg_unit_o013_0027=CreateUnit(p, 'o013', - 1280.0, 1856.0, 270.000)
+endfunction
+//===========================================================================
 function CreateUnitsForPlayer0 takes nothing returns nothing
     local player p= Player(0)
     local unit u
@@ -3955,6 +3968,17 @@ function CreateUnitsForPlayer0 takes nothing returns nothing
     local trigger t
     local real life
     set gg_unit_e00H_0023=CreateUnit(p, 'e00H', - 169.1, - 59.0, 342.900)
+endfunction
+//===========================================================================
+function CreateBuildingsForPlayer1 takes nothing returns nothing
+    local player p= Player(1)
+    local unit u
+    local integer unitID
+    local trigger t
+    local real life
+    set gg_unit_o011_0009=CreateUnit(p, 'o011', 2240.0, 1280.0, 270.000)
+    set gg_unit_o00M_0013=CreateUnit(p, 'o00M', 1984.0, 1280.0, 270.000)
+    set gg_unit_o00P_0018=CreateUnit(p, 'o00P', 1728.0, 1280.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer1 takes nothing returns nothing
@@ -3966,6 +3990,17 @@ function CreateUnitsForPlayer1 takes nothing returns nothing
     set gg_unit_e00H_0024=CreateUnit(p, 'e00H', 0.4, - 177.6, 162.890)
 endfunction
 //===========================================================================
+function CreateBuildingsForPlayer2 takes nothing returns nothing
+    local player p= Player(2)
+    local unit u
+    local integer unitID
+    local trigger t
+    local real life
+    set gg_unit_o011_0008=CreateUnit(p, 'o011', 1280.0, - 2240.0, 270.000)
+    set gg_unit_o00M_0012=CreateUnit(p, 'o00M', 1280.0, - 1984.0, 270.000)
+    set gg_unit_o00P_0017=CreateUnit(p, 'o00P', 1280.0, - 1728.0, 270.000)
+endfunction
+//===========================================================================
 function CreateUnitsForPlayer2 takes nothing returns nothing
     local player p= Player(2)
     local unit u
@@ -3973,6 +4008,17 @@ function CreateUnitsForPlayer2 takes nothing returns nothing
     local trigger t
     local real life
     set gg_unit_e00H_0025=CreateUnit(p, 'e00H', 172.2, - 89.5, 97.730)
+endfunction
+//===========================================================================
+function CreateBuildingsForPlayer3 takes nothing returns nothing
+    local player p= Player(3)
+    local unit u
+    local integer unitID
+    local trigger t
+    local real life
+    set gg_unit_o011_0007=CreateUnit(p, 'o011', - 2240.0, - 1280.0, 270.000)
+    set gg_unit_o00M_0011=CreateUnit(p, 'o00M', - 1984.0, - 1280.0, 270.000)
+    set gg_unit_o00P_0016=CreateUnit(p, 'o00P', - 1728.0, - 1280.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer3 takes nothing returns nothing
@@ -3990,19 +4036,7 @@ function CreateNeutralPassiveBuildings takes nothing returns nothing
     local integer unitID
     local trigger t
     local real life
-    set gg_unit_o011_0006=CreateUnit(p, 'o011', - 1280.0, 2240.0, 270.000)
-    set gg_unit_o011_0007=CreateUnit(p, 'o011', - 2240.0, - 1280.0, 270.000)
-    set gg_unit_o011_0008=CreateUnit(p, 'o011', 1280.0, - 2240.0, 270.000)
-    set gg_unit_o011_0009=CreateUnit(p, 'o011', 2240.0, 1280.0, 270.000)
-    set gg_unit_o00M_0010=CreateUnit(p, 'o00M', - 1280.0, 1984.0, 270.000)
-    set gg_unit_o00M_0011=CreateUnit(p, 'o00M', - 1984.0, - 1280.0, 270.000)
-    set gg_unit_o00M_0012=CreateUnit(p, 'o00M', 1280.0, - 1984.0, 270.000)
-    set gg_unit_o00M_0013=CreateUnit(p, 'o00M', 1984.0, 1280.0, 270.000)
     set gg_unit_o00A_0014=CreateUnit(p, 'o00A', 0.0, - 64.0, 270.000)
-    set gg_unit_o00P_0015=CreateUnit(p, 'o00P', - 1280.0, 1728.0, 270.000)
-    set gg_unit_o00P_0016=CreateUnit(p, 'o00P', - 1728.0, - 1280.0, 270.000)
-    set gg_unit_o00P_0017=CreateUnit(p, 'o00P', 1280.0, - 1728.0, 270.000)
-    set gg_unit_o00P_0018=CreateUnit(p, 'o00P', 1728.0, 1280.0, 270.000)
     set gg_unit_o00J_0019=CreateUnit(p, 'o00J', 256.0, 192.0, 270.000)
     set gg_unit_o00L_0020=CreateUnit(p, 'o00L', 256.0, - 320.0, 270.000)
     set gg_unit_o00K_0021=CreateUnit(p, 'o00K', - 320.0, - 320.0, 270.000)
@@ -4010,6 +4044,10 @@ function CreateNeutralPassiveBuildings takes nothing returns nothing
 endfunction
 //===========================================================================
 function CreatePlayerBuildings takes nothing returns nothing
+    call CreateBuildingsForPlayer0()
+    call CreateBuildingsForPlayer1()
+    call CreateBuildingsForPlayer2()
+    call CreateBuildingsForPlayer3()
 endfunction
 //===========================================================================
 function CreatePlayerUnits takes nothing returns nothing
@@ -7219,7 +7257,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
                 if wave >= 15 then
                     set middle_gold[player_i]=1
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933ÊÅ≠ÂñúÁé©ÂÆ∂" + I2S(player_i) + "È¢ÜÂèñ‰∫Ü‰∏≠ÂûãÈáëÂ∏ÅÂåÖ")
-                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 10000)
+                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 20000)
                 else
                     call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933ÈôêÁ¨¨15Ê≥¢‰ª•ÂêéÈ¢ÜÂèñ|r")
                 endif
@@ -7355,7 +7393,7 @@ function JoinMenPai takes integer player_i,integer menpai_num,integer item_id re
                 set join_menpai_flag[player_i]=menpai_num
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933ÊÅ≠ÂñúÂä†ÂÖ•" + menpai_name[menpai_num] + "|r")
                 call SetPlayerName(p, menpai_name[menpai_num] + GetPlayerName(p))
-                call CreateNUnitsAtLoc(1, menpai_builder_id[menpai_num], p, born_loc[player_i], bj_UNIT_FACING)
+                call CreateNUnitsAtLoc(1, 'U00X', p, born_loc[player_i], bj_UNIT_FACING)
                 set builder[player_i]=bj_lastCreatedUnit
                 call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03U')
                 call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03V')
@@ -7734,6 +7772,8 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveRangeDamage(u , ut , 'A02K' , 400 , 30 , "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl" , 27 , 15)
     call PassiveRangeDamage(u , ut , 'A00K' , 50 , 1500 , "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl" , 26 , 25)
     call PassiveRangeDamage(u , ut , 'A04N' , 800 , 2000 , "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl" , 26 , 40)
+    // Â§©Â±±ÊäòÊ¢ÖÊâã
+    call PassiveRangeDamage(u , ut , 'A098' , 800 , 5000 , "war3mapImported\\56.mdl" , 16 , 50)
     call PassiveSingleDamage(u , ut , 'A01V' , 500 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 19 , 40)
     call PassiveSingleDamage(u , ut , 'A04T' , 2000 , "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , 100 , 6)
     call PassiveUseAbility(u , ut , 'A00N' , 'A00S' , 852119 , 18 , 50)
@@ -9459,13 +9499,13 @@ function drawUI_Conditions takes nothing returns boolean
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[2])], (BOTTOM ), s__Frame_id[( tooltipWidget[3] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[1])], (TOPLEFT ), s__Frame_id[( tooltipWidget[2] )], ( TOPLEFT ), (( - 0.005 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( tooltipWidget[3] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
-	set j=1
-	loop
-		exitwhen j > 12
-		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
-		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
-		set j=j + 1
-	endloop
+	// set j = 1
+	// loop
+	// 	exitwhen j > 12
+	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
+	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
+	// 	set j = j + 1
+	// endloop
 	// Áâ©ÂìÅÁöÑËØ¥Êòé
 	set itemTooltipWidget[1]=s__Frame_newTips0(GUI , "tipbox")
 	call s__Frame_hide(itemTooltipWidget[1])
@@ -12295,26 +12335,6 @@ function MyInitGlobals takes nothing returns nothing
     set udg_kill_final_num=0
     set udg_difficulty=0
 endfunction
-function CreateBuildingsForPlayer0 takes nothing returns nothing
-    local player p= Player(0)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
-endfunction
-function CreateBuildingsForPlayer1 takes nothing returns nothing
-    local player p= Player(1)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
-endfunction
-function CreateBuildingsForPlayer2 takes nothing returns nothing
-    local player p= Player(2)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
-endfunction
-function CreateBuildingsForPlayer3 takes nothing returns nothing
-    local player p= Player(3)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
-endfunction
 function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     local player p= Player(PLAYER_NEUTRAL_PASSIVE)
     local unit u
@@ -12346,10 +12366,6 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
 endfunction
 function CreateAllUnits_1 takes nothing returns nothing
     call CreateNeutralPassiveBuildingsEffect()
-    call CreateBuildingsForPlayer0()
-    call CreateBuildingsForPlayer1()
-    call CreateBuildingsForPlayer2()
-    call CreateBuildingsForPlayer3()
 endfunction
 function CreateRegions0 takes nothing returns nothing
     local weathereffect we
@@ -12931,6 +12947,14 @@ function InitMenPaiWuPin takes nothing returns nothing
     call AddItemToStockBJ('I003', gg_unit_o00A_0014, 1, 1)
     call AddItemToStockBJ('I02K', gg_unit_o00A_0014, 1, 1)
 endfunction
+function initStocks takes nothing returns nothing
+    call AddItemToStockBJ('I069', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06A', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06B', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06C', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06D', gg_unit_o013_0027, 1, 1)
+    
+endfunction
 function RandomShenQi takes nothing returns nothing
     local integer i= 0
     local integer j= 0
@@ -13249,6 +13273,7 @@ function MapInit takes nothing returns nothing
     call SaveStr(YDHT, 'I013', EQUIP_ABILITY_KEY, "‰∏ªÂä®‰ΩøÁî®Â¢ûÂä†Âë®Âõ¥Âçï‰Ωç100ÁÇπÂÜÖÂäõ")
     // YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ABILITY, 'AHhb', "Name")
     call InitMenPaiWuPin()
+    call initStocks()
     call RandomShenQi()
     call CreateF9()
     call initKungfus()
@@ -13318,7 +13343,7 @@ function EnterMap takes nothing returns nothing
 endfunction
 function InitAllSystems takes nothing returns nothing
     call ConditionalTriggerExecute(gg_trg_MapInit)
-    call CreateAllUnits_1()
+    call CreateNeutralPassiveBuildingsEffect() // INLINED!!
     call CreateRegions0()
     call MyInitGlobals()
     call InitCustomTriggers0()
@@ -13387,6 +13412,7 @@ function Trig_MapFirstOccurActions takes nothing returns nothing
     call DzSetUnitPosition(gg_unit_e00H_0024, 0, 0)
     call DzSetUnitPosition(gg_unit_e00H_0025, 0, 0)
     call DzSetUnitPosition(gg_unit_e00H_0026, 0, 0)
+    call DzSetUnitPosition(gg_unit_o013_0027, 0, 0)
     call YDWEMultiboardSetItemWidthBJNull(GetLastCreatedMultiboard() , 1 , 1 , 3)
     call YDWEGeneralBounsSystemUnitSetBonus(GetTriggerUnit() , 0 , 0 , 300)
     call YDWEPolledWaitNull(2)
@@ -13553,13 +13579,13 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs78576656")
+call ExecuteFunc("jasshelper__initstructs437290265")
 call ExecuteFunc("FrameLibrary___init")
-call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
+call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
 call ExecuteFunc("YDWEStringFormula__Init")
-call ExecuteFunc("YDWETimerSystem___Init")
+call ExecuteFunc("YDWETimerSystem__Init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -13589,14 +13615,14 @@ endfunction
 //===========================================================================
 //œµÕ≥-TimerSystem
 //===========================================================================
-//===========================================================================
-//‰øÆÊîπÁîüÂëΩ
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //◊‘∂®“Â ¬º˛ 
 //===========================================================================
 //===========================================================================   
+//===========================================================================
+//‰øÆÊîπÁîüÂëΩ
+//===========================================================================
 
 
 
@@ -13671,7 +13697,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs78576656 takes nothing returns nothing
+function jasshelper__initstructs437290265 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()

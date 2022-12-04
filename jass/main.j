@@ -305,29 +305,7 @@ function MyInitGlobals takes nothing returns nothing
     set udg_kill_final_num = 0
     set udg_difficulty = 0
 endfunction
-function CreateBuildingsForPlayer0 takes nothing returns nothing
-    local player p = Player(0)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', - 1280., 1152., 270.)
-endfunction
 
-function CreateBuildingsForPlayer1 takes nothing returns nothing
-    local player p = Player(1)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', 1216., 1152., 270.)
-endfunction
-
-function CreateBuildingsForPlayer2 takes nothing returns nothing
-    local player p = Player(2)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', 1216., - 1152., 270.)
-endfunction
-
-function CreateBuildingsForPlayer3 takes nothing returns nothing
-    local player p = Player(3)
-    local unit u
-    // set u = CreateUnit(p, 'o00N', - 1152., - 1152., 270.)
-endfunction
 
 function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     local player p = Player(PLAYER_NEUTRAL_PASSIVE)
@@ -369,10 +347,7 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
 endfunction
 function CreateAllUnits_1 takes nothing returns nothing
     call CreateNeutralPassiveBuildingsEffect()
-    call CreateBuildingsForPlayer0()
-    call CreateBuildingsForPlayer1()
-    call CreateBuildingsForPlayer2()
-    call CreateBuildingsForPlayer3()
+
 endfunction
 function CreateRegions0 takes nothing returns nothing
     local weathereffect we
@@ -987,6 +962,16 @@ function InitMenPaiWuPin takes nothing returns nothing
     call AddItemToStockBJ('I003', gg_unit_o00A_0014, 1, 1)
     call AddItemToStockBJ('I02K', gg_unit_o00A_0014, 1, 1)
 endfunction
+
+function initStocks takes nothing returns nothing
+    call AddItemToStockBJ('I069', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06A', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06B', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06C', gg_unit_o013_0027, 1, 1)
+    call AddItemToStockBJ('I06D', gg_unit_o013_0027, 1, 1)
+    
+endfunction
+
 function RandomShenQi takes nothing returns nothing
     local integer i = 0
     local integer j = 0
@@ -1326,6 +1311,8 @@ function MapInit takes nothing returns nothing
 
     // YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ABILITY, 'AHhb', "Name")
     call InitMenPaiWuPin()
+
+    call initStocks()
     call RandomShenQi()
     call CreateF9()
     call initKungfus()

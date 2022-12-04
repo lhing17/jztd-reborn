@@ -537,13 +537,13 @@ function drawUI_Conditions takes nothing returns boolean
 	call tooltipWidget[1].setPoint(TOPLEFT, tooltipWidget[2], TOPLEFT, - 0.005, 0.005)
 	call tooltipWidget[1].setPoint(BOTTOMRIGHT, tooltipWidget[3], BOTTOMRIGHT, 0.005, - 0.005)
 
-	set j = 1
-	loop
-		exitwhen j > 12
-		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
-		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
-		set j = j + 1
-	endloop
+	// set j = 1
+	// loop
+	// 	exitwhen j > 12
+	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
+	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
+	// 	set j = j + 1
+	// endloop
 
 	// 物品的说明
 	set itemTooltipWidget[1] = Frame.newTips0(GUI, "tipbox")

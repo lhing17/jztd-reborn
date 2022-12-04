@@ -367,7 +367,7 @@ function JoinMenPai takes integer player_i, integer menpai_num, integer item_id 
                 set join_menpai_flag[player_i] = menpai_num
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜加入" + menpai_name[menpai_num] + "|r")
                 call SetPlayerName(p, menpai_name[menpai_num] + GetPlayerName(p))
-                call CreateNUnitsAtLoc(1, menpai_builder_id[menpai_num], p, born_loc[player_i], bj_UNIT_FACING)
+                call CreateNUnitsAtLoc(1, 'U00X', p, born_loc[player_i], bj_UNIT_FACING)
                 set builder[player_i] = bj_lastCreatedUnit
                 call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03U')
                 call UnitMakeAbilityPermanent(bj_lastCreatedUnit, true, 'A03V')
