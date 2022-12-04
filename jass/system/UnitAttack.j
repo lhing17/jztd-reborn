@@ -114,8 +114,11 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveRangeDamage(u, ut, 'A02K', 400, 30, "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", 27, 15)
     call PassiveRangeDamage(u, ut, 'A00K', 50, 1500, "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl", 26, 25)
     call PassiveRangeDamage(u, ut, 'A04N', 800, 2000, "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl", 26, 40)
+    // 天山折梅手
+    call PassiveRangeDamage(u, ut, 'A098', 800, 5000, "war3mapImported\\56.mdl", 16, 50)
     call PassiveSingleDamage(u, ut, 'A01V', 500, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 19, 40)
     call PassiveSingleDamage(u, ut, 'A04T', 2000, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
+
     call PassiveUseAbility(u, ut, 'A00N', 'A00S', 852119, 18, 50)
     call PassiveUseAbility(u, ut, 'A00V', 'A00U', 852106, 25, 25)
     call PassiveUseAbility(u, ut, 'A00X', 'A00Y', 852652, 17, 70)
