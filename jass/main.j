@@ -12,6 +12,7 @@
 #include "logic/Mall.j"
 #include "logic/Equip.j"
 #include "logic/Spawn.j"
+#include "logic/Exchange.j"
 
 
 #include "system/EverySecond.j"
@@ -964,11 +965,7 @@ function InitMenPaiWuPin takes nothing returns nothing
 endfunction
 
 function initStocks takes nothing returns nothing
-    call AddItemToStockBJ('I069', gg_unit_o013_0027, 1, 1)
-    call AddItemToStockBJ('I06A', gg_unit_o013_0027, 1, 1)
-    call AddItemToStockBJ('I06B', gg_unit_o013_0027, 1, 1)
-    call AddItemToStockBJ('I06C', gg_unit_o013_0027, 1, 1)
-    call AddItemToStockBJ('I06D', gg_unit_o013_0027, 1, 1)
+
     
 endfunction
 
@@ -1411,4 +1408,7 @@ function InitAllSystems takes nothing returns nothing
     call initUI()
     call initEquip()
     call initSetAttackSpeed()
+
+    // 兑换商店
+    call initExchange()
 endfunction
