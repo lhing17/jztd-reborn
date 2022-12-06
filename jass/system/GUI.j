@@ -6,8 +6,14 @@ globals
 	// 显示塔的属性
 	Frame array towerTooltipWidget
 
+	// 显示兑换物品提示
+	Frame array exchangeTooltipWidget
+
 	// 显示波数
 	Frame array waveWidget
+
+	Frame array exchangeIcon
+	Frame array exchangeIconStatus
 
 	// 顶部菜单
 	Frame array topMenuWidget // 顶部菜单按钮图片
@@ -63,6 +69,8 @@ globals
 
 	integer array originalAbilityButton
 	integer array originalItemButton
+	string array exchangeIconPath
+	string array exchangeDisIconPath
 endglobals
 
 function hideOriginalTooltip takes nothing returns nothing
@@ -78,17 +86,21 @@ function showTooltip takes nothing returns nothing
 	local integer cont = 0
 	local string str = ""
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-		if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
-			if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
-				return
-			endif
-			call hideOriginalTooltip()
+		// if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
+		// 	if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
+		// 		return
+		// 	endif
+		// 	call hideOriginalTooltip()
 
-			set cont = LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
-			set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + R2S(cont * 0.2) + "%"
-			call tooltipWidget[3].setText(str)
-			call tooltipWidget[1].show()
+		// 	set cont = LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
+		// 	set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + R2S(cont * 0.2) + "%"
+		// 	call tooltipWidget[3].setText(str)
+		// 	call tooltipWidget[1].show()
+		// endif
+		if GetUnitTypeId(unitInSelection[i]) == 'o013' and GetOwningPlayer(unitInSelection[i]) == DzGetTriggerUIEventPlayer() then
+
 		endif
+		
 	endif
 endfunction
 
@@ -500,6 +512,18 @@ function drawUI_Conditions takes nothing returns boolean
 
 	local integer j = 1
 
+	set exchangeIconPath[1] = "ReplaceableTextures\\CommandButtons\\BTNExchangeOne.blp"
+	set exchangeIconPath[2] = "ReplaceableTextures\\CommandButtons\\BTNExchangeTwo.blp"
+	set exchangeIconPath[3] = "ReplaceableTextures\\CommandButtons\\BTNExchangeThree.blp"
+	set exchangeIconPath[4] = "ReplaceableTextures\\CommandButtons\\BTNExchangeFour.blp"
+	set exchangeIconPath[5] = "ReplaceableTextures\\CommandButtons\\BTNExchangeFive.blp"
+
+	set exchangeDisIconPath[1] = "ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeOne.blp"
+	set exchangeDisIconPath[2] = "ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeTwo.blp"
+	set exchangeDisIconPath[3] = "ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeThree.blp"
+	set exchangeDisIconPath[4] = "ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeFour.blp"
+	set exchangeDisIconPath[5] = "ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeFive.blp"
+
 	set originalAbilityButton[1] = DzFrameGetCommandBarButton(0, 0)
 	set originalAbilityButton[2] = DzFrameGetCommandBarButton(0, 1)
 	set originalAbilityButton[3] = DzFrameGetCommandBarButton(0, 2)
@@ -537,13 +561,13 @@ function drawUI_Conditions takes nothing returns boolean
 	call tooltipWidget[1].setPoint(TOPLEFT, tooltipWidget[2], TOPLEFT, - 0.005, 0.005)
 	call tooltipWidget[1].setPoint(BOTTOMRIGHT, tooltipWidget[3], BOTTOMRIGHT, 0.005, - 0.005)
 
-	// set j = 1
-	// loop
-	// 	exitwhen j > 12
-	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
-	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
-	// 	set j = j + 1
-	// endloop
+	set j = 1
+	loop
+		exitwhen j > 12
+		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
+		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
+		set j = j + 1
+	endloop
 
 	// 物品的说明
 	set itemTooltipWidget[1] = Frame.newTips0(GUI, "tipbox")
@@ -778,6 +802,22 @@ function drawUI_Conditions takes nothing returns boolean
 	call shopTooltipWidget[2].setPoint(BOTTOM, shopTooltipWidget[3], TOP, 0, 0.005)
 	call shopTooltipWidget[1].setPoint(TOPLEFT, shopTooltipWidget[2], TOPLEFT, - 0.005, 0.005)
 	call shopTooltipWidget[1].setPoint(BOTTOMRIGHT, shopTooltipWidget[4], BOTTOMRIGHT, 0.005, - 0.005)
+
+
+	set j = 1
+	loop
+		exitwhen j > 10
+		set exchangeIcon[j] = Frame.newImage0(GUI)
+		call exchangeIcon[j].setTexture("ReplaceableTextures\\CommandButtons\\BTNExchangeOne.blp")
+		call exchangeIcon[j].setAllPoints(Frame.getFrame(originalAbilityButton[j]))
+		call exchangeIcon[j].hide()
+
+		set exchangeIconStatus[j] = Frame.newImage0(exchangeIcon[j])
+		call exchangeIconStatus[j].setTexture("war3mapImported\\exchanged.tga")
+		call exchangeIconStatus[j].setAllPoints(exchangeIcon[j])
+		set j = j + 1
+	endloop
+
 	
 	return false
 endfunction

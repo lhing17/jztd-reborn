@@ -23,8 +23,8 @@ library TowerLibrary
             call tw.setItemNum(item_num)
 
             // if not IsBuilder(GetUnitTypeId(u)) and GetUnitTypeId(u) != 'o00R' then
-            //     call UnitAddAbility(u, 'A100')
-            //     call UnitMakeAbilityPermanent(u, true, 'A100')
+            //     call UnitAddAbility(u, 'A0B0')
+            //     call UnitMakeAbilityPermanent(u, true, 'A0B0')
             // endif
             return tw
         endmethod
@@ -131,6 +131,11 @@ library TowerLibrary
         endloop
     endfunction
     function SaveTowerAbility takes nothing returns nothing
+
+        call SaveTowerAbility_1('O100', 'A001', 5)
+        call SaveTowerAbility_1('O100', 'A01T', 2)
+        call SaveTowerAbility_1('O100', 'A00B', 1)
+
         call SaveTowerAbility_1('o000', 'A006', 1)
         call SaveTowerAbility_1('o00B', 'A001', 1)
         call SaveTowerAbility_1('o001', 'A001', 2)

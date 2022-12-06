@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -25,12 +25,12 @@ constant boolean LIBRARY_TowerLibrary=true
 //endglobals from TowerLibrary
 //globals from YDTriggerSaveLoadSystem:
 constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
+hashtable YDHT
 hashtable YDLOC
 //endglobals from YDTriggerSaveLoadSystem
 //globals from YDWEBase:
 constant boolean LIBRARY_YDWEBase=true
 //ȫ�ֹ�ϣ�� 
-hashtable YDHT= null
 string bj_AllString=".................................!.#$%&'()*+,-./0123456789:;<=>.@ABCDEFGHIJKLMNOPQRSTUVWXYZ[.]^_`abcdefghijklmnopqrstuvwxyz{|}~................................................................................................................................"
 //全局系统变量
 unit bj_lastAbilityCastingUnit=null
@@ -94,11 +94,11 @@ constant boolean LIBRARY_YDWEUnitHasItemOfTypeBJNull=true
 //globals from YDWEStringFormula:
 constant boolean LIBRARY_YDWEStringFormula=true
 item bj_lastCombinedItem=null
-trigger array YDWEStringFormula___ItemCombineEventQueue
-integer YDWEStringFormula___ItemCombineEventNumber= 0
-constant integer YDWEStringFormula___MAX_INSTANCES= 8100
-constant integer YDWEStringFormula___SEGMENT_LENGTH= 4
-integer YDWEStringFormula___FormulaData= 0
+trigger array YDWEStringFormula__ItemCombineEventQueue
+integer YDWEStringFormula__ItemCombineEventNumber= 0
+constant integer YDWEStringFormula__MAX_INSTANCES= 8100
+constant integer YDWEStringFormula__SEGMENT_LENGTH= 4
+integer YDWEStringFormula__FormulaData= 0
 //endglobals from YDWEStringFormula
 //globals from YDWETimerSystem:
 constant boolean LIBRARY_YDWETimerSystem=true
@@ -184,6 +184,22 @@ string array affixDesc
 integer array affixMin
 integer array affixMax
 constant integer AFFIX_COUNT= 22
+integer array exchangeItemId
+integer array oneKeyExchangeItemId
+unit array exchangeUnit
+    // 当前完成兑换的次数
+integer array exchangeCount
+    // 兑换的奖励
+integer array exchangeHit
+real array exchangeCriticalRate
+real array exchangeCriticalDamage
+integer array exchangeStr
+integer array exchangeAgi
+integer array exchangeInt
+real array exchangeManaRecovery
+real array exchangeDamage
+real array exchangeCooldownReduction
+integer array exchangeKillGold
 real array wisdomBallX
 real array wisdomBallY
 unit array unitInSelection
@@ -191,8 +207,12 @@ integer array tooltipWidget
 integer array itemTooltipWidget
 	// 显示塔的属性
 integer array towerTooltipWidget
+	// 显示兑换物品提示
+integer array exchangeTooltipWidget
 	// 显示波数
 integer array waveWidget
+integer array exchangeIcon
+integer array exchangeIconStatus
 	// 顶部菜单
 integer array topMenuWidget
 integer array topMenuButton
@@ -241,6 +261,8 @@ constant integer FRAME_MOUSE_DOUBLECLICK= 12
 constant integer FRAME_SPRITE_ANIM_UPDATE= 13
 integer array originalAbilityButton
 integer array originalItemButton
+string array exchangeIconPath
+string array exchangeDisIconPath
 integer udg_ShengYuGuaiShu= 0
 leaderboard udg_jifenpai= null
 timer udg_shuabingtimer= null
@@ -403,10 +425,10 @@ integer array low_towers
 integer array normal_towers
 integer array fine_towers
 integer array perfect_towers
-integer LOW_SIZE= 48
-integer NORMAL_SIZE= 34
-integer FINE_SIZE= 27
-integer PERFECT_SIZE= 17
+integer LOW_SIZE= 15
+integer NORMAL_SIZE= 15
+integer FINE_SIZE= 15
+integer PERFECT_SIZE= 13
 integer passed_time= 0
 integer array shenqi
 integer array random_shenqi
@@ -518,44 +540,44 @@ integer si__Tower_F=0
 integer si__Tower_I=0
 integer array si__Tower_V
 unit array s__Tower_u
-constant integer si__YDWEStringFormula___Inventory=5
-integer si__YDWEStringFormula___Inventory_F=0
-integer si__YDWEStringFormula___Inventory_I=0
-integer array si__YDWEStringFormula___Inventory_V
-constant integer si__YDWEStringFormula___StringTable=6
-constant integer si__YDWEStringFormula___ItemIdMatrix=7
-integer s__YDWEStringFormula___ItemIdMatrix_Data
-integer s__YDWEStringFormula___ItemIdMatrix_Total= 1
-integer array s__YDWEStringFormula___ItemIdMatrix_itemId
-string array s__YDWEStringFormula___ItemIdMatrix_keyStr
-integer array s__YDWEStringFormula___ItemIdMatrix_keyLen
-constant integer si__YDWEStringFormula___FormulaMatrix=8
-integer s__YDWEStringFormula___FormulaMatrix_Data
-integer s__YDWEStringFormula___FormulaMatrix_Total= 1
-string array s__YDWEStringFormula___FormulaMatrix_formula
-integer array s__YDWEStringFormula___FormulaMatrix_segmLen
-string array s__YDWEStringFormula___FormulaMatrix_model
-string array s__YDWEStringFormula___FormulaMatrix_message
-integer array s__YDWEStringFormula___FormulaMatrix_chance
-boolean array s__YDWEStringFormula___FormulaMatrix_delete
-constant integer si__YDWEStringFormula___Sorting=9
-integer si__YDWEStringFormula___Sorting_F=0
-integer si__YDWEStringFormula___Sorting_I=0
-integer array si__YDWEStringFormula___Sorting_V
-integer array s___YDWEStringFormula___Sorting_stack
-constant integer s___YDWEStringFormula___Sorting_stack_size=8
-integer array s__YDWEStringFormula___Sorting_stack
-integer array s___YDWEStringFormula___Sorting_count
-constant integer s___YDWEStringFormula___Sorting_count_size=8
-integer array s__YDWEStringFormula___Sorting_count
-integer array s__YDWEStringFormula___Sorting_total
-string array s__YDWEStringFormula___Sorting_char
-integer array si__YDWEStringFormula___Inventory_type
-trigger array st__YDWEStringFormula___Inventory_onDestroy
+constant integer si__YDWEStringFormula__Inventory=5
+integer si__YDWEStringFormula__Inventory_F=0
+integer si__YDWEStringFormula__Inventory_I=0
+integer array si__YDWEStringFormula__Inventory_V
+constant integer si__YDWEStringFormula__StringTable=6
+constant integer si__YDWEStringFormula__ItemIdMatrix=7
+integer s__YDWEStringFormula__ItemIdMatrix_Data
+integer s__YDWEStringFormula__ItemIdMatrix_Total= 1
+integer array s__YDWEStringFormula__ItemIdMatrix_itemId
+string array s__YDWEStringFormula__ItemIdMatrix_keyStr
+integer array s__YDWEStringFormula__ItemIdMatrix_keyLen
+constant integer si__YDWEStringFormula__FormulaMatrix=8
+integer s__YDWEStringFormula__FormulaMatrix_Data
+integer s__YDWEStringFormula__FormulaMatrix_Total= 1
+string array s__YDWEStringFormula__FormulaMatrix_formula
+integer array s__YDWEStringFormula__FormulaMatrix_segmLen
+string array s__YDWEStringFormula__FormulaMatrix_model
+string array s__YDWEStringFormula__FormulaMatrix_message
+integer array s__YDWEStringFormula__FormulaMatrix_chance
+boolean array s__YDWEStringFormula__FormulaMatrix_delete
+constant integer si__YDWEStringFormula__Sorting=9
+integer si__YDWEStringFormula__Sorting_F=0
+integer si__YDWEStringFormula__Sorting_I=0
+integer array si__YDWEStringFormula__Sorting_V
+integer array s___YDWEStringFormula__Sorting_stack
+constant integer s___YDWEStringFormula__Sorting_stack_size=8
+integer array s__YDWEStringFormula__Sorting_stack
+integer array s___YDWEStringFormula__Sorting_count
+constant integer s___YDWEStringFormula__Sorting_count_size=8
+integer array s__YDWEStringFormula__Sorting_count
+integer array s__YDWEStringFormula__Sorting_total
+string array s__YDWEStringFormula__Sorting_char
+integer array si__YDWEStringFormula__Inventory_type
+trigger array st__YDWEStringFormula__Inventory_onDestroy
 trigger st__Frame_onDestroy
 trigger st__Tower_setAbility
 trigger st__Tower_setItemNum
-trigger st__YDWEStringFormula___Sorting_onDestroy
+trigger st__YDWEStringFormula__Sorting_onDestroy
 trigger array st___prototype9
 integer f__arg_integer1
 unit f__arg_unit1
@@ -787,48 +809,48 @@ function sc__Frame_deallocate takes integer this returns nothing
     set si__Frame_F=this
 endfunction
 
-//Generated method caller for YDWEStringFormula___Sorting.onDestroy
-function sc__YDWEStringFormula___Sorting_onDestroy takes integer this returns nothing
+//Generated method caller for YDWEStringFormula__Sorting.onDestroy
+function sc__YDWEStringFormula__Sorting_onDestroy takes integer this returns nothing
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
 endfunction
 
-//Generated allocator of YDWEStringFormula___Sorting
-function s__YDWEStringFormula___Sorting__allocate takes nothing returns integer
- local integer this=si__YDWEStringFormula___Sorting_F
+//Generated allocator of YDWEStringFormula__Sorting
+function s__YDWEStringFormula__Sorting__allocate takes nothing returns integer
+ local integer this=si__YDWEStringFormula__Sorting_F
     if (this!=0) then
-        set si__YDWEStringFormula___Sorting_F=si__YDWEStringFormula___Sorting_V[this]
+        set si__YDWEStringFormula__Sorting_F=si__YDWEStringFormula__Sorting_V[this]
     else
-        set si__YDWEStringFormula___Sorting_I=si__YDWEStringFormula___Sorting_I+1
-        set this=si__YDWEStringFormula___Sorting_I
+        set si__YDWEStringFormula__Sorting_I=si__YDWEStringFormula__Sorting_I+1
+        set this=si__YDWEStringFormula__Sorting_I
     endif
     if (this>1022) then
         return 0
     endif
-    set s__YDWEStringFormula___Sorting_stack[this]=(this-1)*8
-    set s__YDWEStringFormula___Sorting_count[this]=(this-1)*8
-   set s__YDWEStringFormula___Sorting_total[this]= 7
-    set si__YDWEStringFormula___Sorting_V[this]=-1
+    set s__YDWEStringFormula__Sorting_stack[this]=(this-1)*8
+    set s__YDWEStringFormula__Sorting_count[this]=(this-1)*8
+   set s__YDWEStringFormula__Sorting_total[this]= 7
+    set si__YDWEStringFormula__Sorting_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWEStringFormula___Sorting
-function sc__YDWEStringFormula___Sorting_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Sorting
+function sc__YDWEStringFormula__Sorting_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Sorting_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Sorting_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Sorting_onDestroy)
-    set si__YDWEStringFormula___Sorting_V[this]=si__YDWEStringFormula___Sorting_F
-    set si__YDWEStringFormula___Sorting_F=this
+    call TriggerEvaluate(st__YDWEStringFormula__Sorting_onDestroy)
+    set si__YDWEStringFormula__Sorting_V[this]=si__YDWEStringFormula__Sorting_F
+    set si__YDWEStringFormula__Sorting_F=this
 endfunction
 
 //Generated allocator of ImageButton
@@ -859,41 +881,41 @@ function s__ImageButton_deallocate takes integer this returns nothing
     set si__ImageButton_F=this
 endfunction
 
-//Generated method caller for YDWEStringFormula___Inventory.onDestroy
-function sc__YDWEStringFormula___Inventory_onDestroy takes integer this returns nothing
+//Generated method caller for YDWEStringFormula__Inventory.onDestroy
+function sc__YDWEStringFormula__Inventory_onDestroy takes integer this returns nothing
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Inventory_onDestroy[5])
+    call TriggerEvaluate(st__YDWEStringFormula__Inventory_onDestroy[5])
 endfunction
 
-//Generated allocator of YDWEStringFormula___Inventory
-function s__YDWEStringFormula___Inventory__allocate takes nothing returns integer
- local integer this=si__YDWEStringFormula___Inventory_F
+//Generated allocator of YDWEStringFormula__Inventory
+function s__YDWEStringFormula__Inventory__allocate takes nothing returns integer
+ local integer this=si__YDWEStringFormula__Inventory_F
     if (this!=0) then
-        set si__YDWEStringFormula___Inventory_F=si__YDWEStringFormula___Inventory_V[this]
+        set si__YDWEStringFormula__Inventory_F=si__YDWEStringFormula__Inventory_V[this]
     else
-        set si__YDWEStringFormula___Inventory_I=si__YDWEStringFormula___Inventory_I+1
-        set this=si__YDWEStringFormula___Inventory_I
+        set si__YDWEStringFormula__Inventory_I=si__YDWEStringFormula__Inventory_I+1
+        set this=si__YDWEStringFormula__Inventory_I
     endif
     if (this>8190) then
         return 0
     endif
 
-    set si__YDWEStringFormula___Inventory_type[this]=5
-    set si__YDWEStringFormula___Inventory_V[this]=-1
+    set si__YDWEStringFormula__Inventory_type[this]=5
+    set si__YDWEStringFormula__Inventory_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of YDWEStringFormula___Inventory
-function sc__YDWEStringFormula___Inventory_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Inventory
+function sc__YDWEStringFormula__Inventory_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Inventory_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Inventory_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__YDWEStringFormula___Inventory_onDestroy[si__YDWEStringFormula___Inventory_type[this]])
-    set si__YDWEStringFormula___Inventory_V[this]=si__YDWEStringFormula___Inventory_F
-    set si__YDWEStringFormula___Inventory_F=this
+    call TriggerEvaluate(st__YDWEStringFormula__Inventory_onDestroy[si__YDWEStringFormula__Inventory_type[this]])
+    set si__YDWEStringFormula__Inventory_V[this]=si__YDWEStringFormula__Inventory_F
+    set si__YDWEStringFormula__Inventory_F=this
 endfunction
 
 //Generated method caller for Tower.setAbility
@@ -963,14 +985,14 @@ function s__Tower_deallocate takes integer this returns nothing
     set si__Tower_F=this
 endfunction
 
-//Generated allocator of YDWEStringFormula___StringTable
-function s__YDWEStringFormula___StringTable__allocate takes nothing returns integer
- local integer this=s__YDWEStringFormula___Inventory__allocate()
+//Generated allocator of YDWEStringFormula__StringTable
+function s__YDWEStringFormula__StringTable__allocate takes nothing returns integer
+ local integer this=s__YDWEStringFormula__Inventory__allocate()
  local integer kthis
     if(this==0) then
         return 0
     endif
-    set si__YDWEStringFormula___Inventory_type[this]=6
+    set si__YDWEStringFormula__Inventory_type[this]=6
     set kthis=this
 
  return this
@@ -1400,7 +1422,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary___init takes nothing returns nothing
+    function FrameLibrary__init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1469,8 +1491,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1556,7 +1578,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1576,7 +1598,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -1607,8 +1629,8 @@ endfunction
             call sc__Tower_setAbility(tw)
             call sc__Tower_setItemNum(tw,item_num)
             // if not IsBuilder(GetUnitTypeId(u)) and GetUnitTypeId(u) != 'o00R' then
-            //     call UnitAddAbility(u, 'A100')
-            //     call UnitMakeAbilityPermanent(u, true, 'A100')
+            //     call UnitAddAbility(u, 'A0B0')
+            //     call UnitMakeAbilityPermanent(u, true, 'A0B0')
             // endif
             return tw
         endfunction
@@ -1708,6 +1730,9 @@ endfunction
         endloop
     endfunction
     function SaveTowerAbility takes nothing returns nothing
+        call SaveTowerAbility_1('O100' , 'A001' , 5)
+        call SaveTowerAbility_1('O100' , 'A01T' , 2)
+        call SaveTowerAbility_1('O100' , 'A00B' , 1)
         call SaveTowerAbility_1('o000' , 'A006' , 1)
         call SaveTowerAbility_1('o00B' , 'A001' , 1)
         call SaveTowerAbility_1('o001' , 'A001' , 2)
@@ -3222,9 +3247,9 @@ endfunction
 function YDWESyStemItemCombineTriggerAction takes nothing returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEStringFormula___ItemCombineEventNumber
-        if YDWEStringFormula___ItemCombineEventQueue[i] != null and TriggerEvaluate(YDWEStringFormula___ItemCombineEventQueue[i]) and IsTriggerEnabled(YDWEStringFormula___ItemCombineEventQueue[i]) then
-            call TriggerExecute(YDWEStringFormula___ItemCombineEventQueue[i])
+        exitwhen i >= YDWEStringFormula__ItemCombineEventNumber
+        if YDWEStringFormula__ItemCombineEventQueue[i] != null and TriggerEvaluate(YDWEStringFormula__ItemCombineEventQueue[i]) and IsTriggerEnabled(YDWEStringFormula__ItemCombineEventQueue[i]) then
+            call TriggerExecute(YDWEStringFormula__ItemCombineEventQueue[i])
         endif
         set i=i + 1
     endloop
@@ -3234,30 +3259,30 @@ endfunction
 //��Ʒ�ϳ��¼� 
 //===========================================================================  
 function YDWESyStemItemCombineRegistTrigger takes trigger trg returns nothing
-	set YDWEStringFormula___ItemCombineEventQueue[YDWEStringFormula___ItemCombineEventNumber]=trg
-	set YDWEStringFormula___ItemCombineEventNumber=YDWEStringFormula___ItemCombineEventNumber + 1
+	set YDWEStringFormula__ItemCombineEventQueue[YDWEStringFormula__ItemCombineEventNumber]=trg
+	set YDWEStringFormula__ItemCombineEventNumber=YDWEStringFormula__ItemCombineEventNumber + 1
 endfunction
-        function s__YDWEStringFormula___Inventory_reset takes integer this returns nothing
+        function s__YDWEStringFormula__Inventory_reset takes integer this returns nothing
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___Inventory_onDestroy takes integer this returns nothing
+        function s__YDWEStringFormula__Inventory_onDestroy takes integer this returns nothing
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
         endfunction
     
-        function s__YDWEStringFormula___StringTable__getindex takes integer this,string key returns integer
+        function s__YDWEStringFormula__StringTable__getindex takes integer this,string key returns integer
             return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key)))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable__setindex takes integer this,string key,integer value returns nothing
+        function s__YDWEStringFormula__StringTable__setindex takes integer this,string key,integer value returns nothing
             call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key )), ( value)) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable_flush takes integer this,string key returns nothing
+        function s__YDWEStringFormula__StringTable_flush takes integer this,string key returns nothing
             call RemoveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___StringTable_exists takes integer this,string key returns boolean
+        function s__YDWEStringFormula__StringTable_exists takes integer this,string key returns boolean
             return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S(this) )), StringHash(( key)))) // INLINED!!
         endfunction 
 //***************************************************************
@@ -3266,7 +3291,7 @@ endfunction
 //*
 //***************************************************************
     
-    function YDWEStringFormula___Convert takes integer value,integer length returns string
+    function YDWEStringFormula__Convert takes integer value,integer length returns string
         local string Char= I2S(value)
         local integer slen= StringLength(Char)
             
@@ -3285,47 +3310,47 @@ endfunction
     
         
         
-        function s__YDWEStringFormula___ItemIdMatrix_get takes integer id returns integer
-            return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
+        function s__YDWEStringFormula__ItemIdMatrix_get takes integer id returns integer
+            return (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_exists takes integer id returns boolean
-            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
+        function s__YDWEStringFormula__ItemIdMatrix_exists takes integer id returns boolean
+            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)))))) // INLINED!!
         endfunction
                  
-        function s__YDWEStringFormula___ItemIdMatrix_sub takes integer this,integer segment returns integer
-            local integer start= s__YDWEStringFormula___ItemIdMatrix_keyLen[this] * segment + 1
-            return S2I(SubString(s__YDWEStringFormula___ItemIdMatrix_keyStr[this], start, ( start + s__YDWEStringFormula___ItemIdMatrix_keyLen[this] )))
+        function s__YDWEStringFormula__ItemIdMatrix_sub takes integer this,integer segment returns integer
+            local integer start= s__YDWEStringFormula__ItemIdMatrix_keyLen[this] * segment + 1
+            return S2I(SubString(s__YDWEStringFormula__ItemIdMatrix_keyStr[this], start, ( start + s__YDWEStringFormula__ItemIdMatrix_keyLen[this] )))
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_assigns takes integer id returns integer
+        function s__YDWEStringFormula__ItemIdMatrix_assigns takes integer id returns integer
             local integer this= 0
             if id == null or id == 0 then
                 return 0
             endif
             
-            set this=(LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((id))))))) // INLINED!!
+            set this=(LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((id))))))) // INLINED!!
                 
             if (this) > 0 then
                 return this
             endif
             
-            set this=(s__YDWEStringFormula___ItemIdMatrix_Total)
-            set s__YDWEStringFormula___ItemIdMatrix_itemId[this]=id
-            set s__YDWEStringFormula___ItemIdMatrix_keyStr[this]=I2S(YDWEStringFormula___SEGMENT_LENGTH)
-            set s__YDWEStringFormula___ItemIdMatrix_keyLen[this]=YDWEStringFormula___SEGMENT_LENGTH
-            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S(id)) )), ( ( (this)))) // INLINED!!
-            set s__YDWEStringFormula___ItemIdMatrix_Total=s__YDWEStringFormula___ItemIdMatrix_Total + 1
+            set this=(s__YDWEStringFormula__ItemIdMatrix_Total)
+            set s__YDWEStringFormula__ItemIdMatrix_itemId[this]=id
+            set s__YDWEStringFormula__ItemIdMatrix_keyStr[this]=I2S(YDWEStringFormula__SEGMENT_LENGTH)
+            set s__YDWEStringFormula__ItemIdMatrix_keyLen[this]=YDWEStringFormula__SEGMENT_LENGTH
+            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S(id)) )), ( ( (this)))) // INLINED!!
+            set s__YDWEStringFormula__ItemIdMatrix_Total=s__YDWEStringFormula__ItemIdMatrix_Total + 1
             return this
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_memory takes integer this,string key returns nothing
-            set s__YDWEStringFormula___ItemIdMatrix_keyStr[this]=s__YDWEStringFormula___ItemIdMatrix_keyStr[this] + key
+        function s__YDWEStringFormula__ItemIdMatrix_memory takes integer this,string key returns nothing
+            set s__YDWEStringFormula__ItemIdMatrix_keyStr[this]=s__YDWEStringFormula__ItemIdMatrix_keyStr[this] + key
             //debug call BJDebugMsg("|cff00ff00KEY: |r" + .keyStr)
         endfunction
         
-        function s__YDWEStringFormula___ItemIdMatrix_onInit takes nothing returns nothing
-            set s__YDWEStringFormula___ItemIdMatrix_Data=s__YDWEStringFormula___StringTable__allocate()
+        function s__YDWEStringFormula__ItemIdMatrix_onInit takes nothing returns nothing
+            set s__YDWEStringFormula__ItemIdMatrix_Data=s__YDWEStringFormula__StringTable__allocate()
         endfunction
         
 ////////////////// __End of ItemId Matrix__ ////////////////
@@ -3340,40 +3365,40 @@ endfunction
         
         
         
-        function s__YDWEStringFormula___FormulaMatrix_exists takes string s returns boolean
-            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( (s))))) // INLINED!!
+        function s__YDWEStringFormula__FormulaMatrix_exists takes string s returns boolean
+            return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (s))))) // INLINED!!
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_sub takes integer this,integer segment returns integer
-            local integer start= s__YDWEStringFormula___FormulaMatrix_segmLen[this] * segment + 1
-            return S2I(SubString(s__YDWEStringFormula___FormulaMatrix_formula[this], start, ( start + s__YDWEStringFormula___FormulaMatrix_segmLen[this] )))
+        function s__YDWEStringFormula__FormulaMatrix_sub takes integer this,integer segment returns integer
+            local integer start= s__YDWEStringFormula__FormulaMatrix_segmLen[this] * segment + 1
+            return S2I(SubString(s__YDWEStringFormula__FormulaMatrix_formula[this], start, ( start + s__YDWEStringFormula__FormulaMatrix_segmLen[this] )))
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_memory takes integer lingth,string formStr,integer eventually returns integer
+        function s__YDWEStringFormula__FormulaMatrix_memory takes integer lingth,string formStr,integer eventually returns integer
             local integer this= 0
             
-            if (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( ((formStr)))))) then // INLINED!!
+            if (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( ((formStr)))))) then // INLINED!!
                 //debug call BJDebugMsg("|cffff0000Registration cannot be repeated !!|r")
                 return 0
             endif
             
-            set this=(s__YDWEStringFormula___FormulaMatrix_Total)
-            set s__YDWEStringFormula___FormulaMatrix_formula[this]=formStr + YDWEStringFormula___Convert(eventually , YDWEStringFormula___SEGMENT_LENGTH)
-            set s__YDWEStringFormula___FormulaMatrix_segmLen[this]=lingth
+            set this=(s__YDWEStringFormula__FormulaMatrix_Total)
+            set s__YDWEStringFormula__FormulaMatrix_formula[this]=formStr + YDWEStringFormula__Convert(eventually , YDWEStringFormula__SEGMENT_LENGTH)
+            set s__YDWEStringFormula__FormulaMatrix_segmLen[this]=lingth
             
-            set s__YDWEStringFormula___FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
-set s__YDWEStringFormula___FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
-set s__YDWEStringFormula___FormulaMatrix_chance[this]=100
-            set s__YDWEStringFormula___FormulaMatrix_delete[this]=false
-            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
-            set s__YDWEStringFormula___FormulaMatrix_Total=s__YDWEStringFormula___FormulaMatrix_Total + 1
+            set s__YDWEStringFormula__FormulaMatrix_model[this]=null //"Abilities\\Spells\\Items\\AIam\\AIamTarget.mdl"
+set s__YDWEStringFormula__FormulaMatrix_message[this]=null //"|cff00ff00��ϳ��ˣ�|r" 
+set s__YDWEStringFormula__FormulaMatrix_chance[this]=100
+            set s__YDWEStringFormula__FormulaMatrix_delete[this]=false
+            call SaveInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__FormulaMatrix_Data)) )), StringHash(( (formStr) )), ( ( (this)))) // INLINED!!
+            set s__YDWEStringFormula__FormulaMatrix_Total=s__YDWEStringFormula__FormulaMatrix_Total + 1
             
             //debug call BJDebugMsg("|cff00ff00Formula Register: |r" + I2S(integer(this)) + ". " + this.formula)
             return this
         endfunction
         
-        function s__YDWEStringFormula___FormulaMatrix_onInit takes nothing returns nothing
-            set s__YDWEStringFormula___FormulaMatrix_Data=s__YDWEStringFormula___StringTable__allocate()
+        function s__YDWEStringFormula__FormulaMatrix_onInit takes nothing returns nothing
+            set s__YDWEStringFormula__FormulaMatrix_Data=s__YDWEStringFormula__StringTable__allocate()
         endfunction
         
     
@@ -3382,99 +3407,99 @@ set s__YDWEStringFormula___FormulaMatrix_chance[this]=100
 ////////////////////////////////////////////////////////////
 //////////////////// __Formula Sorting__ ///////////////////
         
-        function s__YDWEStringFormula___Sorting_onDestroy takes integer this returns nothing
+        function s__YDWEStringFormula__Sorting_onDestroy takes integer this returns nothing
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
         endfunction
 
-//Generated destructor of YDWEStringFormula___Sorting
-function s__YDWEStringFormula___Sorting_deallocate takes integer this returns nothing
+//Generated destructor of YDWEStringFormula__Sorting
+function s__YDWEStringFormula__Sorting_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__YDWEStringFormula___Sorting_V[this]!=-1) then
+    elseif (si__YDWEStringFormula__Sorting_V[this]!=-1) then
         return
     endif
-    call s__YDWEStringFormula___Sorting_onDestroy(this)
-    set si__YDWEStringFormula___Sorting_V[this]=si__YDWEStringFormula___Sorting_F
-    set si__YDWEStringFormula___Sorting_F=this
+    call s__YDWEStringFormula__Sorting_onDestroy(this)
+    set si__YDWEStringFormula__Sorting_V[this]=si__YDWEStringFormula__Sorting_F
+    set si__YDWEStringFormula__Sorting_F=this
 endfunction
         
-        function s__YDWEStringFormula___Sorting_create takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer type7,integer n7 returns integer
-            local integer this= s__YDWEStringFormula___Sorting__allocate()
+        function s__YDWEStringFormula__Sorting_create takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer type7,integer n7 returns integer
+            local integer this= s__YDWEStringFormula__Sorting__allocate()
             
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+1]=s__YDWEStringFormula___ItemIdMatrix_assigns(type1)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+2]=s__YDWEStringFormula___ItemIdMatrix_assigns(type2)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+3]=s__YDWEStringFormula___ItemIdMatrix_assigns(type3)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+4]=s__YDWEStringFormula___ItemIdMatrix_assigns(type4)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+5]=s__YDWEStringFormula___ItemIdMatrix_assigns(type5)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+6]=s__YDWEStringFormula___ItemIdMatrix_assigns(type6)
-            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+7]=s__YDWEStringFormula___ItemIdMatrix_assigns(type7)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+1]=s__YDWEStringFormula__ItemIdMatrix_assigns(type1)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+2]=s__YDWEStringFormula__ItemIdMatrix_assigns(type2)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+3]=s__YDWEStringFormula__ItemIdMatrix_assigns(type3)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+4]=s__YDWEStringFormula__ItemIdMatrix_assigns(type4)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+5]=s__YDWEStringFormula__ItemIdMatrix_assigns(type5)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+6]=s__YDWEStringFormula__ItemIdMatrix_assigns(type6)
+            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+7]=s__YDWEStringFormula__ItemIdMatrix_assigns(type7)
             
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+1]=n1
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+2]=n2
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+3]=n3
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+4]=n4
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+5]=n5
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+6]=n6
-            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+7]=n7
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+1]=n1
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+2]=n2
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+3]=n3
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+4]=n4
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+5]=n5
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+6]=n6
+            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+7]=n7
             
             return this
         endfunction
         
-        function s__YDWEStringFormula___Sorting_convert takes integer this returns string
+        function s__YDWEStringFormula__Sorting_convert takes integer this returns string
             local integer i= 1
             local integer j
             local integer k
               
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
             loop
-                exitwhen i > s__YDWEStringFormula___Sorting_total[this]
-                if s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i] == 0 or s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i] == 0 then
-                    set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+s__YDWEStringFormula___Sorting_total[this]]
-                    set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+s__YDWEStringFormula___Sorting_total[this]]
-                    set s__YDWEStringFormula___Sorting_total[this]=s__YDWEStringFormula___Sorting_total[this] - 1
+                exitwhen i > s__YDWEStringFormula__Sorting_total[this]
+                if s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i] == 0 or s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i] == 0 then
+                    set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+s__YDWEStringFormula__Sorting_total[this]]
+                    set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+s__YDWEStringFormula__Sorting_total[this]]
+                    set s__YDWEStringFormula__Sorting_total[this]=s__YDWEStringFormula__Sorting_total[this] - 1
                     set i=i - 1
                 else
                     set j=i + 1
                     loop
-                        exitwhen j > s__YDWEStringFormula___Sorting_total[this]
-                        if s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j] == 0 or s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j] == 0 then
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+s__YDWEStringFormula___Sorting_total[this]]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+s__YDWEStringFormula___Sorting_total[this]]
-                            set s__YDWEStringFormula___Sorting_total[this]=s__YDWEStringFormula___Sorting_total[this] - 1
+                        exitwhen j > s__YDWEStringFormula__Sorting_total[this]
+                        if s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j] == 0 or s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j] == 0 then
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+s__YDWEStringFormula__Sorting_total[this]]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+s__YDWEStringFormula__Sorting_total[this]]
+                            set s__YDWEStringFormula__Sorting_total[this]=s__YDWEStringFormula__Sorting_total[this] - 1
                             set j=j - 1
-                        elseif (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]) > (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]) then
-                            set k=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=k
-                            set k=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]=k
-                        elseif (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]) == (s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]) then
-                            set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i] + s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+j]
-                            set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+j]=0
+                        elseif (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]) > (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]) then
+                            set k=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=k
+                            set k=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]=k
+                        elseif (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]) == (s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]) then
+                            set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i] + s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+j]
+                            set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+j]=0
                             set j=j - 1
                         endif
                         set j=j + 1
                     endloop
                 
-                    set j=s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]
+                    set j=s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]
                     loop
                         exitwhen j == 0
-                        set s__YDWEStringFormula___Sorting_char[this]=s__YDWEStringFormula___Sorting_char[this] + YDWEStringFormula___Convert(s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i] , YDWEStringFormula___SEGMENT_LENGTH)
+                        set s__YDWEStringFormula__Sorting_char[this]=s__YDWEStringFormula__Sorting_char[this] + YDWEStringFormula__Convert(s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i] , YDWEStringFormula__SEGMENT_LENGTH)
                         set j=j - 1
                     endloop
                 endif
                 set i=i + 1
             endloop
             
-            return s__YDWEStringFormula___Sorting_char[this]
+            return s__YDWEStringFormula__Sorting_char[this]
         endfunction
         
 ////////////////// __End of Formula Sorting__ //////////////
@@ -3484,15 +3509,15 @@ endfunction
 ////////////////////////////////////////////////////////////
 /////////////////////// __Craft Item__ /////////////////////
     
-    function YDWEStringFormula___Adaptation takes nothing returns boolean
+    function YDWEStringFormula__Adaptation takes nothing returns boolean
         return true
     endfunction
         
-    function YDWEStringFormula___verify takes nothing returns boolean
-        return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
+    function YDWEStringFormula__verify takes nothing returns boolean
+        return (HaveSavedInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
     endfunction
         
-    function YDWEStringFormula___GetCharges takes item it returns integer
+    function YDWEStringFormula__GetCharges takes item it returns integer
         local integer charges= GetItemCharges(it)
         if charges == 0 then
             set charges=1
@@ -3500,10 +3525,10 @@ endfunction
         return charges
     endfunction
         
-    function YDWEStringFormula___CraftItem takes nothing returns nothing
+    function YDWEStringFormula__CraftItem takes nothing returns nothing
         local integer forx= 0
-        local integer itmx= (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula___ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
-        local integer size= StringLength(s__YDWEStringFormula___ItemIdMatrix_keyStr[itmx]) / s__YDWEStringFormula___ItemIdMatrix_keyLen[itmx]
+        local integer itmx= (LoadInteger(YDHT, StringHash(("YDWEStringFormula." + I2S((s__YDWEStringFormula__ItemIdMatrix_Data)) )), StringHash(( (I2S((GetItemTypeId(GetManipulatedItem())))))))) // INLINED!!
+        local integer size= StringLength(s__YDWEStringFormula__ItemIdMatrix_keyStr[itmx]) / s__YDWEStringFormula__ItemIdMatrix_keyLen[itmx]
         local integer inst= 0
         local integer numb= 0
         local integer sum= 0
@@ -3530,7 +3555,7 @@ endfunction
             if it != null then
                 set items[sum]=it
                 set typeid[sum]=GetItemTypeId(it)
-                set amount[sum]=YDWEStringFormula___GetCharges(it)
+                set amount[sum]=YDWEStringFormula__GetCharges(it)
                 if it == article then
                     set b=true
                 endif
@@ -3550,8 +3575,8 @@ endfunction
         //* Check Formulas
         loop
             exitwhen inst == size
-            set forx=(s__YDWEStringFormula___ItemIdMatrix_sub(itmx,inst))
-            set numb=StringLength(s__YDWEStringFormula___FormulaMatrix_formula[forx]) / s__YDWEStringFormula___FormulaMatrix_segmLen[forx] - 1
+            set forx=(s__YDWEStringFormula__ItemIdMatrix_sub(itmx,inst))
+            set numb=StringLength(s__YDWEStringFormula__FormulaMatrix_formula[forx]) / s__YDWEStringFormula__FormulaMatrix_segmLen[forx] - 1
             
             set i=0
             loop
@@ -3562,7 +3587,7 @@ endfunction
                 
             set i=0
             loop
-                set tmpid=s__YDWEStringFormula___ItemIdMatrix_itemId[(s__YDWEStringFormula___FormulaMatrix_sub(forx,i))]
+                set tmpid=s__YDWEStringFormula__ItemIdMatrix_itemId[(s__YDWEStringFormula__FormulaMatrix_sub(forx,i))]
                 exitwhen i == numb
                 
                 set j=0
@@ -3581,13 +3606,13 @@ endfunction
                 set i=i + 1
             endloop
             if i == numb then
-                if GetRandomInt(0, 99) < s__YDWEStringFormula___FormulaMatrix_chance[forx] then
-                    if s__YDWEStringFormula___FormulaMatrix_model[forx] != null then
-                        call DestroyEffect(AddSpecialEffectTarget(s__YDWEStringFormula___FormulaMatrix_model[forx], caster, "origin"))
+                if GetRandomInt(0, 99) < s__YDWEStringFormula__FormulaMatrix_chance[forx] then
+                    if s__YDWEStringFormula__FormulaMatrix_model[forx] != null then
+                        call DestroyEffect(AddSpecialEffectTarget(s__YDWEStringFormula__FormulaMatrix_model[forx], caster, "origin"))
                     endif
                     
-                    if s__YDWEStringFormula___FormulaMatrix_message[forx] != null then
-                        call DisplayTimedTextToPlayer(GetTriggerPlayer(), 0, 0, 30, s__YDWEStringFormula___FormulaMatrix_message[forx])
+                    if s__YDWEStringFormula__FormulaMatrix_message[forx] != null then
+                        call DisplayTimedTextToPlayer(GetTriggerPlayer(), 0, 0, 30, s__YDWEStringFormula__FormulaMatrix_message[forx])
                     endif
                 
                     set i=0
@@ -3620,7 +3645,7 @@ endfunction
                     call UnitAddItem(caster, it)
                     set bj_lastCombinedItem=it
                     call YDWESyStemItemCombineTriggerAction()
-                elseif s__YDWEStringFormula___FormulaMatrix_delete[forx] then
+                elseif s__YDWEStringFormula__FormulaMatrix_delete[forx] then
                     set i=0
                     loop
                         exitwhen i == sum
@@ -3654,8 +3679,8 @@ endfunction
         set caster=null
         set it=null
     endfunction
-    function YDWEStringFormula___Init takes nothing returns nothing
-        local filterfunc f= Filter(function YDWEStringFormula___Adaptation)
+    function YDWEStringFormula__Init takes nothing returns nothing
+        local filterfunc f= Filter(function YDWEStringFormula__Adaptation)
         local trigger t= CreateTrigger()
         local integer i= 0
         
@@ -3665,8 +3690,8 @@ endfunction
             set i=i + 1
         endloop
         
-        call TriggerAddCondition(t, Condition(function YDWEStringFormula___verify))
-        call TriggerAddAction(t, function YDWEStringFormula___CraftItem)
+        call TriggerAddCondition(t, Condition(function YDWEStringFormula__verify))
+        call TriggerAddAction(t, function YDWEStringFormula__CraftItem)
         call DestroyFilter(f)
         
         set f=null
@@ -3678,27 +3703,27 @@ endfunction
     
     // call YDWENewItemsFormula('rat6', 6, 'rat9', 5, 'ratc', 4, 'rde1', 3, 'rde2', 2, 'rde3', 1, 'mcou')
     function YDWENewItemsFormula takes integer type1,integer n1,integer type2,integer n2,integer type3,integer n3,integer type4,integer n4,integer type5,integer n5,integer type6,integer n6,integer eventually returns nothing
-        local integer sort= s__YDWEStringFormula___Sorting_create(type1 , n1 , type2 , n2 , type3 , n3 , type4 , n4 , type5 , n5 , type6 , n6 , 0 , 0)
-        local integer itmx= s__YDWEStringFormula___ItemIdMatrix_assigns(eventually)
-        local string f= I2S(YDWEStringFormula___SEGMENT_LENGTH) + s__YDWEStringFormula___Sorting_convert(sort)
+        local integer sort= s__YDWEStringFormula__Sorting_create(type1 , n1 , type2 , n2 , type3 , n3 , type4 , n4 , type5 , n5 , type6 , n6 , 0 , 0)
+        local integer itmx= s__YDWEStringFormula__ItemIdMatrix_assigns(eventually)
+        local string f= I2S(YDWEStringFormula__SEGMENT_LENGTH) + s__YDWEStringFormula__Sorting_convert(sort)
         local string s= ""
         local integer i= 0
         
-        set YDWEStringFormula___FormulaData=s__YDWEStringFormula___FormulaMatrix_memory(YDWEStringFormula___SEGMENT_LENGTH , f , itmx)
-        if (YDWEStringFormula___FormulaData) > 0 then
-            set s=YDWEStringFormula___Convert((YDWEStringFormula___FormulaData) , YDWEStringFormula___SEGMENT_LENGTH)
+        set YDWEStringFormula__FormulaData=s__YDWEStringFormula__FormulaMatrix_memory(YDWEStringFormula__SEGMENT_LENGTH , f , itmx)
+        if (YDWEStringFormula__FormulaData) > 0 then
+            set s=YDWEStringFormula__Convert((YDWEStringFormula__FormulaData) , YDWEStringFormula__SEGMENT_LENGTH)
             
             set i=0
             loop
-                exitwhen i > s__YDWEStringFormula___Sorting_total[sort]
-                call s__YDWEStringFormula___ItemIdMatrix_memory(s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[sort]+i],s)
+                exitwhen i > s__YDWEStringFormula__Sorting_total[sort]
+                call s__YDWEStringFormula__ItemIdMatrix_memory(s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[sort]+i],s)
                 set i=i + 1
             endloop
             
-            call s__YDWEStringFormula___ItemIdMatrix_memory(itmx,s)
+            call s__YDWEStringFormula__ItemIdMatrix_memory(itmx,s)
         endif
         
-        call s__YDWEStringFormula___Sorting_deallocate(sort)
+        call s__YDWEStringFormula__Sorting_deallocate(sort)
         set f=""
         set s=""
     endfunction
@@ -3928,7 +3953,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Mon Dec 05 10:40:31 2022
+//   Date: Tue Dec 06 14:30:33 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -6770,6 +6795,235 @@ function initSpawn takes nothing returns nothing
     call TriggerAddAction(spawnTrigger, function doSpawn)
     set t=null
 endfunction
+// 兑换商店
+function exchangeItem takes integer i,integer id returns nothing
+    if id == exchangeItemId[1] then
+        set exchangeHit[i]=exchangeHit[i] + 20
+    endif
+    if id == exchangeItemId[2] then
+        set exchangeCriticalRate[i]=exchangeCriticalRate[i] + 0.5
+    endif
+    if id == exchangeItemId[3] then
+        set exchangeCriticalDamage[i]=exchangeCriticalDamage[i] + 0.02
+    endif
+    if id == exchangeItemId[4] then
+        set exchangeStr[i]=exchangeStr[i] + 5
+    endif
+    if id == exchangeItemId[5] then
+        set exchangeAgi[i]=exchangeAgi[i] + 5
+    endif
+    if id == exchangeItemId[6] then
+        set exchangeInt[i]=exchangeInt[i] + 5
+    endif
+    if id == exchangeItemId[7] then
+        set exchangeManaRecovery[i]=exchangeManaRecovery[i] + 0.2
+    endif
+    if id == exchangeItemId[8] then
+        set exchangeDamage[i]=exchangeDamage[i] + 0.005
+    endif
+    if id == exchangeItemId[9] then
+        set exchangeCooldownReduction[i]=exchangeCooldownReduction[i] + 2
+    endif
+    if id == exchangeItemId[10] then
+        set exchangeKillGold[i]=exchangeKillGold[i] + 1
+    endif
+    if id == exchangeItemId[11] then
+        set exchangeHit[i]=exchangeHit[i] + 50
+    endif
+    if id == exchangeItemId[12] then
+        set exchangeCriticalRate[i]=exchangeCriticalRate[i] + 1
+    endif
+    if id == exchangeItemId[13] then
+        set exchangeCriticalDamage[i]=exchangeCriticalDamage[i] + 0.05
+    endif
+    if id == exchangeItemId[14] then
+        set exchangeStr[i]=exchangeStr[i] + 10
+    endif
+    if id == exchangeItemId[15] then
+        set exchangeAgi[i]=exchangeAgi[i] + 10
+    endif
+    if id == exchangeItemId[16] then
+        set exchangeInt[i]=exchangeInt[i] + 10
+    endif
+    if id == exchangeItemId[17] then
+        set exchangeManaRecovery[i]=exchangeManaRecovery[i] + 0.5
+    endif
+    if id == exchangeItemId[18] then
+        set exchangeDamage[i]=exchangeDamage[i] + 0.005
+    endif
+    if id == exchangeItemId[19] then
+        set exchangeCooldownReduction[i]=exchangeCooldownReduction[i] + 2
+    endif
+    if id == exchangeItemId[20] then
+        set exchangeKillGold[i]=exchangeKillGold[i] + 2
+    endif
+    if id == exchangeItemId[21] then
+        set exchangeHit[i]=exchangeHit[i] + 100
+    endif
+    if id == exchangeItemId[22] then
+        set exchangeCriticalRate[i]=exchangeCriticalRate[i] + 2
+    endif
+    if id == exchangeItemId[23] then
+        set exchangeCriticalDamage[i]=exchangeCriticalDamage[i] + 0.1
+    endif
+    if id == exchangeItemId[24] then
+        set exchangeStr[i]=exchangeStr[i] + 20
+    endif
+    if id == exchangeItemId[25] then
+        set exchangeAgi[i]=exchangeAgi[i] + 20
+    endif
+    if id == exchangeItemId[26] then
+        set exchangeInt[i]=exchangeInt[i] + 20
+    endif
+    if id == exchangeItemId[27] then
+        set exchangeManaRecovery[i]=exchangeManaRecovery[i] + 1
+    endif
+    if id == exchangeItemId[28] then
+        set exchangeDamage[i]=exchangeDamage[i] + 0.005
+    endif
+    if id == exchangeItemId[29] then
+        set exchangeCooldownReduction[i]=exchangeCooldownReduction[i] + 2
+    endif
+    if id == exchangeItemId[30] then
+        set exchangeKillGold[i]=exchangeKillGold[i] + 3
+    endif
+    if id == exchangeItemId[31] then
+        set exchangeHit[i]=exchangeHit[i] + 200
+    endif
+    if id == exchangeItemId[32] then
+        set exchangeCriticalRate[i]=exchangeCriticalRate[i] + 4
+    endif
+    if id == exchangeItemId[33] then
+        set exchangeCriticalDamage[i]=exchangeCriticalDamage[i] + 0.2
+    endif
+    if id == exchangeItemId[34] then
+        set exchangeStr[i]=exchangeStr[i] + 40
+    endif
+    if id == exchangeItemId[35] then
+        set exchangeAgi[i]=exchangeAgi[i] + 40
+    endif
+    if id == exchangeItemId[36] then
+        set exchangeInt[i]=exchangeInt[i] + 40
+    endif
+    if id == exchangeItemId[37] then
+        set exchangeManaRecovery[i]=exchangeManaRecovery[i] + 1.5
+    endif
+    if id == exchangeItemId[38] then
+        set exchangeDamage[i]=exchangeDamage[i] + 0.005
+    endif
+    if id == exchangeItemId[39] then
+        set exchangeCooldownReduction[i]=exchangeCooldownReduction[i] + 2
+    endif
+    if id == exchangeItemId[40] then
+        set exchangeKillGold[i]=exchangeKillGold[i] + 4
+    endif
+    if id == exchangeItemId[41] then
+        set exchangeHit[i]=exchangeHit[i] + 400
+    endif
+    if id == exchangeItemId[42] then
+        set exchangeCriticalRate[i]=exchangeCriticalRate[i] + 8
+    endif
+    if id == exchangeItemId[43] then
+        set exchangeCriticalDamage[i]=exchangeCriticalDamage[i] + 0.4
+    endif
+    if id == exchangeItemId[44] then
+        set exchangeStr[i]=exchangeStr[i] + 80
+    endif
+    if id == exchangeItemId[45] then
+        set exchangeAgi[i]=exchangeAgi[i] + 80
+    endif
+    if id == exchangeItemId[46] then
+        set exchangeInt[i]=exchangeInt[i] + 80
+    endif
+    if id == exchangeItemId[47] then
+        set exchangeManaRecovery[i]=exchangeManaRecovery[i] + 2
+    endif
+    if id == exchangeItemId[48] then
+        set exchangeDamage[i]=exchangeDamage[i] + 0.005
+    endif
+    if id == exchangeItemId[49] then
+        set exchangeCooldownReduction[i]=exchangeCooldownReduction[i] + 2
+    endif
+    if id == exchangeItemId[50] then
+        set exchangeKillGold[i]=exchangeKillGold[i] + 5
+    endif
+endfunction
+function initExchange takes nothing returns nothing
+    local integer j
+    local integer k
+    set exchangeItemId[1]='I069'
+    set exchangeItemId[2]='I06A'
+    set exchangeItemId[3]='I06B'
+    set exchangeItemId[4]='I06C'
+    set exchangeItemId[5]='I06D'
+    set exchangeItemId[6]='I06E'
+    set exchangeItemId[7]='I06F'
+    set exchangeItemId[8]='I06G'
+    set exchangeItemId[9]='I06H'
+    set exchangeItemId[10]='I06I'
+    set exchangeItemId[11]='I06K'
+    set exchangeItemId[12]='I06L'
+    set exchangeItemId[13]='I06M'
+    set exchangeItemId[14]='I06N'
+    set exchangeItemId[15]='I06O'
+    set exchangeItemId[16]='I06P'
+    set exchangeItemId[17]='I06Q'
+    set exchangeItemId[18]='I06R'
+    set exchangeItemId[19]='I06S'
+    set exchangeItemId[20]='I06T'
+    set exchangeItemId[21]='I06V'
+    set exchangeItemId[22]='I06W'
+    set exchangeItemId[23]='I06X'
+    set exchangeItemId[24]='I06Y'
+    set exchangeItemId[25]='I06Z'
+    set exchangeItemId[26]='I070'
+    set exchangeItemId[27]='I071'
+    set exchangeItemId[28]='I072'
+    set exchangeItemId[29]='I073'
+    set exchangeItemId[30]='I074'
+    set exchangeItemId[31]='I076'
+    set exchangeItemId[32]='I077'
+    set exchangeItemId[33]='I078'
+    set exchangeItemId[34]='I079'
+    set exchangeItemId[35]='I07A'
+    set exchangeItemId[36]='I07B'
+    set exchangeItemId[37]='I07C'
+    set exchangeItemId[38]='I07D'
+    set exchangeItemId[39]='I07E'
+    set exchangeItemId[40]='I07F'
+    set exchangeItemId[41]='I07H'
+    set exchangeItemId[42]='I07I'
+    set exchangeItemId[43]='I07J'
+    set exchangeItemId[44]='I07K'
+    set exchangeItemId[45]='I07L'
+    set exchangeItemId[46]='I07M'
+    set exchangeItemId[47]='I07N'
+    set exchangeItemId[48]='I07O'
+    set exchangeItemId[49]='I07P'
+    set exchangeItemId[50]='I07Q'
+    set oneKeyExchangeItemId[1]='I06J'
+    set oneKeyExchangeItemId[2]='I06U'
+    set oneKeyExchangeItemId[3]='I075'
+    set oneKeyExchangeItemId[4]='I07G'
+    set oneKeyExchangeItemId[5]='I07R'
+    set exchangeUnit[1]=gg_unit_o013_0027
+    set exchangeUnit[2]=gg_unit_o013_0028
+    set exchangeUnit[3]=gg_unit_o013_0029
+    set exchangeUnit[4]=gg_unit_o013_0030
+    set j=1
+    loop
+        exitwhen j > 4
+        set exchangeCount[j]=0
+        set k=1
+        loop
+            exitwhen k > 10
+            call AddItemToStock(exchangeUnit[j], exchangeItemId[k], 1, 1)
+            set k=k + 1
+        endloop
+        call AddItemToStock(exchangeUnit[j], oneKeyExchangeItemId[1], 1, 1)
+        set j=j + 1
+    endloop
+endfunction
 function EverySecond_Conditions takes nothing returns boolean
     local string info= DzAPI_Map_GetMapConfig("info")
     local integer i= 1
@@ -7861,132 +8115,64 @@ function UnitAttack takes nothing returns nothing
     set t=null
 endfunction
 function initNeutralStructures takes nothing returns nothing
-    call SaveInteger(NHT, 'o00S', 0, 'I02F')
-    call SaveInteger(NHT, 'o00Z', 0, 'I02G')
-    call SaveInteger(NHT, 'o010', 0, 'I02H')
-    call SaveInteger(NHT, 'O00Y', 0, 'I02I')
-    call SaveInteger(NHT, 'n02S', 0, 'I05B')
-    call SaveInteger(NHT, 'o00B', 0, 'I02O')
-    call SaveInteger(NHT, 'n015', 0, 'I030')
-    call SaveInteger(NHT, 'n017', 0, 'I02U')
-    call SaveInteger(NHT, 'O003', 0, 'I036')
-    call SaveInteger(NHT, 'n01E', 0, 'I03L')
-    call SaveInteger(NHT, 'n01Z', 0, 'I04D')
-    call SaveInteger(NHT, 'n01Y', 0, 'I04C')
-    call SaveInteger(NHT, 'n00Z', 0, 'I02Z')
-    call SaveInteger(NHT, 'n008', 0, 'I03G')
-    call SaveInteger(NHT, 'n01N', 0, 'I03U')
-    call SaveInteger(NHT, 'n01S', 0, 'I046')
-    call SaveInteger(NHT, 'h00G', 0, 'I03A')
-    call SaveInteger(NHT, 'n029', 0, 'I04P')
-    call SaveInteger(NHT, 'n02J', 0, 'I051')
-    call SaveInteger(NHT, 'e00A', 0, 'I03Y')
-    call SaveInteger(NHT, 'n01J', 0, 'I03R')
-    call SaveInteger(NHT, 'n003', 0, 'I043')
-    call SaveInteger(NHT, 'n01F', 0, 'I03M')
-    call SaveInteger(NHT, 'n01K', 0, 'I03P')
-    call SaveInteger(NHT, 'e00D', 0, 'I041')
-    call SaveInteger(NHT, 'n00A', 0, 'I04N')
-    call SaveInteger(NHT, 'h00V', 0, 'I05K')
-    call SaveInteger(NHT, 'h00R', 0, 'I05G')
-    call SaveInteger(NHT, 'n01I', 0, 'I03Q')
-    call SaveInteger(NHT, 'e00C', 0, 'I042')
-    call SaveInteger(NHT, 'e00B', 0, 'I03Z')
-    call SaveInteger(NHT, 'o00V', 0, 'I05Y')
-    call SaveInteger(NHT, 'h00Z', 0, 'I05O')
-    call SaveInteger(NHT, 'O00X', 0, 'I060')
-    call SaveInteger(NHT, 'h012', 0, 'I05R')
-    call SaveInteger(NHT, 'n01D', 0, 'I03K')
-    call SaveInteger(NHT, 'h00T', 0, 'I05I')
-    call SaveInteger(NHT, 'n026', 0, 'I04K')
-    call SaveInteger(NHT, 'n02C', 0, 'I04S')
-    call SaveInteger(NHT, 'n02M', 0, 'I054')
-    call SaveInteger(NHT, 'n014', 0, 'I02Y')
-    call SaveInteger(NHT, 'H000', 0, 'I04M')
-    call SaveInteger(NHT, 'n018', 0, 'I03E')
-    call SaveInteger(NHT, 'n01L', 0, 'I03S')
-    call SaveInteger(NHT, 'n01Q', 0, 'I044')
-    call SaveInteger(NHT, 'n012', 0, 'I02W')
-    call SaveInteger(NHT, 'h00B', 0, 'I038')
-    call SaveInteger(NHT, 'h010', 0, 'I05P')
-    call SaveInteger(NHT, 'h013', 0, 'I05S')
-    call SaveInteger(NHT, 'h014', 0, 'I05T')
-    call SaveInteger(NHT, 'e000', 0, 'I03X')
-    call SaveInteger(NHT, 'n01V', 0, 'I049')
-    call SaveInteger(NHT, 'o00U', 0, 'I05W')
-    call SaveInteger(NHT, 'n01M', 0, 'I03T')
-    call SaveInteger(NHT, 'n01R', 0, 'I045')
-    call SaveInteger(NHT, 'n001', 0, 'I02V')
-    call SaveInteger(NHT, 'h001', 0, 'I037')
-    call SaveInteger(NHT, 'n02A', 0, 'I04Q')
-    call SaveInteger(NHT, 'n02K', 0, 'I052')
-    call SaveInteger(NHT, 'n020', 0, 'I04E')
-    call SaveInteger(NHT, 'n02F', 0, 'I04W')
-    call SaveInteger(NHT, 'n02P', 0, 'I058')
-    call SaveInteger(NHT, 'n02E', 0, 'I04U')
-    call SaveInteger(NHT, 'n02N', 0, 'I056')
-    call SaveInteger(NHT, 'o00W', 0, 'I05Z')
-    call SaveInteger(NHT, 'o001', 0, 'I02P')
-    call SaveInteger(NHT, 'n010', 0, 'I031')
-    call SaveInteger(NHT, 'n01A', 0, 'I03H')
-    call SaveInteger(NHT, 'o00C', 0, 'I02Q')
-    call SaveInteger(NHT, 'n013', 0, 'I032')
-    call SaveInteger(NHT, 'h00O', 0, 'I05D')
-    call SaveInteger(NHT, 'n00B', 0, 'I04Y')
-    call SaveInteger(NHT, 'h00P', 0, 'I05E')
-    call SaveInteger(NHT, 'H017', 0, 'I05V')
-    call SaveInteger(NHT, 'h00W', 0, 'I05L')
-    call SaveInteger(NHT, 'n01H', 0, 'I03O')
-    call SaveInteger(NHT, 'e001', 0, 'I040')
-    call SaveInteger(NHT, 'n023', 0, 'I04H')
-    call SaveInteger(NHT, 'n028', 0, 'I04O')
-    call SaveInteger(NHT, 'n02I', 0, 'I050')
-    call SaveInteger(NHT, 'h00Y', 0, 'I05N')
-    call SaveInteger(NHT, 'h00C', 0, 'I03B')
-    call SaveInteger(NHT, 'n01W', 0, 'I04A')
-    call SaveInteger(NHT, 'h011', 0, 'I05Q')
-    call SaveInteger(NHT, 'n01X', 0, 'I04B')
-    call SaveInteger(NHT, 'n01G', 0, 'I03N')
-    call SaveInteger(NHT, 'N00G', 0, 'I05C')
-    call SaveInteger(NHT, 'o000', 0, 'I02N')
-    call SaveInteger(NHT, 'o00D', 0, 'I02R')
-    call SaveInteger(NHT, 'n002', 0, 'I033')
-    call SaveInteger(NHT, 'n02R', 0, 'I05A')
-    call SaveInteger(NHT, 'n022', 0, 'I04G')
-    call SaveInteger(NHT, 'N01O', 0, 'I03V')
-    call SaveInteger(NHT, 'n01T', 0, 'I047')
-    call SaveInteger(NHT, 'h00U', 0, 'I05J')
-    call SaveInteger(NHT, 'H015', 0, 'I05U')
-    call SaveInteger(NHT, 'n025', 0, 'I04J')
-    call SaveInteger(NHT, 'h00X', 0, 'I05M')
-    call SaveInteger(NHT, 'n024', 0, 'I04I')
-    call SaveInteger(NHT, 'h00Q', 0, 'I05F')
-    call SaveInteger(NHT, 'n007', 0, 'I03D')
-    call SaveInteger(NHT, 'n000', 0, 'I02S')
-    call SaveInteger(NHT, 'n016', 0, 'I034')
-    call SaveInteger(NHT, 'H004', 0, 'I03W')
-    call SaveInteger(NHT, 'n01U', 0, 'I048')
-    call SaveInteger(NHT, 'n019', 0, 'I03F')
-    call SaveInteger(NHT, 'h00S', 0, 'I05H')
-    call SaveInteger(NHT, 'n01C', 0, 'I03J')
-    call SaveInteger(NHT, 'n02B', 0, 'I04R')
-    call SaveInteger(NHT, 'n02L', 0, 'I053')
-    call SaveInteger(NHT, 'n00Y', 0, 'I02X')
-    call SaveInteger(NHT, 'h00F', 0, 'I039')
-    call SaveInteger(NHT, 'n021', 0, 'I04F')
-    call SaveInteger(NHT, 'h00H', 0, 'I03C')
-    call SaveInteger(NHT, 'n00C', 0, 'I04V')
-    call SaveInteger(NHT, 'N02O', 0, 'I057')
-    call SaveInteger(NHT, 'n01B', 0, 'I03I')
-    call SaveInteger(NHT, 'N027', 0, 'I04L')
-    call SaveInteger(NHT, 'o00T', 0, 'I05X')
-    call SaveInteger(NHT, 'n02H', 0, 'I04Z')
-    call SaveInteger(NHT, 'n02D', 0, 'I04T')
-    call SaveInteger(NHT, 'n00E', 0, 'I055')
-    call SaveInteger(NHT, 'n011', 0, 'I02T')
-    call SaveInteger(NHT, 'O002', 0, 'I035')
-    call SaveInteger(NHT, 'n02G', 0, 'I04X')
-    call SaveInteger(NHT, 'n02Q', 0, 'I059')
+    call SaveInteger(NHT, 'O11L', 0, 'I11L')
+    call SaveInteger(NHT, 'O11H', 0, 'I11H')
+    call SaveInteger(NHT, 'O109', 0, 'I109')
+    call SaveInteger(NHT, 'O106', 0, 'I106')
+    call SaveInteger(NHT, 'O10E', 0, 'I10E')
+    call SaveInteger(NHT, 'O10G', 0, 'I10G')
+    call SaveInteger(NHT, 'O11A', 0, 'I11A')
+    call SaveInteger(NHT, 'O104', 0, 'I104')
+    call SaveInteger(NHT, 'O11E', 0, 'I11E')
+    call SaveInteger(NHT, 'O10V', 0, 'I10V')
+    call SaveInteger(NHT, 'O117', 0, 'I117')
+    call SaveInteger(NHT, 'O11I', 0, 'I11I')
+    call SaveInteger(NHT, 'O10A', 0, 'I10A')
+    call SaveInteger(NHT, 'O10H', 0, 'I10H')
+    call SaveInteger(NHT, 'O10Z', 0, 'I10Z')
+    call SaveInteger(NHT, 'O10M', 0, 'I10M')
+    call SaveInteger(NHT, 'O10P', 0, 'I10P')
+    call SaveInteger(NHT, 'O111', 0, 'I111')
+    call SaveInteger(NHT, 'O102', 0, 'I102')
+    call SaveInteger(NHT, 'O10J', 0, 'I10J')
+    call SaveInteger(NHT, 'O101', 0, 'I101')
+    call SaveInteger(NHT, 'O10U', 0, 'I10U')
+    call SaveInteger(NHT, 'O116', 0, 'I116')
+    call SaveInteger(NHT, 'O103', 0, 'I103')
+    call SaveInteger(NHT, 'O11B', 0, 'I11B')
+    call SaveInteger(NHT, 'O11C', 0, 'I11C')
+    call SaveInteger(NHT, 'O11D', 0, 'I11D')
+    call SaveInteger(NHT, 'O10W', 0, 'I10W')
+    call SaveInteger(NHT, 'O118', 0, 'I118')
+    call SaveInteger(NHT, 'O10B', 0, 'I10B')
+    call SaveInteger(NHT, 'O11K', 0, 'I11K')
+    call SaveInteger(NHT, 'O10R', 0, 'I10R')
+    call SaveInteger(NHT, 'O113', 0, 'I113')
+    call SaveInteger(NHT, 'O10I', 0, 'I10I')
+    call SaveInteger(NHT, 'O10X', 0, 'I10X')
+    call SaveInteger(NHT, 'O119', 0, 'I119')
+    call SaveInteger(NHT, 'O10O', 0, 'I10O')
+    call SaveInteger(NHT, 'O110', 0, 'I110')
+    call SaveInteger(NHT, 'O10F', 0, 'I10F')
+    call SaveInteger(NHT, 'O10Y', 0, 'I10Y')
+    call SaveInteger(NHT, 'O10T', 0, 'I10T')
+    call SaveInteger(NHT, 'O115', 0, 'I115')
+    call SaveInteger(NHT, 'O10S', 0, 'I10S')
+    call SaveInteger(NHT, 'O114', 0, 'I114')
+    call SaveInteger(NHT, 'O105', 0, 'I105')
+    call SaveInteger(NHT, 'O100', 0, 'I100')
+    call SaveInteger(NHT, 'O108', 0, 'I108')
+    call SaveInteger(NHT, 'O11J', 0, 'I11J')
+    call SaveInteger(NHT, 'O11F', 0, 'I11F')
+    call SaveInteger(NHT, 'O10Q', 0, 'I10Q')
+    call SaveInteger(NHT, 'O112', 0, 'I112')
+    call SaveInteger(NHT, 'O10C', 0, 'I10C')
+    call SaveInteger(NHT, 'O10L', 0, 'I10L')
+    call SaveInteger(NHT, 'O10D', 0, 'I10D')
+    call SaveInteger(NHT, 'O10N', 0, 'I10N')
+    call SaveInteger(NHT, 'O107', 0, 'I107')
+    call SaveInteger(NHT, 'O11G', 0, 'I11G')
+    call SaveInteger(NHT, 'O10K', 0, 'I10K')
 endfunction
 function getStructItem takes integer unitId returns integer
     return LoadInteger(NHT, unitId, 0)
@@ -9086,16 +9272,19 @@ function showTooltip takes nothing returns nothing
  local integer cont= 0
  local string str= ""
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-		if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
-			if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R' or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
-				return
-			endif
-			call DzFrameSetPoint(DzFrameGetTooltip(), BOTTOMRIGHT, DzFrameGetCommandBarButton(0, 3), TOPRIGHT, 0.80, 0.60) // INLINED!!
-			set cont=LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
-			set str="杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + R2S(cont * 0.2) + "%"
-			call DzFrameSetText(s__Frame_id[(tooltipWidget[3])], (str)) // INLINED!!
-			call s__Frame_show(tooltipWidget[1])
+		// if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
+		// 	if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
+		// 		return
+		// 	endif
+		// 	call hideOriginalTooltip()
+		// 	set cont = LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
+		// 	set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + R2S(cont * 0.2) + "%"
+		// 	call tooltipWidget[3].setText(str)
+		// 	call tooltipWidget[1].show()
+		// endif
+		if GetUnitTypeId(unitInSelection[i]) == 'o013' and GetOwningPlayer(unitInSelection[i]) == DzGetTriggerUIEventPlayer() then
 		endif
+		
 	endif
 endfunction
 function hideTooltip takes nothing returns nothing
@@ -9473,6 +9662,16 @@ function hideShopTooltip takes nothing returns nothing
 endfunction
 function drawUI_Conditions takes nothing returns boolean
  local integer j= 1
+	set exchangeIconPath[1]="ReplaceableTextures\\CommandButtons\\BTNExchangeOne.blp"
+	set exchangeIconPath[2]="ReplaceableTextures\\CommandButtons\\BTNExchangeTwo.blp"
+	set exchangeIconPath[3]="ReplaceableTextures\\CommandButtons\\BTNExchangeThree.blp"
+	set exchangeIconPath[4]="ReplaceableTextures\\CommandButtons\\BTNExchangeFour.blp"
+	set exchangeIconPath[5]="ReplaceableTextures\\CommandButtons\\BTNExchangeFive.blp"
+	set exchangeDisIconPath[1]="ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeOne.blp"
+	set exchangeDisIconPath[2]="ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeTwo.blp"
+	set exchangeDisIconPath[3]="ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeThree.blp"
+	set exchangeDisIconPath[4]="ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeFour.blp"
+	set exchangeDisIconPath[5]="ReplaceableTextures\\CommandButtonsDisabled\\DISBTNExchangeFive.blp"
 	set originalAbilityButton[1]=DzFrameGetCommandBarButton(0, 0)
 	set originalAbilityButton[2]=DzFrameGetCommandBarButton(0, 1)
 	set originalAbilityButton[3]=DzFrameGetCommandBarButton(0, 2)
@@ -9505,13 +9704,13 @@ function drawUI_Conditions takes nothing returns boolean
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[2])], (BOTTOM ), s__Frame_id[( tooltipWidget[3] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[1])], (TOPLEFT ), s__Frame_id[( tooltipWidget[2] )], ( TOPLEFT ), (( - 0.005 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(tooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( tooltipWidget[3] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
-	// set j = 1
-	// loop
-	// 	exitwhen j > 12
-	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
-	// 	call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
-	// 	set j = j + 1
-	// endloop
+	set j=1
+	loop
+		exitwhen j > 12
+		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_ENTER, function showTooltip, false)
+		call DzFrameSetScriptByCode(originalAbilityButton[j], FRAME_MOUSE_LEAVE, function hideTooltip, false)
+		set j=j + 1
+	endloop
 	// 物品的说明
 	set itemTooltipWidget[1]=s__Frame_newTips0(GUI , "tipbox")
 	call s__Frame_hide(itemTooltipWidget[1])
@@ -9688,6 +9887,18 @@ function drawUI_Conditions takes nothing returns boolean
 	call DzFrameSetPoint(s__Frame_id[(shopTooltipWidget[2])], (BOTTOM ), s__Frame_id[( shopTooltipWidget[3] )], ( TOP ), (( 0 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(shopTooltipWidget[1])], (TOPLEFT ), s__Frame_id[( shopTooltipWidget[2] )], ( TOPLEFT ), (( - 0.005 )*1.0), (( 0.005)*1.0)) // INLINED!!
 	call DzFrameSetPoint(s__Frame_id[(shopTooltipWidget[1])], (BOTTOMRIGHT ), s__Frame_id[( shopTooltipWidget[4] )], ( BOTTOMRIGHT ), (( 0.005 )*1.0), (( - 0.005)*1.0)) // INLINED!!
+	set j=1
+	loop
+		exitwhen j > 10
+		set exchangeIcon[j]=s__Frame_newImage0(GUI)
+		call DzFrameSetTexture(s__Frame_id[(exchangeIcon[j])], ("ReplaceableTextures\\CommandButtons\\BTNExchangeOne.blp"), 0) // INLINED!!
+		call DzFrameSetAllPoints(s__Frame_id[(exchangeIcon[j])], s__Frame_id[(s__Frame_getFrame(originalAbilityButton[j]))]) // INLINED!!
+		call s__Frame_hide(exchangeIcon[j])
+		set exchangeIconStatus[j]=s__Frame_newImage0(exchangeIcon[j])
+		call DzFrameSetTexture(s__Frame_id[(exchangeIconStatus[j])], ("war3mapImported\\exchanged.tga"), 0) // INLINED!!
+		call DzFrameSetAllPoints(s__Frame_id[(exchangeIconStatus[j])], s__Frame_id[(exchangeIcon[j])]) // INLINED!!
+		set j=j + 1
+	endloop
 	
 	return false
 endfunction
@@ -13053,132 +13264,67 @@ function MapInit takes nothing returns nothing
     set epic_drops[3]='I007'
     set epic_drops[4]='I00T'
     set epic_drops[5]='I011'
-    set low_towers[1]='I02F'
-    set low_towers[2]='I02N'
-    set low_towers[3]='I02O'
-    set low_towers[4]='I02P'
-    set low_towers[5]='I02Q'
-    set low_towers[6]='I02R'
-    set low_towers[7]='I02S'
-    set low_towers[8]='I02T'
-    set low_towers[9]='I037'
-    set low_towers[10]='I038'
-    set low_towers[11]='I039'
-    set low_towers[12]='I03A'
-    set low_towers[13]='I03B'
-    set low_towers[14]='I03C'
-    set low_towers[15]='I03D'
-    set low_towers[16]='I03E'
-    set low_towers[17]='I03G'
-    set low_towers[18]='I03X'
-    set low_towers[19]='I03Y'
-    set low_towers[20]='I03Z'
-    set low_towers[21]='I040'
-    set low_towers[22]='I041'
-    set low_towers[23]='I042'
-    set low_towers[24]='I043'
-    set low_towers[25]='I044'
-    set low_towers[26]='I045'
-    set low_towers[27]='I046'
-    set low_towers[28]='I047'
-    set low_towers[29]='I04B'
-    set low_towers[30]='I04N'
-    set low_towers[31]='I04O'
-    set low_towers[32]='I04P'
-    set low_towers[33]='I04Q'
-    set low_towers[34]='I04R'
-    set low_towers[35]='I04V'
-    set low_towers[36]='I04W'
-    set low_towers[37]='I04X'
-    set low_towers[38]='I04Y'
-    set low_towers[39]='I04Z'
-    set low_towers[40]='I050'
-    set low_towers[41]='I05D'
-    set low_towers[42]='I05E'
-    set low_towers[43]='I05F'
-    set low_towers[44]='I05G'
-    set low_towers[45]='I05H'
-    set low_towers[46]='I05I'
-    set low_towers[47]='I05J'
-    set low_towers[48]='I05X'
-    set normal_towers[1]='I02G'
-    set normal_towers[2]='I02U'
-    set normal_towers[3]='I02V'
-    set normal_towers[4]='I02W'
-    set normal_towers[5]='I02X'
-    set normal_towers[6]='I02Z'
-    set normal_towers[7]='I03F'
-    set normal_towers[8]='I03H'
-    set normal_towers[9]='I03J'
-    set normal_towers[10]='I03K'
-    set normal_towers[11]='I03M'
-    set normal_towers[12]='I03N'
-    set normal_towers[13]='I03P'
-    set normal_towers[14]='I03S'
-    set normal_towers[15]='I048'
-    set normal_towers[16]='I049'
-    set normal_towers[17]='I04A'
-    set normal_towers[18]='I04C'
-    set normal_towers[19]='I04D'
-    set normal_towers[20]='I04E'
-    set normal_towers[21]='I04G'
-    set normal_towers[22]='I04S'
-    set normal_towers[23]='I04T'
-    set normal_towers[24]='I051'
-    set normal_towers[25]='I052'
-    set normal_towers[26]='I054'
-    set normal_towers[27]='I05K'
-    set normal_towers[28]='I05L'
-    set normal_towers[29]='I05M'
-    set normal_towers[30]='I05N'
-    set normal_towers[31]='I05P'
-    set normal_towers[32]='I05R'
-    set normal_towers[33]='I05W'
-    set normal_towers[34]='I05Y'
-    set fine_towers[1]='I02H'
-    set fine_towers[2]='I02Y'
-    set fine_towers[3]='I030'
-    set fine_towers[4]='I031'
-    set fine_towers[5]='I033'
-    set fine_towers[6]='I035'
-    set fine_towers[7]='I03I'
-    set fine_towers[8]='I03L'
-    set fine_towers[9]='I03O'
-    set fine_towers[10]='I03Q'
-    set fine_towers[11]='I03T'
-    set fine_towers[12]='I04F'
-    set fine_towers[13]='I04H'
-    set fine_towers[14]='I04I'
-    set fine_towers[15]='I04J'
-    set fine_towers[16]='I04U'
-    set fine_towers[17]='I053'
-    set fine_towers[18]='I055'
-    set fine_towers[19]='I056'
-    set fine_towers[20]='I057'
-    set fine_towers[21]='I058'
-    set fine_towers[22]='I059'
-    set fine_towers[23]='I05A'
-    set fine_towers[24]='I05O'
-    set fine_towers[25]='I05Q'
-    set fine_towers[26]='I05S'
-    set fine_towers[27]='I05Z'
-    set perfect_towers[1]='I02I'
-    set perfect_towers[2]='I032'
-    set perfect_towers[3]='I034'
-    set perfect_towers[4]='I036'
-    set perfect_towers[5]='I03R'
-    set perfect_towers[6]='I03U'
-    set perfect_towers[7]='I03V'
-    set perfect_towers[8]='I03W'
-    set perfect_towers[9]='I04K'
-    set perfect_towers[10]='I04L'
-    set perfect_towers[11]='I04M'
-    set perfect_towers[12]='I05B'
-    set perfect_towers[13]='I05C'
-    set perfect_towers[14]='I05T'
-    set perfect_towers[15]='I05U'
-    set perfect_towers[16]='I05V'
-    set perfect_towers[17]='I060'
+    set low_towers[1]='I100'
+    set low_towers[2]='I101'
+    set low_towers[3]='I102'
+    set low_towers[4]='I109'
+    set low_towers[5]='I10A'
+    set low_towers[6]='I10B'
+    set low_towers[7]='I10J'
+    set low_towers[8]='I10K'
+    set low_towers[9]='I10L'
+    set low_towers[10]='I10U'
+    set low_towers[11]='I10V'
+    set low_towers[12]='I10W'
+    set low_towers[13]='I115'
+    set low_towers[14]='I116'
+    set low_towers[15]='I117'
+    set normal_towers[1]='I103'
+    set normal_towers[2]='I104'
+    set normal_towers[3]='I10C'
+    set normal_towers[4]='I10D'
+    set normal_towers[5]='I10M'
+    set normal_towers[6]='I10N'
+    set normal_towers[7]='I10O'
+    set normal_towers[8]='I10X'
+    set normal_towers[9]='I10Y'
+    set normal_towers[10]='I10Z'
+    set normal_towers[11]='I118'
+    set normal_towers[12]='I119'
+    set normal_towers[13]='I11A'
+    set normal_towers[14]='I11B'
+    set normal_towers[15]='I11J'
+    set fine_towers[1]='I105'
+    set fine_towers[2]='I106'
+    set fine_towers[3]='I10E'
+    set fine_towers[4]='I10F'
+    set fine_towers[5]='I10G'
+    set fine_towers[6]='I10P'
+    set fine_towers[7]='I10Q'
+    set fine_towers[8]='I10R'
+    set fine_towers[9]='I110'
+    set fine_towers[10]='I111'
+    set fine_towers[11]='I112'
+    set fine_towers[12]='I11C'
+    set fine_towers[13]='I11D'
+    set fine_towers[14]='I11E'
+    set fine_towers[15]='I11K'
+    
+    set perfect_towers[1]='I107'
+    set perfect_towers[2]='I108'
+    set perfect_towers[3]='I10H'
+    set perfect_towers[4]='I10I'
+    set perfect_towers[5]='I10S'
+    set perfect_towers[6]='I10T'
+    set perfect_towers[7]='I113'
+    set perfect_towers[8]='I114'
+    set perfect_towers[9]='I11F'
+    set perfect_towers[10]='I11G'
+    set perfect_towers[11]='I11H'
+    set perfect_towers[12]='I11I'
+    set perfect_towers[13]='I11L'
+    
+    
     loop
         exitwhen j > MAX_NORMAL_DROP
         call SaveStr(YDHT, normal_drops[j], EQUIP_LEVEL_KEY, "|cffccffff普通|r")
@@ -13366,6 +13512,8 @@ function InitAllSystems takes nothing returns nothing
     call initUI()
     call initEquip()
     call initSetAttackSpeed()
+    // 兑换商店
+    call initExchange()
 endfunction
 //***************************************************************************
 //*
@@ -13583,12 +13731,12 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs490940390")
-call ExecuteFunc("FrameLibrary___init")
+call ExecuteFunc("jasshelper__initstructs591138812")
+call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem___Initialize")
-call ExecuteFunc("YDWEStringFormula___Init")
+call ExecuteFunc("YDWEStringFormula__Init")
 call ExecuteFunc("YDWETimerSystem___Init")
 
     call InitGlobals()
@@ -13619,14 +13767,14 @@ endfunction
 //===========================================================================
 //ϵͳ-TimerSystem
 //===========================================================================
-//===========================================================================
-//修改生命
-//===========================================================================
 //===========================================================================  
 //===========================================================================  
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
+//===========================================================================
+//修改生命
+//===========================================================================
 
 
 
@@ -13640,19 +13788,19 @@ local integer this=f__arg_this
             set s__Frame_id[this]=0
    return true
 endfunction
-function sa__YDWEStringFormula___Sorting_onDestroy takes nothing returns boolean
+function sa__YDWEStringFormula__Sorting_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
             local integer i= 0
             loop
-                exitwhen i == s___YDWEStringFormula___Sorting_stack_size
-                set s___YDWEStringFormula___Sorting_stack[s__YDWEStringFormula___Sorting_stack[this]+i]=0
-                set s___YDWEStringFormula___Sorting_count[s__YDWEStringFormula___Sorting_count[this]+i]=0
+                exitwhen i == s___YDWEStringFormula__Sorting_stack_size
+                set s___YDWEStringFormula__Sorting_stack[s__YDWEStringFormula__Sorting_stack[this]+i]=0
+                set s___YDWEStringFormula__Sorting_count[s__YDWEStringFormula__Sorting_count[this]+i]=0
                 set i=i + 1
             endloop
-            set s__YDWEStringFormula___Sorting_char[this]=""
+            set s__YDWEStringFormula__Sorting_char[this]=""
    return true
 endfunction
-function sa__YDWEStringFormula___Inventory_onDestroy takes nothing returns boolean
+function sa__YDWEStringFormula__Inventory_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
             call FlushChildHashtable(YDHT, StringHash(("YDWEStringFormula." + I2S(this)))) // INLINED!!
    return true
@@ -13701,14 +13849,14 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs490940390 takes nothing returns nothing
+function jasshelper__initstructs591138812 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
-    set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()
-    call TriggerAddCondition(st__YDWEStringFormula___Sorting_onDestroy,Condition( function sa__YDWEStringFormula___Sorting_onDestroy))
-    set st__YDWEStringFormula___Inventory_onDestroy[5]=CreateTrigger()
-    set st__YDWEStringFormula___Inventory_onDestroy[6]=st__YDWEStringFormula___Inventory_onDestroy[5]
-    call TriggerAddCondition(st__YDWEStringFormula___Inventory_onDestroy[5],Condition( function sa__YDWEStringFormula___Inventory_onDestroy))
+    set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()
+    call TriggerAddCondition(st__YDWEStringFormula__Sorting_onDestroy,Condition( function sa__YDWEStringFormula__Sorting_onDestroy))
+    set st__YDWEStringFormula__Inventory_onDestroy[5]=CreateTrigger()
+    set st__YDWEStringFormula__Inventory_onDestroy[6]=st__YDWEStringFormula__Inventory_onDestroy[5]
+    call TriggerAddCondition(st__YDWEStringFormula__Inventory_onDestroy[5],Condition( function sa__YDWEStringFormula__Inventory_onDestroy))
     set st__Tower_setAbility=CreateTrigger()
     call TriggerAddCondition(st__Tower_setAbility,Condition( function sa__Tower_setAbility))
     set st__Tower_setItemNum=CreateTrigger()
@@ -13719,7 +13867,7 @@ function jasshelper__initstructs490940390 takes nothing returns nothing
 
 
 
-call ExecuteFunc("s__ModSpeed_Init__onInit")
+call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 
@@ -13729,7 +13877,7 @@ call ExecuteFunc("s__ModSpeed_Init__onInit")
 
 
 
-    call ExecuteFunc("s__YDWEStringFormula___ItemIdMatrix_onInit")
-    call ExecuteFunc("s__YDWEStringFormula___FormulaMatrix_onInit")
+    call ExecuteFunc("s__YDWEStringFormula__ItemIdMatrix_onInit")
+    call ExecuteFunc("s__YDWEStringFormula__FormulaMatrix_onInit")
 endfunction
 

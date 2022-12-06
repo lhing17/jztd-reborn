@@ -4,6 +4,9 @@ globals
     integer array oneKeyExchangeItemId
     unit array exchangeUnit
 
+    // 当前完成兑换的次数
+    integer array exchangeCount
+
     // 兑换的奖励
     integer array exchangeHit
     real array exchangeCriticalRate
@@ -247,6 +250,8 @@ function initExchange takes nothing returns nothing
     set j = 1
     loop
         exitwhen j > 4
+        set exchangeCount[j] = 0
+
         set k = 1
         loop
             exitwhen k > 10

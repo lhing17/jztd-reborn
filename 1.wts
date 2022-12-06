@@ -20571,25 +20571,25 @@ STRING 3430
 }
 
 STRING 3431
-// 技能: A100 (|cffff2200功勋|r), Name (名字)
+// 技能: A0B0 (|cffff2200功勋|r), Name (名字)
 {
 |cffff2200功勋|r
 }
 
 STRING 3432
-// 技能: A100 (|cffff2200功勋|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A0B0 (|cffff2200功勋|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 3433
-// 技能: A100 (|cffff2200功勋|r), Tip (提示工具 - 普通)
+// 技能: A0B0 (|cffff2200功勋|r), Tip (提示工具 - 普通)
 {
 |cffff2200功勋|r
 }
 
 STRING 3434
-// 技能: A100 (|cffff2200功勋|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A0B0 (|cffff2200功勋|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 |cffff0000绝世内功|r|n|cfff1efe2提高武学伤害，攻击几率造成破防|n|r|cff00ff00武学伤害+50%|n攻击几率破防|n|r|cffff0000注意：召唤类武学（如降龙十八掌）目前不在伤害加成范围之内|r
 }
