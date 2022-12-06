@@ -57,8 +57,27 @@ library TowerLibrary
             call SetUnitAbilityLevel(u, LoadInteger(YDHT, GetHandleId(u) * 2, i), LoadInteger(YDHT, GetHandleId(u) * 3, i))
         endmethod
         method setAbility takes nothing returns nothing
-            local integer i = 0
+            local integer i = 1
+            local integer id = 0
             local integer tower_id = GetUnitTypeId(u)
+
+            if LoadStr(NHT, tower_id, 1) == "少林" then
+                set id = 'A001'
+            elseif LoadStr(NHT, tower_id, 1) == "武当" then
+                set id = 'A00R'
+            elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
+                set id = 'A01Q'
+            elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
+                set id = 'A02T'
+            elseif LoadStr(NHT, tower_id, 1) == "全真" then
+                set id = 'A04O'
+            endif
+            if id != 0 then
+                call UnitAddAbility(u, id)
+                call SaveInteger(YDHT, GetHandleId(u) * 2, 0, id)
+                call SaveInteger(YDHT, GetHandleId(u) * 3, 0, 1)
+            endif
+
             loop
                 exitwhen i >= 11
                 if LoadInteger(YDHT, tower_id * 2, i) != 0 then
@@ -68,6 +87,7 @@ library TowerLibrary
                     call SetUnitAbilityLevel(u, LoadInteger(YDHT, tower_id * 2, i), LoadInteger(YDHT, tower_id * 3, i))
                     call SaveInteger(YDHT, GetHandleId(u) * 2, i, LoadInteger(YDHT, tower_id * 2, i))
                     call SaveInteger(YDHT, GetHandleId(u) * 3, i, LoadInteger(YDHT, tower_id * 3, i))
+
                     if LoadInteger(YDHT, tower_id * 2, i) == 'A00R' then
                         call UnitRemoveAbility(u, 'A00Q')
                         call UnitAddAbility(u, 'A00Q')
@@ -119,7 +139,7 @@ library TowerLibrary
 
 
     function SaveTowerAbility_1 takes integer tower_id, integer spell_id, integer level returns nothing
-        local integer i = 0
+        local integer i = 1
         loop
             exitwhen i >= 11
             if LoadInteger(YDHT, tower_id * 2, i) == 0 then
