@@ -517,7 +517,7 @@ function GetItemNum takes unit u returns integer
     if IsBuilder(GetUnitTypeId(u)) then
         set i = 6
     else
-        set i = LoadInteger(YDHT, GetUnitTypeId(u), TOWER_LEVEL_KEY)
+        set i = LoadInteger(YDHT, getStructItem(GetUnitTypeId(u)), TOWER_LEVEL_KEY)
     endif
     return i
 endfunction
@@ -1221,28 +1221,28 @@ function MapInit takes nothing returns nothing
 
     set j = 1
     loop
-        exitwhen j >= LOW_SIZE
+        exitwhen j > LOW_SIZE
         call SaveInteger(YDHT, low_towers[j], TOWER_LEVEL_KEY, 1)
         set j = j + 1
     endloop
 
     set j = 1
     loop
-        exitwhen j >= NORMAL_SIZE
+        exitwhen j > NORMAL_SIZE
         call SaveInteger(YDHT, normal_towers[j], TOWER_LEVEL_KEY, 2)
         set j = j + 1
     endloop
 
     set j = 1
     loop
-        exitwhen j >= FINE_SIZE
+        exitwhen j > FINE_SIZE
         call SaveInteger(YDHT, fine_towers[j], TOWER_LEVEL_KEY, 3)
         set j = j + 1
     endloop
 
     set j = 1
     loop
-        exitwhen j >= PERFECT_SIZE
+        exitwhen j > PERFECT_SIZE
         call SaveInteger(YDHT, perfect_towers[j], TOWER_LEVEL_KEY, 4)
         set j = j + 1
     endloop
