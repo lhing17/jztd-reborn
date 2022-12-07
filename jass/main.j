@@ -13,6 +13,7 @@
 #include "logic/Equip.j"
 #include "logic/Spawn.j"
 #include "logic/Exchange.j"
+#include "logic/DrawCard.j"
 
 
 #include "system/EverySecond.j"
@@ -1361,6 +1362,7 @@ function InitAllSystems takes nothing returns nothing
     call initUI()
     call initEquip()
     call initSetAttackSpeed()
+    call initDrawCard()
 
     // 兑换商店
     call initExchange()

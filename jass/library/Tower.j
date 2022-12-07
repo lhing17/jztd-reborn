@@ -64,7 +64,7 @@ library TowerLibrary
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id = 'A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
-                set id = 'A00R'
+                set id = 'A00L'
             elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
                 set id = 'A01Q'
             elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
@@ -185,8 +185,8 @@ library TowerLibrary
         // O10A 知客道人 绕指柔剑法	
         call SaveTowerAbility_1('O10A', 'A00J', 1)
 
-        // O10B 莫声谷 太极剑法	
-        call SaveTowerAbility_1('O10B', 'A00L', 1)
+        // O10B 莫声谷 太极拳法	
+        call SaveTowerAbility_1('O10B', 'A00R', 1)
 
         // O10C 殷梨亭 武当剑法	
         call SaveTowerAbility_1('O10C', 'A00K', 1)

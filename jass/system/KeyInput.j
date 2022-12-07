@@ -22,16 +22,16 @@ function KeyInput takes nothing returns nothing
         call combo(unitInSelection[i])
     endif
     if s == "cx" or s == "CX" then
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "积分：" + I2S(udg_point[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "每局可用积分剩余：" + I2S(MAX_POINT - udg_pointMax[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "通关次数：" + I2S(udg_success[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "积分：" + I2S(udg_point[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "每局可用积分剩余：" + I2S(MAX_POINT - udg_pointMax[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "通关次数：" + I2S(udg_success[i]))
     endif
     if s == "ck" then
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第1名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 1)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 1)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第2名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 2)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 2)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第3名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 3)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 3)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第4名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 4)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 4)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第1名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 1)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 1)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第2名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 2)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 2)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第3名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 3)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 3)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第4名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 4)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 4)))
     endif
     if s == "ChuBoss1" and udg_isTest[i] then
         call spawnBoss(i, 1)
@@ -41,11 +41,11 @@ function KeyInput takes nothing returns nothing
     endif
     if s == "survive" and udg_isTest[i] then
         set gameMode = 1
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D已开启生存模式")
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r|CFFFE890D已开启生存模式")
     endif
     if s == "wisdomball" and udg_isTest[i] then
         set wisbomBall[i] = CreateUnit(p, 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D创建了智慧球")
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r|CFFFE890D创建了智慧球")
     endif
     if s == "wave54" and udg_isTest[i] then
         set wave = 54

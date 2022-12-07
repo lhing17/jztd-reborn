@@ -519,6 +519,42 @@ function UseAbility_Conditions takes nothing returns boolean
         call fastDrop(u, GetSpellTargetX(), GetSpellTargetY())
     endif
 
+    // 初级招募
+    if id == 'A099' then
+        call lowDrawCard(i)
+    endif
+
+    // 中级招募
+    if id == 'A09A' then
+        call normalDrawCard(i)
+    endif
+
+    // 高级招募
+    if id == 'A09B' then
+        call highDrawCard(i)
+    endif
+
+    // 占位卡1
+    if id == 'A09C' then
+        call getCard(i, 1)
+    endif
+
+    // 占位卡2
+    if id == 'A09D' then
+        call getCard(i, 2)
+    endif
+
+    // 占位卡3
+    if id == 'A09E' then
+        call getCard(i, 3)
+    endif
+
+    // 占位卡4
+    if id == 'A09F' then
+        call getCard(i, 4)
+    endif
+
+
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
     set u = null

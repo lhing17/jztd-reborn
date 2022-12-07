@@ -318,11 +318,28 @@ function AttackerDamageRange takes nothing returns nothing
     set u = null
     set ut = null
 endfunction
-function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id, real range, real damage, string effects, integer possibility, integer mana_cost returns nothing
+function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id, real range, real w1, real w2, integer whichAttr, string effects, integer possibility, integer mana_cost returns nothing
     local group g = CreateGroup()
     local location loc = GetUnitLoc(attackee)
-    local real dmg = damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+    local real dmg = 0
     local real coeff = 1
+    local real baseDamage = 0
+    local real attr = 0
+    local real attack = GetUnitState(attacker, ConvertUnitState(0x15))
+
+    // 主属性
+    if whichAttr == 1 then
+        set attr = GetHeroStr(attacker, true)
+    elseif whichAttr == 2 then
+        set attr = GetHeroAgi(attacker, true)
+    elseif whichAttr == 3 then
+        set attr = GetHeroInt(attacker, true)
+    endif
+
+    // 基础伤害
+    set baseDamage = (attack + w1 * attr ) * w2
+    set dmg = baseDamage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+
     if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         
         // 韦陀棍法
@@ -383,9 +400,27 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
     set loc = null
     set g = null
 endfunction
-function PassiveSingleDamage takes unit attacker, unit attackee, integer spell_id, real base_damage, string effects, integer possibility, integer mana_cost returns nothing
+
+function PassiveSingleDamage takes unit attacker, unit attackee, integer spell_id, real w1, real w2, integer whichAttr, string effects, integer possibility, integer mana_cost returns nothing
     local location loc = GetUnitLoc(attackee)
-    local real damage = base_damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+    local real baseDamage = 0
+    local real attr = 0
+    local real attack = GetUnitState(attacker, ConvertUnitState(0x15))
+    local real damage = 0
+
+    // 主属性
+    if whichAttr == 1 then
+        set attr = GetHeroStr(attacker, true)
+    elseif whichAttr == 2 then
+        set attr = GetHeroAgi(attacker, true)
+    elseif whichAttr == 3 then
+        set attr = GetHeroInt(attacker, true)
+    endif
+
+    // 基础伤害
+    set baseDamage = (attack + w1 * attr ) * w2
+    set damage = baseDamage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+
     if GetRandomInt(0, 100) <= possibility or (GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker, 'I00L')) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         call dealDamage(attacker, attackee, damage)
         call DestroyEffect(AddSpecialEffectLoc(effects, loc))
@@ -394,6 +429,7 @@ function PassiveSingleDamage takes unit attacker, unit attackee, integer spell_i
     call RemoveLocation(loc)
     set loc = null
 endfunction
+
 function PassiveUseAbility takes unit attacker, unit attackee, integer spell_id, integer shadow_id, integer order_id, integer possibility, integer mana_cost returns nothing
     local location loc = GetUnitLoc(attacker)
     local location loc2 = GetUnitLoc(attackee)

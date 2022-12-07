@@ -7,15 +7,15 @@ constant boolean LIBRARY_FrameLibrary=true
 //endglobals from FrameLibrary
 //globals from MaxSpeed:
 constant boolean LIBRARY_MaxSpeed=true
-constant boolean MaxSpeed___USE_TABLE= true
-constant boolean MaxSpeed___NEW_TABLE= true
+constant boolean MaxSpeed__USE_TABLE= true
+constant boolean MaxSpeed__NEW_TABLE= true
             // Vexorian's Table or Bribe's (NEW)
-constant boolean MaxSpeed___TEST_MODE= false
-constant real MaxSpeed___PERIOD= 0.03125
+constant boolean MaxSpeed__TEST_MODE= false
+constant real MaxSpeed__PERIOD= 0.03125
            //  private constant real MAX_SPEED = 2088.0
-constant real MaxSpeed___MAX_SPEED= 1400.0
+constant real MaxSpeed__MAX_SPEED= 1400.0
             // 最大速度限定，超出视为传送。
-constant real MaxSpeed___MIN_SPEED= 500.0
+constant real MaxSpeed__MIN_SPEED= 500.0
             // 判定的最小距离，此项过小或速度过大会使原地打转几率增加，超出则没有加速效果。
            // 测试最大为500刚出头，与522还有些差距
    
@@ -25,12 +25,12 @@ constant boolean LIBRARY_TowerLibrary=true
 //endglobals from TowerLibrary
 //globals from YDTriggerSaveLoadSystem:
 constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
-hashtable YDHT
 hashtable YDLOC
 //endglobals from YDTriggerSaveLoadSystem
 //globals from YDWEBase:
 constant boolean LIBRARY_YDWEBase=true
 //ȫ�ֹ�ϣ�� 
+hashtable YDHT= null
 string bj_AllString=".................................!.#$%&'()*+,-./0123456789:;<=>.@ABCDEFGHIJKLMNOPQRSTUVWXYZ[.]^_`abcdefghijklmnopqrstuvwxyz{|}~................................................................................................................................"
 //全局系统变量
 unit bj_lastAbilityCastingUnit=null
@@ -75,14 +75,14 @@ constant boolean LIBRARY_YDWEPolledWaitNull=true
 //globals from YDWETriggerEvent:
 constant boolean LIBRARY_YDWETriggerEvent=true
 trigger yd_DamageEventTrigger= null
-trigger array YDWETriggerEvent__DamageEventQueue
-integer YDWETriggerEvent__DamageEventNumber= 0
+trigger array YDWETriggerEvent___DamageEventQueue
+integer YDWETriggerEvent___DamageEventNumber= 0
 	
 item bj_lastMovedItemInItemSlot= null
 	
-trigger YDWETriggerEvent__MoveItemEventTrigger= null
-trigger array YDWETriggerEvent__MoveItemEventQueue
-integer YDWETriggerEvent__MoveItemEventNumber= 0
+trigger YDWETriggerEvent___MoveItemEventTrigger= null
+trigger array YDWETriggerEvent___MoveItemEventQueue
+integer YDWETriggerEvent___MoveItemEventNumber= 0
 //endglobals from YDWETriggerEvent
 //globals from YDWETriggerRegisterEnterRectSimpleNull:
 constant boolean LIBRARY_YDWETriggerRegisterEnterRectSimpleNull=true
@@ -102,24 +102,24 @@ integer YDWEStringFormula__FormulaData= 0
 //endglobals from YDWEStringFormula
 //globals from YDWETimerSystem:
 constant boolean LIBRARY_YDWETimerSystem=true
-integer YDWETimerSystem__CurrentTime
-integer YDWETimerSystem__CurrentIndex
-integer YDWETimerSystem__TaskListHead
-integer YDWETimerSystem__TaskListIdleHead
-integer YDWETimerSystem__TaskListIdleMax
-integer array YDWETimerSystem__TaskListIdle
-integer array YDWETimerSystem__TaskListNext
-integer array YDWETimerSystem__TaskListTime
-trigger array YDWETimerSystem__TaskListProc
-trigger YDWETimerSystem__fnRemoveUnit
-trigger YDWETimerSystem__fnDestroyTimer
-trigger YDWETimerSystem__fnRemoveItem
-trigger YDWETimerSystem__fnDestroyEffect
-trigger YDWETimerSystem__fnDestroyLightning
-trigger YDWETimerSystem__fnRunTrigger
-timer YDWETimerSystem__Timer
-integer YDWETimerSystem__TimerHandle
-integer YDWETimerSystem__TimerSystem_RunIndex= 0
+integer YDWETimerSystem___CurrentTime
+integer YDWETimerSystem___CurrentIndex
+integer YDWETimerSystem___TaskListHead
+integer YDWETimerSystem___TaskListIdleHead
+integer YDWETimerSystem___TaskListIdleMax
+integer array YDWETimerSystem___TaskListIdle
+integer array YDWETimerSystem___TaskListNext
+integer array YDWETimerSystem___TaskListTime
+trigger array YDWETimerSystem___TaskListProc
+trigger YDWETimerSystem___fnRemoveUnit
+trigger YDWETimerSystem___fnDestroyTimer
+trigger YDWETimerSystem___fnRemoveItem
+trigger YDWETimerSystem___fnDestroyEffect
+trigger YDWETimerSystem___fnDestroyLightning
+trigger YDWETimerSystem___fnRunTrigger
+timer YDWETimerSystem___Timer
+integer YDWETimerSystem___TimerHandle
+integer YDWETimerSystem___TimerSystem_RunIndex= 0
 //endglobals from YDWETimerSystem
     // User-defined
 rect array udg_drop_rect
@@ -156,6 +156,10 @@ unit gg_unit_o013_0027= null
 unit gg_unit_o013_0028= null
 unit gg_unit_o013_0029= null
 unit gg_unit_o013_0030= null
+unit gg_unit_o014_0031= null
+unit gg_unit_o014_0032= null
+unit gg_unit_o014_0033= null
+unit gg_unit_o014_0034= null
 constant integer FRAME_ID= - 29734415
 integer GUI
 constant integer ELEMENT_GOLD= 1
@@ -200,9 +204,14 @@ real array exchangeManaRecovery
 real array exchangeDamage
 real array exchangeCooldownReduction
 integer array exchangeKillGold
+unit array cardShop
+hashtable CARD_HT= InitHashtable()
 real array wisdomBallX
 real array wisdomBallY
 unit array unitInSelection
+constant integer ATTR_STR= 1
+constant integer ATTR_AGI= 2
+constant integer ATTR_INT= 3
 integer array tooltipWidget
 integer array itemTooltipWidget
 	// 显示塔的属性
@@ -926,7 +935,7 @@ function sc__Tower_setAbility takes integer this returns nothing
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id='A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
-                set id='A00R'
+                set id='A00L'
             elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
                 set id='A01Q'
             elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
@@ -1439,7 +1448,7 @@ endfunction
             call DzFrameSetScriptByCode(s__Frame_id[(s__ImageButton_button[ib])], (FRAME_MOUSE_LEAVE ), ( function toggleImage), false) // INLINED!!
             return ib
         endfunction
-    function FrameLibrary___init takes nothing returns nothing
+    function FrameLibrary__init takes nothing returns nothing
         // local integer f = DzFrameGetTooltip()
         // local real size = 0.75
         set GUI=s__Frame_getFrame(DzGetGameUI())
@@ -1508,8 +1517,8 @@ endfunction
                 set s__ModSpeed_dy=s__ModSpeed_y - s__ModSpeed_lastY[this]
                 set s__ModSpeed_lastX[this]=s__ModSpeed_x
                 set s__ModSpeed_lastY[this]=s__ModSpeed_y
-                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed___PERIOD
-                if ( s__ModSpeed_dist >= MaxSpeed___MIN_SPEED and s__ModSpeed_dist <= MaxSpeed___MAX_SPEED ) then
+                set s__ModSpeed_dist=SquareRoot(s__ModSpeed_dx * s__ModSpeed_dx + s__ModSpeed_dy * s__ModSpeed_dy) / MaxSpeed__PERIOD
+                if ( s__ModSpeed_dist >= MaxSpeed__MIN_SPEED and s__ModSpeed_dist <= MaxSpeed__MAX_SPEED ) then
                     set s__ModSpeed_rate=( s__ModSpeed_speed[this] - 522. ) / s__ModSpeed_dist
                     set s__ModSpeed_lastX[this]=s__ModSpeed_x + s__ModSpeed_dx * s__ModSpeed_rate
                     set s__ModSpeed_lastY[this]=s__ModSpeed_y + s__ModSpeed_dy * s__ModSpeed_rate
@@ -1595,7 +1604,7 @@ endfunction
                         set s__ModSpeed_prev[(0)]=s__ModSpeed_prev[s__ModSpeed_prev[(0)]]
                     endif
                     if ( s__ModSpeed_next[(0)] == 0 ) then
-                        call TimerStart(s__ModSpeed_tm, MaxSpeed___PERIOD, true, function s__ModSpeed_iterate)
+                        call TimerStart(s__ModSpeed_tm, MaxSpeed__PERIOD, true, function s__ModSpeed_iterate)
 
 
 
@@ -1615,7 +1624,7 @@ endfunction
 
 
                 endif
-                set amount=RMinBJ(amount, MaxSpeed___MAX_SPEED)
+                set amount=RMinBJ(amount, MaxSpeed__MAX_SPEED)
                 set s__ModSpeed_lastX[this]=GetUnitX(u)
                 set s__ModSpeed_lastY[this]=GetUnitY(u)
                 set s__ModSpeed_speed[this]=amount
@@ -1686,7 +1695,7 @@ endfunction
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id='A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
-                set id='A00R'
+                set id='A00L'
             elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
                 set id='A01Q'
             elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
@@ -1764,215 +1773,137 @@ endfunction
         endloop
     endfunction
     function SaveTowerAbility takes nothing returns nothing
-        call SaveTowerAbility_1('O100' , 'A001' , 5)
-        call SaveTowerAbility_1('O100' , 'A01T' , 2)
-        call SaveTowerAbility_1('O100' , 'A00B' , 1)
-        call SaveTowerAbility_1('o000' , 'A006' , 1)
-        call SaveTowerAbility_1('o00B' , 'A001' , 1)
-        call SaveTowerAbility_1('o001' , 'A001' , 2)
-        call SaveTowerAbility_1('o00C' , 'A001' , 3)
-        call SaveTowerAbility_1('o00D' , 'A001' , 4)
-        call SaveTowerAbility_1('n000' , 'A002' , 1)
-        call SaveTowerAbility_1('n011' , 'A002' , 2)
-        call SaveTowerAbility_1('n017' , 'A002' , 3)
-        call SaveTowerAbility_1('n001' , 'A007' , 1)
-        call SaveTowerAbility_1('n012' , 'A007' , 2)
-        call SaveTowerAbility_1('n00Y' , 'A001' , 3)
-        call SaveTowerAbility_1('n00Y' , 'A01T' , 1)
-        call SaveTowerAbility_1('n014' , 'A001' , 3)
-        call SaveTowerAbility_1('n014' , 'A01T' , 2)
-        call SaveTowerAbility_1('n00Z' , 'A001' , 3)
-        call SaveTowerAbility_1('n00Z' , 'A00F' , 1)
-        call SaveTowerAbility_1('n015' , 'A001' , 3)
-        call SaveTowerAbility_1('n015' , 'A00F' , 2)
-        call SaveTowerAbility_1('n010' , 'A009' , 1)
-        call SaveTowerAbility_1('n013' , 'A009' , 2)
-        call SaveTowerAbility_1('n002' , 'A00A' , 1)
-        call SaveTowerAbility_1('n002' , 'A00F' , 2)
-        call SaveTowerAbility_1('n016' , 'A00A' , 2)
-        call SaveTowerAbility_1('n016' , 'A00F' , 2)
-        call SaveTowerAbility_1('O002' , 'A001' , 5)
-        call SaveTowerAbility_1('O002' , 'A01T' , 2)
-        call SaveTowerAbility_1('O002' , 'A00B' , 1)
-        call SaveTowerAbility_1('O003' , 'A00D' , 1)
-        call SaveTowerAbility_1('O003' , 'A001' , 5)
-        call SaveTowerAbility_1('h001' , 'A00H' , 1)
-        call SaveTowerAbility_1('h00B' , 'A00H' , 2)
-        call SaveTowerAbility_1('h00F' , 'A00H' , 3)
-        call SaveTowerAbility_1('h00G' , 'A00I' , 1)
-        call SaveTowerAbility_1('h00C' , 'A00I' , 2)
-        call SaveTowerAbility_1('h00H' , 'A00I' , 3)
-        call SaveTowerAbility_1('n007' , 'A00J' , 1)
-        call SaveTowerAbility_1('n018' , 'A00J' , 2)
-        call SaveTowerAbility_1('n018' , 'A00K' , 1)
-        call SaveTowerAbility_1('n019' , 'A00K' , 2)
-        call SaveTowerAbility_1('n019' , 'A00L' , 2)
-        call SaveTowerAbility_1('n008' , 'A00R' , 1)
-        call SaveTowerAbility_1('n01A' , 'A00R' , 1)
-        call SaveTowerAbility_1('n01A' , 'A00L' , 1)
-        call SaveTowerAbility_1('n01B' , 'A00R' , 2)
-        call SaveTowerAbility_1('n01B' , 'A00L' , 2)
-        call SaveTowerAbility_1('n01C' , 'A00N' , 1)
-        call SaveTowerAbility_1('n01D' , 'A00N' , 2)
-        call SaveTowerAbility_1('n01E' , 'A00N' , 3)
-        call SaveTowerAbility_1('n01F' , 'A00V' , 1)
-        call SaveTowerAbility_1('n01G' , 'A00V' , 2)
-        call SaveTowerAbility_1('n01H' , 'A00V' , 3)
-        call SaveTowerAbility_1('n01H' , 'A00R' , 2)
-        call SaveTowerAbility_1('n01K' , 'A00T' , 1)
-        call SaveTowerAbility_1('n01I' , 'A00T' , 2)
-        call SaveTowerAbility_1('n01J' , 'A00T' , 3)
-        call SaveTowerAbility_1('n01J' , 'A00V' , 2)
-        call SaveTowerAbility_1('n01L' , 'A00X' , 1)
-        call SaveTowerAbility_1('n01M' , 'A00X' , 2)
-        call SaveTowerAbility_1('n01N' , 'A00X' , 2)
-        call SaveTowerAbility_1('n01N' , 'A00W' , 3)
-        call SaveTowerAbility_1('n01N' , 'A00R' , 1)
-        call SaveTowerAbility_1('N01O' , 'A00X' , 3)
-        call SaveTowerAbility_1('N01O' , 'A010' , 1)
-        call SaveTowerAbility_1('H004' , 'A00R' , 3)
-        call SaveTowerAbility_1('H004' , 'A00N' , 3)
-        call SaveTowerAbility_1('H004' , 'A00I' , 3)
-        call SaveTowerAbility_1('e000' , 'A01Q' , 1)
-        call SaveTowerAbility_1('e000' , 'A01R' , 1)
-        call SaveTowerAbility_1('e00A' , 'A01Q' , 2)
-        call SaveTowerAbility_1('e00A' , 'A01R' , 2)
-        call SaveTowerAbility_1('e00B' , 'A01Q' , 3)
-        call SaveTowerAbility_1('e00B' , 'A01R' , 2)
-        call SaveTowerAbility_1('e001' , 'A01Q' , 1)
-        call SaveTowerAbility_1('e001' , 'A03L' , 1)
-        call SaveTowerAbility_1('e00D' , 'A01Q' , 2)
-        call SaveTowerAbility_1('e00D' , 'A03L' , 2)
-        call SaveTowerAbility_1('e00C' , 'A01Q' , 2)
-        call SaveTowerAbility_1('e00C' , 'A03L' , 3)
-        call SaveTowerAbility_1('n003' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n003' , 'A01V' , 1)
-        call SaveTowerAbility_1('n01Q' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n01Q' , 'A01V' , 2)
-        call SaveTowerAbility_1('n01R' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n01R' , 'A01V' , 3)
-        call SaveTowerAbility_1('n01S' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n01S' , 'A022' , 1)
-        call SaveTowerAbility_1('n01T' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n01T' , 'A022' , 2)
-        call SaveTowerAbility_1('n01U' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n01U' , 'A024' , 1)
-        call SaveTowerAbility_1('n01V' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n01V' , 'A024' , 2)
-        call SaveTowerAbility_1('n01W' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n01W' , 'A024' , 3)
-        call SaveTowerAbility_1('n01X' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n01X' , 'A026' , 1)
-        call SaveTowerAbility_1('n01Y' , 'A01Q' , 4)
-        call SaveTowerAbility_1('n01Y' , 'A026' , 2)
-        call SaveTowerAbility_1('n01Z' , 'A01Q' , 2)
-        call SaveTowerAbility_1('n01Z' , 'A027' , 1)
-        call SaveTowerAbility_1('n020' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n020' , 'A027' , 2)
-        call SaveTowerAbility_1('n021' , 'A01Q' , 4)
-        call SaveTowerAbility_1('n021' , 'A027' , 2)
-        call SaveTowerAbility_1('n022' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n022' , 'A02C' , 1)
-        call SaveTowerAbility_1('n023' , 'A01Q' , 4)
-        call SaveTowerAbility_1('n023' , 'A02C' , 2)
-        call SaveTowerAbility_1('n024' , 'A01Q' , 3)
-        call SaveTowerAbility_1('n024' , 'A02D' , 1)
-        call SaveTowerAbility_1('n025' , 'A01Q' , 4)
-        call SaveTowerAbility_1('n025' , 'A02D' , 2)
-        call SaveTowerAbility_1('n026' , 'A01Q' , 5)
-        call SaveTowerAbility_1('n026' , 'A02E' , 2)
-        call SaveTowerAbility_1('N027' , 'A01Q' , 5)
-        call SaveTowerAbility_1('N027' , 'A029' , 1)
-        call SaveTowerAbility_1('N027' , 'A02H' , 2)
-        call SaveTowerAbility_1('H000' , 'A01Q' , 6)
-        call SaveTowerAbility_1('H000' , 'A02F' , 1)
-        call SaveTowerAbility_1('H000' , 'A02E' , 3)
-        call SaveTowerAbility_1('n00A' , 'A02K' , 1)
-        call SaveTowerAbility_1('n028' , 'A02K' , 2)
-        call SaveTowerAbility_1('n029' , 'A02K' , 3)
-        call SaveTowerAbility_1('n02A' , 'A02K' , 4)
-        call SaveTowerAbility_1('n02B' , 'A02K' , 5)
-        call SaveTowerAbility_1('n02C' , 'A02T' , 1)
-        call SaveTowerAbility_1('n02D' , 'A02T' , 2)
-        call SaveTowerAbility_1('n02E' , 'A02T' , 3)
-        call SaveTowerAbility_1('n00C' , 'A02I' , 1)
-        call SaveTowerAbility_1('n02F' , 'A02I' , 2)
-        call SaveTowerAbility_1('n02G' , 'A02M' , 2)
-        call SaveTowerAbility_1('n00B' , 'A02K' , 2)
-        call SaveTowerAbility_1('n00B' , 'A02N' , 1)
-        call SaveTowerAbility_1('n02H' , 'A02K' , 3)
-        call SaveTowerAbility_1('n02H' , 'A02Q' , 1)
-        call SaveTowerAbility_1('n02I' , 'A02K' , 4)
-        call SaveTowerAbility_1('n02I' , 'A02R' , 1)
-        call SaveTowerAbility_1('n02J' , 'A02K' , 5)
-        call SaveTowerAbility_1('n02J' , 'A02N' , 2)
-        call SaveTowerAbility_1('n02K' , 'A02T' , 1)
-        call SaveTowerAbility_1('n02K' , 'A02Y' , 1)
-        call SaveTowerAbility_1('n02L' , 'A02T' , 2)
-        call SaveTowerAbility_1('n02L' , 'A037' , 1)
-        call SaveTowerAbility_1('n02M' , 'A02T' , 3)
-        call SaveTowerAbility_1('n02M' , 'A031' , 1)
-        call SaveTowerAbility_1('n00E' , 'A02T' , 2)
-        call SaveTowerAbility_1('n00E' , 'A02V' , 1)
-        call SaveTowerAbility_1('n02N' , 'A02T' , 3)
-        call SaveTowerAbility_1('n02N' , 'A02Q' , 3)
-        call SaveTowerAbility_1('N02O' , 'A02T' , 3)
-        call SaveTowerAbility_1('N02O' , 'A02Y' , 2)
-        call SaveTowerAbility_1('n02P' , 'A02R' , 4)
-        call SaveTowerAbility_1('n02Q' , 'A02T' , 3)
-        call SaveTowerAbility_1('n02Q' , 'A02V' , 2)
-        call SaveTowerAbility_1('n02R' , 'A02T' , 4)
-        call SaveTowerAbility_1('n02R' , 'A037' , 2)
-        call SaveTowerAbility_1('n02S' , 'A02T' , 4)
-        call SaveTowerAbility_1('n02S' , 'A031' , 2)
-        call SaveTowerAbility_1('n02S' , 'A034' , 1)
-        call SaveTowerAbility_1('N00G' , 'A02T' , 5)
-        call SaveTowerAbility_1('N00G' , 'A031' , 3)
-        call SaveTowerAbility_1('N00G' , 'A034' , 2)
-        call SaveTowerAbility_1('N00G' , 'A032' , 1)
-        call SaveTowerAbility_1('h00O' , 'A050' , 1)
-        call SaveTowerAbility_1('h00P' , 'A050' , 2)
-        call SaveTowerAbility_1('h00Q' , 'A050' , 3)
-        call SaveTowerAbility_1('h00R' , 'A04W' , 1)
-        call SaveTowerAbility_1('h00S' , 'A04W' , 2)
-        call SaveTowerAbility_1('h00T' , 'A04W' , 3)
-        call SaveTowerAbility_1('h00T' , 'A04S' , 1)
-        call SaveTowerAbility_1('h00U' , 'A04P' , 1)
-        call SaveTowerAbility_1('h00V' , 'A04P' , 2)
-        call SaveTowerAbility_1('h00V' , 'A04O' , 1)
-        call SaveTowerAbility_1('h00W' , 'A04P' , 2)
-        call SaveTowerAbility_1('h00W' , 'A04O' , 2)
-        call SaveTowerAbility_1('h00X' , 'A04P' , 3)
-        call SaveTowerAbility_1('h00X' , 'A04O' , 2)
-        call SaveTowerAbility_1('h00Y' , 'A04N' , 1)
-        call SaveTowerAbility_1('h00Z' , 'A04X' , 1)
-        call SaveTowerAbility_1('h010' , 'A04U' , 1)
-        call SaveTowerAbility_1('h011' , 'A04U' , 2)
-        call SaveTowerAbility_1('h011' , 'A04S' , 2)
-        call SaveTowerAbility_1('h012' , 'A04V' , 1)
-        call SaveTowerAbility_1('h013' , 'A04V' , 2)
-        call SaveTowerAbility_1('h014' , 'A04V' , 3)
-        call SaveTowerAbility_1('H015' , 'A04Q' , 1)
-        call SaveTowerAbility_1('H015' , 'A04T' , 1)
-        call SaveTowerAbility_1('H017' , 'A04N' , 4)
-        call SaveTowerAbility_1('H017' , 'A04Y' , 1)
-        call SaveTowerAbility_1('H017' , 'A054' , 1)
-        call SaveTowerAbility_1('o00S' , 'A045' , 1)
-        call SaveTowerAbility_1('o00T' , 'A045' , 2)
-        call SaveTowerAbility_1('o00U' , 'A045' , 3)
-        call SaveTowerAbility_1('o00V' , 'A045' , 4)
-        call SaveTowerAbility_1('o00W' , 'A045' , 5)
-        call SaveTowerAbility_1('O00X' , 'A045' , 6)
-        call SaveTowerAbility_1('O00Y' , 'A048' , 1)
-        call SaveTowerAbility_1('O00Y' , 'A049' , 1)
-        call SaveTowerAbility_1('O00Y' , 'A04A' , 1)
-        call SaveTowerAbility_1('o00Z' , 'A04B' , 1)
-        call SaveTowerAbility_1('o010' , 'A047' , 1)
+        // O100 少林四代弟子 少林童子功	
+        call SaveTowerAbility_1('O100' , 'A006' , 1)
+        // O101 达摩院弟子 达摩棍法	
+        call SaveTowerAbility_1('O101' , 'A002' , 1)
+        // O102 戒律院弟子 拈花擒拿手	
+        call SaveTowerAbility_1('O102' , 'A007' , 1)
+        // O103 藏经阁弟子 大力金刚指	
+        call SaveTowerAbility_1('O103' , 'A01T' , 1)
+        // O104 罗汉堂弟子 达摩八法	
+        call SaveTowerAbility_1('O104' , 'A00F' , 1)
+        // O105 般若堂弟子 龙象般若功	
+        call SaveTowerAbility_1('O105' , 'A009' , 1)
+        // O106 菩提院弟子 菩提心法	
+        call SaveTowerAbility_1('O106' , 'A00A' , 1)
+        // O107 醉世 罗汉伏魔功	
+        call SaveTowerAbility_1('O107' , 'A00B' , 1)
+        // O108 少林掌门 少林罗汉阵	
+        call SaveTowerAbility_1('O108' , 'A00D' , 1)
+        // O109 武当三代弟子 柔云掌	
+        call SaveTowerAbility_1('O109' , 'A00H' , 1)
+        // O10A 知客道人 绕指柔剑法	
+        call SaveTowerAbility_1('O10A' , 'A00J' , 1)
+        // O10B 莫声谷 太极拳法	
+        call SaveTowerAbility_1('O10B' , 'A00R' , 1)
+        // O10C 殷梨亭 武当剑法	
+        call SaveTowerAbility_1('O10C' , 'A00K' , 1)
+        // O10D 张翠山 铁画银钩	
+        call SaveTowerAbility_1('O10D' , 'A00N' , 1)
+        // O10E 张松溪 内家拳法	
+        call SaveTowerAbility_1('O10E' , 'A00V' , 1)
+        // O10F 俞岱岩 纯阳无极功	
+        call SaveTowerAbility_1('O10F' , 'A00T' , 1)
+        // O10G 俞莲舟 虎爪绝户手	武当心法
+        call SaveTowerAbility_1('O10G' , 'A00X' , 1)
+        call SaveTowerAbility_1('O10G' , 'A00W' , 1)
+        // O10H 宋远桥 真武七截阵	
+        call SaveTowerAbility_1('O10H' , 'A010' , 1)
+        // O10I 武当掌门 武当身法	
+        call SaveTowerAbility_1('O10I' , 'A00I' , 1)
+        // O10J 峨眉小师太 峨眉心法	
+        call SaveTowerAbility_1('O10J' , 'A029' , 1)
+        // O10K 纪晓芙 四象掌	
+        call SaveTowerAbility_1('O10K' , 'A03L' , 1)
+        // O10L 静慧 金顶绵掌	
+        call SaveTowerAbility_1('O10L' , 'A01V' , 1)
+        // O10M 苏梦清 天罡指穴法	
+        call SaveTowerAbility_1('O10M' , 'A022' , 1)
+        // O10N 静空 佛光普照	
+        call SaveTowerAbility_1('O10N' , 'A024' , 1)
+        // O10O 贝锦仪 峨眉身法
+        call SaveTowerAbility_1('O10O' , 'A026' , 1)
+        	
+        // O10P 静虚 回风拂柳剑	
+        call SaveTowerAbility_1('O10P' , 'A027' , 1)
+        // O10Q 丁敏君 灭剑	
+        call SaveTowerAbility_1('O10Q' , 'A02C' , 1)
+        // O10R 静玄 绝剑	
+        call SaveTowerAbility_1('O10R' , 'A02D' , 1)
+        // O10S 周芷若 九阴白骨爪
+        call SaveTowerAbility_1('O10S' , 'A02H' , 1)
+        // O10T 峨眉掌门 灭绝剑法	截手九式
+        call SaveTowerAbility_1('O10T' , 'A02E' , 1)
+        call SaveTowerAbility_1('O10T' , 'A02F' , 1)
+        // O10U 丐帮白莲使者 莲花掌	
+        call SaveTowerAbility_1('O10U' , 'A02M' , 1)
+        // O10V 大勇分舵舵主 丐帮心法	
+        call SaveTowerAbility_1('O10V' , 'A031' , 1)
+        // O10W 大信分舵舵主 丐帮入门棍法	
+        call SaveTowerAbility_1('O10W' , 'A02K' , 1)
+        // O10X 大智分舵舵主 太祖长拳	
+        call SaveTowerAbility_1('O10X' , 'A02I' , 1)
+        // O10Y 大礼分舵舵主 青竹镖	
+        call SaveTowerAbility_1('O10Y' , 'A02N' , 1)
+        // O10Z 大义分舵舵主 六合刀法
+        call SaveTowerAbility_1('O10Z' , 'A02Q' , 1)
+        // O110 大仁分舵舵主 铜锤手	
+        call SaveTowerAbility_1('O110' , 'A02R' , 1)
+        // O111 护法长老 疯魔杖法	
+        call SaveTowerAbility_1('O111' , 'A02V' , 1)
+        // O112 执法长老 逍遥游	
+        call SaveTowerAbility_1('O112' , 'A02Y' , 1)
+        // O113 传功长老 丐帮身法
+        call SaveTowerAbility_1('O113' , 'A037' , 1)
+        // O114 丐帮帮主 降龙十八掌	打狗棒法
+        call SaveTowerAbility_1('O114' , 'A032' , 1)
+        call SaveTowerAbility_1('O114' , 'A034' , 1)
+        // O115 全真大道士 破冰掌法	
+        call SaveTowerAbility_1('O115' , 'A050' , 1)
+        // O116 苗道一 破冰掌法	
+        call SaveTowerAbility_1('O116' , 'A050' , 1)
+        // O117 尹志平 昊天掌
+        call SaveTowerAbility_1('O117' , 'A04P' , 1)
+        // O118 孙不二 三花聚顶	
+        call SaveTowerAbility_1('O118' , 'A04Y' , 1)
+        // O119 郝大通 全真剑法	
+        call SaveTowerAbility_1('O119' , 'A04N' , 1)
+        // O11A 谭处端 全真剑法	
+        call SaveTowerAbility_1('O11A' , 'A04N' , 1)
+        // O11B 刘处玄 东方第一剑	
+        call SaveTowerAbility_1('O11B' , 'A04U' , 1)
+        // O11C 王处一 后发先至	
+        call SaveTowerAbility_1('O11C' , 'A04S' , 1)
+        // O11D 丘处机 一气化三清
+        call SaveTowerAbility_1('O11D' , 'A04V' , 1)
+        // O11E 马钰 天罡北斗阵	
+        call SaveTowerAbility_1('O11E' , 'A04X' , 1)
+        // O11F 周伯通 空明拳	双手互搏
+        call SaveTowerAbility_1('O11F' , 'A04T' , 1)
+        call SaveTowerAbility_1('O11F' , 'A04Q' , 1)
+        // O11G 全真掌教 先天功	金雁功
+        call SaveTowerAbility_1('O11G' , 'A04W' , 1)
+        call SaveTowerAbility_1('O11G' , 'A053' , 1)
+        // O11H 江湖巨侠 虾米神拳	
+        call SaveTowerAbility_1('O11H' , 'A045' , 1)
+        // O11I 茅盈 五雷咒	玄冰咒 谷衣心法
+        call SaveTowerAbility_1('O11I' , 'A048' , 1)
+        call SaveTowerAbility_1('O11I' , 'A049' , 1)
+        call SaveTowerAbility_1('O11I' , 'A04A' , 1)
+        // O11J 韦小宝 乾坤一掷	神行百变
+        call SaveTowerAbility_1('O11J' , 'A047' , 1)
+        // call SaveTowerAbility_1('O11J', 'A00D', 1)
+        // O11K 云中鹤 擒龙控鹤	
+        call SaveTowerAbility_1('O11K' , 'A04B' , 1)
+        // O11L 虚竹子 天山折梅手	生死符
+        call SaveTowerAbility_1('O11L' , 'A098' , 1)
+        // call SaveTowerAbility_1('O11L', 'A00D', 1)
     endfunction
 
 //library TowerLibrary ends
 //library YDTriggerSaveLoadSystem:
-    function YDTriggerSaveLoadSystem__Init takes nothing returns nothing
+    function YDTriggerSaveLoadSystem___Init takes nothing returns nothing
             set YDHT=InitHashtable()
         set YDLOC=InitHashtable()
     endfunction
@@ -3170,9 +3101,9 @@ function YDWEAnyUnitDamagedTriggerAction takes nothing returns nothing
     local integer i= 0
     
     loop
-        exitwhen i >= YDWETriggerEvent__DamageEventNumber
-        if YDWETriggerEvent__DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__DamageEventQueue[i]) then
-            call TriggerExecute(YDWETriggerEvent__DamageEventQueue[i])
+        exitwhen i >= YDWETriggerEvent___DamageEventNumber
+        if YDWETriggerEvent___DamageEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___DamageEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___DamageEventQueue[i]) then
+            call TriggerExecute(YDWETriggerEvent___DamageEventQueue[i])
         endif
         set i=i + 1
     endloop
@@ -3201,14 +3132,14 @@ function YDWESyStemAnyUnitDamagedRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent__DamageEventNumber == 0 then
+    if YDWETriggerEvent___DamageEventNumber == 0 then
         set yd_DamageEventTrigger=CreateTrigger()
         call TriggerAddAction(yd_DamageEventTrigger, function YDWEAnyUnitDamagedTriggerAction)
         call YDWEAnyUnitDamagedEnumUnit()
     endif
     
-    set YDWETriggerEvent__DamageEventQueue[YDWETriggerEvent__DamageEventNumber]=trg
-    set YDWETriggerEvent__DamageEventNumber=YDWETriggerEvent__DamageEventNumber + 1
+    set YDWETriggerEvent___DamageEventQueue[YDWETriggerEvent___DamageEventNumber]=trg
+    set YDWETriggerEvent___DamageEventNumber=YDWETriggerEvent___DamageEventNumber + 1
 endfunction
 //===========================================================================  
 //�ƶ���Ʒ�¼� 
@@ -3219,9 +3150,9 @@ function YDWESyStemItemUnmovableTriggerAction takes nothing returns nothing
     if GetIssuedOrderId() >= 852002 and GetIssuedOrderId() <= 852007 then
 		set bj_lastMovedItemInItemSlot=GetOrderTargetItem()
     	loop
-        	exitwhen i >= YDWETriggerEvent__MoveItemEventNumber
-        	if YDWETriggerEvent__MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent__MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent__MoveItemEventQueue[i]) then
-        	    call TriggerExecute(YDWETriggerEvent__MoveItemEventQueue[i])
+        	exitwhen i >= YDWETriggerEvent___MoveItemEventNumber
+        	if YDWETriggerEvent___MoveItemEventQueue[i] != null and IsTriggerEnabled(YDWETriggerEvent___MoveItemEventQueue[i]) and TriggerEvaluate(YDWETriggerEvent___MoveItemEventQueue[i]) then
+        	    call TriggerExecute(YDWETriggerEvent___MoveItemEventQueue[i])
         	endif
         	set i=i + 1
     	endloop
@@ -3232,14 +3163,14 @@ function YDWESyStemItemUnmovableRegistTrigger takes trigger trg returns nothing
         return
     endif
         
-    if YDWETriggerEvent__MoveItemEventNumber == 0 then
-        set YDWETriggerEvent__MoveItemEventTrigger=CreateTrigger()
-        call TriggerAddAction(YDWETriggerEvent__MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
-        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent__MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
+    if YDWETriggerEvent___MoveItemEventNumber == 0 then
+        set YDWETriggerEvent___MoveItemEventTrigger=CreateTrigger()
+        call TriggerAddAction(YDWETriggerEvent___MoveItemEventTrigger, function YDWESyStemItemUnmovableTriggerAction)
+        call TriggerRegisterAnyUnitEventBJ(YDWETriggerEvent___MoveItemEventTrigger, EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER)
     endif
     
-    set YDWETriggerEvent__MoveItemEventQueue[YDWETriggerEvent__MoveItemEventNumber]=trg
-    set YDWETriggerEvent__MoveItemEventNumber=YDWETriggerEvent__MoveItemEventNumber + 1
+    set YDWETriggerEvent___MoveItemEventQueue[YDWETriggerEvent___MoveItemEventNumber]=trg
+    set YDWETriggerEvent___MoveItemEventNumber=YDWETriggerEvent___MoveItemEventNumber + 1
 endfunction
 function GetLastMovedItemInItemSlot takes nothing returns item
     return bj_lastMovedItemInItemSlot
@@ -3764,37 +3695,37 @@ endfunction
 
 //library YDWEStringFormula ends
 //library YDWETimerSystem:
-function YDWETimerSystem__NewTaskIndex takes nothing returns integer
- local integer h= YDWETimerSystem__TaskListIdleHead
-	if YDWETimerSystem__TaskListIdleHead < 0 then
-		if YDWETimerSystem__TaskListIdleMax >= 8000 then
+function YDWETimerSystem___NewTaskIndex takes nothing returns integer
+ local integer h= YDWETimerSystem___TaskListIdleHead
+	if YDWETimerSystem___TaskListIdleHead < 0 then
+		if YDWETimerSystem___TaskListIdleMax >= 8000 then
 			return 8100
 		else
-			set YDWETimerSystem__TaskListIdleMax=YDWETimerSystem__TaskListIdleMax + 1
-			return YDWETimerSystem__TaskListIdleMax
+			set YDWETimerSystem___TaskListIdleMax=YDWETimerSystem___TaskListIdleMax + 1
+			return YDWETimerSystem___TaskListIdleMax
 		endif
 	endif
-	set YDWETimerSystem__TaskListIdleHead=YDWETimerSystem__TaskListIdle[h]
+	set YDWETimerSystem___TaskListIdleHead=YDWETimerSystem___TaskListIdle[h]
 	return h
 endfunction
-function YDWETimerSystem__DeleteTaskIndex takes integer index returns nothing
-	set YDWETimerSystem__TaskListIdle[index]=YDWETimerSystem__TaskListIdleHead
-	set YDWETimerSystem__TaskListIdleHead=index
+function YDWETimerSystem___DeleteTaskIndex takes integer index returns nothing
+	set YDWETimerSystem___TaskListIdle[index]=YDWETimerSystem___TaskListIdleHead
+	set YDWETimerSystem___TaskListIdleHead=index
 endfunction
 //�ú������д���
-function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
- local integer index= YDWETimerSystem__NewTaskIndex()
- local integer h= YDWETimerSystem__TaskListHead
- local integer t= R2I(100. * time) + YDWETimerSystem__CurrentTime
+function YDWETimerSystem___NewTask takes real time,trigger proc returns integer
+ local integer index= YDWETimerSystem___NewTaskIndex()
+ local integer h= YDWETimerSystem___TaskListHead
+ local integer t= R2I(100. * time) + YDWETimerSystem___CurrentTime
  local integer p
-	set YDWETimerSystem__TaskListProc[index]=proc
-	set YDWETimerSystem__TaskListTime[index]=t
+	set YDWETimerSystem___TaskListProc[index]=proc
+	set YDWETimerSystem___TaskListTime[index]=t
 	loop
-		set p=YDWETimerSystem__TaskListNext[h]
-		if p < 0 or YDWETimerSystem__TaskListTime[p] >= t then
+		set p=YDWETimerSystem___TaskListNext[h]
+		if p < 0 or YDWETimerSystem___TaskListTime[p] >= t then
 		//	call BJDebugMsg("NewTask:"+I2S(index))
-			set YDWETimerSystem__TaskListNext[h]=index
-			set YDWETimerSystem__TaskListNext[index]=p
+			set YDWETimerSystem___TaskListNext[h]=index
+			set YDWETimerSystem___TaskListNext[index]=p
 			return index
 		endif
 		set h=p
@@ -3802,59 +3733,59 @@ function YDWETimerSystem__NewTask takes real time,trigger proc returns integer
 	return index
 endfunction
 function YDWETimerSystemNewTask takes real time,trigger proc returns integer
-	return YDWETimerSystem__NewTask(time , proc)
+	return YDWETimerSystem___NewTask(time , proc)
 endfunction
 function YDWETimerSystemGetCurrentTask takes nothing returns integer
-	return YDWETimerSystem__CurrentIndex
+	return YDWETimerSystem___CurrentIndex
 endfunction
 //ɾ����λ
-function YDWETimerSystem__RemoveUnit_CallBack takes nothing returns nothing
-    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RemoveUnit_CallBack takes nothing returns nothing
+    call RemoveUnit(LoadUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRemoveUnit takes real time,unit u returns nothing
-    call SaveUnitHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveUnit), u)
+    call SaveUnitHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveUnit), u)
 endfunction
 //�ݻټ�ʱ��
-function YDWETimerSystem__DestroyTimer_CallBack takes nothing returns nothing
-    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyTimer_CallBack takes nothing returns nothing
+    call DestroyTimer(LoadTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyTimer takes real time,timer t returns nothing
-    call SaveTimerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyTimer), t)
+    call SaveTimerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyTimer), t)
 endfunction
 //ɾ����Ʒ
-function YDWETimerSystem__RemoveItem_CallBack takes nothing returns nothing
-    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RemoveItem_CallBack takes nothing returns nothing
+    call RemoveItem(LoadItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRemoveItem takes real time,item it returns nothing
-    call SaveItemHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRemoveItem), it)
+    call SaveItemHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRemoveItem), it)
 endfunction
 //ɾ����Ч
-function YDWETimerSystem__DestroyEffect_CallBack takes nothing returns nothing
-    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyEffect_CallBack takes nothing returns nothing
+    call DestroyEffect(LoadEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyEffect takes real time,effect e returns nothing
-    call SaveEffectHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyEffect), e)
+    call SaveEffectHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyEffect), e)
 endfunction
 //ɾ��������Ч
-function YDWETimerSystem__DestroyLightning_CallBack takes nothing returns nothing
-    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___DestroyLightning_CallBack takes nothing returns nothing
+    call DestroyLightning(LoadLightningHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerDestroyLightning takes real time,lightning lt returns nothing
- local integer i= YDWETimerSystem__NewTask(time , YDWETimerSystem__fnDestroyLightning)
-    call SaveLightningHandle(YDHT, YDWETimerSystem__TimerHandle, i, lt)
+ local integer i= YDWETimerSystem___NewTask(time , YDWETimerSystem___fnDestroyLightning)
+    call SaveLightningHandle(YDHT, YDWETimerSystem___TimerHandle, i, lt)
 endfunction
 //���д�����
-function YDWETimerSystem__RunTrigger_CallBack takes nothing returns nothing
-    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex))
-    call RemoveSavedHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__CurrentIndex)
+function YDWETimerSystem___RunTrigger_CallBack takes nothing returns nothing
+    call TriggerExecute(LoadTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex))
+    call RemoveSavedHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___CurrentIndex)
 endfunction
 function YDWETimerRunTrigger takes real time,trigger trg returns nothing
-    call SaveTriggerHandle(YDHT, YDWETimerSystem__TimerHandle, YDWETimerSystem__NewTask(time , YDWETimerSystem__fnRunTrigger), trg)
+    call SaveTriggerHandle(YDHT, YDWETimerSystem___TimerHandle, YDWETimerSystem___NewTask(time , YDWETimerSystem___fnRunTrigger), trg)
 endfunction
 //ɾ��Ư������
 function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
@@ -3868,50 +3799,50 @@ function YDWETimerDestroyTextTag takes real time,texttag tt returns nothing
     call SetTextTagFadepoint(tt, time)
 endfunction
 //���ļ�ʱ��������
-function YDWETimerSystem__Main takes nothing returns nothing
- local integer h= YDWETimerSystem__TaskListHead
+function YDWETimerSystem___Main takes nothing returns nothing
+ local integer h= YDWETimerSystem___TaskListHead
  local integer p
 	loop
-		set YDWETimerSystem__CurrentIndex=YDWETimerSystem__TaskListNext[h]
-		exitwhen YDWETimerSystem__CurrentIndex < 0 or YDWETimerSystem__CurrentTime < YDWETimerSystem__TaskListTime[YDWETimerSystem__CurrentIndex]
+		set YDWETimerSystem___CurrentIndex=YDWETimerSystem___TaskListNext[h]
+		exitwhen YDWETimerSystem___CurrentIndex < 0 or YDWETimerSystem___CurrentTime < YDWETimerSystem___TaskListTime[YDWETimerSystem___CurrentIndex]
 		//call BJDebugMsg("Task:"+I2S(CurrentIndex))
-		call TriggerEvaluate(YDWETimerSystem__TaskListProc[YDWETimerSystem__CurrentIndex])
-		call YDWETimerSystem__DeleteTaskIndex(YDWETimerSystem__CurrentIndex)
-		set YDWETimerSystem__TaskListNext[h]=YDWETimerSystem__TaskListNext[YDWETimerSystem__CurrentIndex]
+		call TriggerEvaluate(YDWETimerSystem___TaskListProc[YDWETimerSystem___CurrentIndex])
+		call YDWETimerSystem___DeleteTaskIndex(YDWETimerSystem___CurrentIndex)
+		set YDWETimerSystem___TaskListNext[h]=YDWETimerSystem___TaskListNext[YDWETimerSystem___CurrentIndex]
 	endloop
-	set YDWETimerSystem__CurrentTime=YDWETimerSystem__CurrentTime + 1
+	set YDWETimerSystem___CurrentTime=YDWETimerSystem___CurrentTime + 1
 endfunction
 //��ʼ������
-function YDWETimerSystem__Init takes nothing returns nothing
-    set YDWETimerSystem__Timer=CreateTimer()
-	set YDWETimerSystem__TimerHandle=GetHandleId(YDWETimerSystem__Timer)
-	set YDWETimerSystem__CurrentTime=0
-	set YDWETimerSystem__TaskListHead=0
-	set YDWETimerSystem__TaskListNext[0]=- 1
-	set YDWETimerSystem__TaskListIdleHead=1
-	set YDWETimerSystem__TaskListIdleMax=1
-	set YDWETimerSystem__TaskListIdle[1]=- 1
+function YDWETimerSystem___Init takes nothing returns nothing
+    set YDWETimerSystem___Timer=CreateTimer()
+	set YDWETimerSystem___TimerHandle=GetHandleId(YDWETimerSystem___Timer)
+	set YDWETimerSystem___CurrentTime=0
+	set YDWETimerSystem___TaskListHead=0
+	set YDWETimerSystem___TaskListNext[0]=- 1
+	set YDWETimerSystem___TaskListIdleHead=1
+	set YDWETimerSystem___TaskListIdleMax=1
+	set YDWETimerSystem___TaskListIdle[1]=- 1
 	
-	set YDWETimerSystem__fnRemoveUnit=CreateTrigger()
-	set YDWETimerSystem__fnDestroyTimer=CreateTrigger()
-	set YDWETimerSystem__fnRemoveItem=CreateTrigger()
-	set YDWETimerSystem__fnDestroyEffect=CreateTrigger()
-	set YDWETimerSystem__fnDestroyLightning=CreateTrigger()
-	set YDWETimerSystem__fnRunTrigger=CreateTrigger()
-	call TriggerAddCondition(YDWETimerSystem__fnRemoveUnit, Condition(function YDWETimerSystem__RemoveUnit_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyTimer, Condition(function YDWETimerSystem__DestroyTimer_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnRemoveItem, Condition(function YDWETimerSystem__RemoveItem_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyEffect, Condition(function YDWETimerSystem__DestroyEffect_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnDestroyLightning, Condition(function YDWETimerSystem__DestroyLightning_CallBack))
-	call TriggerAddCondition(YDWETimerSystem__fnRunTrigger, Condition(function YDWETimerSystem__RunTrigger_CallBack))
+	set YDWETimerSystem___fnRemoveUnit=CreateTrigger()
+	set YDWETimerSystem___fnDestroyTimer=CreateTrigger()
+	set YDWETimerSystem___fnRemoveItem=CreateTrigger()
+	set YDWETimerSystem___fnDestroyEffect=CreateTrigger()
+	set YDWETimerSystem___fnDestroyLightning=CreateTrigger()
+	set YDWETimerSystem___fnRunTrigger=CreateTrigger()
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveUnit, Condition(function YDWETimerSystem___RemoveUnit_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyTimer, Condition(function YDWETimerSystem___DestroyTimer_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRemoveItem, Condition(function YDWETimerSystem___RemoveItem_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyEffect, Condition(function YDWETimerSystem___DestroyEffect_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnDestroyLightning, Condition(function YDWETimerSystem___DestroyLightning_CallBack))
+	call TriggerAddCondition(YDWETimerSystem___fnRunTrigger, Condition(function YDWETimerSystem___RunTrigger_CallBack))
 	
-    call TimerStart(YDWETimerSystem__Timer, 0.01, true, function YDWETimerSystem__Main)
+    call TimerStart(YDWETimerSystem___Timer, 0.01, true, function YDWETimerSystem___Main)
 endfunction
 //ѭ�������ö�����ʱ��
 function YDWETimerSystemGetRunIndex takes nothing returns integer
-    return YDWETimerSystem__TimerSystem_RunIndex
+    return YDWETimerSystem___TimerSystem_RunIndex
 endfunction
-function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothing
+function YDWETimerSystem___RunPeriodicTriggerFunction takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
 	call SaveInteger(YDHT, StringHash(I2S(GetHandleId(trg))), StringHash("RunIndex"), LoadInteger(YDHT, tid, $D0002))
@@ -3920,7 +3851,7 @@ function YDWETimerSystem__RunPeriodicTriggerFunction takes nothing returns nothi
     endif
     set trg=null
 endfunction
-function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
+function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes takes nothing returns nothing
     local integer tid= GetHandleId(GetExpiredTimer())
     local trigger trg= LoadTriggerHandle(YDHT, tid, $D0001)
     local integer times= LoadInteger(YDHT, tid, $D0003)
@@ -3947,9 +3878,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
         set t=CreateTimer()
 		set tid=GetHandleId(t)
     endif
-    set YDWETimerSystem__TimerSystem_RunIndex=YDWETimerSystem__TimerSystem_RunIndex + 1
+    set YDWETimerSystem___TimerSystem_RunIndex=YDWETimerSystem___TimerSystem_RunIndex + 1
 	call SaveTriggerHandle(YDHT, tid, $D0001, trg)
-	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem__TimerSystem_RunIndex)
+	call SaveInteger(YDHT, tid, $D0002, YDWETimerSystem___TimerSystem_RunIndex)
 	set index=LoadInteger(YDHT, GetHandleId(trg), 'YDTS' + data)
     set index=index + 1
 	call SaveInteger(YDHT, GetHandleId(trg), 'YDTS' + data, index)
@@ -3957,9 +3888,9 @@ function YDWETimerRunPeriodicTrigger takes real timeout,trigger trg,boolean b,in
 	
     if b == false then
 		call SaveInteger(YDHT, tid, $D0003, times)
-        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunctionByTimes)
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunctionByTimes)
       else
-        call TimerStart(t, timeout, true, function YDWETimerSystem__RunPeriodicTriggerFunction)
+        call TimerStart(t, timeout, true, function YDWETimerSystem___RunPeriodicTriggerFunction)
     endif
     set t=null
 endfunction
@@ -3987,7 +3918,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Tue Dec 06 16:18:31 2022
+//   Date: Wed Dec 07 14:26:03 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -4021,6 +3952,7 @@ function CreateBuildingsForPlayer0 takes nothing returns nothing
     set gg_unit_o00M_0010=CreateUnit(p, 'o00M', - 1280.0, 1984.0, 270.000)
     set gg_unit_o00P_0015=CreateUnit(p, 'o00P', - 1280.0, 1728.0, 270.000)
     set gg_unit_o013_0027=CreateUnit(p, 'o013', - 1280.0, 1856.0, 270.000)
+    set gg_unit_o014_0031=CreateUnit(p, 'o014', - 1280.0, 2112.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer0 takes nothing returns nothing
@@ -4042,6 +3974,7 @@ function CreateBuildingsForPlayer1 takes nothing returns nothing
     set gg_unit_o00M_0013=CreateUnit(p, 'o00M', 1984.0, 1280.0, 270.000)
     set gg_unit_o00P_0018=CreateUnit(p, 'o00P', 1728.0, 1280.0, 270.000)
     set gg_unit_o013_0028=CreateUnit(p, 'o013', 1856.0, 1280.0, 270.000)
+    set gg_unit_o014_0032=CreateUnit(p, 'o014', 2112.0, 1280.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer1 takes nothing returns nothing
@@ -4063,6 +3996,7 @@ function CreateBuildingsForPlayer2 takes nothing returns nothing
     set gg_unit_o00M_0012=CreateUnit(p, 'o00M', 1280.0, - 1984.0, 270.000)
     set gg_unit_o00P_0017=CreateUnit(p, 'o00P', 1280.0, - 1728.0, 270.000)
     set gg_unit_o013_0029=CreateUnit(p, 'o013', 1280.0, - 1856.0, 270.000)
+    set gg_unit_o014_0033=CreateUnit(p, 'o014', 1280.0, - 2048.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer2 takes nothing returns nothing
@@ -4084,6 +4018,7 @@ function CreateBuildingsForPlayer3 takes nothing returns nothing
     set gg_unit_o00M_0011=CreateUnit(p, 'o00M', - 1984.0, - 1280.0, 270.000)
     set gg_unit_o00P_0016=CreateUnit(p, 'o00P', - 1728.0, - 1280.0, 270.000)
     set gg_unit_o013_0030=CreateUnit(p, 'o013', - 1856.0, - 1280.0, 270.000)
+    set gg_unit_o014_0034=CreateUnit(p, 'o014', - 2112.0, - 1280.0, 270.000)
 endfunction
 //===========================================================================
 function CreateUnitsForPlayer3 takes nothing returns nothing
@@ -5527,11 +5462,25 @@ function AttackerDamageRange takes nothing returns nothing
     set u=null
     set ut=null
 endfunction
-function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,real range,real damage,string effects,integer possibility,integer mana_cost returns nothing
+function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,real range,real w1,real w2,integer whichAttr,string effects,integer possibility,integer mana_cost returns nothing
     local group g= CreateGroup()
     local location loc= GetUnitLoc(attackee)
-    local real dmg= damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+    local real dmg= 0
     local real coeff= 1
+    local real baseDamage= 0
+    local real attr= 0
+    local real attack= GetUnitState(attacker, ConvertUnitState(0x15))
+    // 主属性
+    if whichAttr == 1 then
+        set attr=GetHeroStr(attacker, true)
+    elseif whichAttr == 2 then
+        set attr=GetHeroAgi(attacker, true)
+    elseif whichAttr == 3 then
+        set attr=GetHeroInt(attacker, true)
+    endif
+    // 基础伤害
+    set baseDamage=( attack + w1 * attr ) * w2
+    set dmg=baseDamage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         
         // 韦陀棍法
@@ -5589,9 +5538,23 @@ function PassiveRangeDamage takes unit attacker,unit attackee,integer spell_id,r
     set loc=null
     set g=null
 endfunction
-function PassiveSingleDamage takes unit attacker,unit attackee,integer spell_id,real base_damage,string effects,integer possibility,integer mana_cost returns nothing
+function PassiveSingleDamage takes unit attacker,unit attackee,integer spell_id,real w1,real w2,integer whichAttr,string effects,integer possibility,integer mana_cost returns nothing
     local location loc= GetUnitLoc(attackee)
-    local real damage= base_damage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
+    local real baseDamage= 0
+    local real attr= 0
+    local real attack= GetUnitState(attacker, ConvertUnitState(0x15))
+    local real damage= 0
+    // 主属性
+    if whichAttr == 1 then
+        set attr=GetHeroStr(attacker, true)
+    elseif whichAttr == 2 then
+        set attr=GetHeroAgi(attacker, true)
+    elseif whichAttr == 3 then
+        set attr=GetHeroInt(attacker, true)
+    endif
+    // 基础伤害
+    set baseDamage=( attack + w1 * attr ) * w2
+    set damage=baseDamage * GetUnitAbilityLevel(attacker, spell_id) * GetUnitAbilityLevel(attacker, spell_id)
     if GetRandomInt(0, 100) <= possibility or ( GetRandomInt(0, 100) <= possibility * 2 and YDWEUnitHasItemOfTypeBJNull(attacker , 'I00L') ) and GetUnitAbilityLevel(attacker, spell_id) >= 1 and GetUnitState(attacker, UNIT_STATE_MANA) >= mana_cost then
         call dealDamage(attacker , attackee , damage)
         call DestroyEffect(AddSpecialEffectLoc(effects, loc))
@@ -7058,6 +7021,122 @@ function initExchange takes nothing returns nothing
         set j=j + 1
     endloop
 endfunction
+function lowDrawCard takes integer i returns nothing
+    local integer rand= GetRandomInt(1, 100)
+    local integer j= 1
+    local integer jmax= 4
+    // 在卡牌商店里加入3张占位卡（如果解锁了商店物品，则为4张）
+    if GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) < 5 then
+        call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5, "|cff00ff00[系统]|r|cffff0000珍稀币不足|r")
+        return
+    endif
+    call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) - 5)
+    call UnitAddAbility(cardShop[i], 'A09C')
+    call UnitAddAbility(cardShop[i], 'A09D')
+    call UnitAddAbility(cardShop[i], 'A09E')
+    // call UnitAddAbility(cardShop[i], 'A09F')
+    call FlushChildHashtable(CARD_HT, i)
+    loop
+        exitwhen j > jmax
+        // 85%概率出现N卡，15%概率出现R卡
+        if rand <= 85 then
+            call SaveInteger(CARD_HT, i, j, low_towers[GetRandomInt(1, LOW_SIZE)])
+        else
+            call SaveInteger(CARD_HT, i, j, normal_towers[GetRandomInt(1, NORMAL_SIZE)])
+        endif
+        set j=j + 1
+    endloop
+endfunction
+function normalDrawCard takes integer i returns nothing
+    local integer rand= GetRandomInt(1, 100)
+    local integer j= 1
+    local integer jmax= 4
+    // 在卡牌商店里加入3张占位卡（如果解锁了商店物品，则为4张）
+    if GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) < 20 then
+        call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5, "|cff00ff00[系统]|r|cffff0000珍稀币不足|r")
+        return
+    endif
+    call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) - 20)
+    call UnitAddAbility(cardShop[i], 'A09C')
+    call UnitAddAbility(cardShop[i], 'A09D')
+    call UnitAddAbility(cardShop[i], 'A09E')
+    // call UnitAddAbility(cardShop[i], 'A09F')
+    call FlushChildHashtable(CARD_HT, i)
+    loop
+        exitwhen j > jmax
+        // 38% N卡 57% R卡 5% SR卡
+        if rand <= 38 then
+            call SaveInteger(CARD_HT, i, j, low_towers[GetRandomInt(1, LOW_SIZE)])
+        elseif rand <= 95 then
+            call SaveInteger(CARD_HT, i, j, normal_towers[GetRandomInt(1, NORMAL_SIZE)])
+        else
+            call SaveInteger(CARD_HT, i, j, fine_towers[GetRandomInt(1, FINE_SIZE)])
+        endif
+        set j=j + 1
+    endloop
+endfunction
+function highDrawCard takes integer i returns nothing
+    local integer rand= GetRandomInt(1, 100)
+    local integer j= 1
+    local integer jmax= 4
+    // 在卡牌商店里加入3张占位卡（如果解锁了商店物品，则为4张）
+    if GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) < 50 then
+        call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5, "|cff00ff00[系统]|r|cffff0000珍稀币不足|r")
+        return
+    endif
+    call SetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER) - 50)
+    call UnitAddAbility(cardShop[i], 'A09C')
+    call UnitAddAbility(cardShop[i], 'A09D')
+    call UnitAddAbility(cardShop[i], 'A09E')
+    // call UnitAddAbility(cardShop[i], 'A09F')
+    call FlushChildHashtable(CARD_HT, i)
+    loop
+        exitwhen j > jmax
+        // 15% N卡 59% R卡 22% SR卡 4% SSR卡
+        if rand <= 15 then
+            call SaveInteger(CARD_HT, i, j, low_towers[GetRandomInt(1, LOW_SIZE)])
+        elseif rand <= 74 then
+            call SaveInteger(CARD_HT, i, j, normal_towers[GetRandomInt(1, NORMAL_SIZE)])
+        elseif rand <= 96 then
+            call SaveInteger(CARD_HT, i, j, fine_towers[GetRandomInt(1, FINE_SIZE)])
+        else
+            call SaveInteger(CARD_HT, i, j, perfect_towers[GetRandomInt(1, PERFECT_SIZE)])
+        endif
+        set j=j + 1
+    endloop
+endfunction
+function getCard takes integer i,integer number returns nothing
+    local integer id= LoadInteger(CARD_HT, i, number)
+    local integer level= LoadInteger(YDHT, id, TOWER_LEVEL_KEY)
+    local integer gold= 0
+    if level == 1 then
+        set gold=500
+    elseif level == 2 then
+        set gold=1000
+    elseif level == 3 then
+        set gold=2000
+    elseif level == 4 then
+        set gold=5000
+    endif
+    if GetPlayerState(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD) < gold then
+        call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5, "|cff00ff00[系统]|r|cffff0000金币不足|r")
+        return
+    endif
+    call UnitAddItemById(builder[i], id)
+    call DisplayTimedTextToPlayer(Player(i - 1), 0, 0, 5, "|cff00ff00[系统]|r|cff00ff00获得卡牌|r")
+    call UnitRemoveAbility(cardShop[i], 'A09C')
+    call UnitRemoveAbility(cardShop[i], 'A09D')
+    call UnitRemoveAbility(cardShop[i], 'A09E')
+    call UnitRemoveAbility(cardShop[i], 'A09F')
+    call FlushChildHashtable(CARD_HT, i)
+endfunction
+function initDrawCard takes nothing returns nothing
+    // 初始化卡牌商店
+    set cardShop[1]=gg_unit_o014_0031
+    set cardShop[2]=gg_unit_o014_0032
+    set cardShop[3]=gg_unit_o014_0033
+    set cardShop[4]=gg_unit_o014_0034
+endfunction
 function EverySecond_Conditions takes nothing returns boolean
     local string info= DzAPI_Map_GetMapConfig("info")
     local integer i= 1
@@ -7269,16 +7348,16 @@ function KeyInput takes nothing returns nothing
         call combo(unitInSelection[i])
     endif
     if s == "cx" or s == "CX" then
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "积分：" + I2S(udg_point[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "每局可用积分剩余：" + I2S(MAX_POINT - udg_pointMax[i]))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "通关次数：" + I2S(udg_success[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "战斗力：" + I2S(udg_zdl[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "积分：" + I2S(udg_point[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "每局可用积分剩余：" + I2S(MAX_POINT - udg_pointMax[i]))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "通关次数：" + I2S(udg_success[i]))
     endif
     if s == "ck" then
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第1名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 1)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 1)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第2名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 2)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 2)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第3名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 3)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 3)))
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r" + "|CFFFE890D" + "伤害第4名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 4)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 4)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第1名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 1)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 1)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第2名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 2)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 2)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第3名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 3)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 3)))
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r" + "|CFFFE890D" + "伤害第4名 " + GetUnitName(LoadUnitHandle(YDHT, DAMAGE_UNIT_KEY, 4)) + "：" + R2S(LoadReal(YDHT, DAMAGE_KEY, 4)))
     endif
     if s == "ChuBoss1" and udg_isTest[i] then
         call spawnBoss(i , 1)
@@ -7288,11 +7367,11 @@ function KeyInput takes nothing returns nothing
     endif
     if s == "survive" and udg_isTest[i] then
         set gameMode=1
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D已开启生存模式")
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r|CFFFE890D已开启生存模式")
     endif
     if s == "wisdomball" and udg_isTest[i] then
         set wisbomBall[i]=CreateUnit(p, 'o00R', wisdomBallX[i], wisdomBallY[i], 270)
-        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9系统提示：|r|CFFFE890D创建了智慧球")
+        call DisplayTimedTextToPlayer(p, 0, 0, 10, "|CFF1CE6B9[系统]：|r|CFFFE890D创建了智慧球")
     endif
     if s == "wave54" and udg_isTest[i] then
         set wave=54
@@ -8059,17 +8138,27 @@ function UnitAttack_Conditions takes nothing returns boolean
         // call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
         // endif
     endif
-    call PassiveRangeDamage(u , ut , 'A001' , 500 , 100 , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
-    call PassiveRangeDamage(u , ut , 'A045' , 800 , 100 , "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl" , 25 , 25 + GetUnitAbilityLevel(u, 'A045') * 5)
-    call PassiveRangeDamage(u , ut , 'A048' , 700 , 10 , "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl" , 18 , GetRandomInt(10, 100))
-    call PassiveRangeDamage(u , ut , 'A047' , 1000 , 25000 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 28 , 30)
-    call PassiveRangeDamage(u , ut , 'A02K' , 400 , 30 , "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl" , 27 , 15)
-    call PassiveRangeDamage(u , ut , 'A00K' , 50 , 1500 , "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl" , 26 , 25)
-    call PassiveRangeDamage(u , ut , 'A04N' , 800 , 2000 , "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl" , 26 , 40)
-    // 天山折梅手
-    call PassiveRangeDamage(u , ut , 'A098' , 800 , 5000 , "war3mapImported\\56.mdl" , 16 , 50)
-    call PassiveSingleDamage(u , ut , 'A01V' , 500 , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 19 , 40)
-    call PassiveSingleDamage(u , ut , 'A04T' , 2000 , "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , 100 , 6)
+    // 韦陀棍法 (攻击 + 10 * 力量 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A001' , 500 , 10 , 1 , ATTR_STR , "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl" , 21 , 20)
+    // 虾米神拳 (攻击 + 10 * 敏捷 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A045' , 800 , 10 , 1 , ATTR_AGI , "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl" , 25 , 25 + GetUnitAbilityLevel(u, 'A045') * 5)
+    // 五雷咒 (攻击 + 10 * 智力 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A048' , 700 , 10 , 1 , ATTR_INT , "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl" , 18 , GetRandomInt(10, 100))
+    // 乾坤一掷 (攻击 + 10 * 智力 ) * 250 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A047' , 1000 , 10 , 250 , ATTR_INT , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 28 , 30)
+    // 丐帮入门棍法 (攻击 + 10 * 力量 ) * 3 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A02K' , 400 , 10 , 3 , ATTR_STR , "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl" , 27 , 15)
+    // 武当剑法 (攻击 + 10 * 智力 ) * 15 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A00K' , 50 , 10 , 15 , ATTR_INT , "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl" , 26 , 25)
+    // 全真剑法 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A04N' , 800 , 10 , 20 , ATTR_AGI , "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl" , 26 , 40)
+    
+    // 天山折梅手 (攻击 + 10 * 力量 ) * 50 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u , ut , 'A098' , 800 , 10 , 50 , ATTR_STR , "war3mapImported\\56.mdl" , 16 , 50)
+    // 金顶绵掌 (攻击 + 10 * 敏捷 ) * 50 * 技能等级 * 技能等级
+    call PassiveSingleDamage(u , ut , 'A01V' , 10 , 50 , ATTR_AGI , "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl" , 19 , 40)
+    // 空明拳 (攻击 + 10 * 力量 ) * 200 * 技能等级 * 技能等级
+    call PassiveSingleDamage(u , ut , 'A04T' , 10 , 200 , ATTR_STR , "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl" , 100 , 6)
     call PassiveUseAbility(u , ut , 'A00N' , 'A00S' , 852119 , 18 , 50)
     call PassiveUseAbility(u , ut , 'A00V' , 'A00U' , 852106 , 25 , 25)
     call PassiveUseAbility(u , ut , 'A00X' , 'A00Y' , 852652 , 17 , 70)
@@ -8309,15 +8398,29 @@ function UnitBuilt takes nothing returns nothing
     call TriggerAddCondition(t, Condition(function UnitBuiltFinish_Conditions))
     set t=null
 endfunction
-function dealRealDamage takes real damage,real smallDamage,integer abilityId,unit u,unit ut,real baseDamage returns nothing
+function dealRealDamage takes real damage,real smallDamage,integer abilityId,unit u,unit ut,real w1,real w2,integer whichAttr returns nothing
     local unit uc= LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
     local integer level= GetUnitAbilityLevel(uc, abilityId)
-    local real realDamage= baseDamage * level * level
+    local real baseDamage= 0
+    local real realDamage= 0
+    local real attack= 0
+    local integer attr= 0
     if uc == null then
         set uc=u
-        set level=GetUnitAbilityLevel(uc, abilityId)
-        set realDamage=baseDamage * level * level
     endif
+    set attack=GetUnitState(uc, ConvertUnitState(0x15))
+    // 主属性
+    if whichAttr == 1 then
+        set attr=GetHeroStr(uc, true)
+    elseif whichAttr == 2 then
+        set attr=GetHeroAgi(uc, true)
+    elseif whichAttr == 3 then
+        set attr=GetHeroInt(uc, true)
+    endif
+    // 基础伤害
+    set baseDamage=( attack + w1 * attr ) * w2
+    set level=GetUnitAbilityLevel(uc, abilityId)
+    set realDamage=baseDamage * level * level
     if damage == smallDamage and level > 0 then
         if abilityId == 'A00N' and level == 4 then
             set realDamage=realDamage * 2.5
@@ -8362,6 +8465,9 @@ function UnitDamage_Conditions takes nothing returns boolean
     local location loc2= GetUnitLoc(ut)
     local real damage= GetEventDamage()
     local trigger t= null
+    local real attack
+    local integer attr
+    local real baseDamage
     if UnitHasBuffBJ(ut, 'Bslo') == false and udg_jiuyang[i] >= 1 and GetUnitTypeId(u) == 'e00E' then
         call CreateNUnitsAtLoc(1, 'e009', p, loc2, bj_UNIT_FACING)
         call ShowUnitHide(bj_lastCreatedUnit)
@@ -8370,46 +8476,88 @@ function UnitDamage_Conditions takes nothing returns boolean
         call IssueTargetOrderById(bj_lastCreatedUnit, 852075, ut)
         call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
     endif
-    call dealRealDamage(damage , 1.11 , 'A002' , u , ut , 320)
-    call dealRealDamage(damage , 1.12 , 'A007' , u , ut , 1000)
-    call dealRealDamage(damage , 1.13 , 'A01T' , u , ut , 6000)
-    call dealRealDamage(damage , 1.14 , 'A00F' , u , ut , 800)
-    call dealRealDamage(damage , 1.15 , 'A009' , u , ut , 1200)
-    call dealRealDamage(damage , 1.2 , 'A00L' , u , ut , 500)
-    call dealRealDamage(damage , 1.21 , 'A00N' , u , ut , 2000)
-    call dealRealDamage(damage , 1.22 , 'A00X' , u , ut , 250)
-    call dealRealDamage(damage , 1.3 , 'A022' , u , ut , 100)
-    call dealRealDamage(damage , 1.31 , 'A01R' , u , ut , 20)
-    call dealRealDamage(damage , 1.32 , 'A01R' , u , ut , 200)
-    call dealRealDamage(damage , 1.34 , 'A02C' , u , ut , 200)
-    call dealRealDamage(damage , 1.34 , 'A02E' , u , ut , 200)
-    call dealRealDamage(damage , 1.35 , 'A02D' , u , ut , 250)
-    call dealRealDamage(damage , 1.35 , 'A02E' , u , ut , 250)
-    call dealRealDamage(damage , 1.36 , 'A02D' , u , ut , 1000)
-    call dealRealDamage(damage , 1.36 , 'A02E' , u , ut , 1000)
-    call dealRealDamage(damage , 1.37 , 'A02F' , u , ut , 5000)
-    call dealRealDamage(damage , 1.4 , 'A02T' , u , ut , 1000)
-    call dealRealDamage(damage , 1.41 , 'A02I' , u , ut , 500)
-    call dealRealDamage(damage , 1.43 , 'A02R' , u , ut , 10000)
-    call dealRealDamage(damage , 1.44 , 'A02M' , u , ut , 400)
-    call dealRealDamage(damage , 1.45 , 'A02N' , u , ut , 2000)
-    call dealRealDamage(damage , 1.5 , 'A04O' , u , ut , 200)
-    call dealRealDamage(damage , 1.51 , 'A04P' , u , ut , 1000)
-    call dealRealDamage(damage , 1.52 , 'A04W' , u , ut , 400)
-    call dealRealDamage(damage , 1.53 , 'A04V' , u , ut , 6000)
-    call dealRealDamage(damage , 1.54 , 'A04S' , u , ut , 2000)
-    call dealRealDamage(damage , 1.55 , 'A04Y' , u , ut , 6000)
-    call dealRealDamage(damage , 1.56 , 'A04U' , u , ut , 4000)
-    call dealRealDamage(damage , 2. , 'A049' , u , ut , 2000)
+    // 达摩棍法 门派技能 (攻击 + 10 * 智力 ) * 3.2 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.11 , 'A002' , u , ut , 10 , 3.2 , ATTR_INT)
+    // 拈花擒拿手 (攻击 + 10 * 敏捷 ) * 10 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.12 , 'A007' , u , ut , 10 , 10 , ATTR_AGI)
+    // 大力金刚指 (攻击 + 10 * 力量 ) * 60 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.13 , 'A01T' , u , ut , 10 , 60 , ATTR_STR)
+    // 达摩八法 (攻击 + 10 * 智力 ) * 8 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.14 , 'A00F' , u , ut , 10 , 8 , ATTR_INT)
+    // 龙象般若功 (攻击 + 10 * 智力 ) * 12 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.15 , 'A009' , u , ut , 10 , 12 , ATTR_INT)
+    // 太极剑法 (攻击 + 10 * 敏捷 ) * 5 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.2 , 'A00L' , u , ut , 10 , 5 , ATTR_AGI)
+    // 铁画银钩 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.21 , 'A00N' , u , ut , 10 , 20 , ATTR_AGI)
+    // 虎爪绝户手 (攻击 + 10 * 力量 ) * 2.5 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.22 , 'A00X' , u , ut , 10 , 2.5 , ATTR_STR)
+    // 天罡指穴法 (攻击 + 10 * 智力 ) * 1 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.3 , 'A022' , u , ut , 10 , 1 , ATTR_INT)
+    // 峨眉入门剑法 (攻击 + 10 * 敏捷 ) * 0.2 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.31 , 'A01R' , u , ut , 10 , 0.2 , ATTR_AGI)
+    call dealRealDamage(damage , 1.32 , 'A01R' , u , ut , 10 , 2 , ATTR_AGI)
+    // 灭剑 (攻击 + 10 * 力量 ) * 2 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.34 , 'A02C' , u , ut , 10 , 2 , ATTR_STR)
+    // 灭绝剑法 (攻击 + 10 * 力量 ) * 2 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.34 , 'A02E' , u , ut , 10 , 2 , ATTR_STR)
+    // 绝剑 (攻击 + 10 * 敏捷 ) * 2.5 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.35 , 'A02D' , u , ut , 10 , 2.5 , ATTR_AGI)
+    // 灭绝剑法 (攻击 + 10 * 敏捷 ) * 2.5 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.35 , 'A02E' , u , ut , 10 , 2.5 , ATTR_AGI)
+    // 绝剑 (攻击 + 10 * 敏捷 ) * 10 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.36 , 'A02D' , u , ut , 10 , 10 , ATTR_AGI)
+    // 灭绝剑法 (攻击 + 10 * 敏捷 ) * 10 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.36 , 'A02E' , u , ut , 10 , 10 , ATTR_AGI)
+    // 截手九式 (攻击 + 10 * 智力 ) * 50 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.37 , 'A02F' , u , ut , 10 , 50 , ATTR_INT)
+    // 太祖棍法 (攻击 + 10 * 力量 ) * 1 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.4 , 'A02T' , u , ut , 10 , 1 , ATTR_STR)
+    // 太祖长拳 (攻击 + 10 * 力量 ) * 5 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.41 , 'A02I' , u , ut , 10 , 5 , ATTR_STR)
+    // 铜锤手 (攻击 + 10 * 力量 ) * 100 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.43 , 'A02R' , u , ut , 10 , 100 , ATTR_STR)
+    // 莲花掌 (攻击 + 10 * 智力 ) * 4 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.44 , 'A02M' , u , ut , 10 , 4 , ATTR_INT)
+    // 青竹镖 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.45 , 'A02N' , u , ut , 10 , 20 , ATTR_AGI)
+    // 同归剑法 (攻击 + 10 * 敏捷 ) * 2 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.5 , 'A04O' , u , ut , 10 , 2 , ATTR_AGI)
+    // 昊天掌 (攻击 + 10 * 智力 ) * 10 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.51 , 'A04P' , u , ut , 10 , 10 , ATTR_INT)
+    // 先天功 (攻击 + 10 * 力量 ) * 4 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.52 , 'A04W' , u , ut , 10 , 4 , ATTR_STR)
+    // 一气化三清 (攻击 + 10 * 智力 ) * 60 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.53 , 'A04V' , u , ut , 10 , 60 , ATTR_INT)
+    // 后发先至 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.54 , 'A04S' , u , ut , 10 , 20 , ATTR_AGI)
+    // 三花聚顶 (攻击 + 10 * 敏捷 ) * 60 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.55 , 'A04Y' , u , ut , 10 , 60 , ATTR_AGI)
+    // 东方第一剑 (攻击 + 10 * 力量 ) * 40 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 1.56 , 'A04U' , u , ut , 10 , 40 , ATTR_STR)
+    // 玄冰咒 (攻击 + 10 * 智力 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage , 2. , 'A049' , u , ut , 10 , 20 , ATTR_INT)
+    
+    // 六合刀法 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
     if GetUnitTypeId(u) == 'e00E' then
         set uc=LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
-        call dealDamage(uc , ut , 2000 * GetUnitAbilityLevel(uc, 'A02Q') * GetUnitAbilityLevel(uc, 'A02Q'))
+        set attack=GetUnitState(uc, ConvertUnitState(0x15))
+        set attr=GetHeroAgi(uc, true)
+        // 基础伤害
+        set baseDamage=( attack + 10 * attr ) * 20
+        call dealDamage(uc , ut , baseDamage * GetUnitAbilityLevel(uc, 'A02Q') * GetUnitAbilityLevel(uc, 'A02Q'))
     endif
+    // 四象掌 (攻击 + 10 * 智力 ) * 0.5 * 技能等级 * 技能等级
     if GetUnitTypeId(u) == 'e00I' then
         set uc=LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
-        call dealDamage(uc , ut , 50 * GetUnitAbilityLevel(uc, 'A03L') * GetUnitAbilityLevel(uc, 'A03L'))
+        set attack=GetUnitState(uc, ConvertUnitState(0x15))
+        set attr=GetHeroInt(uc, true)
+        
+        // 基础伤害
+        set baseDamage=( attack + 10 * attr ) * 0.5
+        call dealDamage(uc , ut , baseDamage * GetUnitAbilityLevel(uc, 'A03L') * GetUnitAbilityLevel(uc, 'A03L'))
     endif
-    call calculateTotalDamage(u , damage)
+    // call calculateTotalDamage(u, damage)
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
     set t=null
@@ -9142,6 +9290,34 @@ function UseAbility_Conditions takes nothing returns boolean
     // 快速丢弃
     if id == 'A092' then
         call fastDrop(u , GetSpellTargetX() , GetSpellTargetY())
+    endif
+    // 初级招募
+    if id == 'A099' then
+        call lowDrawCard(i)
+    endif
+    // 中级招募
+    if id == 'A09A' then
+        call normalDrawCard(i)
+    endif
+    // 高级招募
+    if id == 'A09B' then
+        call highDrawCard(i)
+    endif
+    // 占位卡1
+    if id == 'A09C' then
+        call getCard(i , 1)
+    endif
+    // 占位卡2
+    if id == 'A09D' then
+        call getCard(i , 2)
+    endif
+    // 占位卡3
+    if id == 'A09E' then
+        call getCard(i , 3)
+    endif
+    // 占位卡4
+    if id == 'A09F' then
+        call getCard(i , 4)
     endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
@@ -12834,7 +13010,7 @@ function GetItemNum takes unit u returns integer
     if IsBuilder(GetUnitTypeId(u)) then
         set i=6
     else
-        set i=LoadInteger(YDHT, GetUnitTypeId(u), TOWER_LEVEL_KEY)
+        set i=LoadInteger(YDHT, (LoadInteger(NHT, (GetUnitTypeId(u)), 0)), TOWER_LEVEL_KEY) // INLINED!!
     endif
     return i
 endfunction
@@ -13499,25 +13675,25 @@ function MapInit takes nothing returns nothing
     endloop
     set j=1
     loop
-        exitwhen j >= LOW_SIZE
+        exitwhen j > LOW_SIZE
         call SaveInteger(YDHT, low_towers[j], TOWER_LEVEL_KEY, 1)
         set j=j + 1
     endloop
     set j=1
     loop
-        exitwhen j >= NORMAL_SIZE
+        exitwhen j > NORMAL_SIZE
         call SaveInteger(YDHT, normal_towers[j], TOWER_LEVEL_KEY, 2)
         set j=j + 1
     endloop
     set j=1
     loop
-        exitwhen j >= FINE_SIZE
+        exitwhen j > FINE_SIZE
         call SaveInteger(YDHT, fine_towers[j], TOWER_LEVEL_KEY, 3)
         set j=j + 1
     endloop
     set j=1
     loop
-        exitwhen j >= PERFECT_SIZE
+        exitwhen j > PERFECT_SIZE
         call SaveInteger(YDHT, perfect_towers[j], TOWER_LEVEL_KEY, 4)
         set j=j + 1
     endloop
@@ -13625,6 +13801,7 @@ function InitAllSystems takes nothing returns nothing
     call initUI()
     call initEquip()
     call initSetAttackSpeed()
+    call initDrawCard()
     // 兑换商店
     call initExchange()
 endfunction
@@ -13678,6 +13855,10 @@ function Trig_MapFirstOccurActions takes nothing returns nothing
     call DzSetUnitPosition(gg_unit_o013_0028, 0, 0)
     call DzSetUnitPosition(gg_unit_o013_0029, 0, 0)
     call DzSetUnitPosition(gg_unit_o013_0030, 0, 0)
+    call DzSetUnitPosition(gg_unit_o014_0031, 0, 0)
+    call DzSetUnitPosition(gg_unit_o014_0032, 0, 0)
+    call DzSetUnitPosition(gg_unit_o014_0033, 0, 0)
+    call DzSetUnitPosition(gg_unit_o014_0034, 0, 0)
     call YDWEMultiboardSetItemWidthBJNull(GetLastCreatedMultiboard() , 1 , 1 , 3)
     call YDWEGeneralBounsSystemUnitSetBonus(GetTriggerUnit() , 0 , 0 , 300)
     call YDWEPolledWaitNull(2)
@@ -13844,13 +14025,13 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs597620500")
-call ExecuteFunc("FrameLibrary___init")
-call ExecuteFunc("YDTriggerSaveLoadSystem__Init")
+call ExecuteFunc("jasshelper__initstructs677267109")
+call ExecuteFunc("FrameLibrary__init")
+call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
 call ExecuteFunc("YDWEGeneralBounsSystem__Initialize")
 call ExecuteFunc("YDWEStringFormula__Init")
-call ExecuteFunc("YDWETimerSystem__Init")
+call ExecuteFunc("YDWETimerSystem___Init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -13878,6 +14059,9 @@ function config takes nothing returns nothing
     call InitAllyPriorities()
 endfunction
 //===========================================================================
+//修改生命
+//===========================================================================
+//===========================================================================
 //ϵͳ-TimerSystem
 //===========================================================================
 //===========================================================================  
@@ -13885,9 +14069,6 @@ endfunction
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
-//===========================================================================
-//修改生命
-//===========================================================================
 
 
 
@@ -13926,7 +14107,7 @@ local integer this=f__arg_this
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id='A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
-                set id='A00R'
+                set id='A00L'
             elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
                 set id='A01Q'
             elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
@@ -13979,7 +14160,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs597620500 takes nothing returns nothing
+function jasshelper__initstructs677267109 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula__Sorting_onDestroy=CreateTrigger()

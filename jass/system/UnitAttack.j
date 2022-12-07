@@ -1,3 +1,10 @@
+globals
+    constant integer ATTR_STR = 1 // 力量
+    constant integer ATTR_AGI = 2 // 敏捷
+    constant integer ATTR_INT = 3 // 智力
+endglobals
+
+
 function QinLong takes nothing returns nothing
     local unit attacker = GetAttacker()
     local unit ut = GetEnumUnit()
@@ -107,17 +114,37 @@ function UnitAttack_Conditions takes nothing returns boolean
         // call AdjustPlayerStateBJ(1, p, PLAYER_STATE_RESOURCE_LUMBER)
         // endif
     endif
-    call PassiveRangeDamage(u, ut, 'A001', 500, 100, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
-    call PassiveRangeDamage(u, ut, 'A045', 800, 100, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)
-    call PassiveRangeDamage(u, ut, 'A048', 700, 10, "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl", 18, GetRandomInt(10, 100))
-    call PassiveRangeDamage(u, ut, 'A047', 1000, 25000, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 28, 30)
-    call PassiveRangeDamage(u, ut, 'A02K', 400, 30, "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", 27, 15)
-    call PassiveRangeDamage(u, ut, 'A00K', 50, 1500, "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl", 26, 25)
-    call PassiveRangeDamage(u, ut, 'A04N', 800, 2000, "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl", 26, 40)
-    // 天山折梅手
-    call PassiveRangeDamage(u, ut, 'A098', 800, 5000, "war3mapImported\\56.mdl", 16, 50)
-    call PassiveSingleDamage(u, ut, 'A01V', 500, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 19, 40)
-    call PassiveSingleDamage(u, ut, 'A04T', 2000, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
+
+    // 韦陀棍法 (攻击 + 10 * 力量 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A001', 500, 10, 1, ATTR_STR, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
+
+    // 虾米神拳 (攻击 + 10 * 敏捷 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A045', 800, 10, 1, ATTR_AGI, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)
+
+    // 五雷咒 (攻击 + 10 * 智力 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A048', 700, 10, 1, ATTR_INT, "Abilities\\Spells\\Other\\Monsoon\\MonsoonBoltTarget.mdl", 18, GetRandomInt(10, 100))
+
+    // 乾坤一掷 (攻击 + 10 * 智力 ) * 250 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A047', 1000, 10, 250, ATTR_INT, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 28, 30)
+
+    // 丐帮入门棍法 (攻击 + 10 * 力量 ) * 3 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A02K', 400, 10, 3, ATTR_STR, "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", 27, 15)
+
+    // 武当剑法 (攻击 + 10 * 智力 ) * 15 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A00K', 50, 10, 15, ATTR_INT, "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl", 26, 25)
+
+    // 全真剑法 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A04N', 800, 10, 20, ATTR_AGI, "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl", 26, 40)
+    
+    // 天山折梅手 (攻击 + 10 * 力量 ) * 50 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A098', 800, 10, 50, ATTR_STR, "war3mapImported\\56.mdl", 16, 50)
+
+    // 金顶绵掌 (攻击 + 10 * 敏捷 ) * 50 * 技能等级 * 技能等级
+    call PassiveSingleDamage(u, ut, 'A01V', 10, 50, ATTR_AGI, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 19, 40)
+
+    // 空明拳 (攻击 + 10 * 力量 ) * 200 * 技能等级 * 技能等级
+    call PassiveSingleDamage(u, ut, 'A04T', 10, 200, ATTR_STR, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
+
 
     call PassiveUseAbility(u, ut, 'A00N', 'A00S', 852119, 18, 50)
     call PassiveUseAbility(u, ut, 'A00V', 'A00U', 852106, 25, 25)
