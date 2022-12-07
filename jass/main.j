@@ -1196,7 +1196,7 @@ function MapInit takes nothing returns nothing
         exitwhen j > MAX_EPIC_DROP
         // 史诗装备有两项随机属性
         call SaveInteger(YDHT, epic_drops[j], EQUIP_ATTR_COUNT_KEY, 2)
-        call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|cffff00ff史诗|r")
+        call SaveStr(YDHT, epic_drops[j], EQUIP_LEVEL_KEY, "|CFFCC99FF史诗|r")
         call SaveInteger(YDHT, epic_drops[j], EQUIP_INT_LEVEL_KEY, 5)
         call SaveInteger(YDHT, epic_drops[j], EQUIP_BASE_STRENGTH_KEY, 15)
         set j = j + 1

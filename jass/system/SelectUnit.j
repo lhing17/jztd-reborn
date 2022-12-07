@@ -4,9 +4,17 @@ endglobals
 
 function showHealthPointAction takes nothing returns nothing
     local integer i = 1 + GetPlayerId(GetTriggerPlayer())
+    local integer j = 1
     // call BJDebugMsg("当前选中单位为："+GetUnitName(GetTriggerUnit()))
     if GetTriggerUnit() != null then
         set unitInSelection[i] = GetTriggerUnit()
+        if GetTriggerPlayer() == GetLocalPlayer() then
+            loop
+                exitwhen j > cardMax[i]
+                call cardResultWidget[j].hide()
+                set j = j + 1
+            endloop
+        endif
     endif
     if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
         call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "单位" + GetUnitName(GetTriggerUnit()) + "|r的血量为" + R2S(GetWidgetLife(GetTriggerUnit())) + " / " + R2S(GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE)))

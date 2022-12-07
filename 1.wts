@@ -39,27 +39,27 @@ STRING 8
 }
 
 STRING 9
-// 单位: H000 (|cffff00ff峨眉掌门|r), Name (名字)
+// 单位: H000 (|CFFCC99FF峨眉掌门|r), Name (名字)
 {
-|cffff00ff峨眉掌门|r
+|CFFCC99FF峨眉掌门|r
 }
 
 STRING 10
-// 单位: H000 (|cffff00ff峨眉掌门|r), Propernames (称谓)
+// 单位: H000 (|CFFCC99FF峨眉掌门|r), Propernames (称谓)
 {
 莫言
 }
 
 STRING 11
-// 单位: H000 (|cffff00ff峨眉掌门|r), Tip (提示工具 - 基础)
+// 单位: H000 (|CFFCC99FF峨眉掌门|r), Tip (提示工具 - 基础)
 {
 建造峨眉掌门(|cffffcc00N|r)|n
 }
 
 STRING 12
-// 单位: H000 (|cffff00ff峨眉掌门|r), Ubertip (提示工具 - 扩展)
+// 单位: H000 (|CFFCC99FF峨眉掌门|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉派掌门，为人极有威严，一双眼睛似乎能冒出火来。|r|cff3366ff|n|r|cffff00ff攻击|r：|cff00ff004500|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001100|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV6，截手九式LV1，灭绝剑法LV3|n|r|cffff0000只能建造一个|r|cff00ff00|n|r不可继续修炼
+|CFFCC99FF峨眉派掌门，为人极有威严，一双眼睛似乎能冒出火来。|r|cff3366ff|n|r|CFFCC99FF攻击|r：|cff00ff004500|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001100|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV6，截手九式LV1，灭绝剑法LV3|n|r|cffff0000只能建造一个|r|cff00ff00|n|r不可继续修炼
 }
 
 STRING 13
@@ -375,51 +375,51 @@ STRING 64
 }
 
 STRING 65
-// 单位: U00U (|cffff00ff黄裳|r), Name (名字)
+// 单位: U00U (|CFFCC99FF黄裳|r), Name (名字)
 {
-|cffff00ff黄裳|r
+|CFFCC99FF黄裳|r
 }
 
 STRING 66
-// 单位: U00U (|cffff00ff黄裳|r), Propernames (称谓)
+// 单位: U00U (|CFFCC99FF黄裳|r), Propernames (称谓)
 {
 无师自通
 }
 
 STRING 67
-// 单位: e000 (|cffff00ff峨眉小尼姑|r), Name (名字)
+// 单位: e000 (|CFFCC99FF峨眉小尼姑|r), Name (名字)
 {
-|cffff00ff峨眉小尼姑|r
+|CFFCC99FF峨眉小尼姑|r
 }
 
 STRING 68
-// 单位: e000 (|cffff00ff峨眉小尼姑|r), Tip (提示工具 - 基础)
+// 单位: e000 (|CFFCC99FF峨眉小尼姑|r), Tip (提示工具 - 基础)
 {
 建造峨眉小尼姑(|cffffcc00A|r)
 }
 
 STRING 69
-// 单位: e000 (|cffff00ff峨眉小尼姑|r), Ubertip (提示工具 - 扩展)
+// 单位: e000 (|CFFCC99FF峨眉小尼姑|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉初级弟子，相貌不俗|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff0027|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV1，峨眉入门剑法LV1|n|r修炼路径：|cffff00ff峨眉小师妹->峨眉小师太|r
+|CFFCC99FF峨眉初级弟子，相貌不俗|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff0027|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV1，峨眉入门剑法LV1|n|r修炼路径：|CFFCC99FF峨眉小师妹->峨眉小师太|r
 }
 
 STRING 70
-// 单位: e001 (|cffff00ff峨眉俗家弟子|r), Name (名字)
+// 单位: e001 (|CFFCC99FF峨眉俗家弟子|r), Name (名字)
 {
-|cffff00ff峨眉俗家弟子|r
+|CFFCC99FF峨眉俗家弟子|r
 }
 
 STRING 71
-// 单位: e001 (|cffff00ff峨眉俗家弟子|r), Tip (提示工具 - 基础)
+// 单位: e001 (|CFFCC99FF峨眉俗家弟子|r), Tip (提示工具 - 基础)
 {
 建造峨眉俗家弟子(|cffffcc00D|r)
 }
 
 STRING 72
-// 单位: e001 (|cffff00ff峨眉俗家弟子|r), Ubertip (提示工具 - 扩展)
+// 单位: e001 (|CFFCC99FF峨眉俗家弟子|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，借居在峨眉山峰，顺便学点花拳绣腿|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff0044|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV1，四象掌LV1|n|r修炼路径：|cffff00ff王翠花->纪晓芙|r
+|CFFCC99FF峨眉俗家弟子，借居在峨眉山峰，顺便学点花拳绣腿|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff0044|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV1，四象掌LV1|n|r修炼路径：|CFFCC99FF王翠花->纪晓芙|r
 }
 
 STRING 73
@@ -471,75 +471,75 @@ STRING 80
 }
 
 STRING 81
-// 单位: e00A (|cffff00ff峨眉小师妹|r), Name (名字)
+// 单位: e00A (|CFFCC99FF峨眉小师妹|r), Name (名字)
 {
-|cffff00ff峨眉小师妹|r
+|CFFCC99FF峨眉小师妹|r
 }
 
 STRING 82
-// 单位: e00A (|cffff00ff峨眉小师妹|r), Tip (提示工具 - 基础)
+// 单位: e00A (|CFFCC99FF峨眉小师妹|r), Tip (提示工具 - 基础)
 {
 建造峨眉小师妹(|cffffcc00A|r)
 }
 
 STRING 83
-// 单位: e00A (|cffff00ff峨眉小师妹|r), Ubertip (提示工具 - 扩展)
+// 单位: e00A (|CFFCC99FF峨眉小师妹|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉派小师妹，相貌有点俗|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff0051|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，峨眉入门剑法LV2|n|r修炼路径：|cffff00ff峨眉小师太|r
+|CFFCC99FF峨眉派小师妹，相貌有点俗|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff0051|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，峨眉入门剑法LV2|n|r修炼路径：|CFFCC99FF峨眉小师太|r
 }
 
 STRING 84
-// 单位: e00B (|cffff00ff峨眉小师太|r), Name (名字)
+// 单位: e00B (|CFFCC99FF峨眉小师太|r), Name (名字)
 {
-|cffff00ff峨眉小师太|r
+|CFFCC99FF峨眉小师太|r
 }
 
 STRING 85
-// 单位: e00B (|cffff00ff峨眉小师太|r), Tip (提示工具 - 基础)
+// 单位: e00B (|CFFCC99FF峨眉小师太|r), Tip (提示工具 - 基础)
 {
 建造峨眉小师太(|cffffcc00A|r)
 }
 
 STRING 86
-// 单位: e00B (|cffff00ff峨眉小师太|r), Ubertip (提示工具 - 扩展)
+// 单位: e00B (|CFFCC99FF峨眉小师太|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉小师太，相貌太俗了|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00100|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，峨眉入门剑法LV2|n|r不可继续修炼
+|CFFCC99FF峨眉小师太，相貌太俗了|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00100|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，峨眉入门剑法LV2|n|r不可继续修炼
 }
 
 STRING 87
-// 单位: e00C (|cffff00ff纪晓芙|r), Name (名字)
+// 单位: e00C (|CFFCC99FF纪晓芙|r), Name (名字)
 {
-|cffff00ff纪晓芙|r
+|CFFCC99FF纪晓芙|r
 }
 
 STRING 88
-// 单位: e00C (|cffff00ff纪晓芙|r), Tip (提示工具 - 基础)
+// 单位: e00C (|CFFCC99FF纪晓芙|r), Tip (提示工具 - 基础)
 {
 建造纪晓芙(|cffffcc00D|r)
 }
 
 STRING 89
-// 单位: e00C (|cffff00ff纪晓芙|r), Ubertip (提示工具 - 扩展)
+// 单位: e00C (|CFFCC99FF纪晓芙|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉颇有名气的俗家弟子，借居在峨眉山峰，心思似乎不在习武上|n攻击|r：|cff00ff00180|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，四象掌LV3|n|r不可继续修炼
+|CFFCC99FF峨眉颇有名气的俗家弟子，借居在峨眉山峰，心思似乎不在习武上|n攻击|r：|cff00ff00180|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，四象掌LV3|n|r不可继续修炼
 }
 
 STRING 90
-// 单位: e00D (|cffff00ff王翠花|r), Name (名字)
+// 单位: e00D (|CFFCC99FF王翠花|r), Name (名字)
 {
-|cffff00ff王翠花|r
+|CFFCC99FF王翠花|r
 }
 
 STRING 91
-// 单位: e00D (|cffff00ff王翠花|r), Tip (提示工具 - 基础)
+// 单位: e00D (|CFFCC99FF王翠花|r), Tip (提示工具 - 基础)
 {
 建造王翠花(|cffffcc00D|r)
 }
 
 STRING 92
-// 单位: e00D (|cffff00ff王翠花|r), Ubertip (提示工具 - 扩展)
+// 单位: e00D (|CFFCC99FF王翠花|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff王翠花，纪晓芙私收的小徒，会点花拳绣腿|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff0093|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，四象掌LV2|n|r修炼路径：|cffff00ff纪晓芙|r
+|CFFCC99FF王翠花，纪晓芙私收的小徒，会点花拳绣腿|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff0093|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，四象掌LV2|n|r修炼路径：|CFFCC99FF纪晓芙|r
 }
 
 STRING 93
@@ -1335,21 +1335,21 @@ STRING 224
 }
 
 STRING 225
-// 单位: n003 (|cffff00ff静真|r), Name (名字)
+// 单位: n003 (|CFFCC99FF静真|r), Name (名字)
 {
-|cffff00ff静真|r
+|CFFCC99FF静真|r
 }
 
 STRING 226
-// 单位: n003 (|cffff00ff静真|r), Tip (提示工具 - 基础)
+// 单位: n003 (|CFFCC99FF静真|r), Tip (提示工具 - 基础)
 {
 建造静真(|cffffcc00S|r)
 }
 
 STRING 227
-// 单位: n003 (|cffff00ff静真|r), Ubertip (提示工具 - 扩展)
+// 单位: n003 (|CFFCC99FF静真|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，资质较愚钝，只学了点粗浅功夫|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff0054|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV1|n|r修炼路径：|cffff00ff静和->静慧|r
+|CFFCC99FF峨眉静字辈女尼，资质较愚钝，只学了点粗浅功夫|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff0054|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV1|n|r修炼路径：|CFFCC99FF静和->静慧|r
 }
 
 STRING 228
@@ -2199,423 +2199,423 @@ STRING 368
 }
 
 STRING 369
-// 单位: n01Q (|cffff00ff静和|r), Name (名字)
+// 单位: n01Q (|CFFCC99FF静和|r), Name (名字)
 {
-|cffff00ff静和|r
+|CFFCC99FF静和|r
 }
 
 STRING 370
-// 单位: n01Q (|cffff00ff静和|r), Tip (提示工具 - 基础)
+// 单位: n01Q (|CFFCC99FF静和|r), Tip (提示工具 - 基础)
 {
 建造静和(|cffffcc00S|r)
 }
 
 STRING 371
-// 单位: n01Q (|cffff00ff静和|r), Ubertip (提示工具 - 扩展)
+// 单位: n01Q (|CFFCC99FF静和|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，资历尚浅，学了些杂七杂八的微末功夫|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00120|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV2|n|r修炼路径：|cffff00ff静慧|r
+|CFFCC99FF峨眉静字辈女尼，资历尚浅，学了些杂七杂八的微末功夫|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00120|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV2|n|r修炼路径：|CFFCC99FF静慧|r
 }
 
 STRING 372
-// 单位: n01R (|cffff00ff静慧|r), Name (名字)
+// 单位: n01R (|CFFCC99FF静慧|r), Name (名字)
 {
-|cffff00ff静慧|r
+|CFFCC99FF静慧|r
 }
 
 STRING 373
-// 单位: n01R (|cffff00ff静慧|r), Tip (提示工具 - 基础)
+// 单位: n01R (|CFFCC99FF静慧|r), Tip (提示工具 - 基础)
 {
 建造静慧(|cffffcc00S|r)
 }
 
 STRING 374
-// 单位: n01R (|cffff00ff静慧|r), Ubertip (提示工具 - 扩展)
+// 单位: n01R (|CFFCC99FF静慧|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，算是老前辈了，功夫似乎一般|n攻击|r：|cff00ff00270|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV3|n|r不可继续修炼
+|CFFCC99FF峨眉静字辈女尼，算是老前辈了，功夫似乎一般|n攻击|r：|cff00ff00270|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，金顶绵掌LV3|n|r不可继续修炼
 }
 
 STRING 375
-// 单位: n01S (|cffff00ff方碧琳|r), Hotkey (热键)
+// 单位: n01S (|CFFCC99FF方碧琳|r), Hotkey (热键)
 {
 T
 }
 
 STRING 376
-// 单位: n01S (|cffff00ff方碧琳|r), Name (名字)
+// 单位: n01S (|CFFCC99FF方碧琳|r), Name (名字)
 {
-|cffff00ff方碧琳|r
+|CFFCC99FF方碧琳|r
 }
 
 STRING 377
-// 单位: n01S (|cffff00ff方碧琳|r), Tip (提示工具 - 基础)
+// 单位: n01S (|CFFCC99FF方碧琳|r), Tip (提示工具 - 基础)
 {
 建造方碧琳(|cffffcc00T|r)
 }
 
 STRING 378
-// 单位: n01S (|cffff00ff方碧琳|r), Ubertip (提示工具 - 扩展)
+// 单位: n01S (|CFFCC99FF方碧琳|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，经常和苏梦清在一起研究指穴之法。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00120|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，天罡指穴法LV1|n|r|cffff0000只能建造两个|r|cff00ff00|n|r修炼路径：|cffff00ff苏梦清|r
+|CFFCC99FF峨眉俗家弟子，经常和苏梦清在一起研究指穴之法。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00120|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，天罡指穴法LV1|n|r|cffff0000只能建造两个|r|cff00ff00|n|r修炼路径：|CFFCC99FF苏梦清|r
 }
 
 STRING 379
-// 单位: n01T (|cffff00ff苏梦清|r), Hotkey (热键)
+// 单位: n01T (|CFFCC99FF苏梦清|r), Hotkey (热键)
 {
 T
 }
 
 STRING 380
-// 单位: n01T (|cffff00ff苏梦清|r), Name (名字)
+// 单位: n01T (|CFFCC99FF苏梦清|r), Name (名字)
 {
-|cffff00ff苏梦清|r
+|CFFCC99FF苏梦清|r
 }
 
 STRING 381
-// 单位: n01T (|cffff00ff苏梦清|r), Tip (提示工具 - 基础)
+// 单位: n01T (|CFFCC99FF苏梦清|r), Tip (提示工具 - 基础)
 {
 建造苏梦清|cffffcc00T|r)
 }
 
 STRING 382
-// 单位: n01T (|cffff00ff苏梦清|r), Ubertip (提示工具 - 扩展)
+// 单位: n01T (|CFFCC99FF苏梦清|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，喜欢钻研指穴。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00300|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，天罡指穴法LV2|n|r不可继续修炼
+|CFFCC99FF峨眉俗家弟子，喜欢钻研指穴。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00300|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，天罡指穴法LV2|n|r不可继续修炼
 }
 
 STRING 383
-// 单位: n01U (|cffff00ff静道|r), Hotkey (热键)
+// 单位: n01U (|CFFCC99FF静道|r), Hotkey (热键)
 {
 R
 }
 
 STRING 384
-// 单位: n01U (|cffff00ff静道|r), Name (名字)
+// 单位: n01U (|CFFCC99FF静道|r), Name (名字)
 {
-|cffff00ff静道|r
+|CFFCC99FF静道|r
 }
 
 STRING 385
-// 单位: n01U (|cffff00ff静道|r), Tip (提示工具 - 基础)
+// 单位: n01U (|CFFCC99FF静道|r), Tip (提示工具 - 基础)
 {
 建造静道(|cffffcc00R|r)
 }
 
 STRING 386
-// 单位: n01U (|cffff00ff静道|r), Ubertip (提示工具 - 扩展)
+// 单位: n01U (|CFFCC99FF静道|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，天资聪颖，但练功不刻苦，终难成宗师。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00400|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV1|n|r修炼路径：|cffff00ff静闲->静空|r
+|CFFCC99FF峨眉静字辈女尼，天资聪颖，但练功不刻苦，终难成宗师。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00400|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV1|n|r修炼路径：|CFFCC99FF静闲->静空|r
 }
 
 STRING 387
-// 单位: n01V (|cffff00ff静闲|r), Hotkey (热键)
+// 单位: n01V (|CFFCC99FF静闲|r), Hotkey (热键)
 {
 R
 }
 
 STRING 388
-// 单位: n01V (|cffff00ff静闲|r), Name (名字)
+// 单位: n01V (|CFFCC99FF静闲|r), Name (名字)
 {
-|cffff00ff静闲|r
+|CFFCC99FF静闲|r
 }
 
 STRING 389
-// 单位: n01V (|cffff00ff静闲|r), Tip (提示工具 - 基础)
+// 单位: n01V (|CFFCC99FF静闲|r), Tip (提示工具 - 基础)
 {
 建造静闲(|cffffcc00R|r)
 }
 
 STRING 390
-// 单位: n01V (|cffff00ff静闲|r), Ubertip (提示工具 - 扩展)
+// 单位: n01V (|CFFCC99FF静闲|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，本为俗家弟子，因感情受挫遁入空门。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00700|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV2|n|r修炼路径：|cffff00ff静空|r
+|CFFCC99FF峨眉静字辈女尼，本为俗家弟子，因感情受挫遁入空门。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00700|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV2|n|r修炼路径：|CFFCC99FF静空|r
 }
 
 STRING 391
-// 单位: n01W (|cffff00ff静空|r), Hotkey (热键)
+// 单位: n01W (|CFFCC99FF静空|r), Hotkey (热键)
 {
 R
 }
 
 STRING 392
-// 单位: n01W (|cffff00ff静空|r), Name (名字)
+// 单位: n01W (|CFFCC99FF静空|r), Name (名字)
 {
-|cffff00ff静空|r
+|CFFCC99FF静空|r
 }
 
 STRING 393
-// 单位: n01W (|cffff00ff静空|r), Tip (提示工具 - 基础)
+// 单位: n01W (|CFFCC99FF静空|r), Tip (提示工具 - 基础)
 {
 建造静空(|cffffcc00R|r)
 }
 
 STRING 394
-// 单位: n01W (|cffff00ff静空|r), Ubertip (提示工具 - 扩展)
+// 单位: n01W (|CFFCC99FF静空|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，刻苦多年，终成一代武学名家。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00900|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV3|n|r不可继续修炼
+|CFFCC99FF峨眉静字辈女尼，刻苦多年，终成一代武学名家。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00900|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，佛光普照LV3|n|r不可继续修炼
 }
 
 STRING 395
-// 单位: n01X (|cffff00ff赵灵珠|r), Hotkey (热键)
+// 单位: n01X (|CFFCC99FF赵灵珠|r), Hotkey (热键)
 {
 E
 }
 
 STRING 396
-// 单位: n01X (|cffff00ff赵灵珠|r), Name (名字)
+// 单位: n01X (|CFFCC99FF赵灵珠|r), Name (名字)
 {
-|cffff00ff赵灵珠|r
+|CFFCC99FF赵灵珠|r
 }
 
 STRING 397
-// 单位: n01X (|cffff00ff赵灵珠|r), Tip (提示工具 - 基础)
+// 单位: n01X (|CFFCC99FF赵灵珠|r), Tip (提示工具 - 基础)
 {
 建造赵灵珠(|cffffcc00E|r)
 }
 
 STRING 398
-// 单位: n01X (|cffff00ff赵灵珠|r), Ubertip (提示工具 - 扩展)
+// 单位: n01X (|CFFCC99FF赵灵珠|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，跟着贝锦仪学会了一些轻身功夫。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00420|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，峨眉身法LV1|n|r修炼路径：|cffff00ff贝锦仪|r
+|CFFCC99FF峨眉俗家弟子，跟着贝锦仪学会了一些轻身功夫。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00420|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，峨眉身法LV1|n|r修炼路径：|CFFCC99FF贝锦仪|r
 }
 
 STRING 399
-// 单位: n01Y (|cffff00ff贝锦仪|r), Hotkey (热键)
+// 单位: n01Y (|CFFCC99FF贝锦仪|r), Hotkey (热键)
 {
 E
 }
 
 STRING 400
-// 单位: n01Y (|cffff00ff贝锦仪|r), Name (名字)
+// 单位: n01Y (|CFFCC99FF贝锦仪|r), Name (名字)
 {
-|cffff00ff贝锦仪|r
+|CFFCC99FF贝锦仪|r
 }
 
 STRING 401
-// 单位: n01Y (|cffff00ff贝锦仪|r), Tip (提示工具 - 基础)
+// 单位: n01Y (|CFFCC99FF贝锦仪|r), Tip (提示工具 - 基础)
 {
 建造贝锦仪(|cffffcc00E|r)
 }
 
 STRING 402
-// 单位: n01Y (|cffff00ff贝锦仪|r), Ubertip (提示工具 - 扩展)
+// 单位: n01Y (|CFFCC99FF贝锦仪|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，正邪分明、貌美如花、表明如一的好姑娘。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00680|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV4，峨眉身法LV2|n|r不可继续修炼
+|CFFCC99FF峨眉俗家弟子，正邪分明、貌美如花、表明如一的好姑娘。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00680|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV4，峨眉身法LV2|n|r不可继续修炼
 }
 
 STRING 403
-// 单位: n01Z (|cffff00ff静风|r), Hotkey (热键)
+// 单位: n01Z (|CFFCC99FF静风|r), Hotkey (热键)
 {
 W
 }
 
 STRING 404
-// 单位: n01Z (|cffff00ff静风|r), Name (名字)
+// 单位: n01Z (|CFFCC99FF静风|r), Name (名字)
 {
-|cffff00ff静风|r
+|CFFCC99FF静风|r
 }
 
 STRING 405
-// 单位: n01Z (|cffff00ff静风|r), Tip (提示工具 - 基础)
+// 单位: n01Z (|CFFCC99FF静风|r), Tip (提示工具 - 基础)
 {
 建造静风(|cffffcc00W|r)
 }
 
 STRING 406
-// 单位: n01Z (|cffff00ff静风|r), Ubertip (提示工具 - 扩展)
+// 单位: n01Z (|CFFCC99FF静风|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，基本功扎实，但功力一般。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff00500|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001000|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV2，回风拂柳剑LV1|n|r|cffff0000只能建造两个|r|cff00ff00|n|r修炼路径：|cffff00ff静照->静虚|r
+|CFFCC99FF峨眉静字辈女尼，基本功扎实，但功力一般。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff00500|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001000|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV2，回风拂柳剑LV1|n|r|cffff0000只能建造两个|r|cff00ff00|n|r修炼路径：|CFFCC99FF静照->静虚|r
 }
 
 STRING 407
-// 单位: n020 (|cffff00ff静照|r), Hotkey (热键)
+// 单位: n020 (|CFFCC99FF静照|r), Hotkey (热键)
 {
 W
 }
 
 STRING 408
-// 单位: n020 (|cffff00ff静照|r), Name (名字)
+// 单位: n020 (|CFFCC99FF静照|r), Name (名字)
 {
-|cffff00ff静照|r
+|CFFCC99FF静照|r
 }
 
 STRING 409
-// 单位: n020 (|cffff00ff静照|r), Tip (提示工具 - 基础)
+// 单位: n020 (|CFFCC99FF静照|r), Tip (提示工具 - 基础)
 {
 建造静照(|cffffcc00W|r)
 }
 
 STRING 410
-// 单位: n020 (|cffff00ff静照|r), Ubertip (提示工具 - 扩展)
+// 单位: n020 (|CFFCC99FF静照|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，资历较深，武功稀松平常。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff001000|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，回风拂柳剑LV2|n|r修炼路径：|cffff00ff静虚|r
+|CFFCC99FF峨眉静字辈女尼，资历较深，武功稀松平常。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff001000|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，回风拂柳剑LV2|n|r修炼路径：|CFFCC99FF静虚|r
 }
 
 STRING 411
-// 单位: n021 (|cffff00ff静虚|r), Hotkey (热键)
+// 单位: n021 (|CFFCC99FF静虚|r), Hotkey (热键)
 {
 W
 }
 
 STRING 412
-// 单位: n021 (|cffff00ff静虚|r), Name (名字)
+// 单位: n021 (|CFFCC99FF静虚|r), Name (名字)
 {
-|cffff00ff静虚|r
+|CFFCC99FF静虚|r
 }
 
 STRING 413
-// 单位: n021 (|cffff00ff静虚|r), Tip (提示工具 - 基础)
+// 单位: n021 (|CFFCC99FF静虚|r), Tip (提示工具 - 基础)
 {
 建造静虚(|cffffcc00W|r)
 }
 
 STRING 414
-// 单位: n021 (|cffff00ff静虚|r), Ubertip (提示工具 - 扩展)
+// 单位: n021 (|CFFCC99FF静虚|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，功力扎实深厚。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff001800|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV4，回风拂柳剑LV2|n|r不可继续修炼
+|CFFCC99FF峨眉静字辈女尼，功力扎实深厚。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff001800|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV4，回风拂柳剑LV2|n|r不可继续修炼
 }
 
 STRING 415
-// 单位: n022 (|cffff00ff李明霞|r), Hotkey (热键)
+// 单位: n022 (|CFFCC99FF李明霞|r), Hotkey (热键)
 {
 Q
 }
 
 STRING 416
-// 单位: n022 (|cffff00ff李明霞|r), Name (名字)
+// 单位: n022 (|CFFCC99FF李明霞|r), Name (名字)
 {
-|cffff00ff李明霞|r
+|CFFCC99FF李明霞|r
 }
 
 STRING 417
-// 单位: n022 (|cffff00ff李明霞|r), Tip (提示工具 - 基础)
+// 单位: n022 (|CFFCC99FF李明霞|r), Tip (提示工具 - 基础)
 {
 建造李明霞(|cffffcc00Q|r)
 }
 
 STRING 418
-// 单位: n022 (|cffff00ff李明霞|r), Ubertip (提示工具 - 扩展)
+// 单位: n022 (|CFFCC99FF李明霞|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，尖酸刻薄，跟着丁敏君混。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff001000|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，灭剑LV1|n|r修炼路径：|cffff00ff俗家大弟子丁敏君|r
+|CFFCC99FF峨眉俗家弟子，尖酸刻薄，跟着丁敏君混。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff001000|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，灭剑LV1|n|r修炼路径：|CFFCC99FF俗家大弟子丁敏君|r
 }
 
 STRING 419
-// 单位: n023 (|cffff00ff俗家大弟子丁敏君|r), Hotkey (热键)
+// 单位: n023 (|CFFCC99FF俗家大弟子丁敏君|r), Hotkey (热键)
 {
 Q
 }
 
 STRING 420
-// 单位: n023 (|cffff00ff俗家大弟子丁敏君|r), Name (名字)
+// 单位: n023 (|CFFCC99FF俗家大弟子丁敏君|r), Name (名字)
 {
-|cffff00ff俗家大弟子丁敏君|r
+|CFFCC99FF俗家大弟子丁敏君|r
 }
 
 STRING 421
-// 单位: n023 (|cffff00ff俗家大弟子丁敏君|r), Tip (提示工具 - 基础)
+// 单位: n023 (|CFFCC99FF俗家大弟子丁敏君|r), Tip (提示工具 - 基础)
 {
 建造俗家大弟子丁敏君(|cffffcc00Q|r)
 }
 
 STRING 422
-// 单位: n023 (|cffff00ff俗家大弟子丁敏君|r), Ubertip (提示工具 - 扩展)
+// 单位: n023 (|CFFCC99FF俗家大弟子丁敏君|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，虽非美女，却也颇有姿容，面目俊俏，颇有楚楚之致，然舌利如枪，心如蛇蝎，诡计多端。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff002000|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV4，灭剑LV2|n|r不可继续修炼
+|CFFCC99FF峨眉俗家弟子，虽非美女，却也颇有姿容，面目俊俏，颇有楚楚之致，然舌利如枪，心如蛇蝎，诡计多端。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff002000|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV4，灭剑LV2|n|r不可继续修炼
 }
 
 STRING 423
-// 单位: n024 (|cffff00ff静心|r), Hotkey (热键)
+// 单位: n024 (|CFFCC99FF静心|r), Hotkey (热键)
 {
 F
 }
 
 STRING 424
-// 单位: n024 (|cffff00ff静心|r), Name (名字)
+// 单位: n024 (|CFFCC99FF静心|r), Name (名字)
 {
-|cffff00ff静心|r
+|CFFCC99FF静心|r
 }
 
 STRING 425
-// 单位: n024 (|cffff00ff静心|r), Tip (提示工具 - 基础)
+// 单位: n024 (|CFFCC99FF静心|r), Tip (提示工具 - 基础)
 {
 建造静心(|cffffcc00F|r)
 }
 
 STRING 426
-// 单位: n024 (|cffff00ff静心|r), Ubertip (提示工具 - 扩展)
+// 单位: n024 (|CFFCC99FF静心|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，虽潜心修佛，武功也很强，可以独挡一面。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff002100|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV3，绝剑LV1|n|r修炼路径：|cffff00ff静迦->大师姐静玄|r
+|CFFCC99FF峨眉静字辈女尼，虽潜心修佛，武功也很强，可以独挡一面。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff002100|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV3，绝剑LV1|n|r修炼路径：|CFFCC99FF静迦->大师姐静玄|r
 }
 
 STRING 427
-// 单位: n025 (|cffff00ff静迦|r), Hotkey (热键)
+// 单位: n025 (|CFFCC99FF静迦|r), Hotkey (热键)
 {
 F
 }
 
 STRING 428
-// 单位: n025 (|cffff00ff静迦|r), Name (名字)
+// 单位: n025 (|CFFCC99FF静迦|r), Name (名字)
 {
-|cffff00ff静迦|r
+|CFFCC99FF静迦|r
 }
 
 STRING 429
-// 单位: n025 (|cffff00ff静迦|r), Tip (提示工具 - 基础)
+// 单位: n025 (|CFFCC99FF静迦|r), Tip (提示工具 - 基础)
 {
 建造静迦(|cffffcc00F|r)
 }
 
 STRING 430
-// 单位: n025 (|cffff00ff静迦|r), Ubertip (提示工具 - 扩展)
+// 单位: n025 (|CFFCC99FF静迦|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，天资聪慧，武功修为很深。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff003000|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001050|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV4，绝剑LV2|n|r修炼路径：|cffff00ff大师姐静玄|r
+|CFFCC99FF峨眉静字辈女尼，天资聪慧，武功修为很深。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff003000|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001050|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV4，绝剑LV2|n|r修炼路径：|CFFCC99FF大师姐静玄|r
 }
 
 STRING 431
-// 单位: n026 (|cffff00ff大师姐静玄|r), Hotkey (热键)
+// 单位: n026 (|CFFCC99FF大师姐静玄|r), Hotkey (热键)
 {
 F
 }
 
 STRING 432
-// 单位: n026 (|cffff00ff大师姐静玄|r), Name (名字)
+// 单位: n026 (|CFFCC99FF大师姐静玄|r), Name (名字)
 {
-|cffff00ff大师姐静玄|r
+|CFFCC99FF大师姐静玄|r
 }
 
 STRING 433
-// 单位: n026 (|cffff00ff大师姐静玄|r), Tip (提示工具 - 基础)
+// 单位: n026 (|CFFCC99FF大师姐静玄|r), Tip (提示工具 - 基础)
 {
 建造大师姐静玄(|cffffcc00F|r)
 }
 
 STRING 434
-// 单位: n026 (|cffff00ff大师姐静玄|r), Ubertip (提示工具 - 扩展)
+// 单位: n026 (|CFFCC99FF大师姐静玄|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉静字辈女尼，身材高大，神态威猛，虽是女子，却比寻常男子还高了半个头。看起来约四十岁，武功深不可测。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff004000|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001100|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV5，灭绝剑法LV2|n|r不可继续修炼
+|CFFCC99FF峨眉静字辈女尼，身材高大，神态威猛，虽是女子，却比寻常男子还高了半个头。看起来约四十岁，武功深不可测。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff004000|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001100|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV5，灭绝剑法LV2|n|r不可继续修炼
 }
 
 STRING 435
-// 单位: N027 (|cffff00ff周芷若|r), Hotkey (热键)
+// 单位: N027 (|CFFCC99FF周芷若|r), Hotkey (热键)
 {
 C
 }
 
 STRING 436
-// 单位: N027 (|cffff00ff周芷若|r), Name (名字)
+// 单位: N027 (|CFFCC99FF周芷若|r), Name (名字)
 {
-|cffff00ff周芷若|r
+|CFFCC99FF周芷若|r
 }
 
 STRING 437
-// 单位: N027 (|cffff00ff周芷若|r), Tip (提示工具 - 基础)
+// 单位: N027 (|CFFCC99FF周芷若|r), Tip (提示工具 - 基础)
 {
 建造周芷若(|cffffcc00C|r)
 }
 
 STRING 438
-// 单位: N027 (|cffff00ff周芷若|r), Ubertip (提示工具 - 扩展)
+// 单位: N027 (|CFFCC99FF周芷若|r), Ubertip (提示工具 - 扩展)
 {
-|cffff00ff峨眉俗家弟子，秀若芝兰，温婉斯文，清逸如仙，冰雪出尘之姿中带有威严仪态，气震数千豪杰。|r|cffffff00|n|r|cffff00ff攻击|r：|cff00ff004200|r|n|cffff00ff攻速|r：|cff00ff001.3|r|n|cffff00ff范围|r：|cff00ff001100|n|r|cffff00ff武功|r：|cff00ff00峨眉剑法LV5，峨眉心法LV1，九阴白骨爪LV2|n|r|cffff0000只能建造一个|n|r不可继续修炼
+|CFFCC99FF峨眉俗家弟子，秀若芝兰，温婉斯文，清逸如仙，冰雪出尘之姿中带有威严仪态，气震数千豪杰。|r|cffffff00|n|r|CFFCC99FF攻击|r：|cff00ff004200|r|n|CFFCC99FF攻速|r：|cff00ff001.3|r|n|CFFCC99FF范围|r：|cff00ff001100|n|r|CFFCC99FF武功|r：|cff00ff00峨眉剑法LV5，峨眉心法LV1，九阴白骨爪LV2|n|r|cffff0000只能建造一个|n|r不可继续修炼
 }
 
 STRING 439
@@ -3591,9 +3591,9 @@ STRING 600
 }
 
 STRING 601
-// 单位: u00E (|cffff00ff峨眉山小丫头|r), Name (名字)
+// 单位: u00E (|CFFCC99FF峨眉山小丫头|r), Name (名字)
 {
-|cffff00ff峨眉山小丫头|r
+|CFFCC99FF峨眉山小丫头|r
 }
 
 STRING 602
@@ -3627,9 +3627,9 @@ STRING 606
 }
 
 STRING 607
-// 单位: u00K (|cffff00ff峨眉山小丫头|r), Name (名字)
+// 单位: u00K (|CFFCC99FF峨眉山小丫头|r), Name (名字)
 {
-|cffff00ff峨眉山小丫头|r
+|CFFCC99FF峨眉山小丫头|r
 }
 
 STRING 608
@@ -5465,7 +5465,7 @@ STRING 912
 STRING 913
 // 物品: I015 (|cffffff00修炼九阳神功|r), Description (说明)
 {
-|cff00ff00可加强各门派的相应武功|n|r|cffffff00少林：加强韦陀棍法、少林童子功|r|cff00ff00|n|r|cff0000ff武当：加强武当剑法、绕指柔剑法|r|cff00ff00|n|r|cffff00ff峨眉：灭剑、绝剑、灭绝剑法可升至4级，并减少内力消耗|r|cff00ff00|n|r|cffff6800丐帮：加强六合刀法、丐帮心法|n|r|cff800080全真：加强一气化三清、同归剑法|r
+|cff00ff00可加强各门派的相应武功|n|r|cffffff00少林：加强韦陀棍法、少林童子功|r|cff00ff00|n|r|cff0000ff武当：加强武当剑法、绕指柔剑法|r|cff00ff00|n|r|CFFCC99FF峨眉：灭剑、绝剑、灭绝剑法可升至4级，并减少内力消耗|r|cff00ff00|n|r|cffff6800丐帮：加强六合刀法、丐帮心法|n|r|cff800080全真：加强一气化三清、同归剑法|r
 }
 
 STRING 914
@@ -5489,7 +5489,7 @@ STRING 916
 STRING 917
 // 物品: I015 (|cffffff00修炼九阳神功|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00可加强各门派的相应武功|n|r|cffffff00少林：加强韦陀棍法、少林童子功|r|cff00ff00|n|r|cff0000ff武当：加强武当剑法、绕指柔剑法|r|cff00ff00|n|r|cffff00ff峨眉：灭剑、绝剑、灭绝剑法可升至4级，并减少内力消耗|r|cff00ff00|n|r|cffff6800丐帮：加强六合刀法、丐帮心法|n|r|cff800080全真：加强一气化三清、同归剑法|r
+|cff00ff00可加强各门派的相应武功|n|r|cffffff00少林：加强韦陀棍法、少林童子功|r|cff00ff00|n|r|cff0000ff武当：加强武当剑法、绕指柔剑法|r|cff00ff00|n|r|CFFCC99FF峨眉：灭剑、绝剑、灭绝剑法可升至4级，并减少内力消耗|r|cff00ff00|n|r|cffff6800丐帮：加强六合刀法、丐帮心法|n|r|cff800080全真：加强一气化三清、同归剑法|r
 }
 
 STRING 918
@@ -5519,7 +5519,7 @@ STRING 921
 STRING 922
 // 物品: I017 (|cffffff00修炼九阴真经|r), Description (说明)
 {
-|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：龙象般若功、达摩八法|r|cff00ff00|n|r|cff0000ff武当：太极拳、铁画银钩|r|cff00ff00|n|r|cffff00ff峨眉：佛光普照、峨眉身法|r|cff00ff00|n|r|cffff6800丐帮：丐帮身法、打狗棒法|n|r|cff800080全真：先天功、双手互搏|r
+|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：龙象般若功、达摩八法|r|cff00ff00|n|r|cff0000ff武当：太极拳、铁画银钩|r|cff00ff00|n|r|CFFCC99FF峨眉：佛光普照、峨眉身法|r|cff00ff00|n|r|cffff6800丐帮：丐帮身法、打狗棒法|n|r|cff800080全真：先天功、双手互搏|r
 }
 
 STRING 923
@@ -5543,7 +5543,7 @@ STRING 925
 STRING 926
 // 物品: I017 (|cffffff00修炼九阴真经|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：龙象般若功、达摩八法|r|cff00ff00|n|r|cff0000ff武当：太极拳、铁画银钩|r|cff00ff00|n|r|cffff00ff峨眉：佛光普照、峨眉身法|r|cff00ff00|n|r|cffff6800丐帮：丐帮身法、打狗棒法|n|r|cff800080全真：先天功、双手互搏|r
+|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：龙象般若功、达摩八法|r|cff00ff00|n|r|cff0000ff武当：太极拳、铁画银钩|r|cff00ff00|n|r|CFFCC99FF峨眉：佛光普照、峨眉身法|r|cff00ff00|n|r|cffff6800丐帮：丐帮身法、打狗棒法|n|r|cff800080全真：先天功、双手互搏|r
 }
 
 STRING 927
@@ -5609,7 +5609,7 @@ STRING 936
 STRING 937
 // 物品: I01A (|cffffff00修炼化功大法|r), Description (说明)
 {
-|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：菩提心法|r|cff00ff00|n|r|cff0000ff武当：虎爪绝户手|r|cff00ff00|n|r|cffff00ff峨眉：回风拂柳剑|r|cff00ff00|n|r|cffff6800丐帮：铜锤手|n|r|cff800080全真：空明拳|r
+|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：菩提心法|r|cff00ff00|n|r|cff0000ff武当：虎爪绝户手|r|cff00ff00|n|r|CFFCC99FF峨眉：回风拂柳剑|r|cff00ff00|n|r|cffff6800丐帮：铜锤手|n|r|cff800080全真：空明拳|r
 }
 
 STRING 938
@@ -5633,7 +5633,7 @@ STRING 940
 STRING 941
 // 物品: I01A (|cffffff00修炼化功大法|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：菩提心法|r|cff00ff00|n|r|cff0000ff武当：虎爪绝户手|r|cff00ff00|n|r|cffff00ff峨眉：回风拂柳剑|r|cff00ff00|n|r|cffff6800丐帮：铜锤手|n|r|cff800080全真：空明拳|r
+|cff00ff00各门派相应武功可额外升级|n|r|cffffff00少林：菩提心法|r|cff00ff00|n|r|cff0000ff武当：虎爪绝户手|r|cff00ff00|n|r|CFFCC99FF峨眉：回风拂柳剑|r|cff00ff00|n|r|cffff6800丐帮：铜锤手|n|r|cff800080全真：空明拳|r
 }
 
 STRING 942
@@ -5727,153 +5727,153 @@ STRING 956
 }
 
 STRING 957
-// 物品: I01E (|cffff00ff挑战血刀老祖（暂未开放）|r), Description (说明)
+// 物品: I01E (|CFFCC99FF挑战血刀老祖（暂未开放）|r), Description (说明)
 {
-|cff00ff00血刀老祖：血刀门某代掌门。|n|r|cffff00ff奖励：血刀经|r
+|cff00ff00血刀老祖：血刀门某代掌门。|n|r|CFFCC99FF奖励：血刀经|r
 }
 
 STRING 958
-// 物品: I01E (|cffff00ff挑战血刀老祖（暂未开放）|r), Hotkey (热键)
+// 物品: I01E (|CFFCC99FF挑战血刀老祖（暂未开放）|r), Hotkey (热键)
 {
 M
 }
 
 STRING 959
-// 物品: I01E (|cffff00ff挑战血刀老祖（暂未开放）|r), Name (名字)
+// 物品: I01E (|CFFCC99FF挑战血刀老祖（暂未开放）|r), Name (名字)
 {
-|cffff00ff挑战血刀老祖（暂未开放）|r
+|CFFCC99FF挑战血刀老祖（暂未开放）|r
 }
 
 STRING 960
-// 物品: I01E (|cffff00ff挑战血刀老祖（暂未开放）|r), Tip (提示工具 - 基础)
+// 物品: I01E (|CFFCC99FF挑战血刀老祖（暂未开放）|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战血刀老祖（暂未开放）|r
+|CFFCC99FF挑战血刀老祖（暂未开放）|r
 }
 
 STRING 961
-// 物品: I01E (|cffff00ff挑战血刀老祖（暂未开放）|r), Ubertip (提示工具 - 扩展)
+// 物品: I01E (|CFFCC99FF挑战血刀老祖（暂未开放）|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00血刀老祖：血刀门某代掌门。|n|r|cffff00ff奖励：血刀经|r
+|cff00ff00血刀老祖：血刀门某代掌门。|n|r|CFFCC99FF奖励：血刀经|r
 }
 
 STRING 962
-// 物品: I01F (|cffff00ff挑战达摩祖师|r), Description (说明)
+// 物品: I01F (|CFFCC99FF挑战达摩祖师|r), Description (说明)
 {
-|cff00ff00达摩祖师：少林极为神秘的老前辈。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：农民学会武功<匹夫有责>（重复挑战无用）|n|n|r|cffffff00基础气血：|r50000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r200点护甲
+|cff00ff00达摩祖师：少林极为神秘的老前辈。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：农民学会武功<匹夫有责>（重复挑战无用）|n|n|r|cffffff00基础气血：|r50000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r200点护甲
 }
 
 STRING 963
-// 物品: I01F (|cffff00ff挑战达摩祖师|r), Hotkey (热键)
+// 物品: I01F (|CFFCC99FF挑战达摩祖师|r), Hotkey (热键)
 {
 M
 }
 
 STRING 964
-// 物品: I01F (|cffff00ff挑战达摩祖师|r), Name (名字)
+// 物品: I01F (|CFFCC99FF挑战达摩祖师|r), Name (名字)
 {
-|cffff00ff挑战达摩祖师|r
+|CFFCC99FF挑战达摩祖师|r
 }
 
 STRING 965
-// 物品: I01F (|cffff00ff挑战达摩祖师|r), Tip (提示工具 - 基础)
+// 物品: I01F (|CFFCC99FF挑战达摩祖师|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战达摩祖师|r
+|CFFCC99FF挑战达摩祖师|r
 }
 
 STRING 966
-// 物品: I01F (|cffff00ff挑战达摩祖师|r), Ubertip (提示工具 - 扩展)
+// 物品: I01F (|CFFCC99FF挑战达摩祖师|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00达摩祖师：少林极为神秘的老前辈。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：农民学会武功<匹夫有责>（重复挑战无用）|n|r
+|cff00ff00达摩祖师：少林极为神秘的老前辈。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：农民学会武功<匹夫有责>（重复挑战无用）|n|r
 }
 
 STRING 967
-// 物品: I01G (|cffff00ff挑战冯默风|r), Description (说明)
+// 物品: I01G (|CFFCC99FF挑战冯默风|r), Description (说明)
 {
-|cff00ff00冯默风：传说中的铁匠。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：随机神器图谱。|n|n|r|cffffff00基础气血：|r500000|n|cffffff00难度加成：|r30%×难度
+|cff00ff00冯默风：传说中的铁匠。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：随机神器图谱。|n|n|r|cffffff00基础气血：|r500000|n|cffffff00难度加成：|r30%×难度
 }
 
 STRING 968
-// 物品: I01G (|cffff00ff挑战冯默风|r), Hotkey (热键)
+// 物品: I01G (|CFFCC99FF挑战冯默风|r), Hotkey (热键)
 {
 M
 }
 
 STRING 969
-// 物品: I01G (|cffff00ff挑战冯默风|r), Name (名字)
+// 物品: I01G (|CFFCC99FF挑战冯默风|r), Name (名字)
 {
-|cffff00ff挑战冯默风|r
+|CFFCC99FF挑战冯默风|r
 }
 
 STRING 970
-// 物品: I01G (|cffff00ff挑战冯默风|r), Tip (提示工具 - 基础)
+// 物品: I01G (|CFFCC99FF挑战冯默风|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战冯默风|r
+|CFFCC99FF挑战冯默风|r
 }
 
 STRING 971
-// 物品: I01G (|cffff00ff挑战冯默风|r), Ubertip (提示工具 - 扩展)
+// 物品: I01G (|CFFCC99FF挑战冯默风|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00冯默风：传说中的铁匠。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：随机神器图谱。|r
+|cff00ff00冯默风：传说中的铁匠。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：随机神器图谱。|r
 }
 
 STRING 972
-// 物品: I01H (|cffff00ff挑战朱聪|r), Description (说明)
+// 物品: I01H (|CFFCC99FF挑战朱聪|r), Description (说明)
 {
-|cff00ff00朱聪：江南七怪之一，据说会某种绝技。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：妙手空空手套。|n|n|r|cffffff00基础气血：|r50000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r拥有2000气血回复
+|cff00ff00朱聪：江南七怪之一，据说会某种绝技。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：妙手空空手套。|n|n|r|cffffff00基础气血：|r50000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r拥有2000气血回复
 }
 
 STRING 973
-// 物品: I01H (|cffff00ff挑战朱聪|r), Hotkey (热键)
+// 物品: I01H (|CFFCC99FF挑战朱聪|r), Hotkey (热键)
 {
 M
 }
 
 STRING 974
-// 物品: I01H (|cffff00ff挑战朱聪|r), Name (名字)
+// 物品: I01H (|CFFCC99FF挑战朱聪|r), Name (名字)
 {
-|cffff00ff挑战朱聪|r
+|CFFCC99FF挑战朱聪|r
 }
 
 STRING 975
-// 物品: I01H (|cffff00ff挑战朱聪|r), Tip (提示工具 - 基础)
+// 物品: I01H (|CFFCC99FF挑战朱聪|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战朱聪|r
+|CFFCC99FF挑战朱聪|r
 }
 
 STRING 976
-// 物品: I01H (|cffff00ff挑战朱聪|r), Ubertip (提示工具 - 扩展)
+// 物品: I01H (|CFFCC99FF挑战朱聪|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00朱聪：江南七怪之一，据说会某种绝技。|n|r|cffff00ff难度：※※|r|cff00ff00|n|r|cffff00ff奖励：妙手空空手套。|r
+|cff00ff00朱聪：江南七怪之一，据说会某种绝技。|n|r|CFFCC99FF难度：※※|r|cff00ff00|n|r|CFFCC99FF奖励：妙手空空手套。|r
 }
 
 STRING 977
-// 物品: I01I (|cffff00ff挑战我是非你（暂未开放）|r), Description (说明)
+// 物品: I01I (|CFFCC99FF挑战我是非你（暂未开放）|r), Description (说明)
 {
-|cff00ff00我是非你：非你、逗宅、龙腾…|n|r|cffff00ff奖励：通关秘笈（有了它就通关了？？）。|r
+|cff00ff00我是非你：非你、逗宅、龙腾…|n|r|CFFCC99FF奖励：通关秘笈（有了它就通关了？？）。|r
 }
 
 STRING 978
-// 物品: I01I (|cffff00ff挑战我是非你（暂未开放）|r), Hotkey (热键)
+// 物品: I01I (|CFFCC99FF挑战我是非你（暂未开放）|r), Hotkey (热键)
 {
 M
 }
 
 STRING 979
-// 物品: I01I (|cffff00ff挑战我是非你（暂未开放）|r), Name (名字)
+// 物品: I01I (|CFFCC99FF挑战我是非你（暂未开放）|r), Name (名字)
 {
-|cffff00ff挑战我是非你（暂未开放）|r
+|CFFCC99FF挑战我是非你（暂未开放）|r
 }
 
 STRING 980
-// 物品: I01I (|cffff00ff挑战我是非你（暂未开放）|r), Tip (提示工具 - 基础)
+// 物品: I01I (|CFFCC99FF挑战我是非你（暂未开放）|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战我是非你（暂未开放）|r
+|CFFCC99FF挑战我是非你（暂未开放）|r
 }
 
 STRING 981
-// 物品: I01I (|cffff00ff挑战我是非你（暂未开放）|r), Ubertip (提示工具 - 扩展)
+// 物品: I01I (|CFFCC99FF挑战我是非你（暂未开放）|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00我是非你：非你、逗宅、龙腾…|n|r|cffff00ff奖励：通关秘笈（有了它就通关了？？）。|r
+|cff00ff00我是非你：非你、逗宅、龙腾…|n|r|CFFCC99FF奖励：通关秘笈（有了它就通关了？？）。|r
 }
 
 STRING 982
@@ -6465,33 +6465,33 @@ STRING 1079
 }
 
 STRING 1080
-// 物品: I026 (|cffff00ff挑战黄裳|r), Description (说明)
+// 物品: I026 (|CFFCC99FF挑战黄裳|r), Description (说明)
 {
-|cff00ff00黄裳：无师自通，内外兼修的绝世高手。|n|r|cffff00ff难度：※※※※|r|cff00ff00|n|r|cffff00ff奖励：随机绝内。|n|n|r|cffffff00基础气血：|r500000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r移动速度非常快
+|cff00ff00黄裳：无师自通，内外兼修的绝世高手。|n|r|CFFCC99FF难度：※※※※|r|cff00ff00|n|r|CFFCC99FF奖励：随机绝内。|n|n|r|cffffff00基础气血：|r500000|n|cffffff00难度加成：|r30%×难度|n|cffffff00特点：|r移动速度非常快
 }
 
 STRING 1081
-// 物品: I026 (|cffff00ff挑战黄裳|r), Hotkey (热键)
+// 物品: I026 (|CFFCC99FF挑战黄裳|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1082
-// 物品: I026 (|cffff00ff挑战黄裳|r), Name (名字)
+// 物品: I026 (|CFFCC99FF挑战黄裳|r), Name (名字)
 {
-|cffff00ff挑战黄裳|r
+|CFFCC99FF挑战黄裳|r
 }
 
 STRING 1083
-// 物品: I026 (|cffff00ff挑战黄裳|r), Tip (提示工具 - 基础)
+// 物品: I026 (|CFFCC99FF挑战黄裳|r), Tip (提示工具 - 基础)
 {
-|cffff00ff挑战黄裳|r
+|CFFCC99FF挑战黄裳|r
 }
 
 STRING 1084
-// 物品: I026 (|cffff00ff挑战黄裳|r), Ubertip (提示工具 - 扩展)
+// 物品: I026 (|CFFCC99FF挑战黄裳|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00黄裳：无师自通，内外兼修的绝世高手。|n|r|cffff00ff难度：※※※※|r|cff00ff00|n|r|cffff00ff奖励：随机绝内。|r
+|cff00ff00黄裳：无师自通，内外兼修的绝世高手。|n|r|CFFCC99FF难度：※※※※|r|cff00ff00|n|r|CFFCC99FF奖励：随机绝内。|r
 }
 
 STRING 1085
@@ -6831,33 +6831,33 @@ STRING 1140
 }
 
 STRING 1141
-// 物品: I02J (|cffff00ff抽取武魂石|r), Description (说明)
+// 物品: I02J (|CFFCC99FF抽取武魂石|r), Description (说明)
 {
-|cff00ff00和断指轩辕玩上一局吧？|n|r|cffff00ff奖励：随机品质的武魂石（与人品有关）|r
+|cff00ff00和断指轩辕玩上一局吧？|n|r|CFFCC99FF奖励：随机品质的武魂石（与人品有关）|r
 }
 
 STRING 1142
-// 物品: I02J (|cffff00ff抽取武魂石|r), Hotkey (热键)
+// 物品: I02J (|CFFCC99FF抽取武魂石|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1143
-// 物品: I02J (|cffff00ff抽取武魂石|r), Name (名字)
+// 物品: I02J (|CFFCC99FF抽取武魂石|r), Name (名字)
 {
-|cffff00ff抽取武魂石|r
+|CFFCC99FF抽取武魂石|r
 }
 
 STRING 1144
-// 物品: I02J (|cffff00ff抽取武魂石|r), Tip (提示工具 - 基础)
+// 物品: I02J (|CFFCC99FF抽取武魂石|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取武魂石|r
+|CFFCC99FF抽取武魂石|r
 }
 
 STRING 1145
-// 物品: I02J (|cffff00ff抽取武魂石|r), Ubertip (提示工具 - 扩展)
+// 物品: I02J (|CFFCC99FF抽取武魂石|r), Ubertip (提示工具 - 扩展)
 {
-|cff00ff00和断指轩辕玩上一局吧？|n|r|cffff00ff奖励：随机品质的武魂石（与人品有关）|r
+|cff00ff00和断指轩辕玩上一局吧？|n|r|CFFCC99FF奖励：随机品质的武魂石（与人品有关）|r
 }
 
 STRING 1146
@@ -6873,31 +6873,31 @@ STRING 1147
 }
 
 STRING 1148
-// 物品: I02L (|cffff00ff未鉴定的武魂石|r), Description (说明)
+// 物品: I02L (|CFFCC99FF未鉴定的武魂石|r), Description (说明)
 {
 |cff00ff00〓未知〓|n类别|r：武魂石|n|cff00ff00等级|r：|cffccffff未知|n|r|cffffff00点击鉴定为随机品质的武魂石|r
 }
 
 STRING 1149
-// 物品: I02L (|cffff00ff未鉴定的武魂石|r), Hotkey (热键)
+// 物品: I02L (|CFFCC99FF未鉴定的武魂石|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1150
-// 物品: I02L (|cffff00ff未鉴定的武魂石|r), Name (名字)
+// 物品: I02L (|CFFCC99FF未鉴定的武魂石|r), Name (名字)
 {
-|cffff00ff未鉴定的武魂石|r
+|CFFCC99FF未鉴定的武魂石|r
 }
 
 STRING 1151
-// 物品: I02L (|cffff00ff未鉴定的武魂石|r), Tip (提示工具 - 基础)
+// 物品: I02L (|CFFCC99FF未鉴定的武魂石|r), Tip (提示工具 - 基础)
 {
-|cffff00ff未鉴定的武魂石|r
+|CFFCC99FF未鉴定的武魂石|r
 }
 
 STRING 1152
-// 物品: I02L (|cffff00ff未鉴定的武魂石|r), Ubertip (提示工具 - 扩展)
+// 物品: I02L (|CFFCC99FF未鉴定的武魂石|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00〓未知〓|n类别|r：武魂石|n|cff00ff00等级|r：|cffccffff未知|n|r|cffffff00点击鉴定为随机品质的武魂石|r
 }
@@ -8037,625 +8037,625 @@ STRING 1341
 }
 
 STRING 1342
-// 物品: I03X (|cffff00ff峨眉小尼姑|r), Description (说明)
+// 物品: I03X (|CFFCC99FF峨眉小尼姑|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1343
-// 物品: I03X (|cffff00ff峨眉小尼姑|r), Name (名字)
+// 物品: I03X (|CFFCC99FF峨眉小尼姑|r), Name (名字)
 {
-|cffff00ff峨眉小尼姑|r
+|CFFCC99FF峨眉小尼姑|r
 }
 
 STRING 1344
-// 物品: I03X (|cffff00ff峨眉小尼姑|r), Tip (提示工具 - 基础)
+// 物品: I03X (|CFFCC99FF峨眉小尼姑|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff峨眉小尼姑|r(|cffffcc00V|r)
+购买|CFFCC99FF峨眉小尼姑|r(|cffffcc00V|r)
 }
 
 STRING 1345
-// 物品: I03X (|cffff00ff峨眉小尼姑|r), Ubertip (提示工具 - 扩展)
+// 物品: I03X (|CFFCC99FF峨眉小尼姑|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1346
-// 物品: I03Y (|cffff00ff峨眉小师妹|r), Description (说明)
+// 物品: I03Y (|CFFCC99FF峨眉小师妹|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1347
-// 物品: I03Y (|cffff00ff峨眉小师妹|r), Name (名字)
+// 物品: I03Y (|CFFCC99FF峨眉小师妹|r), Name (名字)
 {
-|cffff00ff峨眉小师妹|r
+|CFFCC99FF峨眉小师妹|r
 }
 
 STRING 1348
-// 物品: I03Y (|cffff00ff峨眉小师妹|r), Tip (提示工具 - 基础)
+// 物品: I03Y (|CFFCC99FF峨眉小师妹|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff峨眉小师妹|r(|cffffcc00V|r)
+购买|CFFCC99FF峨眉小师妹|r(|cffffcc00V|r)
 }
 
 STRING 1349
-// 物品: I03Y (|cffff00ff峨眉小师妹|r), Ubertip (提示工具 - 扩展)
+// 物品: I03Y (|CFFCC99FF峨眉小师妹|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1350
-// 物品: I03Z (|cffff00ff峨眉小师太|r), Description (说明)
+// 物品: I03Z (|CFFCC99FF峨眉小师太|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1351
-// 物品: I03Z (|cffff00ff峨眉小师太|r), Name (名字)
+// 物品: I03Z (|CFFCC99FF峨眉小师太|r), Name (名字)
 {
-|cffff00ff峨眉小师太|r
+|CFFCC99FF峨眉小师太|r
 }
 
 STRING 1352
-// 物品: I03Z (|cffff00ff峨眉小师太|r), Tip (提示工具 - 基础)
+// 物品: I03Z (|CFFCC99FF峨眉小师太|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff峨眉小师太|r(|cffffcc00V|r)
+购买|CFFCC99FF峨眉小师太|r(|cffffcc00V|r)
 }
 
 STRING 1353
-// 物品: I03Z (|cffff00ff峨眉小师太|r), Ubertip (提示工具 - 扩展)
+// 物品: I03Z (|CFFCC99FF峨眉小师太|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1354
-// 物品: I040 (|cffff00ff峨眉俗家弟子|r), Description (说明)
+// 物品: I040 (|CFFCC99FF峨眉俗家弟子|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1355
-// 物品: I040 (|cffff00ff峨眉俗家弟子|r), Name (名字)
+// 物品: I040 (|CFFCC99FF峨眉俗家弟子|r), Name (名字)
 {
-|cffff00ff峨眉俗家弟子|r
+|CFFCC99FF峨眉俗家弟子|r
 }
 
 STRING 1356
-// 物品: I040 (|cffff00ff峨眉俗家弟子|r), Tip (提示工具 - 基础)
+// 物品: I040 (|CFFCC99FF峨眉俗家弟子|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff峨眉俗家弟子|r(|cffffcc00V|r)
+购买|CFFCC99FF峨眉俗家弟子|r(|cffffcc00V|r)
 }
 
 STRING 1357
-// 物品: I040 (|cffff00ff峨眉俗家弟子|r), Ubertip (提示工具 - 扩展)
+// 物品: I040 (|CFFCC99FF峨眉俗家弟子|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1358
-// 物品: I041 (|cffff00ff王翠花|r), Description (说明)
+// 物品: I041 (|CFFCC99FF王翠花|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1359
-// 物品: I041 (|cffff00ff王翠花|r), Name (名字)
+// 物品: I041 (|CFFCC99FF王翠花|r), Name (名字)
 {
-|cffff00ff王翠花|r
+|CFFCC99FF王翠花|r
 }
 
 STRING 1360
-// 物品: I041 (|cffff00ff王翠花|r), Tip (提示工具 - 基础)
+// 物品: I041 (|CFFCC99FF王翠花|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff王翠花|r(|cffffcc00V|r)
+购买|CFFCC99FF王翠花|r(|cffffcc00V|r)
 }
 
 STRING 1361
-// 物品: I041 (|cffff00ff王翠花|r), Ubertip (提示工具 - 扩展)
+// 物品: I041 (|CFFCC99FF王翠花|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1362
-// 物品: I042 (|cffff00ff纪晓芙|r), Description (说明)
+// 物品: I042 (|CFFCC99FF纪晓芙|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1363
-// 物品: I042 (|cffff00ff纪晓芙|r), Name (名字)
+// 物品: I042 (|CFFCC99FF纪晓芙|r), Name (名字)
 {
-|cffff00ff纪晓芙|r
+|CFFCC99FF纪晓芙|r
 }
 
 STRING 1364
-// 物品: I042 (|cffff00ff纪晓芙|r), Tip (提示工具 - 基础)
+// 物品: I042 (|CFFCC99FF纪晓芙|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff纪晓芙|r(|cffffcc00V|r)
+购买|CFFCC99FF纪晓芙|r(|cffffcc00V|r)
 }
 
 STRING 1365
-// 物品: I042 (|cffff00ff纪晓芙|r), Ubertip (提示工具 - 扩展)
+// 物品: I042 (|CFFCC99FF纪晓芙|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1366
-// 物品: I043 (|cffff00ff静真|r), Description (说明)
+// 物品: I043 (|CFFCC99FF静真|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1367
-// 物品: I043 (|cffff00ff静真|r), Name (名字)
+// 物品: I043 (|CFFCC99FF静真|r), Name (名字)
 {
-|cffff00ff静真|r
+|CFFCC99FF静真|r
 }
 
 STRING 1368
-// 物品: I043 (|cffff00ff静真|r), Tip (提示工具 - 基础)
+// 物品: I043 (|CFFCC99FF静真|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静真|r(|cffffcc00V|r)
+购买|CFFCC99FF静真|r(|cffffcc00V|r)
 }
 
 STRING 1369
-// 物品: I043 (|cffff00ff静真|r), Ubertip (提示工具 - 扩展)
+// 物品: I043 (|CFFCC99FF静真|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1370
-// 物品: I044 (|cffff00ff静和|r), Description (说明)
+// 物品: I044 (|CFFCC99FF静和|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1371
-// 物品: I044 (|cffff00ff静和|r), Name (名字)
+// 物品: I044 (|CFFCC99FF静和|r), Name (名字)
 {
-|cffff00ff静和|r
+|CFFCC99FF静和|r
 }
 
 STRING 1372
-// 物品: I044 (|cffff00ff静和|r), Tip (提示工具 - 基础)
+// 物品: I044 (|CFFCC99FF静和|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静和|r(|cffffcc00V|r)
+购买|CFFCC99FF静和|r(|cffffcc00V|r)
 }
 
 STRING 1373
-// 物品: I044 (|cffff00ff静和|r), Ubertip (提示工具 - 扩展)
+// 物品: I044 (|CFFCC99FF静和|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1374
-// 物品: I045 (|cffff00ff静慧|r), Description (说明)
+// 物品: I045 (|CFFCC99FF静慧|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1375
-// 物品: I045 (|cffff00ff静慧|r), Name (名字)
+// 物品: I045 (|CFFCC99FF静慧|r), Name (名字)
 {
-|cffff00ff静慧|r
+|CFFCC99FF静慧|r
 }
 
 STRING 1376
-// 物品: I045 (|cffff00ff静慧|r), Tip (提示工具 - 基础)
+// 物品: I045 (|CFFCC99FF静慧|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静慧|r(|cffffcc00V|r)
+购买|CFFCC99FF静慧|r(|cffffcc00V|r)
 }
 
 STRING 1377
-// 物品: I045 (|cffff00ff静慧|r), Ubertip (提示工具 - 扩展)
+// 物品: I045 (|CFFCC99FF静慧|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1378
-// 物品: I046 (|cffff00ff方碧琳|r), Description (说明)
+// 物品: I046 (|CFFCC99FF方碧琳|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1379
-// 物品: I046 (|cffff00ff方碧琳|r), Name (名字)
+// 物品: I046 (|CFFCC99FF方碧琳|r), Name (名字)
 {
-|cffff00ff方碧琳|r
+|CFFCC99FF方碧琳|r
 }
 
 STRING 1380
-// 物品: I046 (|cffff00ff方碧琳|r), Tip (提示工具 - 基础)
+// 物品: I046 (|CFFCC99FF方碧琳|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff方碧琳|r(|cffffcc00V|r)
+购买|CFFCC99FF方碧琳|r(|cffffcc00V|r)
 }
 
 STRING 1381
-// 物品: I046 (|cffff00ff方碧琳|r), Ubertip (提示工具 - 扩展)
+// 物品: I046 (|CFFCC99FF方碧琳|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1382
-// 物品: I047 (|cffff00ff苏梦清|r), Description (说明)
+// 物品: I047 (|CFFCC99FF苏梦清|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1383
-// 物品: I047 (|cffff00ff苏梦清|r), Name (名字)
+// 物品: I047 (|CFFCC99FF苏梦清|r), Name (名字)
 {
-|cffff00ff苏梦清|r
+|CFFCC99FF苏梦清|r
 }
 
 STRING 1384
-// 物品: I047 (|cffff00ff苏梦清|r), Tip (提示工具 - 基础)
+// 物品: I047 (|CFFCC99FF苏梦清|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff苏梦清|r(|cffffcc00V|r)
+购买|CFFCC99FF苏梦清|r(|cffffcc00V|r)
 }
 
 STRING 1385
-// 物品: I047 (|cffff00ff苏梦清|r), Ubertip (提示工具 - 扩展)
+// 物品: I047 (|CFFCC99FF苏梦清|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1386
-// 物品: I048 (|cffff00ff静道|r), Description (说明)
+// 物品: I048 (|CFFCC99FF静道|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1387
-// 物品: I048 (|cffff00ff静道|r), Name (名字)
+// 物品: I048 (|CFFCC99FF静道|r), Name (名字)
 {
-|cffff00ff静道|r
+|CFFCC99FF静道|r
 }
 
 STRING 1388
-// 物品: I048 (|cffff00ff静道|r), Tip (提示工具 - 基础)
+// 物品: I048 (|CFFCC99FF静道|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静道|r(|cffffcc00V|r)
+购买|CFFCC99FF静道|r(|cffffcc00V|r)
 }
 
 STRING 1389
-// 物品: I048 (|cffff00ff静道|r), Ubertip (提示工具 - 扩展)
+// 物品: I048 (|CFFCC99FF静道|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1390
-// 物品: I049 (|cffff00ff静闲|r), Description (说明)
+// 物品: I049 (|CFFCC99FF静闲|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1391
-// 物品: I049 (|cffff00ff静闲|r), Name (名字)
+// 物品: I049 (|CFFCC99FF静闲|r), Name (名字)
 {
-|cffff00ff静闲|r
+|CFFCC99FF静闲|r
 }
 
 STRING 1392
-// 物品: I049 (|cffff00ff静闲|r), Tip (提示工具 - 基础)
+// 物品: I049 (|CFFCC99FF静闲|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静闲|r(|cffffcc00V|r)
+购买|CFFCC99FF静闲|r(|cffffcc00V|r)
 }
 
 STRING 1393
-// 物品: I049 (|cffff00ff静闲|r), Ubertip (提示工具 - 扩展)
+// 物品: I049 (|CFFCC99FF静闲|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1394
-// 物品: I04A (|cffff00ff静空|r), Description (说明)
+// 物品: I04A (|CFFCC99FF静空|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1395
-// 物品: I04A (|cffff00ff静空|r), Name (名字)
+// 物品: I04A (|CFFCC99FF静空|r), Name (名字)
 {
-|cffff00ff静空|r
+|CFFCC99FF静空|r
 }
 
 STRING 1396
-// 物品: I04A (|cffff00ff静空|r), Tip (提示工具 - 基础)
+// 物品: I04A (|CFFCC99FF静空|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静空|r(|cffffcc00V|r)
+购买|CFFCC99FF静空|r(|cffffcc00V|r)
 }
 
 STRING 1397
-// 物品: I04A (|cffff00ff静空|r), Ubertip (提示工具 - 扩展)
+// 物品: I04A (|CFFCC99FF静空|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1398
-// 物品: I04B (|cffff00ff赵灵珠|r), Description (说明)
+// 物品: I04B (|CFFCC99FF赵灵珠|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1399
-// 物品: I04B (|cffff00ff赵灵珠|r), Name (名字)
+// 物品: I04B (|CFFCC99FF赵灵珠|r), Name (名字)
 {
-|cffff00ff赵灵珠|r
+|CFFCC99FF赵灵珠|r
 }
 
 STRING 1400
-// 物品: I04B (|cffff00ff赵灵珠|r), Tip (提示工具 - 基础)
+// 物品: I04B (|CFFCC99FF赵灵珠|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff赵灵珠|r(|cffffcc00V|r)
+购买|CFFCC99FF赵灵珠|r(|cffffcc00V|r)
 }
 
 STRING 1401
-// 物品: I04B (|cffff00ff赵灵珠|r), Ubertip (提示工具 - 扩展)
+// 物品: I04B (|CFFCC99FF赵灵珠|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1402
-// 物品: I04C (|cffff00ff贝锦仪|r), Description (说明)
+// 物品: I04C (|CFFCC99FF贝锦仪|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1403
-// 物品: I04C (|cffff00ff贝锦仪|r), Name (名字)
+// 物品: I04C (|CFFCC99FF贝锦仪|r), Name (名字)
 {
-|cffff00ff贝锦仪|r
+|CFFCC99FF贝锦仪|r
 }
 
 STRING 1404
-// 物品: I04C (|cffff00ff贝锦仪|r), Tip (提示工具 - 基础)
+// 物品: I04C (|CFFCC99FF贝锦仪|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff贝锦仪|r(|cffffcc00V|r)
+购买|CFFCC99FF贝锦仪|r(|cffffcc00V|r)
 }
 
 STRING 1405
-// 物品: I04C (|cffff00ff贝锦仪|r), Ubertip (提示工具 - 扩展)
+// 物品: I04C (|CFFCC99FF贝锦仪|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1406
-// 物品: I04D (|cffff00ff静风|r), Description (说明)
+// 物品: I04D (|CFFCC99FF静风|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1407
-// 物品: I04D (|cffff00ff静风|r), Name (名字)
+// 物品: I04D (|CFFCC99FF静风|r), Name (名字)
 {
-|cffff00ff静风|r
+|CFFCC99FF静风|r
 }
 
 STRING 1408
-// 物品: I04D (|cffff00ff静风|r), Tip (提示工具 - 基础)
+// 物品: I04D (|CFFCC99FF静风|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静风|r(|cffffcc00V|r)
+购买|CFFCC99FF静风|r(|cffffcc00V|r)
 }
 
 STRING 1409
-// 物品: I04D (|cffff00ff静风|r), Ubertip (提示工具 - 扩展)
+// 物品: I04D (|CFFCC99FF静风|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1410
-// 物品: I04E (|cffff00ff静照|r), Description (说明)
+// 物品: I04E (|CFFCC99FF静照|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1411
-// 物品: I04E (|cffff00ff静照|r), Name (名字)
+// 物品: I04E (|CFFCC99FF静照|r), Name (名字)
 {
-|cffff00ff静照|r
+|CFFCC99FF静照|r
 }
 
 STRING 1412
-// 物品: I04E (|cffff00ff静照|r), Tip (提示工具 - 基础)
+// 物品: I04E (|CFFCC99FF静照|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静照|r(|cffffcc00V|r)
+购买|CFFCC99FF静照|r(|cffffcc00V|r)
 }
 
 STRING 1413
-// 物品: I04E (|cffff00ff静照|r), Ubertip (提示工具 - 扩展)
+// 物品: I04E (|CFFCC99FF静照|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1414
-// 物品: I04F (|cffff00ff静虚|r), Description (说明)
+// 物品: I04F (|CFFCC99FF静虚|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1415
-// 物品: I04F (|cffff00ff静虚|r), Name (名字)
+// 物品: I04F (|CFFCC99FF静虚|r), Name (名字)
 {
-|cffff00ff静虚|r
+|CFFCC99FF静虚|r
 }
 
 STRING 1416
-// 物品: I04F (|cffff00ff静虚|r), Tip (提示工具 - 基础)
+// 物品: I04F (|CFFCC99FF静虚|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静虚|r(|cffffcc00V|r)
+购买|CFFCC99FF静虚|r(|cffffcc00V|r)
 }
 
 STRING 1417
-// 物品: I04F (|cffff00ff静虚|r), Ubertip (提示工具 - 扩展)
+// 物品: I04F (|CFFCC99FF静虚|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1418
-// 物品: I04G (|cffff00ff李明霞|r), Description (说明)
+// 物品: I04G (|CFFCC99FF李明霞|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1419
-// 物品: I04G (|cffff00ff李明霞|r), Name (名字)
+// 物品: I04G (|CFFCC99FF李明霞|r), Name (名字)
 {
-|cffff00ff李明霞|r
+|CFFCC99FF李明霞|r
 }
 
 STRING 1420
-// 物品: I04G (|cffff00ff李明霞|r), Tip (提示工具 - 基础)
+// 物品: I04G (|CFFCC99FF李明霞|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff李明霞|r(|cffffcc00V|r)
+购买|CFFCC99FF李明霞|r(|cffffcc00V|r)
 }
 
 STRING 1421
-// 物品: I04G (|cffff00ff李明霞|r), Ubertip (提示工具 - 扩展)
+// 物品: I04G (|CFFCC99FF李明霞|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1422
-// 物品: I04H (|cffff00ff俗家大弟子丁敏君|r), Description (说明)
+// 物品: I04H (|CFFCC99FF俗家大弟子丁敏君|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1423
-// 物品: I04H (|cffff00ff俗家大弟子丁敏君|r), Name (名字)
+// 物品: I04H (|CFFCC99FF俗家大弟子丁敏君|r), Name (名字)
 {
-|cffff00ff俗家大弟子丁敏君|r
+|CFFCC99FF俗家大弟子丁敏君|r
 }
 
 STRING 1424
-// 物品: I04H (|cffff00ff俗家大弟子丁敏君|r), Tip (提示工具 - 基础)
+// 物品: I04H (|CFFCC99FF俗家大弟子丁敏君|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff俗家大弟子丁敏君|r(|cffffcc00V|r)
+购买|CFFCC99FF俗家大弟子丁敏君|r(|cffffcc00V|r)
 }
 
 STRING 1425
-// 物品: I04H (|cffff00ff俗家大弟子丁敏君|r), Ubertip (提示工具 - 扩展)
+// 物品: I04H (|CFFCC99FF俗家大弟子丁敏君|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1426
-// 物品: I04I (|cffff00ff静心|r), Description (说明)
+// 物品: I04I (|CFFCC99FF静心|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1427
-// 物品: I04I (|cffff00ff静心|r), Name (名字)
+// 物品: I04I (|CFFCC99FF静心|r), Name (名字)
 {
-|cffff00ff静心|r
+|CFFCC99FF静心|r
 }
 
 STRING 1428
-// 物品: I04I (|cffff00ff静心|r), Tip (提示工具 - 基础)
+// 物品: I04I (|CFFCC99FF静心|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静心|r(|cffffcc00V|r)
+购买|CFFCC99FF静心|r(|cffffcc00V|r)
 }
 
 STRING 1429
-// 物品: I04I (|cffff00ff静心|r), Ubertip (提示工具 - 扩展)
+// 物品: I04I (|CFFCC99FF静心|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1430
-// 物品: I04J (|cffff00ff静迦|r), Description (说明)
+// 物品: I04J (|CFFCC99FF静迦|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1431
-// 物品: I04J (|cffff00ff静迦|r), Name (名字)
+// 物品: I04J (|CFFCC99FF静迦|r), Name (名字)
 {
-|cffff00ff静迦|r
+|CFFCC99FF静迦|r
 }
 
 STRING 1432
-// 物品: I04J (|cffff00ff静迦|r), Tip (提示工具 - 基础)
+// 物品: I04J (|CFFCC99FF静迦|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff静迦|r(|cffffcc00V|r)
+购买|CFFCC99FF静迦|r(|cffffcc00V|r)
 }
 
 STRING 1433
-// 物品: I04J (|cffff00ff静迦|r), Ubertip (提示工具 - 扩展)
+// 物品: I04J (|CFFCC99FF静迦|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1434
-// 物品: I04K (|cffff00ff大师姐静玄|r), Description (说明)
+// 物品: I04K (|CFFCC99FF大师姐静玄|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1435
-// 物品: I04K (|cffff00ff大师姐静玄|r), Name (名字)
+// 物品: I04K (|CFFCC99FF大师姐静玄|r), Name (名字)
 {
-|cffff00ff大师姐静玄|r
+|CFFCC99FF大师姐静玄|r
 }
 
 STRING 1436
-// 物品: I04K (|cffff00ff大师姐静玄|r), Tip (提示工具 - 基础)
+// 物品: I04K (|CFFCC99FF大师姐静玄|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff大师姐静玄|r(|cffffcc00V|r)
+购买|CFFCC99FF大师姐静玄|r(|cffffcc00V|r)
 }
 
 STRING 1437
-// 物品: I04K (|cffff00ff大师姐静玄|r), Ubertip (提示工具 - 扩展)
+// 物品: I04K (|CFFCC99FF大师姐静玄|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1438
-// 物品: I04L (|cffff00ff周芷若|r), Description (说明)
+// 物品: I04L (|CFFCC99FF周芷若|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1439
-// 物品: I04L (|cffff00ff周芷若|r), Name (名字)
+// 物品: I04L (|CFFCC99FF周芷若|r), Name (名字)
 {
-|cffff00ff周芷若|r
+|CFFCC99FF周芷若|r
 }
 
 STRING 1440
-// 物品: I04L (|cffff00ff周芷若|r), Tip (提示工具 - 基础)
+// 物品: I04L (|CFFCC99FF周芷若|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff周芷若|r(|cffffcc00V|r)
+购买|CFFCC99FF周芷若|r(|cffffcc00V|r)
 }
 
 STRING 1441
-// 物品: I04L (|cffff00ff周芷若|r), Ubertip (提示工具 - 扩展)
+// 物品: I04L (|CFFCC99FF周芷若|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1442
-// 物品: I04M (|cffff00ff峨眉掌门|r), Description (说明)
+// 物品: I04M (|CFFCC99FF峨眉掌门|r), Description (说明)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
 
 STRING 1443
-// 物品: I04M (|cffff00ff峨眉掌门|r), Name (名字)
+// 物品: I04M (|CFFCC99FF峨眉掌门|r), Name (名字)
 {
-|cffff00ff峨眉掌门|r
+|CFFCC99FF峨眉掌门|r
 }
 
 STRING 1444
-// 物品: I04M (|cffff00ff峨眉掌门|r), Tip (提示工具 - 基础)
+// 物品: I04M (|CFFCC99FF峨眉掌门|r), Tip (提示工具 - 基础)
 {
-购买|cffff00ff峨眉掌门|r(|cffffcc00V|r)
+购买|CFFCC99FF峨眉掌门|r(|cffffcc00V|r)
 }
 
 STRING 1445
-// 物品: I04M (|cffff00ff峨眉掌门|r), Ubertip (提示工具 - 扩展)
+// 物品: I04M (|CFFCC99FF峨眉掌门|r), Ubertip (提示工具 - 扩展)
 {
 能在指定的区域内召唤出相应的江湖侠士。
 }
@@ -9891,151 +9891,151 @@ STRING 1650
 }
 
 STRING 1651
-// 物品: I062 (|cffff00ff抽取普通武器|r), Description (说明)
+// 物品: I062 (|CFFCC99FF抽取普通武器|r), Description (说明)
 {
 |cff00ff00抽取一把普通武器|r
 }
 
 STRING 1652
-// 物品: I062 (|cffff00ff抽取普通武器|r), Hotkey (热键)
+// 物品: I062 (|CFFCC99FF抽取普通武器|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1653
-// 物品: I062 (|cffff00ff抽取普通武器|r), Name (名字)
+// 物品: I062 (|CFFCC99FF抽取普通武器|r), Name (名字)
 {
-|cffff00ff抽取普通武器|r
+|CFFCC99FF抽取普通武器|r
 }
 
 STRING 1654
-// 物品: I062 (|cffff00ff抽取普通武器|r), Tip (提示工具 - 基础)
+// 物品: I062 (|CFFCC99FF抽取普通武器|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取普通武器|r
+|CFFCC99FF抽取普通武器|r
 }
 
 STRING 1655
-// 物品: I062 (|cffff00ff抽取普通武器|r), Ubertip (提示工具 - 扩展)
+// 物品: I062 (|CFFCC99FF抽取普通武器|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00抽取一把普通武器|r
 }
 
 STRING 1656
-// 物品: I063 (|cffff00ff抽取稀有武器|r), Description (说明)
+// 物品: I063 (|CFFCC99FF抽取稀有武器|r), Description (说明)
 {
 |cff00ff00抽取一把稀有武器|r
 }
 
 STRING 1657
-// 物品: I063 (|cffff00ff抽取稀有武器|r), Hotkey (热键)
+// 物品: I063 (|CFFCC99FF抽取稀有武器|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1658
-// 物品: I063 (|cffff00ff抽取稀有武器|r), Name (名字)
+// 物品: I063 (|CFFCC99FF抽取稀有武器|r), Name (名字)
 {
-|cffff00ff抽取稀有武器|r
+|CFFCC99FF抽取稀有武器|r
 }
 
 STRING 1659
-// 物品: I063 (|cffff00ff抽取稀有武器|r), Tip (提示工具 - 基础)
+// 物品: I063 (|CFFCC99FF抽取稀有武器|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取稀有武器|r
+|CFFCC99FF抽取稀有武器|r
 }
 
 STRING 1660
-// 物品: I063 (|cffff00ff抽取稀有武器|r), Ubertip (提示工具 - 扩展)
+// 物品: I063 (|CFFCC99FF抽取稀有武器|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00抽取一把稀有武器|r
 }
 
 STRING 1661
-// 物品: I064 (|cffff00ff抽取珍稀武器|r), Description (说明)
+// 物品: I064 (|CFFCC99FF抽取珍稀武器|r), Description (说明)
 {
 |cff00ff00抽取一把珍稀武器|r
 }
 
 STRING 1662
-// 物品: I064 (|cffff00ff抽取珍稀武器|r), Hotkey (热键)
+// 物品: I064 (|CFFCC99FF抽取珍稀武器|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1663
-// 物品: I064 (|cffff00ff抽取珍稀武器|r), Name (名字)
+// 物品: I064 (|CFFCC99FF抽取珍稀武器|r), Name (名字)
 {
-|cffff00ff抽取珍稀武器|r
+|CFFCC99FF抽取珍稀武器|r
 }
 
 STRING 1664
-// 物品: I064 (|cffff00ff抽取珍稀武器|r), Tip (提示工具 - 基础)
+// 物品: I064 (|CFFCC99FF抽取珍稀武器|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取珍稀武器|r
+|CFFCC99FF抽取珍稀武器|r
 }
 
 STRING 1665
-// 物品: I064 (|cffff00ff抽取珍稀武器|r), Ubertip (提示工具 - 扩展)
+// 物品: I064 (|CFFCC99FF抽取珍稀武器|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00抽取一把珍稀武器|r
 }
 
 STRING 1666
-// 物品: I065 (|cffff00ff抽取史诗武器|r), Description (说明)
+// 物品: I065 (|CFFCC99FF抽取史诗武器|r), Description (说明)
 {
 |cff00ff00抽取一把史诗武器|r
 }
 
 STRING 1667
-// 物品: I065 (|cffff00ff抽取史诗武器|r), Hotkey (热键)
+// 物品: I065 (|CFFCC99FF抽取史诗武器|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1668
-// 物品: I065 (|cffff00ff抽取史诗武器|r), Name (名字)
+// 物品: I065 (|CFFCC99FF抽取史诗武器|r), Name (名字)
 {
-|cffff00ff抽取史诗武器|r
+|CFFCC99FF抽取史诗武器|r
 }
 
 STRING 1669
-// 物品: I065 (|cffff00ff抽取史诗武器|r), Tip (提示工具 - 基础)
+// 物品: I065 (|CFFCC99FF抽取史诗武器|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取史诗武器|r
+|CFFCC99FF抽取史诗武器|r
 }
 
 STRING 1670
-// 物品: I065 (|cffff00ff抽取史诗武器|r), Ubertip (提示工具 - 扩展)
+// 物品: I065 (|CFFCC99FF抽取史诗武器|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00抽取一把史诗武器|r
 }
 
 STRING 1671
-// 物品: I066 (|cffff00ff抽取远古武器|r), Description (说明)
+// 物品: I066 (|CFFCC99FF抽取远古武器|r), Description (说明)
 {
 |cff00ff00抽取一把远古武器|r
 }
 
 STRING 1672
-// 物品: I066 (|cffff00ff抽取远古武器|r), Hotkey (热键)
+// 物品: I066 (|CFFCC99FF抽取远古武器|r), Hotkey (热键)
 {
 M
 }
 
 STRING 1673
-// 物品: I066 (|cffff00ff抽取远古武器|r), Name (名字)
+// 物品: I066 (|CFFCC99FF抽取远古武器|r), Name (名字)
 {
-|cffff00ff抽取远古武器|r
+|CFFCC99FF抽取远古武器|r
 }
 
 STRING 1674
-// 物品: I066 (|cffff00ff抽取远古武器|r), Tip (提示工具 - 基础)
+// 物品: I066 (|CFFCC99FF抽取远古武器|r), Tip (提示工具 - 基础)
 {
-|cffff00ff抽取远古武器|r
+|CFFCC99FF抽取远古武器|r
 }
 
 STRING 1675
-// 物品: I066 (|cffff00ff抽取远古武器|r), Ubertip (提示工具 - 扩展)
+// 物品: I066 (|CFFCC99FF抽取远古武器|r), Ubertip (提示工具 - 扩展)
 {
 |cff00ff00抽取一把远古武器|r
 }
@@ -15327,81 +15327,81 @@ C
 }
 
 STRING 2557
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Name (名字)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Name (名字)
 {
-|cffff00ff峨眉剑法|r
+|CFFCC99FF峨眉剑法|r
 }
 
 STRING 2558
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV1|r
 }
 
 STRING 2559
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV2|r
 }
 
 STRING 2560
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV3|r
 }
 
 STRING 2561
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV4|r
 }
 
 STRING 2562
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV5|r
 }
 
 STRING 2563
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Tip (提示工具 - 普通)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉剑法LV6|r
 }
 
 STRING 2564
-// 技能: A01Q (|cffff00ff峨眉剑法|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A01Q (|CFFCC99FF峨眉剑法|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派基本剑法，二代掌门风陵师太所创，可以同时攻击多个敌人。|n|r|cffff00ffLV1|r|cff00ff00 同时攻击3个敌人|n|r|cffff00ffLV2|r|cff00ff00 同时攻击4个敌人|n|r|cffff00ffLV3|r|cff3366ff |r|cff00ff00同时攻击5个敌人|n|r|cffff00ffLV4|r|cff00ff00 同时攻击6个敌人|n|r|cffff00ffLV5|r|cff00ff00 同时攻击7个敌人|n|r|cffff00ffLV6|r|cff3366ff |r|cff00ff00同时攻击8个敌人|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派基本剑法，二代掌门风陵师太所创，可以同时攻击多个敌人。|n|r|CFFCC99FFLV1|r|cff00ff00 同时攻击3个敌人|n|r|CFFCC99FFLV2|r|cff00ff00 同时攻击4个敌人|n|r|CFFCC99FFLV3|r|cff3366ff |r|cff00ff00同时攻击5个敌人|n|r|CFFCC99FFLV4|r|cff00ff00 同时攻击6个敌人|n|r|CFFCC99FFLV5|r|cff00ff00 同时攻击7个敌人|n|r|CFFCC99FFLV6|r|cff3366ff |r|cff00ff00同时攻击8个敌人|r
 }
 
 STRING 2565
-// 技能: A01R (|cffff00ff峨眉入门剑法(W)|r), Name (名字)
+// 技能: A01R (|CFFCC99FF峨眉入门剑法(W)|r), Name (名字)
 {
-|cffff00ff峨眉入门剑法(W)|r
+|CFFCC99FF峨眉入门剑法(W)|r
 }
 
 STRING 2566
-// 技能: A01R (|cffff00ff峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
+// 技能: A01R (|CFFCC99FF峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉入门剑法LV1|r(|cffffcc00W|r)
 }
 
 STRING 2567
-// 技能: A01R (|cffff00ff峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
+// 技能: A01R (|CFFCC99FF峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉入门剑法LV2|r(|cffffcc00W|r)
 }
 
 STRING 2568
-// 技能: A01R (|cffff00ff峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
+// 技能: A01R (|CFFCC99FF峨眉入门剑法(W)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉入门剑法LV3|r(|cffffcc00W|r)
 }
 
 STRING 2569
-// 技能: A01R (|cffff00ff峨眉入门剑法(W)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A01R (|CFFCC99FF峨眉入门剑法(W)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2祖师爷郭襄所创剑法，极易上手，在剑上涂毒，释放后对单位造成持续伤害和减速。|r|n|cffff00ffLV1|r|cff00ff00 15秒内共造成400点伤害，CD8秒|n|r|cffff00ffLV2 |r|cff00ff0015秒内共造成1600点伤害，CD8秒|n|r|cffff00ffLV3|r|cff00ff00 15秒内共造成3600点伤害，CD8秒|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2祖师爷郭襄所创剑法，极易上手，在剑上涂毒，释放后对单位造成持续伤害和减速。|r|n|CFFCC99FFLV1|r|cff00ff00 15秒内共造成400点伤害，CD8秒|n|r|CFFCC99FFLV2 |r|cff00ff0015秒内共造成1600点伤害，CD8秒|n|r|CFFCC99FFLV3|r|cff00ff00 15秒内共造成3600点伤害，CD8秒|r
 }
 
 STRING 2570
@@ -15507,51 +15507,51 @@ STRING 2586
 }
 
 STRING 2587
-// 技能: A01V (|cffff00ff金顶绵掌|r), Name (名字)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Name (名字)
 {
-|cffff00ff金顶绵掌|r
+|CFFCC99FF金顶绵掌|r
 }
 
 STRING 2588
-// 技能: A01V (|cffff00ff金顶绵掌|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 2589
-// 技能: A01V (|cffff00ff金顶绵掌|r), Tip (提示工具 - 普通)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Tip (提示工具 - 普通)
 {
 |cff00ff00金顶绵掌LV1|r
 }
 
 STRING 2590
-// 技能: A01V (|cffff00ff金顶绵掌|r), Tip (提示工具 - 普通)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Tip (提示工具 - 普通)
 {
 |cff00ff00金顶绵掌LV2|r
 }
 
 STRING 2591
-// 技能: A01V (|cffff00ff金顶绵掌|r), Tip (提示工具 - 普通)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Tip (提示工具 - 普通)
 {
 |cff00ff00金顶绵掌LV3|r
 }
 
 STRING 2592
-// 技能: A01V (|cffff00ff金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|cffff00ffLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|CFFCC99FFLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
 }
 
 STRING 2593
-// 技能: A01V (|cffff00ff金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|cffff00ffLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|CFFCC99FFLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
 }
 
 STRING 2594
-// 技能: A01V (|cffff00ff金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A01V (|CFFCC99FF金顶绵掌|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|cffff00ffLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派精深掌法，攻击时用掌气对敌人造成附加伤害|n|r|CFFCC99FFLV1|r|cff00ff00 攻击19%几率对敌人造成500点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击19%几率对敌人造成2000点伤害，需要消耗40点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击19%几率对敌人造成4500点伤害，需要消耗40点内力。|r
 }
 
 STRING 2595
@@ -15591,43 +15591,43 @@ STRING 2600
 }
 
 STRING 2601
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Hotkey (热键 - 普通)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Hotkey (热键 - 普通)
 {
 R
 }
 
 STRING 2602
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Name (名字)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Name (名字)
 {
-|cffff00ff天罡指穴法(R)|r
+|CFFCC99FF天罡指穴法(R)|r
 }
 
 STRING 2603
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Tip (提示工具 - 普通)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00天罡指穴法LV1|r(|cffffcc00R|r)
 }
 
 STRING 2604
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Tip (提示工具 - 普通)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00天罡指穴法LV2|r(|cffffcc00R|r)
 }
 
 STRING 2605
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Tip (提示工具 - 普通)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00天罡指穴法LV3|r(|cffffcc00R|r)
 }
 
 STRING 2606
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派技艺精湛的指法，固定单个敌人并造成持续伤害（对空中单位无效）|r|cff808080|n|r|cffff00ffLV1|r|cff00ff00 每秒造成100点伤害，持续5秒（BOSS3秒），CD10秒|n|r|cffff00ffLV2|r|cff00ff00 每秒造成400点伤害，持续7秒（BOSS5秒），CD10秒|n|r|cffff00ffLV3|r|cff00ff00 每秒造成900点伤害，持续9秒（BOSS7秒），CD10秒|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派技艺精湛的指法，固定单个敌人并造成持续伤害（对空中单位无效）|r|cff808080|n|r|CFFCC99FFLV1|r|cff00ff00 每秒造成100点伤害，持续5秒（BOSS3秒），CD10秒|n|r|CFFCC99FFLV2|r|cff00ff00 每秒造成400点伤害，持续7秒（BOSS5秒），CD10秒|n|r|CFFCC99FFLV3|r|cff00ff00 每秒造成900点伤害，持续9秒（BOSS7秒），CD10秒|r
 }
 
 STRING 2607
-// 技能: A022 (|cffff00ff天罡指穴法(R)|r), Unhotkey (热键 -关闭)
+// 技能: A022 (|CFFCC99FF天罡指穴法(R)|r), Unhotkey (热键 -关闭)
 {
 R
 }
@@ -15663,39 +15663,39 @@ STRING 2612
 }
 
 STRING 2613
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Name (名字)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Name (名字)
 {
-|cffff00ff佛光普照(F)|r
+|CFFCC99FF佛光普照(F)|r
 }
 
 STRING 2614
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Tip (提示工具 - 普通)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00佛光普照LV1|r(F)
 }
 
 STRING 2615
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Tip (提示工具 - 普通)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00佛光普照LV2|r(F)
 }
 
 STRING 2616
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Tip (提示工具 - 普通)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00佛光普照LV3|r(F)
 }
 
 STRING 2617
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Tip (提示工具 - 普通)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00佛光普照LV4|r(F)
 }
 
 STRING 2618
-// 技能: A024 (|cffff00ff佛光普照(F)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A024 (|CFFCC99FF佛光普照(F)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉高深内功，释放可提升对周围友军攻击力|n|r|cffff00ffLV1|r|cff00ff00 增加40%攻击力，持续20秒，CD30秒|n|r|cffff00ffLV2|r|cff00ff00 增加80%攻击力，持续20秒，CD30秒|n|r|cffff00ffLV3|r|cff00ff00 增加120%攻击力，持续20秒，CD30秒|r|n|cffff00ffLV4|r|cff00ff00 增加250%攻击力，持续20秒，CD30秒（需修炼九阴真经方可升级）|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉高深内功，释放可提升对周围友军攻击力|n|r|CFFCC99FFLV1|r|cff00ff00 增加40%攻击力，持续20秒，CD30秒|n|r|CFFCC99FFLV2|r|cff00ff00 增加80%攻击力，持续20秒，CD30秒|n|r|CFFCC99FFLV3|r|cff00ff00 增加120%攻击力，持续20秒，CD30秒|r|n|CFFCC99FFLV4|r|cff00ff00 增加250%攻击力，持续20秒，CD30秒（需修炼九阴真经方可升级）|r
 }
 
 STRING 2619
@@ -15711,49 +15711,49 @@ STRING 2620
 }
 
 STRING 2621
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Hotkey (热键 - 普通)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Hotkey (热键 - 普通)
 {
 T
 }
 
 STRING 2622
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Name (名字)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Name (名字)
 {
-|cffff00ff峨眉身法(T)|r
+|CFFCC99FF峨眉身法(T)|r
 }
 
 STRING 2623
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Tip (提示工具 - 普通)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉身法LV1|r(T)
 }
 
 STRING 2624
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Tip (提示工具 - 普通)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉身法LV2|r(T)
 }
 
 STRING 2625
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Tip (提示工具 - 普通)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉身法LV3|r(T)
 }
 
 STRING 2626
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Tip (提示工具 - 普通)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉身法LV4|r(T)
 }
 
 STRING 2627
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉轻功，释放加快友军攻击速度|n|r|cffff00ffLV1|r|cff00ff00 持续12秒，增加40%攻速，CD12秒|n|r|cffff00ffLV2|r|cff00ff00 持续12秒，增加60%攻速，CD12秒|n|r|cffff00ffLV3|r|cff00ff00 持续12秒，增加80%攻速，CD12秒|n|r|cffff00ffLV4|r|cff00ff00 持续12秒，增加120%攻速，CD12秒（需修炼九阴真经方可升级）|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉轻功，释放加快友军攻击速度|n|r|CFFCC99FFLV1|r|cff00ff00 持续12秒，增加40%攻速，CD12秒|n|r|CFFCC99FFLV2|r|cff00ff00 持续12秒，增加60%攻速，CD12秒|n|r|CFFCC99FFLV3|r|cff00ff00 持续12秒，增加80%攻速，CD12秒|n|r|CFFCC99FFLV4|r|cff00ff00 持续12秒，增加120%攻速，CD12秒（需修炼九阴真经方可升级）|r
 }
 
 STRING 2628
-// 技能: A026 (|cffff00ff峨眉身法(T)|r), Unhotkey (热键 -关闭)
+// 技能: A026 (|CFFCC99FF峨眉身法(T)|r), Unhotkey (热键 -关闭)
 {
 T
 }
@@ -15809,7 +15809,7 @@ STRING 2636
 STRING 2637
 // 技能: A027 (|cff3366ff回风拂柳剑|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派阵山武功，二代掌门风陵师太成名技，释放后减缓周围单位移动速度。|n|r|cffff00ffLV1|r|cff00ff00 15%概率，需消耗70点内力，持续6秒|n|r|cffff00ffLV2|r|cff00ff00 15%概率，需消耗70点内力，持续9秒|n|r|cffff00ffLV3|r|cff00ff00 15%概率，需消耗70点内力，持续12秒|n|r|cffff00ffLV4|r|cff00ff00 15%概率，需消耗70点内力，持续18秒（需修炼化功大法后方可升级）|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派阵山武功，二代掌门风陵师太成名技，释放后减缓周围单位移动速度。|n|r|CFFCC99FFLV1|r|cff00ff00 15%概率，需消耗70点内力，持续6秒|n|r|CFFCC99FFLV2|r|cff00ff00 15%概率，需消耗70点内力，持续9秒|n|r|CFFCC99FFLV3|r|cff00ff00 15%概率，需消耗70点内力，持续12秒|n|r|CFFCC99FFLV4|r|cff00ff00 15%概率，需消耗70点内力，持续18秒（需修炼化功大法后方可升级）|r
 }
 
 STRING 2638
@@ -15831,51 +15831,51 @@ STRING 2640
 }
 
 STRING 2641
-// 技能: A029 (|cffff00ff峨眉心法|r), Name (名字)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Name (名字)
 {
-|cffff00ff峨眉心法|r
+|CFFCC99FF峨眉心法|r
 }
 
 STRING 2642
-// 技能: A029 (|cffff00ff峨眉心法|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 增加周围友军单位的移动速度和生命恢复速度。|n|n|cffffcc00等级 1|r - 增加0%的移动速度和小幅度的生命恢复速度。|n|cffffcc00等级 2|r - 增加0%的移动速度和中等幅度的生命恢复速度。|n|cffffcc00等级 3|r - 增加0%的移动速度和大幅度的生命恢复速度。
 }
 
 STRING 2643
-// 技能: A029 (|cffff00ff峨眉心法|r), Tip (提示工具 - 普通)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉心法LV1|r
 }
 
 STRING 2644
-// 技能: A029 (|cffff00ff峨眉心法|r), Tip (提示工具 - 普通)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉心法LV2|r
 }
 
 STRING 2645
-// 技能: A029 (|cffff00ff峨眉心法|r), Tip (提示工具 - 普通)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00峨眉心法LV3|r
 }
 
 STRING 2646
-// 技能: A029 (|cffff00ff峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|cffff00ffLV1|r|cff00ff00 每秒2%，范围900|n|r|cffff00ffLV2|r|cff00ff00 每秒2%，范围1350|n|r|cffff00ffLV3|r|cff00ff00 每秒2%，范围1800|r
+|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|CFFCC99FFLV1|r|cff00ff00 每秒2%，范围900|n|r|CFFCC99FFLV2|r|cff00ff00 每秒2%，范围1350|n|r|CFFCC99FFLV3|r|cff00ff00 每秒2%，范围1800|r
 }
 
 STRING 2647
-// 技能: A029 (|cffff00ff峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|cffff00ffLV1|r|cff00ff00 每秒2%，范围900|n|r|cffff00ffLV2|r|cff00ff00 每秒2%，范围1350|n|r|cffff00ffLV3|r|cff00ff00 每秒2%，范围1800|r
+|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|CFFCC99FFLV1|r|cff00ff00 每秒2%，范围900|n|r|CFFCC99FFLV2|r|cff00ff00 每秒2%，范围1350|n|r|CFFCC99FFLV3|r|cff00ff00 每秒2%，范围1800|r
 }
 
 STRING 2648
-// 技能: A029 (|cffff00ff峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A029 (|CFFCC99FF峨眉心法|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|cffff00ffLV1|r|cff00ff00 每秒2%，范围900|n|r|cffff00ffLV2|r|cff00ff00 每秒2%，范围1350|n|r|cffff00ffLV3|r|cff00ff00 每秒2%，范围1800|r
+|cff3366ff峨眉门派内功|r|n|cfff1efe2峨眉派精深内功，可对周围敌人造成百分比伤害(对野外BOSS无效)|n|r|CFFCC99FFLV1|r|cff00ff00 每秒2%，范围900|n|r|CFFCC99FFLV2|r|cff00ff00 每秒2%，范围1350|n|r|CFFCC99FFLV3|r|cff00ff00 每秒2%，范围1800|r
 }
 
 STRING 2649
@@ -15921,213 +15921,213 @@ STRING 2655
 }
 
 STRING 2656
-// 技能: A02C (|cffff00ff灭剑|r), Name (名字)
+// 技能: A02C (|CFFCC99FF灭剑|r), Name (名字)
 {
-|cffff00ff灭剑|r
+|CFFCC99FF灭剑|r
 }
 
 STRING 2657
-// 技能: A02C (|cffff00ff灭剑|r), Researchhotkey (热键 - 学习)
+// 技能: A02C (|CFFCC99FF灭剑|r), Researchhotkey (热键 - 学习)
 {
 V
 }
 
 STRING 2658
-// 技能: A02C (|cffff00ff灭剑|r), Researchtip (提示工具 - 学习)
+// 技能: A02C (|CFFCC99FF灭剑|r), Researchtip (提示工具 - 学习)
 {
 学习专注光环(|cffffcc00V|r) - [|cffffcc00等级 %d|r]
 }
 
 STRING 2659
-// 技能: A02C (|cffff00ff灭剑|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A02C (|CFFCC99FF灭剑|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 2660
-// 技能: A02C (|cffff00ff灭剑|r), Tip (提示工具 - 普通)
+// 技能: A02C (|CFFCC99FF灭剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭剑LV1|r
 }
 
 STRING 2661
-// 技能: A02C (|cffff00ff灭剑|r), Tip (提示工具 - 普通)
+// 技能: A02C (|CFFCC99FF灭剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭剑LV2|r
 }
 
 STRING 2662
-// 技能: A02C (|cffff00ff灭剑|r), Tip (提示工具 - 普通)
+// 技能: A02C (|CFFCC99FF灭剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭剑LV3|r
 }
 
 STRING 2663
-// 技能: A02C (|cffff00ff灭剑|r), Tip (提示工具 - 普通)
+// 技能: A02C (|CFFCC99FF灭剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭剑LV4|r
 }
 
 STRING 2664
-// 技能: A02C (|cffff00ff灭剑|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02C (|CFFCC99FF灭剑|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，攻击时几率造成伤害和减甲|n|r|cffff00ffLV1|r|cff00ff00 攻击21%几率对敌人造成1200点伤害，需要消耗50点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击21%几率对敌人造成4800点伤害，需要消耗50点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击21%几率对敌人造成10800点伤害，需要消耗50点内力。|n|r|cffff00ffLV4|r|cff00ff00 攻击21%几率对敌人造成19200点伤害，需要消耗50点内力。（需要修炼九阳神功方可升级）|n|r|cffff00ff+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，攻击时几率造成伤害和减甲|n|r|CFFCC99FFLV1|r|cff00ff00 攻击21%几率对敌人造成1200点伤害，需要消耗50点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击21%几率对敌人造成4800点伤害，需要消耗50点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击21%几率对敌人造成10800点伤害，需要消耗50点内力。|n|r|CFFCC99FFLV4|r|cff00ff00 攻击21%几率对敌人造成19200点伤害，需要消耗50点内力。（需要修炼九阳神功方可升级）|n|r|CFFCC99FF+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r
 }
 
 STRING 2665
-// 技能: A02D (|cffff00ff绝剑|r), Name (名字)
+// 技能: A02D (|CFFCC99FF绝剑|r), Name (名字)
 {
-|cffff00ff绝剑|r
+|CFFCC99FF绝剑|r
 }
 
 STRING 2666
-// 技能: A02D (|cffff00ff绝剑|r), Researchhotkey (热键 - 学习)
+// 技能: A02D (|CFFCC99FF绝剑|r), Researchhotkey (热键 - 学习)
 {
 V
 }
 
 STRING 2667
-// 技能: A02D (|cffff00ff绝剑|r), Researchtip (提示工具 - 学习)
+// 技能: A02D (|CFFCC99FF绝剑|r), Researchtip (提示工具 - 学习)
 {
 学习专注光环(|cffffcc00V|r) - [|cffffcc00等级 %d|r]
 }
 
 STRING 2668
-// 技能: A02D (|cffff00ff绝剑|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A02D (|CFFCC99FF绝剑|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 2669
-// 技能: A02D (|cffff00ff绝剑|r), Tip (提示工具 - 普通)
+// 技能: A02D (|CFFCC99FF绝剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00绝剑LV1|r
 }
 
 STRING 2670
-// 技能: A02D (|cffff00ff绝剑|r), Tip (提示工具 - 普通)
+// 技能: A02D (|CFFCC99FF绝剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00绝剑LV2|r
 }
 
 STRING 2671
-// 技能: A02D (|cffff00ff绝剑|r), Tip (提示工具 - 普通)
+// 技能: A02D (|CFFCC99FF绝剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00绝剑LV3|r
 }
 
 STRING 2672
-// 技能: A02D (|cffff00ff绝剑|r), Tip (提示工具 - 普通)
+// 技能: A02D (|CFFCC99FF绝剑|r), Tip (提示工具 - 普通)
 {
 |cff00ff00绝剑LV4|r
 }
 
 STRING 2673
-// 技能: A02D (|cffff00ff绝剑|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02D (|CFFCC99FF绝剑|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，攻击时几率造成伤害和减速|n|r|cffff00ffLV1|r|cff00ff00 攻击18%几率对敌人造成2250点伤害，需要消耗60点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击18%几率对敌人造成9000点伤害，需要消耗60点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击18%几率对敌人造成20250点伤害，需要消耗60点内力。|n|r|cffff00ffLV4|r|cff00ff00 攻击18%几率对敌人造成36000点伤害，需要消耗60点内力。（需要修炼九阳神功方可升级）|n|r|cffff00ff+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，攻击时几率造成伤害和减速|n|r|CFFCC99FFLV1|r|cff00ff00 攻击18%几率对敌人造成2250点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击18%几率对敌人造成9000点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击18%几率对敌人造成20250点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV4|r|cff00ff00 攻击18%几率对敌人造成36000点伤害，需要消耗60点内力。（需要修炼九阳神功方可升级）|n|r|CFFCC99FF+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r
 }
 
 STRING 2674
-// 技能: A02E (|cffff00ff灭绝剑法|r), Name (名字)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Name (名字)
 {
-|cffff00ff灭绝剑法|r
+|CFFCC99FF灭绝剑法|r
 }
 
 STRING 2675
-// 技能: A02E (|cffff00ff灭绝剑法|r), Researchhotkey (热键 - 学习)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Researchhotkey (热键 - 学习)
 {
 V
 }
 
 STRING 2676
-// 技能: A02E (|cffff00ff灭绝剑法|r), Researchtip (提示工具 - 学习)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Researchtip (提示工具 - 学习)
 {
 学习专注光环(|cffffcc00V|r) - [|cffffcc00等级 %d|r]
 }
 
 STRING 2677
-// 技能: A02E (|cffff00ff灭绝剑法|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 2678
-// 技能: A02E (|cffff00ff灭绝剑法|r), Tip (提示工具 - 普通)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭绝剑法LV1|r
 }
 
 STRING 2679
-// 技能: A02E (|cffff00ff灭绝剑法|r), Tip (提示工具 - 普通)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭绝剑法LV2|r
 }
 
 STRING 2680
-// 技能: A02E (|cffff00ff灭绝剑法|r), Tip (提示工具 - 普通)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭绝剑法LV3|r
 }
 
 STRING 2681
-// 技能: A02E (|cffff00ff灭绝剑法|r), Tip (提示工具 - 普通)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Tip (提示工具 - 普通)
 {
 |cff00ff00灭绝剑法LV4|r
 }
 
 STRING 2682
-// 技能: A02E (|cffff00ff灭绝剑法|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02E (|CFFCC99FF灭绝剑法|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，灭绝剑法最深奥义，攻击几率造成伤害、减速和减甲|n|r|cffff00ffLV1|r|cff00ff00 攻击21%几率对敌人造成1200点伤害，需要消耗50点内力。攻击18%几率对敌人造成2250点伤害，需要消耗60点内力。|n|r|cffff00ffLV2|r|cff00ff00 攻击21%几率对敌人造成4800点伤害，需要消耗50点内力。攻击18%几率对敌人造成9000点伤害，需要消耗60点内力。|n|r|cffff00ffLV3|r|cff00ff00 攻击21%几率对敌人造成10800点伤害，需要消耗50点内力。攻击18%几率对敌人造成20250点伤害，需要消耗60点内力。|n|r|cffff00ffLV4|r|cff00ff00 攻击21%几率对敌人造成19200点伤害，需要消耗50点内力。攻击18%几率对敌人造成36000点伤害，需要消耗60点内力。（需要修炼九阳神功方可升级）|n|r|cffff00ff+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r|n
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派剑法，灭绝师太所创，灭绝剑法最深奥义，攻击几率造成伤害、减速和减甲|n|r|CFFCC99FFLV1|r|cff00ff00 攻击21%几率对敌人造成1200点伤害，需要消耗50点内力。攻击18%几率对敌人造成2250点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV2|r|cff00ff00 攻击21%几率对敌人造成4800点伤害，需要消耗50点内力。攻击18%几率对敌人造成9000点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV3|r|cff00ff00 攻击21%几率对敌人造成10800点伤害，需要消耗50点内力。攻击18%几率对敌人造成20250点伤害，需要消耗60点内力。|n|r|CFFCC99FFLV4|r|cff00ff00 攻击21%几率对敌人造成19200点伤害，需要消耗50点内力。攻击18%几率对敌人造成36000点伤害，需要消耗60点内力。（需要修炼九阳神功方可升级）|n|r|CFFCC99FF+九阳神功 |r|cff00ff00可以升级到LV4并且内力消耗降低20点|r|n
 }
 
 STRING 2683
-// 技能: A02F (|cffff00ff截手九式|r), Name (名字)
+// 技能: A02F (|CFFCC99FF截手九式|r), Name (名字)
 {
-|cffff00ff截手九式|r
+|CFFCC99FF截手九式|r
 }
 
 STRING 2684
-// 技能: A02F (|cffff00ff截手九式|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A02F (|CFFCC99FF截手九式|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 为周围友军提供一定额外的护甲。|n|n|cffffcc00等级 1|r - 增加1点的护甲。|n|cffffcc00等级 2|r - 增加3点的护甲。|n|cffffcc00等级 3|r - 增加4点的护甲。
 }
 
 STRING 2685
-// 技能: A02F (|cffff00ff截手九式|r), Tip (提示工具 - 普通)
+// 技能: A02F (|CFFCC99FF截手九式|r), Tip (提示工具 - 普通)
 {
 |cff00ff00截手九式LV1|r
 }
 
 STRING 2686
-// 技能: A02F (|cffff00ff截手九式|r), Tip (提示工具 - 普通)
+// 技能: A02F (|CFFCC99FF截手九式|r), Tip (提示工具 - 普通)
 {
 |cff00ff00截手九式LV2|r
 }
 
 STRING 2687
-// 技能: A02F (|cffff00ff截手九式|r), Tip (提示工具 - 普通)
+// 技能: A02F (|CFFCC99FF截手九式|r), Tip (提示工具 - 普通)
 {
 |cff00ff00截手九式LV3|r
 }
 
 STRING 2688
-// 技能: A02F (|cffff00ff截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02F (|CFFCC99FF截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|cffff00ffLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|CFFCC99FFLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
 }
 
 STRING 2689
-// 技能: A02F (|cffff00ff截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02F (|CFFCC99FF截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|cffff00ffLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|CFFCC99FFLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
 }
 
 STRING 2690
-// 技能: A02F (|cffff00ff截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02F (|CFFCC99FF截手九式|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|cffff00ffLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|cffff00ffLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉派掌门技，攻击时用掌气对周围敌人造成大量伤害|n|r|CFFCC99FFLV1 |r|cff00ff00攻击10%几率对敌人造成每1.5秒5000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV2 |r|cff00ff00攻击10%几率对敌人造成每1.5秒20000点伤害，持续15秒，需要消耗90点内力。|n|r|CFFCC99FFLV3 |r|cff00ff00攻击10%几率对敌人造成每1.5秒45000点伤害，持续15秒，需要消耗90点内力。|r
 }
 
 STRING 2691
@@ -16161,39 +16161,39 @@ STRING 2695
 }
 
 STRING 2696
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Hotkey (热键 - 普通)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Hotkey (热键 - 普通)
 {
 B
 }
 
 STRING 2697
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Name (名字)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Name (名字)
 {
-|cffff00ff九阴白骨爪(C)|r
+|CFFCC99FF九阴白骨爪(C)|r
 }
 
 STRING 2698
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Tip (提示工具 - 普通)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00九阴白骨爪LV1|r(|cffffcc00B|r)
 }
 
 STRING 2699
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Tip (提示工具 - 普通)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00九阴白骨爪LV2|r(|cffffcc00B|r)
 }
 
 STRING 2700
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Tip (提示工具 - 普通)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00九阴白骨爪LV3|r(|cffffcc00B|r)
 }
 
 STRING 2701
-// 技能: A02H (|cffff00ff九阴白骨爪(C)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A02H (|CFFCC99FF九阴白骨爪(C)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff九阴真经武功|r|n根据九阴真经下卷修炼出的阴毒武技，以十指摧骨破骨，狠辣无比。释放后极大减缓目标移动速度。（需手动释放）|cfff1efe2|n|r|cffff00ffLV1|r|cff00ff00 持续6秒，减缓60%移速，CD10秒|n|r|cffff00ffLV2|r|cff00ff00 持续6秒，减缓90%移速，CD10秒|n|r|cffff00ffLV3|r|cff00ff00 持续6秒，减缓120%移速，CD10秒|r
+|CFFCC99FF九阴真经武功|r|n根据九阴真经下卷修炼出的阴毒武技，以十指摧骨破骨，狠辣无比。释放后极大减缓目标移动速度。（需手动释放）|cfff1efe2|n|r|CFFCC99FFLV1|r|cff00ff00 持续6秒，减缓60%移速，CD10秒|n|r|CFFCC99FFLV2|r|cff00ff00 持续6秒，减缓90%移速，CD10秒|n|r|CFFCC99FFLV3|r|cff00ff00 持续6秒，减缓120%移速，CD10秒|r
 }
 
 STRING 2702
@@ -16367,7 +16367,7 @@ STRING 2729
 STRING 2730
 // 技能: A02M (|cffff6800莲花掌(W)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff6800丐帮门派武功|r|n|cfff1efe2利用掌力不断吸收周围敌人精血。|r|n|cffff6800LV1|r|cff00ff00 范围800，每秒造成400点伤害，持续5秒，CD10秒|n|r|cffff6800LV2|r|cffff00ff |r|cff00ff00范围800，每秒造成3000点伤害，持续5秒，CD10秒|n|r|cffff6800LV3|r|cff00ff00 范围800，每秒造成20000点伤害，持续5秒，CD10秒|r
+|cffff6800丐帮门派武功|r|n|cfff1efe2利用掌力不断吸收周围敌人精血。|r|n|cffff6800LV1|r|cff00ff00 范围800，每秒造成400点伤害，持续5秒，CD10秒|n|r|cffff6800LV2|r|CFFCC99FF |r|cff00ff00范围800，每秒造成3000点伤害，持续5秒，CD10秒|n|r|cffff6800LV3|r|cff00ff00 范围800，每秒造成20000点伤害，持续5秒，CD10秒|r
 }
 
 STRING 2731
@@ -16409,7 +16409,7 @@ STRING 2736
 STRING 2737
 // 技能: A02N (|cffff6800青竹镖(R)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff丐帮门派武功|r|n|cfff1efe2丐帮武功，向敌人发射暗器，造成大量伤害|r|cff808080|n|r|cffff00ffLV1|r|cff00ff00 造成2000点伤害，CD2秒|n|r|cffff00ffLV2|r|cff00ff00 造成8000点伤害，CD2秒|n|r|cffff00ffLV3 |r|cff00ff00造成18000点伤害，CD2秒|n|r|cffff00ffLV4 |r|cff00ff00造成32000点伤害，CD2秒|r
+|CFFCC99FF丐帮门派武功|r|n|cfff1efe2丐帮武功，向敌人发射暗器，造成大量伤害|r|cff808080|n|r|CFFCC99FFLV1|r|cff00ff00 造成2000点伤害，CD2秒|n|r|CFFCC99FFLV2|r|cff00ff00 造成8000点伤害，CD2秒|n|r|CFFCC99FFLV3 |r|cff00ff00造成18000点伤害，CD2秒|n|r|CFFCC99FFLV4 |r|cff00ff00造成32000点伤害，CD2秒|r
 }
 
 STRING 2738
@@ -16565,7 +16565,7 @@ STRING 2762
 STRING 2763
 // 技能: A02R (|cffff6800铜锤手(R)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff丐帮门派武功|r|n|cfff1efe2丐帮武功，将铜锤掷向对方，造成大量伤害和眩晕|r|cff808080|n|r|cffff00ffLV1|r|cff00ff00 造成10000点伤害，眩晕5秒，CD15秒|n|r|cffff00ffLV2|r|cff00ff00 造成40000点伤害，眩晕6秒，CD15秒|n|r|cffff00ffLV3 |r|cff00ff00造成90000点伤害，眩晕7秒，CD15秒|n|r|cffff00ffLV4 |r|cff00ff00造成160000点伤害，眩晕8秒，CD15秒|n|r|cffff00ffLV5 |r|cff00ff00造成250000点伤害，眩晕9秒，CD15秒（需修炼化功大法后方可升级）|r
+|CFFCC99FF丐帮门派武功|r|n|cfff1efe2丐帮武功，将铜锤掷向对方，造成大量伤害和眩晕|r|cff808080|n|r|CFFCC99FFLV1|r|cff00ff00 造成10000点伤害，眩晕5秒，CD15秒|n|r|CFFCC99FFLV2|r|cff00ff00 造成40000点伤害，眩晕6秒，CD15秒|n|r|CFFCC99FFLV3 |r|cff00ff00造成90000点伤害，眩晕7秒，CD15秒|n|r|CFFCC99FFLV4 |r|cff00ff00造成160000点伤害，眩晕8秒，CD15秒|n|r|CFFCC99FFLV5 |r|cff00ff00造成250000点伤害，眩晕9秒，CD15秒（需修炼化功大法后方可升级）|r
 }
 
 STRING 2764
@@ -16895,7 +16895,7 @@ STRING 2817
 STRING 2818
 // 技能: A031 (|cffff6800丐帮心法(W)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff6800丐帮门派武功|r|n|cfff1efe2丐帮精深内功，瞬间杀死一个单位，并增加单位血量百分比的攻击力。（对BOSS无效。）|r|n|cffff6800LV1|r|cff00ff00 增加单位最大血量5%的攻击力，持续5秒，CD7秒|n|r|cffff6800LV2|r|cffff00ff |r|cff00ff00增加单位最大血量10%的攻击力，持续5秒，CD7秒|n|r|cffff6800LV3|r|cff00ff00 增加单位最大血量15%的攻击力，持续5秒，CD7秒|n|r|cffff6800+九阳神功|r|cff00ff00 加攻击力翻倍|r
+|cffff6800丐帮门派武功|r|n|cfff1efe2丐帮精深内功，瞬间杀死一个单位，并增加单位血量百分比的攻击力。（对BOSS无效。）|r|n|cffff6800LV1|r|cff00ff00 增加单位最大血量5%的攻击力，持续5秒，CD7秒|n|r|cffff6800LV2|r|CFFCC99FF |r|cff00ff00增加单位最大血量10%的攻击力，持续5秒，CD7秒|n|r|cffff6800LV3|r|cff00ff00 增加单位最大血量15%的攻击力，持续5秒，CD7秒|n|r|cffff6800+九阳神功|r|cff00ff00 加攻击力翻倍|r
 }
 
 STRING 2819
@@ -17181,97 +17181,97 @@ E
 }
 
 STRING 2866
-// 技能: A03A (|cffff00ff匹夫有责|r), Name (名字)
+// 技能: A03A (|CFFCC99FF匹夫有责|r), Name (名字)
 {
-|cffff00ff匹夫有责|r
+|CFFCC99FF匹夫有责|r
 }
 
 STRING 2867
-// 技能: A03A (|cffff00ff匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A03A (|CFFCC99FF匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 让恶魔猎手变身为一个威力巨大的恶魔。该恶魔具有远程攻击能力并会增加500点的生命值。|n持续60秒。
 }
 
 STRING 2868
-// 技能: A03A (|cffff00ff匹夫有责|r), Tip (提示工具 - 普通)
+// 技能: A03A (|CFFCC99FF匹夫有责|r), Tip (提示工具 - 普通)
 {
-|cffff00ff匹夫有责|r(|cffffcc00T|r)
+|CFFCC99FF匹夫有责|r(|cffffcc00T|r)
 }
 
 STRING 2869
-// 技能: A03A (|cffff00ff匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A03A (|CFFCC99FF匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 当门派有难时，匹夫也会爆发出强大的力量。
 }
 
 STRING 2870
-// 技能: A03B (|cffff00ff匹夫有责|r), Name (名字)
+// 技能: A03B (|CFFCC99FF匹夫有责|r), Name (名字)
 {
-|cffff00ff匹夫有责|r
+|CFFCC99FF匹夫有责|r
 }
 
 STRING 2871
-// 技能: A03B (|cffff00ff匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A03B (|CFFCC99FF匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 让恶魔猎手变身为一个威力巨大的恶魔。该恶魔具有远程攻击能力并会增加500点的生命值。|n持续60秒。
 }
 
 STRING 2872
-// 技能: A03B (|cffff00ff匹夫有责|r), Tip (提示工具 - 普通)
+// 技能: A03B (|CFFCC99FF匹夫有责|r), Tip (提示工具 - 普通)
 {
-|cffff00ff匹夫有责|r(|cffffcc00T|r)
+|CFFCC99FF匹夫有责|r(|cffffcc00T|r)
 }
 
 STRING 2873
-// 技能: A03B (|cffff00ff匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A03B (|CFFCC99FF匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 当门派有难时，匹夫也会爆发出强大的力量。
 }
 
 STRING 2874
-// 技能: A03C (|cffff00ff匹夫有责|r), Name (名字)
+// 技能: A03C (|CFFCC99FF匹夫有责|r), Name (名字)
 {
-|cffff00ff匹夫有责|r
+|CFFCC99FF匹夫有责|r
 }
 
 STRING 2875
-// 技能: A03C (|cffff00ff匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A03C (|CFFCC99FF匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 让恶魔猎手变身为一个威力巨大的恶魔。该恶魔具有远程攻击能力并会增加500点的生命值。|n持续60秒。
 }
 
 STRING 2876
-// 技能: A03C (|cffff00ff匹夫有责|r), Tip (提示工具 - 普通)
+// 技能: A03C (|CFFCC99FF匹夫有责|r), Tip (提示工具 - 普通)
 {
-|cffff00ff匹夫有责|r(|cffffcc00T|r)
+|CFFCC99FF匹夫有责|r(|cffffcc00T|r)
 }
 
 STRING 2877
-// 技能: A03C (|cffff00ff匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A03C (|CFFCC99FF匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 当门派有难时，匹夫也会爆发出强大的力量。
 }
 
 STRING 2878
-// 技能: A03D (|cffff00ff匹夫有责|r), Name (名字)
+// 技能: A03D (|CFFCC99FF匹夫有责|r), Name (名字)
 {
-|cffff00ff匹夫有责|r
+|CFFCC99FF匹夫有责|r
 }
 
 STRING 2879
-// 技能: A03D (|cffff00ff匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A03D (|CFFCC99FF匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 让恶魔猎手变身为一个威力巨大的恶魔。该恶魔具有远程攻击能力并会增加500点的生命值。|n持续60秒。
 }
 
 STRING 2880
-// 技能: A03D (|cffff00ff匹夫有责|r), Tip (提示工具 - 普通)
+// 技能: A03D (|CFFCC99FF匹夫有责|r), Tip (提示工具 - 普通)
 {
-|cffff00ff匹夫有责|r(|cffffcc00T|r)
+|CFFCC99FF匹夫有责|r(|cffffcc00T|r)
 }
 
 STRING 2881
-// 技能: A03D (|cffff00ff匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A03D (|CFFCC99FF匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 当门派有难时，匹夫也会爆发出强大的力量。
 }
@@ -17331,43 +17331,43 @@ STRING 2890
 }
 
 STRING 2891
-// 技能: A03L (|cffff00ff四象掌(B)|r), Hotkey (热键 - 普通)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Hotkey (热键 - 普通)
 {
 B
 }
 
 STRING 2892
-// 技能: A03L (|cffff00ff四象掌(B)|r), Name (名字)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Name (名字)
 {
-|cffff00ff四象掌(B)|r
+|CFFCC99FF四象掌(B)|r
 }
 
 STRING 2893
-// 技能: A03L (|cffff00ff四象掌(B)|r), Tip (提示工具 - 普通)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00四象掌LV1|r(B)
 }
 
 STRING 2894
-// 技能: A03L (|cffff00ff四象掌(B)|r), Tip (提示工具 - 普通)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00四象掌LV2|r(B)
 }
 
 STRING 2895
-// 技能: A03L (|cffff00ff四象掌(B)|r), Tip (提示工具 - 普通)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Tip (提示工具 - 普通)
 {
 |cff00ff00四象掌LV3|r(B)
 }
 
 STRING 2896
-// 技能: A03L (|cffff00ff四象掌(B)|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Ubertip (提示工具 - 普通 - 扩展)
 {
-|cffff00ff峨眉门派武功|r|n|cfff1efe2峨眉入门掌法，对周围敌人造成范围伤害|n|r|cffff00ffLV1|r|cff00ff00 600范围，每阵刀阵旋风造成50点伤害|n|r|cffff00ffLV2|r|cff00ff00 700范围，每阵刀阵旋风造成200点伤害|n|r|cffff00ffLV3|r|cff00ff00 800范围，每阵刀阵旋风造成450点伤害|r
+|CFFCC99FF峨眉门派武功|r|n|cfff1efe2峨眉入门掌法，对周围敌人造成范围伤害|n|r|CFFCC99FFLV1|r|cff00ff00 600范围，每阵刀阵旋风造成50点伤害|n|r|CFFCC99FFLV2|r|cff00ff00 700范围，每阵刀阵旋风造成200点伤害|n|r|CFFCC99FFLV3|r|cff00ff00 800范围，每阵刀阵旋风造成450点伤害|r
 }
 
 STRING 2897
-// 技能: A03L (|cffff00ff四象掌(B)|r), Unhotkey (热键 -关闭)
+// 技能: A03L (|CFFCC99FF四象掌(B)|r), Unhotkey (热键 -关闭)
 {
 B
 }
@@ -19173,25 +19173,25 @@ R
 }
 
 STRING 3198
-// 技能: A04Z (|cffff00ff匹夫有责|r), Name (名字)
+// 技能: A04Z (|CFFCC99FF匹夫有责|r), Name (名字)
 {
-|cffff00ff匹夫有责|r
+|CFFCC99FF匹夫有责|r
 }
 
 STRING 3199
-// 技能: A04Z (|cffff00ff匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
+// 技能: A04Z (|CFFCC99FF匹夫有责|r), Researchubertip (提示工具 - 学习 - 扩展)
 {
 让恶魔猎手变身为一个威力巨大的恶魔。该恶魔具有远程攻击能力并会增加500点的生命值。|n持续60秒。
 }
 
 STRING 3200
-// 技能: A04Z (|cffff00ff匹夫有责|r), Tip (提示工具 - 普通)
+// 技能: A04Z (|CFFCC99FF匹夫有责|r), Tip (提示工具 - 普通)
 {
-|cffff00ff匹夫有责|r(|cffffcc00T|r)
+|CFFCC99FF匹夫有责|r(|cffffcc00T|r)
 }
 
 STRING 3201
-// 技能: A04Z (|cffff00ff匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
+// 技能: A04Z (|CFFCC99FF匹夫有责|r), Ubertip (提示工具 - 普通 - 扩展)
 {
 当门派有难时，匹夫也会爆发出强大的力量。
 }
@@ -19851,93 +19851,93 @@ STRING 3310
 }
 
 STRING 3311
-// 技能: A06P (建造|cffff00ff峨眉小尼姑|r), Name (名字)
+// 技能: A06P (建造|CFFCC99FF峨眉小尼姑|r), Name (名字)
 {
-建造|cffff00ff峨眉小尼姑|r
+建造|CFFCC99FF峨眉小尼姑|r
 }
 
 STRING 3312
-// 技能: A06Q (建造|cffff00ff峨眉小师妹|r), Name (名字)
+// 技能: A06Q (建造|CFFCC99FF峨眉小师妹|r), Name (名字)
 {
-建造|cffff00ff峨眉小师妹|r
+建造|CFFCC99FF峨眉小师妹|r
 }
 
 STRING 3313
-// 技能: A06R (建造|cffff00ff峨眉小师太|r), Name (名字)
+// 技能: A06R (建造|CFFCC99FF峨眉小师太|r), Name (名字)
 {
-建造|cffff00ff峨眉小师太|r
+建造|CFFCC99FF峨眉小师太|r
 }
 
 STRING 3314
-// 技能: A06S (建造|cffff00ff峨眉俗家弟子|r), Name (名字)
+// 技能: A06S (建造|CFFCC99FF峨眉俗家弟子|r), Name (名字)
 {
-建造|cffff00ff峨眉俗家弟子|r
+建造|CFFCC99FF峨眉俗家弟子|r
 }
 
 STRING 3315
-// 技能: A06T (建造|cffff00ff王翠花|r), Name (名字)
+// 技能: A06T (建造|CFFCC99FF王翠花|r), Name (名字)
 {
-建造|cffff00ff王翠花|r
+建造|CFFCC99FF王翠花|r
 }
 
 STRING 3316
-// 技能: A06U (建造|cffff00ff纪晓芙|r), Name (名字)
+// 技能: A06U (建造|CFFCC99FF纪晓芙|r), Name (名字)
 {
-建造|cffff00ff纪晓芙|r
+建造|CFFCC99FF纪晓芙|r
 }
 
 STRING 3317
-// 技能: A06V (建造|cffff00ff静真|r), Name (名字)
+// 技能: A06V (建造|CFFCC99FF静真|r), Name (名字)
 {
-建造|cffff00ff静真|r
+建造|CFFCC99FF静真|r
 }
 
 STRING 3318
-// 技能: A06W (建造|cffff00ff静和|r), Name (名字)
+// 技能: A06W (建造|CFFCC99FF静和|r), Name (名字)
 {
-建造|cffff00ff静和|r
+建造|CFFCC99FF静和|r
 }
 
 STRING 3319
-// 技能: A06X (建造|cffff00ff静慧|r), Name (名字)
+// 技能: A06X (建造|CFFCC99FF静慧|r), Name (名字)
 {
-建造|cffff00ff静慧|r
+建造|CFFCC99FF静慧|r
 }
 
 STRING 3320
-// 技能: A06Y (建造|cffff00ff方碧琳|r), Name (名字)
+// 技能: A06Y (建造|CFFCC99FF方碧琳|r), Name (名字)
 {
-建造|cffff00ff方碧琳|r
+建造|CFFCC99FF方碧琳|r
 }
 
 STRING 3321
-// 技能: A06Z (建造|cffff00ff苏梦清|r), Name (名字)
+// 技能: A06Z (建造|CFFCC99FF苏梦清|r), Name (名字)
 {
-建造|cffff00ff苏梦清|r
+建造|CFFCC99FF苏梦清|r
 }
 
 STRING 3322
-// 技能: A070 (建造|cffff00ff静道|r), Name (名字)
+// 技能: A070 (建造|CFFCC99FF静道|r), Name (名字)
 {
-建造|cffff00ff静道|r
+建造|CFFCC99FF静道|r
 }
 
 STRING 3323
-// 技能: A071 (建造|cffff00ff静闲|r), Name (名字)
+// 技能: A071 (建造|CFFCC99FF静闲|r), Name (名字)
 {
-建造|cffff00ff静闲|r
+建造|CFFCC99FF静闲|r
 }
 
 STRING 3324
-// 技能: A072 (建造|cffff00ff静空|r), Name (名字)
+// 技能: A072 (建造|CFFCC99FF静空|r), Name (名字)
 {
-建造|cffff00ff静空|r
+建造|CFFCC99FF静空|r
 }
 
 STRING 3325
-// 技能: A073 (建造|cffff00ff赵灵珠|r), Name (名字)
+// 技能: A073 (建造|CFFCC99FF赵灵珠|r), Name (名字)
 {
-建造|cffff00ff赵灵珠|r
+建造|CFFCC99FF赵灵珠|r
 }
 
 STRING 3326
@@ -20031,69 +20031,69 @@ STRING 3340
 }
 
 STRING 3341
-// 技能: A07A (建造|cffff00ff贝锦仪|r), Name (名字)
+// 技能: A07A (建造|CFFCC99FF贝锦仪|r), Name (名字)
 {
-建造|cffff00ff贝锦仪|r
+建造|CFFCC99FF贝锦仪|r
 }
 
 STRING 3342
-// 技能: A07B (建造|cffff00ff静风|r), Name (名字)
+// 技能: A07B (建造|CFFCC99FF静风|r), Name (名字)
 {
-建造|cffff00ff静风|r
+建造|CFFCC99FF静风|r
 }
 
 STRING 3343
-// 技能: A07C (建造|cffff00ff静照|r), Name (名字)
+// 技能: A07C (建造|CFFCC99FF静照|r), Name (名字)
 {
-建造|cffff00ff静照|r
+建造|CFFCC99FF静照|r
 }
 
 STRING 3344
-// 技能: A07D (建造|cffff00ff静虚|r), Name (名字)
+// 技能: A07D (建造|CFFCC99FF静虚|r), Name (名字)
 {
-建造|cffff00ff静虚|r
+建造|CFFCC99FF静虚|r
 }
 
 STRING 3345
-// 技能: A07E (建造|cffff00ff李明霞|r), Name (名字)
+// 技能: A07E (建造|CFFCC99FF李明霞|r), Name (名字)
 {
-建造|cffff00ff李明霞|r
+建造|CFFCC99FF李明霞|r
 }
 
 STRING 3346
-// 技能: A07F (建造|cffff00ff俗家大弟子丁敏君|r), Name (名字)
+// 技能: A07F (建造|CFFCC99FF俗家大弟子丁敏君|r), Name (名字)
 {
-建造|cffff00ff俗家大弟子丁敏君|r
+建造|CFFCC99FF俗家大弟子丁敏君|r
 }
 
 STRING 3347
-// 技能: A07G (建造|cffff00ff静心|r), Name (名字)
+// 技能: A07G (建造|CFFCC99FF静心|r), Name (名字)
 {
-建造|cffff00ff静心|r
+建造|CFFCC99FF静心|r
 }
 
 STRING 3348
-// 技能: A07H (建造|cffff00ff静迦|r), Name (名字)
+// 技能: A07H (建造|CFFCC99FF静迦|r), Name (名字)
 {
-建造|cffff00ff静迦|r
+建造|CFFCC99FF静迦|r
 }
 
 STRING 3349
-// 技能: A07I (建造|cffff00ff大师姐静玄|r), Name (名字)
+// 技能: A07I (建造|CFFCC99FF大师姐静玄|r), Name (名字)
 {
-建造|cffff00ff大师姐静玄|r
+建造|CFFCC99FF大师姐静玄|r
 }
 
 STRING 3350
-// 技能: A07J (建造|cffff00ff周芷若|r), Name (名字)
+// 技能: A07J (建造|CFFCC99FF周芷若|r), Name (名字)
 {
-建造|cffff00ff周芷若|r
+建造|CFFCC99FF周芷若|r
 }
 
 STRING 3351
-// 技能: A07K (建造|cffff00ff峨眉掌门|r), Name (名字)
+// 技能: A07K (建造|CFFCC99FF峨眉掌门|r), Name (名字)
 {
-建造|cffff00ff峨眉掌门|r
+建造|CFFCC99FF峨眉掌门|r
 }
 
 STRING 3352

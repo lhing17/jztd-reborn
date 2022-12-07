@@ -15,6 +15,11 @@ globals
 	Frame array exchangeIcon
 	Frame array exchangeIconStatus
 
+	// 显示抽卡结果的图标
+	Frame array cardResultWidget
+	Frame array cardResultTooltipWidget
+	
+
 	// 顶部菜单
 	Frame array topMenuWidget // 顶部菜单按钮图片
 	Frame array topMenuButton // 顶部菜单按钮
@@ -85,20 +90,48 @@ function showTooltip takes nothing returns nothing
 	local integer i = 1 + GetPlayerId(DzGetTriggerUIEventPlayer())
 	local integer cont = 0
 	local string str = ""
+	local integer id = 0
+	local integer j = 1
+	local integer level = 0
+	local integer gold = 0
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
 		// if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
 		// 	if unitInSelection[i] == null or IsBuilder(GetUnitTypeId(unitInSelection[i])) or GetUnitTypeId(unitInSelection[i]) == 'o00R'  or GetUnitTypeId(unitInSelection[i]) == 'o00N' or GetOwningPlayer(unitInSelection[i]) != DzGetTriggerUIEventPlayer() then
 		// 		return
 		// 	endif
-		// 	call hideOriginalTooltip()
+		
 
 		// 	set cont = LoadInteger(CONT_HT, GetHandleId(unitInSelection[i]), CONT_KEY)
 		// 	set str = "杀敌数：" + I2S(cont) + "\n内力上限+" + I2S(2 * cont) + "\n武学伤害+" + R2S(cont * 0.2) + "%"
 		// 	call tooltipWidget[3].setText(str)
 		// 	call tooltipWidget[1].show()
 		// endif
-		if GetUnitTypeId(unitInSelection[i]) == 'o013' and GetOwningPlayer(unitInSelection[i]) == DzGetTriggerUIEventPlayer() then
+		if GetUnitTypeId(unitInSelection[i]) == 'o014' and GetOwningPlayer(unitInSelection[i]) == DzGetTriggerUIEventPlayer() then
+			set j = 1
+			loop
+				exitwhen j > 4
+				set id = LoadInteger(CARD_HT, i, j)
+				if DzGetTriggerUIEventFrame() == originalAbilityButton[j] and id != 0 then
+					
+					set level = LoadInteger(YDHT, id, TOWER_LEVEL_KEY)
+					if level == 1 then
+						set gold = 500
+					elseif level == 2 then
+						set gold = 1000
+					elseif level == 3 then
+						set gold = 2000
+					elseif level == 4 then
+						set gold = 5000
+					endif
+					call cardResultTooltipWidget[2].setText(YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ITEM, id, "Name"))
+					call cardResultTooltipWidget[4].setText(I2S(gold))
+					call cardResultTooltipWidget[5].setText(YDWEGetObjectPropertyString(YDWE_OBJECT_TYPE_ITEM, id, "Ubertip"))
+					call hideOriginalTooltip()
+					call cardResultTooltipWidget[1].show()
 
+				endif
+				set j = j + 1
+			endloop
 		endif
 		
 	endif
@@ -106,10 +139,11 @@ endfunction
 
 function hideTooltip takes nothing returns nothing
 	if DzGetTriggerUIEventPlayer() == GetLocalPlayer() then
-		if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
-			call showOriginalTooltip()
-			call tooltipWidget[1].hide()
-		endif
+		// if DzGetTriggerUIEventFrame() == originalAbilityButton[5] then
+		call showOriginalTooltip()
+		call tooltipWidget[1].hide()
+		call cardResultTooltipWidget[1].hide()
+		// endif
 	endif
 endfunction
 
@@ -818,9 +852,43 @@ function drawUI_Conditions takes nothing returns boolean
 		set j = j + 1
 	endloop
 
+	set j = 1
+	loop
+		exitwhen j > 4
+		set cardResultWidget[j] = Frame.newImage0(GUI)
+		call cardResultWidget[j].setTexture("ReplaceableTextures\\CommandButtons\\BTNExchangeOne.blp")
+		call cardResultWidget[j].setAllPoints(Frame.getFrame(originalAbilityButton[j]))
+		call cardResultWidget[j].hide()
+		set j = j + 1
+	endloop
+
+	// 抽卡结果
+	set cardResultTooltipWidget[1] = Frame.newTips0(GUI, "tipbox")
+	call cardResultTooltipWidget[1].hide()
+
+	
+	set cardResultTooltipWidget[2] = Frame.newText1(cardResultTooltipWidget[1], "|cFF00FF00功勋|r", "TXA14")
+	call cardResultTooltipWidget[2].setSize(0.22, 0)
+
+	set cardResultTooltipWidget[3] = Frame.newImage1(cardResultTooltipWidget[1], "UI\\Widgets\\EscMenu\\Human\\alliance-gold.blp", 0.04, 0.03)
+
+	set cardResultTooltipWidget[4] = Frame.newText1(cardResultTooltipWidget[1], "500", "TXA11")
+	
+
+	set cardResultTooltipWidget[5] = Frame.newText1(cardResultTooltipWidget[1], "杀敌数：100\n内力上限+200\n伤害+50%", "TXA11")
+	call cardResultTooltipWidget[5].setSize(0.22, 0)
+
+	call cardResultTooltipWidget[5].setPoint(BOTTOMRIGHT, Frame.getFrame(originalAbilityButton[4]), TOPRIGHT, 0.01, 0.035)
+	call cardResultTooltipWidget[3].setPoint(BOTTOMLEFT, cardResultTooltipWidget[5], TOPLEFT, 0, 0.005)
+	call cardResultTooltipWidget[4].setPoint(LEFT, cardResultTooltipWidget[3], LEFT, 0.018, 0)
+	call cardResultTooltipWidget[2].setPoint(BOTTOMLEFT, cardResultTooltipWidget[3], TOPLEFT, 0, 0.005)
+	call cardResultTooltipWidget[1].setPoint(TOPLEFT, cardResultTooltipWidget[2], TOPLEFT, - 0.005, 0.005)
+	call cardResultTooltipWidget[1].setPoint(BOTTOMRIGHT, cardResultTooltipWidget[5], BOTTOMRIGHT, 0.005, - 0.005)
 	
 	return false
 endfunction
+
+
 
 
 
