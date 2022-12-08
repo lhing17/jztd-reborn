@@ -1,3 +1,8 @@
+globals
+    integer array goldLevel
+    integer array lumberLevel
+endglobals
+
 function IsXuanTieJian takes nothing returns boolean
     return IsUnitAlly(GetFilterUnit(), GetOwningPlayer(GetTriggerUnit())) and IsUnitAliveBJ(GetFilterUnit())
 endfunction
@@ -117,6 +122,131 @@ function fastDrop takes unit u, real x, real y returns nothing
 	endloop
 	set u = null
     set it = null
+endfunction
+
+function addFoodTimer takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level = LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 5 then
+        call UnitRemoveAbility(u, 'A09G')
+        call UnitAddAbility(u, 'A09G')
+        call SetUnitAbilityLevel(u, 'A09G', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09G')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function addFood takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level = GetUnitAbilityLevel(u, 'A09G')
+    local timer t = CreateTimer()
+    call SetPlayerState(GetOwningPlayer(u), PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(GetOwningPlayer(u), PLAYER_STATE_RESOURCE_FOOD_CAP) + 1)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function addFoodTimer)
+
+    set t = null
+endfunction
+
+function addLumberLevelTimer takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level = LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 20 then
+        call UnitRemoveAbility(u, 'A09H')
+        call UnitAddAbility(u, 'A09H')
+        call SetUnitAbilityLevel(u, 'A09H', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09H')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function addLumberLevel takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level = GetUnitAbilityLevel(u, 'A09H')
+    local timer t = CreateTimer()
+    set lumberLevel[i] = lumberLevel[i] + 1
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function addLumberLevelTimer)
+
+    set t = null
+
+endfunction
+
+function addGoldLevelTimer takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level = LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 20 then
+        call UnitRemoveAbility(u, 'A09I')
+        call UnitAddAbility(u, 'A09I')
+        call SetUnitAbilityLevel(u, 'A09I', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09I')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function addGoldLevel takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level = GetUnitAbilityLevel(u, 'A09I')
+    local timer t = CreateTimer()
+    set goldLevel[i] = goldLevel[i] + 1
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function addGoldLevelTimer)
+
+    set t = null
+endfunction
+
+function unlockDrawCardTimer takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level = LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 2 then
+        call UnitRemoveAbility(u, 'A09J')
+        call UnitAddAbility(u, 'A09J')
+        call SetUnitAbilityLevel(u, 'A09J', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09J')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function unlockDrawCard takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level = GetUnitAbilityLevel(u, 'A09J')
+    local timer t = CreateTimer()
+    if level == 1 then
+        call SetPlayerTechResearched(Player(i - 1), 'R00C', 1)
+    elseif level == 2 then
+        call SetPlayerTechResearched(Player(i - 1), 'R00D', 1)
+    endif
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function unlockDrawCardTimer)
+
+    set t = null
 endfunction
 
 function UseAbility_Conditions takes nothing returns boolean
@@ -554,6 +684,26 @@ function UseAbility_Conditions takes nothing returns boolean
         call getCard(i, 4)
     endif
 
+    // 增加可用人口
+    if id == 'A09G' then
+        call addFood(u)
+    endif
+
+    // 增加珍稀币等级
+    if id == 'A09H' then
+        call addLumberLevel(u)
+    endif
+
+    // 增加金币等级
+    if id == 'A09I' then
+        call addGoldLevel(u)
+    endif
+
+    // 解锁中/高级招募
+    if id == 'A09J' then
+        call unlockDrawCard(u)
+    endif
+
 
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
@@ -575,6 +725,8 @@ function UseAbility takes nothing returns nothing
         set goldHit[i] = 0
         set lumberHit[i] = 0
         set kungfuCoeff[i] = 0.
+        set goldLevel[i] = 0
+        set lumberLevel[i] = 0
         set i = i + 1
     endloop
     call TriggerRegisterAnyUnitEventBJ(t, EVENT_PLAYER_UNIT_SPELL_EFFECT)

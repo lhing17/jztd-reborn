@@ -666,8 +666,6 @@ function Trig_ChooseNanDuFunc013T takes nothing returns nothing
         call DialogDisplay(LoadPlayerHandle(YDLOC, GetHandleId(GetExpiredTimer()), $32A9E4C8), udg_select_diff, false)
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cff00FFFF自动选择了难度|cFF00CC00初入江湖(N1)")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "|cFF00CC00初入江湖(N1)|r难度下：")
-        call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始资金为|cFF00CC001000|r")
-        call DisplayTimedTextToForce(GetPlayersAll(), 10., "起始可用人口为|cFF00CC002|r")
         call DisplayTimedTextToForce(GetPlayersAll(), 10., "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
         call SetPlayerTechResearchedSwap('R000', 1, Player(5))
@@ -677,6 +675,7 @@ function Trig_ChooseNanDuFunc013T takes nothing returns nothing
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
             call SetPlayerStateBJ(ConvertedPlayer(bj_forLoopAIndex), PLAYER_STATE_RESOURCE_GOLD, 1000)
+            call SetPlayerStateBJ(Player(bj_forLoopAIndex - 1), PLAYER_STATE_RESOURCE_LUMBER, 10)
             call SetPlayerStateBJ(ConvertedPlayer(bj_forLoopAIndex), PLAYER_STATE_RESOURCE_FOOD_CAP, 2)
 
             call createBuilderForPlayer(bj_forLoopAIndex)
@@ -723,8 +722,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[1] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00CC00初入江湖(N1)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF00CC00初入江湖(N1)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00CC001000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00CC002|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00CC001|r")
         set udg_difficulty = 1
         call SetPlayerTechResearchedSwap('R000', 1, Player(5))
@@ -733,8 +730,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[2] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCC0066牛刀小试(N2)")
         call DisplayTextToForce(GetPlayersAll(), "|cFFCC0066牛刀小试(N2)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFCC00661000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFCC00662|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFCC00662|r")
         set udg_difficulty = 2
         call SetPlayerTechResearchedSwap('R000', 3, Player(5))
@@ -743,8 +738,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[3] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF6600初出茅庐(N3)")
         call DisplayTextToForce(GetPlayersAll(), "|cFFFF6600初出茅庐(N3)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFFFF66001000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFFFF66002|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFFFF66003|r")
         set udg_difficulty = 3
         call SetPlayerTechResearchedSwap('R000', 5, Player(5))
@@ -753,8 +746,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[4] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0041FF初窥门径(N4)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF0041FF初窥门径(N4)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF0041FF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF0041FF72|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF0041FF4|r")
         set udg_difficulty = 4
         call SetPlayerTechResearchedSwap('R000', 7, Player(5))
@@ -763,8 +754,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[5] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF1FBF00略有小成(N5)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF1FBF00略有小成(N5)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF1FBF001000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF1FBF002|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF1FBF005|r")
         set udg_difficulty = 5
         call SetPlayerTechResearchedSwap('R000', 9, Player(5))
@@ -773,8 +762,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[6] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFFF0000已有小成(N6)")
         call DisplayTextToForce(GetPlayersAll(), "|cFFFF0000已有小成(N6)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF2|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF6|r")
         set udg_difficulty = 6
         call SetPlayerTechResearchedSwap('R000', 11, Player(5))
@@ -783,8 +770,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[7] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF00FFFF渐入佳境(N7)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF00FFFF渐入佳境(N7)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF2|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF7|r")
         set udg_difficulty = 7
         call SetPlayerTechResearchedSwap('R000', 13, Player(5))
@@ -793,8 +778,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[8] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFFCCCC00驾轻就熟(N8)")
         call DisplayTextToForce(GetPlayersAll(), "|cFFCCCC00驾轻就熟(N8)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF2|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF8|r")
         set udg_difficulty = 8
         call SetPlayerTechResearchedSwap('R000', 15, Player(5))
@@ -803,8 +786,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[9] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF0099CC略有大成(N9)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF0099CC略有大成(N9)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF2|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF9|r")
         set udg_difficulty = 9
         call SetPlayerTechResearchedSwap('R000', 17, Player(5))
@@ -813,8 +794,6 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
     if GetClickedButtonBJ() == udg_diff[10] then
         call DisplayTextToForce(GetPlayersAll(), "|cffff0000" + GetPlayerName(Player(0)) + "|cff00FFFF选择了难度|cFF66CC99已有大成(N10)")
         call DisplayTextToForce(GetPlayersAll(), "|cFF66CC99已有大成(N10)|r难度下：")
-        call DisplayTextToForce(GetPlayersAll(), "起始资金为|cFF00FFFF1000|r")
-        call DisplayTextToForce(GetPlayersAll(), "起始可用人口为|cFF00FFFF2|r")
         call DisplayTextToForce(GetPlayersAll(), "进攻怪防御等级、速度等级、血量和回血等级为|cFF00FFFF10|r")
         set udg_difficulty = 10
         call SetPlayerTechResearchedSwap('R000', 19, Player(5))
@@ -824,6 +803,7 @@ function Trig_ChooseNanDu_2Actions takes nothing returns nothing
         exitwhen i > 4
         call SetPlayerStateBJ(Player(i - 1), PLAYER_STATE_RESOURCE_FOOD_CAP, 2)
         call SetPlayerStateBJ(Player(i - 1), PLAYER_STATE_RESOURCE_GOLD, 1000)
+        call SetPlayerStateBJ(Player(i - 1), PLAYER_STATE_RESOURCE_LUMBER, 10)
         call createBuilderForPlayer(i)
         set i = i + 1
     endloop
