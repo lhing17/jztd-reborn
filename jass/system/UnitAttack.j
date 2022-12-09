@@ -2,6 +2,7 @@ globals
     constant integer ATTR_STR = 1 // 力量
     constant integer ATTR_AGI = 2 // 敏捷
     constant integer ATTR_INT = 3 // 智力
+    constant integer ATTR_ALL = 4 // 全属性
 endglobals
 
 
@@ -115,8 +116,8 @@ function UnitAttack_Conditions takes nothing returns boolean
         // endif
     endif
 
-    // 韦陀棍法 (攻击 + 10 * 力量 ) * 1 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A001', 500, 10, 1, ATTR_STR, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
+    // 韦陀棍法 (攻击 + 10 * 全属性 ) * 1 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A001', 500, 10, 1, ATTR_ALL, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
 
     // 虾米神拳 (攻击 + 10 * 敏捷 ) * 1 * 技能等级 * 技能等级
     call PassiveRangeDamage(u, ut, 'A045', 800, 10, 1, ATTR_AGI, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)

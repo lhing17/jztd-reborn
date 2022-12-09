@@ -334,6 +334,8 @@ function PassiveRangeDamage takes unit attacker, unit attackee, integer spell_id
         set attr = GetHeroAgi(attacker, true)
     elseif whichAttr == 3 then
         set attr = GetHeroInt(attacker, true)
+    elseif whichAttr == 4 then
+        set attr = GetHeroStr(attacker, true) + GetHeroAgi(attacker, true) + GetHeroInt(attacker, true)
     endif
 
     // 基础伤害
@@ -415,6 +417,8 @@ function PassiveSingleDamage takes unit attacker, unit attackee, integer spell_i
         set attr = GetHeroAgi(attacker, true)
     elseif whichAttr == 3 then
         set attr = GetHeroInt(attacker, true)
+    elseif whichAttr == 4 then
+        set attr = GetHeroStr(attacker, true) + GetHeroAgi(attacker, true) + GetHeroInt(attacker, true)
     endif
 
     // 基础伤害

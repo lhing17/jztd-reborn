@@ -74,7 +74,7 @@ library TowerLibrary
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
                 set id = 'A00L'
             elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
-                set id = 'A01Q'
+                set id = 'A03L'
             elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
                 set id = 'A02T'
             elseif LoadStr(NHT, tower_id, 1) == "全真" then
@@ -218,11 +218,11 @@ library TowerLibrary
         // O10I 武当掌门 武当身法	
         call SaveTowerAbility_1('O10I', 'A00I', 1)
 
-        // O10J 峨眉小师太 峨眉心法	
-        call SaveTowerAbility_1('O10J', 'A029', 1)
+        // O10J 峨眉小师太 峨眉入门剑法
+        call SaveTowerAbility_1('O10J', 'A01R', 1)
 
         // O10K 纪晓芙 四象掌	
-        call SaveTowerAbility_1('O10K', 'A03L', 1)
+        call SaveTowerAbility_1('O10K', 'A01Q', 1)
 
         // O10L 静慧 金顶绵掌	
         call SaveTowerAbility_1('O10L', 'A01V', 1)
