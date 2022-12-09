@@ -200,6 +200,42 @@ function mutatedAttacker takes unit u returns nothing
 	endif
 endfunction
 
+function getGoldByLevel takes integer i returns integer
+    // 100 200 300 400 500 700 900 1100 1300 1500 1900 2300 2700 3100 3500 4300 5100 5900 6700 7500
+    local integer level = goldLevel[i]
+    local integer gold = 0
+    if level <= 5 then
+        set gold = 100 * level
+    elseif level <= 10 then
+        set gold = 500 + 200 * (level - 5)
+    elseif level <= 15 then
+        set gold = 1500 + 400 * (level - 10)
+    elseif level <= 20 then
+        set gold = 3500 + 800 * (level - 15)
+    else
+        set gold = 7500 + 800 * (level - 20)
+    endif
+    return gold
+endfunction
+
+function getLumberByLevel takes integer i returns integer
+    // 10 15 20 25 30 40 50 60 70 80 100 120 140 160 180 220 260 300 340 380
+    local integer level = lumberLevel[i]
+    local integer lumber = 0
+    if level <= 5 then
+        set lumber = 5 * level + 5
+    elseif level <= 10 then
+        set lumber = 30 + 10 * (level - 5)
+    elseif level <= 15 then
+        set lumber = 80 + 20 * (level - 10)
+    elseif level <= 20 then
+        set lumber = 180 + 40 * (level - 15)
+    else
+        set lumber = 380 + 40 * (level - 20)
+    endif
+    return lumber
+endfunction
+
 function spawn takes nothing returns nothing
     local integer i = 0
     local integer j = 0
@@ -217,6 +253,8 @@ function spawn takes nothing returns nothing
     local real goldCoeff = 1
     local integer lumber = 0
     local integer lumberAddition = 0
+    local integer extraGold = 0
+    local integer extraLumber = 0
     set wave = wave + 1
     set loc[0] = GetRectCenter(gg_rct_spawn1)
     set loc[1] = GetRectCenter(gg_rct_spawn2)
@@ -274,7 +312,7 @@ function spawn takes nothing returns nothing
             endif
 
             set gold = R2I(goldCoeff * gold)
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+" + I2S(luckAddition) + "，所有塔恢复30%内力")
+            call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+" + I2S(luckAddition) + "，所有塔恢复30%内力")
             set g = CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverManaAndEquipEffect)
@@ -282,9 +320,22 @@ function spawn takes nothing returns nothing
             if goldHit[i + 1] == 1 then
                 set randReal = GetRandomReal(2, 4)
                 set goldHit[i + 1] = 0
-                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
+                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[系统]|r|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif
             call AdjustPlayerStateBJ(R2I(gold * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
+
+            set extraGold = getGoldByLevel(i + 1)
+            if extraGold > 0 then
+                call AdjustPlayerStateBJ(extraGold, Player(i), PLAYER_STATE_RESOURCE_GOLD)
+                call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r由于升级了科技，额外获得黄金" + I2S(extraGold))
+            endif
+
+            set extraLumber = getLumberByLevel(i + 1)
+            if extraLumber > 0 then
+                call AdjustPlayerStateBJ(extraLumber, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r由于升级了科技，额外获得木材" + I2S(extraLumber))
+            endif
+
         endif
         set j = 1
         loop
@@ -330,9 +381,9 @@ function spawn takes nothing returns nothing
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，存活并击败教主即可获得胜利！")
                         set finalBossAttack = true
                     else
-                        set lumber = 2 * j - 1
+                        set lumber = 20
                         if winDifficulty[i + 1] >= 4 then
-                            set lumber = lumber + 1
+                            set lumber = lumber + 10
                         endif
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻，奖励珍稀币" + I2S(lumber) + "个")
                         call AdjustPlayerStateBJ((lumber) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)

@@ -61,6 +61,14 @@ library TowerLibrary
             local integer id = 0
             local integer tower_id = GetUnitTypeId(u)
 
+            if IsUnitType(u, UNIT_TYPE_HERO) and not IsBuilder(tower_id) then
+                call UnitAddAbility(u, 'A09K')
+                call UnitMakeAbilityPermanent(u, true, 'A09K')
+                call UnitAddAbility(u, 'A000')
+                call UnitMakeAbilityPermanent(u, true, 'A000')
+            endif
+               
+
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id = 'A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then

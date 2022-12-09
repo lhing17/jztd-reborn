@@ -249,6 +249,38 @@ function unlockDrawCard takes unit u returns nothing
     set t = null
 endfunction
 
+function heroLevelUpTimer takes nothing returns nothing
+    local timer t = GetExpiredTimer()
+    local unit u = LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level = LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 29 then
+        call UnitRemoveAbility(u, 'A09K')
+        call UnitAddAbility(u, 'A09K')
+        call SetUnitAbilityLevel(u, 'A09K', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09K')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t = null
+    set u = null
+endfunction
+
+function heroLevelUp takes unit u returns nothing
+    local integer i = 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level = GetUnitAbilityLevel(u, 'A09K')
+    local timer t = CreateTimer()
+
+    call SetHeroLevel(u, GetHeroLevel(u) + 1, true)
+
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function heroLevelUpTimer)
+
+    set t = null
+endfunction
+
 function UseAbility_Conditions takes nothing returns boolean
     local integer id = GetSpellAbilityId()
     local unit u = GetTriggerUnit()
@@ -266,6 +298,8 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt = 0
     local group g = null
     local integer k = 0
+    local integer returnGold = 0
+    local integer level = 0
 
     // 装备加成缩减CD
     if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) > 0 then
@@ -334,8 +368,27 @@ function UseAbility_Conditions takes nothing returns boolean
 
     // 出售塔
     if id == 'A000' then
-        call AdjustPlayerStateBJ(GetUnitPointValue(u), p, PLAYER_STATE_RESOURCE_GOLD)
-        call CreateTextTagUnitBJ("+" + I2S(GetUnitPointValue(u)), u, 0, 11, 255, 215, 0, 30)
+        
+        set level = LoadInteger(YDHT, getStructItem(GetUnitTypeId(u)), TOWER_LEVEL_KEY)
+        if level == 1 then
+            set returnGold = 500
+        elseif level == 2 then
+            set returnGold = 1000
+        elseif level == 3 then
+            set returnGold = 2000
+        elseif level == 4 then
+            set returnGold = 5000
+        endif
+
+        set level = GetHeroLevel(u)
+        // 英雄等级为1时，不返还金钱；英雄等级为2时，返还100；英雄等级为3时，返还300；英雄等级为4时，返还600；英雄等级为5时，返还1000；以此类推
+        set returnGold = returnGold + level * (level - 1) * 50
+
+        // 只返还80%
+        set returnGold = R2I(returnGold * 0.8)
+        call AdjustPlayerStateBJ(returnGold, p, PLAYER_STATE_RESOURCE_GOLD)
+
+        call CreateTextTagUnitBJ("+" + I2S(returnGold), u, 0, 11, 255, 215, 0, 30)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
         call DestroyEffectBJ(AddSpecialEffectLoc("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", loc))
         call YDWETimerDestroyTextTag(.65, GetLastCreatedTextTag())
@@ -702,6 +755,11 @@ function UseAbility_Conditions takes nothing returns boolean
     // 解锁中/高级招募
     if id == 'A09J' then
         call unlockDrawCard(u)
+    endif
+
+    // 英雄升级
+    if id == 'A09K' then
+        call heroLevelUp(u)
     endif
 
 

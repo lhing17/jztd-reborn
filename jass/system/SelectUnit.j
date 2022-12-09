@@ -9,11 +9,7 @@ function showHealthPointAction takes nothing returns nothing
     if GetTriggerUnit() != null then
         set unitInSelection[i] = GetTriggerUnit()
         if GetTriggerPlayer() == GetLocalPlayer() then
-            loop
-                exitwhen j > cardMax[i]
-                call cardResultWidget[j].hide()
-                set j = j + 1
-            endloop
+            call refreshCardResultWidget(i)
         endif
     endif
     if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then

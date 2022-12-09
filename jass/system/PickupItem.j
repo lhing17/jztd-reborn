@@ -176,8 +176,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
                 set save_present[player_i] = 1
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了小型资源包")
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 3000)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 10)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
             endif
@@ -189,8 +188,8 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2lumber[player_i] != 1 then
                 set point2lumber[player_i] = 1
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 3)
-                call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00珍稀币+3，扣除5积分")
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 30)
+                call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00珍稀币+30，扣除5积分")
                 call pointChange(player_i, 5)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
@@ -245,7 +244,7 @@ function GoldLumberExChange takes integer player_i, integer item_id, unit u retu
                 if wave >= 15 then
                     set middle_lumber[player_i] = 1
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了中型珍稀币包")
-                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 8)
+                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 80)
                 else
                     call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933限第15波以后领取|r")
                 endif
@@ -299,7 +298,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(7, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(70, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 2 then
             if udg_jiuyin[player_i] == 0 then
@@ -317,7 +316,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 3 then
             if udg_douzhuan[player_i] == 0 then
@@ -325,7 +324,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习斗转星移|r")
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 4 then
             if udg_xixing[player_i] == 0 then
@@ -333,7 +332,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习吸星大法|r")
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 5 then
             if udg_huagong[player_i] == 0 then
@@ -346,7 +345,7 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(30, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         endif
     endif

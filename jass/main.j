@@ -325,6 +325,16 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0011, "overhead")
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0012, "overhead")
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0013, "overhead")
+    call ShowUnitHide(gg_unit_o00M_0010)
+    call ShowUnitHide(gg_unit_o00M_0011)
+    call ShowUnitHide(gg_unit_o00M_0012)
+    call ShowUnitHide(gg_unit_o00M_0013)
+
+    // 兑换商店
+    call ShowUnitHide(gg_unit_o013_0027)
+    call ShowUnitHide(gg_unit_o013_0028)
+    call ShowUnitHide(gg_unit_o013_0029)
+    call ShowUnitHide(gg_unit_o013_0030)
 
     // 绝世内功
     call AddSpecialEffectTarget("jueshineigong.mdx", gg_unit_o00K_0021, "overhead")
@@ -1261,7 +1271,7 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower[tower_num + 1] = s__Tower_create(u, GetItemNum(u))
         set tower_num = tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
-            call UnitAddItemById(u, 'I02L')
+            // call UnitAddItemById(u, 'I02L')
 
             // 通关N8，额外送一把史诗武器
             if winDifficulty[i] >= 8 then
@@ -1270,9 +1280,9 @@ function EnterMap_Conditions takes nothing returns boolean
                 call addExtraAttr(u, it2)
             endif
 
-            // 通关N9，额外送3个珍稀币
+            // 通关N9，额外送30个珍稀币
             if winDifficulty[i] >= 9 then
-                call addLumber(p, 3)
+                call addLumber(p, 30)
             endif
 
             // 购买重制版出门多一个欧皇大礼包

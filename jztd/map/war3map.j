@@ -25,12 +25,12 @@ constant boolean LIBRARY_TowerLibrary=true
 //endglobals from TowerLibrary
 //globals from YDTriggerSaveLoadSystem:
 constant boolean LIBRARY_YDTriggerSaveLoadSystem=true
-hashtable YDHT
 hashtable YDLOC
 //endglobals from YDTriggerSaveLoadSystem
 //globals from YDWEBase:
 constant boolean LIBRARY_YDWEBase=true
 //ȫ�ֹ�ϣ�� 
+hashtable YDHT= null
 string bj_AllString=".................................!.#$%&'()*+,-./0123456789:;<=>.@ABCDEFGHIJKLMNOPQRSTUVWXYZ[.]^_`abcdefghijklmnopqrstuvwxyz{|}~................................................................................................................................"
 //全局系统变量
 unit bj_lastAbilityCastingUnit=null
@@ -46,10 +46,10 @@ real yd_MapMaxX= 0
 real yd_MapMinX= 0
 real yd_MapMaxY= 0
 real yd_MapMinY= 0
-string array YDWEBase___yd_PlayerColor
-trigger array YDWEBase___AbilityCastingOverEventQueue
-integer array YDWEBase___AbilityCastingOverEventType
-integer YDWEBase___AbilityCastingOverEventNumber= 0
+string array YDWEBase__yd_PlayerColor
+trigger array YDWEBase__AbilityCastingOverEventQueue
+integer array YDWEBase__AbilityCastingOverEventType
+integer YDWEBase__AbilityCastingOverEventNumber= 0
 //endglobals from YDWEBase
 //globals from YDWEGeneralBounsSystem:
 constant boolean LIBRARY_YDWEGeneralBounsSystem=true
@@ -936,48 +936,8 @@ endfunction
 
 //Generated method caller for Tower.setAbility
 function sc__Tower_setAbility takes integer this returns nothing
-            local integer i= 1
-            local integer id= 0
-            local integer tower_id= GetUnitTypeId(s__Tower_u[this])
-            if LoadStr(NHT, tower_id, 1) == "少林" then
-                set id='A001'
-            elseif LoadStr(NHT, tower_id, 1) == "武当" then
-                set id='A00L'
-            elseif LoadStr(NHT, tower_id, 1) == "峨眉" then
-                set id='A01Q'
-            elseif LoadStr(NHT, tower_id, 1) == "丐帮" then
-                set id='A02T'
-            elseif LoadStr(NHT, tower_id, 1) == "全真" then
-                set id='A04O'
-            endif
-            if id != 0 then
-                call UnitAddAbility(s__Tower_u[this], id)
-                call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, 0, id)
-                call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, 0, 1)
-            endif
-            loop
-                exitwhen i >= 11
-                if LoadInteger(YDHT, tower_id * 2, i) != 0 then
-                    if GetUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i)) == 0 then
-                        call UnitAddAbility(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i))
-                    endif
-                    call SetUnitAbilityLevel(s__Tower_u[this], LoadInteger(YDHT, tower_id * 2, i), LoadInteger(YDHT, tower_id * 3, i))
-                    call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 2, i, LoadInteger(YDHT, tower_id * 2, i))
-                    call SaveInteger(YDHT, GetHandleId(s__Tower_u[this]) * 3, i, LoadInteger(YDHT, tower_id * 3, i))
-                    if LoadInteger(YDHT, tower_id * 2, i) == 'A00R' then
-                        call UnitRemoveAbility(s__Tower_u[this], 'A00Q')
-                        call UnitAddAbility(s__Tower_u[this], 'A00Q')
-                        call SetPlayerAbilityAvailableBJ(false, 'A00Q', GetOwningPlayer(s__Tower_u[this]))
-                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00O', LoadInteger(YDHT, tower_id * 3, i))
-                        call SetUnitAbilityLevel(s__Tower_u[this], 'A00P', LoadInteger(YDHT, tower_id * 3, i))
-                    endif
-                    if LoadInteger(YDHT, tower_id * 2, i) == 'A009' then
-                        call PauseUnit(s__Tower_u[this], true)
-                        call PauseUnit(s__Tower_u[this], false)
-                    endif
-                endif
-                set i=i + 1
-            endloop
+    set f__arg_this=this
+    call TriggerEvaluate(st__Tower_setAbility)
 endfunction
 
 //Generated method caller for Tower.setItemNum
@@ -1699,6 +1659,13 @@ endfunction
             local integer i= 1
             local integer id= 0
             local integer tower_id= GetUnitTypeId(s__Tower_u[this])
+            if IsUnitType(s__Tower_u[this], UNIT_TYPE_HERO) and not IsBuilder(tower_id) then
+                call UnitAddAbility(s__Tower_u[this], 'A09K')
+                call UnitMakeAbilityPermanent(s__Tower_u[this], true, 'A09K')
+                call UnitAddAbility(s__Tower_u[this], 'A000')
+                call UnitMakeAbilityPermanent(s__Tower_u[this], true, 'A000')
+            endif
+               
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id='A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
@@ -2515,11 +2482,11 @@ endfunction
 function YDWESyStemAbilityCastingOverTriggerAction takes unit hero,integer index returns nothing
  local integer i= 0
     loop
-        exitwhen i >= YDWEBase___AbilityCastingOverEventNumber
-        if YDWEBase___AbilityCastingOverEventType[i] == index then
+        exitwhen i >= YDWEBase__AbilityCastingOverEventNumber
+        if YDWEBase__AbilityCastingOverEventType[i] == index then
             set bj_lastAbilityCastingUnit=hero
-			if YDWEBase___AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase___AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase___AbilityCastingOverEventQueue[i]) then
-				call TriggerExecute(YDWEBase___AbilityCastingOverEventQueue[i])
+			if YDWEBase__AbilityCastingOverEventQueue[i] != null and TriggerEvaluate(YDWEBase__AbilityCastingOverEventQueue[i]) and IsTriggerEnabled(YDWEBase__AbilityCastingOverEventQueue[i]) then
+				call TriggerExecute(YDWEBase__AbilityCastingOverEventQueue[i])
 			endif
 		endif
         set i=i + 1
@@ -2529,9 +2496,9 @@ endfunction
 //YDWE技能捕捉事件 
 //===========================================================================  
 function YDWESyStemAbilityCastingOverRegistTrigger takes trigger trg,integer index returns nothing
-	set YDWEBase___AbilityCastingOverEventQueue[YDWEBase___AbilityCastingOverEventNumber]=trg
-	set YDWEBase___AbilityCastingOverEventType[YDWEBase___AbilityCastingOverEventNumber]=index
-	set YDWEBase___AbilityCastingOverEventNumber=YDWEBase___AbilityCastingOverEventNumber + 1
+	set YDWEBase__AbilityCastingOverEventQueue[YDWEBase__AbilityCastingOverEventNumber]=trg
+	set YDWEBase__AbilityCastingOverEventType[YDWEBase__AbilityCastingOverEventNumber]=index
+	set YDWEBase__AbilityCastingOverEventNumber=YDWEBase__AbilityCastingOverEventNumber + 1
 endfunction 
 //===========================================================================
 //系统函数完善
@@ -2568,7 +2535,7 @@ endfunction
 //unitpool bj_lastCreatedPool=null
 //unit bj_lastPoolAbstractedUnit=null
 function YDWEGetPlayerColorString takes player p,string s returns string
-    return YDWEBase___yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
+    return YDWEBase__yd_PlayerColor[GetHandleId(GetPlayerColor(p))] + s + "|r"
 endfunction
 //===========================================================================
 //===========================================================================
@@ -2615,22 +2582,22 @@ function InitializeYD takes nothing returns nothing
 	set yd_MapMaxX=GetCameraBoundMaxX() + GetCameraMargin(CAMERA_MARGIN_RIGHT)
 	set yd_MapMaxY=GetCameraBoundMaxY() + GetCameraMargin(CAMERA_MARGIN_TOP)
 	
-    set YDWEBase___yd_PlayerColor[0]="|cFFFF0303"
-    set YDWEBase___yd_PlayerColor[1]="|cFF0042FF"
-    set YDWEBase___yd_PlayerColor[2]="|cFF1CE6B9"
-    set YDWEBase___yd_PlayerColor[3]="|cFF540081"
-    set YDWEBase___yd_PlayerColor[4]="|cFFFFFC01"
-    set YDWEBase___yd_PlayerColor[5]="|cFFFE8A0E"
-    set YDWEBase___yd_PlayerColor[6]="|cFF20C000"
-    set YDWEBase___yd_PlayerColor[7]="|cFFE55BB0"
-    set YDWEBase___yd_PlayerColor[8]="|cFF959697"
-    set YDWEBase___yd_PlayerColor[9]="|cFF7EBFF1"
-    set YDWEBase___yd_PlayerColor[10]="|cFF106246"
-    set YDWEBase___yd_PlayerColor[11]="|cFF4E2A04"
-    set YDWEBase___yd_PlayerColor[12]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[13]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[14]="|cFF282828"
-    set YDWEBase___yd_PlayerColor[15]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[0]="|cFFFF0303"
+    set YDWEBase__yd_PlayerColor[1]="|cFF0042FF"
+    set YDWEBase__yd_PlayerColor[2]="|cFF1CE6B9"
+    set YDWEBase__yd_PlayerColor[3]="|cFF540081"
+    set YDWEBase__yd_PlayerColor[4]="|cFFFFFC01"
+    set YDWEBase__yd_PlayerColor[5]="|cFFFE8A0E"
+    set YDWEBase__yd_PlayerColor[6]="|cFF20C000"
+    set YDWEBase__yd_PlayerColor[7]="|cFFE55BB0"
+    set YDWEBase__yd_PlayerColor[8]="|cFF959697"
+    set YDWEBase__yd_PlayerColor[9]="|cFF7EBFF1"
+    set YDWEBase__yd_PlayerColor[10]="|cFF106246"
+    set YDWEBase__yd_PlayerColor[11]="|cFF4E2A04"
+    set YDWEBase__yd_PlayerColor[12]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[13]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[14]="|cFF282828"
+    set YDWEBase__yd_PlayerColor[15]="|cFF282828"
     //=================显示版本=====================
     call YDWEVersion_Init()
 endfunction
@@ -3925,7 +3892,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Thu Dec 08 18:23:25 2022
+//   Date: Fri Dec 09 15:11:45 2022
 //   Map Author: 未知
 // 
 //===========================================================================
@@ -6596,6 +6563,40 @@ function mutatedAttacker takes unit u returns nothing
         call SetUnitScale(u, 1.5, 1.5, 1.5)
 	endif
 endfunction
+function getGoldByLevel takes integer i returns integer
+    // 100 200 300 400 500 700 900 1100 1300 1500 1900 2300 2700 3100 3500 4300 5100 5900 6700 7500
+    local integer level= goldLevel[i]
+    local integer gold= 0
+    if level <= 5 then
+        set gold=100 * level
+    elseif level <= 10 then
+        set gold=500 + 200 * ( level - 5 )
+    elseif level <= 15 then
+        set gold=1500 + 400 * ( level - 10 )
+    elseif level <= 20 then
+        set gold=3500 + 800 * ( level - 15 )
+    else
+        set gold=7500 + 800 * ( level - 20 )
+    endif
+    return gold
+endfunction
+function getLumberByLevel takes integer i returns integer
+    // 10 15 20 25 30 40 50 60 70 80 100 120 140 160 180 220 260 300 340 380
+    local integer level= lumberLevel[i]
+    local integer lumber= 0
+    if level <= 5 then
+        set lumber=5 * level + 5
+    elseif level <= 10 then
+        set lumber=30 + 10 * ( level - 5 )
+    elseif level <= 15 then
+        set lumber=80 + 20 * ( level - 10 )
+    elseif level <= 20 then
+        set lumber=180 + 40 * ( level - 15 )
+    else
+        set lumber=380 + 40 * ( level - 20 )
+    endif
+    return lumber
+endfunction
 function spawn takes nothing returns nothing
     local integer i= 0
     local integer j= 0
@@ -6613,6 +6614,8 @@ function spawn takes nothing returns nothing
     local real goldCoeff= 1
     local integer lumber= 0
     local integer lumberAddition= 0
+    local integer extraGold= 0
+    local integer extraLumber= 0
     set wave=wave + 1
     set loc[0]=GetRectCenter(gg_rct_spawn1)
     set loc[1]=GetRectCenter(gg_rct_spawn2)
@@ -6663,7 +6666,7 @@ function spawn takes nothing returns nothing
                 set goldCoeff=goldCoeff + 0.1
             endif
             set gold=R2I(goldCoeff * gold)
-            call DisplayTextToPlayer(Player(i), 0, 0, "第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+" + I2S(luckAddition) + "，所有塔恢复30%内力")
+            call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r第" + I2S(wave) + "波开始，奖励黄金" + I2S(gold) + "，人品+" + I2S(luckAddition) + "，所有塔恢复30%内力")
             set g=CreateGroup()
             call GroupEnumUnitsOfPlayer(g, Player(i), null)
             call ForGroup(g, function recoverManaAndEquipEffect)
@@ -6671,9 +6674,19 @@ function spawn takes nothing returns nothing
             if goldHit[i + 1] == 1 then
                 set randReal=GetRandomReal(2, 4)
                 set goldHit[i + 1]=0
-                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
+                call DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 15, "|cff00ff00[系统]|r|cff00ff00玩家" + GetPlayerName(Player(i)) + "的智慧球发动了金币暴击，获得" + R2S(randReal) + "倍的金币奖励|R")
             endif
             call AdjustPlayerStateBJ(R2I(gold * randReal), Player(i), PLAYER_STATE_RESOURCE_GOLD)
+            set extraGold=getGoldByLevel(i + 1)
+            if extraGold > 0 then
+                call AdjustPlayerStateBJ(extraGold, Player(i), PLAYER_STATE_RESOURCE_GOLD)
+                call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r由于升级了科技，额外获得黄金" + I2S(extraGold))
+            endif
+            set extraLumber=getLumberByLevel(i + 1)
+            if extraLumber > 0 then
+                call AdjustPlayerStateBJ(extraLumber, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
+                call DisplayTextToPlayer(Player(i), 0, 0, "|cff00ff00[系统]|r由于升级了科技，额外获得木材" + I2S(extraLumber))
+            endif
         endif
         set j=1
         loop
@@ -6716,9 +6729,9 @@ function spawn takes nothing returns nothing
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教教主前来进攻，存活并击败教主即可获得胜利！")
                         set finalBossAttack=true
                     else
-                        set lumber=2 * j - 1
+                        set lumber=20
                         if winDifficulty[i + 1] >= 4 then
-                            set lumber=lumber + 1
+                            set lumber=lumber + 10
                         endif
                         call DisplayTextToPlayer(Player(i), 0, 0, "魔教第" + I2S(j) + "个BOSS前来进攻，奖励珍稀币" + I2S(lumber) + "个")
                         call AdjustPlayerStateBJ(( lumber ) * rand, Player(i), PLAYER_STATE_RESOURCE_LUMBER)
@@ -7652,8 +7665,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
                 set save_present[player_i]=1
                 call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了小型资源包")
                 call SetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(p, PLAYER_STATE_RESOURCE_GOLD) + 3000)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 1)
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP, GetPlayerState(p, PLAYER_STATE_RESOURCE_FOOD_CAP) + 5)
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 10)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
             endif
@@ -7665,8 +7677,8 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
         if udg_point[player_i] >= 5 and udg_pointMax[player_i] + 5 <= MAX_POINT then
             if point2lumber[player_i] != 1 then
                 set point2lumber[player_i]=1
-                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 3)
-                call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00珍稀币+3，扣除5积分")
+                call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 30)
+                call DisplayTimedTextToPlayer(p, 0, 0, 5, "|cFF66CC00珍稀币+30，扣除5积分")
                 call pointChange(player_i , 5)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933您已经领取过了|r")
@@ -7721,7 +7733,7 @@ function GoldLumberExChange takes integer player_i,integer item_id,unit u return
                 if wave >= 15 then
                     set middle_lumber[player_i]=1
                     call DisplayTextToForce(bj_FORCE_ALL_PLAYERS, "|CFFff9933恭喜玩家" + I2S(player_i) + "领取了中型珍稀币包")
-                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 8)
+                    call SetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER, GetPlayerState(p, PLAYER_STATE_RESOURCE_LUMBER) + 80)
                 else
                     call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933限第15波以后领取|r")
                 endif
@@ -7772,7 +7784,7 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
                 call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(7, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(70, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 2 then
             if udg_jiuyin[player_i] == 0 then
@@ -7790,7 +7802,7 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
                 call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 3 then
             if udg_douzhuan[player_i] == 0 then
@@ -7798,7 +7810,7 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习斗转星移|r")
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 4 then
             if udg_xixing[player_i] == 0 then
@@ -7806,7 +7818,7 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习吸星大法|r")
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(5, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 5 then
             if udg_huagong[player_i] == 0 then
@@ -7819,7 +7831,7 @@ function LearnJiangHu takes integer player_i,integer jianghu_num,integer item_id
                 call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
                 call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
-                call AdjustPlayerStateBJ(3, p, PLAYER_STATE_RESOURCE_LUMBER)
+                call AdjustPlayerStateBJ(30, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         endif
     endif
@@ -8072,11 +8084,7 @@ function showHealthPointAction takes nothing returns nothing
     if GetTriggerUnit() != null then
         set unitInSelection[i]=GetTriggerUnit()
         if GetTriggerPlayer() == GetLocalPlayer() then
-            loop
-                exitwhen j > cardMax[i]
-                call s__Frame_hide(cardResultWidget[j])
-                set j=j + 1
-            endloop
+            call refreshCardResultWidget(i)
         endif
     endif
     if showHint[i] and GetUnitState(GetTriggerUnit(), UNIT_STATE_MAX_LIFE) >= 999999 then
@@ -8713,10 +8721,10 @@ function rewardLumber takes unit ut,player p,integer count returns nothing
     endif
     set i=1 + GetPlayerId(awardPlayer)
     if mapLevel[i] >= 5 then
-        set count=count + 1
+        set count=count + 10
     endif
     if mapLevel[i] >= 18 then
-        set count=count + 1
+        set count=count + 10
     endif
     call AdjustPlayerStateBJ(count, awardPlayer, PLAYER_STATE_RESOURCE_LUMBER)
     call DisplayTextToPlayer(awardPlayer, 0, 0, "|cff00ff00[系统]|r击杀BOSS,奖励珍稀币" + I2S(count) + "个")
@@ -8793,19 +8801,19 @@ function UnitDeath_Conditions takes nothing returns boolean
         endif
     endif
     if GetUnitTypeId(ut) == boss[1] then
-        call rewardLumber(ut , p , 1)
+        call rewardLumber(ut , p , 10)
     endif
     if GetUnitTypeId(ut) == boss[2] then
-        call rewardLumber(ut , p , 2)
+        call rewardLumber(ut , p , 20)
     endif
     if GetUnitTypeId(ut) == boss[3] then
-        call rewardLumber(ut , p , 3)
+        call rewardLumber(ut , p , 30)
     endif
     if GetUnitTypeId(ut) == boss[4] then
-        call rewardLumber(ut , p , 4)
+        call rewardLumber(ut , p , 40)
     endif
     if GetUnitTypeId(ut) == boss[5] then
-        call rewardLumber(ut , p , 5)
+        call rewardLumber(ut , p , 50)
     endif
     if GetUnitTypeId(ut) == survive_boss[1] then
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)
@@ -9098,6 +9106,33 @@ function unlockDrawCard takes unit u returns nothing
     call TimerStart(t, 0, false, function unlockDrawCardTimer)
     set t=null
 endfunction
+function heroLevelUpTimer takes nothing returns nothing
+    local timer t= GetExpiredTimer()
+    local unit u= LoadUnitHandle(YDHT, GetHandleId(t), 0)
+    local integer level= LoadInteger(YDHT, GetHandleId(t), 1)
+    if level < 29 then
+        call UnitRemoveAbility(u, 'A09K')
+        call UnitAddAbility(u, 'A09K')
+        call SetUnitAbilityLevel(u, 'A09K', level + 1)
+    else
+        call UnitRemoveAbility(u, 'A09K')
+    endif
+    call FlushChildHashtable(YDHT, GetHandleId(t))
+    call PauseTimer(t)
+    call DestroyTimer(t)
+    set t=null
+    set u=null
+endfunction
+function heroLevelUp takes unit u returns nothing
+    local integer i= 1 + GetPlayerId(GetOwningPlayer(u))
+    local integer level= GetUnitAbilityLevel(u, 'A09K')
+    local timer t= CreateTimer()
+    call SetHeroLevel(u, GetHeroLevel(u) + 1, true)
+    call SaveUnitHandle(YDHT, GetHandleId(t), 0, u)
+    call SaveInteger(YDHT, GetHandleId(t), 1, level)
+    call TimerStart(t, 0, false, function heroLevelUpTimer)
+    set t=null
+endfunction
 function UseAbility_Conditions takes nothing returns boolean
     local integer id= GetSpellAbilityId()
     local unit u= GetTriggerUnit()
@@ -9115,6 +9150,8 @@ function UseAbility_Conditions takes nothing returns boolean
     local integer randInt= 0
     local group g= null
     local integer k= 0
+    local integer returnGold= 0
+    local integer level= 0
     // 装备加成缩减CD
     if LoadInteger(TOWER_ATTR_HT, GetHandleId(u), TOWER_COOLDOWN_KEY) > 0 then
         set t=CreateTimer()
@@ -9178,8 +9215,24 @@ function UseAbility_Conditions takes nothing returns boolean
     endif
     // 出售塔
     if id == 'A000' then
-        call AdjustPlayerStateBJ(GetUnitPointValue(u), p, PLAYER_STATE_RESOURCE_GOLD)
-        call CreateTextTagUnitBJ("+" + I2S(GetUnitPointValue(u)), u, 0, 11, 255, 215, 0, 30)
+        
+        set level=LoadInteger(YDHT, (LoadInteger(NHT, (GetUnitTypeId(u)), 0)), TOWER_LEVEL_KEY) // INLINED!!
+        if level == 1 then
+            set returnGold=500
+        elseif level == 2 then
+            set returnGold=1000
+        elseif level == 3 then
+            set returnGold=2000
+        elseif level == 4 then
+            set returnGold=5000
+        endif
+        set level=GetHeroLevel(u)
+        // 英雄等级为1时，不返还金钱；英雄等级为2时，返还100；英雄等级为3时，返还300；英雄等级为4时，返还600；英雄等级为5时，返还1000；以此类推
+        set returnGold=returnGold + level * ( level - 1 ) * 50
+        // 只返还80%
+        set returnGold=R2I(returnGold * 0.8)
+        call AdjustPlayerStateBJ(returnGold, p, PLAYER_STATE_RESOURCE_GOLD)
+        call CreateTextTagUnitBJ("+" + I2S(returnGold), u, 0, 11, 255, 215, 0, 30)
         call SetTextTagVelocityBJ(bj_lastCreatedTextTag, 400., GetRandomReal(80., 100.))
         call DestroyEffectBJ(AddSpecialEffectLoc("Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", loc))
         call YDWETimerDestroyTextTag(.65 , GetLastCreatedTextTag())
@@ -9529,6 +9582,10 @@ function UseAbility_Conditions takes nothing returns boolean
     if id == 'A09J' then
         call unlockDrawCard(u)
     endif
+    // 英雄升级
+    if id == 'A09K' then
+        call heroLevelUp(u)
+    endif
     call RemoveLocation(loc)
     call RemoveLocation(loc2)
     set u=null
@@ -9614,7 +9671,7 @@ function europaGift takes unit u returns nothing
         call UnitAddItem((u ), ( it)) // INLINED!!
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + GetObjectName(id))
     elseif rand < 700 then
-        set id=GetRandomInt(1, 4)
+        set id=GetRandomInt(1, 4) * 10
         call addLumber(Player(i - 1) , id)
         call DisplayTimedTextToPlayer(GetOwningPlayer(u), 0, 0, 10, "|CFF99CC00恭喜获得|CFF00FF00" + I2S(id) + "个珍稀币")
     elseif rand < 998 then
@@ -13099,6 +13156,15 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0011, "overhead")
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0012, "overhead")
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0013, "overhead")
+    call ShowUnitHide(gg_unit_o00M_0010)
+    call ShowUnitHide(gg_unit_o00M_0011)
+    call ShowUnitHide(gg_unit_o00M_0012)
+    call ShowUnitHide(gg_unit_o00M_0013)
+    // 兑换商店
+    call ShowUnitHide(gg_unit_o013_0027)
+    call ShowUnitHide(gg_unit_o013_0028)
+    call ShowUnitHide(gg_unit_o013_0029)
+    call ShowUnitHide(gg_unit_o013_0030)
     // 绝世内功
     call AddSpecialEffectTarget("jueshineigong.mdx", gg_unit_o00K_0021, "overhead")
     // 选择门派
@@ -13973,16 +14039,16 @@ function EnterMap_Conditions takes nothing returns boolean
         set tower[tower_num + 1]=s__Tower_create(u , GetItemNum(u))
         set tower_num=tower_num + 1
         if IsBuilder(GetUnitTypeId(u)) then
-            call UnitAddItemById(u, 'I02L')
+            // call UnitAddItemById(u, 'I02L')
             // 通关N8，额外送一把史诗武器
             if winDifficulty[i] >= 8 then
                 set it2=UnitAddItemById(u, epic_drops[GetRandomInt(1, MAX_EPIC_DROP)])
                 call generateRandomAttr(it2)
                 call addExtraAttr(u , it2)
             endif
-            // 通关N9，额外送3个珍稀币
+            // 通关N9，额外送30个珍稀币
             if winDifficulty[i] >= 9 then
-                call addLumber(p , 3)
+                call addLumber(p , 30)
             endif
             // 购买重制版出门多一个欧皇大礼包
             if RequestExtraBooleanData(44, p, null, null, false, 0, 0, 0) then
@@ -14272,7 +14338,7 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs777906031")
+call ExecuteFunc("jasshelper__initstructs852802687")
 call ExecuteFunc("FrameLibrary__init")
 call ExecuteFunc("YDTriggerSaveLoadSystem___Init")
 call ExecuteFunc("InitializeYD")
@@ -14306,9 +14372,6 @@ function config takes nothing returns nothing
     call InitAllyPriorities()
 endfunction
 //===========================================================================
-//ϵͳ-TimerSystem
-//===========================================================================
-//===========================================================================
 //修改生命
 //===========================================================================
 //===========================================================================  
@@ -14316,6 +14379,9 @@ endfunction
 //�Զ����¼� 
 //===========================================================================
 //===========================================================================   
+//===========================================================================
+//ϵͳ-TimerSystem
+//===========================================================================
 
 
 
@@ -14351,6 +14417,12 @@ local integer this=f__arg_this
             local integer i= 1
             local integer id= 0
             local integer tower_id= GetUnitTypeId(s__Tower_u[this])
+            if IsUnitType(s__Tower_u[this], UNIT_TYPE_HERO) and not IsBuilder(tower_id) then
+                call UnitAddAbility(s__Tower_u[this], 'A09K')
+                call UnitMakeAbilityPermanent(s__Tower_u[this], true, 'A09K')
+                call UnitAddAbility(s__Tower_u[this], 'A000')
+                call UnitMakeAbilityPermanent(s__Tower_u[this], true, 'A000')
+            endif
             if LoadStr(NHT, tower_id, 1) == "少林" then
                 set id='A001'
             elseif LoadStr(NHT, tower_id, 1) == "武当" then
@@ -14407,7 +14479,7 @@ function sa___prototype9_SetUnitMoveSpeedEx takes nothing returns boolean
     return true
 endfunction
 
-function jasshelper__initstructs777906031 takes nothing returns nothing
+function jasshelper__initstructs852802687 takes nothing returns nothing
     set st__Frame_onDestroy=CreateTrigger()
     call TriggerAddCondition(st__Frame_onDestroy,Condition( function sa__Frame_onDestroy))
     set st__YDWEStringFormula___Sorting_onDestroy=CreateTrigger()
@@ -14425,7 +14497,7 @@ function jasshelper__initstructs777906031 takes nothing returns nothing
 
 
 
-call ExecuteFunc("s__ModSpeed_Init__onInit")
+call ExecuteFunc("s__ModSpeed_Init___onInit")
 
 
 

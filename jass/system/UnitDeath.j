@@ -57,10 +57,10 @@ function rewardLumber takes unit ut, player p, integer count returns nothing
     set i = 1 + GetPlayerId(awardPlayer)
 
     if mapLevel[i] >= 5 then
-        set count = count + 1
+        set count = count + 10
     endif
     if mapLevel[i] >= 18 then
-        set count = count + 1
+        set count = count + 10
     endif
     call AdjustPlayerStateBJ(count, awardPlayer, PLAYER_STATE_RESOURCE_LUMBER)
     call DisplayTextToPlayer(awardPlayer, 0, 0, "|cff00ff00[系统]|r击杀BOSS,奖励珍稀币" + I2S(count) + "个")
@@ -150,19 +150,19 @@ function UnitDeath_Conditions takes nothing returns boolean
         endif
     endif
     if GetUnitTypeId(ut) == boss[1] then
-        call rewardLumber(ut, p, 1)
+        call rewardLumber(ut, p, 10)
     endif
     if GetUnitTypeId(ut) == boss[2] then
-        call rewardLumber(ut, p, 2)
+        call rewardLumber(ut, p, 20)
     endif
     if GetUnitTypeId(ut) == boss[3] then
-        call rewardLumber(ut, p, 3)
+        call rewardLumber(ut, p, 30)
     endif
     if GetUnitTypeId(ut) == boss[4] then
-        call rewardLumber(ut, p, 4)
+        call rewardLumber(ut, p, 40)
     endif
     if GetUnitTypeId(ut) == boss[5] then
-        call rewardLumber(ut, p, 5)
+        call rewardLumber(ut, p, 50)
     endif
     if GetUnitTypeId(ut) == survive_boss[1] then
         call AdjustPlayerStateBJ(wave / 9, p, PLAYER_STATE_RESOURCE_LUMBER)
