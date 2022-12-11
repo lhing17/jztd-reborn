@@ -97,8 +97,8 @@ function UnitDamage_Conditions takes nothing returns boolean
     // 龙象般若功 (攻击 + 10 * 智力 ) * 12 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.15, 'A009', u, ut, 10, 12, ATTR_INT)
 
-    // 太极剑法 (攻击 + 10 * 全属性 ) * 5 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.2, 'A00L', u, ut, 10, 5, ATTR_ALL)
+    // 太极剑法 (攻击 + 10 * 全属性 ) * 0.2 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.2, 'A00L', u, ut, 10, 0.2, ATTR_ALL)
 
     // 铁画银钩 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.21, 'A00N', u, ut, 10, 20, ATTR_AGI)
@@ -149,8 +149,8 @@ function UnitDamage_Conditions takes nothing returns boolean
     // 青竹镖 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.45, 'A02N', u, ut, 10, 20, ATTR_AGI)
 
-    // 同归剑法 (攻击 + 10 * 全属性 ) * 2 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.5, 'A04O', u, ut, 10, 2, ATTR_ALL)
+    // 同归剑法 (攻击 + 10 * 全属性 ) * 0.75 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.5, 'A04O', u, ut, 10, 0.75, ATTR_ALL)
 
     // 昊天掌 (攻击 + 10 * 智力 ) * 10 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.51, 'A04P', u, ut, 10, 10, ATTR_INT)
@@ -184,14 +184,14 @@ function UnitDamage_Conditions takes nothing returns boolean
         call dealDamage(uc, ut, baseDamage * GetUnitAbilityLevel(uc, 'A02Q') * GetUnitAbilityLevel(uc, 'A02Q'))
     endif
 
-    // 四象掌 (攻击 + 10 * 全属性 ) * 0.5 * 技能等级 * 技能等级
+    // 四象掌 (攻击 + 10 * 全属性 ) * 技能等级 * 技能等级
     if GetUnitTypeId(u) == 'e00I' then
         set uc = LoadUnitHandle(YDHT, GetHandleId(u), DUMMY_OWNER_KEY)
         set attack = GetUnitState(uc, ConvertUnitState(0x15))
         set attr = GetHeroInt(uc, true) + GetHeroStr(uc, true) + GetHeroAgi(uc, true)
         
         // 基础伤害
-        set baseDamage = (attack + 10 * attr ) * 0.5
+        set baseDamage = (attack + 10 * attr ) 
         call dealDamage(uc, ut, baseDamage * GetUnitAbilityLevel(uc, 'A03L') * GetUnitAbilityLevel(uc, 'A03L'))
     endif
     // call calculateTotalDamage(u, damage)

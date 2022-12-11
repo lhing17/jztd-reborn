@@ -292,18 +292,18 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
         if jianghu_num == 1 then
             if udg_jiuyang[player_i] == 0 then
                 set udg_jiuyang[player_i] = 1
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阳神功|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜你成功修习九阳神功|r")
                 call SaveInteger(YDHT, 'A02D' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A02C' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A02E' * 3, 0, 4)
             else
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933你已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(70, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 2 then
             if udg_jiuyin[player_i] == 0 then
                 set udg_jiuyin[player_i] = 1
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习九阴真经|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜你成功修习九阴真经|r")
                 call SaveInteger(YDHT, 'A00F' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A009' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A00R' * 3, 0, 4)
@@ -315,36 +315,36 @@ function LearnJiangHu takes integer player_i, integer jianghu_num, integer item_
                 call SaveInteger(YDHT, 'A04W' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A04Q' * 3, 0, 4)
             else
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933你已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 3 then
             if udg_douzhuan[player_i] == 0 then
                 set udg_douzhuan[player_i] = 1
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习斗转星移|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜你成功修习斗转星移|r")
             else
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933你已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 4 then
             if udg_xixing[player_i] == 0 then
                 set udg_xixing[player_i] = 1
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习吸星大法|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜你成功修习吸星大法|r")
             else
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933你已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(50, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         elseif jianghu_num == 5 then
             if udg_huagong[player_i] == 0 then
                 set udg_huagong[player_i] = 1
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜贵派成功修习化功大法|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933恭喜你成功修习化功大法|r")
                 call SaveInteger(YDHT, 'A00A' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A00X' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A027' * 3, 0, 4)
                 call SaveInteger(YDHT, 'A02R' * 3, 0, 5)
                 call SaveInteger(YDHT, 'A04T' * 3, 0, 4)
             else
-                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933贵派已经修习过该武功了|r")
+                call DisplayTimedTextToPlayer(p, 0, 0, 15., "|CFFff9933你已经修习过该武功了|r")
                 call AdjustPlayerStateBJ(30, p, PLAYER_STATE_RESOURCE_LUMBER)
             endif
         endif

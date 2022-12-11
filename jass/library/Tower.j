@@ -289,8 +289,8 @@ library TowerLibrary
         // O115 全真大道士 破冰掌法	
         call SaveTowerAbility_1('O115', 'A050', 1)
 
-        // O116 苗道一 破冰掌法	
-        call SaveTowerAbility_1('O116', 'A050', 1)
+        // O116 苗道一 空明拳
+        call SaveTowerAbility_1('O116', 'A04T', 1)
 
         // O117 尹志平 昊天掌
         call SaveTowerAbility_1('O117', 'A04P', 1)
@@ -301,8 +301,8 @@ library TowerLibrary
         // O119 郝大通 全真剑法	
         call SaveTowerAbility_1('O119', 'A04N', 1)
 
-        // O11A 谭处端 全真剑法	
-        call SaveTowerAbility_1('O11A', 'A04N', 1)
+        // O11A 谭处端 金雁功	
+        call SaveTowerAbility_1('O11A', 'A053', 1)
 
         // O11B 刘处玄 东方第一剑	
         call SaveTowerAbility_1('O11B', 'A04U', 1)
@@ -317,12 +317,12 @@ library TowerLibrary
         call SaveTowerAbility_1('O11E', 'A04X', 1)
 
         // O11F 周伯通 空明拳	双手互搏
-        call SaveTowerAbility_1('O11F', 'A04T', 1)
+        // call SaveTowerAbility_1('O11F', 'A04T', 1)
         call SaveTowerAbility_1('O11F', 'A04Q', 1)
 
         // O11G 全真掌教 先天功	金雁功
         call SaveTowerAbility_1('O11G', 'A04W', 1)
-        call SaveTowerAbility_1('O11G', 'A053', 1)
+        // call SaveTowerAbility_1('O11G', 'A053', 1)
 
         // O11H 江湖巨侠 虾米神拳	
         call SaveTowerAbility_1('O11H', 'A045', 1)

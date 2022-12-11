@@ -162,7 +162,7 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveUseAbility(u, ut, 'A02Y', 'A02X', 852502, 14, 40)
     call PassiveUseAbility(u, ut, 'A034', 'A035', 852126, 13, 120)
     call PassiveUseAbility(u, ut, 'A037', 'A036', 852101, 15 + GetUnitAbilityLevel(u, 'A037') * 5, 30)
-    call PassiveUseAbility(u, ut, 'A04O', 'A051', 852238, 15, 45)
+    call PassiveUseAbility(u, ut, 'A04O', 'A051', 852238, 20, 30)
     call PassiveUseAbility(u, ut, 'A04S', 'A056', 852226, 14, 45)
     if GetUnitAbilityLevel(u, 'A04P') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 16 then
         set g = CreateGroup()
