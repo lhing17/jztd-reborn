@@ -302,7 +302,7 @@ library TowerLibrary
         call SaveTowerAbility_1('O119', 'A04N', 1)
 
         // O11A 谭处端 金雁功	
-        call SaveTowerAbility_1('O11A', 'A053', 1)
+        call SaveTowerAbility_1('O11A', 'A054', 1)
 
         // O11B 刘处玄 东方第一剑	
         call SaveTowerAbility_1('O11B', 'A04U', 1)

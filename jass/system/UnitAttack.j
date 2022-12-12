@@ -117,7 +117,7 @@ function UnitAttack_Conditions takes nothing returns boolean
     endif
 
     // 韦陀棍法 (攻击 + 10 * 全属性 ) * 1 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A001', 500, 10, 1, ATTR_ALL, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 20)
+    call PassiveRangeDamage(u, ut, 'A001', 500, 10, 1, ATTR_ALL, "Abilities\\Spells\\Demon\\DarkPortal\\DarkPortalTarget.mdl", 21, 0)
 
     // 虾米神拳 (攻击 + 10 * 敏捷 ) * 1 * 技能等级 * 技能等级
     call PassiveRangeDamage(u, ut, 'A045', 800, 10, 1, ATTR_AGI, "Abilities\\Spells\\Other\\Doom\\DoomDeath.mdl", 25, 25 + GetUnitAbilityLevel(u, 'A045') * 5)
@@ -143,7 +143,7 @@ function UnitAttack_Conditions takes nothing returns boolean
     // 金顶绵掌 (攻击 + 10 * 敏捷 ) * 50 * 技能等级 * 技能等级
     call PassiveSingleDamage(u, ut, 'A01V', 10, 50, ATTR_AGI, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 19, 40)
 
-    // 空明拳 (攻击 + 10 * 敏捷 ) * 200 * 技能等级 * 技能等级
+    // 空明拳 (攻击 + 10 * 敏捷 ) * 0.2 * 技能等级 * 技能等级
     call PassiveSingleDamage(u, ut, 'A04T', 10, 200, ATTR_AGI, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
 
 
@@ -157,12 +157,12 @@ function UnitAttack_Conditions takes nothing returns boolean
     call PassiveUseAbility(u, ut, 'A02E', 'A02B', 852560, 18, 60)
     call PassiveUseAbility(u, ut, 'A02F', 'A02G', 852591, 10, 90)
     call PassiveUseAbility(u, ut, 'A02Q', 'A02P', 852128, 20, 50)
-    call PassiveUseAbility(u, ut, 'A02T', 'A02U', 852587, 25, 20)
+    call PassiveUseAbility(u, ut, 'A02T', 'A02U', 852587, 25, 0)
     call PassiveUseAbility(u, ut, 'A02V', 'A02W', 852126, 23, 50)
     call PassiveUseAbility(u, ut, 'A02Y', 'A02X', 852502, 14, 40)
     call PassiveUseAbility(u, ut, 'A034', 'A035', 852126, 13, 120)
     call PassiveUseAbility(u, ut, 'A037', 'A036', 852101, 15 + GetUnitAbilityLevel(u, 'A037') * 5, 30)
-    call PassiveUseAbility(u, ut, 'A04O', 'A051', 852238, 20, 30)
+    call PassiveUseAbility(u, ut, 'A04O', 'A051', 852238, 20, 0)
     call PassiveUseAbility(u, ut, 'A04S', 'A056', 852226, 14, 45)
     if GetUnitAbilityLevel(u, 'A04P') > 0 and GetUnitState(u, UNIT_STATE_MANA) >= 50 and GetRandomInt(1, 100) <= 16 then
         set g = CreateGroup()
