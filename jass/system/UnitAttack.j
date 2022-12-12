@@ -128,23 +128,23 @@ function UnitAttack_Conditions takes nothing returns boolean
     // 乾坤一掷 (攻击 + 10 * 智力 ) * 250 * 技能等级 * 技能等级
     call PassiveRangeDamage(u, ut, 'A047', 1000, 10, 250, ATTR_INT, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 28, 30)
 
-    // 丐帮入门棍法 (攻击 + 10 * 力量 ) * 3 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A02K', 400, 10, 3, ATTR_STR, "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", 27, 15)
+    // 丐帮入门棍法 (攻击 + 10 * 智力 ) * 3 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A02K', 400, 10, 3, ATTR_INT, "Abilities\\Spells\\Undead\\AnimateDead\\AnimateDeadTarget.mdl", 27, 15)
 
-    // 武当剑法 (攻击 + 10 * 智力 ) * 15 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A00K', 50, 10, 15, ATTR_INT, "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl", 26, 25)
+    // 武当剑法 (攻击 + 10 * 敏捷 ) * 15 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A00K', 50, 10, 15, ATTR_AGI, "Abilities\\Spells\\Other\\Levelup\\LevelupCaster.mdl", 26, 25)
 
-    // 全真剑法 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A04N', 800, 10, 20, ATTR_AGI, "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl", 26, 40)
+    // 全真剑法 (攻击 + 10 * 力量 ) * 20 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A04N', 800, 10, 20, ATTR_STR, "Abilities\\Spells\\Undead\\DarkRitual\\DarkRitualTarget.mdl", 26, 40)
     
-    // 天山折梅手 (攻击 + 10 * 力量 ) * 50 * 技能等级 * 技能等级
-    call PassiveRangeDamage(u, ut, 'A098', 800, 10, 50, ATTR_STR, "war3mapImported\\56.mdl", 16, 50)
+    // 天山折梅手 (攻击 + 10 * 敏捷 ) * 50 * 技能等级 * 技能等级
+    call PassiveRangeDamage(u, ut, 'A098', 800, 10, 50, ATTR_AGI, "war3mapImported\\56.mdl", 16, 50)
 
     // 金顶绵掌 (攻击 + 10 * 敏捷 ) * 50 * 技能等级 * 技能等级
     call PassiveSingleDamage(u, ut, 'A01V', 10, 50, ATTR_AGI, "Abilities\\Spells\\Other\\Transmute\\PileofGold.mdl", 19, 40)
 
-    // 空明拳 (攻击 + 10 * 力量 ) * 200 * 技能等级 * 技能等级
-    call PassiveSingleDamage(u, ut, 'A04T', 10, 200, ATTR_STR, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
+    // 空明拳 (攻击 + 10 * 敏捷 ) * 200 * 技能等级 * 技能等级
+    call PassiveSingleDamage(u, ut, 'A04T', 10, 200, ATTR_AGI, "Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdl", 100, 6)
 
 
     call PassiveUseAbility(u, ut, 'A00N', 'A00S', 852119, 18, 50)

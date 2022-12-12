@@ -30,13 +30,13 @@ function dealRealDamage takes real damage, real smallDamage, integer abilityId, 
         if abilityId == 'A00N' and level == 4 then
             set realDamage = realDamage * 2.5
         endif
-        if abilityId == 'A02M' then
-            if level == 2 then
-                set realDamage = 3000
-            elseif level == 3 then
-                set realDamage = 20000
-            endif
-        endif
+        // if abilityId == 'A02M' then
+        //     if level == 2 then
+        //         set realDamage = 3000
+        //     elseif level == 3 then
+        //         set realDamage = 20000
+        //     endif
+        // endif
         if abilityId == 'A04V' and udg_jiuyang[1 + GetPlayerId(GetOwningPlayer(u))] == 1 then
             call WanBuff(uc, ut, 3)
         endif
@@ -82,17 +82,17 @@ function UnitDamage_Conditions takes nothing returns boolean
         call UnitApplyTimedLife(bj_lastCreatedUnit, 'BHwe', 3.)
     endif
 
-    // 达摩棍法 门派技能 (攻击 + 10 * 智力 ) * 3.2 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.11, 'A002', u, ut, 10, 3.2, ATTR_INT)
+    // 达摩棍法 门派技能 (攻击 + 10 * 敏捷 ) * 1.6 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.11, 'A002', u, ut, 10, 3.2, ATTR_AGI)
 
     // 拈花擒拿手 (攻击 + 10 * 敏捷 ) * 10 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.12, 'A007', u, ut, 10, 10, ATTR_AGI)
 
-    // 大力金刚指 (攻击 + 10 * 力量 ) * 60 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.13, 'A01T', u, ut, 10, 60, ATTR_STR)
+    // 大力金刚指 (攻击 + 10 * 智力 ) * 60 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.13, 'A01T', u, ut, 10, 60, ATTR_INT)
 
-    // 达摩八法 (攻击 + 10 * 智力 ) * 8 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.14, 'A00F', u, ut, 10, 8, ATTR_INT)
+    // 达摩八法 (攻击 + 10 * 力量 ) * 8 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.14, 'A00F', u, ut, 10, 8, ATTR_STR)
 
     // 龙象般若功 (攻击 + 10 * 智力 ) * 12 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.15, 'A009', u, ut, 10, 12, ATTR_INT)
@@ -100,11 +100,11 @@ function UnitDamage_Conditions takes nothing returns boolean
     // 太极剑法 (攻击 + 10 * 全属性 ) * 0.2 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.2, 'A00L', u, ut, 10, 0.2, ATTR_ALL)
 
-    // 铁画银钩 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.21, 'A00N', u, ut, 10, 20, ATTR_AGI)
+    // 铁画银钩 (攻击 + 10 * 智力 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.21, 'A00N', u, ut, 10, 20, ATTR_INT)
 
-    // 虎爪绝户手 (攻击 + 10 * 力量 ) * 2.5 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.22, 'A00X', u, ut, 10, 2.5, ATTR_STR)
+    // 虎爪绝户手 (攻击 + 10 * 敏捷 ) * 2.5 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.22, 'A00X', u, ut, 10, 2.5, ATTR_INT)
 
     // 天罡指穴法 (攻击 + 10 * 智力 ) * 1 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.3, 'A022', u, ut, 10, 1, ATTR_INT)
@@ -131,44 +131,44 @@ function UnitDamage_Conditions takes nothing returns boolean
     // 灭绝剑法 (攻击 + 10 * 敏捷 ) * 10 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.36, 'A02E', u, ut, 10, 10, ATTR_AGI)
 
-    // 截手九式 (攻击 + 10 * 智力 ) * 50 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.37, 'A02F', u, ut, 10, 50, ATTR_INT)
+    // 截手九式 (攻击 + 10 * 力量 ) * 50 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.37, 'A02F', u, ut, 10, 50, ATTR_STR)
 
     // 太祖棍法 (攻击 + 10 * 全属性 ) * 1 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.4, 'A02T', u, ut, 10, 1, ATTR_ALL)
 
-    // 太祖长拳 (攻击 + 10 * 力量 ) * 5 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.41, 'A02I', u, ut, 10, 5, ATTR_STR)
+    // 太祖长拳 (攻击 + 10 * 智力 ) * 5 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.41, 'A02I', u, ut, 10, 5, ATTR_INT)
 
     // 铜锤手 (攻击 + 10 * 力量 ) * 100 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.43, 'A02R', u, ut, 10, 100, ATTR_STR)
 
-    // 莲花掌 (攻击 + 10 * 智力 ) * 4 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.44, 'A02M', u, ut, 10, 4, ATTR_INT)
+    // 莲花掌 (攻击 + 10 * 力量 ) * 4 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.44, 'A02M', u, ut, 10, 4, ATTR_STR)
 
-    // 青竹镖 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.45, 'A02N', u, ut, 10, 20, ATTR_AGI)
+    // 青竹镖 (攻击 + 10 * 智力 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.45, 'A02N', u, ut, 10, 20, ATTR_INT)
 
     // 同归剑法 (攻击 + 10 * 全属性 ) * 0.75 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.5, 'A04O', u, ut, 10, 0.75, ATTR_ALL)
 
-    // 昊天掌 (攻击 + 10 * 智力 ) * 10 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.51, 'A04P', u, ut, 10, 10, ATTR_INT)
+    // 昊天掌 (攻击 + 10 * 力量 ) * 10 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.51, 'A04P', u, ut, 10, 10, ATTR_STR)
 
-    // 先天功 (攻击 + 10 * 力量 ) * 4 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.52, 'A04W', u, ut, 10, 4, ATTR_STR)
+    // 先天功 (攻击 + 10 * 敏捷 ) * 4 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.52, 'A04W', u, ut, 10, 4, ATTR_AGI)
 
     // 一气化三清 (攻击 + 10 * 智力 ) * 60 * 技能等级 * 技能等级
     call dealRealDamage(damage, 1.53, 'A04V', u, ut, 10, 60, ATTR_INT)
 
-    // 后发先至 (攻击 + 10 * 敏捷 ) * 20 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.54, 'A04S', u, ut, 10, 20, ATTR_AGI)
+    // 后发先至 (攻击 + 10 * 智力 ) * 20 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.54, 'A04S', u, ut, 10, 20, ATTR_INT)
 
-    // 三花聚顶 (攻击 + 10 * 敏捷 ) * 60 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.55, 'A04Y', u, ut, 10, 60, ATTR_AGI)
+    // 三花聚顶 (攻击 + 10 * 力量 ) * 60 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.55, 'A04Y', u, ut, 10, 60, ATTR_STR)
 
-    // 东方第一剑 (攻击 + 10 * 力量 ) * 40 * 技能等级 * 技能等级
-    call dealRealDamage(damage, 1.56, 'A04U', u, ut, 10, 40, ATTR_STR)
+    // 东方第一剑 (攻击 + 10 * 敏捷 ) * 40 * 技能等级 * 技能等级
+    call dealRealDamage(damage, 1.56, 'A04U', u, ut, 10, 40, ATTR_AGI)
 
     // 玄冰咒 (攻击 + 10 * 智力 ) * 20 * 技能等级 * 技能等级
     call dealRealDamage(damage, 2., 'A049', u, ut, 10, 20, ATTR_INT)
