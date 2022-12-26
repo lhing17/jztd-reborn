@@ -315,10 +315,10 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
 
 
     // 领取福利-天坤
-    call AddSpecialEffectTarget("lingqufuli.mdx", gg_unit_o00Q_0022, "overhead")
+    call AddSpecialEffectTarget("ch_fuli.mdx", gg_unit_o00Q_0022, "overhead")
 
     // 武器熔炼-干将
-    call AddSpecialEffectTarget("wuqironglian.mdx", gg_unit_o00L_0020, "overhead")
+    call AddSpecialEffectTarget("ch_ronglian.mdx", gg_unit_o00L_0020, "overhead")
 
     // 木材兑换-莫邪
     call AddSpecialEffectTarget("mucaiduihuan.mdx", gg_unit_o00M_0010, "overhead")
@@ -337,7 +337,7 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     call ShowUnitHide(gg_unit_o013_0030)
 
     // 绝世内功
-    call AddSpecialEffectTarget("jueshineigong.mdx", gg_unit_o00K_0021, "overhead")
+    call AddSpecialEffectTarget("ch_wugong.mdx", gg_unit_o00K_0021, "overhead")
 
     // 选择门派
     call AddSpecialEffectTarget("xuanzemenpai.mdx", gg_unit_o00A_0014, "overhead")
@@ -348,19 +348,39 @@ function CreateNeutralPassiveBuildingsEffect takes nothing returns nothing
     call ShowUnitHide(gg_unit_e00H_0026)
 
     // 精英挑战
-    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0015, "overhead")
-    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0016, "overhead")
-    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0017, "overhead")
-    call AddSpecialEffectTarget("jingyingtiaozhan.mdx", gg_unit_o00P_0018, "overhead")
+    call AddSpecialEffectTarget("ch_tiaozhan.mdx", gg_unit_o00P_0015, "overhead")
+    call AddSpecialEffectTarget("ch_tiaozhan.mdx", gg_unit_o00P_0016, "overhead")
+    call AddSpecialEffectTarget("ch_tiaozhan.mdx", gg_unit_o00P_0017, "overhead")
+    call AddSpecialEffectTarget("ch_tiaozhan.mdx", gg_unit_o00P_0018, "overhead")
 
     // 购买丹药
-    call AddSpecialEffectTarget("goumaidanyao.mdx", gg_unit_o00J_0019, "overhead")
+    call AddSpecialEffectTarget("ch_danyao.mdx", gg_unit_o00J_0019, "overhead")
 
     // 幸运抽取
-    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0006, "overhead")
-    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0007, "overhead")
-    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0008, "overhead")
-    call AddSpecialEffectTarget("xingyunchouqu.mdx", gg_unit_o011_0009, "overhead")
+    call AddSpecialEffectTarget("ch_chouqu.mdx", gg_unit_o011_0006, "overhead")
+    call AddSpecialEffectTarget("ch_chouqu.mdx", gg_unit_o011_0007, "overhead")
+    call AddSpecialEffectTarget("ch_chouqu.mdx", gg_unit_o011_0008, "overhead")
+    call AddSpecialEffectTarget("ch_chouqu.mdx", gg_unit_o011_0009, "overhead")
+
+    // 招募侠士
+    call AddSpecialEffectTarget("ch_zhaomu.mdx", gg_unit_o014_0031, "overhead")
+    call AddSpecialEffectTarget("ch_zhaomu.mdx", gg_unit_o014_0032, "overhead")
+    call AddSpecialEffectTarget("ch_zhaomu.mdx", gg_unit_o014_0033, "overhead")
+    call AddSpecialEffectTarget("ch_zhaomu.mdx", gg_unit_o014_0034, "overhead")
+    
+    // 科技房
+    call AddSpecialEffectTarget("ch_keji.mdx", gg_unit_o00N_0035, "overhead")
+    call AddSpecialEffectTarget("ch_keji.mdx", gg_unit_o00N_0036, "overhead")
+    call AddSpecialEffectTarget("ch_keji.mdx", gg_unit_o00N_0037, "overhead")
+    call AddSpecialEffectTarget("ch_keji.mdx", gg_unit_o00N_0038, "overhead")
+
+    // 武器店
+    call AddSpecialEffectTarget("ch_wuqi.mdx", gg_unit_o00E_0039, "overhead")
+    call AddSpecialEffectTarget("ch_wuqi.mdx", gg_unit_o00E_0040, "overhead")
+    call AddSpecialEffectTarget("ch_wuqi.mdx", gg_unit_o00E_0041, "overhead")
+    call AddSpecialEffectTarget("ch_wuqi.mdx", gg_unit_o00E_0042, "overhead")
+
+    
 endfunction
 function CreateAllUnits_1 takes nothing returns nothing
     call CreateNeutralPassiveBuildingsEffect()

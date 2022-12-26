@@ -123,6 +123,38 @@
         变量: gg_unit_o014_0034
         常量: 0
         常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00N_0035
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00N_0036
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00N_0037
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00N_0038
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00E_0039
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00E_0040
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00E_0041
+        常量: 0
+        常量: 0
+    DzSetUnitPosition
+        变量: gg_unit_o00E_0042
+        常量: 0
+        常量: 0
     MultiboardSetItemWidthBJ
         函数: GetLastCreatedMultiboard
         常量: 1
