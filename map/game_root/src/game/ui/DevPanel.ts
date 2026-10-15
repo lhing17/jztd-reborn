@@ -5,7 +5,9 @@ import M0Probe from "../test/M0Probe";
 
 /**
  * M0 最小 Frame 面板（开发指南 §7.1 硬边界）：
- * - 背景用 BACKDROP + setIgnoreTrackEvent，不叠全面板透明 BUTTON；
+ * - 背景用 BACKDROP + 忽略鼠标事件，不叠全面板透明 BUTTON；
+ * - 注意：Frame.setIgnoreTrackEvent 依赖内置 JAPI（FrameSetIgnoreTrackEvents），
+ *   无内置 JAPI 环境必须用 KK 原生 DzFrameSetIgnoreTrackEvents（2026-10-15 实机验证）；
  * - 本地表现（时间刷新）只动 Frame，不进同步状态。
  * 后续波次/金币/生命只读状态都挂到这个面板上。
  */
@@ -19,21 +21,21 @@ export default class DevPanel {
         bg.setSize(0.24, 0.10);
         bg.setAbsPoint(FRAMEPOINT_TOPLEFT, 0.02, 0.55);
         bg.setTexture2Transparent();
-        bg.setIgnoreTrackEvent(true);
+        DzFrameSetIgnoreTrackEvents(bg.handle, true);
 
         // 版本文本
         let versionText = Frame.createTEXT(bg.handle);
         versionText.setText(`|cff00ff00${GameConfig.projectName}|r  v${GameConfig.version}`);
         versionText.setSize(0.22, 0.03);
         versionText.setAbsPoint(FRAMEPOINT_TOPLEFT, 0.03, 0.535);
-        versionText.setIgnoreTrackEvent(true);
+        DzFrameSetIgnoreTrackEvents(versionText.handle, true);
 
         // 游戏时间（本地刷新）
         this.timeText = Frame.createTEXT(bg.handle);
         this.timeText.setText("时间: 0s");
         this.timeText.setSize(0.22, 0.03);
         this.timeText.setAbsPoint(FRAMEPOINT_TOPLEFT, 0.03, 0.505);
-        this.timeText.setIgnoreTrackEvent(true);
+        DzFrameSetIgnoreTrackEvents(this.timeText.handle, true);
         BaseUtil.onTimer(1, () => {
             this.timeText.setText("时间: " + math.floor(BaseUtil.getGameTime()) + "s");
             return true;

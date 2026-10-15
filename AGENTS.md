@@ -29,7 +29,7 @@
 ## Frame 兼容（War3 1.27 + YD Lua，无内置 JAPI）
 
 - 声明存在不等于运行时接口存在；禁止 `Frame.setLevel` 和 `FrameSetLevel`。
-- 背景使用 BACKDROP 并 `setIgnoreTrackEvent(true)`，不使用全面板透明 BUTTON。
+- 背景使用 BACKDROP 并忽略鼠标事件；无内置 JAPI 环境**禁止** `Frame.setIgnoreTrackEvent`（其依赖的内置 JAPI `FrameSetIgnoreTrackEvents` 运行时不存在），必须用 KK 原生 `DzFrameSetIgnoreTrackEvents`（2026-10-15 实机验证）。
 - 循环绑定回调时捕获每轮稳定常量。
 - UI 必须通过 War3 实机截图验收。
 
