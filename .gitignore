@@ -2,9 +2,25 @@
 
 *.iml
 
-jztd*.w3x
+
 
 /resources/
 jztd_slk*
 tools/w3x2lni
 out/
+
+
+# Map binary files
+jztd2*.w3x
+jztd-old.w3x.bak
+
+# Map caches and temporary files
+/map/backup/
+/map/cache/
+/map/temp/
+/map/game_root/scripts/
+
+# Map-generated local files
+/map/game_root/lua/env_vars.lua
+/map/game_root/_SLA_temp.lua
+/map/game_root/war3map.imp
