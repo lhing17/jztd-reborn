@@ -8,3 +8,58 @@ STRING 2
 势力 1
 }
 
+STRING 3
+{
+玩家 2
+}
+
+STRING 4
+{
+玩家 3
+}
+
+STRING 5
+{
+玩家 4
+}
+
+STRING 6
+{
+玩家 5
+}
+
+STRING 7
+{
+玩家 6
+}
+
+STRING 8
+{
+玩家 7
+}
+
+STRING 9
+{
+队伍 1
+}
+
+STRING 10
+{
+决战TD2
+}
+
+STRING 11
+{
+1-4
+}
+
+STRING 12
+{
+没有描述
+}
+
+STRING 13
+{
+zei_kale
+}
+
