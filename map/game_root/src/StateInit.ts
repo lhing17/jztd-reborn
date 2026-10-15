@@ -1,7 +1,7 @@
-import M0Probe from "./test/M0Probe";
-import DevPanel from "./ui/DevPanel";
-import GameConfig from "./config/GameConfig";
-import GLog from "./core/GLog";
+import M0Probe from "./game/test/M0Probe";
+import DevPanel from "./game/ui/DevPanel";
+import GameConfig from "./game/config/GameConfig";
+import GLog from "./game/core/GLog";
 
 /**
  * 正式模块的确定性装配（只装配，不堆放玩法实现）
