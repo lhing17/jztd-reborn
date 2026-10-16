@@ -90,3 +90,18 @@ for pos in range(at+8,at+8+size,268):
     original[pos+4:pos+264]=bytes(260);current[pos+4:pos+264]=bytes(260)
 assert original==current, "Portal geometry/animation/colors changed"
 print("PASS: opaque black interiors, transparent rounded corners, power-of-two TGAs, all imports, reference portal geometry/animation preservation")
+
+sect_manifest=json.loads((root / "solar_asset/sect-ui-assets.json").read_text(encoding="utf8"))
+for name,expected in sect_manifest["files"].items():
+    file=root/name
+    assert hashlib.sha256(file.read_bytes()).hexdigest()==expected
+    assert name.replace("/","\\").lower() in names
+    asset=Image.open(file).convert("RGBA")
+    w,h=asset.size
+    assert w & (w-1)==0 and h & (h-1)==0
+    if "/emblem_" not in name:
+        assert asset.getpixel((w//2,h//2))[3]==255 and asset.getpixel((0,0))[3]==0
+protected=json.loads(Path("out/sect-before/protected.json").read_text(encoding="utf-8-sig")) if Path("out/sect-before/protected.json").exists() else []
+for record in protected:
+    assert hashlib.sha256(Path(record["Path"]).read_bytes()).hexdigest().upper()==record["Hash"]
+print("PASS: sect skin hashes/imports/power-of-two dimensions/opaque interiors; protected map files unchanged when session baseline available")

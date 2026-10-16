@@ -5,6 +5,7 @@ import GLog from "../core/GLog";
 
 interface EnemyRecord {
     handle: unit;
+    sequence: number;
     lane: LaneRun;
     wave: WaveRun;
     node: number;
@@ -17,6 +18,7 @@ interface EnemyRecord {
 /** 所有正式敌人的唯一登记/注销入口；一个集中更新器，无逐怪计时器。 */
 export default class EnemyService {
     private records = new Map<number, EnemyRecord>();
+    private sequence = 0;
 
     constructor(private onChange: (lane: LaneRun, wave: WaveRun) => void) {
         se.unitDeath(u => {
@@ -40,7 +42,7 @@ export default class EnemyService {
         // 此开关同时忽略原生地形障碍；阻挡按D13用嘲讽处理，不靠身体卡位。
         SetUnitPathing(u, false);
         const now = BaseUtil.getGameTime();
-        const record: EnemyRecord = {handle: u, lane, wave, node: 0,
+        const record: EnemyRecord = {handle: u, sequence: ++this.sequence, lane, wave, node: 0,
             lastX: GetUnitX(u), lastY: GetUnitY(u), progressAt: now, orderAt: now};
         this.records.set(GetHandleId(u), record);
         wave.spawned++;
@@ -72,6 +74,32 @@ export default class EnemyService {
             if (count <= 0) break;
             if (record.lane === lane) { KillUnit(record.handle); count--; }
         }
+    }
+
+    /** 保留有效当前目标；重新索敌只看本路正式活怪，最近优先、同距按生成序号。 */
+    findTarget(lane: LaneRun, x: number, y: number, range: number, current?: unit): unit | undefined {
+        if (lane.state === "failed" || lane.state === "finished") return undefined;
+        if (current) {
+            const record = this.records.get(GetHandleId(current));
+            if (record?.handle === current && record.lane === lane && GetUnitTypeId(current) !== 0 &&
+                GetWidgetLife(current) > 0.405) {
+                const dx = GetUnitX(current) - x, dy = GetUnitY(current) - y;
+                if (dx * dx + dy * dy <= range * range) return current;
+            }
+        }
+        let best: EnemyRecord | undefined;
+        let distance = range * range;
+        for (const record of this.records.values()) {
+            const u = record.handle;
+            if (record.lane !== lane || GetUnitTypeId(u) === 0 || GetWidgetLife(u) <= 0.405) continue;
+            const dx = GetUnitX(u) - x, dy = GetUnitY(u) - y;
+            const candidate = dx * dx + dy * dy;
+            if (candidate < distance || candidate === distance && (!best || record.sequence < best.sequence)) {
+                best = record;
+                distance = candidate;
+            }
+        }
+        return best?.handle;
     }
 
     private retire(record: EnemyRecord, reason: "killed" | "cancelled"): void {

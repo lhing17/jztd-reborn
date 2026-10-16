@@ -6,7 +6,7 @@ import M1HudModel from "./M1HudModel";
 
 /** 圆角纯黑HUD；只显示在场玩家，纹理箭头显隐独立，不依赖字体字形。 */
 export default class M1Panel {
-    constructor(service: WaveService) {
+    constructor(service: WaveService, isChoosing?: (playerId: number) => boolean) {
         const header = M1Panel.panel(0.548, 0.568, 0.246, 0.024, "header");
         const title = M1Panel.text(header, 0.553, 0.563, 0.063, 0.014, 0.008);
         title.setText("|cffeee6ce决战TD·重生|r");
@@ -43,10 +43,12 @@ export default class M1Panel {
         DzFrameSetIgnoreTrackEvents(arrow.handle, true);
         let collapsed = false;
         let shownRows = -1;
+        const boardVisible = () => !collapsed && shownRows > 0 &&
+            !(isChoosing && isChoosing(GetPlayerId(GetLocalPlayer())));
         toggle.setOnClick(() => {
             // 本地表现：不发送玩法命令，不改变同步状态。
             collapsed = !collapsed;
-            board.setVisible(!collapsed && shownRows > 0);
+            board.setVisible(boardVisible());
             arrow.setTexture(M1Panel.asset(collapsed ? "arrow_down" : "arrow_up"));
         });
 
@@ -67,8 +69,8 @@ export default class M1Panel {
                 shownRows = data.rows.length;
                 board.setSize(0.246, 0.031 + math.max(1, shownRows) * 0.017);
                 board.setTexture(M1Panel.asset(`players_${math.max(1, shownRows)}`));
-                board.setVisible(!collapsed && shownRows > 0);
             }
+            board.setVisible(boardVisible());
             for (let row = 0; row < 4; row++) {
                 const item = data.rows[row];
                 const values = item ? [`P${item.id + 1}`, item.name, item.sect, item.kills] : [];

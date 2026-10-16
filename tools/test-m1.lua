@@ -111,7 +111,7 @@ function CustomDefeatBJ(...) defeatCount=defeatCount+1 end
 
 local WaveService=require("game.wave.WaveService").default
 local Config=require("game.config.M1Config").default
-assert(Config.prepareSeconds==10 and Config.portalLeadSeconds==7)
+assert(Config.prepareSeconds==60 and Config.portalLeadSeconds==7)
 local service=WaveService:start()
 local function lane(id) return service.lanes:get(id or 0) end
 local function balanced(l)
@@ -344,6 +344,12 @@ local aliveBefore=lane(0).alive
 local frames={}
 local Frame={}
 local methods={}
+Frame.prototype=methods
+methods.__index=methods
+function methods:____constructor(kind,_,parent,template)
+    self.handle=#frames+1;self.parent=parent;self.kind=kind;self.template=template
+    self.button=kind=="BUTTON";frames[#frames+1]=self
+end
 local function create(parent)
     local f=setmetatable({handle=#frames+1,parent=parent},{__index=methods})
     frames[#frames+1]=f;return f
@@ -363,6 +369,8 @@ function methods:setOnClick(fn) self.click=fn end
 function DzGetColor(r,g,b,a) return {r=r,g=g,b=b,a=a} end
 function DzFrameSetVertexColor(handle,color) frames[handle].color=color end
 function DzFrameSetIgnoreTrackEvents(handle, flag) frames[handle].ignore=flag end
+function DzGetWindowWidth() return 1920 end
+function DzGetWindowHeight() return 1080 end
 FRAMEPOINT_TOPLEFT=0
 package.loaded["solar.solar-common.w3ts.handles.frame"]={Frame=Frame}
 lib.__TS__New(require("game.ui.M1Panel").default,service)
@@ -400,3 +408,205 @@ local danger=Hud:read(service,0,clock)
 assert(danger.monsterColor=="|cffff4040" and danger.warning:find("20秒",1,true))
 lane(0).alive=aliveBefore;lane(0).overloadUntil=0
 print("PASS: grace/reset, countdown, outer loop, actual-player rows, no status column, persistent texture arrows, native rolling red warnings")
+
+-- D13普通弟子候选：真实编译模块接正式敌人登记，不模拟原生攻击/无敌的实际引擎效果。
+local removeMoveFails=false
+function UnitRemoveAbility(u, ability)
+    u.removedAbility=ability
+    return not removeMoveFails
+end
+function SetUnitInvulnerable(u, flag) u.invulnerable=flag end
+function SetUnitUseFood(u, flag) u.useFood=flag end
+function SetUnitAcquireRange(u, range) u.acquireRange=range end
+function IssueTargetOrder(u, order, target)
+    u.attackTarget=target;u.orderId=851983;u.attackCalls=(u.attackCalls or 0)+1
+    return true
+end
+function IssueImmediateOrder(u, order) u.attackTarget=nil;u.orderId=0;return true end
+activePlayers={[0]=true,[1]=true,[2]=true,[3]=true};moveUnits=false;restart()
+local disciples=lib.__TS__New(require("game.disciple.DiscipleService").default, service)
+local previews={}
+for id=0,3 do
+    local before=emitted
+    disciples:deployPreview(id)
+    assert(emitted==before+1)
+    local u=units[#units];previews[id]=u
+    assert(u.owner==id and u.kind=="hrif" and u.invulnerable and u.pathing==false and u.acquireRange==0 and u.useFood==false)
+    assert(u.removedAbility=="Amov")
+    assert(u.x==((id==1 or id==3) and 2880 or -2880))
+    assert(u.y==(id>=2 and -4784 or 4272))
+    disciples:deployPreview(id);assert(emitted==before+1, "duplicate preview")
+end
+assert(not disciples:deployPreview(4):find("已放置",1,true))
+advance(Config.prepareSeconds+1.3)
+local nativeEnemies={}
+for _,u in ipairs(units) do
+    if not u.removed and u.life>0 and u.kind=="hfoo" then nativeEnemies[#nativeEnemies+1]=u end
+end
+assert(#nativeEnemies==12)
+-- 原生怪物都在远处。仅把同路两只摆在等距处，另一路更近也不能被选中。
+local p=previews[0]
+nativeEnemies[1].x=p.x+100;nativeEnemies[1].y=p.y
+nativeEnemies[5].x=p.x-100;nativeEnemies[5].y=p.y
+nativeEnemies[2].x=p.x;nativeEnemies[2].y=p.y
+assert(service.enemies:findTarget(lane(0),p.x,p.y,400)==nativeEnemies[1], "tie not decided by spawn order")
+advance(0.25)
+assert(p.attackTarget==nativeEnemies[1] and p.attackCalls==1)
+-- 有更近的新目标时不打断现有攻击；没有新订单时不重复发攻击命令。
+nativeEnemies[5].x=p.x+50
+advance(0.25);assert(p.attackTarget==nativeEnemies[1] and p.attackCalls==1)
+KillUnit(nativeEnemies[1]);advance(0.25)
+assert(p.attackTarget==nativeEnemies[5] and p.attackCalls==2)
+nativeEnemies[5].x=p.x+401;advance(0.25)
+assert(p.attackTarget==nil and p.orderId==0, "out of range target not stopped")
+nativeEnemies[5].x=p.x+400
+assert(service.enemies:findTarget(lane(0),p.x,p.y,400)==nativeEnemies[5], "range boundary")
+KillUnit(nativeEnemies[5]);advance(0.25)
+assert(p.attackTarget==nil)
+for id=0,3 do balanced(lane(id)) end
+-- 删除/重开/失败和离开清理；失败创建不留登记，不影响敌人对账。
+disciples:remove(0);assert(previews[0].removed)
+removeMoveFails=true;local before=emitted;disciples:deployPreview(0)
+assert(emitted==before+1 and units[#units].removed)
+removeMoveFails=false;disciples:deployPreview(0);p=units[#units]
+service:restart();advance(0.25)
+assert(p.removed and previews[1].removed and previews[2].removed and previews[3].removed)
+disciples:deployPreview(0);p=units[#units]
+service:fail(lane(0),"test");advance(0.25);assert(p.removed)
+disciples:deployPreview(1);p=units[#units]
+triggerPlayer=1;activePlayers[1]=nil;triggers[1].action();advance(0.25);assert(p.removed)
+failCreation=true;before=emitted;disciples:deployPreview(2);assert(emitted==before)
+failCreation=false
+-- 聊天身份取同步事件；正式模式不注册D13变更入口。
+lib.__TS__New(require("game.test.D13Probe").default,disciples)
+chats["-jt d13"]({triggerPlayer=2});p=units[#units];assert(p.owner==2 and p.kind=="hrif")
+chats["-jt d13 clear"]({triggerPlayer=3});assert(not p.removed)
+chats["-jt d13 clear"]({triggerPlayer=2});assert(p.removed)
+assert(chats["-jt d13 status"]~=nil)
+chats["-jt d13"]=nil;chats["-jt d13 clear"]=nil;chats["-jt d13 status"]=nil;isDebug=false
+lib.__TS__New(require("game.test.D13Probe").default,disciples)
+assert(chats["-jt d13"]==nil and chats["-jt d13 clear"]==nil and chats["-jt d13 status"]==nil)
+isDebug=true
+print("PASS: D13 preview setup/rollback, stable lane targeting, attack throttling, cleanup, chat identity/debug gate; native combat unverified")
+
+do
+-- 门派窗口的Frame不能写玩法；同步载荷不携带/不信任玩家编号。
+local handlers,sent={},{}
+package.loaded["solar.solar-common.util.net.SyncUtil"]={default={
+    onSyncData=function(key,fn) assert(handlers[key]==nil);handlers[key]=fn end,
+    syncData=function(key,data) sent[#sent+1]={key=key,data=data} end,
+}}
+local selectionCalls,cameraCalls=0,0
+function SetUnitVertexColor(u,r,g,b,a) u.tint={r,g,b,a} end
+function ClearSelection() selectionCalls=selectionCalls+1 end
+function SelectUnit(u,flag) u.selected=flag end
+function PanCameraToTimed(x,y,seconds) cameraCalls=cameraCalls+1 end
+function methods:setEnabled(value) self.enabled=value end
+local Sects=require("game.config.SectConfig").default
+local SectService=require("game.sect.SectService").default
+assert(Sects.selectionSeconds==40 and Config.prepareSeconds==60 and Sects.pageSize==12)
+activePlayers={[0]=true,[1]=true,[2]=true,[3]=true};restart()
+local began=clock
+local sects=lib.__TS__New(SectService,service)
+local function receive(id,data) handlers[Sects.syncKey](nil,id,data) end
+local generation=lane(0).generation
+local function choose(id,sect,token) receive(id,tostring(token or lane(id).generation)..":"..sect) end
+assert(sects:read(0).deadline==began+40 and lane(0).nextWaveAt==began+60)
+local totalBefore=emitted
+receive(0,"0:shaolin");receive(0,tostring(generation)..":invalid");receive(0,tostring(generation)..":shaolin:1")
+assert(emitted==totalBefore and lane(0).sectName=="未选择")
+choose(1,"wudang")
+assert(lane(1).sectName=="武当" and lane(0).sectName=="未选择")
+local builder1=sects:read(1).builder
+assert(builder1.kind=="ewsp" and builder1.owner==1 and builder1.x==4368 and builder1.y==4272 and builder1.useFood==false)
+assert(selectionCalls==0 and cameraCalls==0, "other player's builder changed local selection")
+choose(1,"emei");assert(emitted==totalBefore+1 and sects:read(1).builder==builder1)
+advance(39.99);assert(#lane(0).waves==0 and not sects:read(2).builder)
+choose(0,"emei");assert(lane(0).sectName=="峨眉" and selectionCalls==1 and cameraCalls==1)
+advance(0.02)
+assert(lane(2).sectName=="少林" and lane(3).sectName=="少林")
+assert(sects:read(2).builder.y==-4784 and sects:read(3).builder.x==4368)
+choose(2,"wudang");assert(lane(2).sectName=="少林" and emitted==totalBefore+4)
+assert(lane(0).nextWaveAt==began+60 and #lane(0).waves==0)
+advance(19.98);assert(#lane(0).waves==0)
+advance(0.02);assert(#lane(0).waves==1 and lane(0).alive==1)
+-- 重开清理旧引路灵；默认门派创建失败不得半提交，按一秒节流重试。
+local prior={}
+for id=0,3 do prior[id]=sects:read(id).builder end
+restart();local newStart=clock
+advance(0.25)
+for id=0,3 do assert(prior[id].removed and sects:read(id).deadline==newStart+40) end
+choose(0,"emei",generation);assert(not sects:read(0).chosenId or sects:read(0).chosenId=="")
+failCreation=true;advance(39.76)
+assert(sects:read(0).chosenId=="" and lane(0).sectName=="未选择" and not sects:read(0).builder)
+failCreation=false;advance(1.3)
+assert(lane(0).sectName=="少林" and sects:read(0).builder)
+builder1=sects:read(1).builder;triggerPlayer=1;activePlayers[1]=nil;triggers[1].action();advance(.25)
+assert(builder1.removed and sects:read(1)==nil and sects:read(0).builder)
+local b0=sects:read(0).builder;service:fail(lane(0),"test");advance(.25)
+assert(b0.removed and sects:read(0)==nil)
+-- 25门派/锁定项/推荐筛选/分页：复用同一套配置，不新增固定槽位。
+local originalCount=#Sects.entries
+for index=4,25 do
+    Sects.entries[#Sects.entries+1]={id="test"..index,name="测试"..index,motto="测试",style="测试",summary="测试",
+        lines={},accent="e6c17a",color={255,210,115},recommended=false,selectable=index~=4,unlockHint="未解锁",emblem="shaolin"}
+end
+assert(Sects:page(false,0).total==25 and #Sects:page(false,0).items==12)
+assert(Sects:page(false,2).pages==3 and #Sects:page(false,2).items==1)
+assert(Sects:page(false,99).page==2 and Sects:page(false,-1).page==0)
+assert(Sects:page(true,0).total==3)
+-- UI预览/筛选/翻页不能创建单位；只有确认发同步短命令，收到同步事件后才创建。
+activePlayers={[0]=true,[1]=true,[2]=true,[3]=true};restart();advance(.25)
+local frameStart=#frames
+local beforeUI=emitted
+local panel=lib.__TS__New(require("game.ui.SectPanel").default,sects)
+assert(emitted==beforeUI and panel.root.visible~=false)
+local confirm,all,recommended,nextPage,previousPage
+for i=frameStart+1,#frames do
+    local f=frames[i]
+    if f.button then
+        assert(f.kind=="BUTTON" and not f.template and not f.text, "sect action uses native text/button chrome")
+    else
+        assert(f.ignore, "sect decoration intercepts mouse")
+        local action=frames[f.parent]
+        if action and action.button then
+            assert(f.align==18 and f.x==action.x and f.y==action.y and f.w==action.w and f.h==action.h,
+                "sect button label is not centered in its click area")
+            if f.text=="确认加入少林" then confirm=action end
+            if f.text=="全部门派" then all=action end
+            if f.text=="推荐入门" then recommended=action end
+            if f.text=="下页" then nextPage=action end
+            if f.text=="上页" then previousPage=action end
+        end
+    end
+end
+assert(confirm and all and recommended and nextPage and previousPage)
+local hudStart=#frames
+lib.__TS__New(require("game.ui.M1Panel").default,service,function(_,id)
+    local run=sects:read(id);return run~=nil and run.chosenId==""
+end)
+local sectHudBoard,sectHudHeader
+for i=hudStart+1,#frames do
+    local f=frames[i]
+    if f.texture and f.texture:find("players_",1,true) then sectHudBoard=f end
+    if f.texture and f.texture:find("header.tga",1,true) then sectHudHeader=f end
+end
+assert(sectHudBoard and sectHudBoard.visible==false and sectHudHeader.visible~=false, "HUD overlaps sect catalogue")
+all.click();nextPage.click();nextPage.click();assert(panel.page==2 and #panel.tiles==12)
+nextPage.click();assert(panel.page==2)
+previousPage.click();assert(panel.page==1)
+panel.tiles[1].button.click();assert(emitted==beforeUI)
+recommended.click();panel.tiles[2].button.click();assert(panel.previewId=="wudang")
+assert(panel.buttonLabels:get(confirm.handle).text=="确认加入武当")
+confirm.click();assert(emitted==beforeUI and #sent==1 and sent[1].data==tostring(lane(0).generation)..":wudang")
+assert(panel.buttonLabels:get(confirm.handle).text=="正在确认…" and confirm.enabled==false)
+receive(0,sent[1].data);advance(.1)
+assert(lane(0).sectName=="武当" and panel.root.visible==false)
+advance(.25);assert(sectHudBoard.visible==true)
+-- 无效/锁定门派拒绝，40秒后使用首个可选门派而不是界面预览项。
+choose(2,"test4");assert(sects:read(2).chosenId=="")
+local untilDeadline=sects:read(2).deadline-clock
+advance(untilDeadline+.01);assert(lane(2).sectName=="少林")
+for i=#Sects.entries,originalCount+1,-1 do Sects.entries[i]=nil end
+print("PASS: sect gateway identity/generation/deadline, 40/60 timeline, builder transaction/cleanup, local-only camera, 25-sect paging and Frame-only preview")
+end

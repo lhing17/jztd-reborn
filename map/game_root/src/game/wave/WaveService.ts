@@ -46,6 +46,7 @@ export default class WaveService {
             this.enemies.cancel(lane);
         }
         this.lanes.clear();
+        const firstWaveAt = BaseUtil.getGameTime() + M1Config.prepareSeconds;
         for (let id = 0; id < 4; id++) {
             if (GetPlayerController(Player(id)) !== MAP_CONTROL_USER ||
                 GetPlayerSlotState(Player(id)) !== PLAYER_SLOT_STATE_PLAYING) continue;
@@ -53,7 +54,7 @@ export default class WaveService {
                 state: "preparing", waves: [], alive: 0, peak: 0, nextWaveAt: 0, failureCount: 0, reason: "",
                 overloadUntil: 0, overloadGeneration: 0};
             this.lanes.set(id, lane);
-            this.schedule(lane, 0, M1Config.prepareSeconds);
+            this.schedule(lane, 0, M1Config.prepareSeconds, firstWaveAt);
             GLog.say(Player(id), `[M1] ${M1Config.prepareSeconds}秒后出怪；怪物达到80只后有20秒清怪时间。`, 15);
         }
     }
@@ -63,16 +64,18 @@ export default class WaveService {
             lane.state !== "failed" && lane.state !== "finished";
     }
 
-    private schedule(lane: LaneRun, index: number, delay: number): void {
+    private schedule(lane: LaneRun, index: number, delay: number, deadline?: number): void {
         const token = lane.generation;
-        lane.nextWaveAt = BaseUtil.getGameTime() + delay;
+        const now = BaseUtil.getGameTime();
+        lane.nextWaveAt = deadline ?? now + delay;
+        const remaining = math.max(0, lane.nextWaveAt - now);
         if (!this.portals.has(lane.playerId)) {
             // 开波前先播放门的生成动画；旧轮或已离开玩家的预告不能创建门。
-            BaseUtil.runLater(math.max(0, delay - M1Config.portalLeadSeconds), () => {
+            BaseUtil.runLater(math.max(0, remaining - M1Config.portalLeadSeconds), () => {
                 if (this.valid(lane, token)) this.portals.show(lane.route);
             });
         }
-        BaseUtil.runLater(delay, () => {
+        BaseUtil.runLater(remaining, () => {
             if (this.valid(lane, token)) this.begin(lane, index);
         });
     }

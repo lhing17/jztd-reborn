@@ -1,0 +1,16 @@
+{
+  "source": "Original code-drawn skins and emblems; rebuild with tools/build-sect-ui.py.",
+  "files": {
+    "war3mapImported/jzr_sect/panel.tga": "f20b827c3efab045b50ccffa48da1191330ff26d24d3d3fa4b1c12f58c983206",
+    "war3mapImported/jzr_sect/detail.tga": "553b33a75f312958b78f34b10c6461a55b7e4e26cef17895ac4bd213f4fc4f32",
+    "war3mapImported/jzr_sect/tile.tga": "5f11621ed5ea8e835560848c5b6cb07152f05713ab901fd7d03f6339fd464168",
+    "war3mapImported/jzr_sect/tile_selected.tga": "9171dd7bc0f0c19aaa2444c10819a9f54c7c4ea1f7cfa6806e559e08bf0a42c2",
+    "war3mapImported/jzr_sect/button.tga": "74558c09f40655a0b3af4f44f1c604b6c67e971d7b21edde72b37aceb40a5b7f",
+    "war3mapImported/jzr_sect/button_disabled.tga": "e86db207aaf27fd805cc7344c3a14fff5fdc1f620a8b458be6fc8721744974c8",
+    "war3mapImported/jzr_sect/tab.tga": "c688d11c97ced0253d6ea346f2677dd1e2573334677e7e5481d53baa358f2240",
+    "war3mapImported/jzr_sect/tab_selected.tga": "26a4903b1957646d99b3a41f6ea514f818a424ef4c273814b4f8a8839adcd0e8",
+    "war3mapImported/jzr_sect/emblem_shaolin.tga": "1021c55625c8bf815bd71934c7173c62c4e338e389f390154388daf0878f52bb",
+    "war3mapImported/jzr_sect/emblem_wudang.tga": "f54c18c773d496dfb1902b5da3a2b47e2bffaa93172a7153d9dff3bbc5f33349",
+    "war3mapImported/jzr_sect/emblem_emei.tga": "707c34f99647a339dc34f29ec1a21667228fadb88ebc31c6bfd0e149ffaea246"
+  }
+}

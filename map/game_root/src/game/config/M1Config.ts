@@ -17,7 +17,7 @@ export default class M1Config {
     static readonly enemyOwnerId = 5;
     static readonly enemyType = "hfoo";
     static readonly moveSpeed = 270;
-    static readonly prepareSeconds = 10;
+    static readonly prepareSeconds = 60;
     static readonly wavePeriod = 45;
     static readonly updatePeriod = 0.25;
     static readonly arrivalRadius = 48;
