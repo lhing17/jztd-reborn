@@ -2,6 +2,8 @@ import M0Probe from "./game/test/M0Probe";
 import DevPanel from "./game/ui/DevPanel";
 import GameConfig from "./game/config/GameConfig";
 import GLog from "./game/core/GLog";
+import GameCamera from "./game/ui/GameCamera";
+import SceneEnvironment from "./game/core/SceneEnvironment";
 
 /**
  * 正式模块的确定性装配（只装配，不堆放玩法实现）
@@ -9,6 +11,8 @@ import GLog from "./game/core/GLog";
  */
 export default function StateInit() {
     GLog.normal(`启动 ${GameConfig.projectName} v${GameConfig.version}`);
+    new SceneEnvironment();
+    new GameCamera();
 
     // M0 探针：聊天命令 + 同步处理器
     new M0Probe();
