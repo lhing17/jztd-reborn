@@ -1,0 +1,90 @@
+{
+  "referenceMap": "D:\\war3\\刷不停的怪.w3x",
+  "referenceMapSha256": "fb5113b0e99c6a6aa2db57764d4cc918953f2632a696a5dd728b6c456dba8c0a",
+  "referencePortalBlock": 4003,
+  "referencePortalSha256": "68ea12353d4a21198960081c62402fac442c744f24cabe3f3950de58e80fd64a",
+  "modelChange": "Only TEXS path slots rewritten to private import names; all geometry, animations and colors retained.",
+  "portalDependencies": [
+    {
+      "source": "Textures\\rock64.blp",
+      "native": true
+    },
+    {
+      "source": "war3mapImported\\AZGlow_common1.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_01.blp",
+      "sha256": "03c18ebc12e8a3f232e4729635f4b33cd871f07980f0d90783da2e23396c80b5"
+    },
+    {
+      "source": "war3mapImported\\AZ_Star01.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_02.blp",
+      "sha256": "cdc787ff7adf3298503f9647b6ebffcb4f9e63c4b645214ef5dc2c83afcabbb2"
+    },
+    {
+      "source": "Textures\\ShockwaveWater1Black.blp",
+      "native": true
+    },
+    {
+      "source": "Textures\\GenericGlow5.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_04.blp",
+      "sha256": "6774cd1dde0bc96afdb347f73fc881bfdbe00e23b946f17e825b3e34f95acda0"
+    },
+    {
+      "source": "Textures\\GenericGlow2b.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_05.blp",
+      "sha256": "af14264cc0b25bc8e58437c3e53539d53a8497aba5d292a3733e78f08af13086"
+    },
+    {
+      "source": "war3mapImported\\Wind_ribbon_Phoenix2_tail.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_06.blp",
+      "sha256": "f549cc4de82bbdba12d7e99130a4fd07a25aadbf80f116a94b175e7514ed7e8d"
+    },
+    {
+      "source": "Textures\\star4_32.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_07.blp",
+      "sha256": "c4c160bf93862e7ad2a74d448b7d65d777e32496e3858755816c6e200b5caebf"
+    },
+    {
+      "source": "war3mapImported\\AZ_MagicMatrix16_White.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_08.blp",
+      "sha256": "fcf12b64697e287ba5debf30f6c0b5d293c8adfd6912a047d224431a309057a9"
+    },
+    {
+      "source": "war3mapImported\\BY_Wood_Effect_Texture_Unusual_Kof_Frame_Fire_2.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_09.blp",
+      "sha256": "bca0bee2885915545714b0798acd8220b02c66e42505ed73f0dd2b1d8bd9cf6a"
+    },
+    {
+      "source": "doodads\\Cinematic\\ShimmeringPortal\\white32.blp",
+      "target": "war3mapImported\\jzr_portal\\white32.tga",
+      "whitePlaceholderFallback": true
+    },
+    {
+      "source": "war3mapImported\\BY_Wood_Effect_Texture_Frame_Ring_6_2.blp",
+      "target": "war3mapImported\\jzr_portal\\texture_11.blp",
+      "sha256": "3624d199ea80a4231279a3cfbb9db4600e448aea95a2b696495fa95611d7ddd7"
+    }
+  ],
+  "uiStyle": "Code-drawn opaque black interiors, warm gray 1px rim, transparent rounded corners; RGBA TGA.",
+  "files": {
+    "war3mapImported/jzr_ui/header.tga": "d1c29f8b2a55ddf483043a0692f3bb6a1dfcb8555e347352e710f1e65e23ddd7",
+    "war3mapImported/jzr_ui/center.tga": "1e4457b236d79611701956aa341974383c89e8d28b1b328b58970afca91c49e3",
+    "war3mapImported/jzr_ui/players_1.tga": "a883ce61af37c5a0135f9c01a76054de1a6bb913705ecb4bf8d19f8d0fa3e018",
+    "war3mapImported/jzr_ui/players_2.tga": "81a2f2fb52aa6bb591ffdb1d6f8702d6ca895b0c2de7bdbf49ad186d2e02c40a",
+    "war3mapImported/jzr_ui/players_3.tga": "7860aca3cea923d96c6024851ff9ae38e7949636d688bcd50d5f34ba95eec239",
+    "war3mapImported/jzr_ui/players_4.tga": "b569f60fb11f11b805b750fc67100d36c9f8e6190b341c88eb9d89c5d095ca4c",
+    "war3mapImported/jzr_ui/arrow_up.tga": "6bfb95514914bb918079804b832cc61709e80f2cc529d221f12a4b24e8109d7b",
+    "war3mapImported/jzr_ui/arrow_down.tga": "44b115598b1de3715845a3c87f12efd09e51f00790b575ef08c530de9377f0bf",
+    "war3mapImported/jzr_portal/texture_01.blp": "03c18ebc12e8a3f232e4729635f4b33cd871f07980f0d90783da2e23396c80b5",
+    "war3mapImported/jzr_portal/texture_02.blp": "cdc787ff7adf3298503f9647b6ebffcb4f9e63c4b645214ef5dc2c83afcabbb2",
+    "war3mapImported/jzr_portal/texture_04.blp": "6774cd1dde0bc96afdb347f73fc881bfdbe00e23b946f17e825b3e34f95acda0",
+    "war3mapImported/jzr_portal/texture_05.blp": "af14264cc0b25bc8e58437c3e53539d53a8497aba5d292a3733e78f08af13086",
+    "war3mapImported/jzr_portal/texture_06.blp": "f549cc4de82bbdba12d7e99130a4fd07a25aadbf80f116a94b175e7514ed7e8d",
+    "war3mapImported/jzr_portal/texture_07.blp": "c4c160bf93862e7ad2a74d448b7d65d777e32496e3858755816c6e200b5caebf",
+    "war3mapImported/jzr_portal/texture_08.blp": "fcf12b64697e287ba5debf30f6c0b5d293c8adfd6912a047d224431a309057a9",
+    "war3mapImported/jzr_portal/texture_09.blp": "bca0bee2885915545714b0798acd8220b02c66e42505ed73f0dd2b1d8bd9cf6a",
+    "war3mapImported/jzr_portal/white32.tga": "f3170a8dbe573c58301af8d14dc170e6f7c48c777041368866dccf4f6eebd87a",
+    "war3mapImported/jzr_portal/texture_11.blp": "3624d199ea80a4231279a3cfbb9db4600e448aea95a2b696495fa95611d7ddd7",
+    "war3mapImported/jzr_portal/reference_portal.mdx": "a1e2535cdd67ced02cffeaddc053b17f63e3de584fe63e915eea003508461ed6"
+  },
+  "importEntriesAdded": 0
+}

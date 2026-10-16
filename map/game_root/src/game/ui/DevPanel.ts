@@ -49,5 +49,13 @@ export default class DevPanel {
         syncBtn.setOnClick(() => {
             M0Probe.sendSyncProbe();
         });
+        // 正式HUD使用顶部布局；此命令仅改变发言者本机Frame。
+        let visible = false;
+        bg.setVisible(visible);
+        if (isDebug) se.onPlayerChat(GameConfig.debugCmdPrefix + " dev", e => {
+            if (e.triggerPlayer !== GetLocalPlayer()) return;
+            visible = !visible;
+            bg.setVisible(visible);
+        });
     }
 }
