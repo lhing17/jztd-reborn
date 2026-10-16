@@ -16,6 +16,10 @@ import SolarActorState from "@/SolarActorState";
 //若不传值则自动推测当前地图是否为测试环境（slk后的地图不测试 在太阳编辑器打开此地图的机器测试）
 GlobalVars.init()
 
+// 框架初始化会打开调试控制台；在其完成后隐藏窗口，保留调试模式。
+const runtime: NoSelf | any = require("jass.runtime");
+runtime.console = false;
+
 export default class App {
 
     constructor() {

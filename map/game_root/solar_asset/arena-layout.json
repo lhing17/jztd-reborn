@@ -1,0 +1,82 @@
+{
+  "description": "P1 rotate 180; P2 mirror X; P3 mirror Y; P4 mirror XY from P1",
+  "mirrorAxes": {
+    "x": 0,
+    "y": -256
+  },
+  "preservedCentralPlacements": 7,
+  "placements": 335,
+  "starts": [
+    [
+      -4368,
+      4592
+    ],
+    [
+      4368,
+      4592
+    ],
+    [
+      -4368,
+      -5104
+    ],
+    [
+      4368,
+      -5104
+    ]
+  ],
+  "entranceCenters": [
+    [
+      -3520,
+      4672
+    ],
+    [
+      3520,
+      4672
+    ],
+    [
+      -3520,
+      -5184
+    ],
+    [
+      3520,
+      -5184
+    ]
+  ],
+  "spawnPositions": [
+    [
+      -3536,
+      4656
+    ],
+    [
+      3536,
+      4656
+    ],
+    [
+      -3536,
+      -5168
+    ],
+    [
+      3536,
+      -5168
+    ]
+  ],
+  "mirroredModels": 5,
+  "note": "四区镜像布局；NPC 与刷怪服务尚未接入，草地入口不显示传送门。已删除不可见贴花摆放和无用顶面资源。",
+  "files": {
+    "war3map.w3e": "d92289e0d5e1760fa42d30cf6d33bc025550731d96fa421eeaecb47591036bc1",
+    "war3map.wpm": "494efa840ebe98901b230fc3418d23cb5f13f6a6c5b9c65ecdb3f4426f8b16ee",
+    "war3map.shd": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
+    "war3mapImported/mirror_x/dimian01.mdx": "965090b40fb7bb80be209eb40e29a9212258a57912f7e11422ddb90465fb493a",
+    "war3mapImported/mirror_x/guodao01.mdx": "a10ad86bcc31d03988f4e107e1840d9db54d1d5d7a8de15fb877f5b12fa9b430",
+    "war3mapImported/mirror_x/yeshu.mdx": "90ff48024c429bfd72c31fc0dd51a88387e1cfcc6e03c33b5fd2bed176336d42",
+    "war3mapImported/mirror_x/ZSW006.mdx": "86d19c80559fcc58b980abd4d127294ff831ae02f860a3dcd11dc838712a4c08",
+    "war3mapImported/mirror_x/jzmx (7).mdx": "e752e9f96323111690f513b0a7b94d576666876e9715e665e74b097dd94451c8",
+    "war3map.w3d": "b05528ac864b162c72e14da8adca20d50d16b6b712b6ee950b928f7779ef68e8",
+    "war3map.doo": "b0a8e23cf32ff7f2f4a2c5ae0f4c97967517bc93c006864efe91b2262243946e",
+    "war3mapUnits.doo": "10a30958354083c374a57119cfbe923257893436c06425593fc206df20b59475",
+    "war3map.mmp": "ce76a897ad7c6fea918a8521e3203097d052bfd92db60c839a8ee53fefcebcbe",
+    "war3map.w3i": "feae1bccdcf7012a52d0d68af42c7d7e181e9c622e87725587766fc931585041",
+    "war3mapMap.blp": "4106963cca6808641e84e236aa6b79f9df60aadebcf4308fb78a1f258547b7a6"
+  },
+  "placementsPerArena": 82
+}

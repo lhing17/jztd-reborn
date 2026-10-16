@@ -1,0 +1,40 @@
+{
+  "sourceMapSha256": "e69fc73d110f37720bcc756734cf45af30b7a07a5d3a1322443d817274a1ef7f",
+  "textures": [
+    {
+      "role": "中央深色铺地",
+      "sourceArchive": "D:/war3/英灵传说.w3x",
+      "sourcePath": "TerrainArt/Cityscape/City_BrickTiles.blp",
+      "target": "TerrainArt/Cityscape/City_BrickTiles.blp",
+      "sha256": "50872b735384fd8e0842dce1dca49ade672ad51f24c468a592904c1f1b577d6f",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "role": "浅灰方砖道路",
+      "sourceArchive": "D:/war3/英灵传说.w3x",
+      "sourcePath": "TerrainArt/Cityscape/City_SquareTiles.blp",
+      "target": "TerrainArt/Cityscape/City_SquareTiles.blp",
+      "sha256": "3c78348c7720501d3ed10cb3413b58da8f0e0f369706649bf68fda6fcafd518b",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "role": "城市草地（原生资源，配合铺地风格）",
+      "sourceArchive": "D:/war3/Warcraft III Frozen Throne/war3.mpq",
+      "sourcePath": "TerrainArt/Cityscape/City_Grass.blp",
+      "target": "TerrainArt/LordaeronSummer/Lords_Grass.blp",
+      "sha256": "3ff5d61362009c35b32d47a7f31736eff3c1880ee96637af116571022d355790",
+      "dimensions": [
+        512,
+        256
+      ]
+    }
+  ],
+  "currentLayoutManifest": "solar_asset/arena-layout.json",
+  "note": "两张铺地来自英灵传说，城市草地来自原生 war3.mpq；当前布局见 arena-layout.json，实机验收待确认。"
+}
