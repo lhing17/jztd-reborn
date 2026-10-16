@@ -1,0 +1,95 @@
+{
+  "sourceArchive": "D:/war3/Warcraft III Frozen Throne/War3Patch.mpq",
+  "sourcePath": "UI/MiscData.txt",
+  "sourceSha256": "d097d3cbb4a03719a97591900b45ab42fdb847385819c3d5e7dd7b47d7d9b516",
+  "outputSha256": "3afc2be3807d677a0f4399d44714714846feb4892fe6d2d47ff2e62ae0807cb4",
+  "changes": [
+    [
+      "TerrainZFog",
+      "Start",
+      "3000",
+      "100000"
+    ],
+    [
+      "TerrainZFog",
+      "End",
+      "5000",
+      "200000"
+    ],
+    [
+      "TerrainZFog",
+      "Density",
+      "0.5",
+      "0"
+    ],
+    [
+      "TerrainZFog",
+      "Color",
+      "255,0,0,0",
+      "0,255,255,255"
+    ],
+    [
+      "FogOfWar",
+      "FoggedTerrain",
+      "170,16,16,32",
+      "0,0,0,0"
+    ],
+    [
+      "FogOfWar",
+      "BlackMaskedTerrain",
+      "255,0,0,0",
+      "0,0,0,0"
+    ],
+    [
+      "FogOfWar",
+      "DarkMaskedTerrain",
+      "230,0,0,0",
+      "0,0,0,0"
+    ],
+    [
+      "FogOfWar",
+      "FoggedObject",
+      "255,64,64,96",
+      "255,255,255,255"
+    ],
+    [
+      "FogOfWar",
+      "BlackMaskedObject",
+      "255,0,0,0",
+      "255,255,255,255"
+    ],
+    [
+      "FogOfWar",
+      "DarkMaskedObject",
+      "255,32,32,48",
+      "255,255,255,255"
+    ],
+    [
+      "FogOfWar",
+      "FogColorBlackMaskAlpha",
+      "0",
+      "255"
+    ],
+    [
+      "FogOfWar",
+      "FogColorDarkMaskAlpha",
+      "96",
+      "255"
+    ],
+    [
+      "FogOfWar",
+      "FogColorFogMaskAlpha",
+      "192",
+      "255"
+    ],
+    [
+      "Camera",
+      "NearZ",
+      "100,100,100,100,100,100,60",
+      "300,300,300,300,300,300,60"
+    ]
+  ],
+  "w3iFogOffset": 162,
+  "note": "Render-only load-time fog colors; runtime visibility still disabled globally by SceneEnvironment. First-frame behavior pending War3 verification.",
+  "cameraDepthPrecisionRepair": "solar_asset/arena-layout.json#surfaceDepthAndMouths"
+}

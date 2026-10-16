@@ -1,0 +1,184 @@
+{
+  "sourceArchive": "D:\\war3\\Warcraft III Frozen Throne\\war3.mpq",
+  "sampleTime": 30333,
+  "clockHour": 12,
+  "method": "Preserve original MDX chunks, sequences, hierarchy, light type, static intensities, and keyframe times. Fix light values at native noon; zero Hermite tangents and fix Bezier handles to the same value; fix static fallback light colors.",
+  "models": [
+    {
+      "output": "FixedNoonTerrain.mdx",
+      "sourceAsset": "Environment\\DNC\\DNCLordaeron\\DNCLordaeronTerrain\\DNCLordaeronTerrain.mdx",
+      "sourceSHA256": "e443a05734dca8f2be3839eac6f738d4b7454474ed1cb3e671a84002c88f33bc",
+      "outputSHA256": "85eb5220e14533a20a58ffb5fd30a39eebda01846be3f90a260547598c7670e8",
+      "sourceBytes": 1468,
+      "outputBytes": 1468,
+      "modifiedByteCount": 305,
+      "noonSamples": {
+        "KGRT": [
+          0.38153889775276184,
+          -0.21586395800113678,
+          -0.44258689880371094,
+          0.7822708487510681
+        ],
+        "KLAC": [
+          0.9960780143737793,
+          0.9960780143737793,
+          0.9960780143737793
+        ],
+        "KLBC": [
+          0.9803919792175293,
+          0.839851975440979,
+          0.839851975440979
+        ]
+      },
+      "staticLight": [
+        1,
+        80.0,
+        200.0,
+        0.9960780143737793,
+        0.9960780143737793,
+        0.9960780143737793,
+        1.2999999523162842,
+        0.9803919792175293,
+        0.839851975440979,
+        0.839851975440979,
+        0.20000000298023224
+      ],
+      "tracks": [
+        {
+          "tag": "KGRT",
+          "keys": 1,
+          "interpolation": 0,
+          "globalSequence": 0
+        },
+        {
+          "tag": "KLAC",
+          "keys": 8,
+          "interpolation": 2,
+          "globalSequence": -1
+        },
+        {
+          "tag": "KLBC",
+          "keys": 9,
+          "interpolation": 2,
+          "globalSequence": -1
+        }
+      ],
+      "chunkStructureUnchanged": true
+    },
+    {
+      "output": "FixedNoonUnit.mdx",
+      "sourceAsset": "Environment\\DNC\\DNCLordaeron\\DNCLordaeronUnit\\DNCLordaeronUnit.mdx",
+      "sourceSHA256": "ed9a07f7ee41fad661b11113b21f36b8c4f846d5ca367c51244d27da9417ceba",
+      "outputSHA256": "4df582a4c7c6cb9c565cad6de7c6cb06961a5bcb9e607e69e27f50c056f1e40a",
+      "sourceBytes": 1468,
+      "outputBytes": 1468,
+      "modifiedByteCount": 305,
+      "noonSamples": {
+        "KGRT": [
+          0.38153889775276184,
+          -0.21586395800113678,
+          -0.44258689880371094,
+          0.7822708487510681
+        ],
+        "KLAC": [
+          0.9960780143737793,
+          0.9960780143737793,
+          0.9960780143737793
+        ],
+        "KLBC": [
+          0.9803919792175293,
+          0.839851975440979,
+          0.839851975440979
+        ]
+      },
+      "staticLight": [
+        1,
+        80.0,
+        200.0,
+        0.9960780143737793,
+        0.9960780143737793,
+        0.9960780143737793,
+        1.2999999523162842,
+        0.9803919792175293,
+        0.839851975440979,
+        0.839851975440979,
+        0.30000001192092896
+      ],
+      "tracks": [
+        {
+          "tag": "KGRT",
+          "keys": 1,
+          "interpolation": 0,
+          "globalSequence": 0
+        },
+        {
+          "tag": "KLAC",
+          "keys": 8,
+          "interpolation": 2,
+          "globalSequence": -1
+        },
+        {
+          "tag": "KLBC",
+          "keys": 9,
+          "interpolation": 2,
+          "globalSequence": -1
+        }
+      ],
+      "chunkStructureUnchanged": true
+    }
+  ],
+  "independentValidation": [
+    {
+      "file": "FixedNoonTerrain.mdx",
+      "fileLengthAndAllChunksVerified": true,
+      "modificationsOnlyWithinLightColorsAndAnimationValues": true,
+      "staticTypeAttenuationAndIntensitiesUnchanged": true,
+      "tracks": [
+        {
+          "tag": "KGRT",
+          "keys": 1,
+          "segmentSamplesVerified": 0
+        },
+        {
+          "tag": "KLAC",
+          "keys": 8,
+          "segmentSamplesVerified": 49
+        },
+        {
+          "tag": "KLBC",
+          "keys": 9,
+          "segmentSamplesVerified": 56
+        }
+      ],
+      "quaternionNorm": 1.0000000113303558
+    },
+    {
+      "file": "FixedNoonUnit.mdx",
+      "fileLengthAndAllChunksVerified": true,
+      "modificationsOnlyWithinLightColorsAndAnimationValues": true,
+      "staticTypeAttenuationAndIntensitiesUnchanged": true,
+      "tracks": [
+        {
+          "tag": "KGRT",
+          "keys": 1,
+          "segmentSamplesVerified": 0
+        },
+        {
+          "tag": "KLAC",
+          "keys": 8,
+          "segmentSamplesVerified": 49
+        },
+        {
+          "tag": "KLBC",
+          "keys": 9,
+          "segmentSamplesVerified": 56
+        }
+      ],
+      "quaternionNorm": 1.0000000113303558
+    }
+  ],
+  "runtimePaths": [
+    "Environment/DNC/DNCLordaeron/DNCLordaeronTerrain/DNCLordaeronTerrain.mdx",
+    "Environment/DNC/DNCLordaeron/DNCLordaeronUnit/DNCLordaeronUnit.mdx"
+  ]
+}

@@ -36,5 +36,17 @@
     }
   ],
   "currentLayoutManifest": "solar_asset/arena-layout.json",
-  "note": "两张铺地来自英灵传说，城市草地来自原生 war3.mpq；当前布局见 arena-layout.json，实机验收待确认。"
+  "note": "从11960a4逐字节恢复内坪/浅灰方砖道路/配套城市草地。保留当前四区与周边；清除不再使用的手绘模型、贴花和补片。原生粗糙泥土及当前水岸配置保留。",
+  "nativeTerrainRestore": {
+    "status": "英灵传说纹理恢复，保留当前布局；待用户War3验收。",
+    "textureHistoryCommit": "11960a4",
+    "surface": "原生地形；移除手绘模型铺面。",
+    "preserved": "当前W3E全部字节、WPM、单位/出生点、JASS、TS/Lua、雾/光照配置，以及260条既有景观摆放逐项保持。",
+    "removedSurfacePlacements": 16,
+    "removedCustomDefinitions": 33,
+    "removedResourceFiles": 45,
+    "removedImportEntries": 45,
+    "backup": "map/backup/yingling-current-layout-20261016",
+    "userVerificationPending": true
+  }
 }

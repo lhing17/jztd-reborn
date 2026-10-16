@@ -3,6 +3,7 @@ import ArchiveUtil from "@/ArchiveUtil";
 import BaseUtil from "@/BaseUtil";
 import GameConfig from "../config/GameConfig";
 import GLog from "../core/GLog";
+import SceneEnvironment from "../core/SceneEnvironment";
 
 /**
  * M0 探针（开发指南 §4.2 可观察性 + §11 M0 验收）：
@@ -30,6 +31,11 @@ export default class M0Probe {
 
         se.onPlayerChat(GameConfig.debugCmdPrefix + " sync", (e) => {
             M0Probe.sendSyncProbe();
+        });
+
+        // 只读正式环境开关，区分视野未关闭与引擎载入期的渲染渐变。
+        se.onPlayerChat(GameConfig.debugCmdPrefix + " view", (e) => {
+            GLog.say(e.triggerPlayer, SceneEnvironment.visibilityStatus());
         });
 
         se.onPlayerChat(GameConfig.debugCmdPrefix + " arch", (e) => {

@@ -4,8 +4,6 @@
     "x": 0,
     "y": -256
   },
-  "preservedCentralPlacements": 7,
-  "placements": 335,
   "starts": [
     [
       -4368,
@@ -60,23 +58,71 @@
       -5168
     ]
   ],
-  "mirroredModels": 5,
-  "note": "四区镜像布局；NPC 与刷怪服务尚未接入，草地入口不显示传送门。已删除不可见贴花摆放和无用顶面资源。",
+  "sceneryPlacements": 44,
+  "streamWater": {
+    "type": "LSha",
+    "nativeHeightOffset": -89.6,
+    "waterRaw": 8422,
+    "surfaceZ": -32.1,
+    "bedZ": [
+      -160,
+      -128
+    ],
+    "depth": [
+      127.9,
+      95.9
+    ],
+    "wetVertices": 844,
+    "tintRGBA": [
+      128,
+      255,
+      96,
+      255
+    ]
+  },
+  "placements": 260,
+  "mirroredModels": 2,
+  "note": "当前四区与外围景观保留，仅恢复历史英灵传说内坪/方砖路及配套草地；旧手绘铺面、贴花和补片全部撤下。",
+  "landscape": {
+    "treeSetback": 640,
+    "boundaryTrees": 200,
+    "addedSceneryPlacements": 44,
+    "waterAndBankGeometryUnchanged": true,
+    "groundHeightAndTextureSelectorsUnchanged": true
+  },
+  "nativeTerrainRestore": {
+    "status": "英灵传说纹理恢复，保留当前布局；待用户War3验收。",
+    "textureHistoryCommit": "11960a4",
+    "surface": "原生地形；移除手绘模型铺面。",
+    "preserved": "当前W3E全部字节、WPM、单位/出生点、JASS、TS/Lua、雾/光照配置，以及260条既有景观摆放逐项保持。",
+    "removedSurfacePlacements": 16,
+    "removedCustomDefinitions": 33,
+    "removedResourceFiles": 45,
+    "removedImportEntries": 45,
+    "backup": "map/backup/yingling-current-layout-20261016",
+    "userVerificationPending": true
+  },
   "files": {
-    "war3map.w3e": "d92289e0d5e1760fa42d30cf6d33bc025550731d96fa421eeaecb47591036bc1",
-    "war3map.wpm": "494efa840ebe98901b230fc3418d23cb5f13f6a6c5b9c65ecdb3f4426f8b16ee",
+    "war3map.w3e": "e99f709d0b8111ec900e83bca8c0070409096c741b9b49abc508ad5651b584a8",
+    "war3map.wpm": "eaf68cd9a3fd138bf7083e0c3f62f0df014be1fb2df10f360fcbed209218a5b3",
     "war3map.shd": "8a39d2abd3999ab73c34db2476849cddf303ce389b35826850f9a700589b4a90",
-    "war3mapImported/mirror_x/dimian01.mdx": "965090b40fb7bb80be209eb40e29a9212258a57912f7e11422ddb90465fb493a",
-    "war3mapImported/mirror_x/guodao01.mdx": "a10ad86bcc31d03988f4e107e1840d9db54d1d5d7a8de15fb877f5b12fa9b430",
     "war3mapImported/mirror_x/yeshu.mdx": "90ff48024c429bfd72c31fc0dd51a88387e1cfcc6e03c33b5fd2bed176336d42",
     "war3mapImported/mirror_x/ZSW006.mdx": "86d19c80559fcc58b980abd4d127294ff831ae02f860a3dcd11dc838712a4c08",
-    "war3mapImported/mirror_x/jzmx (7).mdx": "e752e9f96323111690f513b0a7b94d576666876e9715e665e74b097dd94451c8",
-    "war3map.w3d": "b05528ac864b162c72e14da8adca20d50d16b6b712b6ee950b928f7779ef68e8",
-    "war3map.doo": "b0a8e23cf32ff7f2f4a2c5ae0f4c97967517bc93c006864efe91b2262243946e",
+    "war3map.w3d": "fedda9286acd4d7c185f3e31833985a0379341eba6826eb7e049a7127455d636",
+    "war3map.doo": "fe232fd0b41ee2fada8c913d3b6d47f042c87c5bde6d5744c565166db897584a",
     "war3mapUnits.doo": "10a30958354083c374a57119cfbe923257893436c06425593fc206df20b59475",
     "war3map.mmp": "ce76a897ad7c6fea918a8521e3203097d052bfd92db60c839a8ee53fefcebcbe",
-    "war3map.w3i": "feae1bccdcf7012a52d0d68af42c7d7e181e9c622e87725587766fc931585041",
-    "war3mapMap.blp": "4106963cca6808641e84e236aa6b79f9df60aadebcf4308fb78a1f258547b7a6"
-  },
-  "placementsPerArena": 82
+    "war3map.w3i": "398446a43368d0554a933418dc09bd7a8393ac4157d81df6885f632283a72843",
+    "war3mapMap.blp": "cf984f29e6576498228471ad04ebb9269f0df1d32979ac5e719a6ef49bb2a07b",
+    "TerrainArt/LordaeronSummer/Lords_DirtRough.blp": "908cbab6a9556a7ab7b9cb0d498361f9f4bedb25d67bba9d09a16cf3227fda06",
+    "Environment/DNC/DNCLordaeron/DNCLordaeronTerrain/DNCLordaeronTerrain.mdx": "85eb5220e14533a20a58ffb5fd30a39eebda01846be3f90a260547598c7670e8",
+    "Environment/DNC/DNCLordaeron/DNCLordaeronUnit/DNCLordaeronUnit.mdx": "4df582a4c7c6cb9c565cad6de7c6cb06961a5bcb9e607e69e27f50c056f1e40a",
+    "war3map.j": "2d359d6cca8d2c663dab2732bd32c7d8eb18e944c1efd08895968f2fd617e94d",
+    "UI/MiscData.txt": "3afc2be3807d677a0f4399d44714714846feb4892fe6d2d47ff2e62ae0807cb4",
+    "TerrainArt/LordaeronSummer/Lords_Grass.blp": "3ff5d61362009c35b32d47a7f31736eff3c1880ee96637af116571022d355790",
+    "TerrainArt/Cityscape/City_BrickTiles.blp": "50872b735384fd8e0842dce1dca49ade672ad51f24c468a592904c1f1b577d6f",
+    "TerrainArt/Cityscape/City_SquareTiles.blp": "3c78348c7720501d3ed10cb3413b58da8f0e0f369706649bf68fda6fcafd518b",
+    "TerrainArt/Ashenvale/Ashen_DirtRough.blp": "806f250e26e1aae6c28847e9ec70ed94374f9d4e09988f162a3683aee8199930",
+    "war3map.imp": "3c9392888774f682dc3e3111ad9be70d1adeb8c334efa8eca3893d9772620a4a"
+  }
 }
